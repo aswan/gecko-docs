@@ -1,0 +1,449 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>moz.build Files &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../../index.html"/>
+        <link rel="up" title="Build System" href="index.html"/>
+        <link rel="next" title="mozbuild Sandbox Symbols" href="mozbuild-symbols.html"/>
+        <link rel="prev" title="mozconfig Files" href="mozconfigs.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Build System</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#important-concepts">Important Concepts</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="build-overview.html">Build System Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="supported-configurations.html">Supported Configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozconfigs.html">Mozconfig Files</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">moz.build Files</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#moz-build-python-sandbox">moz.build Python Sandbox</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reading-and-traversing-moz-build-files">Reading and Traversing moz.build Files</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild-symbols.html">mozbuild Sandbox Symbols</a></li>
+<li class="toctree-l3"><a class="reference internal" href="files-metadata.html">Files Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pgo.html">Profile Guided Optimization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slow.html">Why the Build System is Slow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="environment-variables.html">Environment Variables Impacting the Build System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="build-targets.html">Build Targets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python.html">Python and the Build System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="test_manifests.html">Test Manifests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozinfo.html">mozinfo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="preprocessor.html">Text Preprocessor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="jar-manifests.html">JAR Manifests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="defining-binaries.html">Defining Binaries for the Build System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="toolchains.html">Creating Toolchain Archives</a></li>
+<li class="toctree-l3"><a class="reference internal" href="locales.html">Localization (l10n)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rust.html">Including Rust Code in Firefox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sparse.html">Sparse Checkouts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#integrated-development-environment-ide">integrated development environment (IDE)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#mozbuild">mozbuild</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Build System</a> &raquo;</li>
+        
+      <li>moz.build Files</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/build/buildsystem/mozbuild-files.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="moz-build-files">
+<span id="mozbuild-files"></span><h1>moz.build Files<a class="headerlink" href="#moz-build-files" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal"><span class="pre">moz.build</span></code> files are the mechanism by which tree metadata (notably
+the build configuration) is defined.</p>
+<p>Directories in the tree contain <code class="docutils literal"><span class="pre">moz.build</span></code> files which declare
+functionality for their respective part of the tree. This includes
+things such as the list of C++ files to compile, where to find tests,
+etc.</p>
+<p><code class="docutils literal"><span class="pre">moz.build</span></code> files are actually Python scripts. However, their
+execution is governed by special rules. This is explained below.</p>
+<div class="section" id="moz-build-python-sandbox">
+<h2>moz.build Python Sandbox<a class="headerlink" href="#moz-build-python-sandbox" title="Permalink to this headline">¶</a></h2>
+<p>As mentioned above, <code class="docutils literal"><span class="pre">moz.build</span></code> files are Python scripts. However,
+they are executed in a special Python <em>sandbox</em> that significantly
+changes and limits the execution environment. The environment is so
+different, it’s doubtful most <code class="docutils literal"><span class="pre">moz.build</span></code> files would execute without
+error if executed by a vanilla Python interpreter (e.g. <code class="docutils literal"><span class="pre">python</span>
+<span class="pre">moz.build</span></code>.</p>
+<p>The following properties make execution of <code class="docutils literal"><span class="pre">moz.build</span></code> files special:</p>
+<ol class="arabic simple">
+<li>The execution environment exposes a limited subset of Python.</li>
+<li>There is a special set of global symbols and an enforced naming
+convention of symbols.</li>
+<li>Some symbols are inherited from previously-executed <code class="docutils literal"><span class="pre">moz.build</span></code>
+files.</li>
+</ol>
+<p>The limited subset of Python is actually an extremely limited subset.
+Only a few symbols from <code class="docutils literal"><span class="pre">__builtin__</span></code> are exposed. These include
+<code class="docutils literal"><span class="pre">True</span></code>, <code class="docutils literal"><span class="pre">False</span></code>, <code class="docutils literal"><span class="pre">None</span></code>, <code class="docutils literal"><span class="pre">sorted</span></code>, <code class="docutils literal"><span class="pre">int</span></code>, and <code class="docutils literal"><span class="pre">set</span></code>. Global
+functions like <code class="docutils literal"><span class="pre">import</span></code>, <code class="docutils literal"><span class="pre">print</span></code>, and <code class="docutils literal"><span class="pre">open</span></code> aren’t available.
+Without these, <code class="docutils literal"><span class="pre">moz.build</span></code> files can do very little. <em>This is by design</em>.</p>
+<p>The execution sandbox treats all <code class="docutils literal"><span class="pre">UPPERCASE</span></code> variables specially. Any
+<code class="docutils literal"><span class="pre">UPPERCASE</span></code> variable must be known to the sandbox before the script
+executes. Any attempt to read or write to an unknown <code class="docutils literal"><span class="pre">UPPERCASE</span></code>
+variable will result in an exception being raised. Furthermore, the
+types of all <code class="docutils literal"><span class="pre">UPPERCASE</span></code> variables is strictly enforced. Attempts to
+assign an incompatible type to an <code class="docutils literal"><span class="pre">UPPERCASE</span></code> variable will result in
+an exception being raised.</p>
+<p>The strictness of behavior with <code class="docutils literal"><span class="pre">UPPERCASE</span></code> variables is a very
+intentional design decision. By ensuring strict behavior, any operation
+involving an <code class="docutils literal"><span class="pre">UPPERCASE</span></code> variable is guaranteed to have well-defined
+side-effects. Previously, when the build configuration was defined in
+<code class="docutils literal"><span class="pre">Makefiles</span></code>, assignments to variables that did nothing would go
+unnoticed. <code class="docutils literal"><span class="pre">moz.build</span></code> files fix this problem by eliminating the
+potential for false promises.</p>
+<p>After a <code class="docutils literal"><span class="pre">moz.build</span></code> file has completed execution, only the
+<code class="docutils literal"><span class="pre">UPPERCASE</span></code> variables are used to retrieve state.</p>
+<p>The set of variables and functions available to the Python sandbox is
+defined by the <a class="reference internal" href="../../python/mozbuild.frontend.html#module-mozbuild.frontend.context" title="mozbuild.frontend.context"><code class="xref py py-mod docutils literal"><span class="pre">mozbuild.frontend.context</span></code></a> module. The
+data structures in this module are consumed by the
+<a class="reference internal" href="../../python/mozbuild.frontend.html#mozbuild.frontend.reader.MozbuildSandbox" title="mozbuild.frontend.reader.MozbuildSandbox"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.reader.MozbuildSandbox</span></code></a> class to construct
+the sandbox. There are tests to ensure that the set of symbols exposed
+to an empty sandbox are all defined in the <code class="docutils literal"><span class="pre">context</span></code> module.
+This module also contains documentation for each symbol, so nothing can
+sneak into the sandbox without being explicitly defined and documented.</p>
+</div>
+<div class="section" id="reading-and-traversing-moz-build-files">
+<h2>Reading and Traversing moz.build Files<a class="headerlink" href="#reading-and-traversing-moz-build-files" title="Permalink to this headline">¶</a></h2>
+<p>The process for reading <code class="docutils literal"><span class="pre">moz.build</span></code> files roughly consists of:</p>
+<ol class="arabic simple">
+<li>Start at the root <code class="docutils literal"><span class="pre">moz.build</span></code> (<code class="docutils literal"><span class="pre">&lt;topsrcdir&gt;/moz.build</span></code>).</li>
+<li>Evaluate the <code class="docutils literal"><span class="pre">moz.build</span></code> file in a new sandbox.</li>
+<li>Emit the main <em>context</em> and any <em>sub-contexts</em> from the executed
+sandbox.</li>
+<li>Extract a set of <code class="docutils literal"><span class="pre">moz.build</span></code> files to execute next.</li>
+<li>For each additional <code class="docutils literal"><span class="pre">moz.build</span></code> file, goto #2 and repeat until all
+referenced files have executed.</li>
+</ol>
+<p>From the perspective of the consumer, the output of reading is a stream
+of <code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.reader.context.Context</span></code> instances. Each
+<code class="docutils literal"><span class="pre">Context</span></code> defines a particular aspect of data. Consumers iterate over
+these objects and do something with the data inside. Each object is
+essentially a dictionary of all the <code class="docutils literal"><span class="pre">UPPERCASE</span></code> variables populated
+during its execution.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Historically, there was only one <code class="docutils literal"><span class="pre">context</span></code> per <code class="docutils literal"><span class="pre">moz.build</span></code> file.
+As the number of things tracked by <code class="docutils literal"><span class="pre">moz.build</span></code> files grew and more
+and more complex processing was desired, it was necessary to split these
+contexts into multiple logical parts. It is now common to emit
+multiple contexts per <code class="docutils literal"><span class="pre">moz.build</span></code> file.</p>
+</div>
+<div class="section" id="build-system-reading-mode">
+<h3>Build System Reading Mode<a class="headerlink" href="#build-system-reading-mode" title="Permalink to this headline">¶</a></h3>
+<p>The traditional mode of evaluation of <code class="docutils literal"><span class="pre">moz.build</span></code> files is what’s
+called <em>build system traversal mode.</em> In this mode, the <code class="docutils literal"><span class="pre">CONFIG</span></code>
+variable in each <code class="docutils literal"><span class="pre">moz.build</span></code> sandbox is populated from data coming
+from <code class="docutils literal"><span class="pre">config.status</span></code>, which is produced by <code class="docutils literal"><span class="pre">configure</span></code>.</p>
+<p>During evaluation, <code class="docutils literal"><span class="pre">moz.build</span></code> files often make decisions conditional
+on the state of the build configuration. e.g. <em>only compile foo.cpp if
+feature X is enabled</em>.</p>
+<p>In this mode, traversal of <code class="docutils literal"><span class="pre">moz.build</span></code> files is governed by variables
+like <code class="docutils literal"><span class="pre">DIRS</span></code> and <code class="docutils literal"><span class="pre">TEST_DIRS</span></code>. For example, to execute a child
+directory, <code class="docutils literal"><span class="pre">foo</span></code>, you would add <code class="docutils literal"><span class="pre">DIRS</span> <span class="pre">+=</span> <span class="pre">['foo']</span></code> to a <code class="docutils literal"><span class="pre">moz.build</span></code>
+file and <code class="docutils literal"><span class="pre">foo/moz.build</span></code> would be evaluated.</p>
+</div>
+<div class="section" id="filesystem-reading-mode">
+<span id="mozbuild-fs-reading-mode"></span><h3>Filesystem Reading Mode<a class="headerlink" href="#filesystem-reading-mode" title="Permalink to this headline">¶</a></h3>
+<p>There is an alternative reading mode that doesn’t involve the build
+system and doesn’t use <code class="docutils literal"><span class="pre">DIRS</span></code> variables to control traversal into
+child directories. This mode is called <em>filesystem reading mode</em>.</p>
+<p>In this reading mode, the <code class="docutils literal"><span class="pre">CONFIG</span></code> variable is a dummy, mostly empty
+object. Accessing all but a few special variables will return an empty
+value. This means that nearly all <code class="docutils literal"><span class="pre">if</span> <span class="pre">CONFIG['FOO']:</span></code> branches will
+not be taken.</p>
+<p>Instead of using content from within the evaluated <code class="docutils literal"><span class="pre">moz.build</span></code>
+file to drive traversal into subsequent <code class="docutils literal"><span class="pre">moz.build</span></code> files, the set
+of files to evaluate is controlled by the thing doing the reading.</p>
+<p>A single <code class="docutils literal"><span class="pre">moz.build</span></code> file is not guaranteed to be executable in
+isolation. Instead, we must evaluate all <em>parent</em> <code class="docutils literal"><span class="pre">moz.build</span></code> files
+first. For example, in order to evaluate <code class="docutils literal"><span class="pre">/foo/moz.build</span></code>, one must
+execute <code class="docutils literal"><span class="pre">/moz.build</span></code> and have its state influence the execution of
+<code class="docutils literal"><span class="pre">/foo/moz.build</span></code>.</p>
+<p>Filesystem reading mode is utilized to power the
+<a class="reference internal" href="files-metadata.html#mozbuild-files-metadata"><span class="std std-ref">Files Metadata</span></a> feature.</p>
+</div>
+<div class="section" id="technical-details">
+<h3>Technical Details<a class="headerlink" href="#technical-details" title="Permalink to this headline">¶</a></h3>
+<p>The code for reading <code class="docutils literal"><span class="pre">moz.build</span></code> files lives in
+<a class="reference internal" href="../../python/mozbuild.frontend.html#module-mozbuild.frontend.reader" title="mozbuild.frontend.reader"><code class="xref py py-mod docutils literal"><span class="pre">mozbuild.frontend.reader</span></code></a>. The Python sandboxes evaluation results
+(<a class="reference internal" href="../../python/mozbuild.frontend.html#mozbuild.frontend.context.Context" title="mozbuild.frontend.context.Context"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.context.Context</span></code></a>) are passed into
+<a class="reference internal" href="../../python/mozbuild.frontend.html#module-mozbuild.frontend.emitter" title="mozbuild.frontend.emitter"><code class="xref py py-mod docutils literal"><span class="pre">mozbuild.frontend.emitter</span></code></a>, which converts them to classes defined
+in <a class="reference internal" href="../../python/mozbuild.frontend.html#module-mozbuild.frontend.data" title="mozbuild.frontend.data"><code class="xref py py-mod docutils literal"><span class="pre">mozbuild.frontend.data</span></code></a>. Each class in this module defines a
+domain-specific component of tree metdata. e.g. there will be separate
+classes that represent a JavaScript file vs a compiled C++ file or test
+manifests. This means downstream consumers of this data can filter on class
+types to only consume what they are interested in.</p>
+<p>There is no well-defined mapping between <code class="docutils literal"><span class="pre">moz.build</span></code> file instances
+and the number of <a class="reference internal" href="../../python/mozbuild.frontend.html#module-mozbuild.frontend.data" title="mozbuild.frontend.data"><code class="xref py py-mod docutils literal"><span class="pre">mozbuild.frontend.data</span></code></a> classes derived from
+each. Depending on the content of the <code class="docutils literal"><span class="pre">moz.build</span></code> file, there may be 1
+object derived or 100.</p>
+<p>The purpose of the <code class="docutils literal"><span class="pre">emitter</span></code> layer between low-level sandbox execution
+and metadata representation is to facilitate a unified normalization and
+verification step. There are multiple downstream consumers of the
+<code class="docutils literal"><span class="pre">moz.build</span></code>-derived data and many will perform the same actions. This
+logic can be complicated, so we have a component dedicated to it.</p>
+<p><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.reader.BuildReader`</span></code> and
+<code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.reader.TreeMetadataEmitter`</span></code> have a
+stream-based API courtesy of generators. When you hook them up properly,
+the <a class="reference internal" href="../../python/mozbuild.frontend.html#module-mozbuild.frontend.data" title="mozbuild.frontend.data"><code class="xref py py-mod docutils literal"><span class="pre">mozbuild.frontend.data</span></code></a> classes are emitted before all
+<code class="docutils literal"><span class="pre">moz.build</span></code> files have been read. This means that downstream errors
+are raised soon after sandbox execution.</p>
+<p>Lots of the code for evaluating Python sandboxes is applicable to
+non-Mozilla systems. In theory, it could be extracted into a standalone
+and generic package. However, until there is a need, there will
+likely be some tightly coupled bits.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="mozbuild-symbols.html" class="btn btn-neutral float-right" title="mozbuild Sandbox Symbols" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="mozconfigs.html" class="btn btn-neutral" title="mozconfig Files" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

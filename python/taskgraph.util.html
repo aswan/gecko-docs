@@ -1,0 +1,1273 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>taskgraph.util package &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../index.html"/>
+        <link rel="up" title="taskgraph package" href="taskgraph.html"/>
+        <link rel="prev" title="taskgraph.transforms.job package" href="taskgraph.transforms.job.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="taskgraph.html">taskgraph package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="taskgraph.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="taskgraph.actions.html">taskgraph.actions package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="taskgraph.cron.html">taskgraph.cron package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="taskgraph.loader.html">taskgraph.loader package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="taskgraph.test.html">taskgraph.test package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="taskgraph.transforms.html">taskgraph.transforms package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">taskgraph.util package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.util.attributes">taskgraph.util.attributes module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.util.bbb_validation">taskgraph.util.bbb_validation module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.util.cached_tasks">taskgraph.util.cached_tasks module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.util.docker">taskgraph.util.docker module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.util.hash">taskgraph.util.hash module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.util.parameterization">taskgraph.util.parameterization module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.util.partials">taskgraph.util.partials module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.util.platforms">taskgraph.util.platforms module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.util.push_apk">taskgraph.util.push_apk module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.util.python_path">taskgraph.util.python_path module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.util.schema">taskgraph.util.schema module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.util.scriptworker">taskgraph.util.scriptworker module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.util.seta">taskgraph.util.seta module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.util.signed_artifacts">taskgraph.util.signed_artifacts module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.util.taskcluster">taskgraph.util.taskcluster module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.util.templates">taskgraph.util.templates module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.util.time">taskgraph.util.time module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.util.treeherder">taskgraph.util.treeherder module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.util.verify">taskgraph.util.verify module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.util.workertypes">taskgraph.util.workertypes module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.util.yaml">taskgraph.util.yaml module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.util">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.config">taskgraph.config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.create">taskgraph.create module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.decision">taskgraph.decision module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.docker">taskgraph.docker module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.files_changed">taskgraph.files_changed module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.filter_tasks">taskgraph.filter_tasks module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.generator">taskgraph.generator module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.graph">taskgraph.graph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.morph">taskgraph.morph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.optimize">taskgraph.optimize module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.parameters">taskgraph.parameters module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.target_tasks">taskgraph.target_tasks module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.task">taskgraph.task module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.taskgraph">taskgraph.taskgraph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.try_option_syntax">taskgraph.try_option_syntax module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="taskgraph.html">taskgraph package</a> &raquo;</li>
+        
+      <li>taskgraph.util package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/python/taskgraph.util.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="taskgraph-util-package">
+<h1>taskgraph.util package<a class="headerlink" href="#taskgraph-util-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-taskgraph.util.attributes">
+<span id="taskgraph-util-attributes-module"></span><h2>taskgraph.util.attributes module<a class="headerlink" href="#module-taskgraph.util.attributes" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="taskgraph.util.attributes.attrmatch">
+<code class="descclassname">taskgraph.util.attributes.</code><code class="descname">attrmatch</code><span class="sig-paren">(</span><em>attributes</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.attributes.attrmatch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine whether the given set of task attributes matches.  The
+conditions are given as keyword arguments, where each keyword names an
+attribute.  The keyword value can be a literal, a set, or a callable.  A
+literal must match the attribute exactly.  Given a set, the attribute value
+must be in the set.  A callable is called with the attribute value.  If an
+attribute is specified as a keyword argument but not present in the
+attributes, the result is False.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.attributes.copy_attributes_from_dependent_job">
+<code class="descclassname">taskgraph.util.attributes.</code><code class="descname">copy_attributes_from_dependent_job</code><span class="sig-paren">(</span><em>dep_job</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.attributes.copy_attributes_from_dependent_job" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.attributes.keymatch">
+<code class="descclassname">taskgraph.util.attributes.</code><code class="descname">keymatch</code><span class="sig-paren">(</span><em>attributes</em>, <em>target</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.attributes.keymatch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine if any keys in attributes are a match to target, then return
+a list of matching values. First exact matches will be checked. Failing
+that, regex matches and finally a default key.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.attributes.match_run_on_projects">
+<code class="descclassname">taskgraph.util.attributes.</code><code class="descname">match_run_on_projects</code><span class="sig-paren">(</span><em>project</em>, <em>run_on_projects</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.attributes.match_run_on_projects" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine whether the given project is included in the <cite>run-on-projects</cite>
+parameter, applying expansions for things like “integration” mentioned in
+the attribute documentation.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.util.bbb_validation">
+<span id="taskgraph-util-bbb-validation-module"></span><h2>taskgraph.util.bbb_validation module<a class="headerlink" href="#module-taskgraph.util.bbb_validation" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="taskgraph.util.bbb_validation.fetch_all_the_things">
+<code class="descclassname">taskgraph.util.bbb_validation.</code><code class="descname">fetch_all_the_things</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.bbb_validation.fetch_all_the_things" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="taskgraph.util.bbb_validation.valid_bbb_builders">
+<code class="descclassname">taskgraph.util.bbb_validation.</code><code class="descname">valid_bbb_builders</code><a class="headerlink" href="#taskgraph.util.bbb_validation.valid_bbb_builders" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.util.cached_tasks">
+<span id="taskgraph-util-cached-tasks-module"></span><h2>taskgraph.util.cached_tasks module<a class="headerlink" href="#module-taskgraph.util.cached_tasks" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="taskgraph.util.cached_tasks.add_optimization">
+<code class="descclassname">taskgraph.util.cached_tasks.</code><code class="descname">add_optimization</code><span class="sig-paren">(</span><em>config</em>, <em>taskdesc</em>, <em>cache_type</em>, <em>cache_name</em>, <em>digest=None</em>, <em>digest_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.cached_tasks.add_optimization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allow the results of this task to be cached. This adds index routes to the
+task so it can be looked up for future runs, and optimization hints so that
+cached artifacts can be found. Exactly one of <cite>digest</cite> and <cite>digest_data</cite>
+must be passed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>config</strong> (<a class="reference internal" href="taskgraph.transforms.html#taskgraph.transforms.base.TransformConfig" title="taskgraph.transforms.base.TransformConfig"><em>TransformConfig</em></a>) – The configuration for the kind being transformed.</li>
+<li><strong>taskdesc</strong> (<em>dict</em>) – The description of the current task.</li>
+<li><strong>cache_type</strong> (<em>str</em>) – The type of task result being cached.</li>
+<li><strong>cache_name</strong> (<em>str</em>) – The name of the object being cached.</li>
+<li><strong>digest</strong> (<em>bytes</em><em> or </em><em>None</em>) – A unique string indentifying this version of the artifacts
+being generated. Typically this will be the hash of inputs to the task.</li>
+<li><strong>digest_data</strong> (<em>list of bytes</em><em> or </em><em>None</em>) – A list of bytes representing the inputs of this task.
+They will be concatenated and hashed to create the digest for this
+task.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.cached_tasks.cached_index_path">
+<code class="descclassname">taskgraph.util.cached_tasks.</code><code class="descname">cached_index_path</code><span class="sig-paren">(</span><em>level</em>, <em>trust_domain</em>, <em>cache_type</em>, <em>cache_name</em>, <em>digest=None</em>, <em>digest_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.cached_tasks.cached_index_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the index path needed to locate the task that would be created by
+<a class="reference internal" href="#taskgraph.util.cached_tasks.add_optimization" title="taskgraph.util.cached_tasks.add_optimization"><code class="xref py py-func docutils literal"><span class="pre">add_optimization()</span></code></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>level</strong> (<em>int</em>) – The SCM level of the task to look for.</li>
+<li><strong>trust_domain</strong> (<em>str</em>) – The trust domain to look for the task in.</li>
+<li><strong>cache_type</strong> (<em>str</em>) – The type of task result being cached.</li>
+<li><strong>cache_name</strong> (<em>str</em>) – The name of the object being cached.</li>
+<li><strong>digest</strong> (<em>bytes</em><em> or </em><em>None</em>) – A unique string indentifying this version of the artifacts
+being generated. Typically this will be the hash of inputs to the task.</li>
+<li><strong>digest_data</strong> (<em>list of bytes</em><em> or </em><em>None</em>) – A list of bytes representing the inputs of this task.
+They will be concatenated and hashed to create the digest for this
+task.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return str:</th><td class="field-body"><p class="first last">The index path.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.util.docker">
+<span id="taskgraph-util-docker-module"></span><h2>taskgraph.util.docker module<a class="headerlink" href="#module-taskgraph.util.docker" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="taskgraph.util.docker.build_from_context">
+<code class="descclassname">taskgraph.util.docker.</code><code class="descname">build_from_context</code><span class="sig-paren">(</span><em>docker_bin</em>, <em>context_path</em>, <em>prefix</em>, <em>tag=None</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.docker.build_from_context" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build a Docker image from a context archive.</p>
+<p>Given the path to a <cite>docker</cite> binary, a image build tar.gz (produced with
+<code class="docutils literal"><span class="pre">create_context_tar()</span></code>, a prefix in that context containing files, and
+an optional <code class="docutils literal"><span class="pre">tag</span></code> for the produced image, build that Docker image.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.docker.create_context_tar">
+<code class="descclassname">taskgraph.util.docker.</code><code class="descname">create_context_tar</code><span class="sig-paren">(</span><em>topsrcdir</em>, <em>context_dir</em>, <em>out_path</em>, <em>prefix</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.docker.create_context_tar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a context tarball.</p>
+<p>A directory <code class="docutils literal"><span class="pre">context_dir</span></code> containing a Dockerfile will be assembled into
+a gzipped tar file at <code class="docutils literal"><span class="pre">out_path</span></code>. Files inside the archive will be
+prefixed by directory <code class="docutils literal"><span class="pre">prefix</span></code>.</p>
+<p>We also scan the source Dockerfile for special syntax that influences
+context generation.</p>
+<p>If a line in the Dockerfile has the form <code class="docutils literal"><span class="pre">#</span> <span class="pre">%include</span> <span class="pre">&lt;path&gt;</span></code>,
+the relative path specified on that line will be matched against
+files in the source repository and added to the context under the
+path <code class="docutils literal"><span class="pre">topsrcdir/</span></code>. If an entry is a directory, we add all files
+under that directory.</p>
+<p>Returns the SHA-256 hex digest of the created archive.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.docker.docker_image">
+<code class="descclassname">taskgraph.util.docker.</code><code class="descname">docker_image</code><span class="sig-paren">(</span><em>name</em>, <em>by_tag=False</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.docker.docker_image" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resolve in-tree prebuilt docker image to <code class="docutils literal"><span class="pre">&lt;registry&gt;/&lt;repository&gt;&#64;sha256:&lt;digest&gt;</span></code>,
+or <code class="docutils literal"><span class="pre">&lt;registry&gt;/&lt;repository&gt;:&lt;tag&gt;</span></code> if <cite>by_tag</cite> is <cite>True</cite>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.docker.generate_context_hash">
+<code class="descclassname">taskgraph.util.docker.</code><code class="descname">generate_context_hash</code><span class="sig-paren">(</span><em>topsrcdir</em>, <em>image_path</em>, <em>image_name</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.docker.generate_context_hash" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a sha256 hash for context directory used to build an image.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="taskgraph.util.docker.parse_volumes">
+<code class="descclassname">taskgraph.util.docker.</code><code class="descname">parse_volumes</code><a class="headerlink" href="#taskgraph.util.docker.parse_volumes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse VOLUME entries from a Dockerfile for an image.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.util.hash">
+<span id="taskgraph-util-hash-module"></span><h2>taskgraph.util.hash module<a class="headerlink" href="#module-taskgraph.util.hash" title="Permalink to this headline">¶</a></h2>
+<dl class="attribute">
+<dt id="taskgraph.util.hash.hash_path">
+<code class="descclassname">taskgraph.util.hash.</code><code class="descname">hash_path</code><a class="headerlink" href="#taskgraph.util.hash.hash_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hash a single file.</p>
+<p>Returns the SHA-256 hash in hex form.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.hash.hash_paths">
+<code class="descclassname">taskgraph.util.hash.</code><code class="descname">hash_paths</code><span class="sig-paren">(</span><em>base_path</em>, <em>patterns</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.hash.hash_paths" title="Permalink to this definition">¶</a></dt>
+<dd><p>Give a list of path patterns, return a digest of the contents of all
+the corresponding files, similarly to git tree objects or mercurial
+manifests.</p>
+<p>Each file is hashed. The list of all hashes and file paths is then
+itself hashed to produce the result.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.util.parameterization">
+<span id="taskgraph-util-parameterization-module"></span><h2>taskgraph.util.parameterization module<a class="headerlink" href="#module-taskgraph.util.parameterization" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="taskgraph.util.parameterization.resolve_task_references">
+<code class="descclassname">taskgraph.util.parameterization.</code><code class="descname">resolve_task_references</code><span class="sig-paren">(</span><em>label</em>, <em>task_def</em>, <em>dependencies</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.parameterization.resolve_task_references" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resolve all instances of <cite>{‘task-reference’: ‘..&lt;..&gt;..’}</cite> in the given task
+definition, using the given dependencies</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.parameterization.resolve_timestamps">
+<code class="descclassname">taskgraph.util.parameterization.</code><code class="descname">resolve_timestamps</code><span class="sig-paren">(</span><em>now</em>, <em>task_def</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.parameterization.resolve_timestamps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resolve all instances of <cite>{‘relative-datestamp’: ‘..’}</cite> in the given task definition</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.util.partials">
+<span id="taskgraph-util-partials-module"></span><h2>taskgraph.util.partials module<a class="headerlink" href="#module-taskgraph.util.partials" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="taskgraph.util.partials.get_balrog_platform_name">
+<code class="descclassname">taskgraph.util.partials.</code><code class="descname">get_balrog_platform_name</code><span class="sig-paren">(</span><em>platform</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.partials.get_balrog_platform_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert build platform names into balrog platform names</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.partials.get_builds">
+<code class="descclassname">taskgraph.util.partials.</code><code class="descname">get_builds</code><span class="sig-paren">(</span><em>release_history</em>, <em>platform</em>, <em>locale</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.partials.get_builds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Examine cached balrog release history and return the list of
+builds we need to generate diffs from</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.partials.get_partials_artifact_map">
+<code class="descclassname">taskgraph.util.partials.</code><code class="descname">get_partials_artifact_map</code><span class="sig-paren">(</span><em>release_history</em>, <em>platform</em>, <em>locale</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.partials.get_partials_artifact_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.partials.get_partials_artifacts">
+<code class="descclassname">taskgraph.util.partials.</code><code class="descname">get_partials_artifacts</code><span class="sig-paren">(</span><em>release_history</em>, <em>platform</em>, <em>locale</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.partials.get_partials_artifacts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.partials.get_release_builds">
+<code class="descclassname">taskgraph.util.partials.</code><code class="descname">get_release_builds</code><span class="sig-paren">(</span><em>release</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.partials.get_release_builds" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.partials.get_sorted_releases">
+<code class="descclassname">taskgraph.util.partials.</code><code class="descname">get_sorted_releases</code><span class="sig-paren">(</span><em>product</em>, <em>branch</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.partials.get_sorted_releases" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of release names from Balrog.
+:param product: product name, AKA appName
+:param branch: branch name, e.g. mozilla-central
+:return: a sorted list of release names, most recent first.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.partials.populate_release_history">
+<code class="descclassname">taskgraph.util.partials.</code><code class="descname">populate_release_history</code><span class="sig-paren">(</span><em>product</em>, <em>branch</em>, <em>maxbuilds=4</em>, <em>maxsearch=10</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.partials.populate_release_history" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find relevant releases in Balrog
+Not all releases have all platforms and locales, due
+to Taskcluster migration.</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">product (str): capitalized product name, AKA appName, e.g. Firefox
+branch (str): branch name (mozilla-central)
+maxbuilds (int): Maximum number of historical releases to populate
+maxsearch(int): Traverse at most this many releases, to avoid</p>
+<blockquote class="last">
+<div>working through the entire history.</div></blockquote>
+</dd>
+<dt>Returns:</dt>
+<dd><p class="first">json object based on data from balrog api</p>
+<dl class="docutils">
+<dt>results = {</dt>
+<dd><dl class="first docutils">
+<dt>‘platform1’: {</dt>
+<dd><dl class="first docutils">
+<dt>‘locale1’: {</dt>
+<dd>‘buildid1’: mar_url,
+‘buildid2’: mar_url,
+‘buildid3’: mar_url,</dd>
+</dl>
+<p>},
+‘locale2’: {</p>
+<blockquote>
+<div>‘target.partial-1.mar’: {‘buildid1’: ‘mar_url’},</div></blockquote>
+<p class="last">}</p>
+</dd>
+</dl>
+<p class="last">},
+‘platform2’: {
+}</p>
+</dd>
+</dl>
+<p class="last">}</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.util.platforms">
+<span id="taskgraph-util-platforms-module"></span><h2>taskgraph.util.platforms module<a class="headerlink" href="#module-taskgraph.util.platforms" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="taskgraph.util.platforms.platform_family">
+<code class="descclassname">taskgraph.util.platforms.</code><code class="descname">platform_family</code><span class="sig-paren">(</span><em>build_platform</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.platforms.platform_family" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a build platform, return the platform family (linux, macosx, etc.)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.util.push_apk">
+<span id="taskgraph-util-push-apk-module"></span><h2>taskgraph.util.push_apk module<a class="headerlink" href="#module-taskgraph.util.push_apk" title="Permalink to this headline">¶</a></h2>
+<p>Common functions for both push-apk and push-apk-breakpoint.</p>
+<dl class="function">
+<dt id="taskgraph.util.push_apk.check_every_architecture_is_present_in_dependent_tasks">
+<code class="descclassname">taskgraph.util.push_apk.</code><code class="descname">check_every_architecture_is_present_in_dependent_tasks</code><span class="sig-paren">(</span><em>dependent_tasks</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.push_apk.check_every_architecture_is_present_in_dependent_tasks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.push_apk.delete_non_required_fields_transform">
+<code class="descclassname">taskgraph.util.push_apk.</code><code class="descname">delete_non_required_fields_transform</code><span class="sig-paren">(</span><em>_</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.push_apk.delete_non_required_fields_transform" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.push_apk.fill_labels_tranform">
+<code class="descclassname">taskgraph.util.push_apk.</code><code class="descname">fill_labels_tranform</code><span class="sig-paren">(</span><em>_</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.push_apk.fill_labels_tranform" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.push_apk.generate_dependencies">
+<code class="descclassname">taskgraph.util.push_apk.</code><code class="descname">generate_dependencies</code><span class="sig-paren">(</span><em>dependent_tasks</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.push_apk.generate_dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.push_apk.validate_dependent_tasks_transform">
+<code class="descclassname">taskgraph.util.push_apk.</code><code class="descname">validate_dependent_tasks_transform</code><span class="sig-paren">(</span><em>_</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.push_apk.validate_dependent_tasks_transform" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.push_apk.validate_jobs_schema_transform_partial">
+<code class="descclassname">taskgraph.util.push_apk.</code><code class="descname">validate_jobs_schema_transform_partial</code><span class="sig-paren">(</span><em>description_schema</em>, <em>transform_type</em>, <em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.push_apk.validate_jobs_schema_transform_partial" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.util.python_path">
+<span id="taskgraph-util-python-path-module"></span><h2>taskgraph.util.python_path module<a class="headerlink" href="#module-taskgraph.util.python_path" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="taskgraph.util.python_path.find_object">
+<code class="descclassname">taskgraph.util.python_path.</code><code class="descname">find_object</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.python_path.find_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find a Python object given a path of the form &lt;modulepath&gt;:&lt;objectpath&gt;.
+Conceptually equivalent to</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>def find_object(modulepath, objectpath):</dt>
+<dd>import &lt;modulepath&gt; as mod
+return mod.&lt;objectpath&gt;</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.util.schema">
+<span id="taskgraph-util-schema-module"></span><h2>taskgraph.util.schema module<a class="headerlink" href="#module-taskgraph.util.schema" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="taskgraph.util.schema.Schema">
+<code class="descclassname">taskgraph.util.schema.</code><code class="descname">Schema</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.schema.Schema" title="Permalink to this definition">¶</a></dt>
+<dd><p>Operates identically to voluptuous.Schema, but applying some taskgraph-specific checks
+in the process.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.schema.check_schema">
+<code class="descclassname">taskgraph.util.schema.</code><code class="descname">check_schema</code><span class="sig-paren">(</span><em>schema</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.schema.check_schema" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.schema.optionally_keyed_by">
+<code class="descclassname">taskgraph.util.schema.</code><code class="descname">optionally_keyed_by</code><span class="sig-paren">(</span><em>*arguments</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.schema.optionally_keyed_by" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mark a schema value as optionally keyed by any of a number of fields.  The
+schema is the last argument, and the remaining fields are taken to be the
+field names.  For example:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>‘some-value’: optionally_keyed_by(</dt>
+<dd>‘test-platform’, ‘build-platform’,
+Any(‘a’, ‘b’, ‘c’))</dd>
+</dl>
+</div></blockquote>
+<p>The resulting schema will allow nesting of <cite>by-test-platform</cite> and
+<cite>by-build-platform</cite> in either order.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.schema.resolve_keyed_by">
+<code class="descclassname">taskgraph.util.schema.</code><code class="descname">resolve_keyed_by</code><span class="sig-paren">(</span><em>item</em>, <em>field</em>, <em>item_name</em>, <em>**extra_values</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.schema.resolve_keyed_by" title="Permalink to this definition">¶</a></dt>
+<dd><p>For values which can either accept a literal value, or be keyed by some
+other attribute of the item, perform that lookup and replacement in-place
+(modifying <cite>item</cite> directly).  The field is specified using dotted notation
+to traverse dictionaries.</p>
+<p>For example, given item:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">job</span><span class="p">:</span>
+    <span class="n">test</span><span class="o">-</span><span class="n">platform</span><span class="p">:</span> <span class="n">linux128</span>
+    <span class="n">chunks</span><span class="p">:</span>
+        <span class="n">by</span><span class="o">-</span><span class="n">test</span><span class="o">-</span><span class="n">platform</span><span class="p">:</span>
+            <span class="n">macosx</span><span class="o">-</span><span class="mf">10.11</span><span class="o">/</span><span class="n">debug</span><span class="p">:</span> <span class="mi">13</span>
+            <span class="n">win</span><span class="o">.*</span><span class="p">:</span> <span class="mi">6</span>
+            <span class="n">default</span><span class="p">:</span> <span class="mi">12</span>
+</pre></div>
+</div>
+<p>a call to <a href="#id1"><span class="problematic" id="id2">`</span></a>resolve_keyed_by(item, ‘job.chunks’, item[‘thing-name’])
+would mutate item in-place to:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">job</span><span class="p">:</span>
+    <span class="n">chunks</span><span class="p">:</span> <span class="mi">12</span>
+</pre></div>
+</div>
+<p>The <cite>item_name</cite> parameter is used to generate useful error messages.</p>
+<p>If extra_values are supplied, they represent additional values available
+for reference from by-&lt;field&gt;.</p>
+<p>Items can be nested as deeply as the schema will allow:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">chunks</span><span class="p">:</span>
+    <span class="n">by</span><span class="o">-</span><span class="n">test</span><span class="o">-</span><span class="n">platform</span><span class="p">:</span>
+        <span class="n">win</span><span class="o">.*</span><span class="p">:</span>
+            <span class="n">by</span><span class="o">-</span><span class="n">project</span><span class="p">:</span>
+                <span class="n">ash</span><span class="p">:</span> <span class="o">..</span>
+                <span class="n">cedar</span><span class="p">:</span> <span class="o">..</span>
+        <span class="n">linux</span><span class="p">:</span> <span class="mi">13</span>
+        <span class="n">default</span><span class="p">:</span> <span class="mi">12</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.schema.validate_schema">
+<code class="descclassname">taskgraph.util.schema.</code><code class="descname">validate_schema</code><span class="sig-paren">(</span><em>schema</em>, <em>obj</em>, <em>msg_prefix</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.schema.validate_schema" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validate that object satisfies schema.  If not, generate a useful exception
+beginning with msg_prefix.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.util.scriptworker">
+<span id="taskgraph-util-scriptworker-module"></span><h2>taskgraph.util.scriptworker module<a class="headerlink" href="#module-taskgraph.util.scriptworker" title="Permalink to this headline">¶</a></h2>
+<p>Make scriptworker.cot.verify more user friendly by making scopes dynamic.</p>
+<p>Scriptworker uses certain scopes to determine which sets of credentials to use.
+Certain scopes are restricted by branch in chain of trust verification, and are
+checked again at the script level.  This file provides functions to adjust
+these scopes automatically by project; this makes pushing to try, forking a
+project branch, and merge day uplifts more user friendly.</p>
+<p>In the future, we may adjust scopes by other settings as well, e.g. different
+scopes for <cite>push-to-candidates</cite> rather than <cite>push-to-releases</cite>, even if both
+happen on mozilla-beta and mozilla-release.</p>
+<dl class="data">
+<dt id="taskgraph.util.scriptworker.BALROG_SCOPE_ALIAS_TO_PROJECT">
+<code class="descclassname">taskgraph.util.scriptworker.</code><code class="descname">BALROG_SCOPE_ALIAS_TO_PROJECT</code><em class="property"> = [[u'nightly', set([u'mozilla-central'])], [u'beta', set([u'mozilla-beta'])], [u'release', set([u'mozilla-release'])], [u'esr', set([u'mozilla-esr52'])]]</em><a class="headerlink" href="#taskgraph.util.scriptworker.BALROG_SCOPE_ALIAS_TO_PROJECT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Map the balrog scope aliases to the actual scopes.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="taskgraph.util.scriptworker.BALROG_SERVER_SCOPES">
+<code class="descclassname">taskgraph.util.scriptworker.</code><code class="descname">BALROG_SERVER_SCOPES</code><em class="property"> = {u'esr': u'project:releng:balrog:server:esr', u'default': u'project:releng:balrog:server:dep', u'aurora': u'project:releng:balrog:server:aurora', u'nightly': u'project:releng:balrog:server:nightly', u'beta': u'project:releng:balrog:server:beta', u'release': u'project:releng:balrog:server:release'}</em><a class="headerlink" href="#taskgraph.util.scriptworker.BALROG_SERVER_SCOPES" title="Permalink to this definition">¶</a></dt>
+<dd><p>Map the balrog scope aliases to the actual channel scopes.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="taskgraph.util.scriptworker.BEETMOVER_ACTION_SCOPES">
+<code class="descclassname">taskgraph.util.scriptworker.</code><code class="descname">BEETMOVER_ACTION_SCOPES</code><em class="property"> = {u'default': u'project:releng:beetmover:action:push-to-staging', u'all-candidates-tasks': u'project:releng:beetmover:action:push-to-candidates', u'all-publish-tasks': u'project:releng:beetmover:action:push-to-releases', u'all-nightly-tasks': u'project:releng:beetmover:action:push-to-nightly'}</em><a class="headerlink" href="#taskgraph.util.scriptworker.BEETMOVER_ACTION_SCOPES" title="Permalink to this definition">¶</a></dt>
+<dd><p>Map balrog scope aliases to sets of projects.</p>
+<p>This is a list of list-pairs, for ordering.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="taskgraph.util.scriptworker.BEETMOVER_BUCKET_SCOPES">
+<code class="descclassname">taskgraph.util.scriptworker.</code><code class="descname">BEETMOVER_BUCKET_SCOPES</code><em class="property"> = {u'default': u'project:releng:beetmover:bucket:dep', u'all-candidates-tasks': {u'all-release-branches': u'project:releng:beetmover:bucket:release'}, u'all-publish-tasks': {u'all-release-branches': u'project:releng:beetmover:bucket:release'}, u'all-nightly-tasks': {u'all-nightly-branches': u'project:releng:beetmover:bucket:nightly'}}</em><a class="headerlink" href="#taskgraph.util.scriptworker.BEETMOVER_BUCKET_SCOPES" title="Permalink to this definition">¶</a></dt>
+<dd><p>Map the beetmover tasks aliases to the actual action scopes.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="taskgraph.util.scriptworker.BEETMOVER_RELEASE_TARGET_TASKS">
+<code class="descclassname">taskgraph.util.scriptworker.</code><code class="descname">BEETMOVER_RELEASE_TARGET_TASKS</code><em class="property"> = set([u'publish_fennec', u'candidates_fennec'])</em><a class="headerlink" href="#taskgraph.util.scriptworker.BEETMOVER_RELEASE_TARGET_TASKS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Map beetmover tasks aliases to sets of target task methods.</p>
+<p>This is a list of list-pairs, for ordering.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="taskgraph.util.scriptworker.BEETMOVER_SCOPE_ALIAS_TO_PROJECT">
+<code class="descclassname">taskgraph.util.scriptworker.</code><code class="descname">BEETMOVER_SCOPE_ALIAS_TO_PROJECT</code><em class="property"> = [[u'all-nightly-branches', set([u'mozilla-beta', u'mozilla-release', u'mozilla-central'])], [u'all-release-branches', set([u'mozilla-release', u'mozilla-beta'])]]</em><a class="headerlink" href="#taskgraph.util.scriptworker.BEETMOVER_SCOPE_ALIAS_TO_PROJECT" title="Permalink to this definition">¶</a></dt>
+<dd><p>The set of all beetmover release target tasks.</p>
+<p>Used for both <cite>BEETMOVER_SCOPE_ALIAS_TO_TARGET_TASK</cite> and <cite>get_release_build_number</cite></p>
+</dd></dl>
+
+<dl class="data">
+<dt id="taskgraph.util.scriptworker.BEETMOVER_SCOPE_ALIAS_TO_TARGET_TASK">
+<code class="descclassname">taskgraph.util.scriptworker.</code><code class="descname">BEETMOVER_SCOPE_ALIAS_TO_TARGET_TASK</code><em class="property"> = [[u'all-nightly-tasks', set([u'nightly_linux', u'nightly_fennec', u'nightly_macosx', u'mozilla_beta_tasks', u'nightly_win64', u'mozilla_release_tasks', u'nightly_desktop', u'nightly_win32'])], [u'all-candidates-tasks', set([u'candidates_fennec'])], [u'all-publish-tasks', set([u'publish_fennec'])]]</em><a class="headerlink" href="#taskgraph.util.scriptworker.BEETMOVER_SCOPE_ALIAS_TO_TARGET_TASK" title="Permalink to this definition">¶</a></dt>
+<dd><p>Map the beetmover scope aliases to the actual scopes.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="taskgraph.util.scriptworker.DEVEDITION_SIGNING_CERT_SCOPES">
+<code class="descclassname">taskgraph.util.scriptworker.</code><code class="descname">DEVEDITION_SIGNING_CERT_SCOPES</code><em class="property"> = {u'default': u'project:releng:signing:cert:dep-signing', u'beta': u'project:releng:signing:cert:nightly-signing'}</em><a class="headerlink" href="#taskgraph.util.scriptworker.DEVEDITION_SIGNING_CERT_SCOPES" title="Permalink to this definition">¶</a></dt>
+<dd><p>Map beetmover scope aliases to sets of projects.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="taskgraph.util.scriptworker.SIGNING_SCOPE_ALIAS_TO_PROJECT">
+<code class="descclassname">taskgraph.util.scriptworker.</code><code class="descname">SIGNING_SCOPE_ALIAS_TO_PROJECT</code><em class="property"> = [[u'all-nightly-branches', set([u'mozilla-central'])], [u'all-release-branches', set([u'mozilla-release', u'mozilla-beta'])]]</em><a class="headerlink" href="#taskgraph.util.scriptworker.SIGNING_SCOPE_ALIAS_TO_PROJECT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Map the signing scope aliases to the actual scopes.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="taskgraph.util.scriptworker.VERSION_PATH">
+<code class="descclassname">taskgraph.util.scriptworker.</code><code class="descname">VERSION_PATH</code><em class="property"> = u'/Users/andrewswan/src/mozilla-unified/browser/config/version_display.txt'</em><a class="headerlink" href="#taskgraph.util.scriptworker.VERSION_PATH" title="Permalink to this definition">¶</a></dt>
+<dd><p>Map signing scope aliases to sets of projects.</p>
+<p>Currently m-c and DevEdition on m-b use nightly signing; Beta on m-b and m-r
+use release signing. These data structures aren’t set-up to handle different
+scopes on the same repo, so we use a different set of them for DevEdition, and
+callers are responsible for using the correct one (by calling the appropriate
+helper below). More context on this in <a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=1358601">https://bugzilla.mozilla.org/show_bug.cgi?id=1358601</a>.</p>
+<p>We will need to add esr support at some point. Eventually we want to add
+nuance so certain m-b and m-r tasks use dep or nightly signing, and we only
+release sign when we have a signed-off set of candidate builds.  This current
+approach works for now, though.</p>
+<p>This is a list of list-pairs, for ordering.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.scriptworker.get_release_config">
+<code class="descclassname">taskgraph.util.scriptworker.</code><code class="descname">get_release_config</code><span class="sig-paren">(</span><em>config</em>, <em>force=False</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.scriptworker.get_release_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the build number and version for a release task.</p>
+<p>Currently only applies to beetmover tasks.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>config</strong> (<em>dict</em>) – the task config that defines the target task method.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<dt>containing both <cite>build_number</cite> and <cite>version</cite>.  This can be used to</dt>
+<dd>update <cite>task.payload</cite>.</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.scriptworker.get_scope_from_project">
+<code class="descclassname">taskgraph.util.scriptworker.</code><code class="descname">get_scope_from_project</code><span class="sig-paren">(</span><em>alias_to_project_map</em>, <em>alias_to_scope_map</em>, <em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.scriptworker.get_scope_from_project" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine the restricted scope from <cite>config.params[‘project’]</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>alias_to_project_map</strong> (<em>list of lists</em>) – each list pair contains the
+alias and the set of projects that match.  This is ordered.</li>
+<li><strong>alias_to_scope_map</strong> (<em>dict</em>) – the alias alias to scope</li>
+<li><strong>config</strong> (<em>dict</em>) – the task config that defines the project.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the scope to use.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.scriptworker.get_scope_from_target_method">
+<code class="descclassname">taskgraph.util.scriptworker.</code><code class="descname">get_scope_from_target_method</code><span class="sig-paren">(</span><em>alias_to_tasks_map</em>, <em>alias_to_scope_map</em>, <em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.scriptworker.get_scope_from_target_method" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine the restricted scope from <cite>config.params[‘target_tasks_method’]</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>alias_to_tasks_map</strong> (<em>list of lists</em>) – each list pair contains the
+alias and the set of target methods that match. This is ordered.</li>
+<li><strong>alias_to_scope_map</strong> (<em>dict</em>) – the alias alias to scope</li>
+<li><strong>config</strong> (<em>dict</em>) – the task config that defines the target task method.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the scope to use.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.scriptworker.get_scope_from_target_method_and_project">
+<code class="descclassname">taskgraph.util.scriptworker.</code><code class="descname">get_scope_from_target_method_and_project</code><span class="sig-paren">(</span><em>alias_to_tasks_map</em>, <em>alias_to_project_map</em>, <em>aliases_to_scope_map</em>, <em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.scriptworker.get_scope_from_target_method_and_project" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine the restricted scope from both <cite>target_tasks_method</cite> and <cite>project</cite>.</p>
+<p>On certain branches, we’ll need differing restricted scopes based on
+<cite>target_tasks_method</cite>.  However, we can’t key solely on that, since that
+<cite>target_tasks_method</cite> might be run on an unprivileged branch.  This method
+checks both.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>alias_to_tasks_map</strong> (<em>list of lists</em>) – each list pair contains the
+alias and the set of target methods that match. This is ordered.</li>
+<li><strong>alias_to_project_map</strong> (<em>list of lists</em>) – each list pair contains the
+alias and the set of projects that match.  This is ordered.</li>
+<li><strong>aliases_to_scope_map</strong> (<em>dict of dicts</em>) – the task alias to project alias to scope</li>
+<li><strong>config</strong> (<em>dict</em>) – the task config that defines the target task method and project.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the scope to use.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.scriptworker.get_signing_cert_scope_per_platform">
+<code class="descclassname">taskgraph.util.scriptworker.</code><code class="descname">get_signing_cert_scope_per_platform</code><span class="sig-paren">(</span><em>build_platform</em>, <em>is_nightly</em>, <em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.scriptworker.get_signing_cert_scope_per_platform" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.util.seta">
+<span id="taskgraph-util-seta-module"></span><h2>taskgraph.util.seta module<a class="headerlink" href="#module-taskgraph.util.seta" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="taskgraph.util.seta.SETA">
+<em class="property">class </em><code class="descclassname">taskgraph.util.seta.</code><code class="descname">SETA</code><a class="headerlink" href="#taskgraph.util.seta.SETA" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Interface to the SETA service, which defines low-value tasks that can be optimized out
+of the taskgraph.</p>
+<dl class="method">
+<dt id="taskgraph.util.seta.SETA.is_low_value_task">
+<code class="descname">is_low_value_task</code><span class="sig-paren">(</span><em>label</em>, <em>project</em>, <em>pushlog_id</em>, <em>push_date</em>, <em>bbb_task=False</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.seta.SETA.is_low_value_task" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.util.seta.SETA.minutes_between_pushes">
+<code class="descname">minutes_between_pushes</code><span class="sig-paren">(</span><em>project</em>, <em>cur_push_id</em>, <em>cur_push_date</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.seta.SETA.minutes_between_pushes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.util.seta.SETA.query_low_value_tasks">
+<code class="descname">query_low_value_tasks</code><span class="sig-paren">(</span><em>project</em>, <em>bbb=False</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.seta.SETA.query_low_value_tasks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.util.signed_artifacts">
+<span id="taskgraph-util-signed-artifacts-module"></span><h2>taskgraph.util.signed_artifacts module<a class="headerlink" href="#module-taskgraph.util.signed_artifacts" title="Permalink to this headline">¶</a></h2>
+<p>Defines artifacts to sign before repackage.</p>
+<dl class="function">
+<dt id="taskgraph.util.signed_artifacts.generate_specifications_of_artifacts_to_sign">
+<code class="descclassname">taskgraph.util.signed_artifacts.</code><code class="descname">generate_specifications_of_artifacts_to_sign</code><span class="sig-paren">(</span><em>build_platform</em>, <em>is_nightly=False</em>, <em>keep_locale_template=True</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.signed_artifacts.generate_specifications_of_artifacts_to_sign" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.util.taskcluster">
+<span id="taskgraph-util-taskcluster-module"></span><h2>taskgraph.util.taskcluster module<a class="headerlink" href="#module-taskgraph.util.taskcluster" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="taskgraph.util.taskcluster.cancel_task">
+<code class="descclassname">taskgraph.util.taskcluster.</code><code class="descname">cancel_task</code><span class="sig-paren">(</span><em>task_id</em>, <em>use_proxy=False</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.taskcluster.cancel_task" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cancels a task given a task_id. In testing mode, just logs that it would
+have cancelled.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.taskcluster.find_task_id">
+<code class="descclassname">taskgraph.util.taskcluster.</code><code class="descname">find_task_id</code><span class="sig-paren">(</span><em>index_path</em>, <em>use_proxy=False</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.taskcluster.find_task_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.taskcluster.get_artifact">
+<code class="descclassname">taskgraph.util.taskcluster.</code><code class="descname">get_artifact</code><span class="sig-paren">(</span><em>task_id</em>, <em>path</em>, <em>use_proxy=False</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.taskcluster.get_artifact" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the artifact with the given path for the given task id.</p>
+<p>If the path ends with “.json” or “.yml”, the content is deserialized as,
+respectively, json or yaml, and the corresponding python data (usually
+dict) is returned.
+For other types of content, a file-like object is returned.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.taskcluster.get_artifact_from_index">
+<code class="descclassname">taskgraph.util.taskcluster.</code><code class="descname">get_artifact_from_index</code><span class="sig-paren">(</span><em>index_path</em>, <em>artifact_path</em>, <em>use_proxy=False</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.taskcluster.get_artifact_from_index" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.taskcluster.get_artifact_url">
+<code class="descclassname">taskgraph.util.taskcluster.</code><code class="descname">get_artifact_url</code><span class="sig-paren">(</span><em>task_id</em>, <em>path</em>, <em>use_proxy=False</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.taskcluster.get_artifact_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.taskcluster.get_index_url">
+<code class="descclassname">taskgraph.util.taskcluster.</code><code class="descname">get_index_url</code><span class="sig-paren">(</span><em>index_path</em>, <em>use_proxy=False</em>, <em>multiple=False</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.taskcluster.get_index_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.taskcluster.get_purge_cache_url">
+<code class="descclassname">taskgraph.util.taskcluster.</code><code class="descname">get_purge_cache_url</code><span class="sig-paren">(</span><em>provisioner_id</em>, <em>worker_type</em>, <em>use_proxy=False</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.taskcluster.get_purge_cache_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="taskgraph.util.taskcluster.get_session">
+<code class="descclassname">taskgraph.util.taskcluster.</code><code class="descname">get_session</code><a class="headerlink" href="#taskgraph.util.taskcluster.get_session" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.taskcluster.get_task_definition">
+<code class="descclassname">taskgraph.util.taskcluster.</code><code class="descname">get_task_definition</code><span class="sig-paren">(</span><em>task_id</em>, <em>use_proxy=False</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.taskcluster.get_task_definition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.taskcluster.get_task_url">
+<code class="descclassname">taskgraph.util.taskcluster.</code><code class="descname">get_task_url</code><span class="sig-paren">(</span><em>task_id</em>, <em>use_proxy=False</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.taskcluster.get_task_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.taskcluster.get_taskcluster_artifact_prefix">
+<code class="descclassname">taskgraph.util.taskcluster.</code><code class="descname">get_taskcluster_artifact_prefix</code><span class="sig-paren">(</span><em>task_id</em>, <em>postfix=u''</em>, <em>locale=None</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.taskcluster.get_taskcluster_artifact_prefix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.taskcluster.list_artifacts">
+<code class="descclassname">taskgraph.util.taskcluster.</code><code class="descname">list_artifacts</code><span class="sig-paren">(</span><em>task_id</em>, <em>use_proxy=False</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.taskcluster.list_artifacts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.taskcluster.list_tasks">
+<code class="descclassname">taskgraph.util.taskcluster.</code><code class="descname">list_tasks</code><span class="sig-paren">(</span><em>index_path</em>, <em>use_proxy=False</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.taskcluster.list_tasks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of task_ids where each task_id is indexed under a path
+in the index. Results are sorted by expiration date from oldest to newest.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.taskcluster.purge_cache">
+<code class="descclassname">taskgraph.util.taskcluster.</code><code class="descname">purge_cache</code><span class="sig-paren">(</span><em>provisioner_id</em>, <em>worker_type</em>, <em>cache_name</em>, <em>use_proxy=False</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.taskcluster.purge_cache" title="Permalink to this definition">¶</a></dt>
+<dd><p>Requests a cache purge from the purge-caches service.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.util.templates">
+<span id="taskgraph-util-templates-module"></span><h2>taskgraph.util.templates module<a class="headerlink" href="#module-taskgraph.util.templates" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="taskgraph.util.templates.merge">
+<code class="descclassname">taskgraph.util.templates.</code><code class="descname">merge</code><span class="sig-paren">(</span><em>*objects</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.templates.merge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merge the given objects, using the semantics described for merge_to, with
+objects later in the list taking precedence.  From an inheritance
+perspective, “parents” should be listed before “children”.</p>
+<p>Returns the result without modifying any arguments.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.templates.merge_to">
+<code class="descclassname">taskgraph.util.templates.</code><code class="descname">merge_to</code><span class="sig-paren">(</span><em>source</em>, <em>dest</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.templates.merge_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merge dict and arrays (override scalar values)</p>
+<p>Keys from source override keys from dest, and elements from lists in source
+are appended to lists in dest.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>source</strong> (<em>dict</em>) – to copy from</li>
+<li><strong>dest</strong> (<em>dict</em>) – to copy to (modified in place)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.util.time">
+<span id="taskgraph-util-time-module"></span><h2>taskgraph.util.time module<a class="headerlink" href="#module-taskgraph.util.time" title="Permalink to this headline">¶</a></h2>
+<dl class="exception">
+<dt id="taskgraph.util.time.InvalidString">
+<em class="property">exception </em><code class="descclassname">taskgraph.util.time.</code><code class="descname">InvalidString</code><a class="headerlink" href="#taskgraph.util.time.InvalidString" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></code></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="taskgraph.util.time.UnknownTimeMeasurement">
+<em class="property">exception </em><code class="descclassname">taskgraph.util.time.</code><code class="descname">UnknownTimeMeasurement</code><a class="headerlink" href="#taskgraph.util.time.UnknownTimeMeasurement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></code></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.time.current_json_time">
+<code class="descclassname">taskgraph.util.time.</code><code class="descname">current_json_time</code><span class="sig-paren">(</span><em>datetime_format=False</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.time.current_json_time" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>datetime_format</strong> (<em>boolean</em>) – Set <cite>True</cite> to get a <cite>datetime</cite> output</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">JSON string representation of the current time.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.time.days">
+<code class="descclassname">taskgraph.util.time.</code><code class="descname">days</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.time.days" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.time.hours">
+<code class="descclassname">taskgraph.util.time.</code><code class="descname">hours</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.time.hours" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.time.json_time_from_now">
+<code class="descclassname">taskgraph.util.time.</code><code class="descname">json_time_from_now</code><span class="sig-paren">(</span><em>input_str</em>, <em>now=None</em>, <em>datetime_format=False</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.time.json_time_from_now" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>input_str</strong> (<em>str</em>) – Input string (see value of)</li>
+<li><strong>now</strong> (<em>datetime</em>) – Optionally set the definition of <cite>now</cite></li>
+<li><strong>datetime_format</strong> (<em>boolean</em>) – Set <cite>True</cite> to get a <cite>datetime</cite> output</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">JSON string representation of time in future.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.time.minutes">
+<code class="descclassname">taskgraph.util.time.</code><code class="descname">minutes</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.time.minutes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.time.months">
+<code class="descclassname">taskgraph.util.time.</code><code class="descname">months</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.time.months" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.time.seconds">
+<code class="descclassname">taskgraph.util.time.</code><code class="descname">seconds</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.time.seconds" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.time.value_of">
+<code class="descclassname">taskgraph.util.time.</code><code class="descname">value_of</code><span class="sig-paren">(</span><em>input_str</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.time.value_of" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a string to a json date in the future
+:param str input_str: (ex: 1d, 2d, 6years, 2 seconds)
+:returns: Unit given in seconds</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.time.years">
+<code class="descclassname">taskgraph.util.time.</code><code class="descname">years</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.time.years" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.util.treeherder">
+<span id="taskgraph-util-treeherder-module"></span><h2>taskgraph.util.treeherder module<a class="headerlink" href="#module-taskgraph.util.treeherder" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="taskgraph.util.treeherder.join_symbol">
+<code class="descclassname">taskgraph.util.treeherder.</code><code class="descname">join_symbol</code><span class="sig-paren">(</span><em>group</em>, <em>symbol</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.treeherder.join_symbol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform the reverse of split_symbol, combining the given group and
+symbol.  If the group is ‘?’, then it is omitted.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.treeherder.split_symbol">
+<code class="descclassname">taskgraph.util.treeherder.</code><code class="descname">split_symbol</code><span class="sig-paren">(</span><em>treeherder_symbol</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.treeherder.split_symbol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Split a symbol expressed as grp(sym) into its two parts.  If no group is
+given, the returned group is ‘?’</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.util.verify">
+<span id="taskgraph-util-verify-module"></span><h2>taskgraph.util.verify module<a class="headerlink" href="#module-taskgraph.util.verify" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="taskgraph.util.verify.VerificationSequence">
+<em class="property">class </em><code class="descclassname">taskgraph.util.verify.</code><code class="descname">VerificationSequence</code><a class="headerlink" href="#taskgraph.util.verify.VerificationSequence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Container for a sequence of verifications over a TaskGraph. Each
+verification is represented as a callable taking (task, taskgraph,
+scratch_pad), called for each task in the taskgraph, and one more
+time with no task but with the taskgraph and the same scratch_pad
+that was passed for each task.</p>
+<dl class="method">
+<dt id="taskgraph.util.verify.VerificationSequence.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>graph_name</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.verify.VerificationSequence.add" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.verify.verify_bbb_builders_valid">
+<code class="descclassname">taskgraph.util.verify.</code><code class="descname">verify_bbb_builders_valid</code><span class="sig-paren">(</span><em>task</em>, <em>taskgraph</em>, <em>scratch_pad</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.verify.verify_bbb_builders_valid" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function ensures that any task which is run
+in buildbot (via buildbot-bridge) is using a recognized buildername.</p>
+<p>If you see an unexpected failure with a task due to this check, please
+see the IRC Channel, #releng.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.verify.verify_dependency_tiers">
+<code class="descclassname">taskgraph.util.verify.</code><code class="descname">verify_dependency_tiers</code><span class="sig-paren">(</span><em>task</em>, <em>taskgraph</em>, <em>scratch_pad</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.verify.verify_dependency_tiers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.verify.verify_docs">
+<code class="descclassname">taskgraph.util.verify.</code><code class="descname">verify_docs</code><span class="sig-paren">(</span><em>filename</em>, <em>identifiers</em>, <em>appearing_as</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.verify.verify_docs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.verify.verify_gecko_v2_routes">
+<code class="descclassname">taskgraph.util.verify.</code><code class="descname">verify_gecko_v2_routes</code><span class="sig-paren">(</span><em>task</em>, <em>taskgraph</em>, <em>scratch_pad</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.verify.verify_gecko_v2_routes" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function ensures that any two
+tasks have distinct index.v2.routes</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.util.verify.verify_task_graph_symbol">
+<code class="descclassname">taskgraph.util.verify.</code><code class="descname">verify_task_graph_symbol</code><span class="sig-paren">(</span><em>task</em>, <em>taskgraph</em>, <em>scratch_pad</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.verify.verify_task_graph_symbol" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function verifies that tuple
+(collection.keys(), machine.platform, groupSymbol, symbol) is unique
+for a target task graph.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.util.workertypes">
+<span id="taskgraph-util-workertypes-module"></span><h2>taskgraph.util.workertypes module<a class="headerlink" href="#module-taskgraph.util.workertypes" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="taskgraph.util.workertypes.worker_type_implementation">
+<code class="descclassname">taskgraph.util.workertypes.</code><code class="descname">worker_type_implementation</code><span class="sig-paren">(</span><em>worker_type</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.workertypes.worker_type_implementation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the worker implementation and OS for the given workerType, where the
+OS represents the host system, not the target OS, in the case of
+cross-compiles.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.util.yaml">
+<span id="taskgraph-util-yaml-module"></span><h2>taskgraph.util.yaml module<a class="headerlink" href="#module-taskgraph.util.yaml" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="taskgraph.util.yaml.load_yaml">
+<code class="descclassname">taskgraph.util.yaml.</code><code class="descname">load_yaml</code><span class="sig-paren">(</span><em>path</em>, <em>name</em>, <em>enforce_order=False</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.util.yaml.load_yaml" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convenience function to load a YAML file in the given path.  This is
+useful for loading kind configuration files from the kind path.  If
+<cite>enforce_order</cite> is given, then any top-level keys in the file must
+be given in order.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.util">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-taskgraph.util" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="taskgraph.transforms.job.html" class="btn btn-neutral" title="taskgraph.transforms.job package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

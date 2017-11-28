@@ -1,0 +1,362 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Including Rust Code in Firefox &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../../index.html"/>
+        <link rel="up" title="Build System" href="index.html"/>
+        <link rel="next" title="Sparse Checkouts" href="sparse.html"/>
+        <link rel="prev" title="Localization (l10n)" href="locales.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Build System</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#important-concepts">Important Concepts</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="build-overview.html">Build System Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="supported-configurations.html">Supported Configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozconfigs.html">Mozconfig Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild-files.html">moz.build Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild-symbols.html">mozbuild Sandbox Symbols</a></li>
+<li class="toctree-l3"><a class="reference internal" href="files-metadata.html">Files Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pgo.html">Profile Guided Optimization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slow.html">Why the Build System is Slow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="environment-variables.html">Environment Variables Impacting the Build System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="build-targets.html">Build Targets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python.html">Python and the Build System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="test_manifests.html">Test Manifests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozinfo.html">mozinfo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="preprocessor.html">Text Preprocessor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="jar-manifests.html">JAR Manifests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="defining-binaries.html">Defining Binaries for the Build System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="toolchains.html">Creating Toolchain Archives</a></li>
+<li class="toctree-l3"><a class="reference internal" href="locales.html">Localization (l10n)</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Including Rust Code in Firefox</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#linking-rust-crates-into-libxul">Linking Rust Crates into libxul</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#linking-rust-crates-into-something-else">Linking Rust Crates into something else</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#where-should-i-put-my-crate">Where Should I put my Crate?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#crate-dependencies">Crate dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sparse.html">Sparse Checkouts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#integrated-development-environment-ide">integrated development environment (IDE)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#mozbuild">mozbuild</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Build System</a> &raquo;</li>
+        
+      <li>Including Rust Code in Firefox</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/build/buildsystem/rust.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="including-rust-code-in-firefox">
+<span id="rust"></span><h1>Including Rust Code in Firefox<a class="headerlink" href="#including-rust-code-in-firefox" title="Permalink to this headline">¶</a></h1>
+<p>The build system has support for building and linking Rust crates.
+Rust code is built using <code class="docutils literal"><span class="pre">cargo</span></code> in the typical way, so it is
+straightforward to take an existing Rust crate and integrate it
+into Firefox.</p>
+<div class="section" id="linking-rust-crates-into-libxul">
+<h2>Linking Rust Crates into libxul<a class="headerlink" href="#linking-rust-crates-into-libxul" title="Permalink to this headline">¶</a></h2>
+<p>Rust crates that you want to link into libxul should be listed in the
+<code class="docutils literal"><span class="pre">dependencies</span></code> section of <a class="reference external" href="https://dxr.mozilla.org/mozilla-central/source/toolkit/library/rust/shared/Cargo.toml">toolkit/library/rust/shared/Cargo.toml</a>.
+After adding your crate, execute <code class="docutils literal"><span class="pre">cargo</span> <span class="pre">update</span> <span class="pre">-p</span> <span class="pre">gkrust-shared</span></code> in
+<code class="docutils literal"><span class="pre">toolkit/library/rust</span></code> to update the Cargo.lock file.  You’ll also
+need to add an <code class="docutils literal"><span class="pre">extern</span> <span class="pre">crate</span></code> reference to
+<a class="reference external" href="https://dxr.mozilla.org/mozilla-central/source/toolkit/library/rust/shared/lib.rs">toolkit/library/rust/shared/lib.rs</a>.
+This ensures that the Rust code will be linked properly into libxul as well
+as the copy of libxul used for gtests.</p>
+</div>
+<div class="section" id="linking-rust-crates-into-something-else">
+<h2>Linking Rust Crates into something else<a class="headerlink" href="#linking-rust-crates-into-something-else" title="Permalink to this headline">¶</a></h2>
+<p>There currently is not any Rust code being linked into binaries other than
+libxul. If you would like to do so, you’ll need to create a directory with
+a <code class="docutils literal"><span class="pre">Cargo.toml</span></code> file for your crate, and a <code class="docutils literal"><span class="pre">moz.build</span></code> file that contains:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">RustLibrary</span><span class="p">(</span><span class="s1">&#39;crate_name&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Where <em>crate_name</em> matches the name from the <code class="docutils literal"><span class="pre">[package]</span></code> section of your
+<code class="docutils literal"><span class="pre">Cargo.toml</span></code>. You can refer to <a class="reference external" href="https://dxr.mozilla.org/mozilla-central/rev/3f4c3a3cabaf94958834d3a8935adfb4a887942d/toolkit/library/rust/moz.build#7">the moz.build file</a> and <a class="reference external" href="https://dxr.mozilla.org/mozilla-central/rev/3f4c3a3cabaf94958834d3a8935adfb4a887942d/toolkit/library/rust/Cargo.toml">the Cargo.toml file</a> that are used for libxul.</p>
+<p>You can then add <code class="docutils literal"><span class="pre">USE_LIBS</span> <span class="pre">+=</span> <span class="pre">['crate_name']</span></code> to the <code class="docutils literal"><span class="pre">moz.build</span></code> file
+that defines the binary as you would with any other library in the tree.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">You cannot link a Rust crate into an intermediate library that will wind
+up being linked into libxul. The build system enforces that only a single
+<code class="docutils literal"><span class="pre">RustLibrary</span></code> may be linked into a binary. If you need to do this, you
+will have to add a <code class="docutils literal"><span class="pre">RustLibrary</span></code> to link to any standalone binaries that
+link the intermediate library, and also add the Rust crate to the libxul
+dependencies as in <a class="reference internal" href="#linking-rust-crates-into-libxul">linking Rust Crates into libxul</a>.</p>
+</div>
+</div>
+<div class="section" id="where-should-i-put-my-crate">
+<h2>Where Should I put my Crate?<a class="headerlink" href="#where-should-i-put-my-crate" title="Permalink to this headline">¶</a></h2>
+<p>If your crate’s canonical home is mozilla-central, you can put it next to the
+other code in the module it belongs to.</p>
+<p>If your crate is mirrored into mozilla-central from another repository, and
+will not be actively developed in mozilla-central, you can simply list it
+as a <code class="docutils literal"><span class="pre">crates.io</span></code>-style dependency with a version number, and let it be
+vendored into the <code class="docutils literal"><span class="pre">third_party/rust</span></code> directory.</p>
+<p>If your crate is mirrored into mozilla-central from another repository, but
+will be actively developed in both locations, you should send mail to the
+dev-builds mailing list to start a discussion on how to meet your needs.</p>
+</div>
+<div class="section" id="crate-dependencies">
+<h2>Crate dependencies<a class="headerlink" href="#crate-dependencies" title="Permalink to this headline">¶</a></h2>
+<p>All dependencies for in-tree Rust crates are vendored into the
+<code class="docutils literal"><span class="pre">third_party/rust</span></code> directory. Currently if you add a dependency on a new
+crate you must run <code class="docutils literal"><span class="pre">mach</span> <span class="pre">vendor</span> <span class="pre">rust</span></code> to vendor the dependencies into
+that directory. In the future we hope to make it so that you only need to
+vendor the dependencies in order to build your changes in a CI push.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sparse.html" class="btn btn-neutral float-right" title="Sparse Checkouts" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="locales.html" class="btn btn-neutral" title="Localization (l10n)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

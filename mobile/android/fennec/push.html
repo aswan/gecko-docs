@@ -1,0 +1,416 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>The architecture of the Fennec Webpush implementation &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Firefox for Android" href="index.html"/>
+        <link rel="next" title="mozbase" href="../../../mozbase/index.html"/>
+        <link rel="prev" title="Shutting down Firefox for Android" href="shutdown.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Firefox for Android</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="localeswitching.html">Runtime locale switching in Fennec</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uitelemetry.html">UI Telemetry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="activitystreamtelemetry.html">Activity Stream UI Telemetry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="downloadcontenttelemetry.html">Downloadable content (DLC) UI Telemetry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adjust.html">Install tracking with the Adjust SDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mma.html">MMA Mobile Marketing Automation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="defaultdomains.html">Shipping Default Domains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shutdown.html">Shutting down Firefox for Android</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">The architecture of the Fennec Webpush implementation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview-of-the-push-api">Overview of the Push API</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#two-notes-on-terminology">Two notes on terminology</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#overview-of-the-fennec-push-implementation">Overview of the Fennec Push implementation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#push-component-architecture">Push component architecture</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#fennec-components">Fennec components</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gecko-components">Gecko components</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Firefox for Android</a> &raquo;</li>
+        
+      <li>The architecture of the Fennec Webpush implementation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/mobile/android/fennec/push.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="the-architecture-of-the-fennec-webpush-implementation">
+<h1>The architecture of the Fennec Webpush implementation<a class="headerlink" href="#the-architecture-of-the-fennec-webpush-implementation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview-of-the-push-api">
+<h2>Overview of the Push API<a class="headerlink" href="#overview-of-the-push-api" title="Permalink to this headline">¶</a></h2>
+<p>The <em>Push API</em> is a Web API that allows web applications to “wake up” the User
+Agent (the browser, Fennec), even when the application is not visible (or even
+loaded in a tab).  The Push API can only be used by secure sites that register a
+Service Worker.</p>
+<p>There are four major components in Push:</p>
+<ol class="arabic simple">
+<li>A <em>web application</em>;</li>
+<li>The User Agent (Fennec);</li>
+<li>An <em>app server</em> associated to the web application;</li>
+<li>A <em>push service backend</em>.</li>
+</ol>
+<p>These are listed roughly in the order that they appear in a successful push
+message.  First, the web application registers a Service Worker and requests a
+<em>push subscription</em>.  Fennec arranges a push channel and returns a subscription,
+including a User-Agent-specific <em>push endpoint</em> URL to the web application.  The
+web application then provides that push endpoint URL to its app server.  When
+the app server wishes to push a message to the web application, it posts the
+message and some additional meta-data to the provided push endpoint URL.  The
+message is received by the <em>push service backend</em> and delivered by some
+unspecified out-of-band mechanism to the User Agent.</p>
+<div class="section" id="two-notes-on-terminology">
+<h3>Two notes on terminology<a class="headerlink" href="#two-notes-on-terminology" title="Permalink to this headline">¶</a></h3>
+<p>“Push notifications” mean many things to many people.  In this system, “push
+notifications” may or may not notify the user.  Therefore, we use the term “push
+messages” exclusively.  This avoids confusing the push system with the “Web
+Notification” API, which provides the familiar pop-up and system notification
+based user interface.</p>
+<p>Throughout, we use Fennec to refer to the Java-and-Android application shell,
+and Gecko to refer to the embedded Gecko platform.</p>
+</div>
+</div>
+<div class="section" id="overview-of-the-fennec-push-implementation">
+<h2>Overview of the Fennec Push implementation<a class="headerlink" href="#overview-of-the-fennec-push-implementation" title="Permalink to this headline">¶</a></h2>
+<p>Fennec uses the Google Cloud Messaging (GCM) service to deliver messages to the
+User Agent.  Fennec registers for Google Cloud Messaging directly, like any
+other Android App; however, consumers do not interact with GCM directly.  To
+provide a uniform interface to all consumers across all implementations, Fennec
+intermediates through the Mozilla-specific <em>autopush</em> service.  Autopush
+maintains User Agent identification and authentication, provides per-web
+application messaging channels, and bridges unauthenticated push messages to the
+GCM delivery queue.</p>
+<p>The Fennec Push implementation is designed to address the following technical
+challenge: <strong>GCM events, including incoming push messages, can occur when Gecko
+is not running</strong>. In case of an incoming push message, if Gecko is not running
+Fennec will request startup of necessary Gecko services and queue incoming
+push messages in the meantime. Once services are running, messages are sent over.</p>
+<p>It’s worth noting that Fennec uses push to implement internal functionality like
+Sync and Firefox Accounts, and that these background services are <em>not</em> tied to
+Gecko being available.</p>
+<p>Therefore, the principal constraints and requirements are:</p>
+<p>1) Fennec must be able to service GCM events, including incoming push messages,
+independently of Gecko.</p>
+<p>2) Gecko must be able to maintain push subscriptions across its entire
+life-cycle.</p>
+<p>3) Fennec must be able to use push messages for non-Gecko purposes independently
+of Gecko.</p>
+<p>Significant previous experience building Fennec background services has shown
+that configuring such services across the Gecko-Fennec interface is both
+valuable and difficult.  Therefore, we add the following requirement:</p>
+<ol class="arabic simple" start="4">
+<li>Gecko must own the push configuration details where appropriate and possible.</li>
+</ol>
+<p>We explicitly do not care to support push messages across multiple processes. This
+will matter more in a post-e10s-on-Android world.</p>
+</div>
+<div class="section" id="push-component-architecture">
+<h2>Push component architecture<a class="headerlink" href="#push-component-architecture" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="fennec-components">
+<h3>Fennec components<a class="headerlink" href="#fennec-components" title="Permalink to this headline">¶</a></h3>
+<p>The two major components are the <cite>PushManager</cite> and the associated
+<cite>PushManagerStorage</cite>.  The <cite>PushManager</cite> interacts with the GCM system on the
+device and the autopush service, updating the <cite>PushManagerStorage</cite> as the system
+state changes.</p>
+<p>There is a unique <cite>PushManagerStorage</cite> instance per-App that may only be
+accessed by the main process.  The <cite>PushManagerStorage</cite> maintains two mappings.
+The first is a one-to-one mapping from a Gecko profile to a <cite>PushRegistration</cite>:
+a datum of User Agent state.  The <cite>PushManager</cite> maintains each profile’s
+registration across Android life-cycle events, Gecko events, and GCM events.
+Each <cite>PushRegistration</cite> includes:</p>
+<ul class="simple">
+<li>autopush server configuration details;</li>
+<li>debug settings;</li>
+<li>profile details;</li>
+<li>access tokens and invalidation timestamps.</li>
+</ul>
+<p>The second mapping is a one-to-many mapping from push registrations to
+<cite>PushSubscription</cite> instances.  A push subscription corresponds to a unique push
+message channel from the autopush server to Fennec.  Each <cite>PushSubscription</cite>
+includes:</p>
+<ul class="simple">
+<li>a Fennec service identifier, one of “webpush” or “fxa”;</li>
+<li>an associated Gecko profile;</li>
+<li>a unique channel identifier.</li>
+</ul>
+<p>The <cite>PushManager</cite> uses the <cite>PushSubscription</cite> service and profile maintained in
+the <cite>PushManagerStorage</cite> to determine how to deliver incoming GCM push messages.</p>
+<p>Each <cite>PushRegistration</cite> corresponds to a unique <em>uaid</em> (User-Agent ID) on the
+autopush server.  Each <em>uaid</em> is long-lived; a healthy client will maintain the
+same <em>uaid</em> until the client’s configuration changes or the service expires the
+registration due to inactivity or an unexpected server event.  Each
+<cite>PushSubscription</cite> is associated to a given <em>uaid</em> and correponds to a unique
+(per-<em>uaid</em>) <em>chid</em> (Channel ID) on the autopush server.  An individual <em>chid</em>
+is potentially long-lived, but clients must expect the service to expire <a href="#id1"><span class="problematic" id="id2">*</span></a>chid*s
+as part of regular maintainence.  The <cite>PushManager</cite> uses an <cite>AutopushClient</cite>
+instance to interact with the autopush server.</p>
+<p>Between the <cite>PushManager</cite>, the <cite>PushManagerStorage</cite>, and assorted GCM event
+broadcast receivers, push messages that do not target Gecko can be implemented.</p>
+</div>
+<div class="section" id="gecko-components">
+<h3>Gecko components<a class="headerlink" href="#gecko-components" title="Permalink to this headline">¶</a></h3>
+<p>The Gecko side of the architecture is implemented in JavaScript by the
+<cite>PushServiceAndroidGCM.jsm</cite> module.  This registers a PushService, like the Web
+Socket and HTTP2 backed services, which simply delegates to the Fennec
+<cite>PushManager</cite> using <cite>Messaging.jsm</cite> and friends.</p>
+<p>There are some complications: first, Gecko must maintain the autopush
+configuration; and second, it is possible for the push system to change while
+Gecko is not running.  Therefore, the communication is bi-directional
+throughout, so that Gecko can react to Fennec events after-the-fact.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../../mozbase/index.html" class="btn btn-neutral float-right" title="mozbase" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="shutdown.html" class="btn btn-neutral" title="Shutting down Firefox for Android" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

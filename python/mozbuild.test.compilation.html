@@ -1,0 +1,404 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mozbuild.test.compilation package &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../index.html"/>
+        <link rel="up" title="mozbuild.test package" href="mozbuild.test.html"/>
+        <link rel="next" title="mozbuild.test.controller package" href="mozbuild.test.controller.html"/>
+        <link rel="prev" title="mozbuild.test.backend package" href="mozbuild.test.backend.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="mach.html">mach package</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="mozbuild.html">mozbuild package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="mozbuild.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.action.html">mozbuild.action package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.backend.html">mozbuild.backend package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.codecoverage.html">mozbuild.codecoverage package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.compilation.html">mozbuild.compilation package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.configure.html">mozbuild.configure package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.controller.html">mozbuild.controller package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.frontend.html">mozbuild.frontend package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.repackaging.html">mozbuild.repackaging package</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="mozbuild.test.html">mozbuild.test package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="mozbuild.test.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mozbuild.test.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mozbuild.test.html#module-mozbuild.test.common">mozbuild.test.common module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mozbuild.test.html#module-mozbuild.test.test_android_version_code">mozbuild.test.test_android_version_code module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mozbuild.test.html#module-mozbuild.test.test_artifacts">mozbuild.test.test_artifacts module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mozbuild.test.html#module-mozbuild.test.test_base">mozbuild.test.test_base module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mozbuild.test.html#module-mozbuild.test.test_containers">mozbuild.test.test_containers module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mozbuild.test.html#module-mozbuild.test.test_dotproperties">mozbuild.test.test_dotproperties module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mozbuild.test.html#module-mozbuild.test.test_expression">mozbuild.test.test_expression module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mozbuild.test.html#module-mozbuild.test.test_jarmaker">mozbuild.test.test_jarmaker module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mozbuild.test.html#module-mozbuild.test.test_line_endings">mozbuild.test.test_line_endings module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mozbuild.test.html#module-mozbuild.test.test_makeutil">mozbuild.test.test_makeutil module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mozbuild.test.html#module-mozbuild.test.test_mozconfig">mozbuild.test.test_mozconfig module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mozbuild.test.html#module-mozbuild.test.test_mozinfo">mozbuild.test.test_mozinfo module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mozbuild.test.html#module-mozbuild.test.test_preprocessor">mozbuild.test.test_preprocessor module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mozbuild.test.html#module-mozbuild.test.test_pythonutil">mozbuild.test.test_pythonutil module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mozbuild.test.html#module-mozbuild.test.test_util">mozbuild.test.test_util module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mozbuild.test.html#module-mozbuild.test">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.android_version_code">mozbuild.android_version_code module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.artifacts">mozbuild.artifacts module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.base">mozbuild.base module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.chunkify">mozbuild.chunkify module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.config_status">mozbuild.config_status module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.doctor">mozbuild.doctor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.dotproperties">mozbuild.dotproperties module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#mozbuild-faster-daemon-module">mozbuild.faster_daemon module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.generated_sources">mozbuild.generated_sources module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.html_build_viewer">mozbuild.html_build_viewer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.jar">mozbuild.jar module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.mach_commands">mozbuild.mach_commands module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.makeutil">mozbuild.makeutil module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.milestone">mozbuild.milestone module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.mozconfig">mozbuild.mozconfig module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.mozinfo">mozbuild.mozinfo module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.preprocessor">mozbuild.preprocessor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.pythonutil">mozbuild.pythonutil module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.schedules">mozbuild.schedules module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.shellutil">mozbuild.shellutil module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.sphinx">mozbuild.sphinx module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.testing">mozbuild.testing module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.util">mozbuild.util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.vendor_aom">mozbuild.vendor_aom module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.vendor_rust">mozbuild.vendor_rust module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.virtualenv">mozbuild.virtualenv module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="mozbuild.html">mozbuild package</a> &raquo;</li>
+        
+          <li><a href="mozbuild.test.html">mozbuild.test package</a> &raquo;</li>
+        
+      <li>mozbuild.test.compilation package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/python/mozbuild.test.compilation.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mozbuild-test-compilation-package">
+<h1>mozbuild.test.compilation package<a class="headerlink" href="#mozbuild-test-compilation-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-mozbuild.test.compilation.test_warnings">
+<span id="mozbuild-test-compilation-test-warnings-module"></span><h2>mozbuild.test.compilation.test_warnings module<a class="headerlink" href="#module-mozbuild.test.compilation.test_warnings" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozbuild.test.compilation.test_warnings.TestCompilerWarning">
+<em class="property">class </em><code class="descclassname">mozbuild.test.compilation.test_warnings.</code><code class="descname">TestCompilerWarning</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.test.compilation.test_warnings.TestCompilerWarning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="mozbuild.test.compilation.test_warnings.TestCompilerWarning.test_comparison">
+<code class="descname">test_comparison</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.test.compilation.test_warnings.TestCompilerWarning.test_comparison" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.test.compilation.test_warnings.TestCompilerWarning.test_equivalence">
+<code class="descname">test_equivalence</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.test.compilation.test_warnings.TestCompilerWarning.test_equivalence" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.test.compilation.test_warnings.TestWarningsDatabase">
+<em class="property">class </em><code class="descclassname">mozbuild.test.compilation.test_warnings.</code><code class="descname">TestWarningsDatabase</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.test.compilation.test_warnings.TestWarningsDatabase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="mozbuild.test.compilation.test_warnings.TestWarningsDatabase.test_basic">
+<code class="descname">test_basic</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.test.compilation.test_warnings.TestWarningsDatabase.test_basic" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.test.compilation.test_warnings.TestWarningsDatabase.test_hashing">
+<code class="descname">test_hashing</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.test.compilation.test_warnings.TestWarningsDatabase.test_hashing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ensure that hashing files on insert works.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.test.compilation.test_warnings.TestWarningsDatabase.test_pruning">
+<code class="descname">test_pruning</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.test.compilation.test_warnings.TestWarningsDatabase.test_pruning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ensure old warnings are removed from database appropriately.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.test.compilation.test_warnings.TestWarningsParsing">
+<em class="property">class </em><code class="descclassname">mozbuild.test.compilation.test_warnings.</code><code class="descname">TestWarningsParsing</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.test.compilation.test_warnings.TestWarningsParsing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="mozbuild.test.compilation.test_warnings.TestWarningsParsing.test_clang_parsing">
+<code class="descname">test_clang_parsing</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.test.compilation.test_warnings.TestWarningsParsing.test_clang_parsing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.test.compilation.test_warnings.TestWarningsParsing.test_msvc_parsing">
+<code class="descname">test_msvc_parsing</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.test.compilation.test_warnings.TestWarningsParsing.test_msvc_parsing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.test.compilation.test_warnings.get_warning">
+<code class="descclassname">mozbuild.test.compilation.test_warnings.</code><code class="descname">get_warning</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.test.compilation.test_warnings.get_warning" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.test.compilation">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-mozbuild.test.compilation" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="mozbuild.test.controller.html" class="btn btn-neutral float-right" title="mozbuild.test.controller package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="mozbuild.test.backend.html" class="btn btn-neutral" title="mozbuild.test.backend package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

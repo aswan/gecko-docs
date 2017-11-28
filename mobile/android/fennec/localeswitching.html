@@ -1,0 +1,358 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Runtime locale switching in Fennec &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Firefox for Android" href="index.html"/>
+        <link rel="next" title="UI Telemetry" href="uitelemetry.html"/>
+        <link rel="prev" title="Firefox for Android" href="index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Firefox for Android</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Runtime locale switching in Fennec</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#locale-events">Locale events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#system-locale-changes">System locale changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#further-reference">Further reference</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="uitelemetry.html">UI Telemetry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="activitystreamtelemetry.html">Activity Stream UI Telemetry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="downloadcontenttelemetry.html">Downloadable content (DLC) UI Telemetry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adjust.html">Install tracking with the Adjust SDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mma.html">MMA Mobile Marketing Automation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="defaultdomains.html">Shipping Default Domains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shutdown.html">Shutting down Firefox for Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="push.html">The architecture of the Fennec Webpush implementation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Firefox for Android</a> &raquo;</li>
+        
+      <li>Runtime locale switching in Fennec</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/mobile/android/fennec/localeswitching.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="runtime-locale-switching-in-fennec">
+<h1>Runtime locale switching in Fennec<a class="headerlink" href="#runtime-locale-switching-in-fennec" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=917480">Bug 917480</a> built on <a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=936756">Bug 936756</a> to allow users to switch between supported locales at runtime, within Fennec, without altering the system locale.</p>
+<p>This document aims to describe the overall architecture of the solution, along with guidelines for Fennec developers.</p>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>There are two places that locales are relevant to an Android application: the Java <code class="docutils literal"><span class="pre">Locale</span></code> object and the Android configuration itself.</p>
+<p>Locale switching involves manipulating these values (to affect future UI), persisting them for future activities, and selectively redisplaying existing UI elements to give the appearance of responsive switching.</p>
+<p>The user’s choice of locale is stored in a per-app pref, <code class="docutils literal"><span class="pre">&quot;locale&quot;</span></code>. If missing, the system default locale is used. If set, it should be a locale code like <code class="docutils literal"><span class="pre">&quot;es&quot;</span></code> or <code class="docutils literal"><span class="pre">&quot;en-US&quot;</span></code>.</p>
+<p><code class="docutils literal"><span class="pre">BrowserLocaleManager</span></code> takes care of updating the active locale when asked to do so. It also manages persistence and retrieval of the locale preference.</p>
+<p>The question, then, is when to do so.</p>
+</div>
+<div class="section" id="locale-events">
+<h2>Locale events<a class="headerlink" href="#locale-events" title="Permalink to this headline">¶</a></h2>
+<p>One might imagine that we need only set the locale when our Application is instantiated, and when a new locale is set. Alas, that’s not the case: whenever there’s a configuration change (<em>e.g.</em>, screen rotation), when a new activity is started, and at other apparently random times, Android will supply our activities with a configuration that’s been reset to the system locale.</p>
+<p>For this reason, each starting activity must ask <code class="docutils literal"><span class="pre">BrowserLocaleManager</span></code> to fix its locale.</p>
+<p>Ideally, we also need to perform some amount of work when our configuration changes, when our activity is resumed, and perhaps when a result is returned from another activity, if that activity can change the app locale (as is the case for any activity that calls out to <code class="docutils literal"><span class="pre">GeckoPreferences</span></code> – see <code class="docutils literal"><span class="pre">BrowserApp#onActivityResult</span></code>).</p>
+<p><code class="docutils literal"><span class="pre">GeckoApp</span></code> itself does some additional work, because it has particular performance constraints, and also is the typical root of the preferences activity.</p>
+<p>Here’s an example of the work that a typical activity should do:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">cribbed</span> <span class="kn">from</span> <span class="nn">o.m.g.sync.setup.activities.LocaleAware.</span>
+<span class="n">public</span> <span class="n">static</span> <span class="n">void</span> <span class="n">initializeLocale</span><span class="p">(</span><span class="n">Context</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">final</span> <span class="n">LocaleManager</span> <span class="n">localeManager</span> <span class="o">=</span> <span class="n">BrowserLocaleManager</span><span class="o">.</span><span class="n">getInstance</span><span class="p">();</span>
+  <span class="n">final</span> <span class="n">StrictMode</span><span class="o">.</span><span class="n">ThreadPolicy</span> <span class="n">savedPolicy</span> <span class="o">=</span> <span class="n">StrictMode</span><span class="o">.</span><span class="n">allowThreadDiskReads</span><span class="p">();</span>
+  <span class="n">StrictMode</span><span class="o">.</span><span class="n">allowThreadDiskWrites</span><span class="p">();</span>
+  <span class="k">try</span> <span class="p">{</span>
+      <span class="n">localeManager</span><span class="o">.</span><span class="n">getAndApplyPersistedLocale</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
+      <span class="n">StrictMode</span><span class="o">.</span><span class="n">setThreadPolicy</span><span class="p">(</span><span class="n">savedPolicy</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nd">@Override</span>
+<span class="n">public</span> <span class="n">void</span> <span class="n">onConfigurationChanged</span><span class="p">(</span><span class="n">Configuration</span> <span class="n">newConfig</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">final</span> <span class="n">LocaleManager</span> <span class="n">localeManager</span> <span class="o">=</span> <span class="n">BrowserLocaleManager</span><span class="o">.</span><span class="n">getInstance</span><span class="p">();</span>
+  <span class="n">final</span> <span class="n">Locale</span> <span class="n">changed</span> <span class="o">=</span> <span class="n">localeManager</span><span class="o">.</span><span class="n">onSystemConfigurationChanged</span><span class="p">(</span><span class="n">this</span><span class="p">,</span> <span class="n">getResources</span><span class="p">(),</span> <span class="n">newConfig</span><span class="p">,</span> <span class="n">mLastLocale</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">changed</span> <span class="o">!=</span> <span class="n">null</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">//</span> <span class="n">Redisplay</span> <span class="n">to</span> <span class="n">match</span> <span class="n">the</span> <span class="n">locale</span><span class="o">.</span>
+    <span class="n">onLocaleChanged</span><span class="p">(</span><span class="n">BrowserLocaleManager</span><span class="o">.</span><span class="n">getLanguageTag</span><span class="p">(</span><span class="n">changed</span><span class="p">));</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nd">@Override</span>
+<span class="n">public</span> <span class="n">void</span> <span class="n">onCreate</span><span class="p">(</span><span class="n">Bundle</span> <span class="n">icicle</span><span class="p">)</span> <span class="p">{</span>
+  <span class="o">//</span> <span class="n">Note</span> <span class="n">that</span> <span class="n">we</span> <span class="n">don</span><span class="s1">&#39;t do this in onResume. We should,</span>
+  <span class="o">//</span> <span class="n">but</span> <span class="n">it</span><span class="s1">&#39;s an edge case that we feel free to ignore.</span>
+  <span class="o">//</span> <span class="n">We</span> <span class="n">also</span> <span class="n">don</span><span class="s1">&#39;t have a hook in this example for when</span>
+  <span class="o">//</span> <span class="n">the</span> <span class="n">user</span> <span class="n">picks</span> <span class="n">a</span> <span class="n">new</span> <span class="n">locale</span><span class="o">.</span>
+  <span class="n">initializeLocale</span><span class="p">(</span><span class="n">this</span><span class="p">);</span>
+
+  <span class="nb">super</span><span class="o">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">icicle</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">GeckoApplication</span></code> itself handles correcting locales when the configuration changes; your activity shouldn’t need to do this itself. See <code class="docutils literal"><span class="pre">GeckoApplication</span></code>’s and <code class="docutils literal"><span class="pre">GeckoApp</span></code>’s <code class="docutils literal"><span class="pre">onConfigurationChanged</span></code> methods.</p>
+</div>
+<div class="section" id="system-locale-changes">
+<h2>System locale changes<a class="headerlink" href="#system-locale-changes" title="Permalink to this headline">¶</a></h2>
+<p>Fennec can be in one of two states.</p>
+<p>If the user has not explicitly chosen a Fennec-specific locale, we say
+we are “mirroring” the system locale.</p>
+<p>When we are not mirroring, system locale changes do not impact Fennec
+and are essentially ignored; the user’s locale selection is the only
+thing we care about, and we actively correct incoming configuration
+changes to reflect the user’s chosen locale.</p>
+<p>By contrast, when we are mirroring, system locale changes cause Fennec
+to reflect the new system locale, as if the user picked the new locale.</p>
+<p>When the system locale changes when we’re mirroring, your activity will receive an <code class="docutils literal"><span class="pre">onConfigurationChanged</span></code> call. Simply pass this on to <code class="docutils literal"><span class="pre">BrowserLocaleManager</span></code>, and then handle the response appropriately.</p>
+</div>
+<div class="section" id="further-reference">
+<h2>Further reference<a class="headerlink" href="#further-reference" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">GeckoPreferences</span></code>, <code class="docutils literal"><span class="pre">GeckoApp</span></code>, and <code class="docutils literal"><span class="pre">BrowserApp</span></code> are excellent resources for figuring out what you should do.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="uitelemetry.html" class="btn btn-neutral float-right" title="UI Telemetry" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Firefox for Android" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

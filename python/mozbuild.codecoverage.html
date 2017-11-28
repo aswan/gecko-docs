@@ -1,0 +1,658 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mozbuild.codecoverage package &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../index.html"/>
+        <link rel="up" title="mozbuild package" href="mozbuild.html"/>
+        <link rel="next" title="mozbuild.compilation package" href="mozbuild.compilation.html"/>
+        <link rel="prev" title="mozbuild.backend package" href="mozbuild.backend.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="mach.html">mach package</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="mozbuild.html">mozbuild package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="mozbuild.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.action.html">mozbuild.action package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.backend.html">mozbuild.backend package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">mozbuild.codecoverage package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.codecoverage.chrome_map">mozbuild.codecoverage.chrome_map module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.codecoverage.lcov_rewriter">mozbuild.codecoverage.lcov_rewriter module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.codecoverage.packager">mozbuild.codecoverage.packager module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.codecoverage">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.compilation.html">mozbuild.compilation package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.configure.html">mozbuild.configure package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.controller.html">mozbuild.controller package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.frontend.html">mozbuild.frontend package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.repackaging.html">mozbuild.repackaging package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.test.html">mozbuild.test package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.android_version_code">mozbuild.android_version_code module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.artifacts">mozbuild.artifacts module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.base">mozbuild.base module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.chunkify">mozbuild.chunkify module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.config_status">mozbuild.config_status module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.doctor">mozbuild.doctor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.dotproperties">mozbuild.dotproperties module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#mozbuild-faster-daemon-module">mozbuild.faster_daemon module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.generated_sources">mozbuild.generated_sources module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.html_build_viewer">mozbuild.html_build_viewer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.jar">mozbuild.jar module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.mach_commands">mozbuild.mach_commands module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.makeutil">mozbuild.makeutil module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.milestone">mozbuild.milestone module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.mozconfig">mozbuild.mozconfig module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.mozinfo">mozbuild.mozinfo module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.preprocessor">mozbuild.preprocessor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.pythonutil">mozbuild.pythonutil module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.schedules">mozbuild.schedules module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.shellutil">mozbuild.shellutil module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.sphinx">mozbuild.sphinx module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.testing">mozbuild.testing module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.util">mozbuild.util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.vendor_aom">mozbuild.vendor_aom module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.vendor_rust">mozbuild.vendor_rust module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.virtualenv">mozbuild.virtualenv module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="mozbuild.html">mozbuild package</a> &raquo;</li>
+        
+      <li>mozbuild.codecoverage package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/python/mozbuild.codecoverage.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mozbuild-codecoverage-package">
+<h1>mozbuild.codecoverage package<a class="headerlink" href="#mozbuild-codecoverage-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-mozbuild.codecoverage.chrome_map">
+<span id="mozbuild-codecoverage-chrome-map-module"></span><h2>mozbuild.codecoverage.chrome_map module<a class="headerlink" href="#module-mozbuild.codecoverage.chrome_map" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozbuild.codecoverage.chrome_map.ChromeManifestHandler">
+<em class="property">class </em><code class="descclassname">mozbuild.codecoverage.chrome_map.</code><code class="descname">ChromeManifestHandler</code><a class="headerlink" href="#mozbuild.codecoverage.chrome_map.ChromeManifestHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="mozbuild.codecoverage.chrome_map.ChromeManifestHandler.handle_manifest_entry">
+<code class="descname">handle_manifest_entry</code><span class="sig-paren">(</span><em>entry</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.chrome_map.ChromeManifestHandler.handle_manifest_entry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.codecoverage.chrome_map.ChromeMapBackend">
+<em class="property">class </em><code class="descclassname">mozbuild.codecoverage.chrome_map.</code><code class="descname">ChromeMapBackend</code><span class="sig-paren">(</span><em>environment</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.chrome_map.ChromeMapBackend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="mozbuild.backend.html#mozbuild.backend.common.CommonBackend" title="mozbuild.backend.common.CommonBackend"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.backend.common.CommonBackend</span></code></a></p>
+<dl class="method">
+<dt id="mozbuild.codecoverage.chrome_map.ChromeMapBackend.consume_finished">
+<code class="descname">consume_finished</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.chrome_map.ChromeMapBackend.consume_finished" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.codecoverage.chrome_map.ChromeMapBackend.consume_object">
+<code class="descname">consume_object</code><span class="sig-paren">(</span><em>obj</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.chrome_map.ChromeMapBackend.consume_object" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.codecoverage.lcov_rewriter">
+<span id="mozbuild-codecoverage-lcov-rewriter-module"></span><h2>mozbuild.codecoverage.lcov_rewriter module<a class="headerlink" href="#module-mozbuild.codecoverage.lcov_rewriter" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovFile">
+<em class="property">class </em><code class="descclassname">mozbuild.codecoverage.lcov_rewriter.</code><code class="descname">LcovFile</code><span class="sig-paren">(</span><em>lcov_fh</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovFile.PREFIX_TYPES">
+<code class="descname">PREFIX_TYPES</code><em class="property"> = {'DA': 2, 'FNF': 0, 'FN': 1, 'FNH': 0, 'LF': 0, 'BRDA': 3, 'LH': 0, 'TN': 0, 'FNDA': 1, 'BRH': 0, 'BRF': 0, 'SF': 0}</em><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovFile.PREFIX_TYPES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovFile.format_branch_count">
+<code class="descname">format_branch_count</code><span class="sig-paren">(</span><em>record</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovFile.format_branch_count" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovFile.format_branches">
+<code class="descname">format_branches</code><span class="sig-paren">(</span><em>record</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovFile.format_branches" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovFile.format_covered_branch_count">
+<code class="descname">format_covered_branch_count</code><span class="sig-paren">(</span><em>record</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovFile.format_covered_branch_count" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovFile.format_covered_function_count">
+<code class="descname">format_covered_function_count</code><span class="sig-paren">(</span><em>record</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovFile.format_covered_function_count" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovFile.format_covered_line_count">
+<code class="descname">format_covered_line_count</code><span class="sig-paren">(</span><em>record</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovFile.format_covered_line_count" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovFile.format_function_count">
+<code class="descname">format_function_count</code><span class="sig-paren">(</span><em>record</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovFile.format_function_count" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovFile.format_function_exec_counts">
+<code class="descname">format_function_exec_counts</code><span class="sig-paren">(</span><em>record</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovFile.format_function_exec_counts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovFile.format_functions">
+<code class="descname">format_functions</code><span class="sig-paren">(</span><em>record</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovFile.format_functions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovFile.format_line_count">
+<code class="descname">format_line_count</code><span class="sig-paren">(</span><em>record</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovFile.format_line_count" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovFile.format_lines">
+<code class="descname">format_lines</code><span class="sig-paren">(</span><em>record</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovFile.format_lines" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovFile.format_record">
+<code class="descname">format_record</code><span class="sig-paren">(</span><em>record</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovFile.format_record" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovFile.format_source_file">
+<code class="descname">format_source_file</code><span class="sig-paren">(</span><em>record</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovFile.format_source_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovFile.format_test_name">
+<code class="descname">format_test_name</code><span class="sig-paren">(</span><em>record</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovFile.format_test_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovFile.iterate_records">
+<code class="descname">iterate_records</code><span class="sig-paren">(</span><em>rewrite_source=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovFile.iterate_records" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovFile.parse_BRDA">
+<code class="descname">parse_BRDA</code><span class="sig-paren">(</span><em>line_number</em>, <em>block_number</em>, <em>branch_number</em>, <em>taken</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovFile.parse_BRDA" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovFile.parse_BRF">
+<code class="descname">parse_BRF</code><span class="sig-paren">(</span><em>branch_count</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovFile.parse_BRF" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovFile.parse_BRH">
+<code class="descname">parse_BRH</code><span class="sig-paren">(</span><em>covered_branch_count</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovFile.parse_BRH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovFile.parse_DA">
+<code class="descname">parse_DA</code><span class="sig-paren">(</span><em>line_number</em>, <em>execution_count</em>, <em>checksum=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovFile.parse_DA" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovFile.parse_FN">
+<code class="descname">parse_FN</code><span class="sig-paren">(</span><em>start_lineno</em>, <em>fn_name</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovFile.parse_FN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovFile.parse_FNDA">
+<code class="descname">parse_FNDA</code><span class="sig-paren">(</span><em>exec_count</em>, <em>fn_name</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovFile.parse_FNDA" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovFile.parse_FNF">
+<code class="descname">parse_FNF</code><span class="sig-paren">(</span><em>function_count</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovFile.parse_FNF" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovFile.parse_FNH">
+<code class="descname">parse_FNH</code><span class="sig-paren">(</span><em>covered_function_count</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovFile.parse_FNH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovFile.parse_LF">
+<code class="descname">parse_LF</code><span class="sig-paren">(</span><em>line_count</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovFile.parse_LF" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovFile.parse_LH">
+<code class="descname">parse_LH</code><span class="sig-paren">(</span><em>covered_line_count</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovFile.parse_LH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovFile.parse_SF">
+<code class="descname">parse_SF</code><span class="sig-paren">(</span><em>source_file</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovFile.parse_SF" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovFile.parse_TN">
+<code class="descname">parse_TN</code><span class="sig-paren">(</span><em>test_name</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovFile.parse_TN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovFile.parse_record">
+<code class="descname">parse_record</code><span class="sig-paren">(</span><em>record_content</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovFile.parse_record" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovFile.print_file">
+<code class="descname">print_file</code><span class="sig-paren">(</span><em>fh</em>, <em>rewrite_source</em>, <em>rewrite_record</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovFile.print_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovFileRewriter">
+<em class="property">class </em><code class="descclassname">mozbuild.codecoverage.lcov_rewriter.</code><code class="descname">LcovFileRewriter</code><span class="sig-paren">(</span><em>appdir</em>, <em>gredir</em>, <em>extra_chrome_manifests</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovFileRewriter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovFileRewriter.rewrite_file">
+<code class="descname">rewrite_file</code><span class="sig-paren">(</span><em>in_path</em>, <em>output_suffix</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovFileRewriter.rewrite_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovRecord">
+<em class="property">class </em><code class="descclassname">mozbuild.codecoverage.lcov_rewriter.</code><code class="descname">LcovRecord</code><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovRecord" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovRecord.branch_count">
+<code class="descname">branch_count</code><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovRecord.branch_count" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovRecord.branches">
+<code class="descname">branches</code><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovRecord.branches" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovRecord.covered_branch_count">
+<code class="descname">covered_branch_count</code><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovRecord.covered_branch_count" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovRecord.covered_function_count">
+<code class="descname">covered_function_count</code><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovRecord.covered_function_count" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovRecord.covered_line_count">
+<code class="descname">covered_line_count</code><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovRecord.covered_line_count" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovRecord.function_count">
+<code class="descname">function_count</code><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovRecord.function_count" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovRecord.function_exec_counts">
+<code class="descname">function_exec_counts</code><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovRecord.function_exec_counts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovRecord.functions">
+<code class="descname">functions</code><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovRecord.functions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovRecord.line_count">
+<code class="descname">line_count</code><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovRecord.line_count" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovRecord.lines">
+<code class="descname">lines</code><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovRecord.lines" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovRecord.resummarize">
+<code class="descname">resummarize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovRecord.resummarize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovRecord.source_file">
+<code class="descname">source_file</code><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovRecord.source_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.codecoverage.lcov_rewriter.LcovRecord.test_name">
+<code class="descname">test_name</code><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.LcovRecord.test_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.codecoverage.lcov_rewriter.RecordRewriter">
+<em class="property">class </em><code class="descclassname">mozbuild.codecoverage.lcov_rewriter.</code><code class="descname">RecordRewriter</code><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.RecordRewriter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="mozbuild.codecoverage.lcov_rewriter.RecordRewriter.has_pp_info">
+<code class="descname">has_pp_info</code><span class="sig-paren">(</span><em>src_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.RecordRewriter.has_pp_info" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.codecoverage.lcov_rewriter.RecordRewriter.populate_pp_info">
+<code class="descname">populate_pp_info</code><span class="sig-paren">(</span><em>fh</em>, <em>src_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.RecordRewriter.populate_pp_info" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.codecoverage.lcov_rewriter.RecordRewriter.rewrite_record">
+<code class="descname">rewrite_record</code><span class="sig-paren">(</span><em>record</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.RecordRewriter.rewrite_record" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.codecoverage.lcov_rewriter.UrlFinder">
+<em class="property">class </em><code class="descclassname">mozbuild.codecoverage.lcov_rewriter.</code><code class="descname">UrlFinder</code><span class="sig-paren">(</span><em>appdir</em>, <em>gredir</em>, <em>extra_chrome_manifests</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.UrlFinder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="mozbuild.codecoverage.lcov_rewriter.UrlFinder.find_files">
+<code class="descname">find_files</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.UrlFinder.find_files" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.codecoverage.lcov_rewriter.UrlFinder.rewrite_url">
+<code class="descname">rewrite_url</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.UrlFinder.rewrite_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="mozbuild.codecoverage.lcov_rewriter.UrlFinderError">
+<em class="property">exception </em><code class="descclassname">mozbuild.codecoverage.lcov_rewriter.</code><code class="descname">UrlFinderError</code><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.UrlFinderError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></code></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.codecoverage.lcov_rewriter.main">
+<code class="descclassname">mozbuild.codecoverage.lcov_rewriter.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.lcov_rewriter.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.codecoverage.packager">
+<span id="mozbuild-codecoverage-packager-module"></span><h2>mozbuild.codecoverage.packager module<a class="headerlink" href="#module-mozbuild.codecoverage.packager" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mozbuild.codecoverage.packager.cli">
+<code class="descclassname">mozbuild.codecoverage.packager.</code><code class="descname">cli</code><span class="sig-paren">(</span><em>args=['doc']</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.packager.cli" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.codecoverage.packager.describe_install_manifest">
+<code class="descclassname">mozbuild.codecoverage.packager.</code><code class="descname">describe_install_manifest</code><span class="sig-paren">(</span><em>manifest</em>, <em>dest_dir</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.packager.describe_install_manifest" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.codecoverage.packager.package_coverage_data">
+<code class="descclassname">mozbuild.codecoverage.packager.</code><code class="descname">package_coverage_data</code><span class="sig-paren">(</span><em>root</em>, <em>output_file</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.codecoverage.packager.package_coverage_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.codecoverage">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-mozbuild.codecoverage" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="mozbuild.compilation.html" class="btn btn-neutral float-right" title="mozbuild.compilation package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="mozbuild.backend.html" class="btn btn-neutral" title="mozbuild.backend package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

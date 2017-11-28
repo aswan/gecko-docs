@@ -1,0 +1,1 @@
+/Users/andrewswan/src/mozilla-unified/toolkit/components/telemetry/docs/data/first-shutdown-ping.rst

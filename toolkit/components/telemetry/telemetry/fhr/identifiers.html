@@ -1,0 +1,355 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Identifiers &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../../../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../../../../../index.html"/>
+        <link rel="up" title="Firefox Health Report (Obsolete)" href="index.html"/>
+        <link rel="next" title="URL Classifier" href="../../../url-classifier/url-classifier/index.html"/>
+        <link rel="prev" title="Payload Format" href="dataformat.html"/> 
+
+  
+  <script src="../../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Telemetry</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../concepts/index.html">Concepts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../collection/index.html">Data collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/index.html">Data documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../internals/index.html">Internals</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Firefox Health Report (Obsolete)</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="architecture.html">Architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dataformat.html">Payload Format</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Identifiers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#identifier-types">Identifier Types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#history-of-identifiers">History of Identifiers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#legal-and-privacy-concerns">Legal and Privacy Concerns</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Telemetry</a> &raquo;</li>
+        
+          <li><a href="index.html">Firefox Health Report (Obsolete)</a> &raquo;</li>
+        
+      <li>Identifiers</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../../_sources/toolkit/components/telemetry/telemetry/fhr/identifiers.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="healthreport-identifiers">
+<span id="identifiers"></span><h1>Identifiers<a class="headerlink" href="#healthreport-identifiers" title="Permalink to this headline">¶</a></h1>
+<p>Firefox Health Report records some identifiers to keep track of clients
+and uploaded documents.</p>
+<div class="section" id="identifier-types">
+<h2>Identifier Types<a class="headerlink" href="#identifier-types" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="document-upload-ids">
+<h3>Document/Upload IDs<a class="headerlink" href="#document-upload-ids" title="Permalink to this headline">¶</a></h3>
+<p>A random UUID called the <em>Document ID</em> or <em>Upload ID</em> is generated when the FHR
+client creates or uploads a new document.</p>
+<p>When clients generate a new <em>Document ID</em>, they persist this ID to disk
+<strong>before</strong> the upload attempt.</p>
+<p>As part of the upload, the client sends all old <em>Document IDs</em> to the server
+and asks the server to delete them. In well-behaving clients, the server
+has a single record for each client with a randomly-changing <em>Document ID</em>.</p>
+</div>
+<div class="section" id="client-ids">
+<h3>Client IDs<a class="headerlink" href="#client-ids" title="Permalink to this headline">¶</a></h3>
+<p>A <em>Client ID</em> is an identifier that <strong>attempts</strong> to uniquely identify an
+individual FHR client. Please note the emphasis on <em>attempts</em> in that last
+sentence: <em>Client IDs</em> do not guarantee uniqueness.</p>
+<p>The <em>Client ID</em> is generated when the client first runs or as needed.</p>
+<p>The <em>Client ID</em> is transferred to the server as part of every upload. The
+server is thus able to affiliate multiple document uploads with a single
+<em>Client ID</em>.</p>
+<div class="section" id="client-id-versions">
+<h4>Client ID Versions<a class="headerlink" href="#client-id-versions" title="Permalink to this headline">¶</a></h4>
+<p>The semantics for how a <em>Client ID</em> is generated are versioned.</p>
+<dl class="docutils">
+<dt>Version 1</dt>
+<dd>The <em>Client ID</em> is a randomly-generated UUID.</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="section" id="history-of-identifiers">
+<h2>History of Identifiers<a class="headerlink" href="#history-of-identifiers" title="Permalink to this headline">¶</a></h2>
+<p>In the beginning, there were just <em>Document IDs</em>. The thinking was clients
+would clean up after themselves and leave at most 1 active document on the
+server.</p>
+<p>Unfortunately, this did not work out. Using brute force analysis to
+deduplicate records on the server, a number of interesting patterns emerged.</p>
+<dl class="docutils">
+<dt>Orphaning</dt>
+<dd>Clients would upload a new payload while not deleting the old payload.</dd>
+<dt>Divergent records</dt>
+<dd>Records would share data up to a certain date and then the data would
+almost completely diverge. This appears to be indicative of profile
+copying.</dd>
+<dt>Rollback</dt>
+<dd>Records would share data up to a certain date. Each record in this set
+would contain data for a day or two but no extra data. This could be
+explained by filesystem rollback on the client.</dd>
+</dl>
+<p>A significant percentage of the records on the server belonged to
+misbehaving clients. Identifying these records was extremely resource
+intensive and error-prone. These records were undermining the ability
+to use Firefox Health Report data.</p>
+<p>Thus, the <em>Client ID</em> was born. The intent of the <em>Client ID</em> was to
+uniquely identify clients so the extreme effort required and the
+questionable reliability of deduplicating server data would become
+problems of the past.</p>
+<p>The <em>Client ID</em> was originally a randomly-generated UUID (version 1). This
+allowed detection of orphaning and rollback. However, these version 1
+<em>Client IDs</em> were still susceptible to use on multiple profiles and
+machines if the profile was copied.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../../url-classifier/url-classifier/index.html" class="btn btn-neutral float-right" title="URL Classifier" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="dataformat.html" class="btn btn-neutral" title="Payload Format" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

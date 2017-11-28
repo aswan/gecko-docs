@@ -1,0 +1,376 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Protocol &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Marionette" href="index.html"/>
+        <link rel="next" title="New contributors" href="NewContributors.html"/>
+        <link rel="prev" title="Introduction to Marionette" href="Intro.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Marionette</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#for-users">For users</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Intro.html">Introduction to Marionette</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Protocol</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#command">Command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#response">Response</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#error-object">Error object</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#for-marionette-developers">For marionette developers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Marionette</a> &raquo;</li>
+        
+      <li>Protocol</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/testing/marionette/marionette/Protocol.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="protocol">
+<span id="protocol"></span><h1>Protocol<a class="headerlink" href="#protocol" title="Permalink to this headline">¶</a></h1>
+<p>Marionette provides an asynchronous, parallel pipelining user-facing
+interface.  Message sequencing limits chances of payload race
+conditions and provides a uniform way in which payloads are serialised.</p>
+<p>Clients that deliver a blocking WebDriver interface are still
+expected to not send further command requests before the response
+from the last command has come back, but if they still happen to do
+so because of programming error, no harm will be done.  This guards
+against <a class="reference external" href="https://bugzil.la/1207125">mixing up responses</a>.</p>
+<p>Schematic flow of messages:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>               <span class="n">client</span>      <span class="n">server</span>
+                 <span class="o">|</span>            <span class="o">|</span>
+      <span class="n">msgid</span><span class="o">=</span><span class="mi">1</span>    <span class="o">|-----------&gt;|</span>
+                 <span class="o">|</span>  <span class="n">command</span>   <span class="o">|</span>
+                 <span class="o">|</span>            <span class="o">|</span>
+      <span class="n">msgid</span><span class="o">=</span><span class="mi">2</span>    <span class="o">|&lt;-----------|</span>
+                 <span class="o">|</span>  <span class="n">command</span>   <span class="o">|</span>
+                 <span class="o">|</span>            <span class="o">|</span>
+      <span class="n">msgid</span><span class="o">=</span><span class="mi">2</span>    <span class="o">|-----------&gt;|</span>
+                 <span class="o">|</span>  <span class="n">response</span>  <span class="o">|</span>
+                 <span class="o">|</span>            <span class="o">|</span>
+      <span class="n">msgid</span><span class="o">=</span><span class="mi">1</span>    <span class="o">|&lt;-----------|</span>
+                 <span class="o">|</span>  <span class="n">response</span>  <span class="o">|</span>
+                 <span class="o">|</span>            <span class="o">|</span>
+</pre></div>
+</div>
+<p>The protocol consists of a [command] message and the corresponding
+[response] message.  A [response] message must always be sent in
+reply to a [commmand] message.</p>
+<p>This means that the server implementation does not need to send
+the reply precisely in the order of the received commands: if it
+receives multiple messages, the server may even reply in random order.
+It is therefore strongly adviced that clients take this into account
+when imlpementing the client end of this wire protocol.</p>
+<p>This is required for pipelining messages.  On the server side,
+some functions are fast, and some less so.  If the server must
+reply in order, the slow functions delay the other replies even if
+its execution is already completed.</p>
+<div class="section" id="command">
+<span id="command"></span><h2>Command<a class="headerlink" href="#command" title="Permalink to this headline">¶</a></h2>
+<p>The request, or command message, is a four element JSON Array as shown
+below, that may originate from either the client- or server remote ends:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="nb">type</span><span class="p">,</span> <span class="n">message</span> <span class="n">ID</span><span class="p">,</span> <span class="n">command</span><span class="p">,</span> <span class="n">parameters</span><span class="p">]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><em>type</em> must be 0 (integer).  This indicates that the message
+is a [command].</li>
+<li><em>message ID</em> is a 32-bit unsigned integer.  This number is
+used as a sequencing number that uniquely identifies a pair of
+[command] and [response] messages.  The other remote part will
+reply with a corresponding [response] with the same message ID.</li>
+<li><em>command</em> is a string identifying the RPC method or command
+to execute.</li>
+<li><em>parameters</em> is an arbitrary JSON serialisable object.</li>
+</ul>
+</div>
+<div class="section" id="response">
+<span id="response"></span><h2>Response<a class="headerlink" href="#response" title="Permalink to this headline">¶</a></h2>
+<p>The response message is also a four element array as shown below,
+and must always be sent after receiving a [command]:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="nb">type</span><span class="p">,</span> <span class="n">message</span> <span class="n">ID</span><span class="p">,</span> <span class="n">error</span><span class="p">,</span> <span class="n">result</span><span class="p">]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><em>type</em> must be 1 (integer).  This indicates that the message is a
+[response].</li>
+<li><em>message ID</em> is a 32-bit unsigned integer.  This corresponds
+to the [command]’s message ID.</li>
+<li><em>error</em> is null if the command executed correctly.  If the
+error occurred on the server-side, then this is an [error] object.</li>
+<li><em>result</em> is the result object from executing the [command], iff
+it executed correctly.  If an error occurred on the server-side,
+this field is null.</li>
+</ul>
+<p>The structure of the result field can vary, but is documented
+individually for each command.</p>
+</div>
+<div class="section" id="error-object">
+<span id="error-object"></span><h2>Error object<a class="headerlink" href="#error-object" title="Permalink to this headline">¶</a></h2>
+<p>An error object is a serialisation of JavaScript error types,
+and it is structured like this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;invalid session id&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;No active session with ID 1234&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;stacktrace&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>All the fields of the error object are required, so the stacktrace and
+message fields may be empty strings.  The error field is guaranteed
+to be one of the JSON error codes as laid out by the [WebDriver standard].</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="NewContributors.html" class="btn btn-neutral float-right" title="New contributors" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Intro.html" class="btn btn-neutral" title="Introduction to Marionette" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

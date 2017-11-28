@@ -1,0 +1,588 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mozversioncontrol package &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../index.html"/>
+        <link rel="next" title="mozwebidlcodegen package" href="mozwebidlcodegen.html"/>
+        <link rel="prev" title="mozpack.test package" href="mozpack.test.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozpack.html">mozpack package</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">mozversioncontrol package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-mozversioncontrol.repoupdate">mozversioncontrol.repoupdate module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-mozversioncontrol">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>mozversioncontrol package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/python/mozversioncontrol.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mozversioncontrol-package">
+<h1>mozversioncontrol package<a class="headerlink" href="#mozversioncontrol-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-mozversioncontrol.repoupdate">
+<span id="mozversioncontrol-repoupdate-module"></span><h2>mozversioncontrol.repoupdate module<a class="headerlink" href="#module-mozversioncontrol.repoupdate" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mozversioncontrol.repoupdate.update_git_repo">
+<code class="descclassname">mozversioncontrol.repoupdate.</code><code class="descname">update_git_repo</code><span class="sig-paren">(</span><em>git</em>, <em>repo</em>, <em>path</em>, <em>revision=u'origin/master'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozversioncontrol.repoupdate.update_git_repo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ensure a Git repository exists at a path and is up to date.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozversioncontrol.repoupdate.update_mercurial_repo">
+<code class="descclassname">mozversioncontrol.repoupdate.</code><code class="descname">update_mercurial_repo</code><span class="sig-paren">(</span><em>hg</em>, <em>repo</em>, <em>path</em>, <em>revision=u'default'</em>, <em>hostfingerprints=None</em>, <em>global_args=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozversioncontrol.repoupdate.update_mercurial_repo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ensure a HG repository exists at a path and is up to date.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozversioncontrol">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-mozversioncontrol" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozversioncontrol.GitRepository">
+<em class="property">class </em><code class="descclassname">mozversioncontrol.</code><code class="descname">GitRepository</code><span class="sig-paren">(</span><em>path</em>, <em>git=u'git'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozversioncontrol.GitRepository" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozversioncontrol.Repository" title="mozversioncontrol.Repository"><code class="xref py py-class docutils literal"><span class="pre">mozversioncontrol.Repository</span></code></a></p>
+<p>An implementation of <cite>Repository</cite> for Git repositories.</p>
+<dl class="method">
+<dt id="mozversioncontrol.GitRepository.add_remove_files">
+<code class="descname">add_remove_files</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozversioncontrol.GitRepository.add_remove_files" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozversioncontrol.GitRepository.base_ref">
+<code class="descname">base_ref</code><a class="headerlink" href="#mozversioncontrol.GitRepository.base_ref" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozversioncontrol.GitRepository.forget_add_remove_files">
+<code class="descname">forget_add_remove_files</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozversioncontrol.GitRepository.forget_add_remove_files" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozversioncontrol.GitRepository.get_changed_files">
+<code class="descname">get_changed_files</code><span class="sig-paren">(</span><em>diff_filter=u'ADM'</em>, <em>mode=u'unstaged'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozversioncontrol.GitRepository.get_changed_files" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozversioncontrol.GitRepository.get_files_in_working_directory">
+<code class="descname">get_files_in_working_directory</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozversioncontrol.GitRepository.get_files_in_working_directory" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozversioncontrol.GitRepository.get_outgoing_files">
+<code class="descname">get_outgoing_files</code><span class="sig-paren">(</span><em>diff_filter=u'ADM'</em>, <em>upstream=u'default'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozversioncontrol.GitRepository.get_outgoing_files" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozversioncontrol.GitRepository.get_upstream">
+<code class="descname">get_upstream</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozversioncontrol.GitRepository.get_upstream" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozversioncontrol.GitRepository.head_ref">
+<code class="descname">head_ref</code><a class="headerlink" href="#mozversioncontrol.GitRepository.head_ref" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozversioncontrol.GitRepository.name">
+<code class="descname">name</code><a class="headerlink" href="#mozversioncontrol.GitRepository.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozversioncontrol.GitRepository.sparse_checkout_present">
+<code class="descname">sparse_checkout_present</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozversioncontrol.GitRepository.sparse_checkout_present" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozversioncontrol.GitRepository.working_directory_clean">
+<code class="descname">working_directory_clean</code><span class="sig-paren">(</span><em>untracked=False</em>, <em>ignored=False</em><span class="sig-paren">)</span><a class="headerlink" href="#mozversioncontrol.GitRepository.working_directory_clean" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozversioncontrol.HgRepository">
+<em class="property">class </em><code class="descclassname">mozversioncontrol.</code><code class="descname">HgRepository</code><span class="sig-paren">(</span><em>path</em>, <em>hg=u'hg'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozversioncontrol.HgRepository" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozversioncontrol.Repository" title="mozversioncontrol.Repository"><code class="xref py py-class docutils literal"><span class="pre">mozversioncontrol.Repository</span></code></a></p>
+<p>An implementation of <cite>Repository</cite> for Mercurial repositories.</p>
+<dl class="method">
+<dt id="mozversioncontrol.HgRepository.add_remove_files">
+<code class="descname">add_remove_files</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozversioncontrol.HgRepository.add_remove_files" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozversioncontrol.HgRepository.base_ref">
+<code class="descname">base_ref</code><a class="headerlink" href="#mozversioncontrol.HgRepository.base_ref" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozversioncontrol.HgRepository.forget_add_remove_files">
+<code class="descname">forget_add_remove_files</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozversioncontrol.HgRepository.forget_add_remove_files" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozversioncontrol.HgRepository.get_changed_files">
+<code class="descname">get_changed_files</code><span class="sig-paren">(</span><em>diff_filter=u'ADM'</em>, <em>mode=u'unstaged'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozversioncontrol.HgRepository.get_changed_files" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozversioncontrol.HgRepository.get_files_in_working_directory">
+<code class="descname">get_files_in_working_directory</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozversioncontrol.HgRepository.get_files_in_working_directory" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozversioncontrol.HgRepository.get_outgoing_files">
+<code class="descname">get_outgoing_files</code><span class="sig-paren">(</span><em>diff_filter=u'ADM'</em>, <em>upstream=u'default'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozversioncontrol.HgRepository.get_outgoing_files" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozversioncontrol.HgRepository.get_upstream">
+<code class="descname">get_upstream</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozversioncontrol.HgRepository.get_upstream" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozversioncontrol.HgRepository.head_ref">
+<code class="descname">head_ref</code><a class="headerlink" href="#mozversioncontrol.HgRepository.head_ref" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozversioncontrol.HgRepository.name">
+<code class="descname">name</code><a class="headerlink" href="#mozversioncontrol.HgRepository.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozversioncontrol.HgRepository.sparse_checkout_present">
+<code class="descname">sparse_checkout_present</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozversioncontrol.HgRepository.sparse_checkout_present" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozversioncontrol.HgRepository.working_directory_clean">
+<code class="descname">working_directory_clean</code><span class="sig-paren">(</span><em>untracked=False</em>, <em>ignored=False</em><span class="sig-paren">)</span><a class="headerlink" href="#mozversioncontrol.HgRepository.working_directory_clean" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="mozversioncontrol.InvalidRepoPath">
+<em class="property">exception </em><code class="descclassname">mozversioncontrol.</code><code class="descname">InvalidRepoPath</code><a class="headerlink" href="#mozversioncontrol.InvalidRepoPath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></code></p>
+<p>Represents a failure to find a VCS repo at a specified path.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="mozversioncontrol.MissingConfigureInfo">
+<em class="property">exception </em><code class="descclassname">mozversioncontrol.</code><code class="descname">MissingConfigureInfo</code><a class="headerlink" href="#mozversioncontrol.MissingConfigureInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozversioncontrol.MissingVCSInfo" title="mozversioncontrol.MissingVCSInfo"><code class="xref py py-class docutils literal"><span class="pre">mozversioncontrol.MissingVCSInfo</span></code></a></p>
+<p>Represents error finding VCS info from configure data.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="mozversioncontrol.MissingUpstreamRepo">
+<em class="property">exception </em><code class="descclassname">mozversioncontrol.</code><code class="descname">MissingUpstreamRepo</code><a class="headerlink" href="#mozversioncontrol.MissingUpstreamRepo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></code></p>
+<p>Represents a failure to automatically detect an upstream repo.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="mozversioncontrol.MissingVCSInfo">
+<em class="property">exception </em><code class="descclassname">mozversioncontrol.</code><code class="descname">MissingVCSInfo</code><a class="headerlink" href="#mozversioncontrol.MissingVCSInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></code></p>
+<p>Represents a general failure to resolve a VCS interface.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="mozversioncontrol.MissingVCSTool">
+<em class="property">exception </em><code class="descclassname">mozversioncontrol.</code><code class="descname">MissingVCSTool</code><a class="headerlink" href="#mozversioncontrol.MissingVCSTool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></code></p>
+<p>Represents a failure to find a version control tool binary.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mozversioncontrol.Repository">
+<em class="property">class </em><code class="descclassname">mozversioncontrol.</code><code class="descname">Repository</code><span class="sig-paren">(</span><em>path</em>, <em>tool</em><span class="sig-paren">)</span><a class="headerlink" href="#mozversioncontrol.Repository" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>A class wrapping utility methods around version control repositories.</p>
+<p>This class is abstract and never instantiated. Obtain an instance by
+calling a <code class="docutils literal"><span class="pre">get_repository_*()</span></code> helper function.</p>
+<p>Clients are recommended to use the object as a context manager. But not
+all methods require this.</p>
+<dl class="method">
+<dt id="mozversioncontrol.Repository.add_remove_files">
+<code class="descname">add_remove_files</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozversioncontrol.Repository.add_remove_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add and remove files under <cite>path</cite> in this repository’s working copy.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozversioncontrol.Repository.base_ref">
+<code class="descname">base_ref</code><a class="headerlink" href="#mozversioncontrol.Repository.base_ref" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hash of revision the current topic branch is based on.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozversioncontrol.Repository.forget_add_remove_files">
+<code class="descname">forget_add_remove_files</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozversioncontrol.Repository.forget_add_remove_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Undo the effects of a previous add_remove_files call for <cite>path</cite>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozversioncontrol.Repository.get_changed_files">
+<code class="descname">get_changed_files</code><span class="sig-paren">(</span><em>diff_filter</em>, <em>mode=u'unstaged'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozversioncontrol.Repository.get_changed_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of files that are changed in this repository’s
+working copy.</p>
+<p><code class="docutils literal"><span class="pre">diff_filter</span></code> controls which kinds of modifications are returned.
+It is a string which may only contain the following characters:</p>
+<blockquote>
+<div>A - Include files that were added
+D - Include files that were deleted
+M - Include files that were modified</div></blockquote>
+<p>By default, all three will be included.</p>
+<p><code class="docutils literal"><span class="pre">mode</span></code> can be one of ‘unstaged’, ‘staged’ or ‘all’. Only has an
+affect on git. Defaults to ‘unstaged’.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozversioncontrol.Repository.get_files_in_working_directory">
+<code class="descname">get_files_in_working_directory</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozversioncontrol.Repository.get_files_in_working_directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Obtain a list of managed files in the working directory.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozversioncontrol.Repository.get_outgoing_files">
+<code class="descname">get_outgoing_files</code><span class="sig-paren">(</span><em>diff_filter</em>, <em>upstream=u'default'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozversioncontrol.Repository.get_outgoing_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of changed files compared to upstream.</p>
+<p><code class="docutils literal"><span class="pre">diff_filter</span></code> works the same as <cite>get_changed_files</cite>.
+<code class="docutils literal"><span class="pre">upstream</span></code> is a remote ref to compare against. If unspecified,
+this will be determined automatically. If there is no remote ref,
+a MissingUpstreamRepo exception will be raised.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozversioncontrol.Repository.get_upstream">
+<code class="descname">get_upstream</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozversioncontrol.Repository.get_upstream" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reference to the upstream remote.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozversioncontrol.Repository.head_ref">
+<code class="descname">head_ref</code><a class="headerlink" href="#mozversioncontrol.Repository.head_ref" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hash of HEAD revision.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozversioncontrol.Repository.name">
+<code class="descname">name</code><a class="headerlink" href="#mozversioncontrol.Repository.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of the tool.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozversioncontrol.Repository.sparse_checkout_present">
+<code class="descname">sparse_checkout_present</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozversioncontrol.Repository.sparse_checkout_present" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether the working directory is using a sparse checkout.</p>
+<p>A sparse checkout is defined as a working directory that only
+materializes a subset of files in a given revision.</p>
+<p>Returns a bool.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozversioncontrol.Repository.tool_version">
+<code class="descname">tool_version</code><a class="headerlink" href="#mozversioncontrol.Repository.tool_version" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the version of the VCS tool in use as a <cite>LooseVersion</cite>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozversioncontrol.Repository.working_directory_clean">
+<code class="descname">working_directory_clean</code><span class="sig-paren">(</span><em>untracked=False</em>, <em>ignored=False</em><span class="sig-paren">)</span><a class="headerlink" href="#mozversioncontrol.Repository.working_directory_clean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine if the working directory is free of modifications.</p>
+<p>Returns True if the working directory does not have any file
+modifications. False otherwise.</p>
+<p>By default, untracked and ignored files are not considered. If
+<code class="docutils literal"><span class="pre">untracked</span></code> or <code class="docutils literal"><span class="pre">ignored</span></code> are set, they influence the clean check
+to factor these file classes into consideration.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="mozversioncontrol.get_repository_from_build_config">
+<code class="descclassname">mozversioncontrol.</code><code class="descname">get_repository_from_build_config</code><span class="sig-paren">(</span><em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#mozversioncontrol.get_repository_from_build_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Obtain a repository from the build configuration.</p>
+<p>Accepts an object that has a <code class="docutils literal"><span class="pre">topsrcdir</span></code> and <code class="docutils literal"><span class="pre">subst</span></code> attribute.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozversioncontrol.get_repository_from_env">
+<code class="descclassname">mozversioncontrol.</code><code class="descname">get_repository_from_env</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozversioncontrol.get_repository_from_env" title="Permalink to this definition">¶</a></dt>
+<dd><p>Obtain a repository object by looking at the environment.</p>
+<p>If inside a build environment (denoted by presence of a <code class="docutils literal"><span class="pre">buildconfig</span></code>
+module), VCS info is obtained from it, as found via configure. This allows
+us to respect what was passed into configure. Otherwise, we fall back to
+scanning the filesystem.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozversioncontrol.get_repository_object">
+<code class="descclassname">mozversioncontrol.</code><code class="descname">get_repository_object</code><span class="sig-paren">(</span><em>path</em>, <em>hg=u'hg'</em>, <em>git=u'git'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozversioncontrol.get_repository_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a repository object for the repository at <cite>path</cite>.
+If <cite>path</cite> is not a known VCS repository, raise an exception.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozversioncontrol.get_tool_path">
+<code class="descclassname">mozversioncontrol.</code><code class="descname">get_tool_path</code><span class="sig-paren">(</span><em>tool</em><span class="sig-paren">)</span><a class="headerlink" href="#mozversioncontrol.get_tool_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Obtain the path of <cite>tool</cite>.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="mozwebidlcodegen.html" class="btn btn-neutral float-right" title="mozwebidlcodegen package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="mozpack.test.html" class="btn btn-neutral" title="mozpack.test package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

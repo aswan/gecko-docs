@@ -1,0 +1,493 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Task Attributes &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../../index.html"/>
+        <link rel="up" title="Reference" href="reference.html"/>
+        <link rel="next" title="Caches" href="caches.html"/>
+        <link rel="prev" title="Parameters" href="parameters.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mach/index.html">mach</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">TaskCluster Task-Graph Generation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mach.html">Mach commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loading.html">Loading Tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transforms.html">Transforms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optimization.html">Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker-images.html">Docker Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cron.html">Periodic Taskgraphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="try.html">Try</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions.html">Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-tos.html">How Tos</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="reference.html">Reference</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="kinds.html">Task Kinds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parameters.html">Parameters</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Task Attributes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#kind">kind</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#run-on-projects">run_on_projects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#task-duplicates">task_duplicates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#build-platform">build_platform</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#build-type">build_type</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test-platform">test_platform</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#unittest-suite">unittest_suite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#unittest-flavor">unittest_flavor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#unittest-try-name">unittest_try_name</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#talos-try-name">talos_try_name</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#job-try-name">job_try_name</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test-chunk">test_chunk</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#e10s">e10s</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#image-name">image_name</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nightly">nightly</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#all-locales">all_locales</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#all-locales-with-changesets">all_locales_with_changesets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#l10n-chunk">l10n_chunk</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#chunk-locales">chunk_locales</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#locale">locale</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#signed">signed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#repackage-type">repackage_type</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#toolchain-artifact">toolchain-artifact</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#toolchain-alias">toolchain-alias</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#always-target">always_target</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#shipping-product">shipping_product</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#shipping-phase">shipping_phase</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="caches.html">Caches</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">TaskCluster Task-Graph Generation</a> &raquo;</li>
+        
+          <li><a href="reference.html">Reference</a> &raquo;</li>
+        
+      <li>Task Attributes</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/taskcluster/taskcluster/attributes.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="task-attributes">
+<h1>Task Attributes<a class="headerlink" href="#task-attributes" title="Permalink to this headline">¶</a></h1>
+<p>Tasks can be filtered, for example to support “try” pushes which only perform a
+subset of the task graph or to link dependent tasks.  This filtering is the
+difference between a full task graph and a target task graph.</p>
+<p>Filtering takes place on the basis of attributes.  Each task has a dictionary
+of attributes and filters over those attributes can be expressed in Python.  A
+task may not have a value for every attribute.</p>
+<p>The attributes, and acceptable values, are defined here.  In general, attribute
+names and values are the short, lower-case form, with underscores.</p>
+<div class="section" id="kind">
+<h2>kind<a class="headerlink" href="#kind" title="Permalink to this headline">¶</a></h2>
+<p>A task’s <code class="docutils literal"><span class="pre">kind</span></code> attribute gives the name of the kind that generated it, e.g.,
+<code class="docutils literal"><span class="pre">build</span></code> or <code class="docutils literal"><span class="pre">spidermonkey</span></code>.</p>
+</div>
+<div class="section" id="run-on-projects">
+<h2>run_on_projects<a class="headerlink" href="#run-on-projects" title="Permalink to this headline">¶</a></h2>
+<p>The projects where this task should be in the target task set.  This is how
+requirements like “only run this on inbound” get implemented.  These are
+either project names or the aliases</p>
+<blockquote>
+<div><ul class="simple">
+<li><cite>integration</cite> – integration repositories (autoland, inbound, etc)</li>
+<li><cite>trunk</cite> – integration repositories plus mozilla-central</li>
+<li><cite>release</cite> – release repositories including mozilla-central</li>
+<li><cite>all</cite> – everywhere (the default)</li>
+</ul>
+</div></blockquote>
+<p>For try, this attribute applies only if <code class="docutils literal"><span class="pre">-p</span> <span class="pre">all</span></code> is specified.  All jobs can
+be specified by name regardless of <code class="docutils literal"><span class="pre">run_on_projects</span></code>.</p>
+<p>If <code class="docutils literal"><span class="pre">run_on_projects</span></code> is set to an empty list, then the task will not run
+anywhere, unless its build platform is specified explicitly in try syntax.</p>
+</div>
+<div class="section" id="task-duplicates">
+<h2>task_duplicates<a class="headerlink" href="#task-duplicates" title="Permalink to this headline">¶</a></h2>
+<p>This is used to indicate that we want multiple copies of the task created.
+This feature is used to track down intermittent job failures.</p>
+<p>If this value is set to N, the task-creation machinery will create a total of N
+copies of the task.  Only the first copy will be included in the taskgraph
+output artifacts, although all tasks will be contained in the same taskGroup.</p>
+<p>While most attributes are considered read-only, target task methods may alter
+this attribute of tasks they include in the target set.</p>
+</div>
+<div class="section" id="build-platform">
+<h2>build_platform<a class="headerlink" href="#build-platform" title="Permalink to this headline">¶</a></h2>
+<p>The build platform defines the platform for which the binary was built.  It is
+set for both build and test jobs, although test jobs may have a different
+<code class="docutils literal"><span class="pre">test_platform</span></code>.</p>
+</div>
+<div class="section" id="build-type">
+<h2>build_type<a class="headerlink" href="#build-type" title="Permalink to this headline">¶</a></h2>
+<p>The type of build being performed.  This is a subdivision of <code class="docutils literal"><span class="pre">build_platform</span></code>,
+used for different kinds of builds that target the same platform.  Values are</p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal"><span class="pre">debug</span></code></li>
+<li><code class="docutils literal"><span class="pre">opt</span></code></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="test-platform">
+<h2>test_platform<a class="headerlink" href="#test-platform" title="Permalink to this headline">¶</a></h2>
+<p>The test platform defines the platform on which tests are run.  It is only
+defined for test jobs and may differ from <code class="docutils literal"><span class="pre">build_platform</span></code> when the same binary
+is tested on several platforms (for example, on several versions of Windows).
+This applies for both talos and unit tests.</p>
+<p>Unlike build_platform, the test platform is represented in a slash-separated
+format, e.g., <code class="docutils literal"><span class="pre">linux64/opt</span></code>.</p>
+</div>
+<div class="section" id="unittest-suite">
+<h2>unittest_suite<a class="headerlink" href="#unittest-suite" title="Permalink to this headline">¶</a></h2>
+<p>This is the unit test suite being run in a unit test task.  For example,
+<code class="docutils literal"><span class="pre">mochitest</span></code> or <code class="docutils literal"><span class="pre">cppunittest</span></code>.</p>
+</div>
+<div class="section" id="unittest-flavor">
+<h2>unittest_flavor<a class="headerlink" href="#unittest-flavor" title="Permalink to this headline">¶</a></h2>
+<p>If a unittest suite has subdivisions, those are represented as flavors.  Not
+all suites have flavors, in which case this attribute should be set to match
+the suite.  Examples: <code class="docutils literal"><span class="pre">mochitest-devtools-chrome-chunked</span></code> or <code class="docutils literal"><span class="pre">a11y</span></code>.</p>
+</div>
+<div class="section" id="unittest-try-name">
+<h2>unittest_try_name<a class="headerlink" href="#unittest-try-name" title="Permalink to this headline">¶</a></h2>
+<p>This is the name used to refer to a unit test via try syntax.  It
+may not match either of <code class="docutils literal"><span class="pre">unittest_suite</span></code> or <code class="docutils literal"><span class="pre">unittest_flavor</span></code>.</p>
+</div>
+<div class="section" id="talos-try-name">
+<h2>talos_try_name<a class="headerlink" href="#talos-try-name" title="Permalink to this headline">¶</a></h2>
+<p>This is the name used to refer to a talos job via try syntax.</p>
+</div>
+<div class="section" id="job-try-name">
+<h2>job_try_name<a class="headerlink" href="#job-try-name" title="Permalink to this headline">¶</a></h2>
+<p>This is the name used to refer to a “job” via try syntax (<code class="docutils literal"><span class="pre">-j</span></code>).  Note that for
+some kinds, <code class="docutils literal"><span class="pre">-j</span></code> also matches against <code class="docutils literal"><span class="pre">build_platform</span></code>.</p>
+</div>
+<div class="section" id="test-chunk">
+<h2>test_chunk<a class="headerlink" href="#test-chunk" title="Permalink to this headline">¶</a></h2>
+<p>This is the chunk number of a chunked test suite (talos or unittest).  Note
+that this is a string!</p>
+</div>
+<div class="section" id="e10s">
+<h2>e10s<a class="headerlink" href="#e10s" title="Permalink to this headline">¶</a></h2>
+<p>For test suites which distinguish whether they run with or without e10s, this
+boolean value identifies this particular run.</p>
+</div>
+<div class="section" id="image-name">
+<h2>image_name<a class="headerlink" href="#image-name" title="Permalink to this headline">¶</a></h2>
+<p>For the <code class="docutils literal"><span class="pre">docker_image</span></code> kind, this attribute contains the docker image name.</p>
+</div>
+<div class="section" id="nightly">
+<h2>nightly<a class="headerlink" href="#nightly" title="Permalink to this headline">¶</a></h2>
+<p>Signals whether the task is part of a nightly graph. Useful when filtering
+out nightly tasks from full task set at target stage.</p>
+</div>
+<div class="section" id="all-locales">
+<h2>all_locales<a class="headerlink" href="#all-locales" title="Permalink to this headline">¶</a></h2>
+<p>For the <code class="docutils literal"><span class="pre">l10n</span></code> and <code class="docutils literal"><span class="pre">nightly-l10n</span></code> kinds, this attribute contains the list
+of relevant locales for the platform.</p>
+</div>
+<div class="section" id="all-locales-with-changesets">
+<h2>all_locales_with_changesets<a class="headerlink" href="#all-locales-with-changesets" title="Permalink to this headline">¶</a></h2>
+<p>Contains a dict of l10n changesets, mapped by locales (same as in <code class="docutils literal"><span class="pre">all_locales</span></code>).</p>
+</div>
+<div class="section" id="l10n-chunk">
+<h2>l10n_chunk<a class="headerlink" href="#l10n-chunk" title="Permalink to this headline">¶</a></h2>
+<p>For the <code class="docutils literal"><span class="pre">l10n</span></code> and <code class="docutils literal"><span class="pre">nightly-l10n</span></code> kinds, this attribute contains the chunk
+number of the job. Note that this is a string!</p>
+</div>
+<div class="section" id="chunk-locales">
+<h2>chunk_locales<a class="headerlink" href="#chunk-locales" title="Permalink to this headline">¶</a></h2>
+<p>For the <code class="docutils literal"><span class="pre">l10n</span></code> and <code class="docutils literal"><span class="pre">nightly-l10n</span></code> kinds, this attribute contains an array of
+the individual locales this chunk is responsible for processing.</p>
+</div>
+<div class="section" id="locale">
+<h2>locale<a class="headerlink" href="#locale" title="Permalink to this headline">¶</a></h2>
+<p>For jobs that operate on only one locale, we set the attribute <code class="docutils literal"><span class="pre">locale</span></code> to the
+specific locale involved. Currently this is only in l10n versions of the
+<code class="docutils literal"><span class="pre">beetmover</span></code> and <code class="docutils literal"><span class="pre">balrog</span></code> kinds.</p>
+</div>
+<div class="section" id="signed">
+<h2>signed<a class="headerlink" href="#signed" title="Permalink to this headline">¶</a></h2>
+<p>Signals that the output of this task contains signed artifacts.</p>
+</div>
+<div class="section" id="repackage-type">
+<h2>repackage_type<a class="headerlink" href="#repackage-type" title="Permalink to this headline">¶</a></h2>
+<p>This is the type of repackage. Can be <code class="docutils literal"><span class="pre">repackage</span></code> or
+<code class="docutils literal"><span class="pre">repackage_signing</span></code>.</p>
+</div>
+<div class="section" id="toolchain-artifact">
+<h2>toolchain-artifact<a class="headerlink" href="#toolchain-artifact" title="Permalink to this headline">¶</a></h2>
+<p>For toolchain jobs, this is the path to the artifact for that toolchain.</p>
+</div>
+<div class="section" id="toolchain-alias">
+<h2>toolchain-alias<a class="headerlink" href="#toolchain-alias" title="Permalink to this headline">¶</a></h2>
+<p>For toolchain jobs, this optionally gives an alias that can be used instead of the
+real toolchain job name in the toolchains list for build jobs.</p>
+</div>
+<div class="section" id="always-target">
+<h2>always_target<a class="headerlink" href="#always-target" title="Permalink to this headline">¶</a></h2>
+<p>Tasks with this attribute will be included in the <code class="docutils literal"><span class="pre">target_task_graph</span></code> regardless
+of any target task filtering that occurs. When a task is included in this manner
+(i.e it otherwise would have been filtered out), it will be considered for
+optimization even if the <code class="docutils literal"><span class="pre">optimize_target_tasks</span></code> parameter is False.</p>
+<p>This is meant to be used for tasks which a developer would almost always want to
+run. Typically these tasks will be short running and have a high risk of causing
+a backout. For example <code class="docutils literal"><span class="pre">lint</span></code> or <code class="docutils literal"><span class="pre">python-unittest</span></code> tasks.</p>
+</div>
+<div class="section" id="shipping-product">
+<h2>shipping_product<a class="headerlink" href="#shipping-product" title="Permalink to this headline">¶</a></h2>
+<p>For release promotion jobs, this is the product we are shipping.</p>
+</div>
+<div class="section" id="shipping-phase">
+<h2>shipping_phase<a class="headerlink" href="#shipping-phase" title="Permalink to this headline">¶</a></h2>
+<p>For release promotion jobs, this is the shipping phase (promote, publish, ship).</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="caches.html" class="btn btn-neutral float-right" title="Caches" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="parameters.html" class="btn btn-neutral" title="Parameters" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

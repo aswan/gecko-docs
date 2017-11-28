@@ -1,0 +1,558 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Mozilla ESLint Plugin &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../../../index.html"/>
+        <link rel="up" title="ESLint" href="eslint.html"/>
+        <link rel="next" title="Mozilla ESLint SpiderMonkey JS" href="eslint-plugin-spidermonkey-js.html"/>
+        <link rel="prev" title="ESLint" href="eslint.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Linting</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../usage.html">Running Linters Locally</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../usage.html#fixing-lint-errors">Fixing Lint Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../create.html">Adding a New Linter to the Tree</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="eslint.html">ESLint</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="eslint.html#run-locally">Run Locally</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eslint.html#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eslint.html#eslint-plugin-mozilla">ESLint Plugin Mozilla</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="eslint.html#eslint-plugin-spidermonkey-js">ESLint Plugin SpiderMonkey JS</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Mozilla ESLint Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eslint-plugin-spidermonkey-js.html">Mozilla ESLint SpiderMonkey JS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="flake8.html">Flake8</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Linting</a> &raquo;</li>
+        
+          <li><a href="eslint.html">ESLint</a> &raquo;</li>
+        
+      <li>Mozilla ESLint Plugin</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/tools/lint/linters/eslint-plugin-mozilla.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mozilla-eslint-plugin">
+<h1>Mozilla ESLint Plugin<a class="headerlink" href="#mozilla-eslint-plugin" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="environments">
+<h2>Environments<a class="headerlink" href="#environments" title="Permalink to this headline">¶</a></h2>
+<p>These environments are available by specifying a comment at the top of the file,
+e.g.</p>
+<blockquote>
+<div>/* eslint-env mozilla/chrome-worker <a href="#id1"><span class="problematic" id="id2">*</span></a>/</div></blockquote>
+<p>There are also built-in ESLint environments available as well:
+<a class="reference external" href="http://eslint.org/docs/user-guide/configuring#specifying-environments">http://eslint.org/docs/user-guide/configuring#specifying-environments</a></p>
+<div class="section" id="browser-window">
+<h3>browser-window<a class="headerlink" href="#browser-window" title="Permalink to this headline">¶</a></h3>
+<p>Defines the environment for scripts that are in the main browser.xul scope (
+note: includes the places-overlay environment).</p>
+</div>
+<div class="section" id="places-overlay">
+<h3>places-overlay<a class="headerlink" href="#places-overlay" title="Permalink to this headline">¶</a></h3>
+<p>Defines the environment for scripts that are in a scope where placesOverlay.xul
+is included.</p>
+</div>
+<div class="section" id="chrome-worker">
+<h3>chrome-worker<a class="headerlink" href="#chrome-worker" title="Permalink to this headline">¶</a></h3>
+<p>Defines the environment for chrome workers. This differs from normal workers by
+the fact that <cite>ctypes</cite> can be accessed as well.</p>
+</div>
+<div class="section" id="frame-script">
+<h3>frame-script<a class="headerlink" href="#frame-script" title="Permalink to this headline">¶</a></h3>
+<p>Defines the environment for frame scripts.</p>
+</div>
+</div>
+<div class="section" id="rules">
+<h2>Rules<a class="headerlink" href="#rules" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="avoid-date-timing">
+<h3>avoid-Date-timing<a class="headerlink" href="#avoid-date-timing" title="Permalink to this headline">¶</a></h3>
+<p>Rejects grabbing the current time via Date.now() or new Date() for timing
+purposes when the less problematic performance.now() can be used instead.</p>
+<p>The performance.now() function returns milliseconds since page load. To
+convert that to milliseconds since the epoch, use:</p>
+<blockquote>
+<div>performance.timing.navigationStart + performance.now()</div></blockquote>
+<p>Often timing relative to the page load is adequate and that conversion may not
+be necessary.</p>
+</div>
+<div class="section" id="avoid-removechild">
+<h3>avoid-removeChild<a class="headerlink" href="#avoid-removechild" title="Permalink to this headline">¶</a></h3>
+<p>Rejects using element.parentNode.removeChild(element) when element.remove()
+can be used instead.</p>
+</div>
+<div class="section" id="balanced-listeners">
+<h3>balanced-listeners<a class="headerlink" href="#balanced-listeners" title="Permalink to this headline">¶</a></h3>
+<p>Checks that for every occurence of ‘addEventListener’ or ‘on’ there is an
+occurence of ‘removeEventListener’ or ‘off’ with the same event name.</p>
+</div>
+<div class="section" id="import-browser-window-globals">
+<h3>import-browser-window-globals<a class="headerlink" href="#import-browser-window-globals" title="Permalink to this headline">¶</a></h3>
+<p>For scripts included in browser-window, this will automatically inject the
+browser-window global scopes into the file.</p>
+</div>
+<div class="section" id="import-content-task-globals">
+<h3>import-content-task-globals<a class="headerlink" href="#import-content-task-globals" title="Permalink to this headline">¶</a></h3>
+<p>For files containing ContentTask.spawn calls, this will automatically declare
+the frame script variables in the global scope. ContentTask is only available
+to test files, so by default the configs only specify it for the mochitest based
+configurations.</p>
+<p>This saves setting the file as a mozilla/frame-script environment.</p>
+<p>Note: due to the way ESLint works, it appears it is only easy to declare these
+variables on a file global scope, rather than function global. This may mean that
+they are incorrectly allowed, but given they are test files, this should be
+detected during testing.</p>
+</div>
+<div class="section" id="import-globals">
+<h3>import-globals<a class="headerlink" href="#import-globals" title="Permalink to this headline">¶</a></h3>
+<p>Checks the filename of imported files e.g. <code class="docutils literal"><span class="pre">Cu.import(&quot;some/path/Blah.jsm&quot;)</span></code>
+adds Blah to the global scope.</p>
+<p>Note: uses modules.json for a list of globals listed in each file.</p>
+</div>
+<div class="section" id="import-globals-from">
+<h3>import-globals-from<a class="headerlink" href="#import-globals-from" title="Permalink to this headline">¶</a></h3>
+<p>Parses a file for globals defined in various unique Mozilla ways.</p>
+<p>When a “import-globals-from &lt;path&gt;” comment is found in a file, then all globals
+from the file at &lt;path&gt; will be imported in the current scope. This will also
+operate recursively.</p>
+<p>This is useful for scripts that are loaded as &lt;script&gt; tag in a window and rely
+on each other’s globals.</p>
+<p>If &lt;path&gt; is a relative path, then it must be relative to the file being
+checked by the rule.</p>
+</div>
+<div class="section" id="import-headjs-globals">
+<h3>import-headjs-globals<a class="headerlink" href="#import-headjs-globals" title="Permalink to this headline">¶</a></h3>
+<p>Import globals from head.js and from any files that were imported by
+head.js (as far as we can correctly resolve the path).</p>
+<p>The following file import patterns are supported:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">Services.scriptloader.loadSubScript(path)</span></code></li>
+<li><code class="docutils literal"><span class="pre">loader.loadSubScript(path)</span></code></li>
+<li><code class="docutils literal"><span class="pre">loadSubScript(path)</span></code></li>
+<li><code class="docutils literal"><span class="pre">loadHelperScript(path)</span></code></li>
+<li><code class="docutils literal"><span class="pre">import-globals-from</span> <span class="pre">path</span></code></li>
+</ul>
+<p>If path does not exist because it is generated e.g.
+<code class="docutils literal"><span class="pre">testdir</span> <span class="pre">+</span> <span class="pre">&quot;/somefile.js&quot;</span></code> we do our best to resolve it.</p>
+<p>The following patterns are supported:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">Cu.import(&quot;resource://devtools/client/shared/widgets/ViewHelpers.jsm&quot;);</span></code></li>
+<li><code class="docutils literal"><span class="pre">loader.lazyImporter(this,</span> <span class="pre">&quot;name1&quot;);</span></code></li>
+<li><code class="docutils literal"><span class="pre">loader.lazyRequireGetter(this,</span> <span class="pre">&quot;name2&quot;</span></code></li>
+<li><code class="docutils literal"><span class="pre">loader.lazyServiceGetter(this,</span> <span class="pre">&quot;name3&quot;</span></code></li>
+<li><code class="docutils literal"><span class="pre">XPCOMUtils.defineLazyModuleGetter(this,</span> <span class="pre">&quot;setNamedTimeout&quot;,</span> <span class="pre">...)</span></code></li>
+<li><code class="docutils literal"><span class="pre">loader.lazyGetter(this,</span> <span class="pre">&quot;toolboxStrings&quot;</span></code></li>
+<li><code class="docutils literal"><span class="pre">XPCOMUtils.defineLazyGetter(this,</span> <span class="pre">&quot;clipboardHelper&quot;</span></code></li>
+</ul>
+</div>
+<div class="section" id="mark-test-function-used">
+<h3>mark-test-function-used<a class="headerlink" href="#mark-test-function-used" title="Permalink to this headline">¶</a></h3>
+<p>Simply marks <cite>test</cite> (the test method) or <cite>run_test</cite> as used when in mochitests
+or xpcshell tests respectively. This avoids ESLint telling us that the function
+is never called.</p>
+</div>
+<div class="section" id="no-aargs">
+<h3>no-aArgs<a class="headerlink" href="#no-aargs" title="Permalink to this headline">¶</a></h3>
+<p>Checks that function argument names don’t start with lowercase ‘a’ followed by
+a capital letter. This is to prevent the use of Hungarian notation whereby the
+first letter is a prefix that indicates the type or intended use of a variable.</p>
+</div>
+<div class="section" id="no-cpows-in-tests">
+<h3>no-cpows-in-tests<a class="headerlink" href="#no-cpows-in-tests" title="Permalink to this headline">¶</a></h3>
+<p>This rule checks if the file is a browser mochitest and, if so, checks for
+possible CPOW usage by checking for the following strings:</p>
+<ul class="simple">
+<li>“gBrowser.contentWindow”</li>
+<li>“gBrowser.contentDocument”</li>
+<li>“gBrowser.selectedBrowser.contentWindow”</li>
+<li>“browser.contentDocument”</li>
+<li>“window.content”</li>
+<li>“content”</li>
+<li>“content.”</li>
+</ul>
+<p>Note: These are string matches so we will miss situations where the parent
+object is assigned to another variable e.g.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">b</span> <span class="o">=</span> <span class="n">gBrowser</span><span class="p">;</span>
+<span class="n">b</span><span class="o">.</span><span class="n">content</span> <span class="o">//</span> <span class="n">Would</span> <span class="ow">not</span> <span class="n">be</span> <span class="n">detected</span> <span class="k">as</span> <span class="n">a</span> <span class="n">CPOW</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="no-single-arg-cu-import">
+<h3>no-single-arg-cu-import<a class="headerlink" href="#no-single-arg-cu-import" title="Permalink to this headline">¶</a></h3>
+<p>Rejects calls to “Cu.import” that do not supply a second argument (meaning they
+add the exported properties into global scope).</p>
+</div>
+<div class="section" id="no-import-into-var-and-global">
+<h3>no-import-into-var-and-global<a class="headerlink" href="#no-import-into-var-and-global" title="Permalink to this headline">¶</a></h3>
+<p>Reject use of <code class="docutils literal"><span class="pre">Cu.import</span></code> (or <code class="docutils literal"><span class="pre">Components.utils.import</span></code>) where it attempts to
+import into a var and into the global scope at the same time, e.g.</p>
+<p><code class="docutils literal"><span class="pre">var</span> <span class="pre">foo</span> <span class="pre">=</span> <span class="pre">Cu.import(&quot;path.jsm&quot;,</span> <span class="pre">this);</span></code></p>
+<p>This is considered bad practice as it is confusing as to what is actually being
+imported.</p>
+</div>
+<div class="section" id="no-useless-parameters">
+<h3>no-useless-parameters<a class="headerlink" href="#no-useless-parameters" title="Permalink to this headline">¶</a></h3>
+<p>Reject common XPCOM methods called with useless optional parameters (eg.
+<code class="docutils literal"><span class="pre">Services.io.newURI(url,</span> <span class="pre">null,</span> <span class="pre">null)</span></code>, or non-existent parameters (eg.
+<code class="docutils literal"><span class="pre">Services.obs.removeObserver(name,</span> <span class="pre">observer,</span> <span class="pre">false)</span></code>).</p>
+<p>This option can be autofixed (<code class="docutils literal"><span class="pre">--fix</span></code>).</p>
+</div>
+<div class="section" id="no-useless-removeeventlistener">
+<h3>no-useless-removeEventListener<a class="headerlink" href="#no-useless-removeeventlistener" title="Permalink to this headline">¶</a></h3>
+<p>Reject calls to removeEventListener where {once: true} could be used instead.</p>
+</div>
+<div class="section" id="no-useless-run-test">
+<h3>no-useless-run-test<a class="headerlink" href="#no-useless-run-test" title="Permalink to this headline">¶</a></h3>
+<p>Designed for xpcshell-tests. Rejects definitions of <code class="docutils literal"><span class="pre">run_test()</span></code> where the
+function only contains a single call to <code class="docutils literal"><span class="pre">run_next_test()</span></code>. xpcshell’s head.js
+already defines a utility function so there is no need for duplication.</p>
+</div>
+<div class="section" id="reject-importglobalproperties">
+<h3>reject-importGlobalProperties<a class="headerlink" href="#reject-importglobalproperties" title="Permalink to this headline">¶</a></h3>
+<p>Rejects calls to <code class="docutils literal"><span class="pre">Cu.importGlobalProperties</span></code>.  Use of this function is
+undesirable in some parts of the tree.</p>
+</div>
+<div class="section" id="reject-some-requires">
+<h3>reject-some-requires<a class="headerlink" href="#reject-some-requires" title="Permalink to this headline">¶</a></h3>
+<p>This takes an option, a regular expression.  Invocations of
+<code class="docutils literal"><span class="pre">require</span></code> with a string literal argument are matched against this
+regexp; and if it matches, the <code class="docutils literal"><span class="pre">require</span></code> use is flagged.</p>
+</div>
+<div class="section" id="this-top-level-scope">
+<h3>this-top-level-scope<a class="headerlink" href="#this-top-level-scope" title="Permalink to this headline">¶</a></h3>
+<p>Treats top-level assignments like <code class="docutils literal"><span class="pre">this.mumble</span> <span class="pre">=</span> <span class="pre">value</span></code> as declaring a global.</p>
+<p>Note: These are string matches so we will miss situations where the parent
+object is assigned to another variable e.g.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">b</span> <span class="o">=</span> <span class="n">gBrowser</span><span class="p">;</span>
+<span class="n">b</span><span class="o">.</span><span class="n">content</span> <span class="o">//</span> <span class="n">Would</span> <span class="ow">not</span> <span class="n">be</span> <span class="n">detected</span> <span class="k">as</span> <span class="n">a</span> <span class="n">CPOW</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="use-default-preference-values">
+<h3>use-default-preference-values<a class="headerlink" href="#use-default-preference-values" title="Permalink to this headline">¶</a></h3>
+<p>Require providing a second parameter to get*Pref methods instead of
+using a try/catch block.</p>
+</div>
+<div class="section" id="use-ownerglobal">
+<h3>use-ownerGlobal<a class="headerlink" href="#use-ownerglobal" title="Permalink to this headline">¶</a></h3>
+<p>Require .ownerGlobal instead of .ownerDocument.defaultView.</p>
+</div>
+<div class="section" id="use-services">
+<h3>use-services<a class="headerlink" href="#use-services" title="Permalink to this headline">¶</a></h3>
+<p>Requires the use of Services.jsm rather than Cc[].getService() where a service
+is already defined in Services.jsm.</p>
+</div>
+<div class="section" id="var-only-at-top-level">
+<h3>var-only-at-top-level<a class="headerlink" href="#var-only-at-top-level" title="Permalink to this headline">¶</a></h3>
+<p>Marks all var declarations that are not at the top level invalid.</p>
+</div>
+</div>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="2">Possible values for all rules</td>
+</tr>
+<tr class="row-even"><td>Value</td>
+<td>Meaning</td>
+</tr>
+<tr class="row-odd"><td>0</td>
+<td>Deactivated</td>
+</tr>
+<tr class="row-even"><td>1</td>
+<td>Warning</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>Error</td>
+</tr>
+</tbody>
+</table>
+<p>Example configuration:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s2">&quot;rules&quot;</span><span class="p">:</span> <span class="p">{</span>
+  <span class="s2">&quot;mozilla/balanced-listeners&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+  <span class="s2">&quot;mozilla/mark-test-function-used&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s2">&quot;mozilla/var-only-at-top-level&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s2">&quot;mozilla/no-cpows-in-tests&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tests">
+<h2>Tests<a class="headerlink" href="#tests" title="Permalink to this headline">¶</a></h2>
+<p>The tests for eslint-plugin-mozilla are run via <a class="reference external" href="https://mochajs.org/">mochajs</a> on top of node. Most
+of the tests use the <a class="reference external" href="http://eslint.org/docs/developer-guide/working-with-rules#rule-unit-tests">ESLint Rule Unit Test framework</a>.</p>
+<div class="section" id="running-tests">
+<h3>Running Tests<a class="headerlink" href="#running-tests" title="Permalink to this headline">¶</a></h3>
+<p>The rules have some self tests, these can be run via:</p>
+<blockquote>
+<div>cd tools/lint/eslint/eslint-plugin-mozilla
+npm install
+npm run test</div></blockquote>
+</div>
+<div class="section" id="disabling-tests">
+<h3>Disabling tests<a class="headerlink" href="#disabling-tests" title="Permalink to this headline">¶</a></h3>
+<p>In the unlikely event of needing to disable a test, currently the only way is
+by commenting-out. Please file a bug if you have to do this.</p>
+</div>
+</div>
+<div class="section" id="filing-bugs">
+<h2>Filing Bugs<a class="headerlink" href="#filing-bugs" title="Permalink to this headline">¶</a></h2>
+<p>Bugs should be filed in the Testing product under Lint.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="eslint-plugin-spidermonkey-js.html" class="btn btn-neutral float-right" title="Mozilla ESLint SpiderMonkey JS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="eslint.html" class="btn btn-neutral" title="ESLint" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

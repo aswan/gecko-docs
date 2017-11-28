@@ -1,0 +1,662 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mozpack.packager package &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../index.html"/>
+        <link rel="up" title="mozpack package" href="mozpack.html"/>
+        <link rel="next" title="mozpack.test package" href="mozpack.test.html"/>
+        <link rel="prev" title="mozpack.chrome package" href="mozpack.chrome.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozlint.html">mozlint package</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="mozpack.html">mozpack package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="mozpack.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="mozpack.chrome.html">mozpack.chrome package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">mozpack.packager package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozpack.packager.formats">mozpack.packager.formats module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozpack.packager.l10n">mozpack.packager.l10n module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozpack.packager.unpack">mozpack.packager.unpack module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozpack.packager">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mozpack.test.html">mozpack.test package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.html#module-mozpack.archive">mozpack.archive module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.html#module-mozpack.copier">mozpack.copier module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.html#module-mozpack.dmg">mozpack.dmg module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.html#module-mozpack.errors">mozpack.errors module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.html#module-mozpack.executables">mozpack.executables module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.html#module-mozpack.files">mozpack.files module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.html#module-mozpack.hg">mozpack.hg module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.html#module-mozpack.manifests">mozpack.manifests module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.html#module-mozpack.mozjar">mozpack.mozjar module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.html#module-mozpack.path">mozpack.path module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.html#module-mozpack">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="mozpack.html">mozpack package</a> &raquo;</li>
+        
+      <li>mozpack.packager package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/python/mozpack.packager.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mozpack-packager-package">
+<h1>mozpack.packager package<a class="headerlink" href="#mozpack-packager-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-mozpack.packager.formats">
+<span id="mozpack-packager-formats-module"></span><h2>mozpack.packager.formats module<a class="headerlink" href="#module-mozpack.packager.formats" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozpack.packager.formats.FlatFormatter">
+<em class="property">class </em><code class="descclassname">mozpack.packager.formats.</code><code class="descname">FlatFormatter</code><span class="sig-paren">(</span><em>copier</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.packager.formats.FlatFormatter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.packager.formats.PiecemealFormatter" title="mozpack.packager.formats.PiecemealFormatter"><code class="xref py py-class docutils literal"><span class="pre">mozpack.packager.formats.PiecemealFormatter</span></code></a></p>
+<p>Formatter for the flat package format.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.packager.formats.FlatSubFormatter">
+<em class="property">class </em><code class="descclassname">mozpack.packager.formats.</code><code class="descname">FlatSubFormatter</code><span class="sig-paren">(</span><em>copier</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.packager.formats.FlatSubFormatter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Sub-formatter for the flat package format.</p>
+<dl class="method">
+<dt id="mozpack.packager.formats.FlatSubFormatter.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>path</em>, <em>content</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.packager.formats.FlatSubFormatter.add" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.packager.formats.FlatSubFormatter.add_interfaces">
+<code class="descname">add_interfaces</code><span class="sig-paren">(</span><em>path</em>, <em>content</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.packager.formats.FlatSubFormatter.add_interfaces" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.packager.formats.FlatSubFormatter.add_manifest">
+<code class="descname">add_manifest</code><span class="sig-paren">(</span><em>entry</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.packager.formats.FlatSubFormatter.add_manifest" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.packager.formats.FlatSubFormatter.contains">
+<code class="descname">contains</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.packager.formats.FlatSubFormatter.contains" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.packager.formats.JarFormatter">
+<em class="property">class </em><code class="descclassname">mozpack.packager.formats.</code><code class="descname">JarFormatter</code><span class="sig-paren">(</span><em>copier</em>, <em>compress=True</em>, <em>optimize=True</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.packager.formats.JarFormatter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.packager.formats.PiecemealFormatter" title="mozpack.packager.formats.PiecemealFormatter"><code class="xref py py-class docutils literal"><span class="pre">mozpack.packager.formats.PiecemealFormatter</span></code></a></p>
+<p>Formatter for the jar package format. Assumes manifest entries related to
+chrome are registered before the chrome data files are added. Also assumes
+manifest entries for resources are registered after chrome manifest
+entries.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.packager.formats.JarSubFormatter">
+<em class="property">class </em><code class="descclassname">mozpack.packager.formats.</code><code class="descname">JarSubFormatter</code><span class="sig-paren">(</span><em>copier</em>, <em>compress=True</em>, <em>optimize=True</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.packager.formats.JarSubFormatter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.packager.formats.PiecemealFormatter" title="mozpack.packager.formats.PiecemealFormatter"><code class="xref py py-class docutils literal"><span class="pre">mozpack.packager.formats.PiecemealFormatter</span></code></a></p>
+<p>Sub-formatter for the jar package format. It is a PiecemealFormatter that
+dispatches between further sub-formatter for each of the jar files it
+dispatches the chrome data to, and a FlatSubFormatter for the non-chrome
+files.</p>
+<dl class="method">
+<dt id="mozpack.packager.formats.JarSubFormatter.add_manifest">
+<code class="descname">add_manifest</code><span class="sig-paren">(</span><em>entry</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.packager.formats.JarSubFormatter.add_manifest" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.packager.formats.OmniJarFormatter">
+<em class="property">class </em><code class="descclassname">mozpack.packager.formats.</code><code class="descname">OmniJarFormatter</code><span class="sig-paren">(</span><em>copier</em>, <em>omnijar_name</em>, <em>compress=True</em>, <em>optimize=True</em>, <em>non_resources=()</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.packager.formats.OmniJarFormatter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.packager.formats.JarFormatter" title="mozpack.packager.formats.JarFormatter"><code class="xref py py-class docutils literal"><span class="pre">mozpack.packager.formats.JarFormatter</span></code></a></p>
+<p>Formatter for the omnijar package format.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.packager.formats.OmniJarSubFormatter">
+<em class="property">class </em><code class="descclassname">mozpack.packager.formats.</code><code class="descname">OmniJarSubFormatter</code><span class="sig-paren">(</span><em>copier</em>, <em>omnijar_name</em>, <em>compress=True</em>, <em>optimize=True</em>, <em>non_resources=()</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.packager.formats.OmniJarSubFormatter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.packager.formats.PiecemealFormatter" title="mozpack.packager.formats.PiecemealFormatter"><code class="xref py py-class docutils literal"><span class="pre">mozpack.packager.formats.PiecemealFormatter</span></code></a></p>
+<p>Sub-formatter for the omnijar package format. It is a PiecemealFormatter
+that dispatches between a FlatSubFormatter for the resources data and
+another FlatSubFormatter for the other files.</p>
+<dl class="method">
+<dt id="mozpack.packager.formats.OmniJarSubFormatter.add_manifest">
+<code class="descname">add_manifest</code><span class="sig-paren">(</span><em>entry</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.packager.formats.OmniJarSubFormatter.add_manifest" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.packager.formats.OmniJarSubFormatter.is_resource">
+<code class="descname">is_resource</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.packager.formats.OmniJarSubFormatter.is_resource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return whether the given path corresponds to a resource to be put in an
+omnijar archive.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.packager.formats.PiecemealFormatter">
+<em class="property">class </em><code class="descclassname">mozpack.packager.formats.</code><code class="descname">PiecemealFormatter</code><span class="sig-paren">(</span><em>copier</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.packager.formats.PiecemealFormatter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Generic formatter that dispatches across different sub-formatters
+according to paths.</p>
+<dl class="method">
+<dt id="mozpack.packager.formats.PiecemealFormatter.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>path</em>, <em>content</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.packager.formats.PiecemealFormatter.add" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.packager.formats.PiecemealFormatter.add_base">
+<code class="descname">add_base</code><span class="sig-paren">(</span><em>base</em>, <em>addon=False</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.packager.formats.PiecemealFormatter.add_base" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.packager.formats.PiecemealFormatter.add_interfaces">
+<code class="descname">add_interfaces</code><span class="sig-paren">(</span><em>path</em>, <em>content</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.packager.formats.PiecemealFormatter.add_interfaces" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.packager.formats.PiecemealFormatter.add_manifest">
+<code class="descname">add_manifest</code><span class="sig-paren">(</span><em>entry</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.packager.formats.PiecemealFormatter.add_manifest" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.packager.formats.PiecemealFormatter.contains">
+<code class="descname">contains</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.packager.formats.PiecemealFormatter.contains" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozpack.packager.l10n">
+<span id="mozpack-packager-l10n-module"></span><h2>mozpack.packager.l10n module<a class="headerlink" href="#module-mozpack.packager.l10n" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozpack.packager.l10n.LocaleManifestFinder">
+<em class="property">class </em><code class="descclassname">mozpack.packager.l10n.</code><code class="descname">LocaleManifestFinder</code><span class="sig-paren">(</span><em>finder</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.packager.l10n.LocaleManifestFinder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozpack.packager.l10n.repack">
+<code class="descclassname">mozpack.packager.l10n.</code><code class="descname">repack</code><span class="sig-paren">(</span><em>source</em>, <em>l10n</em>, <em>extra_l10n={}</em>, <em>non_resources=[]</em>, <em>non_chrome=set([])</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.packager.l10n.repack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replace localized data from the <cite>source</cite> directory with localized data
+from <cite>l10n</cite> and <cite>extra_l10n</cite>.</p>
+<p>The <cite>source</cite> argument points to a directory containing a packaged
+application (in omnijar, jar or flat form).
+The <cite>l10n</cite> argument points to a directory containing the main localized
+data (usually in the form of a language pack addon) to use to replace
+in the packaged application.
+The <cite>extra_l10n</cite> argument contains a dict associating relative paths in
+the source to separate directories containing localized data for them.
+This can be used to point at different language pack addons for different
+parts of the package application.
+The <cite>non_resources</cite> argument gives a list of relative paths in the source
+that should not be added in an omnijar in case the packaged application
+is in that format.
+The <cite>non_chrome</cite> argument gives a list of file/directory patterns for
+localized files that are not listed in a chrome.manifest.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozpack.packager.unpack">
+<span id="mozpack-packager-unpack-module"></span><h2>mozpack.packager.unpack module<a class="headerlink" href="#module-mozpack.packager.unpack" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozpack.packager.unpack.UnpackFinder">
+<em class="property">class </em><code class="descclassname">mozpack.packager.unpack.</code><code class="descname">UnpackFinder</code><span class="sig-paren">(</span><em>source</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.packager.unpack.UnpackFinder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="mozpack.html#mozpack.files.BaseFinder" title="mozpack.files.BaseFinder"><code class="xref py py-class docutils literal"><span class="pre">mozpack.files.BaseFinder</span></code></a></p>
+<p>Special Finder object that treats the source package directory as if it
+were in the flat chrome format, whatever chrome format it actually is in.</p>
+<p>This means that for example, paths like chrome/browser/content/… match
+files under <a class="reference external" href="jar:chrome/browser.jar!/content/">jar:chrome/browser.jar!/content/</a>… in case of jar chrome
+format.</p>
+<p>The only argument to the constructor is a Finder instance or a path.
+The UnpackFinder is populated with files from this Finder instance,
+or with files from a FileFinder using the given path as its root.</p>
+<dl class="method">
+<dt id="mozpack.packager.unpack.UnpackFinder.find">
+<code class="descname">find</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.packager.unpack.UnpackFinder.find" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="mozpack.packager.unpack.unpack">
+<code class="descclassname">mozpack.packager.unpack.</code><code class="descname">unpack</code><span class="sig-paren">(</span><em>source</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.packager.unpack.unpack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform a jar chrome or omnijar packaged directory into a flat package.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozpack.packager.unpack.unpack_to_registry">
+<code class="descclassname">mozpack.packager.unpack.</code><code class="descname">unpack_to_registry</code><span class="sig-paren">(</span><em>source</em>, <em>registry</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.packager.unpack.unpack_to_registry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform a jar chrome or omnijar packaged directory into a flat package.</p>
+<p>The given registry is filled with the flat package.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozpack.packager">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-mozpack.packager" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozpack.packager.CallDeque">
+<em class="property">class </em><code class="descclassname">mozpack.packager.</code><code class="descname">CallDeque</code><a class="headerlink" href="#mozpack.packager.CallDeque" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">collections.deque</span></code></p>
+<p>Queue of function calls to make.</p>
+<dl class="method">
+<dt id="mozpack.packager.CallDeque.append">
+<code class="descname">append</code><span class="sig-paren">(</span><em>function</em>, <em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.packager.CallDeque.append" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.packager.CallDeque.execute">
+<code class="descname">execute</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.packager.CallDeque.execute" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.packager.Component">
+<em class="property">class </em><code class="descclassname">mozpack.packager.</code><code class="descname">Component</code><span class="sig-paren">(</span><em>name</em>, <em>destdir=''</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.packager.Component" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Class that represents a component in a package manifest.</p>
+<dl class="attribute">
+<dt id="mozpack.packager.Component.KEY_VALUE_RE">
+<code class="descname">KEY_VALUE_RE</code><em class="property"> = &lt;_sre.SRE_Pattern object&gt;</em><a class="headerlink" href="#mozpack.packager.Component.KEY_VALUE_RE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozpack.packager.Component.destdir">
+<code class="descname">destdir</code><a class="headerlink" href="#mozpack.packager.Component.destdir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="mozpack.packager.Component.from_string">
+<em class="property">static </em><code class="descname">from_string</code><span class="sig-paren">(</span><em>string</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.packager.Component.from_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a component from a string.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozpack.packager.Component.name">
+<code class="descname">name</code><a class="headerlink" href="#mozpack.packager.Component.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.packager.PackageManifestParser">
+<em class="property">class </em><code class="descclassname">mozpack.packager.</code><code class="descname">PackageManifestParser</code><span class="sig-paren">(</span><em>sink</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.packager.PackageManifestParser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Class for parsing of a package manifest, after preprocessing.</p>
+<dl class="docutils">
+<dt>A package manifest is a list of file paths, with some syntaxic sugar:</dt>
+<dd>[] designates a toplevel component. Example: [xpcom]
+- in front of a file specifies it to be removed
+* wildcard support
+** expands to all files and zero or more directories
+; file comment</dd>
+</dl>
+<p>The parser takes input from the preprocessor line by line, and pushes
+parsed information to a sink object.</p>
+<p>The add and remove methods of the sink object are called with the
+current Component instance and a path.</p>
+<dl class="method">
+<dt id="mozpack.packager.PackageManifestParser.handle_line">
+<code class="descname">handle_line</code><span class="sig-paren">(</span><em>str</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.packager.PackageManifestParser.handle_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle a line of input and push the parsed information to the sink
+object.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.packager.PreprocessorOutputWrapper">
+<em class="property">class </em><code class="descclassname">mozpack.packager.</code><code class="descname">PreprocessorOutputWrapper</code><span class="sig-paren">(</span><em>preprocessor</em>, <em>parser</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.packager.PreprocessorOutputWrapper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>File-like helper to handle the preprocessor output and send it to a parser.
+The parser’s handle_line method is called in the relevant errors.context.</p>
+<dl class="method">
+<dt id="mozpack.packager.PreprocessorOutputWrapper.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>str</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.packager.PreprocessorOutputWrapper.write" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.packager.SimpleManifestSink">
+<em class="property">class </em><code class="descclassname">mozpack.packager.</code><code class="descname">SimpleManifestSink</code><span class="sig-paren">(</span><em>finder</em>, <em>formatter</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.packager.SimpleManifestSink" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Parser sink for “simple” package manifests. Simple package manifests use
+the format described in the PackageManifestParser documentation, but don’t
+support file removals, and require manifests, interfaces and chrome data to
+be explicitely listed.
+Entries starting with bin/ are searched under bin/ in the FileFinder, but
+are packaged without the bin/ prefix.</p>
+<dl class="method">
+<dt id="mozpack.packager.SimpleManifestSink.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>component</em>, <em>pattern</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.packager.SimpleManifestSink.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add files with the given pattern in the given component.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.packager.SimpleManifestSink.close">
+<code class="descname">close</code><span class="sig-paren">(</span><em>auto_root_manifest=True</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.packager.SimpleManifestSink.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add possibly missing bits and push all instructions to the formatter.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="mozpack.packager.SimpleManifestSink.normalize_path">
+<em class="property">static </em><code class="descname">normalize_path</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.packager.SimpleManifestSink.normalize_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove any bin/ prefix.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.packager.SimpleManifestSink.remove">
+<code class="descname">remove</code><span class="sig-paren">(</span><em>component</em>, <em>pattern</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.packager.SimpleManifestSink.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove files with the given pattern in the given component.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.packager.SimplePackager">
+<em class="property">class </em><code class="descclassname">mozpack.packager.</code><code class="descname">SimplePackager</code><span class="sig-paren">(</span><em>formatter</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.packager.SimplePackager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Helper used to translate and buffer instructions from the
+SimpleManifestSink to a formatter. Formatters expect some information to be
+given first that the simple manifest contents can’t guarantee before the
+end of the input.</p>
+<dl class="attribute">
+<dt id="mozpack.packager.SimplePackager.UNPACK_ADDON_RE">
+<code class="descname">UNPACK_ADDON_RE</code><em class="property"> = &lt;_sre.SRE_Pattern object&gt;</em><a class="headerlink" href="#mozpack.packager.SimplePackager.UNPACK_ADDON_RE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.packager.SimplePackager.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>path</em>, <em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.packager.SimplePackager.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add the given BaseFile instance with the given path.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.packager.SimplePackager.close">
+<code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.packager.SimplePackager.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Push all instructions to the formatter.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.packager.SimplePackager.get_bases">
+<code class="descname">get_bases</code><span class="sig-paren">(</span><em>addons=True</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.packager.SimplePackager.get_bases" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return all paths under which root manifests have been found. Root
+manifests are manifests that are included in no other manifest.
+<cite>addons</cite> indicates whether to include addon bases as well.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="mozpack.packager.preprocess">
+<code class="descclassname">mozpack.packager.</code><code class="descname">preprocess</code><span class="sig-paren">(</span><em>input</em>, <em>parser</em>, <em>defines={}</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.packager.preprocess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Preprocess the file-like input with the given defines, and send the
+preprocessed output line by line to the given parser.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozpack.packager.preprocess_manifest">
+<code class="descclassname">mozpack.packager.</code><code class="descname">preprocess_manifest</code><span class="sig-paren">(</span><em>sink</em>, <em>manifest</em>, <em>defines={}</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.packager.preprocess_manifest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Preprocess the given file-like manifest with the given defines, and push
+the parsed information to a sink. See PackageManifestParser documentation
+for more details on the sink.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="mozpack.test.html" class="btn btn-neutral float-right" title="mozpack.test package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="mozpack.chrome.html" class="btn btn-neutral" title="mozpack.chrome package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

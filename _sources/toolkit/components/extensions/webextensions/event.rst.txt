@@ -1,0 +1,49 @@
+Implementing an event
+=====================
+Like a function, an event requires a definition in the schema and
+an implementation in Javascript inside an instance of ExtensionAPI.
+
+Declaring an event in the API schema
+------------------------------------
+The definition for a simple event looks like this:
+
+.. code-block:: json
+
+   [
+     {
+       "namespace": "myapi",
+       "events": [
+         {
+           "name": "onSomething",
+           "description": "Description of the event",
+           "parameters": [
+             {
+               "name": "param1",
+               "description": Description of the first callback parameter",
+               "type": "number"
+             }
+           ]
+         }
+       ]
+     }
+   ]
+
+XXX parameters declares parameters passed to the listener
+
+Implementing an event in the main process
+-----------------------------------------
+XXX explain that everything gets proxied to the child process automatically
+
+XXX explain EventManager, show sample code
+
+Implementing an event in the child process
+------------------------------------------
+XXX not much to say here?
+
+Handling extra arguments to addListener()
+-----------------------------------------
+XXX explain, show some sample code
+
+Handling listener return values
+-------------------------------
+XXX explain, show some sample code

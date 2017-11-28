@@ -1,0 +1,396 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Build System Overview &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../../index.html"/>
+        <link rel="up" title="Build System" href="index.html"/>
+        <link rel="next" title="Supported Configurations" href="supported-configurations.html"/>
+        <link rel="prev" title="Glossary" href="glossary.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Build System</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#important-concepts">Important Concepts</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Build System Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#phase-1-configuration">Phase 1: Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#phase-2-build-backend-preparation-and-the-build-definition">Phase 2: Build Backend Preparation and the Build Definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#phase-3-invokation-of-the-build-backend">Phase 3: Invokation of the Build Backend</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="supported-configurations.html">Supported Configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozconfigs.html">Mozconfig Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild-files.html">moz.build Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild-symbols.html">mozbuild Sandbox Symbols</a></li>
+<li class="toctree-l3"><a class="reference internal" href="files-metadata.html">Files Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pgo.html">Profile Guided Optimization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slow.html">Why the Build System is Slow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="environment-variables.html">Environment Variables Impacting the Build System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="build-targets.html">Build Targets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python.html">Python and the Build System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="test_manifests.html">Test Manifests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozinfo.html">mozinfo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="preprocessor.html">Text Preprocessor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="jar-manifests.html">JAR Manifests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="defining-binaries.html">Defining Binaries for the Build System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="toolchains.html">Creating Toolchain Archives</a></li>
+<li class="toctree-l3"><a class="reference internal" href="locales.html">Localization (l10n)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rust.html">Including Rust Code in Firefox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sparse.html">Sparse Checkouts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#integrated-development-environment-ide">integrated development environment (IDE)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#mozbuild">mozbuild</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Build System</a> &raquo;</li>
+        
+      <li>Build System Overview</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/build/buildsystem/build-overview.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="build-system-overview">
+<span id="build-overview"></span><h1>Build System Overview<a class="headerlink" href="#build-system-overview" title="Permalink to this headline">¶</a></h1>
+<p>This document provides an overview on how the build system works. It is
+targeted at people wanting to learn about internals of the build system.
+It is not meant for persons who casually interact with the build system.
+That being said, knowledge empowers, so consider reading on.</p>
+<p>The build system is composed of many different components working in
+harmony to build the source tree. We begin with a graphic overview.</p>
+digraph build_components {
+   rankdir=&quot;LR&quot;;
+   &quot;configure&quot; -&gt; &quot;config.status&quot; -&gt; &quot;build backend&quot; -&gt; &quot;build output&quot;
+}<div class="section" id="phase-1-configuration">
+<h2>Phase 1: Configuration<a class="headerlink" href="#phase-1-configuration" title="Permalink to this headline">¶</a></h2>
+<p>Phase 1 centers around the <code class="docutils literal"><span class="pre">configure</span></code> script, which is a bash shell script.
+The file is generated from a file called <code class="docutils literal"><span class="pre">configure.in</span></code> which is written in M4
+and processed using Autoconf 2.13 to create the final configure script.
+You don’t have to worry about how you obtain a <code class="docutils literal"><span class="pre">configure</span></code> file: the build
+system does this for you.</p>
+<p>The primary job of <code class="docutils literal"><span class="pre">configure</span></code> is to determine characteristics of the system
+and compiler, apply options passed into it, and validate everything looks OK to
+build. The primary output of the <code class="docutils literal"><span class="pre">configure</span></code> script is an executable file
+in the object directory called <code class="docutils literal"><span class="pre">config.status</span></code>. <code class="docutils literal"><span class="pre">configure</span></code> also produces
+some additional files (like <code class="docutils literal"><span class="pre">autoconf.mk</span></code>). However, the most important file
+in terms of architecture is <code class="docutils literal"><span class="pre">config.status</span></code>.</p>
+<p>The existence of a <code class="docutils literal"><span class="pre">config.status</span></code> file may be familiar to those who have worked
+with Autoconf before. However, Mozilla’s <code class="docutils literal"><span class="pre">config.status</span></code> is different from almost
+any other <code class="docutils literal"><span class="pre">config.status</span></code> you’ve ever seen: it’s written in Python! Instead of
+having our <code class="docutils literal"><span class="pre">configure</span></code> script produce a shell script, we have it generating
+Python.</p>
+<p>Now is as good a time as any to mention that Python is prevalent in our build
+system. If we need to write code for the build system, we do it in Python.
+That’s just how we roll. For more, see <a class="reference internal" href="python.html#python"><span class="std std-ref">Python and the Build System</span></a>.</p>
+<p><code class="docutils literal"><span class="pre">config.status</span></code> contains 2 parts: data structures representing the output of
+<code class="docutils literal"><span class="pre">configure</span></code> and a command-line interface for preparing/configuring/generating
+an appropriate build backend. (A build backend is merely a tool used to build
+the tree - like GNU Make or Tup). These data structures essentially describe
+the current state of the system and what the existing build configuration looks
+like. For example, it defines which compiler to use, how to invoke it, which
+application features are enabled, etc. You are encouraged to open up
+<code class="docutils literal"><span class="pre">config.status</span></code> to have a look for yourself!</p>
+<p>Once we have emitted a <code class="docutils literal"><span class="pre">config.status</span></code> file, we pass into the realm of
+phase 2.</p>
+</div>
+<div class="section" id="phase-2-build-backend-preparation-and-the-build-definition">
+<h2>Phase 2: Build Backend Preparation and the Build Definition<a class="headerlink" href="#phase-2-build-backend-preparation-and-the-build-definition" title="Permalink to this headline">¶</a></h2>
+<p>Once <code class="docutils literal"><span class="pre">configure</span></code> has determined what the current build configuration is,
+we need to apply this to the source tree so we can actually build.</p>
+<p>What essentially happens is the automatically-produced <code class="docutils literal"><span class="pre">config.status</span></code> Python
+script is executed as soon as <code class="docutils literal"><span class="pre">configure</span></code> has generated it. <code class="docutils literal"><span class="pre">config.status</span></code>
+is charged with the task of tell a tool how to build the tree. To do this,
+<code class="docutils literal"><span class="pre">config.status</span></code> must first scan the build system definition.</p>
+<p>The build system definition consists of various <code class="docutils literal"><span class="pre">moz.build</span></code> files in the tree.
+There is roughly one <code class="docutils literal"><span class="pre">moz.build</span></code> file per directory or per set of related directories.
+Each <code class="docutils literal"><span class="pre">moz.build</span></code> files defines how its part of the build config works. For
+example it says <em>I want these C++ files compiled</em> or <em>look for additional
+information in these directories.</em> config.status starts with the <code class="docutils literal"><span class="pre">moz.build</span></code>
+file from the root directory and then descends into referenced <code class="docutils literal"><span class="pre">moz.build</span></code>
+files by following <code class="docutils literal"><span class="pre">DIRS</span></code> variables or similar.</p>
+<p>As the <code class="docutils literal"><span class="pre">moz.build</span></code> files are read, data structures describing the overall
+build system definition are emitted. These data structures are then fed into a
+build backend, which then performs actions, such as writing out files to
+be read by a build tool. e.g. a <code class="docutils literal"><span class="pre">make</span></code> backend will write a
+<code class="docutils literal"><span class="pre">Makefile</span></code>.</p>
+<p>When <code class="docutils literal"><span class="pre">config.status</span></code> runs, you’ll see the following output:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Reticulating</span> <span class="n">splines</span><span class="o">...</span>
+<span class="n">Finished</span> <span class="n">reading</span> <span class="mi">1096</span> <span class="n">moz</span><span class="o">.</span><span class="n">build</span> <span class="n">files</span> <span class="n">into</span> <span class="mi">1276</span> <span class="n">descriptors</span> <span class="ow">in</span> <span class="mf">2.40</span><span class="n">s</span>
+<span class="n">Backend</span> <span class="n">executed</span> <span class="ow">in</span> <span class="mf">2.39</span><span class="n">s</span>
+<span class="mi">2188</span> <span class="n">total</span> <span class="n">backend</span> <span class="n">files</span><span class="o">.</span> <span class="mi">0</span> <span class="n">created</span><span class="p">;</span> <span class="mi">1</span> <span class="n">updated</span><span class="p">;</span> <span class="mi">2187</span> <span class="n">unchanged</span>
+<span class="n">Total</span> <span class="n">wall</span> <span class="n">time</span><span class="p">:</span> <span class="mf">5.03</span><span class="n">s</span><span class="p">;</span> <span class="n">CPU</span> <span class="n">time</span><span class="p">:</span> <span class="mf">3.79</span><span class="n">s</span><span class="p">;</span> <span class="n">Efficiency</span><span class="p">:</span> <span class="mi">75</span><span class="o">%</span>
+</pre></div>
+</div>
+<p>What this is saying is that a total of <em>1096</em> <code class="docutils literal"><span class="pre">moz.build</span></code> files were read.
+Altogether, <em>1276</em> data structures describing the build configuration were
+derived from them.  It took <em>2.40s</em> wall time to just read these files and
+produce the data structures.  The <em>1276</em> data structures were fed into the
+build backend which then determined it had to manage <em>2188</em> files derived
+from those data structures. Most of them already existed and didn’t need
+changed. However, <em>1</em> was updated as a result of the new configuration.
+The whole process took <em>5.03s</em>. Although, only <em>3.79s</em> was in
+CPU time. That likely means we spent roughly <em>25%</em> of the time waiting on
+I/O.</p>
+<p>For more on how <code class="docutils literal"><span class="pre">moz.build</span></code> files work, see <a class="reference internal" href="mozbuild-files.html#mozbuild-files"><span class="std std-ref">moz.build Files</span></a>.</p>
+</div>
+<div class="section" id="phase-3-invokation-of-the-build-backend">
+<h2>Phase 3: Invokation of the Build Backend<a class="headerlink" href="#phase-3-invokation-of-the-build-backend" title="Permalink to this headline">¶</a></h2>
+<p>When most people think of the build system, they think of phase 3. This is
+where we take all the code in the tree and produce Firefox or whatever
+application you are creating. Phase 3 effectively takes whatever was
+generated by phase 2 and runs it. Since the dawn of Mozilla, this has been
+make consuming Makefiles. However, with the transition to moz.build files,
+you may soon see non-Make build backends, such as Tup or Visual Studio.</p>
+<p>When building the tree, most of the time is spent in phase 3. This is when
+header files are installed, C++ files are compiled, files are preprocessed, etc.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="supported-configurations.html" class="btn btn-neutral float-right" title="Supported Configurations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="glossary.html" class="btn btn-neutral" title="Glossary" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

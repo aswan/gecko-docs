@@ -1,0 +1,515 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>“core” ping &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../../../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../../../../../index.html"/>
+        <link rel="up" title="Data documentation" href="index.html"/>
+        <link rel="next" title="“health” ping" href="health-ping.html"/>
+        <link rel="prev" title="Add-ons malware ping" href="addons-malware-ping.html"/> 
+
+  
+  <script src="../../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Telemetry</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../concepts/index.html">Concepts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../collection/index.html">Data collection</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Data documentation</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="common-ping.html">Common ping format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="environment.html">Environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="main-ping.html">“main” ping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deletion-ping.html">“deletion” ping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="crash-ping.html">“crash” ping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="crash-ping.html#version-history">Version History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="backgroundhangmonitor-ping.html">“backgroundhangmonitor” ping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="anonymous-ping.html">“anonymous” ping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="first-shutdown-ping.html">“first-shutdown” ping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="addons-malware-ping.html">Add-ons malware ping</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">“core” ping</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#field-details">Field details</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#other-parameters">Other parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#version-history">Version history</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#android-implementation-notes">Android implementation notes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="health-ping.html">“health” ping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="heartbeat-ping.html">“heartbeat” ping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules-ping.html">“modules” ping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="new-profile-ping.html">“new-profile” ping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sync-ping.html">“sync” ping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="uitour-ping.html">“uitour-tag” ping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="update-ping.html">“update” ping</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../internals/index.html">Internals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fhr/index.html">Firefox Health Report (Obsolete)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Telemetry</a> &raquo;</li>
+        
+          <li><a href="index.html">Data documentation</a> &raquo;</li>
+        
+      <li>“core” ping</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../../_sources/toolkit/components/telemetry/telemetry/data/core-ping.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="core-ping">
+<h1>“core” ping<a class="headerlink" href="#core-ping" title="Permalink to this headline">¶</a></h1>
+<p>This mobile-specific ping is intended to provide the most critical
+data in a concise format, allowing for frequent uploads.</p>
+<p>Since this ping is used to measure retention, it should be sent
+each time the browser is opened.</p>
+<p>Submission will be per the Edge server specification:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">submit</span><span class="o">/</span><span class="n">telemetry</span><span class="o">/</span><span class="n">docId</span><span class="o">/</span><span class="n">docType</span><span class="o">/</span><span class="n">appName</span><span class="o">/</span><span class="n">appVersion</span><span class="o">/</span><span class="n">appUpdateChannel</span><span class="o">/</span><span class="n">appBuildID</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">docId</span></code> is a UUID for deduping</li>
+<li><code class="docutils literal"><span class="pre">docType</span></code> is “core”</li>
+<li><code class="docutils literal"><span class="pre">appName</span></code> is “Fennec”</li>
+<li><code class="docutils literal"><span class="pre">appVersion</span></code> is the version of the application (e.g. “46.0a1”)</li>
+<li><code class="docutils literal"><span class="pre">appUpdateChannel</span></code> is “release”, “beta”, etc.</li>
+<li><code class="docutils literal"><span class="pre">appBuildID</span></code> is the build number</li>
+</ul>
+<p>Note: Counts below (e.g. search &amp; usage times) are “since the last
+ping”, not total for the whole application lifetime.</p>
+<p>Structure:</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;v&quot;</span><span class="o">:</span> <span class="mi">9</span><span class="p">,</span> <span class="c1">// ping format version</span>
+  <span class="s2">&quot;clientId&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span> <span class="c1">// client id, e.g.</span>
+                        <span class="c1">// &quot;c641eacf-c30c-4171-b403-f077724e848a&quot;</span>
+  <span class="s2">&quot;seq&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">positive</span> <span class="nx">integer</span><span class="o">&gt;</span><span class="p">,</span> <span class="c1">// running ping counter, e.g. 3</span>
+  <span class="s2">&quot;locale&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span> <span class="c1">// application locale, e.g. &quot;en-US&quot;</span>
+  <span class="s2">&quot;os&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span> <span class="c1">// OS name.</span>
+  <span class="s2">&quot;osversion&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span> <span class="c1">// OS version.</span>
+  <span class="s2">&quot;device&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span> <span class="c1">// Build.MANUFACTURER + &quot; - &quot; + Build.MODEL</span>
+                      <span class="c1">// where manufacturer is truncated to 12 characters</span>
+                      <span class="c1">// &amp; model is truncated to 19 characters</span>
+  <span class="s2">&quot;arch&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span> <span class="c1">// e.g. &quot;arm&quot;, &quot;x86&quot;</span>
+  <span class="s2">&quot;profileDate&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">pos</span> <span class="nx">integer</span><span class="o">&gt;</span><span class="p">,</span> <span class="c1">// Profile creation date in days since</span>
+                                <span class="c1">// UNIX epoch.</span>
+  <span class="s2">&quot;defaultSearch&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span> <span class="c1">// Identifier of the default search engine,</span>
+                             <span class="c1">// e.g. &quot;yahoo&quot;.</span>
+  <span class="s2">&quot;distributionId&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span> <span class="c1">// Distribution identifier (optional)</span>
+  <span class="s2">&quot;campaignId&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span> <span class="c1">// Adjust&#39;s campaign identifier (optional)</span>
+  <span class="s2">&quot;created&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span> <span class="c1">// date the ping was created</span>
+                       <span class="c1">// in local time, &quot;yyyy-mm-dd&quot;</span>
+  <span class="s2">&quot;tz&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">integer</span><span class="o">&gt;</span><span class="p">,</span> <span class="c1">// timezone offset (in minutes) of the</span>
+                   <span class="c1">// device when the ping was created</span>
+  <span class="s2">&quot;sessions&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">integer</span><span class="o">&gt;</span><span class="p">,</span> <span class="c1">// number of sessions since last upload</span>
+  <span class="s2">&quot;durations&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">integer</span><span class="o">&gt;</span><span class="p">,</span> <span class="c1">// combined duration, in seconds, of all</span>
+                                <span class="c1">// sessions since last upload</span>
+  <span class="s2">&quot;searches&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">object</span><span class="o">&gt;</span><span class="p">,</span> <span class="c1">// Optional, object of search use counts in the</span>
+                        <span class="c1">// format: { &quot;engine.source&quot;: &lt;pos integer&gt; }</span>
+                        <span class="c1">// e.g.: { &quot;yahoo.suggestion&quot;: 3, &quot;other.listitem&quot;: 1 }</span>
+  <span class="s2">&quot;experiments&quot;</span><span class="o">:</span> <span class="p">[</span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span> <span class="cm">/* … */</span><span class="p">],</span> <span class="c1">// Optional, array of identifiers</span>
+                                <span class="c1">// for the active experiments</span>
+  <span class="s2">&quot;flashUsage&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">integer</span><span class="o">&gt;</span><span class="p">,</span> <span class="c1">// number of times flash plugin is played since last upload</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="field-details">
+<h2>Field details<a class="headerlink" href="#field-details" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="device">
+<h3>device<a class="headerlink" href="#device" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal"><span class="pre">device</span></code> field is filled in with information specified by the hardware
+manufacturer. As such, it could be excessively long and use excessive amounts
+of limited user data. To avoid this, we limit the length of the field. We’re
+more likely have collisions for models within a manufacturer (e.g. “Galaxy S5”
+vs. “Galaxy Note”) than we are for shortened manufacturer names so we provide
+more characters for the model than the manufacturer.</p>
+</div>
+<div class="section" id="distributionid">
+<h3>distributionId<a class="headerlink" href="#distributionid" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal"><span class="pre">distributionId</span></code> contains the distribution ID as specified by
+preferences.json for a given distribution. More information on distributions
+can be found <a class="reference external" href="https://wiki.mozilla.org/Mobile/Distribution_Files">here</a>.</p>
+<p>It is optional.</p>
+</div>
+<div class="section" id="campaignid">
+<h3>campaignId<a class="headerlink" href="#campaignid" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal"><span class="pre">campaignId</span></code> contains the campaign identifier like ‘3ly8t0’.
+It’s generated by <a class="reference external" href="https://docs.adjust.com/en/tracker-generation/#segmenting-users-dynamically-with-campaign-structure-parameters">Adjust</a>,
+It can only used to identify a campaign, but can’t target to a specific user.</p>
+<p>It is optional because not everyone has a campaign to begin with.</p>
+</div>
+<div class="section" id="defaultsearch">
+<h3>defaultSearch<a class="headerlink" href="#defaultsearch" title="Permalink to this headline">¶</a></h3>
+<p>On Android, this field may be <code class="docutils literal"><span class="pre">null</span></code>. To get the engine, we rely on
+<code class="docutils literal"><span class="pre">SearchEngineManager#getDefaultEngine</span></code>, which searches in several places in
+order to find the search engine identifier:</p>
+<ul class="simple">
+<li>Shared Preferences</li>
+<li>The distribution (if it exists)</li>
+<li>The localized default engine</li>
+</ul>
+<p>If the identifier could not be retrieved, this field is <code class="docutils literal"><span class="pre">null</span></code>. If the
+identifier is retrieved, we attempt to create an instance of the search
+engine from the search plugins (in order):</p>
+<ul class="simple">
+<li>In the distribution</li>
+<li>From the localized plugins shipped with the browser</li>
+<li>The third-party plugins that are installed in the profile directory</li>
+</ul>
+<p>If the plugins fail to create a search engine instance, this field is also
+<code class="docutils literal"><span class="pre">null</span></code>.</p>
+<p>This field can also be <code class="docutils literal"><span class="pre">null</span></code> when a custom search engine is set as the
+default.</p>
+</div>
+<div class="section" id="sessions-durations">
+<h3>sessions &amp; durations<a class="headerlink" href="#sessions-durations" title="Permalink to this headline">¶</a></h3>
+<p>On Android, a session is the time when Firefox is focused in the foreground.
+<cite>sessions</cite> tracks the number of sessions since the last upload and
+<cite>durations</cite> is the accumulated duration in seconds of all of these
+sessions. Note that showing a dialog (including a Firefox dialog) will
+take Firefox out of focus &amp; end the current session.</p>
+<p>An implementation that records a session when Firefox is completely hidden is
+preferrable (e.g. to avoid the dialog issue above), however, it’s more complex
+to implement and so we chose not to, at least for the initial implementation.</p>
+</div>
+<div class="section" id="profiledate">
+<h3>profileDate<a class="headerlink" href="#profiledate" title="Permalink to this headline">¶</a></h3>
+<p>On Android, this value is created at profile creation time and retrieved or,
+for legacy profiles, taken from the package install time (note: this is not the
+same exact metric as profile creation time but we compromised in favor of ease
+of implementation).</p>
+<p>Additionally on Android, this field may be <code class="docutils literal"><span class="pre">null</span></code> in the unlikely event that
+all of the following events occur:</p>
+<ol class="arabic simple">
+<li>The times.json file does not exist</li>
+<li>The package install date could not be persisted to disk</li>
+</ol>
+<p>The reason we don’t just return the package install time even if the date could
+not be persisted to disk is to ensure the value doesn’t change once we start
+sending it: we only want to send consistent values.</p>
+</div>
+<div class="section" id="searches">
+<h3>searches<a class="headerlink" href="#searches" title="Permalink to this headline">¶</a></h3>
+<p>This describes the search engine usage(count). The format is { “&lt;engine identifier&gt;.&lt;source&gt;”” : count }
+This is optional because the users may have never used the search feature.
+There’s no difference if extended telemetry is enabled (prerelease builds) or not.</p>
+<p>Possible value :</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="p">{</span>
+   <span class="s2">&quot;yahoo.listitem&quot;</span><span class="o">:</span><span class="mi">2</span><span class="p">,</span>
+   <span class="s2">&quot;duckduckgo.listitem&quot;</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span>
+   <span class="s2">&quot;google-nocodes.suggestion&quot;</span><span class="o">:</span><span class="mi">1</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>&lt;engine identifier&gt;</strong>: the identifier of the the search engine. The identifier is collected the way same as desktop.
+we only record the search engine name when:</p>
+<ul class="simple">
+<li>builtin or suggested search engines with an ID (includes partner search engines in various distribution scenarios).
+If it’s not a built-in engine, we show “null” or “other”.</li>
+<li>If the user has “Health Report” and core ping enabled.</li>
+</ul>
+<p><strong>&lt;sources&gt;</strong>: it’s from one of the ‘method’s in UI telemetry. Possible values:</p>
+<ul class="simple">
+<li>actionbar: the user types in the url bar and hits enter to use the default
+search engine</li>
+<li>listitem: the user selects a search engine from the list of secondary search
+engines at the bottom of the screen</li>
+<li>suggestion: the user clicks on a search suggestion or, in the case that
+suggestions are disabled, the row corresponding with the main engine</li>
+</ul>
+</div>
+</div>
+<div class="section" id="other-parameters">
+<h2>Other parameters<a class="headerlink" href="#other-parameters" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="http-date-header">
+<h3>HTTP “Date” header<a class="headerlink" href="#http-date-header" title="Permalink to this headline">¶</a></h3>
+<p>This header is used to track the submission date of the core ping in the format
+specified by
+<a class="reference external" href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.18">rfc 2616 sec 14.18</a>,
+et al (e.g. “Tue, 01 Feb 2011 14:00:00 GMT”).</p>
+</div>
+</div>
+<div class="section" id="version-history">
+<h2>Version history<a class="headerlink" href="#version-history" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>v9: changed <code class="docutils literal"><span class="pre">arch</span></code> to contain device arch rather than the one we built against</li>
+<li>v8: added <code class="docutils literal"><span class="pre">flashUsage</span></code></li>
+<li>v7: added <code class="docutils literal"><span class="pre">sessionCount</span></code> &amp; <code class="docutils literal"><span class="pre">sessionDuration</span></code>  &amp; <code class="docutils literal"><span class="pre">campaignId</span></code></li>
+<li>v6: added <code class="docutils literal"><span class="pre">searches</span></code></li>
+<li>v5: added <code class="docutils literal"><span class="pre">created</span></code> &amp; <code class="docutils literal"><span class="pre">tz</span></code></li>
+<li>v4: <code class="docutils literal"><span class="pre">profileDate</span></code> will return package install time when times.json is not available</li>
+<li>v3: added <code class="docutils literal"><span class="pre">defaultSearch</span></code></li>
+<li>v2: added <code class="docutils literal"><span class="pre">distributionId</span></code></li>
+<li>v1: initial version - shipped in <a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=1205835">Fennec 45</a>.</li>
+</ul>
+<div class="section" id="notes">
+<h3>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">distributionId</span></code> (v2) actually landed after <code class="docutils literal"><span class="pre">profileDate</span></code> (v4) but was
+uplifted to 46, whereas <code class="docutils literal"><span class="pre">profileDate</span></code> landed on 47. The version numbers in
+code were updated to be increasing (bug 1264492) and the version history docs
+rearranged accordingly.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="android-implementation-notes">
+<h2>Android implementation notes<a class="headerlink" href="#android-implementation-notes" title="Permalink to this headline">¶</a></h2>
+<p>On Android, the uploader has a high probability of delivering the complete data
+for a given client but not a 100% probability. This was a conscious decision to
+keep the code simple. The cases where we can lose data:</p>
+<ul class="simple">
+<li>Resetting the field measurements (including incrementing the sequence number)
+and storing a ping for upload are not atomic. Android can kill our process
+for memory pressure in between these distinct operations so we can just lose
+a ping’s worth of data. That sequence number will be missing on the server.</li>
+<li>If we exceed some number of pings on disk that have not yet been uploaded,
+we remove old pings to save storage space. For those pings, we will lose
+their data and their sequence numbers will be missing on the server.</li>
+</ul>
+<p>Note: we never expect to drop data without also dropping a sequence number so
+we are able to determine when data loss occurs.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="health-ping.html" class="btn btn-neutral float-right" title="“health” ping" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="addons-malware-ping.html" class="btn btn-neutral" title="Add-ons malware ping" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,754 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>taskgraph.actions package &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../index.html"/>
+        <link rel="up" title="taskgraph package" href="taskgraph.html"/>
+        <link rel="next" title="taskgraph.cron package" href="taskgraph.cron.html"/>
+        <link rel="prev" title="taskgraph package" href="taskgraph.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="taskgraph.html">taskgraph package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="taskgraph.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">taskgraph.actions package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.actions.add_new_jobs">taskgraph.actions.add_new_jobs module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.actions.add_talos">taskgraph.actions.add_talos module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.actions.backfill">taskgraph.actions.backfill module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.actions.cancel_all">taskgraph.actions.cancel_all module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.actions.mochitest_retrigger">taskgraph.actions.mochitest_retrigger module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.actions.purge_caches">taskgraph.actions.purge_caches module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.actions.registry">taskgraph.actions.registry module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.actions.release_promotion">taskgraph.actions.release_promotion module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.actions.retrigger">taskgraph.actions.retrigger module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.actions.run_missing_tests">taskgraph.actions.run_missing_tests module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.actions.util">taskgraph.actions.util module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.actions">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="taskgraph.cron.html">taskgraph.cron package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="taskgraph.loader.html">taskgraph.loader package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="taskgraph.test.html">taskgraph.test package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="taskgraph.transforms.html">taskgraph.transforms package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="taskgraph.util.html">taskgraph.util package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.config">taskgraph.config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.create">taskgraph.create module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.decision">taskgraph.decision module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.docker">taskgraph.docker module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.files_changed">taskgraph.files_changed module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.filter_tasks">taskgraph.filter_tasks module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.generator">taskgraph.generator module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.graph">taskgraph.graph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.morph">taskgraph.morph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.optimize">taskgraph.optimize module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.parameters">taskgraph.parameters module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.target_tasks">taskgraph.target_tasks module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.task">taskgraph.task module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.taskgraph">taskgraph.taskgraph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.try_option_syntax">taskgraph.try_option_syntax module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="taskgraph.html">taskgraph package</a> &raquo;</li>
+        
+      <li>taskgraph.actions package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/python/taskgraph.actions.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="taskgraph-actions-package">
+<h1>taskgraph.actions package<a class="headerlink" href="#taskgraph-actions-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-taskgraph.actions.add_new_jobs">
+<span id="taskgraph-actions-add-new-jobs-module"></span><h2>taskgraph.actions.add_new_jobs module<a class="headerlink" href="#module-taskgraph.actions.add_new_jobs" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-taskgraph.actions.add_talos">
+<span id="taskgraph-actions-add-talos-module"></span><h2>taskgraph.actions.add_talos module<a class="headerlink" href="#module-taskgraph.actions.add_talos" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-taskgraph.actions.backfill">
+<span id="taskgraph-actions-backfill-module"></span><h2>taskgraph.actions.backfill module<a class="headerlink" href="#module-taskgraph.actions.backfill" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-taskgraph.actions.cancel_all">
+<span id="taskgraph-actions-cancel-all-module"></span><h2>taskgraph.actions.cancel_all module<a class="headerlink" href="#module-taskgraph.actions.cancel_all" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="taskgraph.actions.cancel_all.list_group">
+<code class="descclassname">taskgraph.actions.cancel_all.</code><code class="descname">list_group</code><span class="sig-paren">(</span><em>task_group_id</em>, <em>session</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.actions.cancel_all.list_group" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.actions.mochitest_retrigger">
+<span id="taskgraph-actions-mochitest-retrigger-module"></span><h2>taskgraph.actions.mochitest_retrigger module<a class="headerlink" href="#module-taskgraph.actions.mochitest_retrigger" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-taskgraph.actions.purge_caches">
+<span id="taskgraph-actions-purge-caches-module"></span><h2>taskgraph.actions.purge_caches module<a class="headerlink" href="#module-taskgraph.actions.purge_caches" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-taskgraph.actions.registry">
+<span id="taskgraph-actions-registry-module"></span><h2>taskgraph.actions.registry module<a class="headerlink" href="#module-taskgraph.actions.registry" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="taskgraph.actions.registry.Action">
+<em class="property">class </em><code class="descclassname">taskgraph.actions.registry.</code><code class="descname">Action</code><span class="sig-paren">(</span><em>name</em>, <em>title</em>, <em>description</em>, <em>order</em>, <em>context</em>, <em>schema</em>, <em>task_template_builder</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.actions.registry.Action" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tuple</span></code></p>
+<dl class="attribute">
+<dt id="taskgraph.actions.registry.Action.context">
+<code class="descname">context</code><a class="headerlink" href="#taskgraph.actions.registry.Action.context" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 4</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="taskgraph.actions.registry.Action.description">
+<code class="descname">description</code><a class="headerlink" href="#taskgraph.actions.registry.Action.description" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="taskgraph.actions.registry.Action.name">
+<code class="descname">name</code><a class="headerlink" href="#taskgraph.actions.registry.Action.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="taskgraph.actions.registry.Action.order">
+<code class="descname">order</code><a class="headerlink" href="#taskgraph.actions.registry.Action.order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 3</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="taskgraph.actions.registry.Action.schema">
+<code class="descname">schema</code><a class="headerlink" href="#taskgraph.actions.registry.Action.schema" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 5</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="taskgraph.actions.registry.Action.task_template_builder">
+<code class="descname">task_template_builder</code><a class="headerlink" href="#taskgraph.actions.registry.Action.task_template_builder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 6</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="taskgraph.actions.registry.Action.title">
+<code class="descname">title</code><a class="headerlink" href="#taskgraph.actions.registry.Action.title" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.actions.registry.get_actions">
+<code class="descclassname">taskgraph.actions.registry.</code><code class="descname">get_actions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.actions.registry.get_actions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.actions.registry.get_callbacks">
+<code class="descclassname">taskgraph.actions.registry.</code><code class="descname">get_callbacks</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.actions.registry.get_callbacks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.actions.registry.is_json">
+<code class="descclassname">taskgraph.actions.registry.</code><code class="descname">is_json</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.actions.registry.is_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return <code class="docutils literal"><span class="pre">True</span></code>, if <code class="docutils literal"><span class="pre">data</span></code> is a JSON serializable data structure.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.actions.registry.register_callback_action">
+<code class="descclassname">taskgraph.actions.registry.</code><code class="descname">register_callback_action</code><span class="sig-paren">(</span><em>name</em>, <em>title</em>, <em>symbol</em>, <em>description</em>, <em>order=10000</em>, <em>context=[]</em>, <em>available=&lt;function &lt;lambda&gt;&gt;</em>, <em>schema=None</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.actions.registry.register_callback_action" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register an action callback that can be triggered from supporting
+user interfaces, such as Treeherder.</p>
+<p>This function is to be used as a decorator for a callback that takes
+parameters as follows:</p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">parameters</span></code>:</dt>
+<dd>Decision task parameters, see <code class="docutils literal"><span class="pre">taskgraph.parameters.Parameters</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">input</span></code>:</dt>
+<dd>Input matching specified JSON schema, <code class="docutils literal"><span class="pre">None</span></code> if no <code class="docutils literal"><span class="pre">schema</span></code>
+parameter is given to <code class="docutils literal"><span class="pre">register_callback_action</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">task_group_id</span></code>:</dt>
+<dd>The id of the task-group this was triggered for.</dd>
+<dt><code class="docutils literal"><span class="pre">task_id</span></code> and <cite>task`</cite>:</dt>
+<dd>task identifier and task definition for task the action was triggered
+for, <code class="docutils literal"><span class="pre">None</span></code> if no <code class="docutils literal"><span class="pre">context</span></code> parameters was given to
+<code class="docutils literal"><span class="pre">register_callback_action</span></code>.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> (<em>str</em>) – An identifier for this action, used by UIs to find the action.</li>
+<li><strong>title</strong> (<em>str</em>) – A human readable title for the action to be used as label on a button
+or text on a link for triggering the action.</li>
+<li><strong>symbol</strong> (<em>str</em>) – Treeherder symbol for the action callback, this is the symbol that the
+task calling your callback will be displayed as. This is usually 1-3
+letters abbreviating the action title.</li>
+<li><strong>description</strong> (<em>str</em>) – A human readable description of the action in <strong>markdown</strong>.
+This will be display as tooltip and in dialog window when the action
+is triggered. This is a good place to describe how to use the action.</li>
+<li><strong>order</strong> (<em>int</em>) – Order of the action in menus, this is relative to the <code class="docutils literal"><span class="pre">order</span></code> of
+other actions declared.</li>
+<li><strong>context</strong> (<em>list of dict</em>) – <p>List of tag-sets specifying which tasks the action is can take as input.
+If no tag-sets is specified as input the action is related to the
+entire task-group, and won’t be triggered with a given task.</p>
+<p>Otherwise, if <code class="docutils literal"><span class="pre">context</span> <span class="pre">=</span> <span class="pre">[{'k':</span> <span class="pre">'b',</span> <span class="pre">'p':</span> <span class="pre">'l'},</span> <span class="pre">{'k':</span> <span class="pre">'t'}]</span></code> will only
+be displayed in the context menu for tasks that has
+<code class="docutils literal"><span class="pre">task.tags.k</span> <span class="pre">==</span> <span class="pre">'b'</span> <span class="pre">&amp;&amp;</span> <span class="pre">task.tags.p</span> <span class="pre">=</span> <span class="pre">'l'</span></code> or <code class="docutils literal"><span class="pre">task.tags.k</span> <span class="pre">=</span> <span class="pre">'t'</span></code>.
+Esentially, this allows filtering on <code class="docutils literal"><span class="pre">task.tags</span></code>.</p>
+</li>
+<li><strong>available</strong> (<em>function</em>) – An optional function that given decision parameters decides if the
+action is available. Defaults to a function that always returns <code class="docutils literal"><span class="pre">True</span></code>.</li>
+<li><strong>schema</strong> (<em>dict</em>) – JSON schema specifying input accepted by the action.
+This is optional and can be left <code class="docutils literal"><span class="pre">null</span></code> if no input is taken.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">To be used as decorator for the callback function.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">function</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.actions.registry.register_task_action">
+<code class="descclassname">taskgraph.actions.registry.</code><code class="descname">register_task_action</code><span class="sig-paren">(</span><em>name</em>, <em>title</em>, <em>description</em>, <em>order</em>, <em>context</em>, <em>schema=None</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.actions.registry.register_task_action" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register an action task that can be triggered from supporting
+user interfaces, such as Treeherder.</p>
+<p>Most actions will create intermediate action tasks that call back into
+in-tree python code. To write such an action please use
+<a class="reference internal" href="#taskgraph.actions.registry.register_callback_action" title="taskgraph.actions.registry.register_callback_action"><code class="xref py py-func docutils literal"><span class="pre">register_callback_action()</span></code></a>.</p>
+<p>This function is to be used a decorator for a function that returns a task
+template, see <span class="xref std std-doc">specification</span> for details on the
+templating features. The decorated function will be given decision task
+parameters, which can be embedded in the task template that is returned.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> (<em>str</em>) – An identifier for this action, used by UIs to find the action.</li>
+<li><strong>title</strong> (<em>str</em>) – A human readable title for the action to be used as label on a button
+or text on a link for triggering the action.</li>
+<li><strong>description</strong> (<em>str</em>) – A human readable description of the action in <strong>markdown</strong>.
+This will be display as tooltip and in dialog window when the action
+is triggered. This is a good place to describe how to use the action.</li>
+<li><strong>order</strong> (<em>int</em>) – Order of the action in menus, this is relative to the <code class="docutils literal"><span class="pre">order</span></code> of
+other actions declared.</li>
+<li><strong>context</strong> (<em>list of dict</em>) – <p>List of tag-sets specifying which tasks the action is can take as input.
+If no tag-sets is specified as input the action is related to the
+entire task-group, and won’t be triggered with a given task.</p>
+<p>Otherwise, if <code class="docutils literal"><span class="pre">context</span> <span class="pre">=</span> <span class="pre">[{'k':</span> <span class="pre">'b',</span> <span class="pre">'p':</span> <span class="pre">'l'},</span> <span class="pre">{'k':</span> <span class="pre">'t'}]</span></code> will only
+be displayed in the context menu for tasks that has
+<code class="docutils literal"><span class="pre">task.tags.k</span> <span class="pre">==</span> <span class="pre">'b'</span> <span class="pre">&amp;&amp;</span> <span class="pre">task.tags.p</span> <span class="pre">=</span> <span class="pre">'l'</span></code> or <code class="docutils literal"><span class="pre">task.tags.k</span> <span class="pre">=</span> <span class="pre">'t'</span></code>.
+Esentially, this allows filtering on <code class="docutils literal"><span class="pre">task.tags</span></code>.</p>
+</li>
+<li><strong>schema</strong> (<em>dict</em>) – JSON schema specifying input accepted by the action.
+This is optional and can be left <code class="docutils literal"><span class="pre">null</span></code> if no input is taken.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">To be used as decorator for the function that builds the task template.
+The decorated function will be given decision parameters and may return
+<code class="docutils literal"><span class="pre">None</span></code> instead of a task template, if the action is disabled.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">function</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.actions.registry.render_actions_json">
+<code class="descclassname">taskgraph.actions.registry.</code><code class="descname">render_actions_json</code><span class="sig-paren">(</span><em>parameters</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.actions.registry.render_actions_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Render JSON object for the <code class="docutils literal"><span class="pre">public/actions.json</span></code> artifact.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>parameters</strong> (<a class="reference internal" href="taskgraph.html#taskgraph.parameters.Parameters" title="taskgraph.parameters.Parameters"><em>taskgraph.parameters.Parameters</em></a>) – Decision task parameters.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">JSON object representation of the <code class="docutils literal"><span class="pre">public/actions.json</span></code> artifact.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.actions.registry.trigger_action_callback">
+<code class="descclassname">taskgraph.actions.registry.</code><code class="descname">trigger_action_callback</code><span class="sig-paren">(</span><em>task_group_id</em>, <em>task_id</em>, <em>task</em>, <em>input</em>, <em>callback</em>, <em>parameters</em>, <em>test=False</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.actions.registry.trigger_action_callback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trigger action callback with the given inputs. If <cite>test</cite> is true, then run
+the action callback in testing mode, without actually creating tasks.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.actions.release_promotion">
+<span id="taskgraph-actions-release-promotion-module"></span><h2>taskgraph.actions.release_promotion module<a class="headerlink" href="#module-taskgraph.actions.release_promotion" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="taskgraph.actions.release_promotion.is_release_promotion_available">
+<code class="descclassname">taskgraph.actions.release_promotion.</code><code class="descname">is_release_promotion_available</code><span class="sig-paren">(</span><em>parameters</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.actions.release_promotion.is_release_promotion_available" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.actions.retrigger">
+<span id="taskgraph-actions-retrigger-module"></span><h2>taskgraph.actions.retrigger module<a class="headerlink" href="#module-taskgraph.actions.retrigger" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-taskgraph.actions.run_missing_tests">
+<span id="taskgraph-actions-run-missing-tests-module"></span><h2>taskgraph.actions.run_missing_tests module<a class="headerlink" href="#module-taskgraph.actions.run_missing_tests" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-taskgraph.actions.util">
+<span id="taskgraph-actions-util-module"></span><h2>taskgraph.actions.util module<a class="headerlink" href="#module-taskgraph.actions.util" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="taskgraph.actions.util.create_task_from_def">
+<code class="descclassname">taskgraph.actions.util.</code><code class="descname">create_task_from_def</code><span class="sig-paren">(</span><em>task_id</em>, <em>task_def</em>, <em>level</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.actions.util.create_task_from_def" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new task from a definition rather than from a label
+that is already in the full-task-graph. The task definition will
+have {relative-datestamp’: ‘..’} rendered just like in a decision task.
+Use this for entirely new tasks or ones that change internals of the task.
+It is useful if you want to “edit” the full_task_graph and then hand
+it to this function. No dependencies will be scheduled. You must handle
+this yourself. Seeing how create_tasks handles it might prove helpful.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.actions.util.create_tasks">
+<code class="descclassname">taskgraph.actions.util.</code><code class="descname">create_tasks</code><span class="sig-paren">(</span><em>to_run</em>, <em>full_task_graph</em>, <em>label_to_taskid</em>, <em>params</em>, <em>decision_task_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.actions.util.create_tasks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create new tasks.  The task definition will have {relative-datestamp’:
+‘..’} rendered just like in a decision task.  Action callbacks should use
+this function to create new tasks,
+allowing easy debugging with <cite>mach taskgraph action-callback –test</cite>.
+This builds up all required tasks to run in order to run the tasks requested.</p>
+<p>If you wish to create the tasks in a new group, leave out decision_task_id.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.actions.util.fetch_graph_and_labels">
+<code class="descclassname">taskgraph.actions.util.</code><code class="descname">fetch_graph_and_labels</code><span class="sig-paren">(</span><em>parameters</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.actions.util.fetch_graph_and_labels" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.actions.util.find_decision_task">
+<code class="descclassname">taskgraph.actions.util.</code><code class="descname">find_decision_task</code><span class="sig-paren">(</span><em>parameters</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.actions.util.find_decision_task" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given the parameters for this action, find the taskId of the decision
+task</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.actions.util.find_existing_tasks_from_previous_kinds">
+<code class="descclassname">taskgraph.actions.util.</code><code class="descname">find_existing_tasks_from_previous_kinds</code><span class="sig-paren">(</span><em>full_task_graph</em>, <em>previous_graph_ids</em>, <em>previous_graph_kinds</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.actions.util.find_existing_tasks_from_previous_kinds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a list of previous decision/action taskIds and kinds to replace
+from the previous graphs, return a dictionary of labels-to-taskids to use
+as <code class="docutils literal"><span class="pre">existing_tasks</span></code> in the optimization step.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.actions.util.find_hg_revision_pushlog_id">
+<code class="descclassname">taskgraph.actions.util.</code><code class="descname">find_hg_revision_pushlog_id</code><span class="sig-paren">(</span><em>parameters</em>, <em>revision</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.actions.util.find_hg_revision_pushlog_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given the parameters for this action and a revision, find the
+pushlog_id of the revision.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.actions.util.update_parent">
+<code class="descclassname">taskgraph.actions.util.</code><code class="descname">update_parent</code><span class="sig-paren">(</span><em>task</em>, <em>graph</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.actions.util.update_parent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.actions">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-taskgraph.actions" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="taskgraph.actions.register_task_action">
+<code class="descclassname">taskgraph.actions.</code><code class="descname">register_task_action</code><span class="sig-paren">(</span><em>name</em>, <em>title</em>, <em>description</em>, <em>order</em>, <em>context</em>, <em>schema=None</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.actions.register_task_action" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register an action task that can be triggered from supporting
+user interfaces, such as Treeherder.</p>
+<p>Most actions will create intermediate action tasks that call back into
+in-tree python code. To write such an action please use
+<a class="reference internal" href="#taskgraph.actions.register_callback_action" title="taskgraph.actions.register_callback_action"><code class="xref py py-func docutils literal"><span class="pre">register_callback_action()</span></code></a>.</p>
+<p>This function is to be used a decorator for a function that returns a task
+template, see <span class="xref std std-doc">specification</span> for details on the
+templating features. The decorated function will be given decision task
+parameters, which can be embedded in the task template that is returned.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> (<em>str</em>) – An identifier for this action, used by UIs to find the action.</li>
+<li><strong>title</strong> (<em>str</em>) – A human readable title for the action to be used as label on a button
+or text on a link for triggering the action.</li>
+<li><strong>description</strong> (<em>str</em>) – A human readable description of the action in <strong>markdown</strong>.
+This will be display as tooltip and in dialog window when the action
+is triggered. This is a good place to describe how to use the action.</li>
+<li><strong>order</strong> (<em>int</em>) – Order of the action in menus, this is relative to the <code class="docutils literal"><span class="pre">order</span></code> of
+other actions declared.</li>
+<li><strong>context</strong> (<em>list of dict</em>) – <p>List of tag-sets specifying which tasks the action is can take as input.
+If no tag-sets is specified as input the action is related to the
+entire task-group, and won’t be triggered with a given task.</p>
+<p>Otherwise, if <code class="docutils literal"><span class="pre">context</span> <span class="pre">=</span> <span class="pre">[{'k':</span> <span class="pre">'b',</span> <span class="pre">'p':</span> <span class="pre">'l'},</span> <span class="pre">{'k':</span> <span class="pre">'t'}]</span></code> will only
+be displayed in the context menu for tasks that has
+<code class="docutils literal"><span class="pre">task.tags.k</span> <span class="pre">==</span> <span class="pre">'b'</span> <span class="pre">&amp;&amp;</span> <span class="pre">task.tags.p</span> <span class="pre">=</span> <span class="pre">'l'</span></code> or <code class="docutils literal"><span class="pre">task.tags.k</span> <span class="pre">=</span> <span class="pre">'t'</span></code>.
+Esentially, this allows filtering on <code class="docutils literal"><span class="pre">task.tags</span></code>.</p>
+</li>
+<li><strong>schema</strong> (<em>dict</em>) – JSON schema specifying input accepted by the action.
+This is optional and can be left <code class="docutils literal"><span class="pre">null</span></code> if no input is taken.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">To be used as decorator for the function that builds the task template.
+The decorated function will be given decision parameters and may return
+<code class="docutils literal"><span class="pre">None</span></code> instead of a task template, if the action is disabled.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">function</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.actions.register_callback_action">
+<code class="descclassname">taskgraph.actions.</code><code class="descname">register_callback_action</code><span class="sig-paren">(</span><em>name</em>, <em>title</em>, <em>symbol</em>, <em>description</em>, <em>order=10000</em>, <em>context=[]</em>, <em>available=&lt;function &lt;lambda&gt;&gt;</em>, <em>schema=None</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.actions.register_callback_action" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register an action callback that can be triggered from supporting
+user interfaces, such as Treeherder.</p>
+<p>This function is to be used as a decorator for a callback that takes
+parameters as follows:</p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">parameters</span></code>:</dt>
+<dd>Decision task parameters, see <code class="docutils literal"><span class="pre">taskgraph.parameters.Parameters</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">input</span></code>:</dt>
+<dd>Input matching specified JSON schema, <code class="docutils literal"><span class="pre">None</span></code> if no <code class="docutils literal"><span class="pre">schema</span></code>
+parameter is given to <code class="docutils literal"><span class="pre">register_callback_action</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">task_group_id</span></code>:</dt>
+<dd>The id of the task-group this was triggered for.</dd>
+<dt><code class="docutils literal"><span class="pre">task_id</span></code> and <cite>task`</cite>:</dt>
+<dd>task identifier and task definition for task the action was triggered
+for, <code class="docutils literal"><span class="pre">None</span></code> if no <code class="docutils literal"><span class="pre">context</span></code> parameters was given to
+<code class="docutils literal"><span class="pre">register_callback_action</span></code>.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> (<em>str</em>) – An identifier for this action, used by UIs to find the action.</li>
+<li><strong>title</strong> (<em>str</em>) – A human readable title for the action to be used as label on a button
+or text on a link for triggering the action.</li>
+<li><strong>symbol</strong> (<em>str</em>) – Treeherder symbol for the action callback, this is the symbol that the
+task calling your callback will be displayed as. This is usually 1-3
+letters abbreviating the action title.</li>
+<li><strong>description</strong> (<em>str</em>) – A human readable description of the action in <strong>markdown</strong>.
+This will be display as tooltip and in dialog window when the action
+is triggered. This is a good place to describe how to use the action.</li>
+<li><strong>order</strong> (<em>int</em>) – Order of the action in menus, this is relative to the <code class="docutils literal"><span class="pre">order</span></code> of
+other actions declared.</li>
+<li><strong>context</strong> (<em>list of dict</em>) – <p>List of tag-sets specifying which tasks the action is can take as input.
+If no tag-sets is specified as input the action is related to the
+entire task-group, and won’t be triggered with a given task.</p>
+<p>Otherwise, if <code class="docutils literal"><span class="pre">context</span> <span class="pre">=</span> <span class="pre">[{'k':</span> <span class="pre">'b',</span> <span class="pre">'p':</span> <span class="pre">'l'},</span> <span class="pre">{'k':</span> <span class="pre">'t'}]</span></code> will only
+be displayed in the context menu for tasks that has
+<code class="docutils literal"><span class="pre">task.tags.k</span> <span class="pre">==</span> <span class="pre">'b'</span> <span class="pre">&amp;&amp;</span> <span class="pre">task.tags.p</span> <span class="pre">=</span> <span class="pre">'l'</span></code> or <code class="docutils literal"><span class="pre">task.tags.k</span> <span class="pre">=</span> <span class="pre">'t'</span></code>.
+Esentially, this allows filtering on <code class="docutils literal"><span class="pre">task.tags</span></code>.</p>
+</li>
+<li><strong>available</strong> (<em>function</em>) – An optional function that given decision parameters decides if the
+action is available. Defaults to a function that always returns <code class="docutils literal"><span class="pre">True</span></code>.</li>
+<li><strong>schema</strong> (<em>dict</em>) – JSON schema specifying input accepted by the action.
+This is optional and can be left <code class="docutils literal"><span class="pre">null</span></code> if no input is taken.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">To be used as decorator for the callback function.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">function</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.actions.render_actions_json">
+<code class="descclassname">taskgraph.actions.</code><code class="descname">render_actions_json</code><span class="sig-paren">(</span><em>parameters</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.actions.render_actions_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Render JSON object for the <code class="docutils literal"><span class="pre">public/actions.json</span></code> artifact.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>parameters</strong> (<a class="reference internal" href="taskgraph.html#taskgraph.parameters.Parameters" title="taskgraph.parameters.Parameters"><em>taskgraph.parameters.Parameters</em></a>) – Decision task parameters.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">JSON object representation of the <code class="docutils literal"><span class="pre">public/actions.json</span></code> artifact.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.actions.trigger_action_callback">
+<code class="descclassname">taskgraph.actions.</code><code class="descname">trigger_action_callback</code><span class="sig-paren">(</span><em>task_group_id</em>, <em>task_id</em>, <em>task</em>, <em>input</em>, <em>callback</em>, <em>parameters</em>, <em>test=False</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.actions.trigger_action_callback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trigger action callback with the given inputs. If <cite>test</cite> is true, then run
+the action callback in testing mode, without actually creating tasks.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="taskgraph.cron.html" class="btn btn-neutral float-right" title="taskgraph.cron package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="taskgraph.html" class="btn btn-neutral" title="taskgraph package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

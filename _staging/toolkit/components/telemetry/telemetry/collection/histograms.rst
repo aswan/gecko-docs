@@ -1,0 +1,1 @@
+/Users/andrewswan/src/mozilla-unified/toolkit/components/telemetry/docs/collection/histograms.rst

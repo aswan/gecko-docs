@@ -1,0 +1,381 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Mach commands &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../../index.html"/>
+        <link rel="up" title="TaskCluster Task-Graph Generation" href="index.html"/>
+        <link rel="next" title="Loading Tasks" href="loading.html"/>
+        <link rel="prev" title="Overview" href="taskgraph.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mach/index.html">mach</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">TaskCluster Task-Graph Generation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html">Overview</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Mach commands</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#taskgraph-json-format">Taskgraph JSON Format</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="loading.html">Loading Tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transforms.html">Transforms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optimization.html">Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker-images.html">Docker Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cron.html">Periodic Taskgraphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="try.html">Try</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions.html">Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-tos.html">How Tos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html">Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">TaskCluster Task-Graph Generation</a> &raquo;</li>
+        
+      <li>Mach commands</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/taskcluster/taskcluster/mach.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mach-commands">
+<h1>Mach commands<a class="headerlink" href="#mach-commands" title="Permalink to this headline">¶</a></h1>
+<p>A number of mach subcommands are available aside from <code class="docutils literal"><span class="pre">mach</span> <span class="pre">taskgraph</span>
+<span class="pre">decision</span></code> to make this complex system more accessible to those trying to
+understand or modify it.  They allow you to run portions of the
+graph-generation process and output the results.</p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">mach</span> <span class="pre">taskgraph</span> <span class="pre">tasks</span></code></dt>
+<dd>Get the full task set</dd>
+<dt><code class="docutils literal"><span class="pre">mach</span> <span class="pre">taskgraph</span> <span class="pre">full</span></code></dt>
+<dd>Get the full task graph</dd>
+<dt><code class="docutils literal"><span class="pre">mach</span> <span class="pre">taskgraph</span> <span class="pre">target</span></code></dt>
+<dd>Get the target task set</dd>
+<dt><code class="docutils literal"><span class="pre">mach</span> <span class="pre">taskgraph</span> <span class="pre">target-graph</span></code></dt>
+<dd>Get the target task graph</dd>
+<dt><code class="docutils literal"><span class="pre">mach</span> <span class="pre">taskgraph</span> <span class="pre">optimized</span></code></dt>
+<dd>Get the optimized task graph</dd>
+<dt><code class="docutils literal"><span class="pre">mach</span> <span class="pre">taskgraph</span> <span class="pre">morphed</span></code></dt>
+<dd>Get the morhped task graph</dd>
+</dl>
+<p>See <a class="reference internal" href="how-tos.html"><span class="doc">How Tos</span></a> for further practical tips on debugging task-graph mechanics
+locally.</p>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<p>Each of these commands takes an optional <code class="docutils literal"><span class="pre">--parameters</span></code> argument giving a file
+with parameters to guide the graph generation.  The decision task helpfully
+produces such a file on every run, and that is generally the easiest way to get
+a parameter file.  The parameter keys and values are described in
+<a class="reference internal" href="parameters.html"><span class="doc">Parameters</span></a>; using that information, you may modify an existing
+<code class="docutils literal"><span class="pre">parameters.yml</span></code> or create your own.  The <code class="docutils literal"><span class="pre">--parameters</span></code> option can also
+take the following forms:</p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">project=&lt;project&gt;</span></code></dt>
+<dd>Fetch the parameters from the latest push on that project</dd>
+<dt><code class="docutils literal"><span class="pre">task-id=&lt;task-id&gt;</span></code></dt>
+<dd>Fetch the parameters from the given decision task id</dd>
+</dl>
+<p>If not specified, parameters will default to <code class="docutils literal"><span class="pre">project=mozilla-central</span></code>.</p>
+</div>
+<div class="section" id="taskgraph-json-format">
+<h2>Taskgraph JSON Format<a class="headerlink" href="#taskgraph-json-format" title="Permalink to this headline">¶</a></h2>
+<p>By default, the above commands will only output a list of tasks. Use <cite>-J</cite> flag
+to output full task definitions. For example:</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>$ ./mach taskgraph optimized -J
+</pre></div>
+</div>
+<p>Task graphs – both the graph artifacts produced by the decision task and those
+output by the <code class="docutils literal"><span class="pre">--json</span></code> option to the <code class="docutils literal"><span class="pre">mach</span> <span class="pre">taskgraph</span></code> commands – are JSON
+objects, keyed by label, or for optimized task graphs, by taskId.  For
+convenience, the decision task also writes out <code class="docutils literal"><span class="pre">label-to-taskid.json</span></code>
+containing a mapping from label to taskId.  Each task in the graph is
+represented as a JSON object.</p>
+<p>Each task has the following properties:</p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">kind</span></code></dt>
+<dd>The name of this task’s kind</dd>
+<dt><code class="docutils literal"><span class="pre">task_id</span></code></dt>
+<dd>The task’s taskId (only for optimized task graphs)</dd>
+<dt><code class="docutils literal"><span class="pre">label</span></code></dt>
+<dd>The task’s label</dd>
+<dt><code class="docutils literal"><span class="pre">attributes</span></code></dt>
+<dd>The task’s attributes</dd>
+<dt><code class="docutils literal"><span class="pre">dependencies</span></code></dt>
+<dd>The task’s in-graph dependencies, represented as an object mapping
+dependency name to label (or to taskId for optimized task graphs)</dd>
+<dt><code class="docutils literal"><span class="pre">optimizations</span></code></dt>
+<dd>The optimizations to be applied to this task</dd>
+<dt><code class="docutils literal"><span class="pre">task</span></code></dt>
+<dd>The task’s TaskCluster task definition.</dd>
+</dl>
+<p>The results from each command are in the same format, but with some differences
+in the content:</p>
+<ul class="simple">
+<li>The <code class="docutils literal"><span class="pre">tasks</span></code> and <code class="docutils literal"><span class="pre">target</span></code> subcommands both return graphs with no edges.
+That is, just collections of tasks without any dependencies indicated.</li>
+<li>The <code class="docutils literal"><span class="pre">optimized</span></code> subcommand returns tasks that have been assigned taskIds.
+The dependencies array, too, contains taskIds instead of labels, with
+dependencies on optimized tasks omitted.  However, the <code class="docutils literal"><span class="pre">task.dependencies</span></code>
+array is populated with the full list of dependency taskIds.  All task
+references are resolved in the optimized graph.</li>
+</ul>
+<p>The output of the <code class="docutils literal"><span class="pre">mach</span> <span class="pre">taskgraph</span></code> commands are suitable for processing with
+the <a class="reference external" href="https://stedolan.github.io/jq/">jq</a> utility.  For example, to extract all
+tasks’ labels and their dependencies:</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>jq <span class="s1">&#39;to_entries | map({label: .value.label, dependencies: .value.dependencies})&#39;</span>
+</pre></div>
+</div>
+<p>An alternate way of searching the output of <code class="docutils literal"><span class="pre">mach</span> <span class="pre">taskgraph</span></code> is
+<a class="reference external" href="https://github.com/tomnomnom/gron">gron</a>, which converts json into a format
+that’s easily searched with <code class="docutils literal"><span class="pre">grep</span></code></p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>gron taskgraph.json <span class="p">|</span> grep -E <span class="s1">&#39;test.*machine.platform = &quot;linux64&quot;;&#39;</span>
+./mach taskgraph --json <span class="p">|</span> gron <span class="p">|</span> grep ...
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="loading.html" class="btn btn-neutral float-right" title="Loading Tasks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="taskgraph.html" class="btn btn-neutral" title="Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

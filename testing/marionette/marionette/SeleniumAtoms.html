@@ -1,0 +1,352 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Selenium Atoms &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Marionette" href="index.html"/>
+        <link rel="next" title="Crash Manager" href="../../../toolkit/components/crashes/crash-manager/index.html"/>
+        <link rel="prev" title="Mn Python tests" href="PythonTests.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Marionette</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#for-users">For users</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#for-marionette-developers">For marionette developers</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="NewContributors.html">New contributors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Debugging.html">Debugging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PythonTests.html">Mn Python tests</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Selenium Atoms</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#update-required-selenium-atoms">Update required Selenium Atoms</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Marionette</a> &raquo;</li>
+        
+      <li>Selenium Atoms</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/testing/marionette/marionette/SeleniumAtoms.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="selenium-atoms">
+<span id="selenium-atoms"></span><h1>Selenium Atoms<a class="headerlink" href="#selenium-atoms" title="Permalink to this headline">¶</a></h1>
+<p>Marionette uses a small list of <a class="reference external" href="https://github.com/SeleniumHQ/selenium/tree/master/javascript/webdriver/atoms">Selenium atoms</a> to interact with web elements.
+Initially those have been added to ensure a better reliablity due to a wider usage
+inside the Selenium project. But by adding full support for the <a class="reference external" href="https://w3c.github.io/webdriver/webdriver-spec.html">WebDriver
+specification</a> they will be removed step by step.</p>
+<p>Currently the following atoms are in use:</p>
+<ul class="simple">
+<li>clearElement</li>
+<li>getText</li>
+<li>isDisplayed</li>
+<li>isEnabled</li>
+<li>isSelected</li>
+</ul>
+<p>To use one of those atoms Javascript modules will have to import <a class="reference external" href="../atom.js">atom.js</a>.</p>
+<div class="section" id="update-required-selenium-atoms">
+<span id="update-required-selenium-atoms"></span><h2>Update required Selenium Atoms<a class="headerlink" href="#update-required-selenium-atoms" title="Permalink to this headline">¶</a></h2>
+<p>In regular intervals the atoms, which are still in use, have to be updated.
+Therefore they have to be exported from the Selenium repository first, and then
+updated in <a class="reference external" href="../atom.js">atom.js</a>.</p>
+<div class="section" id="export-selenium-atoms">
+<span id="export-selenium-atoms"></span><h3>Export Selenium Atoms<a class="headerlink" href="#export-selenium-atoms" title="Permalink to this headline">¶</a></h3>
+<p>The canonical GitHub repository for Selenium is</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">SeleniumHQ</span><span class="o">/</span><span class="n">selenium</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<p>so make sure to have a local copy of it. For the cloning process it is
+recommended to specify the <code class="docutils literal"><span class="pre">--depth=1</span></code> argument, so only the last changeset is
+getting downloaded (which itself will already be more than 100 MB). Once the
+clone is ready the export of the atoms can be triggered by running the following
+commands:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">cd</span> <span class="n">selenium</span>
+<span class="o">%</span> <span class="o">./</span><span class="n">go</span>
+<span class="o">%</span> <span class="n">python</span> <span class="n">buck</span><span class="o">-</span><span class="n">out</span><span class="o">/</span><span class="n">crazy</span><span class="o">-</span><span class="n">fun</span><span class="o">/%</span><span class="n">changeset</span><span class="o">%/</span><span class="n">buck</span><span class="o">.</span><span class="n">pex</span> <span class="n">build</span> <span class="o">--</span><span class="n">show</span><span class="o">-</span><span class="n">output</span> <span class="o">%</span><span class="n">atom</span><span class="o">%</span>
+</pre></div>
+</div>
+<p>Hereby <code class="docutils literal"><span class="pre">%changeset%</span></code> corresponds to the currently used version of buck, and
+<code class="docutils literal"><span class="pre">%atom%</span></code> to the atom to export. The following targets for exporting are available:</p>
+<ul class="simple">
+<li>//javascript/webdriver/atoms:clear-element-firefox</li>
+<li>//javascript/webdriver/atoms:get-text-firefox</li>
+<li>//javascript/webdriver/atoms:is-displayed-firefox</li>
+<li>//javascript/webdriver/atoms:is-enabled-firefox</li>
+<li>//javascript/webdriver/atoms:is-selected-firefox</li>
+</ul>
+<p>For each of the exported atoms a file can now be found in the folder
+<code class="docutils literal"><span class="pre">buck-out/gen/javascript/webdriver/atoms/</span></code>. They contain all the code including
+dependencies for the atom wrapped into a single function.</p>
+</div>
+<div class="section" id="update-atom-js">
+<span id="update-atom-js"></span><h3>Update atom.js<a class="headerlink" href="#update-atom-js" title="Permalink to this headline">¶</a></h3>
+<p>To update the atoms for Marionette the <code class="docutils literal"><span class="pre">atoms.js</span></code> file has to be edited. For
+each atom to be updated the steps as layed out below have to be performed:</p>
+<ol class="simple">
+<li>Open the Javascript file of the exported atom. See above for its location.</li>
+<li>Remove the contained license header, which can be found somewhere in the
+middle of the file.</li>
+<li>Update the parameters of the wrapper function (at the very top) so that those
+are equal with the used parameters in <code class="docutils literal"><span class="pre">atom.js</span></code>.</li>
+<li>Copy the whole content of the file, and replace the existing code for the atom
+in <code class="docutils literal"><span class="pre">atom.js</span></code>.</li>
+</ol>
+</div>
+<div class="section" id="test-the-changes">
+<span id="test-the-changes"></span><h3>Test the changes<a class="headerlink" href="#test-the-changes" title="Permalink to this headline">¶</a></h3>
+<p>To ensure that the update of the atoms doesn't cause a regression a try build
+should be run including Marionette unit tests, Firefox ui tests, and all the
+web-platform-tests.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../../toolkit/components/crashes/crash-manager/index.html" class="btn btn-neutral float-right" title="Crash Manager" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="PythonTests.html" class="btn btn-neutral" title="Mn Python tests" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

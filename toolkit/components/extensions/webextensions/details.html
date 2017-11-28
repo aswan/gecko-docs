@@ -1,0 +1,458 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>API Implementation Details &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../../../../index.html"/>
+        <link rel="up" title="WebExtensions API Development" href="index.html"/>
+        <link rel="next" title="WebExtensions Javascript Component Reference" href="reference.html"/>
+        <link rel="prev" title="API Implementation Basics" href="basics.html"/> 
+
+  
+  <script src="../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../python/mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">WebExtensions API Development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="background.html">Background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.html">API Implementation Basics</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">API Implementation Details</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#api-schemas">API Schemas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#implementing-a-property">Implementing a property</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#describing-constrained-values">Describing constrained values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#implementing-a-function">Implementing a function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#implementing-an-event">Implementing an event</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#implementing-a-manifest-key">Implementing a manifest key</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html">WebExtensions Javascript Component Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utilities.html">Utilities for implementing APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../python/mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../python/mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../python/mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../python/mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../python/mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../python/mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../python/taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">WebExtensions API Development</a> &raquo;</li>
+        
+      <li>API Implementation Details</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../_sources/toolkit/components/extensions/webextensions/details.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="api-implementation-details">
+<h1><a class="toc-backref" href="#id1">API Implementation Details</a><a class="headerlink" href="#api-implementation-details" title="Permalink to this headline">¶</a></h1>
+<p>This section explains in detail how to implement specific features in
+a WebExtension API:</p>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#api-implementation-details" id="id1">API Implementation Details</a><ul>
+<li><a class="reference internal" href="#api-schemas" id="id2">API Schemas</a></li>
+<li><a class="reference internal" href="#implementing-a-property" id="id3">Implementing a property</a></li>
+<li><a class="reference internal" href="#describing-constrained-values" id="id4">Describing constrained values</a></li>
+<li><a class="reference internal" href="#implementing-a-function" id="id5">Implementing a function</a></li>
+<li><a class="reference internal" href="#implementing-an-event" id="id6">Implementing an event</a></li>
+<li><a class="reference internal" href="#implementing-a-manifest-key" id="id7">Implementing a manifest key</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="api-schemas">
+<h2><a class="toc-backref" href="#id2">API Schemas</a><a class="headerlink" href="#api-schemas" title="Permalink to this headline">¶</a></h2>
+<p>Anything that a WebExtension API exposes to extensions via Javascript
+is described by the API’s schema.  The format of API schemas uses some
+of the same syntax as <a class="reference external" href="http://json-schema.org/">JSON Schema</a>.
+JSON Schema provides a way to specify constraints on JSON documents and
+the same method is used by WebExtensions to specify constraints on,
+for example, parameters passed to an API function.  But the syntax for
+describing functions, namespaces, etc. is all ad hoc.  This section
+describes that syntax.</p>
+<p>An individual API schema consists of structured descriptions of
+items in one or more <em>namespaces</em> using a structure like this:</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;namespace&quot;</span><span class="o">:</span> <span class="s2">&quot;namespace1&quot;</span><span class="p">,</span>
+    <span class="c1">// declarations for namespace 1...</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;namespace&quot;</span><span class="o">:</span> <span class="s2">&quot;namespace2&quot;</span><span class="p">,</span>
+    <span class="c1">// delcarations for namespace 2...</span>
+  <span class="p">},</span>
+  <span class="c1">// other namespaces...</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Most of the namespaces correspond to objects available to extensions
+Javascript code under the <code class="docutils literal"><span class="pre">browser</span></code> global.  For example, entries in the
+namespace <code class="docutils literal"><span class="pre">example</span></code> are accessible to extension Javascript code as
+properties on <code class="docutils literal"><span class="pre">browser.example</span></code>.
+The namespace <code class="docutils literal"><span class="pre">&quot;manifest&quot;</span></code> is handled specially, it describes the
+structure of WebExtension manifests (i.e., <code class="docutils literal"><span class="pre">manifest.json</span></code> files).
+Manifest schemas are explained in detail below.</p>
+<p>Declarations within a namespace look like:</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;namespace&quot;</span><span class="o">:</span> <span class="s2">&quot;namespace1&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;types&quot;</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span> <span class="cm">/* type definition */</span> <span class="p">},</span>
+    <span class="p">...</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;functions&quot;</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span> <span class="cm">/* function definition */</span> <span class="p">},</span>
+    <span class="p">...</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;events&quot;</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span> <span class="cm">/* event definition */</span> <span class="p">},</span>
+    <span class="p">...</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;properties&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;NAME&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="cm">/* property definition */</span> <span class="p">},</span>
+    <span class="p">...</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The four types of objects that can be defined inside a namespace are:
+- <strong>types</strong>: A type is a re-usable schema fragment.  A common use of types</p>
+<blockquote>
+<div>is to define in one place an object with a particular set of typed fields
+that is used in multiple places in an API.</div></blockquote>
+<ul class="simple">
+<li><strong>properties</strong>: A property is a fixed Javascript value available to
+extensions via Javascript.  Note that the format for defining
+properties in a schema is different from the format for types, functions,
+and events.  The next subsection describes creating properties in detail.</li>
+<li><strong>functions</strong> and <strong>events</strong>:
+These entries create functions and events respectively, which are
+usable from Javascript by extensions.  Details on how to implement
+them are later in this section.</li>
+</ul>
+<p>XXX talk about permissions</p>
+</div>
+<div class="section" id="implementing-a-property">
+<h2><a class="toc-backref" href="#id3">Implementing a property</a><a class="headerlink" href="#implementing-a-property" title="Permalink to this headline">¶</a></h2>
+<p>Making static properties available to extensions via Javascript is done
+entirely from the schema, using a fragment like this one:</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span>[
+  &quot;namespace&quot;: &quot;myapi&quot;,
+  &quot;properties&quot;: {
+    &quot;SOME_PROPERTY&quot;: {
+     &quot;value&quot;: 24,
+     &quot;description&quot;: &quot;Description of my property here.&quot;
+    }
+  }
+]
+</pre></div>
+</div>
+<p>If a WebExtension API with this fragment in its schema is loaded for
+a particular extension context, that extension will be able to access
+<code class="docutils literal"><span class="pre">browser.myapi.SOME_PROPERTY</span></code> and read the fixed value 24.
+The contents of <code class="docutils literal"><span class="pre">value</span></code> can be any JSON serializable object.</p>
+</div>
+<div class="section" id="describing-constrained-values">
+<h2><a class="toc-backref" href="#id4">Describing constrained values</a><a class="headerlink" href="#describing-constrained-values" title="Permalink to this headline">¶</a></h2>
+<p>Definitions of individual items have a common format:</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;SOME TYPE&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;A description of the item&quot;</span><span class="p">,</span>
+  <span class="cm">/* type-specific parameters... */</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The important property here is <code class="docutils literal"><span class="pre">type</span></code>, which specifies what this item
+is (e.g., a primitive data type like <code class="docutils literal"><span class="pre">&quot;integer&quot;</span></code> or <code class="docutils literal"><span class="pre">&quot;string&quot;</span></code> or
+something more complex like <code class="docutils literal"><span class="pre">&quot;function&quot;</span></code> etc).
+The <code class="docutils literal"><span class="pre">description</span></code> property is optional and serves as documentation
+for anybody reading or editing the schema.</p>
+<p>The following values of the <code class="docutils literal"><span class="pre">type</span></code> property specify their corresponding
+primitive Jascript types: <code class="docutils literal"><span class="pre">boolean</span></code>, <code class="docutils literal"><span class="pre">integer</span></code>, <code class="docutils literal"><span class="pre">number</span></code>, <code class="docutils literal"><span class="pre">string</span></code>,
+<code class="docutils literal"><span class="pre">array</span></code>, <code class="docutils literal"><span class="pre">object</span></code>.
+Items with any of these types can take one of two forms.
+If the item does not contain a <code class="docutils literal"><span class="pre">value</span></code> property, the item defines
+constraints on values that are acceptable in some context (for example,
+values for a particular manifest key or as a parameter to an API function).
+If the item does contain a <code class="docutils literal"><span class="pre">value</span></code> property, it simply specifies a
+fixed value, this is just used for</p>
+</div>
+<div class="section" id="implementing-a-function">
+<h2><a class="toc-backref" href="#id5">Implementing a function</a><a class="headerlink" href="#implementing-a-function" title="Permalink to this headline">¶</a></h2>
+<p>All function callable from extensions’ Javascript are declared in the API
+schema.
+XXX name, type, descripion, deprecated, parameters, async, returns,</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span>[
+  &quot;namespace&quot;: &quot;myapi&quot;,
+  &quot;functions&quot;: [
+    {
+      &quot;name&quot;: &quot;dosomething&quot;,
+      &quot;type&quot;: &quot;function&quot;,
+      &quot;description&quot;: &quot;Does something.&quot;,
+      &quot;async&quot;: true,
+      &quot;parameters&quot;: [
+        {
+          &quot;name&quot;: &quot;param1&quot;,
+          &quot;type&quot;: &quot;integer&quot;
+        },
+        {
+          &quot;name&quot;: &quot;param2&quot;,
+          &quot;type&quot;: &quot;...&quot;,
+        }
+      ]
+    }
+  ]
+}
+</pre></div>
+</div>
+<p>XXX function in child process</p>
+</div>
+<div class="section" id="implementing-an-event">
+<h2><a class="toc-backref" href="#id6">Implementing an event</a><a class="headerlink" href="#implementing-an-event" title="Permalink to this headline">¶</a></h2>
+<p>XXX explain</p>
+</div>
+<div class="section" id="implementing-a-manifest-key">
+<h2><a class="toc-backref" href="#id7">Implementing a manifest key</a><a class="headerlink" href="#implementing-a-manifest-key" title="Permalink to this headline">¶</a></h2>
+<p>XXX explain</p>
+<p>XXX other schema stuff (deprecated)</p>
+<p>XXX housekeeping (onStartup, onUpdate, onUninstall)</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="reference.html" class="btn btn-neutral float-right" title="WebExtensions Javascript Component Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="basics.html" class="btn btn-neutral" title="API Implementation Basics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

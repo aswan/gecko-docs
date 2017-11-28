@@ -1,0 +1,649 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Experiments Manifests &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Telemetry Experiments" href="index.html"/>
+        <link rel="next" title="Build System" href="../../../build/buildsystem/index.html"/>
+        <link rel="prev" title="Telemetry Experiments" href="index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../browser/index.html">Firefox</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Telemetry Experiments</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Experiments Manifests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#manifest-format">Manifest Format</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#version-1">Version 1</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#experiment-applicability-and-client-behavior">Experiment Applicability and Client Behavior</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#multiple-conditions-in-an-experiment">1. Multiple conditions in an experiment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#active-experiment-disappears-from-manifest">2. Active experiment disappears from manifest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inactive-experiment-disappears-from-manifest">3. Inactive experiment disappears from manifest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#re-evaluating-applicability-on-manifest-refresh">4. Re-evaluating applicability on manifest refresh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#activating-a-previously-non-applicable-experiment">5. Activating a previously non-applicable experiment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#deactivating-a-previously-active-experiment">6. Deactivating a previously active experiment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#calculation-of-sampling-based-applicability">7. Calculation of sampling-based applicability</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#incompatible-version-numbers">8. Incompatible version numbers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#usage-of-old-manifests">9. Usage of old manifests</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#updating-xpis">10. Updating XPIs</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Telemetry Experiments</a> &raquo;</li>
+        
+      <li>Experiments Manifests</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/browser/experiments/experiments/manifest.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="experiments-manifests">
+<span id="id1"></span><h1>Experiments Manifests<a class="headerlink" href="#experiments-manifests" title="Permalink to this headline">¶</a></h1>
+<p><em>Experiments Manifests</em> are documents that describe the set of active
+experiments a client may run.</p>
+<p><em>Experiments Manifests</em> are fetched periodically by clients. When
+fetched, clients look at the experiments within the manifest and
+determine which experiments are applicable. If an experiment is
+applicable, the client may download and start the experiment.</p>
+<div class="section" id="manifest-format">
+<h2>Manifest Format<a class="headerlink" href="#manifest-format" title="Permalink to this headline">¶</a></h2>
+<p>Manifests are JSON documents where the main element is an object.</p>
+<p>The <em>schema</em> of the object is versioned and defined by the presence
+of a top-level <code class="docutils literal"><span class="pre">version</span></code> property, whose integer value is the
+schema version used by that manifest. Each version is documented
+in the sections below.</p>
+<div class="section" id="version-1">
+<h3>Version 1<a class="headerlink" href="#version-1" title="Permalink to this headline">¶</a></h3>
+<p>Version 1 is the original manifest format.</p>
+<p>The following properties may exist in the root object:</p>
+<dl class="docutils">
+<dt>experiments</dt>
+<dd><p class="first">An array of objects describing candidate experiments. The format of
+these objects is documented below.</p>
+<p class="last">An array is used to create an explicit priority of experiments.
+Experiments listed at the beginning of the array take priority over
+experiments that follow.</p>
+</dd>
+</dl>
+<div class="section" id="experiments-objects">
+<h4>Experiments Objects<a class="headerlink" href="#experiments-objects" title="Permalink to this headline">¶</a></h4>
+<p>Each object in the <code class="docutils literal"><span class="pre">experiments</span></code> array may contain the following
+properties:</p>
+<dl class="docutils">
+<dt>id</dt>
+<dd>(required) String identifier of this experiment. The identifier should
+be treated as opaque by clients. It is used to uniquely identify an
+experiment for all of time.</dd>
+<dt>xpiURL</dt>
+<dd><p class="first">(required) String URL of the XPI that implements this experiment.</p>
+<p class="last">If the experiment is activated, the client will download and install this
+XPI.</p>
+</dd>
+<dt>xpiHash</dt>
+<dd><p class="first">(required) String hash of the XPI that implements this experiment.</p>
+<p>The value is composed of a hash identifier followed by a colon
+followed by the hash value. e.g.
+<cite>sha1:f677428b9172e22e9911039aef03f3736e7f78a7</cite>. <cite>sha1</cite> and <cite>sha256</cite>
+are the two supported hashing mechanisms. The hash value is the hex
+encoding of the binary hash.</p>
+<p>When the client downloads the XPI for the experiment, it should compare
+the hash of that XPI against this value. If the hashes don’t match,
+the client should not install the XPI.</p>
+<p class="last">Clients may also use this hash as a means of determining when an
+experiment’s XPI has changed and should be refreshed.</p>
+</dd>
+<dt>startTime</dt>
+<dd>Integer seconds since UNIX epoch that this experiment should
+start. Clients should not start an experiment if <em>now()</em> is less than
+this value.</dd>
+<dt>maxStartTime</dt>
+<dd><p class="first">(optional) Integer seconds since UNIX epoch after which this experiment
+should no longer start.</p>
+<p class="last">Some experiments may wish to impose hard deadlines after which no new
+clients should activate the experiment. This property may be used to
+facilitate that.</p>
+</dd>
+<dt>endTime</dt>
+<dd>Integer seconds since UNIX epoch after which this experiment
+should no longer run. Clients should cease an experiment when the current
+time is beyond this value.</dd>
+<dt>maxActiveSeconds</dt>
+<dd><p class="first">Integer seconds defining the max wall time this experiment should be
+active for.</p>
+<p>The client should deactivate the experiment this many seconds after
+initial activation.</p>
+<p class="last">This value only involves wall time, not browser activity or session time.</p>
+</dd>
+<dt>appName</dt>
+<dd><p class="first">Array of application names this experiment should run on.</p>
+<p>An application name comes from <code class="docutils literal"><span class="pre">nsIXULAppInfo.name</span></code>. It is a value
+like <code class="docutils literal"><span class="pre">Firefox</span></code>, <code class="docutils literal"><span class="pre">Fennec</span></code>, or <cite>B2G</cite>.</p>
+<p class="last">The client should compare its application name against the members of
+this array. If a match is found, the experiment is applicable.</p>
+</dd>
+<dt>minVersion</dt>
+<dd><p class="first">(optional) String version number of the minimum application version this
+experiment should run on.</p>
+<p>A version number is something like <code class="docutils literal"><span class="pre">27.0.0</span></code> or <code class="docutils literal"><span class="pre">28</span></code>.</p>
+<p>The client should compare its version number to this value. If the client’s
+version is greater or equal to this version (using a version-aware comparison
+function), the experiment is applicable.</p>
+<p class="last">If this is not specified, there is no lower bound to versions this
+experiment should run on.</p>
+</dd>
+<dt>maxVersion</dt>
+<dd><p class="first">(optional) String version number of the maximum application version this
+experiment should run on.</p>
+<p>This is similar to <code class="docutils literal"><span class="pre">minVersion</span></code> except it sets the upper bound for
+application versions.</p>
+<p>If the client’s version is less than or equal to this version, the
+experiment is applicable.</p>
+<p class="last">If this is not specified, there is no upper bound to versions this
+experiment should run on.</p>
+</dd>
+<dt>version</dt>
+<dd><p class="first">(optional) Array of application versions this experiment should run on.</p>
+<p>This is similar to <code class="docutils literal"><span class="pre">minVersion</span></code> and <code class="docutils literal"><span class="pre">maxVersion</span></code> except only a
+whitelisted set of specific versions are allowed.</p>
+<p class="last">The client should compare its version to members of this array. If a match
+is found, the experiment is applicable.</p>
+</dd>
+<dt>minBuildID</dt>
+<dd><p class="first">(optional) String minimum Build ID this experiment should run on.</p>
+<p>Build IDs are values like <code class="docutils literal"><span class="pre">201402261424</span></code>.</p>
+<p class="last">The client should perform a string comparison of its Build ID against this
+value. If its value is greater than or equal to this value, the experiment
+is applicable.</p>
+</dd>
+<dt>maxBuildID</dt>
+<dd><p class="first">(optional) String maximum Build ID this experiment should run on.</p>
+<p>This is similar to <code class="docutils literal"><span class="pre">minBuildID</span></code> except it sets the upper bound
+for Build IDs.</p>
+<p class="last">The client should perform a string comparison of its Build ID against
+this value. If its value is less than or equal to this value, the
+experiment is applicable.</p>
+</dd>
+<dt>buildIDs</dt>
+<dd><p class="first">(optional) Array of Build IDs this experiment should run on.</p>
+<p>This is similar to <code class="docutils literal"><span class="pre">minBuildID</span></code> and <code class="docutils literal"><span class="pre">maxBuildID</span></code> except only a
+whitelisted set of Build IDs are considered.</p>
+<p class="last">The client should compare its Build ID to members of this array. If a
+match is found, the experiment is applicable.</p>
+</dd>
+<dt>os</dt>
+<dd><p class="first">(optional) Array of operating system identifiers this experiment should
+run on.</p>
+<p>Values for this array come from <code class="docutils literal"><span class="pre">nsIXULRuntime.OS</span></code>.</p>
+<p class="last">The client will compare its operating system identifier to members
+of this array. If a match is found, the experiment is applicable to the
+client.</p>
+</dd>
+<dt>channel</dt>
+<dd><p class="first">(optional) Array of release channel identifiers this experiment should run
+on.</p>
+<p>The client will compare its channel to members of this array. If a match
+is found, the experiment is applicable.</p>
+<p class="last">If this property is not defined, the client should assume the experiment
+is to run on all channels.</p>
+</dd>
+<dt>locale</dt>
+<dd><p class="first">(optional) Array of locale identifiers this experiment should run on.</p>
+<p>A locale identifier is a string like <code class="docutils literal"><span class="pre">en-US</span></code> or <code class="docutils literal"><span class="pre">zh-CN</span></code> and is
+obtained by looking at
+<code class="docutils literal"><span class="pre">LocaleService.getAppLocaleAsLangTag()</span></code>.
+For infamous <cite>ja-JP-mac</cite> case, this will return it in
+the language tag form (<cite>ja-JP-mac</cite>).</p>
+<p>The client should compare its locale identifier to members of this array.
+If a match is found, the experiment is applicable.</p>
+<p class="last">If this property is not defined, the client should assume the experiment
+is to run on all locales.</p>
+</dd>
+<dt>sample</dt>
+<dd><p class="first">(optional) Decimal number indicating the sampling rate for this experiment.</p>
+<p class="last">This will contain a value between <code class="docutils literal"><span class="pre">0.0</span></code> and <code class="docutils literal"><span class="pre">1.0</span></code>. The client should
+generate a random decimal between <code class="docutils literal"><span class="pre">0.0</span></code> and <code class="docutils literal"><span class="pre">1.0</span></code>. If the randomly
+generated number is less than or equal to the value of this field, the
+experiment is applicable.</p>
+</dd>
+<dt>disabled</dt>
+<dd><p class="first">(optional) Boolean value indicating whether an experiment is disabled.</p>
+<p>Normally, experiments are deactivated after a certain time has passed or
+after the experiment itself determines it no longer needs to run (perhaps
+it collected sufficient data already).</p>
+<p>This property serves as a backup mechanism to remotely disable an
+experiment before it was scheduled to be disabled. It can be used to
+kill experiments that are found to be doing wrong or bad things or that
+aren’t useful.</p>
+<p class="last">If this property is not defined or is false, the client should assume
+the experiment is active and a candidate for activation.</p>
+</dd>
+<dt>frozen</dt>
+<dd><p class="first">(optional) Boolean value indicating this experiment is frozen and no
+longer accepting new enrollments.</p>
+<p class="last">If a client sees a true value in this field, it should not attempt to
+activate an experiment.</p>
+</dd>
+<dt>jsfilter</dt>
+<dd><p class="first">(optional) JavaScript code that will be evaluated to determine experiment
+applicability.</p>
+<p>This property contains the string representation of JavaScript code that
+will be evaluated in a sandboxed environment using JavaScript’s
+<code class="docutils literal"><span class="pre">eval()</span></code>.</p>
+<p>The string is expected to contain the definition of a JavaScript function
+<code class="docutils literal"><span class="pre">filter(context)</span></code>. This function receives as its argument an object
+holding application state. See the section below for the definition of
+this object.</p>
+<p>The purpose of this property is to allow experiments to define complex
+rules and logic for evaluating experiment applicability in a manner
+that is privacy conscious and doesn’t require the transmission of
+excessive data.</p>
+<p>The return value of this filter indicates whether the experiment is
+applicable. Functions should return true if the experiment is
+applicable.</p>
+<p>If an experiment is not applicable, they should throw an Error whose
+message contains the reason the experiment is not applicable. This
+message may be logged and sent to remote servers, so it should not
+contain private or otherwise sensitive data that wouldn’t normally
+be submitted.</p>
+<p>If a falsey (or undefined) value is returned, the client should
+assume the experiment is not applicable.</p>
+<p class="last">If this property is not defined, the client does not consider a custom
+JavaScript filter function when determining whether an experiment is
+applicable.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="javascript-filter-context-objects">
+<h4>JavaScript Filter Context Objects<a class="headerlink" href="#javascript-filter-context-objects" title="Permalink to this headline">¶</a></h4>
+<p>The object passed to a <code class="docutils literal"><span class="pre">jsfilter</span></code> <code class="docutils literal"><span class="pre">filter()</span></code> function contains the
+following properties:</p>
+<dl class="docutils">
+<dt>healthReportSubmissionEnabled</dt>
+<dd>This property contains a boolean indicating whether Firefox Health
+Report has its data submission flag enabled (whether Firefox Health
+Report is sending data to remote servers).</dd>
+<dt>healthReportPayload</dt>
+<dd><p class="first">This property contains the current Firefox Health Report payload.</p>
+<p class="last">The payload format is documented at <a class="reference internal" href="../../../toolkit/components/telemetry/telemetry/fhr/dataformat.html#healthreport-dataformat"><span class="std std-ref">Payload Format</span></a>.</p>
+</dd>
+<dt>telemetryPayload</dt>
+<dd>This property contains the current Telemetry payload.</dd>
+</dl>
+<p>The evaluation sandbox for the JavaScript filters may be destroyed
+immediately after <code class="docutils literal"><span class="pre">filter()</span></code> returns. This function should not assume
+async code will finish.</p>
+</div>
+</div>
+</div>
+<div class="section" id="experiment-applicability-and-client-behavior">
+<h2>Experiment Applicability and Client Behavior<a class="headerlink" href="#experiment-applicability-and-client-behavior" title="Permalink to this headline">¶</a></h2>
+<p>The point of an experiment manifest is to define which experiments are
+available and where and how to run them. This section explains those
+rules in more detail.</p>
+<p>Many of the properties in <em>Experiment Objects</em> are related to determining
+whether an experiment should run on a given client. This evaluation is
+performed client side.</p>
+<div class="section" id="multiple-conditions-in-an-experiment">
+<h3>1. Multiple conditions in an experiment<a class="headerlink" href="#multiple-conditions-in-an-experiment" title="Permalink to this headline">¶</a></h3>
+<p>If multiple conditions are defined for an experiment, the client should
+combine each condition with a logical <em>AND</em>: all conditions must be
+satisfied for an experiment to run. If one condition fails, the experiment
+is not applicable.</p>
+</div>
+<div class="section" id="active-experiment-disappears-from-manifest">
+<h3>2. Active experiment disappears from manifest<a class="headerlink" href="#active-experiment-disappears-from-manifest" title="Permalink to this headline">¶</a></h3>
+<p>If a specific experiment disappears from the manifest, the client should
+continue conducting an already-active experiment. Furthermore, the
+client should remember what the expiration events were for an experiment
+and honor them.</p>
+<p>The rationale here is that we want to prevent an accidental deletion
+or temporary failure on the server to inadvertantly deactivate
+supposed-to-be-active experiments. We also don’t want premature deletion
+of an experiment from the manifest to result in indefinite activation
+periods.</p>
+</div>
+<div class="section" id="inactive-experiment-disappears-from-manifest">
+<h3>3. Inactive experiment disappears from manifest<a class="headerlink" href="#inactive-experiment-disappears-from-manifest" title="Permalink to this headline">¶</a></h3>
+<p>If an inactive but scheduled-to-be-active experiment disappears from the
+manifest, the client should not activate the experiment.</p>
+<p>If that experiment reappears in the manifest, the client should not
+treat that experiment any differently than any other new experiment. Put
+another way, the fact an inactive experiment disappears and then
+reappears should not be significant.</p>
+<p>The rationale here is that server operators should have complete
+control of an inactive experiment up to it’s go-live date.</p>
+</div>
+<div class="section" id="re-evaluating-applicability-on-manifest-refresh">
+<h3>4. Re-evaluating applicability on manifest refresh<a class="headerlink" href="#re-evaluating-applicability-on-manifest-refresh" title="Permalink to this headline">¶</a></h3>
+<p>When an experiment manifest is refreshed or updated, the client should
+re-evaluate the applicability of each experiment therein.</p>
+<p>The rationale here is that the server may change the parameters of an
+experiment and want clients to pick those up.</p>
+</div>
+<div class="section" id="activating-a-previously-non-applicable-experiment">
+<h3>5. Activating a previously non-applicable experiment<a class="headerlink" href="#activating-a-previously-non-applicable-experiment" title="Permalink to this headline">¶</a></h3>
+<p>If the conditions of an experiment change or the state of the client
+changes to allow an experiment to transition from previously
+non-applicable to applicable, the experiment should be activated.</p>
+<p>For example, if a client is running version 28 and the experiment
+initially requires version 29 or above, the client will not mark the
+experiment as applicable. But if the client upgrades to version 29 or if
+the manifest is updated to require 28 or above, the experiment will
+become applicable.</p>
+</div>
+<div class="section" id="deactivating-a-previously-active-experiment">
+<h3>6. Deactivating a previously active experiment<a class="headerlink" href="#deactivating-a-previously-active-experiment" title="Permalink to this headline">¶</a></h3>
+<p>If the conditions of an experiment change or the state of the client
+changes and an active experiment is no longer applicable, that
+experiment should be deactivated.</p>
+</div>
+<div class="section" id="calculation-of-sampling-based-applicability">
+<h3>7. Calculation of sampling-based applicability<a class="headerlink" href="#calculation-of-sampling-based-applicability" title="Permalink to this headline">¶</a></h3>
+<p>For calculating sampling-based applicability, the client will associate
+a random value between <code class="docutils literal"><span class="pre">0.0</span></code> and <code class="docutils literal"><span class="pre">1.0</span></code> for each observed experiment
+ID. This random value will be generated the first time sampling
+applicability is evaluated. This random value will be persisted and used
+in future applicability evaluations for this experiment.</p>
+<p>By saving and re-using the value, the client is able to reliably and
+consistently evaluate applicability, even if the sampling threshold
+in the manifest changes.</p>
+<p>Clients should retain the randomly-generated sampling value for
+experiments that no longer appear in a manifest for a period of at least
+30 days. The rationale is that if an experiment disappears and reappears
+from a manifest, the client will not have multiple opportunities to
+generate a random value that satisfies the sampling criteria.</p>
+</div>
+<div class="section" id="incompatible-version-numbers">
+<h3>8. Incompatible version numbers<a class="headerlink" href="#incompatible-version-numbers" title="Permalink to this headline">¶</a></h3>
+<p>If a client receives a manifest with a version number that it doesn’t
+recognize, it should ignore the manifest.</p>
+</div>
+<div class="section" id="usage-of-old-manifests">
+<h3>9. Usage of old manifests<a class="headerlink" href="#usage-of-old-manifests" title="Permalink to this headline">¶</a></h3>
+<p>If a client experiences an error fetching a manifest (server not
+available) or if the manifest is corrupt, not readable, or compatible,
+the client may use a previously-fetched (cached) manifest.</p>
+</div>
+<div class="section" id="updating-xpis">
+<h3>10. Updating XPIs<a class="headerlink" href="#updating-xpis" title="Permalink to this headline">¶</a></h3>
+<p>If the URL or hash of an active experiment’s XPI changes, the client
+should fetch the new XPI, uninstall the old XPI, and install the new
+XPI.</p>
+</div>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p>Here is an example manifest:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s2">&quot;experiments&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;da9d7f4f-f3f9-4f81-bacd-6f0626ffa360&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;xpiURL&quot;</span><span class="p">:</span> <span class="s2">&quot;https://experiments.mozilla.org/foo.xpi&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;xpiHash&quot;</span><span class="p">:</span> <span class="s2">&quot;sha1:cb1eb32b89d86d78b7326f416cf404548c5e0099&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;startTime&quot;</span><span class="p">:</span> <span class="mi">1393000000</span><span class="p">,</span>
+      <span class="s2">&quot;endTime&quot;</span><span class="p">:</span> <span class="mi">1394000000</span><span class="p">,</span>
+      <span class="s2">&quot;appName&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Firefox&quot;</span><span class="p">,</span> <span class="s2">&quot;Fennec&quot;</span><span class="p">],</span>
+      <span class="s2">&quot;minVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;28&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;maxVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;30&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;os&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;windows&quot;</span><span class="p">,</span> <span class="s2">&quot;linux&quot;</span><span class="p">,</span> <span class="s2">&quot;osx&quot;</span><span class="p">],</span>
+      <span class="s2">&quot;jsfilter&quot;</span><span class="p">:</span> <span class="s2">&quot;function filter(context) { return context.healthReportEnabled; }&quot;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../../build/buildsystem/index.html" class="btn btn-neutral float-right" title="Build System" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Telemetry Experiments" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,409 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>taskgraph.loader package &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../index.html"/>
+        <link rel="up" title="taskgraph package" href="taskgraph.html"/>
+        <link rel="next" title="taskgraph.test package" href="taskgraph.test.html"/>
+        <link rel="prev" title="taskgraph.cron package" href="taskgraph.cron.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="taskgraph.html">taskgraph package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="taskgraph.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="taskgraph.actions.html">taskgraph.actions package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="taskgraph.cron.html">taskgraph.cron package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">taskgraph.loader package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.loader.build_signing">taskgraph.loader.build_signing module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.loader.push_apk">taskgraph.loader.push_apk module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.loader.single_dep">taskgraph.loader.single_dep module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.loader.test">taskgraph.loader.test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.loader.transform">taskgraph.loader.transform module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.loader">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="taskgraph.test.html">taskgraph.test package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="taskgraph.transforms.html">taskgraph.transforms package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="taskgraph.util.html">taskgraph.util package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.config">taskgraph.config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.create">taskgraph.create module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.decision">taskgraph.decision module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.docker">taskgraph.docker module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.files_changed">taskgraph.files_changed module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.filter_tasks">taskgraph.filter_tasks module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.generator">taskgraph.generator module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.graph">taskgraph.graph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.morph">taskgraph.morph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.optimize">taskgraph.optimize module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.parameters">taskgraph.parameters module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.target_tasks">taskgraph.target_tasks module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.task">taskgraph.task module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.taskgraph">taskgraph.taskgraph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.try_option_syntax">taskgraph.try_option_syntax module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="taskgraph.html">taskgraph package</a> &raquo;</li>
+        
+      <li>taskgraph.loader package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/python/taskgraph.loader.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="taskgraph-loader-package">
+<h1>taskgraph.loader package<a class="headerlink" href="#taskgraph-loader-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-taskgraph.loader.build_signing">
+<span id="taskgraph-loader-build-signing-module"></span><h2>taskgraph.loader.build_signing module<a class="headerlink" href="#module-taskgraph.loader.build_signing" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="taskgraph.loader.build_signing.loader">
+<code class="descclassname">taskgraph.loader.build_signing.</code><code class="descname">loader</code><span class="sig-paren">(</span><em>kind</em>, <em>path</em>, <em>config</em>, <em>params</em>, <em>loaded_tasks</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.loader.build_signing.loader" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.loader.push_apk">
+<span id="taskgraph-loader-push-apk-module"></span><h2>taskgraph.loader.push_apk module<a class="headerlink" href="#module-taskgraph.loader.push_apk" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="taskgraph.loader.push_apk.get_dependent_loaded_tasks">
+<code class="descclassname">taskgraph.loader.push_apk.</code><code class="descname">get_dependent_loaded_tasks</code><span class="sig-paren">(</span><em>config</em>, <em>loaded_tasks</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.loader.push_apk.get_dependent_loaded_tasks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.loader.push_apk.loader">
+<code class="descclassname">taskgraph.loader.push_apk.</code><code class="descname">loader</code><span class="sig-paren">(</span><em>kind</em>, <em>path</em>, <em>config</em>, <em>params</em>, <em>loaded_tasks</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.loader.push_apk.loader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate inputs implementing PushApk jobs. These depend on signed multi-locales nightly builds.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.loader.single_dep">
+<span id="taskgraph-loader-single-dep-module"></span><h2>taskgraph.loader.single_dep module<a class="headerlink" href="#module-taskgraph.loader.single_dep" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="taskgraph.loader.single_dep.loader">
+<code class="descclassname">taskgraph.loader.single_dep.</code><code class="descname">loader</code><span class="sig-paren">(</span><em>kind</em>, <em>path</em>, <em>config</em>, <em>params</em>, <em>loaded_tasks</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.loader.single_dep.loader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load tasks based on the jobs dependant kinds.</p>
+<p>The <cite>only-for-build-platforms</cite> kind configuration, if specified, will limit
+the build platforms for which a job will be created. Alternatively there is
+‘not-for-build-platforms’ kind configuration which will be consulted only after
+‘only-for-build-platforms’ is checked (if present), and omit any jobs where the
+build platform matches.</p>
+<p>Optional <cite>only-for-attributes</cite> kind configuration, if specified, will limit
+the jobs chosen to ones which have the specified attribute, with the specified
+value.</p>
+<p>Optional <cite>job-template</cite> kind configuration value, if specified, will be used to
+pass configuration down to the specified transforms used.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.loader.test">
+<span id="taskgraph-loader-test-module"></span><h2>taskgraph.loader.test module<a class="headerlink" href="#module-taskgraph.loader.test" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="taskgraph.loader.test.expand_tests">
+<code class="descclassname">taskgraph.loader.test.</code><code class="descname">expand_tests</code><span class="sig-paren">(</span><em>test_sets_cfg</em>, <em>test_platforms</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.loader.test.expand_tests" title="Permalink to this definition">¶</a></dt>
+<dd><p>Expand the test sets in <cite>test_platforms</cite> out to sets of test names.
+Returns a dictionary like <cite>get_test_platforms</cite>, with an additional
+<cite>test-names</cite> key for each test platform, containing a set of test
+names.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.loader.test.get_builds_by_platform">
+<code class="descclassname">taskgraph.loader.test.</code><code class="descname">get_builds_by_platform</code><span class="sig-paren">(</span><em>dep_kind</em>, <em>loaded_tasks</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.loader.test.get_builds_by_platform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the build tasks on which tests will depend, keyed by
+platform/type.  Returns a dictionary mapping build platform to task.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.loader.test.get_test_platforms">
+<code class="descclassname">taskgraph.loader.test.</code><code class="descname">get_test_platforms</code><span class="sig-paren">(</span><em>test_platforms_cfg</em>, <em>builds_by_platform</em>, <em>signed_builds_by_platform={}</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.loader.test.get_test_platforms" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the test platforms for which test tasks should be generated,
+based on the available build platforms.  Returns a dictionary mapping
+test platform to {test-set, build-platform, build-label}.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.loader.test.loader">
+<code class="descclassname">taskgraph.loader.test.</code><code class="descname">loader</code><span class="sig-paren">(</span><em>kind</em>, <em>path</em>, <em>config</em>, <em>params</em>, <em>loaded_tasks</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.loader.test.loader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate tasks implementing Gecko tests.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.loader.transform">
+<span id="taskgraph-loader-transform-module"></span><h2>taskgraph.loader.transform module<a class="headerlink" href="#module-taskgraph.loader.transform" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="taskgraph.loader.transform.loader">
+<code class="descclassname">taskgraph.loader.transform.</code><code class="descname">loader</code><span class="sig-paren">(</span><em>kind</em>, <em>path</em>, <em>config</em>, <em>params</em>, <em>loaded_tasks</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.loader.transform.loader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the input elements that will be transformed into tasks in a generic
+way.  The elements themselves are free-form, and become the input to the
+first transform.</p>
+<p>By default, this reads jobs from the <cite>jobs</cite> key, or from yaml files
+named by <cite>jobs-from</cite>.  The entities are read from mappings, and the
+keys to those mappings are added in the <cite>name</cite> key of each entity.</p>
+<p>If there is a <cite>job-defaults</cite> config, then every job is merged with it.
+This provides a simple way to set default values for all jobs of a kind.
+The <cite>job-defaults</cite> key can also be specified in a yaml file pointed to by
+<cite>jobs-from</cite>. In this case it will only apply to tasks defined in the same
+file.</p>
+<p>Other kind implementations can use a different loader function to
+produce inputs and hand them to <cite>transform_inputs</cite>.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.loader">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-taskgraph.loader" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="taskgraph.test.html" class="btn btn-neutral float-right" title="taskgraph.test package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="taskgraph.cron.html" class="btn btn-neutral" title="taskgraph.cron package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,509 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mozbuild.compilation package &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../index.html"/>
+        <link rel="up" title="mozbuild package" href="mozbuild.html"/>
+        <link rel="next" title="mozbuild.configure package" href="mozbuild.configure.html"/>
+        <link rel="prev" title="mozbuild.codecoverage package" href="mozbuild.codecoverage.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="mach.html">mach package</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="mozbuild.html">mozbuild package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="mozbuild.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.action.html">mozbuild.action package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.backend.html">mozbuild.backend package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.codecoverage.html">mozbuild.codecoverage package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">mozbuild.compilation package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.compilation.codecomplete">mozbuild.compilation.codecomplete module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.compilation.database">mozbuild.compilation.database module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.compilation.util">mozbuild.compilation.util module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.compilation.warnings">mozbuild.compilation.warnings module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.compilation">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.configure.html">mozbuild.configure package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.controller.html">mozbuild.controller package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.frontend.html">mozbuild.frontend package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.repackaging.html">mozbuild.repackaging package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.test.html">mozbuild.test package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.android_version_code">mozbuild.android_version_code module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.artifacts">mozbuild.artifacts module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.base">mozbuild.base module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.chunkify">mozbuild.chunkify module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.config_status">mozbuild.config_status module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.doctor">mozbuild.doctor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.dotproperties">mozbuild.dotproperties module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#mozbuild-faster-daemon-module">mozbuild.faster_daemon module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.generated_sources">mozbuild.generated_sources module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.html_build_viewer">mozbuild.html_build_viewer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.jar">mozbuild.jar module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.mach_commands">mozbuild.mach_commands module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.makeutil">mozbuild.makeutil module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.milestone">mozbuild.milestone module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.mozconfig">mozbuild.mozconfig module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.mozinfo">mozbuild.mozinfo module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.preprocessor">mozbuild.preprocessor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.pythonutil">mozbuild.pythonutil module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.schedules">mozbuild.schedules module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.shellutil">mozbuild.shellutil module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.sphinx">mozbuild.sphinx module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.testing">mozbuild.testing module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.util">mozbuild.util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.vendor_aom">mozbuild.vendor_aom module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.vendor_rust">mozbuild.vendor_rust module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.virtualenv">mozbuild.virtualenv module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="mozbuild.html">mozbuild package</a> &raquo;</li>
+        
+      <li>mozbuild.compilation package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/python/mozbuild.compilation.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mozbuild-compilation-package">
+<h1>mozbuild.compilation package<a class="headerlink" href="#mozbuild-compilation-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-mozbuild.compilation.codecomplete">
+<span id="mozbuild-compilation-codecomplete-module"></span><h2>mozbuild.compilation.codecomplete module<a class="headerlink" href="#module-mozbuild.compilation.codecomplete" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozbuild.compilation.codecomplete.Introspection">
+<em class="property">class </em><code class="descclassname">mozbuild.compilation.codecomplete.</code><code class="descname">Introspection</code><span class="sig-paren">(</span><em>context</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.compilation.codecomplete.Introspection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="mozbuild.html#mozbuild.base.MachCommandBase" title="mozbuild.base.MachCommandBase"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.base.MachCommandBase</span></code></a></p>
+<p>Instropection commands.</p>
+<dl class="method">
+<dt id="mozbuild.compilation.codecomplete.Introspection.compileflags">
+<code class="descname">compileflags</code><span class="sig-paren">(</span><em>what</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.compilation.codecomplete.Introspection.compileflags" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.compilation.database">
+<span id="mozbuild-compilation-database-module"></span><h2>mozbuild.compilation.database module<a class="headerlink" href="#module-mozbuild.compilation.database" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozbuild.compilation.database.CompileDBBackend">
+<em class="property">class </em><code class="descclassname">mozbuild.compilation.database.</code><code class="descname">CompileDBBackend</code><span class="sig-paren">(</span><em>environment</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.compilation.database.CompileDBBackend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="mozbuild.backend.html#mozbuild.backend.common.CommonBackend" title="mozbuild.backend.common.CommonBackend"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.backend.common.CommonBackend</span></code></a></p>
+<dl class="attribute">
+<dt id="mozbuild.compilation.database.CompileDBBackend.CFLAGS">
+<code class="descname">CFLAGS</code><em class="property"> = {'.c': 'CFLAGS', '.mm': 'CXXFLAGS', '.cpp': 'CXXFLAGS', '.m': 'CFLAGS'}</em><a class="headerlink" href="#mozbuild.compilation.database.CompileDBBackend.CFLAGS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.compilation.database.CompileDBBackend.COMPILERS">
+<code class="descname">COMPILERS</code><em class="property"> = {'.c': 'CC', '.mm': 'CXX', '.cpp': 'CXX', '.m': 'CC'}</em><a class="headerlink" href="#mozbuild.compilation.database.CompileDBBackend.COMPILERS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.compilation.database.CompileDBBackend.consume_finished">
+<code class="descname">consume_finished</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.compilation.database.CompileDBBackend.consume_finished" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.compilation.database.CompileDBBackend.consume_object">
+<code class="descname">consume_object</code><span class="sig-paren">(</span><em>obj</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.compilation.database.CompileDBBackend.consume_object" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.compilation.util">
+<span id="mozbuild-compilation-util-module"></span><h2>mozbuild.compilation.util module<a class="headerlink" href="#module-mozbuild.compilation.util" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mozbuild.compilation.util.check_top_objdir">
+<code class="descclassname">mozbuild.compilation.util.</code><code class="descname">check_top_objdir</code><span class="sig-paren">(</span><em>topobjdir</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.compilation.util.check_top_objdir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.compilation.util.get_build_vars">
+<code class="descclassname">mozbuild.compilation.util.</code><code class="descname">get_build_vars</code><span class="sig-paren">(</span><em>directory</em>, <em>cmd</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.compilation.util.get_build_vars" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.compilation.util.sanitize_cflags">
+<code class="descclassname">mozbuild.compilation.util.</code><code class="descname">sanitize_cflags</code><span class="sig-paren">(</span><em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.compilation.util.sanitize_cflags" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.compilation.warnings">
+<span id="mozbuild-compilation-warnings-module"></span><h2>mozbuild.compilation.warnings module<a class="headerlink" href="#module-mozbuild.compilation.warnings" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozbuild.compilation.warnings.CompilerWarning">
+<em class="property">class </em><code class="descclassname">mozbuild.compilation.warnings.</code><code class="descname">CompilerWarning</code><a class="headerlink" href="#mozbuild.compilation.warnings.CompilerWarning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">dict</span></code></p>
+<p>Represents an individual compiler warning.</p>
+<dl class="method">
+<dt id="mozbuild.compilation.warnings.CompilerWarning.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.compilation.warnings.CompilerWarning.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a copy of this compiler warning.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.compilation.warnings.WarningsCollector">
+<em class="property">class </em><code class="descclassname">mozbuild.compilation.warnings.</code><code class="descname">WarningsCollector</code><span class="sig-paren">(</span><em>cb</em>, <em>objdir=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.compilation.warnings.WarningsCollector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Collects warnings from text data.</p>
+<p>Instances of this class receive data (usually the output of compiler
+invocations) and parse it into warnings.</p>
+<p>The collector works by incrementally receiving data, usually line-by-line
+output from the compiler. Therefore, it can maintain state to parse
+multi-line warning messages.</p>
+<dl class="method">
+<dt id="mozbuild.compilation.warnings.WarningsCollector.process_line">
+<code class="descname">process_line</code><span class="sig-paren">(</span><em>line</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.compilation.warnings.WarningsCollector.process_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Take a line of text and process it for a warning.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.compilation.warnings.WarningsDatabase">
+<em class="property">class </em><code class="descclassname">mozbuild.compilation.warnings.</code><code class="descname">WarningsDatabase</code><a class="headerlink" href="#mozbuild.compilation.warnings.WarningsDatabase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Holds a collection of warnings.</p>
+<p>The warnings database is a semi-intelligent container that holds warnings
+encountered during builds.</p>
+<p>The warnings database is backed by a JSON file. But, that is transparent
+to consumers.</p>
+<p>Under most circumstances, the warnings database is insert only. When a
+warning is encountered, the caller simply blindly inserts it into the
+database. The database figures out whether it is a dupe, etc.</p>
+<p>During the course of development, it is common for warnings to change
+slightly as source code changes. For example, line numbers will disagree.
+The WarningsDatabase handles this by storing the hash of a file a warning
+occurred in. At warning insert time, if the hash of the file does not match
+what is stored in the database, the existing warnings for that file are
+purged from the database.</p>
+<p>Callers should periodically prune old, invalid warnings from the database
+by calling prune(). A good time to do this is at the end of a build.</p>
+<dl class="method">
+<dt id="mozbuild.compilation.warnings.WarningsDatabase.deserialize">
+<code class="descname">deserialize</code><span class="sig-paren">(</span><em>fh</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.compilation.warnings.WarningsDatabase.deserialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load serialized content from a handle into the current instance.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.compilation.warnings.WarningsDatabase.has_file">
+<code class="descname">has_file</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.compilation.warnings.WarningsDatabase.has_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether we have any warnings for the specified file.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.compilation.warnings.WarningsDatabase.insert">
+<code class="descname">insert</code><span class="sig-paren">(</span><em>warning</em>, <em>compute_hash=True</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.compilation.warnings.WarningsDatabase.insert" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.compilation.warnings.WarningsDatabase.load_from_file">
+<code class="descname">load_from_file</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.compilation.warnings.WarningsDatabase.load_from_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load the database from a file.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.compilation.warnings.WarningsDatabase.prune">
+<code class="descname">prune</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.compilation.warnings.WarningsDatabase.prune" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prune the contents of the database.</p>
+<p>This removes warnings that are no longer valid. A warning is no longer
+valid if the file it was in no longer exists or if the content has
+changed.</p>
+<p>The check for changed content catches the case where a file previously
+contained warnings but no longer does.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.compilation.warnings.WarningsDatabase.save_to_file">
+<code class="descname">save_to_file</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.compilation.warnings.WarningsDatabase.save_to_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save the database to a file.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.compilation.warnings.WarningsDatabase.serialize">
+<code class="descname">serialize</code><span class="sig-paren">(</span><em>fh</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.compilation.warnings.WarningsDatabase.serialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serialize the database to an open file handle.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.compilation.warnings.WarningsDatabase.type_counts">
+<code class="descname">type_counts</code><span class="sig-paren">(</span><em>dirpath=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.compilation.warnings.WarningsDatabase.type_counts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a mapping of warning types to their counts.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.compilation.warnings.WarningsDatabase.warnings">
+<code class="descname">warnings</code><a class="headerlink" href="#mozbuild.compilation.warnings.WarningsDatabase.warnings" title="Permalink to this definition">¶</a></dt>
+<dd><p>All the CompilerWarning instances in this database.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.compilation.warnings.WarningsDatabase.warnings_for_file">
+<code class="descname">warnings_for_file</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.compilation.warnings.WarningsDatabase.warnings_for_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Obtain the warnings for the specified file.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.compilation">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-mozbuild.compilation" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="mozbuild.configure.html" class="btn btn-neutral float-right" title="mozbuild.configure package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="mozbuild.codecoverage.html" class="btn btn-neutral" title="mozbuild.codecoverage package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

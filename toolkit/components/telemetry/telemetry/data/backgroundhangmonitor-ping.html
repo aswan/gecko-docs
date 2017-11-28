@@ -1,0 +1,441 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>“backgroundhangmonitor” ping &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../../../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../../../../../index.html"/>
+        <link rel="up" title="Data documentation" href="index.html"/>
+        <link rel="next" title="“anonymous” ping" href="anonymous-ping.html"/>
+        <link rel="prev" title="“crash” ping" href="crash-ping.html"/> 
+
+  
+  <script src="../../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Telemetry</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../concepts/index.html">Concepts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../collection/index.html">Data collection</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Data documentation</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="common-ping.html">Common ping format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="environment.html">Environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="main-ping.html">“main” ping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deletion-ping.html">“deletion” ping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="crash-ping.html">“crash” ping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="crash-ping.html#version-history">Version History</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">“backgroundhangmonitor” ping</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#process-types">Process Types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#remote-type">Remote Type</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stack-traces">Stack Traces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#annotations">Annotations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="anonymous-ping.html">“anonymous” ping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="first-shutdown-ping.html">“first-shutdown” ping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="addons-malware-ping.html">Add-ons malware ping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="core-ping.html">“core” ping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="health-ping.html">“health” ping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="heartbeat-ping.html">“heartbeat” ping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules-ping.html">“modules” ping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="new-profile-ping.html">“new-profile” ping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sync-ping.html">“sync” ping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="uitour-ping.html">“uitour-tag” ping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="update-ping.html">“update” ping</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../internals/index.html">Internals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fhr/index.html">Firefox Health Report (Obsolete)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Telemetry</a> &raquo;</li>
+        
+          <li><a href="index.html">Data documentation</a> &raquo;</li>
+        
+      <li>“backgroundhangmonitor” ping</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../../_sources/toolkit/components/telemetry/telemetry/data/backgroundhangmonitor-ping.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="backgroundhangmonitor-ping">
+<h1>“backgroundhangmonitor” ping<a class="headerlink" href="#backgroundhangmonitor-ping" title="Permalink to this headline">¶</a></h1>
+<p>Whenever a thread monitored by the Background Hang Monitor hangs, a stack and
+some non-identifying information about the hang is captured. When 50 of these
+hangs are collected across all processes, or the browser exits, this ping is
+transmitted with the collected hang information.</p>
+<p>This ping is only collected in nightly builds, to avoid the high volume of pings
+which would be produced in Beta.</p>
+<p>Structure:</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;backgroundhangmonitor&quot;</span><span class="p">,</span>
+  <span class="p">...</span> <span class="c1">// common ping data</span>
+  <span class="s2">&quot;environment&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="p">...</span> <span class="p">},</span>
+  <span class="s2">&quot;payload&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;timeSinceLastPing&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span> <span class="c1">// uptime since last backgroundhangmonitor ping (ms).</span>
+    <span class="s2">&quot;modules&quot;</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">[</span>
+        <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span> <span class="c1">// Name of the file holding the debug information.</span>
+        <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span> <span class="c1">// Breakpad ID of this module.</span>
+      <span class="p">],</span>
+      <span class="p">...</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;hangs&quot;</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;duration&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span> <span class="c1">// duration of the hang in milliseconds.</span>
+        <span class="s2">&quot;thread&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span> <span class="c1">// name of the hanging thread.</span>
+        <span class="s2">&quot;runnableName&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span> <span class="c1">// name of the runnable executing during the hang.</span>
+                                  <span class="c1">// Runnable names are only collected for the XPCOM main thread.</span>
+        <span class="s2">&quot;process&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span> <span class="c1">// Type of process that hung, see below for a list of types.</span>
+        <span class="s2">&quot;remoteType&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span> <span class="c1">// Remote type of process which hung, see below.</span>
+        <span class="s2">&quot;annotations&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="p">...</span> <span class="p">},</span> <span class="c1">// A set of annotations on the hang, see below.</span>
+        <span class="s2">&quot;pseudoStack&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="p">...</span> <span class="p">],</span> <span class="c1">// List of pseudostack frame names.</span>
+        <span class="s2">&quot;stack&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="p">...</span> <span class="p">],</span> <span class="c1">// interleaved hang stack, see below.</span>
+      <span class="p">},</span>
+      <span class="p">...</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="process-types">
+<h2>Process Types<a class="headerlink" href="#process-types" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal"><span class="pre">process</span></code> field is a string denoting the kind of process that hung. Hangs
+are currently sent only for the processes below:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Kind</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>default</td>
+<td>Main process, also known as the browser process</td>
+</tr>
+<tr class="row-odd"><td>tab</td>
+<td>Content process</td>
+</tr>
+<tr class="row-even"><td>gpu</td>
+<td>GPU process</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="remote-type">
+<h2>Remote Type<a class="headerlink" href="#remote-type" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal"><span class="pre">remoteType</span></code> field is a string denoting the type of content process that
+hung. As such it is only non-null if <code class="docutils literal"><span class="pre">processType</span></code> contains the <code class="docutils literal"><span class="pre">tab</span></code> value.</p>
+<p>The supported <code class="docutils literal"><span class="pre">remoteType</span></code> values are documented in the crash ping
+documentation: <a class="reference internal" href="crash-ping.html#remote-process-types"><span class="std std-ref">Remote Process Types</span></a>.</p>
+</div>
+<div class="section" id="stack-traces">
+<h2>Stack Traces<a class="headerlink" href="#stack-traces" title="Permalink to this headline">¶</a></h2>
+<p>Each hang object contains a <code class="docutils literal"><span class="pre">stack</span></code> field which has been populated with an
+interleaved stack trace of the hung thread. An interleaved stack consists of a
+native backtrace with additional frames interleaved, representing chrome JS and
+pseudostack entries.</p>
+<p>Note that this field only contains native stack frames, pseudostack and chrome
+JS script frames. If native stacks can not be collected on the target platform,
+or stackwalking was not initialized, there will be no native frames present, and
+the stack will consist only of pseudostack and chrome JS script frames.</p>
+<p>A single frame in the stack is either a raw string, representing a pseudostack
+or chrome JS script frame, or a native stack frame:</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="p">[</span>
+  <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span> <span class="c1">// Index in the payload.modules list of the module description.</span>
+            <span class="c1">// -1 if this frame was not in a valid module.</span>
+  <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span> <span class="c1">// Hex string (e.g. &quot;FF0F&quot;) of the frame offset in the module.</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="annotations">
+<h2>Annotations<a class="headerlink" href="#annotations" title="Permalink to this headline">¶</a></h2>
+<p>The annotations field is a map from key to string value, for example if the user
+was interacting during a hang the annotations field would look something like
+this:</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;UserInteracting&quot;</span><span class="o">:</span> <span class="s2">&quot;true&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The following annotations are currently present in tree:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>UserInteracting</td>
+<td>“true” if the user was actively interacting</td>
+</tr>
+<tr class="row-odd"><td>pluginName</td>
+<td>Name of the currently running plugin</td>
+</tr>
+<tr class="row-even"><td>pluginVersion</td>
+<td>Version of the currently running plugin</td>
+</tr>
+<tr class="row-odd"><td>HangUIShown</td>
+<td>“true” if the hang UI was shown</td>
+</tr>
+<tr class="row-even"><td>HangUIContinued</td>
+<td>“true” if continue was selected in the hang UI</td>
+</tr>
+<tr class="row-odd"><td>HangUIDontShow</td>
+<td>“true” if the hang UI was not shown</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="anonymous-ping.html" class="btn btn-neutral float-right" title="“anonymous” ping" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="crash-ping.html" class="btn btn-neutral" title="“crash” ping" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

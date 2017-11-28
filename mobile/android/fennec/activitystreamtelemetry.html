@@ -1,0 +1,561 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Activity Stream UI Telemetry &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Firefox for Android" href="index.html"/>
+        <link rel="next" title="Downloadable content (DLC) UI Telemetry" href="downloadcontenttelemetry.html"/>
+        <link rel="prev" title="UI Telemetry" href="uitelemetry.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Firefox for Android</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="localeswitching.html">Runtime locale switching in Fennec</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uitelemetry.html">UI Telemetry</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Activity Stream UI Telemetry</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#session">Session</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#global-extras">Global extras</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#extra-information-available-for-various-event-types">Extra information available for various event types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#action-position">Action position</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#top-site-interactions">Top Site interactions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#top-stories-pocket-interactions">Top Stories (Pocket) interactions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#highlight-interactions">Highlight interactions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#context-menu-interactions">Context Menu interactions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#learn-more-interactions">Learn More interactions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#full-examples">Full Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="downloadcontenttelemetry.html">Downloadable content (DLC) UI Telemetry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adjust.html">Install tracking with the Adjust SDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mma.html">MMA Mobile Marketing Automation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="defaultdomains.html">Shipping Default Domains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shutdown.html">Shutting down Firefox for Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="push.html">The architecture of the Fennec Webpush implementation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Firefox for Android</a> &raquo;</li>
+        
+      <li>Activity Stream UI Telemetry</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/mobile/android/fennec/activitystreamtelemetry.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="activity-stream-ui-telemetry">
+<h1>Activity Stream UI Telemetry<a class="headerlink" href="#activity-stream-ui-telemetry" title="Permalink to this headline">¶</a></h1>
+<p>Building on top of UI Telemetry, Activity Stream records additional information about events and user context in which they occur.
+The <code class="docutils literal"><span class="pre">extras</span></code> field is used for that purpose; additional information is structured as JSON blobs.</p>
+<div class="section" id="session">
+<h2>Session<a class="headerlink" href="#session" title="Permalink to this headline">¶</a></h2>
+<p>Activity Stream events are recorded as part of the “activitystream.1” session.</p>
+</div>
+<div class="section" id="global-extras">
+<h2>Global extras<a class="headerlink" href="#global-extras" title="Permalink to this headline">¶</a></h2>
+<p>A concept of a “global” extra is meant to support recording certain context information with every event that is being sent, regardless of its type.</p>
+<p><code class="docutils literal"><span class="pre">fx_account_present</span></code>, values: true, false
+Indicates if Firefox Account is currently enabled.</p>
+<p><code class="docutils literal"><span class="pre">as_user_preferences</span></code>, values: (bit-packed) value of preferences, and related settings, enabled
+Each preference is assigned a value that is a unique power of 2, and value of as_user_preferences is the sum of all enabled preferences values.</p>
+<p>Some values are taken directly from Android SharedPreferences: these are prefixed with “(SharedPrefs)”“. All preferences
+measured (with their values) are:</p>
+<ul class="simple">
+<li>(SharedPrefs) pref_activitystream_pocket_enabled: 4</li>
+<li>(SharedPrefs) pref_activitystream_visited_enabled: 8</li>
+<li>(SharedPrefs) pref_activitystream_recentbookmarks_enabled: 16</li>
+<li>Is Pocket enabled in the user’s current locale: 32</li>
+</ul>
+<p><strong>Important note on Pocket:</strong> A user’s ability to override <code class="docutils literal"><span class="pre">pref_activitystream_pocket_enabled</span></code> will be influenced by whether
+or not Pocket is shown so when checking that preference, it is also recommended to check whether Pocket is enabled in the user’s
+current locale. We initially limited the locales that get Pocket recommendations in <a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=1404460">bug 1404460</a>.</p>
+</div>
+<div class="section" id="extra-information-available-for-various-event-types">
+<h2>Extra information available for various event types<a class="headerlink" href="#extra-information-available-for-various-event-types" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="action-position">
+<h3>Action position<a class="headerlink" href="#action-position" title="Permalink to this headline">¶</a></h3>
+<p>Common to most recorded events is the 0-based <code class="docutils literal"><span class="pre">action_position</span></code> extra. For non-menu interactions it
+indicates position of an item being interacted with. For example, click on a third top site of a
+second page will have <code class="docutils literal"><span class="pre">action_position</span> <span class="pre">=</span> <span class="pre">6</span></code>, given that the first page had 4 top sites.</p>
+<p>Additionally for Top Site interactions, 0-based <code class="docutils literal"><span class="pre">page_number</span></code> is also recorded.</p>
+<p>For menu interactions, or interactions with menu items, it will indicate position of a top site or a
+highlight for which the menu is being displayed.</p>
+</div>
+<div class="section" id="top-site-interactions">
+<h3>Top Site interactions<a class="headerlink" href="#top-site-interactions" title="Permalink to this headline">¶</a></h3>
+<p>Three event types are recorded:</p>
+<ol class="arabic simple">
+<li>User clicked on a Top Site: event=”loadurl.1”, method=”listitem”</li>
+<li>User long-clicked on on a Top Site: event=”show.1”, method=”contextmenu”</li>
+<li>User swiped left/right (only for Activity Stream topsites): event=”action.1”, method=”list”, extras=”swipe_forward”/”swipe_back”</li>
+</ol>
+<p>For each click event (1/2), in addition to global extras, the following information is recorded:</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">extras</span><span class="o">:</span> <span class="p">{</span>
+    <span class="p">...</span>
+    <span class="s2">&quot;source_type&quot;</span><span class="o">:</span> <span class="s2">&quot;topsites&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;source_subtype&quot;</span><span class="o">:</span> <span class="s2">&quot;pinned&quot;</span><span class="o">/</span><span class="s2">&quot;suggested&quot;</span><span class="o">/</span><span class="s2">&quot;top&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;action_position&quot;</span><span class="o">:</span> <span class="nx">number</span><span class="p">,</span> <span class="cm">/* 0-based index of a top site being interacted with */</span>
+    <span class="s2">&quot;page_number&quot;</span><span class="o">:</span> <span class="nx">number</span><span class="p">,</span> <span class="cm">/* 0-based index of a page on which top site appears */</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Subtype indicates a reason an item which is being interacted with appeared in the Top Sites:</p>
+<ul class="simple">
+<li>“pinned”: a pinned top site, specifically a non-positioned “Activity Stream pinned” site</li>
+<li>“suggested”: a suggested top site, one of the default ones displayed when there’s not enough browsing history available</li>
+<li>“top”: a frecency-based top site, based on browsing history. Neither “pinned” nor “suggested”.</li>
+</ul>
+<p><strong>Important note on the suggested source_subtype:</strong> “suggested” will only be returned the first time a user clicks on a
+particular suggested site: for all subsequent clicks on this same site, “top” will be returned (assuming the site is
+never pinned). The reason is that once a suggested site has been visited once, it becomes part of a user’s history and
+is no longer suggested.</p>
+</div>
+<div class="section" id="top-stories-pocket-interactions">
+<h3>Top Stories (Pocket) interactions<a class="headerlink" href="#top-stories-pocket-interactions" title="Permalink to this headline">¶</a></h3>
+<p>Two event types are recorded for row items (links):
+1) User clicked on a Story item: event=”loadurl.1”, method=”listitem”
+2) User clicked on the menu button: event=”show.1”, method=”contextmenu”</p>
+<p>For both event types, in addition to global extras, the following information is recorded:</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">extras</span><span class="o">:</span> <span class="p">{</span>
+    <span class="p">...</span>
+    <span class="s2">&quot;source_type&quot;</span><span class="o">:</span> <span class="s2">&quot;pocket&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;action_position&quot;</span><span class="o">:</span> <span class="nx">number</span> <span class="cm">/* 0-based index of a story being interacted with */</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>For “loadurl.1” event, the following extra information is also recorded:</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">extras</span><span class="o">:</span> <span class="p">{</span>
+    <span class="p">...</span>
+    <span class="s2">&quot;count&quot;</span><span class="o">:</span> <span class="nx">number</span><span class="p">,</span> <span class="cm">/* total number of stories displayed */</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>For “show.1” event, the following extra information is also recorded:</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">extras</span><span class="o">:</span> <span class="p">{</span>
+    <span class="p">...</span>
+    <span class="s2">&quot;interaction&quot;</span><span class="o">:</span> <span class="s2">&quot;menu_button&quot;</span><span class="o">/</span><span class="s2">&quot;long_click&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>When the user opens the context menu with…</p>
+<ul class="simple">
+<li>the 3-dot menu, “menu_button” is recorded</li>
+<li>a long click, “long_click” is recorded</li>
+</ul>
+<p>One event type is recorded for interaction with the Top Stories section title UI:
+1) User clicks on the “MORE” link in the Top Stories section title: event=”action.1”, method=”button”</p>
+<p>In addition to global extras, the following information is included:</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">extras</span><span class="o">:</span> <span class="p">{</span>
+    <span class="p">...</span>
+    <span class="s2">&quot;source_type&quot;</span><span class="o">:</span> <span class="s2">&quot;pocket&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;item&quot;</span><span class="o">:</span> <span class="s2">&quot;link_more&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="highlight-interactions">
+<h3>Highlight interactions<a class="headerlink" href="#highlight-interactions" title="Permalink to this headline">¶</a></h3>
+<p>Two event types are recorded:</p>
+<ol class="arabic simple">
+<li>User clicked on a Highlight: event=”loadurl.1”, method=”listitem”</li>
+<li>User clicked on the menu button: event=”show.1”, method=”contextmenu”</li>
+</ol>
+<p>For both event types, in addition to global extras, the following information is recorded:</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">extras</span><span class="o">:</span> <span class="p">{</span>
+    <span class="p">...</span>
+    <span class="s2">&quot;source_type&quot;</span><span class="o">:</span> <span class="s2">&quot;highlights&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;source_subtype&quot;</span><span class="o">:</span> <span class="s2">&quot;visited&quot;</span><span class="o">/</span><span class="s2">&quot;bookmarked&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;action_position&quot;</span><span class="o">:</span> <span class="nx">number</span><span class="p">,</span> <span class="cm">/* 0-based index of a highlight being interacted with */</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Subtype indicates reason an item being which is being interacted with appeared in the Highlights:</p>
+<ul class="simple">
+<li>“visited”: a website has been visited recently</li>
+<li>“bookmarked”: a website has been bookmarked recently</li>
+</ul>
+<p>For “loadurl.1” event, the following extra information is also recorded:</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">extras</span><span class="o">:</span> <span class="p">{</span>
+    <span class="p">...</span>
+    <span class="s2">&quot;count&quot;</span><span class="o">:</span> <span class="nx">number</span> <span class="cm">/* total number of highlights displayed */</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>For “show.1” event, the following extra information is also recorded:</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">extras</span><span class="o">:</span> <span class="p">{</span>
+    <span class="p">...</span>
+    <span class="s2">&quot;interaction&quot;</span><span class="o">:</span> <span class="s2">&quot;menu_button&quot;</span><span class="o">/</span><span class="s2">&quot;long_click&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>When the user opens the context menu with…</p>
+<ul class="simple">
+<li>the 3-dot menu, “menu_button” is recorded</li>
+<li>a long click, “long_click” is recorded</li>
+</ul>
+</div>
+<div class="section" id="context-menu-interactions">
+<h3>Context Menu interactions<a class="headerlink" href="#context-menu-interactions" title="Permalink to this headline">¶</a></h3>
+<p>Every interaction with a context menu item is recorded using: event=”action.1”, method=”contextmenu”</p>
+<p>For all interactions, in addition to global extras, the following information is recorded:</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">extras</span><span class="o">:</span> <span class="p">{</span>
+    <span class="p">...</span>
+    <span class="s2">&quot;item&quot;</span><span class="o">:</span> <span class="nx">string</span><span class="p">,</span> <span class="cm">/* name of a menu item */</span>
+    <span class="s2">&quot;source_type&quot;</span><span class="o">:</span> <span class="s2">&quot;topsites&quot;</span><span class="o">/</span><span class="s2">&quot;highlights&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;source_subtype&quot;</span><span class="o">:</span> <span class="nx">string</span><span class="p">,</span> <span class="cm">/* depending on type, one of: &quot;pinned&quot;, &quot;suggested&quot;, &quot;top&quot;, &quot;visited&quot;, &quot;bookmarked&quot; */</span>
+    <span class="s2">&quot;action_position&quot;</span><span class="o">:</span> <span class="nx">number</span><span class="p">,</span> <span class="cm">/* 0-based index of a top site or highlight item which owns this menu */</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Possible values for “item” key (names of menu items), in no particular order:</p>
+<ul class="simple">
+<li>“share”</li>
+<li>“add_bookmark”</li>
+<li>“remove_bookmark”</li>
+<li>“pin”</li>
+<li>“unpin”</li>
+<li>“copy”</li>
+<li>“homescreen”</li>
+<li>“newtab” (private tab actions are collapsed into “newtab” telemetry due to our privacy guidelines)</li>
+<li>“dismiss”</li>
+<li>“delete”</li>
+</ul>
+</div>
+<div class="section" id="learn-more-interactions">
+<h3>Learn More interactions<a class="headerlink" href="#learn-more-interactions" title="Permalink to this headline">¶</a></h3>
+<p>A click on the “Learn more” link is recorded using: event=”loadurl.1”, method=”listitem”.</p>
+<p>In addition to the global extras, the following information is recorded:</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">extras</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;source_type&quot;</span><span class="o">:</span> <span class="s2">&quot;learn_more&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="full-examples">
+<h2>Full Examples<a class="headerlink" href="#full-examples" title="Permalink to this headline">¶</a></h2>
+<p>Following examples of events are here to provide a better feel for the overall shape of telemetry data being recorded.</p>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>User with an active Firefox Account clicked on a menu button for the third highlight (“visited”) [prefs enabled: top-stories, bookmarks, visited] :</dt>
+<dd><div class="first last highlight-default"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">=</span><span class="s2">&quot;activitystream.1&quot;</span>
+<span class="n">event</span><span class="o">=</span><span class="s2">&quot;show.1&quot;</span>
+<span class="n">method</span><span class="o">=</span><span class="s2">&quot;contextmenu&quot;</span>
+<span class="n">extras</span><span class="o">=</span><span class="s2">&quot;{</span>
+    <span class="s1">&#39;fx_account_present&#39;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s1">&#39;as_user_preferences&#39;</span><span class="p">:</span> <span class="mi">28</span><span class="p">,</span>
+    <span class="s1">&#39;source_type&#39;</span><span class="p">:</span> <span class="s1">&#39;highlights&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;source_subtype&#39;</span><span class="p">:</span> <span class="s1">&#39;visited&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;action_position&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s1">&#39;interaction&#39;</span><span class="p">:</span> <span class="s1">&#39;menu_button&#39;</span>
+<span class="p">}</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>User with no active Firefox Account clicked on a second highlight (recent bookmark), with total of 7 highlights being displayed [prefs enabled: bookmarks] :</dt>
+<dd><div class="first last highlight-default"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">=</span><span class="s2">&quot;activitystream.1&quot;</span>
+<span class="n">event</span><span class="o">=</span><span class="s2">&quot;loadurl.1&quot;</span>
+<span class="n">method</span><span class="o">=</span><span class="s2">&quot;listitem&quot;</span>
+<span class="n">extras</span><span class="o">=</span><span class="s2">&quot;{</span>
+    <span class="s1">&#39;fx_account_present&#39;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s1">&#39;as_user_preferences&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
+    <span class="s1">&#39;source_type&#39;</span><span class="p">:</span> <span class="s1">&#39;highlights&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;source_subtype&#39;</span><span class="p">:</span> <span class="s1">&#39;bookmarked&#39;</span>
+    <span class="s1">&#39;action_position&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s1">&#39;count&#39;</span><span class="p">:</span> <span class="mi">7</span>
+<span class="p">}</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>User with an active Firefox Account clicked on a third pinned top site [prefs enabled: (none)] :</dt>
+<dd><div class="first last highlight-default"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">=</span><span class="s2">&quot;activitystream.1&quot;</span>
+<span class="n">event</span><span class="o">=</span><span class="s2">&quot;loadurl.1&quot;</span>
+<span class="n">method</span><span class="o">=</span><span class="s2">&quot;listitem&quot;</span>
+<span class="n">extras</span><span class="o">=</span><span class="s2">&quot;{</span>
+    <span class="s1">&#39;fx_account_present&#39;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s1">&#39;as_user_preferences&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s1">&#39;source_type&#39;</span><span class="p">:</span> <span class="s1">&#39;topsites&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;source_subtype&#39;</span><span class="p">:</span> <span class="s1">&#39;pinned&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;action_position&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s1">&#39;page_number&#39;</span><span class="p">:</span> <span class="mi">0</span>
+<span class="p">}</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>User with an active Firefox Account clicked on a “share” context menu item, which was displayed for a regular top site number 6 [prefs enabled: visited, bookmarks] :</dt>
+<dd><div class="first last highlight-default"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">=</span><span class="s2">&quot;activitystream.1&quot;</span>
+<span class="n">event</span><span class="o">=</span><span class="s2">&quot;action.1&quot;</span>
+<span class="n">method</span><span class="o">=</span><span class="s2">&quot;contextmenu&quot;</span>
+<span class="n">extras</span><span class="o">=</span><span class="s2">&quot;{</span>
+    <span class="s1">&#39;fx_account_present&#39;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s1">&#39;as_user_preferences&#39;</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span>
+    <span class="s1">&#39;source_type&#39;</span><span class="p">:</span> <span class="s1">&#39;topsites&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;source_subtype&#39;</span><span class="p">:</span> <span class="s1">&#39;top&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;item&#39;</span><span class="p">:</span> <span class="s1">&#39;share&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;action_position&#39;</span><span class="p">:</span> <span class="mi">5</span>
+<span class="p">}</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="downloadcontenttelemetry.html" class="btn btn-neutral float-right" title="Downloadable content (DLC) UI Telemetry" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="uitelemetry.html" class="btn btn-neutral" title="UI Telemetry" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

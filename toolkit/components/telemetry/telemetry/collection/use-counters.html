@@ -1,0 +1,393 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Use Counters &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../../../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../../../../../index.html"/>
+        <link rel="up" title="Data collection" href="index.html"/>
+        <link rel="next" title="Data documentation" href="../data/index.html"/>
+        <link rel="prev" title="Uptake Telemetry" href="uptake.html"/> 
+
+  
+  <script src="../../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Telemetry</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../concepts/index.html">Concepts</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Data collection</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="scalars.html">Scalars</a></li>
+<li class="toctree-l3"><a class="reference internal" href="histograms.html">Histograms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="events.html">Events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="measuring-time.html">Measuring elapsed time</a></li>
+<li class="toctree-l3"><a class="reference internal" href="custom-pings.html">Submitting custom pings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="stack-capture.html">Stack capture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="experiments.html">Experiment Annotation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="uptake.html">Uptake Telemetry</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Use Counters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#the-api">The API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-processor-script">The processor script</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#interpreting-the-data">Interpreting the data</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#browser-usage-telemetry">Browser Usage Telemetry</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../data/index.html">Data documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../internals/index.html">Internals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fhr/index.html">Firefox Health Report (Obsolete)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Telemetry</a> &raquo;</li>
+        
+          <li><a href="index.html">Data collection</a> &raquo;</li>
+        
+      <li>Use Counters</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../../_sources/toolkit/components/telemetry/telemetry/collection/use-counters.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="use-counters">
+<h1>Use Counters<a class="headerlink" href="#use-counters" title="Permalink to this headline">¶</a></h1>
+<p>Use counters are used to report Telemetry statistics on whether individual documents
+use a given WebIDL method or attribute (getters and setters are reported separately), CSS
+property, or deprecated DOM operation.  Custom use counters can also be
+defined to test frequency of things that don’t fall into one of those
+categories.</p>
+<div class="section" id="the-api">
+<h2>The API<a class="headerlink" href="#the-api" title="Permalink to this headline">¶</a></h2>
+<p>The process to add a new use counter is different depending on the type feature that needs
+to be measured. In general, for each defined use counter, two separate boolean histograms are generated:</p>
+<ul class="simple">
+<li>one describes the use of the tracked feature for individual documents and has the <code class="docutils literal"><span class="pre">_DOCUMENT</span></code> suffix;</li>
+<li>the other describes the use of the same thing for top-level pages (basically what we think of as a <em>web page</em>) and has the <code class="docutils literal"><span class="pre">_PAGE</span></code> suffix.</li>
+</ul>
+<p>Using two histograms is particularly suited to measure how many sites would be affected by
+removing the tracked feature.</p>
+<p>Example scenarios:</p>
+<ul class="simple">
+<li>Site <em>X</em> triggers use counter <em>Y</em>.  We report “used” (true) in both the <code class="docutils literal"><span class="pre">_DOCUMENT</span></code> and <code class="docutils literal"><span class="pre">_PAGE</span></code> histograms.</li>
+<li>Site <em>X</em> does not trigger use counter <em>Y</em>.  We report “unused” (false) in both the <code class="docutils literal"><span class="pre">_DOCUMENT</span></code> and <code class="docutils literal"><span class="pre">_PAGE</span></code> histograms.</li>
+<li>Site <em>X</em> has an iframe for site <em>W</em>.  Site <em>W</em> triggers use counter <em>Y</em>, but site <em>X</em> does not.  We report one “used” and one “unused” in the individual <code class="docutils literal"><span class="pre">_DOCUMENT</span></code> histogram and one “used” in the top-level <code class="docutils literal"><span class="pre">_PAGE</span></code> histogram.</li>
+</ul>
+<div class="section" id="deprecated-dom-operations">
+<h3>Deprecated DOM operations<a class="headerlink" href="#deprecated-dom-operations" title="Permalink to this headline">¶</a></h3>
+<p>Use counters for deprecated DOM operations are declared in the <a class="reference external" href="https://dxr.mozilla.org/mozilla-central/source/dom/base/nsDeprecatedOperationList.h">nsDeprecatedOperationList.h</a> file. The counters are
+registered through the <code class="docutils literal"><span class="pre">DEPRECATED_OPERATION(DeprecationReference)</span></code> macro. The provided
+parameter must have the same value of the deprecation note added to the <em>IDL</em> file.</p>
+<p>See this <a class="reference external" href="https://hg.mozilla.org/mozilla-central/rev/e30a357b25f1">changeset</a> for a sample
+deprecated operation.</p>
+</div>
+<div class="section" id="the-usecounters-registry">
+<h3>The UseCounters registry<a class="headerlink" href="#the-usecounters-registry" title="Permalink to this headline">¶</a></h3>
+<p>Use counters for WebIDL methods/attributes and CSS properties are registered in the <a class="reference external" href="https://dxr.mozilla.org/mozilla-central/source/dom/base/UseCounters.conf">UseCounters.conf</a> file.  The format of this file is very strict. Each line can be:</p>
+<ol class="arabic simple">
+<li>a blank line</li>
+<li>a comment, which is a line that begins with <code class="docutils literal"><span class="pre">//</span></code></li>
+<li>one of four possible use counter declarations:</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal"><span class="pre">method</span> <span class="pre">&lt;IDL</span> <span class="pre">interface</span> <span class="pre">name&gt;.&lt;IDL</span> <span class="pre">operation</span> <span class="pre">name&gt;</span></code></li>
+<li><code class="docutils literal"><span class="pre">attribute</span> <span class="pre">&lt;IDL</span> <span class="pre">interface</span> <span class="pre">name&gt;.&lt;IDL</span> <span class="pre">attribute</span> <span class="pre">name&gt;</span></code></li>
+<li><code class="docutils literal"><span class="pre">property</span> <span class="pre">&lt;CSS</span> <span class="pre">property</span> <span class="pre">method</span> <span class="pre">name&gt;</span></code></li>
+<li><code class="docutils literal"><span class="pre">custom</span> <span class="pre">&lt;any</span> <span class="pre">valid</span> <span class="pre">identifier&gt;</span> <span class="pre">&lt;description&gt;</span></code></li>
+</ul>
+</div></blockquote>
+<div class="section" id="css-properties">
+<h4>CSS properties<a class="headerlink" href="#css-properties" title="Permalink to this headline">¶</a></h4>
+<p>The CSS property method name should be identical to the <code class="docutils literal"><span class="pre">method</span></code> argument of <code class="docutils literal"><span class="pre">CSS_PROP()</span></code> and related macros. The only differences are that all hyphens are removed and CamelCase naming is used.  See <a class="reference external" href="https://dxr.mozilla.org/mozilla-central/source/layout/style/nsCSSPropList.h">nsCSSPropList.h</a> for further details.</p>
+</div>
+<div class="section" id="custom-use-counters">
+<h4>Custom use counters<a class="headerlink" href="#custom-use-counters" title="Permalink to this headline">¶</a></h4>
+<p>The &lt;description&gt; for custom counters will be appended to “When a document ” or “When a page “, so phrase it appropriately.  For instance, “constructs a Foo object” or “calls Document.bar(‘some value’)”.  It may contain any character (including whitespace).  Custom counters are incremented when SetDocumentAndPageUseCounter(eUseCounter_custom_MyName) is called on an ns(I)Document object.</p>
+</div>
+<div class="section" id="webidl-methods-and-attributes">
+<h4>WebIDL methods and attributes<a class="headerlink" href="#webidl-methods-and-attributes" title="Permalink to this headline">¶</a></h4>
+<p>Additionally to having a new entry added to the <a class="reference external" href="https://dxr.mozilla.org/mozilla-central/source/dom/base/UseCounters.conf">UseCounters.conf</a> file, WebIDL methods and attributes must have a <code class="docutils literal"><span class="pre">[UseCounter]</span></code> extended attribute in the Web IDL file in order for the counters to be incremented.</p>
+<p>Both additions are required because generating things from bindings codegen and ensuring all the dependencies are correct would have been rather difficult, and annotating the WebIDL files does nothing for identifying CSS property usage, which we would also like to track.</p>
+</div>
+</div>
+</div>
+<div class="section" id="the-processor-script">
+<h2>The processor script<a class="headerlink" href="#the-processor-script" title="Permalink to this headline">¶</a></h2>
+<p>The definition files are processed twice:</p>
+<ul class="simple">
+<li>once to generate two C++ headers files, included by the web platform components (e.g. DOM) that own the features to be tracked;</li>
+<li>the other time by the Telemetry component, to generate the histogram definitions that make the collection system work.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The histograms that are generated out of use counters are set to <em>never</em> expire and are <em>opt-in</em>.</p>
+</div>
+<div class="section" id="gen-usecounters-py">
+<h3>gen-usecounters.py<a class="headerlink" href="#gen-usecounters-py" title="Permalink to this headline">¶</a></h3>
+<p>This script is called by the build system to generate:</p>
+<ul class="simple">
+<li>the <code class="docutils literal"><span class="pre">PropertyUseCounterMap.inc</span></code> C++ header for the CSS properties;</li>
+<li>the <code class="docutils literal"><span class="pre">UseCounterList.h</span></code> header for the WebIDL, out of the definition files.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="interpreting-the-data">
+<h2>Interpreting the data<a class="headerlink" href="#interpreting-the-data" title="Permalink to this headline">¶</a></h2>
+<p>The histogram as accumulated on the client only puts values into the 1 bucket, meaning that
+the use counter directly reports if a feature was used but it does not directly report if
+it isn’t used.
+The values accumulated within a use counter should be considered proportional to
+<code class="docutils literal"><span class="pre">CONTENT_DOCUMENTS_DESTROYED</span></code> and <code class="docutils literal"><span class="pre">TOP_LEVEL_CONTENT_DOCUMENTS_DESTROYED</span></code> (see
+<a class="reference external" href="https://dxr.mozilla.org/mozilla-central/rev/b056526be38e96b3e381b7e90cd8254ad1d96d9d/dom/base/nsDocument.cpp#13209-13231">here</a>). The difference between the values of these two histograms
+and the related use counters below tell us how many pages did <em>not</em> use the feature in question.
+For instance, if we see that a given session has destroyed 30 content documents, but a
+particular use counter shows only a count of 5, we can infer that the use counter was <em>not</em>
+used in 25 of those 30 documents.</p>
+<p>Things are done this way, rather than accumulating a boolean flag for each use counter,
+to avoid sending histograms for features that don’t get widely used. Doing things in this
+fashion means smaller telemetry payloads and faster processing on the server side.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../data/index.html" class="btn btn-neutral float-right" title="Data documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="uptake.html" class="btn btn-neutral" title="Uptake Telemetry" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

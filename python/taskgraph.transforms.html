@@ -1,0 +1,1325 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>taskgraph.transforms package &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../index.html"/>
+        <link rel="up" title="taskgraph package" href="taskgraph.html"/>
+        <link rel="next" title="taskgraph.transforms.job package" href="taskgraph.transforms.job.html"/>
+        <link rel="prev" title="taskgraph.test package" href="taskgraph.test.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="taskgraph.html">taskgraph package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="taskgraph.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="taskgraph.actions.html">taskgraph.actions package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="taskgraph.cron.html">taskgraph.cron package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="taskgraph.loader.html">taskgraph.loader package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="taskgraph.test.html">taskgraph.test package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">taskgraph.transforms package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.transforms.balrog">taskgraph.transforms.balrog module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.transforms.base">taskgraph.transforms.base module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.transforms.beetmover">taskgraph.transforms.beetmover module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.transforms.beetmover_cdns">taskgraph.transforms.beetmover_cdns module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.transforms.beetmover_checksums">taskgraph.transforms.beetmover_checksums module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.transforms.beetmover_l10n">taskgraph.transforms.beetmover_l10n module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.transforms.beetmover_repackage">taskgraph.transforms.beetmover_repackage module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.transforms.beetmover_repackage_l10n">taskgraph.transforms.beetmover_repackage_l10n module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.transforms.build">taskgraph.transforms.build module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.transforms.build_attrs">taskgraph.transforms.build_attrs module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.transforms.build_lints">taskgraph.transforms.build_lints module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.transforms.build_signing">taskgraph.transforms.build_signing module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.transforms.checksums_signing">taskgraph.transforms.checksums_signing module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.transforms.coalesce">taskgraph.transforms.coalesce module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.transforms.docker_image">taskgraph.transforms.docker_image module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.transforms.gecko_v2_whitelist">taskgraph.transforms.gecko_v2_whitelist module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.transforms.l10n">taskgraph.transforms.l10n module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.transforms.marionette_harness">taskgraph.transforms.marionette_harness module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.transforms.name_sanity">taskgraph.transforms.name_sanity module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.transforms.nightly_l10n_signing">taskgraph.transforms.nightly_l10n_signing module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.transforms.partials">taskgraph.transforms.partials module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.transforms.partials_signing">taskgraph.transforms.partials_signing module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.transforms.push_apk">taskgraph.transforms.push_apk module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.transforms.push_apk_breakpoint">taskgraph.transforms.push_apk_breakpoint module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.transforms.release_deps">taskgraph.transforms.release_deps module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.transforms.repackage">taskgraph.transforms.repackage module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.transforms.repackage_l10n">taskgraph.transforms.repackage_l10n module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.transforms.repackage_routes">taskgraph.transforms.repackage_routes module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.transforms.repackage_signing">taskgraph.transforms.repackage_signing module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.transforms.signing">taskgraph.transforms.signing module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.transforms.source_test">taskgraph.transforms.source_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.transforms.spidermonkey">taskgraph.transforms.spidermonkey module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.transforms.task">taskgraph.transforms.task module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.transforms.tests">taskgraph.transforms.tests module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.transforms.try_job">taskgraph.transforms.try_job module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.transforms.upload_generated_sources">taskgraph.transforms.upload_generated_sources module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.transforms.upload_symbols">taskgraph.transforms.upload_symbols module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.transforms.use_toolchains">taskgraph.transforms.use_toolchains module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.transforms">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="taskgraph.util.html">taskgraph.util package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.config">taskgraph.config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.create">taskgraph.create module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.decision">taskgraph.decision module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.docker">taskgraph.docker module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.files_changed">taskgraph.files_changed module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.filter_tasks">taskgraph.filter_tasks module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.generator">taskgraph.generator module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.graph">taskgraph.graph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.morph">taskgraph.morph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.optimize">taskgraph.optimize module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.parameters">taskgraph.parameters module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.target_tasks">taskgraph.target_tasks module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.task">taskgraph.task module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.taskgraph">taskgraph.taskgraph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.try_option_syntax">taskgraph.try_option_syntax module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="taskgraph.html">taskgraph package</a> &raquo;</li>
+        
+      <li>taskgraph.transforms package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/python/taskgraph.transforms.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="taskgraph-transforms-package">
+<h1>taskgraph.transforms package<a class="headerlink" href="#taskgraph-transforms-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="taskgraph.transforms.job.html">taskgraph.transforms.job package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.transforms.job.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.transforms.job.html#module-taskgraph.transforms.job.buildbot">taskgraph.transforms.job.buildbot module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.transforms.job.html#module-taskgraph.transforms.job.common">taskgraph.transforms.job.common module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.transforms.job.html#module-taskgraph.transforms.job.hazard">taskgraph.transforms.job.hazard module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.transforms.job.html#module-taskgraph.transforms.job.mach">taskgraph.transforms.job.mach module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.transforms.job.html#module-taskgraph.transforms.job.mozharness">taskgraph.transforms.job.mozharness module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.transforms.job.html#module-taskgraph.transforms.job.mozharness_test">taskgraph.transforms.job.mozharness_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.transforms.job.html#module-taskgraph.transforms.job.run_task">taskgraph.transforms.job.run_task module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.transforms.job.html#module-taskgraph.transforms.job.spidermonkey">taskgraph.transforms.job.spidermonkey module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.transforms.job.html#module-taskgraph.transforms.job.toolchain">taskgraph.transforms.job.toolchain module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.transforms.job.html#module-taskgraph.transforms.job">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-taskgraph.transforms.balrog">
+<span id="taskgraph-transforms-balrog-module"></span><h2>taskgraph.transforms.balrog module<a class="headerlink" href="#module-taskgraph.transforms.balrog" title="Permalink to this headline">¶</a></h2>
+<p>Transform the beetmover task into an actual task description.</p>
+<dl class="function">
+<dt id="taskgraph.transforms.balrog.make_task_description">
+<code class="descclassname">taskgraph.transforms.balrog.</code><code class="descname">make_task_description</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.balrog.make_task_description" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.balrog.validate">
+<code class="descclassname">taskgraph.transforms.balrog.</code><code class="descname">validate</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.balrog.validate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.transforms.base">
+<span id="taskgraph-transforms-base-module"></span><h2>taskgraph.transforms.base module<a class="headerlink" href="#module-taskgraph.transforms.base" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="taskgraph.transforms.base.TransformConfig">
+<em class="property">class </em><code class="descclassname">taskgraph.transforms.base.</code><code class="descname">TransformConfig</code><span class="sig-paren">(</span><em>kind</em>, <em>path</em>, <em>config</em>, <em>params</em>, <em>kind_dependencies_tasks=None</em>, <em>graph_config=None</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.base.TransformConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>A container for configuration affecting transforms.  The <cite>config</cite>
+argument to transforms is an instance of this class, possibly with
+additional kind-specific attributes beyond those set here.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="taskgraph.transforms.base.TransformSequence">
+<em class="property">class </em><code class="descclassname">taskgraph.transforms.base.</code><code class="descname">TransformSequence</code><span class="sig-paren">(</span><em>transforms=None</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.base.TransformSequence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Container for a sequence of transforms.  Each transform is represented as a
+callable taking (config, items) and returning a generator which will yield
+transformed items.  The resulting sequence has the same interface.</p>
+<p>This is convenient to use in a file full of transforms, as it provides a
+decorator, &#64;transforms.add, that will add the decorated function to the
+sequence.</p>
+<dl class="method">
+<dt id="taskgraph.transforms.base.TransformSequence.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>func</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.base.TransformSequence.add" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.transforms.beetmover">
+<span id="taskgraph-transforms-beetmover-module"></span><h2>taskgraph.transforms.beetmover module<a class="headerlink" href="#module-taskgraph.transforms.beetmover" title="Permalink to this headline">¶</a></h2>
+<p>Transform the beetmover task into an actual task description.</p>
+<dl class="function">
+<dt id="taskgraph.transforms.beetmover.generate_upstream_artifacts">
+<code class="descclassname">taskgraph.transforms.beetmover.</code><code class="descname">generate_upstream_artifacts</code><span class="sig-paren">(</span><em>signing_task_ref</em>, <em>build_task_ref</em>, <em>platform</em>, <em>locale=None</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.beetmover.generate_upstream_artifacts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.beetmover.make_task_description">
+<code class="descclassname">taskgraph.transforms.beetmover.</code><code class="descname">make_task_description</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.beetmover.make_task_description" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.beetmover.make_task_worker">
+<code class="descclassname">taskgraph.transforms.beetmover.</code><code class="descname">make_task_worker</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.beetmover.make_task_worker" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.beetmover.validate">
+<code class="descclassname">taskgraph.transforms.beetmover.</code><code class="descname">validate</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.beetmover.validate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.transforms.beetmover_cdns">
+<span id="taskgraph-transforms-beetmover-cdns-module"></span><h2>taskgraph.transforms.beetmover_cdns module<a class="headerlink" href="#module-taskgraph.transforms.beetmover_cdns" title="Permalink to this headline">¶</a></h2>
+<p>Transform the beetmover-cdns task into a task description.</p>
+<dl class="function">
+<dt id="taskgraph.transforms.beetmover_cdns.make_beetmover_cdns_description">
+<code class="descclassname">taskgraph.transforms.beetmover_cdns.</code><code class="descname">make_beetmover_cdns_description</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.beetmover_cdns.make_beetmover_cdns_description" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.beetmover_cdns.make_beetmover_cdns_worker">
+<code class="descclassname">taskgraph.transforms.beetmover_cdns.</code><code class="descname">make_beetmover_cdns_worker</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.beetmover_cdns.make_beetmover_cdns_worker" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.beetmover_cdns.validate">
+<code class="descclassname">taskgraph.transforms.beetmover_cdns.</code><code class="descname">validate</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.beetmover_cdns.validate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.transforms.beetmover_checksums">
+<span id="taskgraph-transforms-beetmover-checksums-module"></span><h2>taskgraph.transforms.beetmover_checksums module<a class="headerlink" href="#module-taskgraph.transforms.beetmover_checksums" title="Permalink to this headline">¶</a></h2>
+<p>Transform the checksums signing task into an actual task description.</p>
+<dl class="function">
+<dt id="taskgraph.transforms.beetmover_checksums.generate_upstream_artifacts">
+<code class="descclassname">taskgraph.transforms.beetmover_checksums.</code><code class="descname">generate_upstream_artifacts</code><span class="sig-paren">(</span><em>refs</em>, <em>platform</em>, <em>locale=None</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.beetmover_checksums.generate_upstream_artifacts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.beetmover_checksums.make_beetmover_checksums_description">
+<code class="descclassname">taskgraph.transforms.beetmover_checksums.</code><code class="descname">make_beetmover_checksums_description</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.beetmover_checksums.make_beetmover_checksums_description" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.beetmover_checksums.make_beetmover_checksums_worker">
+<code class="descclassname">taskgraph.transforms.beetmover_checksums.</code><code class="descname">make_beetmover_checksums_worker</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.beetmover_checksums.make_beetmover_checksums_worker" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.beetmover_checksums.validate">
+<code class="descclassname">taskgraph.transforms.beetmover_checksums.</code><code class="descname">validate</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.beetmover_checksums.validate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.transforms.beetmover_l10n">
+<span id="taskgraph-transforms-beetmover-l10n-module"></span><h2>taskgraph.transforms.beetmover_l10n module<a class="headerlink" href="#module-taskgraph.transforms.beetmover_l10n" title="Permalink to this headline">¶</a></h2>
+<p>Transform the signing task into an actual task description.</p>
+<dl class="function">
+<dt id="taskgraph.transforms.beetmover_l10n.make_beetmover_description">
+<code class="descclassname">taskgraph.transforms.beetmover_l10n.</code><code class="descname">make_beetmover_description</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.beetmover_l10n.make_beetmover_description" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.transforms.beetmover_repackage">
+<span id="taskgraph-transforms-beetmover-repackage-module"></span><h2>taskgraph.transforms.beetmover_repackage module<a class="headerlink" href="#module-taskgraph.transforms.beetmover_repackage" title="Permalink to this headline">¶</a></h2>
+<p>Transform the beetmover task into an actual task description.</p>
+<dl class="function">
+<dt id="taskgraph.transforms.beetmover_repackage.generate_partials_upstream_artifacts">
+<code class="descclassname">taskgraph.transforms.beetmover_repackage.</code><code class="descname">generate_partials_upstream_artifacts</code><span class="sig-paren">(</span><em>artifacts</em>, <em>platform</em>, <em>locale=None</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.beetmover_repackage.generate_partials_upstream_artifacts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.beetmover_repackage.generate_upstream_artifacts">
+<code class="descclassname">taskgraph.transforms.beetmover_repackage.</code><code class="descname">generate_upstream_artifacts</code><span class="sig-paren">(</span><em>build_task_ref</em>, <em>build_signing_task_ref</em>, <em>repackage_task_ref</em>, <em>repackage_signing_task_ref</em>, <em>platform</em>, <em>locale=None</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.beetmover_repackage.generate_upstream_artifacts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.beetmover_repackage.is_valid_beetmover_job">
+<code class="descclassname">taskgraph.transforms.beetmover_repackage.</code><code class="descname">is_valid_beetmover_job</code><span class="sig-paren">(</span><em>job</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.beetmover_repackage.is_valid_beetmover_job" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.beetmover_repackage.make_partials_artifacts">
+<code class="descclassname">taskgraph.transforms.beetmover_repackage.</code><code class="descname">make_partials_artifacts</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.beetmover_repackage.make_partials_artifacts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.beetmover_repackage.make_task_description">
+<code class="descclassname">taskgraph.transforms.beetmover_repackage.</code><code class="descname">make_task_description</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.beetmover_repackage.make_task_description" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.beetmover_repackage.make_task_worker">
+<code class="descclassname">taskgraph.transforms.beetmover_repackage.</code><code class="descname">make_task_worker</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.beetmover_repackage.make_task_worker" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.beetmover_repackage.validate">
+<code class="descclassname">taskgraph.transforms.beetmover_repackage.</code><code class="descname">validate</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.beetmover_repackage.validate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.transforms.beetmover_repackage_l10n">
+<span id="taskgraph-transforms-beetmover-repackage-l10n-module"></span><h2>taskgraph.transforms.beetmover_repackage_l10n module<a class="headerlink" href="#module-taskgraph.transforms.beetmover_repackage_l10n" title="Permalink to this headline">¶</a></h2>
+<p>Transform the signing task into an actual task description.</p>
+<dl class="function">
+<dt id="taskgraph.transforms.beetmover_repackage_l10n.make_beetmover_description">
+<code class="descclassname">taskgraph.transforms.beetmover_repackage_l10n.</code><code class="descname">make_beetmover_description</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.beetmover_repackage_l10n.make_beetmover_description" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.transforms.build">
+<span id="taskgraph-transforms-build-module"></span><h2>taskgraph.transforms.build module<a class="headerlink" href="#module-taskgraph.transforms.build" title="Permalink to this headline">¶</a></h2>
+<p>Apply some defaults and minor modifications to the jobs defined in the build
+kind.</p>
+<dl class="function">
+<dt id="taskgraph.transforms.build.set_defaults">
+<code class="descclassname">taskgraph.transforms.build.</code><code class="descname">set_defaults</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.build.set_defaults" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set defaults, including those that differ per worker implementation</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.build.set_env">
+<code class="descclassname">taskgraph.transforms.build.</code><code class="descname">set_env</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.build.set_env" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set extra environment variables from try command line.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.transforms.build_attrs">
+<span id="taskgraph-transforms-build-attrs-module"></span><h2>taskgraph.transforms.build_attrs module<a class="headerlink" href="#module-taskgraph.transforms.build_attrs" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="taskgraph.transforms.build_attrs.set_build_attributes">
+<code class="descclassname">taskgraph.transforms.build_attrs.</code><code class="descname">set_build_attributes</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.build_attrs.set_build_attributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the build_platform and build_type attributes based on the job name.
+Although not all jobs using this transform are actual “builds”, the try
+option syntax treats them as such, and this arranges the attributes
+appropriately for that purpose.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.build_attrs.set_schedules_optimization">
+<code class="descclassname">taskgraph.transforms.build_attrs.</code><code class="descname">set_schedules_optimization</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.build_attrs.set_schedules_optimization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the <cite>skip-unless-affected</cite> optimization based on the build platform.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.transforms.build_lints">
+<span id="taskgraph-transforms-build-lints-module"></span><h2>taskgraph.transforms.build_lints module<a class="headerlink" href="#module-taskgraph.transforms.build_lints" title="Permalink to this headline">¶</a></h2>
+<p>Apply some defaults and minor modifications to the jobs defined in the build
+kind.</p>
+<dl class="function">
+<dt id="taskgraph.transforms.build_lints.check_mozharness_perfherder_options">
+<code class="descclassname">taskgraph.transforms.build_lints.</code><code class="descname">check_mozharness_perfherder_options</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.build_lints.check_mozharness_perfherder_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Verify that multiple jobs don’t use the same perfherder bucket.</p>
+<p>Build jobs record perfherder metrics by default. Perfherder metrics go
+to a bucket derived by the platform by default. The name can further be
+customized by the presence of “extra options” either defined in
+mozharness sub-configs or in an environment variable.</p>
+<p>This linter tries to verify that no 2 jobs will send Perfherder metrics
+to the same bucket by looking for jobs not defining extra options when
+their platform or mozharness config are otherwise similar.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.transforms.build_signing">
+<span id="taskgraph-transforms-build-signing-module"></span><h2>taskgraph.transforms.build_signing module<a class="headerlink" href="#module-taskgraph.transforms.build_signing" title="Permalink to this headline">¶</a></h2>
+<p>Transform the signing task into an actual task description.</p>
+<dl class="function">
+<dt id="taskgraph.transforms.build_signing.add_signed_routes">
+<code class="descclassname">taskgraph.transforms.build_signing.</code><code class="descname">add_signed_routes</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.build_signing.add_signed_routes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add routes corresponding to the routes of the build task
+this corresponds to, with .signed inserted, for all gecko.v2 routes</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.build_signing.define_upstream_artifacts">
+<code class="descclassname">taskgraph.transforms.build_signing.</code><code class="descname">define_upstream_artifacts</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.build_signing.define_upstream_artifacts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.transforms.checksums_signing">
+<span id="taskgraph-transforms-checksums-signing-module"></span><h2>taskgraph.transforms.checksums_signing module<a class="headerlink" href="#module-taskgraph.transforms.checksums_signing" title="Permalink to this headline">¶</a></h2>
+<p>Transform the checksums signing task into an actual task description.</p>
+<dl class="function">
+<dt id="taskgraph.transforms.checksums_signing.make_checksums_signing_description">
+<code class="descclassname">taskgraph.transforms.checksums_signing.</code><code class="descname">make_checksums_signing_description</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.checksums_signing.make_checksums_signing_description" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.checksums_signing.validate">
+<code class="descclassname">taskgraph.transforms.checksums_signing.</code><code class="descname">validate</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.checksums_signing.validate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.transforms.coalesce">
+<span id="taskgraph-transforms-coalesce-module"></span><h2>taskgraph.transforms.coalesce module<a class="headerlink" href="#module-taskgraph.transforms.coalesce" title="Permalink to this headline">¶</a></h2>
+<p>This transform enables coalescing for tasks with scm level &gt; 1, by defining
+values for the coalesce settings of the job.</p>
+<dl class="function">
+<dt id="taskgraph.transforms.coalesce.enable_coalescing">
+<code class="descclassname">taskgraph.transforms.coalesce.</code><code class="descname">enable_coalescing</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.coalesce.enable_coalescing" title="Permalink to this definition">¶</a></dt>
+<dd><p>This transform enables coalescing for tasks with scm level &gt; 1, setting the
+name to be equal to the the first 20 chars of the sha256 of the task name
+(label). The hashing is simply used to keep the name short, unique, and
+alphanumeric, since it is used in AMQP routing keys.</p>
+<p>Note, the coalescing keys themselves are not intended to be readable
+strings or embed information. The tasks they represent contain all relevant
+metadata.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.transforms.docker_image">
+<span id="taskgraph-transforms-docker-image-module"></span><h2>taskgraph.transforms.docker_image module<a class="headerlink" href="#module-taskgraph.transforms.docker_image" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>Transform the upload-symbols task description template,</dt>
+<dd>taskcluster/ci/upload-symbols/job-template.yml</dd>
+</dl>
+<p>into an actual task description.</p>
+<dl class="function">
+<dt id="taskgraph.transforms.docker_image.fill_template">
+<code class="descclassname">taskgraph.transforms.docker_image.</code><code class="descname">fill_template</code><span class="sig-paren">(</span><em>config</em>, <em>tasks</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.docker_image.fill_template" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.transforms.gecko_v2_whitelist">
+<span id="taskgraph-transforms-gecko-v2-whitelist-module"></span><h2>taskgraph.transforms.gecko_v2_whitelist module<a class="headerlink" href="#module-taskgraph.transforms.gecko_v2_whitelist" title="Permalink to this headline">¶</a></h2>
+<p>This file contains a whitelist of gecko.v2 index route job names.  The intent
+of this whitelist is to raise an alarm when new jobs are added.  If those jobs
+already run in Buildbot, then it’s important that the generated index routes
+match (and that only one of Buildbot and TaskCluster be tier-1 at any time).
+If the jobs are new and never ran in Buildbot, then their job name can be added
+here without any further fuss.</p>
+<p>Once all jobs have been ported from Buildbot, this file can be removed.</p>
+</div>
+<div class="section" id="module-taskgraph.transforms.l10n">
+<span id="taskgraph-transforms-l10n-module"></span><h2>taskgraph.transforms.l10n module<a class="headerlink" href="#module-taskgraph.transforms.l10n" title="Permalink to this headline">¶</a></h2>
+<p>Do transforms specific to l10n kind</p>
+<dl class="function">
+<dt id="taskgraph.transforms.l10n.all_locales_attribute">
+<code class="descclassname">taskgraph.transforms.l10n.</code><code class="descname">all_locales_attribute</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.l10n.all_locales_attribute" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.l10n.chain_of_trust">
+<code class="descclassname">taskgraph.transforms.l10n.</code><code class="descname">chain_of_trust</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.l10n.chain_of_trust" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.l10n.chunk_locales">
+<code class="descclassname">taskgraph.transforms.l10n.</code><code class="descname">chunk_locales</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.l10n.chunk_locales" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utilizes chunking for l10n stuff</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.l10n.copy_in_useful_magic">
+<code class="descclassname">taskgraph.transforms.l10n.</code><code class="descname">copy_in_useful_magic</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.l10n.copy_in_useful_magic" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.l10n.handle_keyed_by">
+<code class="descclassname">taskgraph.transforms.l10n.</code><code class="descname">handle_keyed_by</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.l10n.handle_keyed_by" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resolve fields that can be keyed by platform, etc.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.l10n.make_job_description">
+<code class="descclassname">taskgraph.transforms.l10n.</code><code class="descname">make_job_description</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.l10n.make_job_description" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.l10n.mh_config_replace_project">
+<code class="descclassname">taskgraph.transforms.l10n.</code><code class="descname">mh_config_replace_project</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.l10n.mh_config_replace_project" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replaces {project} in mh config entries with the current project</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.l10n.mh_options_replace_project">
+<code class="descclassname">taskgraph.transforms.l10n.</code><code class="descname">mh_options_replace_project</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.l10n.mh_options_replace_project" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replaces {project} in mh option entries with the current project</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.l10n.setup_name">
+<code class="descclassname">taskgraph.transforms.l10n.</code><code class="descname">setup_name</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.l10n.setup_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.l10n.setup_nightly_dependency">
+<code class="descclassname">taskgraph.transforms.l10n.</code><code class="descname">setup_nightly_dependency</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.l10n.setup_nightly_dependency" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets up a task dependency to the signing job this relates to</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.l10n.validate_again">
+<code class="descclassname">taskgraph.transforms.l10n.</code><code class="descname">validate_again</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.l10n.validate_again" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.l10n.validate_early">
+<code class="descclassname">taskgraph.transforms.l10n.</code><code class="descname">validate_early</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.l10n.validate_early" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.transforms.marionette_harness">
+<span id="taskgraph-transforms-marionette-harness-module"></span><h2>taskgraph.transforms.marionette_harness module<a class="headerlink" href="#module-taskgraph.transforms.marionette_harness" title="Permalink to this headline">¶</a></h2>
+<p>Set dynamic task description properties of the marionette-harness task.</p>
+<dl class="function">
+<dt id="taskgraph.transforms.marionette_harness.setup_task">
+<code class="descclassname">taskgraph.transforms.marionette_harness.</code><code class="descname">setup_task</code><span class="sig-paren">(</span><em>config</em>, <em>tasks</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.marionette_harness.setup_task" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.transforms.name_sanity">
+<span id="taskgraph-transforms-name-sanity-module"></span><h2>taskgraph.transforms.name_sanity module<a class="headerlink" href="#module-taskgraph.transforms.name_sanity" title="Permalink to this headline">¶</a></h2>
+<p>Generate labels for tasks without names, consistently.
+Uses attributes from ‘dependent-task’.</p>
+<dl class="function">
+<dt id="taskgraph.transforms.name_sanity.make_label">
+<code class="descclassname">taskgraph.transforms.name_sanity.</code><code class="descname">make_label</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.name_sanity.make_label" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a sane label for a new task constructed from a dependency
+Using attributes from the dependent job and the current task kind</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.transforms.nightly_l10n_signing">
+<span id="taskgraph-transforms-nightly-l10n-signing-module"></span><h2>taskgraph.transforms.nightly_l10n_signing module<a class="headerlink" href="#module-taskgraph.transforms.nightly_l10n_signing" title="Permalink to this headline">¶</a></h2>
+<p>Transform the signing task into an actual task description.</p>
+<dl class="function">
+<dt id="taskgraph.transforms.nightly_l10n_signing.define_upstream_artifacts">
+<code class="descclassname">taskgraph.transforms.nightly_l10n_signing.</code><code class="descname">define_upstream_artifacts</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.nightly_l10n_signing.define_upstream_artifacts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.nightly_l10n_signing.make_signing_description">
+<code class="descclassname">taskgraph.transforms.nightly_l10n_signing.</code><code class="descname">make_signing_description</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.nightly_l10n_signing.make_signing_description" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.transforms.partials">
+<span id="taskgraph-transforms-partials-module"></span><h2>taskgraph.transforms.partials module<a class="headerlink" href="#module-taskgraph.transforms.partials" title="Permalink to this headline">¶</a></h2>
+<p>Transform the partials task into an actual task description.</p>
+<dl class="function">
+<dt id="taskgraph.transforms.partials.make_task_description">
+<code class="descclassname">taskgraph.transforms.partials.</code><code class="descname">make_task_description</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.partials.make_task_description" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.transforms.partials_signing">
+<span id="taskgraph-transforms-partials-signing-module"></span><h2>taskgraph.transforms.partials_signing module<a class="headerlink" href="#module-taskgraph.transforms.partials_signing" title="Permalink to this headline">¶</a></h2>
+<p>Transform the partials task into an actual task description.</p>
+<dl class="function">
+<dt id="taskgraph.transforms.partials_signing.generate_upstream_artifacts">
+<code class="descclassname">taskgraph.transforms.partials_signing.</code><code class="descname">generate_upstream_artifacts</code><span class="sig-paren">(</span><em>release_history</em>, <em>platform</em>, <em>locale=None</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.partials_signing.generate_upstream_artifacts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.partials_signing.make_task_description">
+<code class="descclassname">taskgraph.transforms.partials_signing.</code><code class="descname">make_task_description</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.partials_signing.make_task_description" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.transforms.push_apk">
+<span id="taskgraph-transforms-push-apk-module"></span><h2>taskgraph.transforms.push_apk module<a class="headerlink" href="#module-taskgraph.transforms.push_apk" title="Permalink to this headline">¶</a></h2>
+<p>Transform the push-apk kind into an actual task description.</p>
+<dl class="function">
+<dt id="taskgraph.transforms.push_apk.generate_upstream_artifacts">
+<code class="descclassname">taskgraph.transforms.push_apk.</code><code class="descname">generate_upstream_artifacts</code><span class="sig-paren">(</span><em>dependencies</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.push_apk.generate_upstream_artifacts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.push_apk.make_task_description">
+<code class="descclassname">taskgraph.transforms.push_apk.</code><code class="descname">make_task_description</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.push_apk.make_task_description" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.transforms.push_apk_breakpoint">
+<span id="taskgraph-transforms-push-apk-breakpoint-module"></span><h2>taskgraph.transforms.push_apk_breakpoint module<a class="headerlink" href="#module-taskgraph.transforms.push_apk_breakpoint" title="Permalink to this headline">¶</a></h2>
+<p>Transform the push-apk-breakpoint kind into an actual task description.</p>
+<dl class="function">
+<dt id="taskgraph.transforms.push_apk_breakpoint.make_task_description">
+<code class="descclassname">taskgraph.transforms.push_apk_breakpoint.</code><code class="descname">make_task_description</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.push_apk_breakpoint.make_task_description" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.transforms.release_deps">
+<span id="taskgraph-transforms-release-deps-module"></span><h2>taskgraph.transforms.release_deps module<a class="headerlink" href="#module-taskgraph.transforms.release_deps" title="Permalink to this headline">¶</a></h2>
+<p>Add dependencies to release tasks.</p>
+<dl class="function">
+<dt id="taskgraph.transforms.release_deps.add_dependencies">
+<code class="descclassname">taskgraph.transforms.release_deps.</code><code class="descname">add_dependencies</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.release_deps.add_dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.transforms.repackage">
+<span id="taskgraph-transforms-repackage-module"></span><h2>taskgraph.transforms.repackage module<a class="headerlink" href="#module-taskgraph.transforms.repackage" title="Permalink to this headline">¶</a></h2>
+<p>Transform the repackage task into an actual task description.</p>
+<dl class="function">
+<dt id="taskgraph.transforms.repackage.make_job_description">
+<code class="descclassname">taskgraph.transforms.repackage.</code><code class="descname">make_job_description</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.repackage.make_job_description" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.repackage.make_repackage_description">
+<code class="descclassname">taskgraph.transforms.repackage.</code><code class="descname">make_repackage_description</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.repackage.make_repackage_description" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.repackage.validate">
+<code class="descclassname">taskgraph.transforms.repackage.</code><code class="descname">validate</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.repackage.validate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.transforms.repackage_l10n">
+<span id="taskgraph-transforms-repackage-l10n-module"></span><h2>taskgraph.transforms.repackage_l10n module<a class="headerlink" href="#module-taskgraph.transforms.repackage_l10n" title="Permalink to this headline">¶</a></h2>
+<p>Transform the repackage task into an actual task description.</p>
+<dl class="function">
+<dt id="taskgraph.transforms.repackage_l10n.split_locales">
+<code class="descclassname">taskgraph.transforms.repackage_l10n.</code><code class="descname">split_locales</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.repackage_l10n.split_locales" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.transforms.repackage_routes">
+<span id="taskgraph-transforms-repackage-routes-module"></span><h2>taskgraph.transforms.repackage_routes module<a class="headerlink" href="#module-taskgraph.transforms.repackage_routes" title="Permalink to this headline">¶</a></h2>
+<p>Add indexes to repackage kinds</p>
+<dl class="function">
+<dt id="taskgraph.transforms.repackage_routes.add_indexes">
+<code class="descclassname">taskgraph.transforms.repackage_routes.</code><code class="descname">add_indexes</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.repackage_routes.add_indexes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.repackage_routes.validate">
+<code class="descclassname">taskgraph.transforms.repackage_routes.</code><code class="descname">validate</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.repackage_routes.validate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.transforms.repackage_signing">
+<span id="taskgraph-transforms-repackage-signing-module"></span><h2>taskgraph.transforms.repackage_signing module<a class="headerlink" href="#module-taskgraph.transforms.repackage_signing" title="Permalink to this headline">¶</a></h2>
+<p>Transform the repackage signing task into an actual task description.</p>
+<dl class="function">
+<dt id="taskgraph.transforms.repackage_signing.make_repackage_signing_description">
+<code class="descclassname">taskgraph.transforms.repackage_signing.</code><code class="descname">make_repackage_signing_description</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.repackage_signing.make_repackage_signing_description" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.repackage_signing.validate">
+<code class="descclassname">taskgraph.transforms.repackage_signing.</code><code class="descname">validate</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.repackage_signing.validate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.transforms.signing">
+<span id="taskgraph-transforms-signing-module"></span><h2>taskgraph.transforms.signing module<a class="headerlink" href="#module-taskgraph.transforms.signing" title="Permalink to this headline">¶</a></h2>
+<p>Transform the signing task into an actual task description.</p>
+<dl class="function">
+<dt id="taskgraph.transforms.signing.make_task_description">
+<code class="descclassname">taskgraph.transforms.signing.</code><code class="descname">make_task_description</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.signing.make_task_description" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.signing.validate">
+<code class="descclassname">taskgraph.transforms.signing.</code><code class="descname">validate</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.signing.validate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.transforms.source_test">
+<span id="taskgraph-transforms-source-test-module"></span><h2>taskgraph.transforms.source_test module<a class="headerlink" href="#module-taskgraph.transforms.source_test" title="Permalink to this headline">¶</a></h2>
+<p>Source-test jobs can run on multiple platforms.  These transforms allow jobs
+with either <cite>platform</cite> or a list of <cite>platforms</cite>, and set the appropriate
+treeherder configuration and attributes for that platform.</p>
+<dl class="function">
+<dt id="taskgraph.transforms.source_test.add_build_dependency">
+<code class="descclassname">taskgraph.transforms.source_test.</code><code class="descname">add_build_dependency</code><span class="sig-paren">(</span><em>config</em>, <em>job</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.source_test.add_build_dependency" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add build dependency to the job and installer_url to env.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.source_test.expand_platforms">
+<code class="descclassname">taskgraph.transforms.source_test.</code><code class="descname">expand_platforms</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.source_test.expand_platforms" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.source_test.handle_platform">
+<code class="descclassname">taskgraph.transforms.source_test.</code><code class="descname">handle_platform</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.source_test.handle_platform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle the ‘platform’ property, setting up treeherder context as well as
+try-related attributes.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.source_test.set_job_name">
+<code class="descclassname">taskgraph.transforms.source_test.</code><code class="descname">set_job_name</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.source_test.set_job_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.source_test.validate">
+<code class="descclassname">taskgraph.transforms.source_test.</code><code class="descname">validate</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.source_test.validate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.transforms.spidermonkey">
+<span id="taskgraph-transforms-spidermonkey-module"></span><h2>taskgraph.transforms.spidermonkey module<a class="headerlink" href="#module-taskgraph.transforms.spidermonkey" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="taskgraph.transforms.spidermonkey.handle_keyed_by">
+<code class="descclassname">taskgraph.transforms.spidermonkey.</code><code class="descname">handle_keyed_by</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.spidermonkey.handle_keyed_by" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resolve fields that can be keyed by platform, etc.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.transforms.task">
+<span id="taskgraph-transforms-task-module"></span><h2>taskgraph.transforms.task module<a class="headerlink" href="#module-taskgraph.transforms.task" title="Permalink to this headline">¶</a></h2>
+<p>These transformations take a task description and turn it into a TaskCluster
+task definition (along with attributes, label, etc.).  The input to these
+transformations is generic to any kind of task, but abstracts away some of the
+complexities of worker implementations, scopes, and treeherder annotations.</p>
+<dl class="function">
+<dt id="taskgraph.transforms.task.add_generic_index_routes">
+<code class="descclassname">taskgraph.transforms.task.</code><code class="descname">add_generic_index_routes</code><span class="sig-paren">(</span><em>config</em>, <em>task</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.task.add_generic_index_routes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.task.add_index_routes">
+<code class="descclassname">taskgraph.transforms.task.</code><code class="descname">add_index_routes</code><span class="sig-paren">(</span><em>config</em>, <em>tasks</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.task.add_index_routes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.task.add_l10n_index_routes">
+<code class="descclassname">taskgraph.transforms.task.</code><code class="descname">add_l10n_index_routes</code><span class="sig-paren">(</span><em>config</em>, <em>task</em>, <em>force_locale=None</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.task.add_l10n_index_routes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.task.add_nightly_index_routes">
+<code class="descclassname">taskgraph.transforms.task.</code><code class="descname">add_nightly_index_routes</code><span class="sig-paren">(</span><em>config</em>, <em>task</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.task.add_nightly_index_routes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.task.add_nightly_multi_index_routes">
+<code class="descclassname">taskgraph.transforms.task.</code><code class="descname">add_nightly_multi_index_routes</code><span class="sig-paren">(</span><em>config</em>, <em>task</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.task.add_nightly_multi_index_routes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.task.add_release_index_routes">
+<code class="descclassname">taskgraph.transforms.task.</code><code class="descname">add_release_index_routes</code><span class="sig-paren">(</span><em>config</em>, <em>task</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.task.add_release_index_routes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.task.build_balrog_payload">
+<code class="descclassname">taskgraph.transforms.task.</code><code class="descname">build_balrog_payload</code><span class="sig-paren">(</span><em>config</em>, <em>task</em>, <em>task_def</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.task.build_balrog_payload" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.task.build_beetmover_cdns_payload">
+<code class="descclassname">taskgraph.transforms.task.</code><code class="descname">build_beetmover_cdns_payload</code><span class="sig-paren">(</span><em>config</em>, <em>task</em>, <em>task_def</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.task.build_beetmover_cdns_payload" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.task.build_beetmover_payload">
+<code class="descclassname">taskgraph.transforms.task.</code><code class="descname">build_beetmover_payload</code><span class="sig-paren">(</span><em>config</em>, <em>task</em>, <em>task_def</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.task.build_beetmover_payload" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.task.build_buildbot_bridge_payload">
+<code class="descclassname">taskgraph.transforms.task.</code><code class="descname">build_buildbot_bridge_payload</code><span class="sig-paren">(</span><em>config</em>, <em>task</em>, <em>task_def</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.task.build_buildbot_bridge_payload" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.task.build_docker_worker_payload">
+<code class="descclassname">taskgraph.transforms.task.</code><code class="descname">build_docker_worker_payload</code><span class="sig-paren">(</span><em>config</em>, <em>task</em>, <em>task_def</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.task.build_docker_worker_payload" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.task.build_generic_worker_payload">
+<code class="descclassname">taskgraph.transforms.task.</code><code class="descname">build_generic_worker_payload</code><span class="sig-paren">(</span><em>config</em>, <em>task</em>, <em>task_def</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.task.build_generic_worker_payload" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.task.build_invalid_payload">
+<code class="descclassname">taskgraph.transforms.task.</code><code class="descname">build_invalid_payload</code><span class="sig-paren">(</span><em>config</em>, <em>task</em>, <em>task_def</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.task.build_invalid_payload" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.task.build_macosx_engine_payload">
+<code class="descclassname">taskgraph.transforms.task.</code><code class="descname">build_macosx_engine_payload</code><span class="sig-paren">(</span><em>config</em>, <em>task</em>, <em>task_def</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.task.build_macosx_engine_payload" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.task.build_push_apk_breakpoint_payload">
+<code class="descclassname">taskgraph.transforms.task.</code><code class="descname">build_push_apk_breakpoint_payload</code><span class="sig-paren">(</span><em>config</em>, <em>task</em>, <em>task_def</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.task.build_push_apk_breakpoint_payload" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.task.build_push_apk_payload">
+<code class="descclassname">taskgraph.transforms.task.</code><code class="descname">build_push_apk_payload</code><span class="sig-paren">(</span><em>config</em>, <em>task</em>, <em>task_def</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.task.build_push_apk_payload" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.task.build_scriptworker_signing_payload">
+<code class="descclassname">taskgraph.transforms.task.</code><code class="descname">build_scriptworker_signing_payload</code><span class="sig-paren">(</span><em>config</em>, <em>task</em>, <em>task_def</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.task.build_scriptworker_signing_payload" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.task.build_task">
+<code class="descclassname">taskgraph.transforms.task.</code><code class="descname">build_task</code><span class="sig-paren">(</span><em>config</em>, <em>tasks</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.task.build_task" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.task.check_caches_are_volumes">
+<code class="descclassname">taskgraph.transforms.task.</code><code class="descname">check_caches_are_volumes</code><span class="sig-paren">(</span><em>task</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.task.check_caches_are_volumes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ensures that all cache paths are defined as volumes.</p>
+<p>Caches and volumes are the only filesystem locations whose content
+isn’t defined by the Docker image itself. Some caches are optional
+depending on the job environment. We want paths that are potentially
+caches to have as similar behavior regardless of whether a cache is
+used. To help enforce this, we require that all paths used as caches
+to be declared as Docker volumes. This check won’t catch all offenders.
+But it is better than nothing.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.task.check_run_task_caches">
+<code class="descclassname">taskgraph.transforms.task.</code><code class="descname">check_run_task_caches</code><span class="sig-paren">(</span><em>config</em>, <em>tasks</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.task.check_run_task_caches" title="Permalink to this definition">¶</a></dt>
+<dd><p>Audit for caches requiring run-task.</p>
+<p>run-task manages caches in certain ways. If a cache managed by run-task
+is used by a non run-task task, it could cause problems. So we audit for
+that and make sure certain cache names are exclusive to run-task.</p>
+<p>IF YOU ARE TEMPTED TO MAKE EXCLUSIONS TO THIS POLICY, YOU ARE LIKELY
+CONTRIBUTING TECHNICAL DEBT AND WILL HAVE TO SOLVE MANY OF THE PROBLEMS
+THAT RUN-TASK ALREADY SOLVES. THINK LONG AND HARD BEFORE DOING THAT.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.task.check_v2_routes">
+<code class="descclassname">taskgraph.transforms.task.</code><code class="descname">check_v2_routes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.task.check_v2_routes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.task.coalesce_key">
+<code class="descclassname">taskgraph.transforms.task.</code><code class="descname">coalesce_key</code><span class="sig-paren">(</span><em>config</em>, <em>task</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.task.coalesce_key" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.task.index_builder">
+<code class="descclassname">taskgraph.transforms.task.</code><code class="descname">index_builder</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.task.index_builder" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.task.payload_builder">
+<code class="descclassname">taskgraph.transforms.task.</code><code class="descname">payload_builder</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.task.payload_builder" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.task.superseder_url">
+<code class="descclassname">taskgraph.transforms.task.</code><code class="descname">superseder_url</code><span class="sig-paren">(</span><em>config</em>, <em>task</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.task.superseder_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.task.task_name_from_label">
+<code class="descclassname">taskgraph.transforms.task.</code><code class="descname">task_name_from_label</code><span class="sig-paren">(</span><em>config</em>, <em>tasks</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.task.task_name_from_label" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.task.validate">
+<code class="descclassname">taskgraph.transforms.task.</code><code class="descname">validate</code><span class="sig-paren">(</span><em>config</em>, <em>tasks</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.task.validate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.task.verify_index_job_name">
+<code class="descclassname">taskgraph.transforms.task.</code><code class="descname">verify_index_job_name</code><span class="sig-paren">(</span><em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.task.verify_index_job_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.transforms.tests">
+<span id="taskgraph-transforms-tests-module"></span><h2>taskgraph.transforms.tests module<a class="headerlink" href="#module-taskgraph.transforms.tests" title="Permalink to this headline">¶</a></h2>
+<p>These transforms construct a task description to run the given test, based on a
+test description.  The implementation here is shared among all test kinds, but
+contains specific support for how we run tests in Gecko (via mozharness,
+invoked in particular ways).</p>
+<p>This is a good place to translate a test-description option such as
+<cite>single-core: true</cite> to the implementation of that option in a task description
+(worker options, mozharness commandline, environment variables, etc.)</p>
+<p>The test description should be fully formed by the time it reaches these
+transforms, and these transforms should not embody any specific knowledge about
+what should run where. this is the wrong place for special-casing platforms,
+for example - use <cite>all_tests.py</cite> instead.</p>
+<dl class="function">
+<dt id="taskgraph.transforms.tests.allow_software_gl_layers">
+<code class="descclassname">taskgraph.transforms.tests.</code><code class="descname">allow_software_gl_layers</code><span class="sig-paren">(</span><em>config</em>, <em>tests</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.tests.allow_software_gl_layers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle the “allow-software-gl-layers” property for platforms where it
+applies.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.tests.disable_stylo">
+<code class="descclassname">taskgraph.transforms.tests.</code><code class="descname">disable_stylo</code><span class="sig-paren">(</span><em>config</em>, <em>tests</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.tests.disable_stylo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disable Stylo for all jobs on <cite>-stylo-disabled</cite> platforms.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.tests.enable_code_coverage">
+<code class="descclassname">taskgraph.transforms.tests.</code><code class="descname">enable_code_coverage</code><span class="sig-paren">(</span><em>config</em>, <em>tests</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.tests.enable_code_coverage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable code coverage for the linux64-ccov/opt &amp; linux64-jsdcov/opt &amp; win64-ccov/debug
+build-platforms</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.tests.enable_webrender">
+<code class="descclassname">taskgraph.transforms.tests.</code><code class="descname">enable_webrender</code><span class="sig-paren">(</span><em>config</em>, <em>tests</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.tests.enable_webrender" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle the “webrender” property by passing a flag to mozharness if it is
+enabled.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.tests.get_firefox_version">
+<code class="descclassname">taskgraph.transforms.tests.</code><code class="descname">get_firefox_version</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.tests.get_firefox_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.tests.handle_keyed_by">
+<code class="descclassname">taskgraph.transforms.tests.</code><code class="descname">handle_keyed_by</code><span class="sig-paren">(</span><em>config</em>, <em>tests</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.tests.handle_keyed_by" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resolve fields that can be keyed by platform, etc.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.tests.handle_keyed_by_mozharness">
+<code class="descclassname">taskgraph.transforms.tests.</code><code class="descname">handle_keyed_by_mozharness</code><span class="sig-paren">(</span><em>config</em>, <em>tests</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.tests.handle_keyed_by_mozharness" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resolve a mozharness field if it is keyed by something</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.tests.handle_run_on_projects">
+<code class="descclassname">taskgraph.transforms.tests.</code><code class="descname">handle_run_on_projects</code><span class="sig-paren">(</span><em>config</em>, <em>tests</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.tests.handle_run_on_projects" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle translating <cite>built-projects</cite> appropriately</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.tests.handle_suite_category">
+<code class="descclassname">taskgraph.transforms.tests.</code><code class="descname">handle_suite_category</code><span class="sig-paren">(</span><em>config</em>, <em>tests</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.tests.handle_suite_category" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.tests.make_job_description">
+<code class="descclassname">taskgraph.transforms.tests.</code><code class="descname">make_job_description</code><span class="sig-paren">(</span><em>config</em>, <em>tests</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.tests.make_job_description" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert <em>test</em> descriptions to <em>job</em> descriptions (input to
+taskgraph.transforms.job)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.tests.normpath">
+<code class="descclassname">taskgraph.transforms.tests.</code><code class="descname">normpath</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.tests.normpath" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.tests.set_defaults">
+<code class="descclassname">taskgraph.transforms.tests.</code><code class="descname">set_defaults</code><span class="sig-paren">(</span><em>config</em>, <em>tests</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.tests.set_defaults" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.tests.set_download_symbols">
+<code class="descclassname">taskgraph.transforms.tests.</code><code class="descname">set_download_symbols</code><span class="sig-paren">(</span><em>config</em>, <em>tests</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.tests.set_download_symbols" title="Permalink to this definition">¶</a></dt>
+<dd><p>In general, we download symbols immediately for debug builds, but only
+on demand for everything else. ASAN builds shouldn’t download
+symbols since they don’t product symbol zips see bug 1283879</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.tests.set_expires_after">
+<code class="descclassname">taskgraph.transforms.tests.</code><code class="descname">set_expires_after</code><span class="sig-paren">(</span><em>config</em>, <em>tests</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.tests.set_expires_after" title="Permalink to this definition">¶</a></dt>
+<dd><p>Try jobs expire after 2 weeks; everything else lasts 1 year.  This helps
+keep storage costs low.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.tests.set_profile">
+<code class="descclassname">taskgraph.transforms.tests.</code><code class="descname">set_profile</code><span class="sig-paren">(</span><em>config</em>, <em>tests</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.tests.set_profile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set profiling mode for tests.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.tests.set_retry_exit_status">
+<code class="descclassname">taskgraph.transforms.tests.</code><code class="descname">set_retry_exit_status</code><span class="sig-paren">(</span><em>config</em>, <em>tests</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.tests.set_retry_exit_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the retry exit status to TBPL_RETRY, the value returned by mozharness
+scripts to indicate a transient failure that should be retried.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.tests.set_tag">
+<code class="descclassname">taskgraph.transforms.tests.</code><code class="descname">set_tag</code><span class="sig-paren">(</span><em>config</em>, <em>tests</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.tests.set_tag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set test for a specific tag.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.tests.set_target">
+<code class="descclassname">taskgraph.transforms.tests.</code><code class="descname">set_target</code><span class="sig-paren">(</span><em>config</em>, <em>tests</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.tests.set_target" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.tests.set_test_type">
+<code class="descclassname">taskgraph.transforms.tests.</code><code class="descname">set_test_type</code><span class="sig-paren">(</span><em>config</em>, <em>tests</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.tests.set_test_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.tests.set_tier">
+<code class="descclassname">taskgraph.transforms.tests.</code><code class="descname">set_tier</code><span class="sig-paren">(</span><em>config</em>, <em>tests</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.tests.set_tier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the tier based on policy for all test descriptions that do not
+specify a tier otherwise.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.tests.set_treeherder_machine_platform">
+<code class="descclassname">taskgraph.transforms.tests.</code><code class="descname">set_treeherder_machine_platform</code><span class="sig-paren">(</span><em>config</em>, <em>tests</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.tests.set_treeherder_machine_platform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the appropriate task.extra.treeherder.machine.platform</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.tests.set_worker_type">
+<code class="descclassname">taskgraph.transforms.tests.</code><code class="descname">set_worker_type</code><span class="sig-paren">(</span><em>config</em>, <em>tests</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.tests.set_worker_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the worker type based on the test platform.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.tests.setup_talos">
+<code class="descclassname">taskgraph.transforms.tests.</code><code class="descname">setup_talos</code><span class="sig-paren">(</span><em>config</em>, <em>tests</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.tests.setup_talos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add options that are specific to talos jobs (identified by suite=talos)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.tests.single_stylo_traversal_tests">
+<code class="descclassname">taskgraph.transforms.tests.</code><code class="descname">single_stylo_traversal_tests</code><span class="sig-paren">(</span><em>config</em>, <em>tests</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.tests.single_stylo_traversal_tests" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable single traversal for all tests on the sequential Stylo platform.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.tests.skip_win10_hardware">
+<code class="descclassname">taskgraph.transforms.tests.</code><code class="descname">skip_win10_hardware</code><span class="sig-paren">(</span><em>config</em>, <em>tests</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.tests.skip_win10_hardware" title="Permalink to this definition">¶</a></dt>
+<dd><p>Windows 10 hardware isn’t ready yet, don’t even bother scheduling
+unless we’re on try</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.tests.split_chunks">
+<code class="descclassname">taskgraph.transforms.tests.</code><code class="descname">split_chunks</code><span class="sig-paren">(</span><em>config</em>, <em>tests</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.tests.split_chunks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Based on the ‘chunks’ key, split tests up into chunks by duplicating
+them and assigning ‘this-chunk’ appropriately and updating the treeherder
+symbol.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.tests.split_e10s">
+<code class="descclassname">taskgraph.transforms.tests.</code><code class="descname">split_e10s</code><span class="sig-paren">(</span><em>config</em>, <em>tests</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.tests.split_e10s" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.tests.validate">
+<code class="descclassname">taskgraph.transforms.tests.</code><code class="descname">validate</code><span class="sig-paren">(</span><em>config</em>, <em>tests</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.tests.validate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.transforms.try_job">
+<span id="taskgraph-transforms-try-job-module"></span><h2>taskgraph.transforms.try_job module<a class="headerlink" href="#module-taskgraph.transforms.try_job" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="taskgraph.transforms.try_job.set_job_try_name">
+<code class="descclassname">taskgraph.transforms.try_job.</code><code class="descname">set_job_try_name</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.try_job.set_job_try_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>For a task which is governed by <cite>-j</cite> in try syntax, set the <cite>job_try_name</cite>
+attribute based on the job name.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.transforms.upload_generated_sources">
+<span id="taskgraph-transforms-upload-generated-sources-module"></span><h2>taskgraph.transforms.upload_generated_sources module<a class="headerlink" href="#module-taskgraph.transforms.upload_generated_sources" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>Transform the upload-generated-files task description template,</dt>
+<dd>taskcluster/ci/upload-generated-sources/kind.yml</dd>
+</dl>
+<p>into an actual task description.</p>
+<dl class="function">
+<dt id="taskgraph.transforms.upload_generated_sources.add_task_info">
+<code class="descclassname">taskgraph.transforms.upload_generated_sources.</code><code class="descname">add_task_info</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.upload_generated_sources.add_task_info" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.transforms.upload_symbols">
+<span id="taskgraph-transforms-upload-symbols-module"></span><h2>taskgraph.transforms.upload_symbols module<a class="headerlink" href="#module-taskgraph.transforms.upload_symbols" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>Transform the upload-symbols task description template,</dt>
+<dd>taskcluster/ci/upload-symbols/job-template.yml</dd>
+</dl>
+<p>into an actual task description.</p>
+<dl class="function">
+<dt id="taskgraph.transforms.upload_symbols.fill_template">
+<code class="descclassname">taskgraph.transforms.upload_symbols.</code><code class="descname">fill_template</code><span class="sig-paren">(</span><em>config</em>, <em>tasks</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.upload_symbols.fill_template" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.transforms.use_toolchains">
+<span id="taskgraph-transforms-use-toolchains-module"></span><h2>taskgraph.transforms.use_toolchains module<a class="headerlink" href="#module-taskgraph.transforms.use_toolchains" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="taskgraph.transforms.use_toolchains.use_toolchains">
+<code class="descclassname">taskgraph.transforms.use_toolchains.</code><code class="descname">use_toolchains</code><span class="sig-paren">(</span><em>config</em>, <em>jobs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.use_toolchains.use_toolchains" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add dependencies corresponding to toolchains to use, and pass a list
+of corresponding artifacts to jobs using toolchains.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.transforms">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-taskgraph.transforms" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="taskgraph.transforms.job.html" class="btn btn-neutral float-right" title="taskgraph.transforms.job package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="taskgraph.test.html" class="btn btn-neutral" title="taskgraph.test package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

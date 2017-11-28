@@ -1,0 +1,38 @@
+mozbuild\.codecoverage package
+==============================
+
+Submodules
+----------
+
+mozbuild\.codecoverage\.chrome\_map module
+------------------------------------------
+
+.. automodule:: mozbuild.codecoverage.chrome_map
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+mozbuild\.codecoverage\.lcov\_rewriter module
+---------------------------------------------
+
+.. automodule:: mozbuild.codecoverage.lcov_rewriter
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+mozbuild\.codecoverage\.packager module
+---------------------------------------
+
+.. automodule:: mozbuild.codecoverage.packager
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: mozbuild.codecoverage
+    :members:
+    :undoc-members:
+    :show-inheritance:

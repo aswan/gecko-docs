@@ -1,0 +1,901 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mozrunner — Manage remote and local gecko processes &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../index.html"/>
+        <link rel="up" title="Set up and running" href="setuprunning.html"/>
+        <link rel="next" title="mozcrash — Print stack traces from minidumps left behind by crashed processes" href="mozcrash.html"/>
+        <link rel="prev" title="mozprocess — Launch and manage processes" href="mozprocess.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">mozbase</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="manifestparser.html">Managing lists of tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gettinginfo.html">Getting information on the system under test</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="setuprunning.html">Set up and running</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="mozfile.html"><code class="docutils literal"><span class="pre">mozfile</span></code> — File utilities for use in Mozilla testing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozinstall.html"><code class="docutils literal"><span class="pre">mozinstall</span></code> — Install and uninstall Gecko-based applications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozprofile.html"><code class="docutils literal"><span class="pre">mozprofile</span></code> — Create and modify Mozilla application profiles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozprocess.html"><code class="docutils literal"><span class="pre">mozprocess</span></code> — Launch and manage processes</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="docutils literal"><span class="pre">mozrunner</span></code> — Manage remote and local gecko processes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#basic-usage">Basic usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#handling-output">Handling output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#handling-timeouts">Handling timeouts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-a-device-runner">Using a device runner</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#runner-api-documentation">Runner API Documentation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#device-api-documentation">Device API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mozcrash.html"><code class="docutils literal"><span class="pre">mozcrash</span></code> — Print stack traces from minidumps left behind by crashed processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozdebug.html"><code class="docutils literal"><span class="pre">mozdebug</span></code> — Configure and launch compatible debuggers.</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mozhttpd.html">Serving up content to be consumed by the browser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loggingreporting.html">Logging and reporting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python/mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">mozbase</a> &raquo;</li>
+        
+          <li><a href="setuprunning.html">Set up and running</a> &raquo;</li>
+        
+      <li><code class="docutils literal"><span class="pre">mozrunner</span></code> — Manage remote and local gecko processes</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/mozbase/mozrunner.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mozrunner-manage-remote-and-local-gecko-processes">
+<h1><code class="xref py py-mod docutils literal"><span class="pre">mozrunner</span></code> — Manage remote and local gecko processes<a class="headerlink" href="#mozrunner-manage-remote-and-local-gecko-processes" title="Permalink to this headline">¶</a></h1>
+<p>Mozrunner provides an API to manage a gecko-based application with an
+arbitrary configuration profile. It currently supports local desktop
+binaries such as Firefox and Thunderbird, as well as Firefox OS on
+mobile devices and emulators.</p>
+<div class="section" id="basic-usage">
+<h2>Basic usage<a class="headerlink" href="#basic-usage" title="Permalink to this headline">¶</a></h2>
+<p>The simplest way to use mozrunner, is to instantiate a runner, start it
+and then wait for it to finish:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mozrunner</span> <span class="kn">import</span> <span class="n">FirefoxRunner</span>
+<span class="n">binary</span> <span class="o">=</span> <span class="s1">&#39;path/to/firefox/binary&#39;</span>
+<span class="n">runner</span> <span class="o">=</span> <span class="n">FirefoxRunner</span><span class="p">(</span><span class="n">binary</span><span class="o">=</span><span class="n">binary</span><span class="p">)</span>
+<span class="n">runner</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">runner</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This automatically creates and uses a default mozprofile object. If you
+wish to use a specialized or pre-existing profile, you can create a
+<a class="reference internal" href="mozprofile.html"><span class="doc">mozprofile</span></a> object and pass it in:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mozprofile</span> <span class="kn">import</span> <span class="n">FirefoxProfile</span>
+<span class="kn">from</span> <span class="nn">mozrunner</span> <span class="kn">import</span> <span class="n">FirefoxRunner</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">binary</span> <span class="o">=</span> <span class="s1">&#39;path/to/firefox/binary&#39;</span>
+<span class="n">profile_path</span> <span class="o">=</span> <span class="s1">&#39;path/to/profile&#39;</span>
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">profile_path</span><span class="p">):</span>
+    <span class="n">profile</span> <span class="o">=</span> <span class="n">FirefoxProfile</span><span class="o">.</span><span class="n">clone</span><span class="p">(</span><span class="n">path_from</span><span class="o">=</span><span class="n">profile_path</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">profile</span> <span class="o">=</span> <span class="n">FirefoxProfile</span><span class="p">(</span><span class="n">profile</span><span class="o">=</span><span class="n">profile_path</span><span class="p">)</span>
+<span class="n">runner</span> <span class="o">=</span> <span class="n">FirefoxRunner</span><span class="p">(</span><span class="n">binary</span><span class="o">=</span><span class="n">binary</span><span class="p">,</span> <span class="n">profile</span><span class="o">=</span><span class="n">profile</span><span class="p">)</span>
+<span class="n">runner</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">runner</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="handling-output">
+<h2>Handling output<a class="headerlink" href="#handling-output" title="Permalink to this headline">¶</a></h2>
+<p>By default, mozrunner dumps the output of the gecko process to standard output.
+It is possible to add arbitrary output handlers by passing them in via the
+<cite>process_args</cite> argument. Be careful, passing in a handler overrides the default
+behaviour. So if you want to use a handler in addition to dumping to stdout, you
+need to specify that explicitly. For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mozrunner</span> <span class="kn">import</span> <span class="n">FirefoxRunner</span>
+
+<span class="k">def</span> <span class="nf">handle_output_line</span><span class="p">(</span><span class="n">line</span><span class="p">):</span>
+    <span class="n">do_something</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+<span class="n">binary</span> <span class="o">=</span> <span class="s1">&#39;path/to/firefox/binary&#39;</span>
+<span class="n">process_args</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;stream&#39;</span><span class="p">:</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span>
+                 <span class="s1">&#39;processOutputLine&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">handle_output_line</span><span class="p">]</span> <span class="p">}</span>
+<span class="n">runner</span> <span class="o">=</span> <span class="n">FirefoxRunner</span><span class="p">(</span><span class="n">binary</span><span class="o">=</span><span class="n">binary</span><span class="p">,</span> <span class="n">process_args</span><span class="o">=</span><span class="n">process_args</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Mozrunner uses <a class="reference internal" href="mozprocess.html"><span class="doc">mozprocess</span></a> to manage the underlying gecko
+process and handle output. See the <a class="reference internal" href="mozprocess.html"><span class="doc">mozprocess documentation</span></a>
+for all available arguments accepted by <cite>process_args</cite>.</p>
+</div>
+<div class="section" id="handling-timeouts">
+<h2>Handling timeouts<a class="headerlink" href="#handling-timeouts" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes gecko can hang, or maybe it is just taking too long. To handle this case you
+may want to set a timeout. Mozrunner has two kinds of timeouts, the
+traditional <cite>timeout</cite>, and the <cite>outputTimeout</cite>. These get passed into the
+<cite>runner.start()</cite> method. Setting <cite>timeout</cite> will cause gecko to be killed after
+the specified number of seconds, no matter what. Setting <cite>outputTimeout</cite> will cause
+gecko to be killed after the specified number of seconds with no output. In both
+cases the process handler’s <cite>onTimeout</cite> callbacks will be triggered.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mozrunner</span> <span class="kn">import</span> <span class="n">FirefoxRunner</span>
+
+<span class="k">def</span> <span class="nf">on_timeout</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;timed out after 10 seconds with no output!&#39;</span><span class="p">)</span>
+
+<span class="n">binary</span> <span class="o">=</span> <span class="s1">&#39;path/to/firefox/binary&#39;</span>
+<span class="n">process_args</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;onTimeout&#39;</span><span class="p">:</span> <span class="n">on_timeout</span> <span class="p">}</span>
+<span class="n">runner</span> <span class="o">=</span> <span class="n">FirefoxRunner</span><span class="p">(</span><span class="n">binary</span><span class="o">=</span><span class="n">binary</span><span class="p">,</span> <span class="n">process_args</span><span class="o">=</span><span class="n">process_args</span><span class="p">)</span>
+<span class="n">runner</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">outputTimeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">runner</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The <cite>runner.wait()</cite> method also accepts a timeout argument. But unlike the arguments
+to <cite>runner.start()</cite>, this one simply returns from the wait call and does not kill the
+gecko process.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">runner</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="n">waiting</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">runner</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="n">waiting</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Been waiting for </span><span class="si">%d</span><span class="s2"> seconds so far..&quot;</span> <span class="o">%</span> <span class="n">waiting</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">waiting</span> <span class="o">&lt;=</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-a-device-runner">
+<h2>Using a device runner<a class="headerlink" href="#using-a-device-runner" title="Permalink to this headline">¶</a></h2>
+<p>The previous examples used a GeckoRuntimeRunner. If you want to control a
+gecko process on a remote device, you need to use a DeviceRunner. The api is
+nearly identical except you don’t pass in a binary, instead you create a device
+object. For example, for B2G (Firefox OS) emulators you might do:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mozrunner</span> <span class="kn">import</span> <span class="n">B2GEmulatorRunner</span>
+
+<span class="n">b2g_home</span> <span class="o">=</span> <span class="s1">&#39;path/to/B2G&#39;</span>
+<span class="n">runner</span> <span class="o">=</span> <span class="n">B2GEmulatorRunner</span><span class="p">(</span><span class="n">arch</span><span class="o">=</span><span class="s1">&#39;arm&#39;</span><span class="p">,</span> <span class="n">b2g_home</span><span class="o">=</span><span class="n">b2g_home</span><span class="p">)</span>
+<span class="n">runner</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">runner</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Device runners have a <cite>device</cite> object. Remember that the gecko process runs on
+the device. In the case of the emulator, it is possible to start the
+device independently of the gecko process.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">runner</span><span class="o">.</span><span class="n">device</span><span class="o">.</span><span class="n">start</span><span class="p">()</span> <span class="c1"># launches the emulator (which also launches gecko)</span>
+<span class="n">runner</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>        <span class="c1"># stops the gecko process, installs the profile, restarts the gecko process</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="runner-api-documentation">
+<h2>Runner API Documentation<a class="headerlink" href="#runner-api-documentation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-mozrunner.runners">
+<span id="application-runners"></span><h3>Application Runners<a class="headerlink" href="#module-mozrunner.runners" title="Permalink to this headline">¶</a></h3>
+<p>This module contains a set of shortcut methods that create runners for commonly
+used Mozilla applications, such as Firefox or B2G emulator.</p>
+<dl class="function">
+<dt id="mozrunner.runners.B2GDesktopRunner">
+<code class="descclassname">mozrunner.runners.</code><code class="descname">B2GDesktopRunner</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#mozrunner.runners.B2GDesktopRunner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a B2G desktop runner.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>binary</strong> – Path to b2g desktop binary.</li>
+<li><strong>cmdargs</strong> – Arguments to pass into binary.</li>
+<li><strong>profile</strong> – Profile object to use.</li>
+<li><strong>env</strong> – Environment variables to pass into the gecko process.</li>
+<li><strong>clean_profile</strong> – If True, restores profile back to original state.</li>
+<li><strong>process_class</strong> – Class used to launch the binary.</li>
+<li><strong>process_args</strong> – Arguments to pass into process_class.</li>
+<li><strong>symbols_path</strong> – Path to symbol files used for crash analysis.</li>
+<li><strong>show_crash_reporter</strong> – allow the crash reporter window to pop up.
+Defaults to False.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A GeckoRuntimeRunner for b2g desktop.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozrunner.runners.B2GDeviceRunner">
+<code class="descclassname">mozrunner.runners.</code><code class="descname">B2GDeviceRunner</code><span class="sig-paren">(</span><em>b2g_home=None</em>, <em>adb_path=None</em>, <em>logdir=None</em>, <em>serial=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#mozrunner.runners.B2GDeviceRunner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a B2G device runner.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>b2g_home</strong> – Path to root B2G repository.</li>
+<li><strong>logdir</strong> – Path to save logfiles such as logcat.</li>
+<li><strong>serial</strong> – Serial of device to connect to as seen in <cite>adb devices</cite>.</li>
+<li><strong>profile</strong> – Profile object to use.</li>
+<li><strong>env</strong> – Environment variables to pass into the b2g.sh process.</li>
+<li><strong>clean_profile</strong> – If True, restores profile back to original state.</li>
+<li><strong>process_class</strong> – Class used to launch the b2g.sh process.</li>
+<li><strong>process_args</strong> – Arguments to pass into the b2g.sh process.</li>
+<li><strong>symbols_path</strong> – Path to symbol files used for crash analysis.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A DeviceRunner for B2G devices.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozrunner.runners.B2GEmulatorRunner">
+<code class="descclassname">mozrunner.runners.</code><code class="descname">B2GEmulatorRunner</code><span class="sig-paren">(</span><em>arch='arm'</em>, <em>b2g_home=None</em>, <em>adb_path=None</em>, <em>logdir=None</em>, <em>binary=None</em>, <em>no_window=None</em>, <em>resolution=None</em>, <em>sdcard=None</em>, <em>userdata=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#mozrunner.runners.B2GEmulatorRunner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a B2G emulator runner.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>arch</strong> – The architecture of the emulator, either ‘arm’ or ‘x86’. Defaults to ‘arm’.</li>
+<li><strong>b2g_home</strong> – Path to root B2G repository.</li>
+<li><strong>logdir</strong> – Path to save logfiles such as logcat and qemu output.</li>
+<li><strong>no_window</strong> – Run emulator without a window.</li>
+<li><strong>resolution</strong> – Screen resolution to set emulator to, e.g ‘800x1000’.</li>
+<li><strong>sdcard</strong> – Path to local emulated sdcard storage.</li>
+<li><strong>userdata</strong> – Path to custom userdata image.</li>
+<li><strong>profile</strong> – Profile object to use.</li>
+<li><strong>env</strong> – Environment variables to pass into the b2g.sh process.</li>
+<li><strong>clean_profile</strong> – If True, restores profile back to original state.</li>
+<li><strong>process_class</strong> – Class used to launch the b2g.sh process.</li>
+<li><strong>process_args</strong> – Arguments to pass into the b2g.sh process.</li>
+<li><strong>symbols_path</strong> – Path to symbol files used for crash analysis.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A DeviceRunner for B2G emulators.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozrunner.runners.FennecEmulatorRunner">
+<code class="descclassname">mozrunner.runners.</code><code class="descname">FennecEmulatorRunner</code><span class="sig-paren">(</span><em>avd='mozemulator-4.3'</em>, <em>adb_path=None</em>, <em>avd_home=None</em>, <em>logdir=None</em>, <em>serial=None</em>, <em>binary=None</em>, <em>app='org.mozilla.fennec'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#mozrunner.runners.FennecEmulatorRunner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a Fennec emulator runner. This can either start a new emulator
+(which will use an avd), or connect to  an already-running emulator.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>avd</strong> – name of an AVD available in your environment.
+Typically obtained via tooltool: either ‘mozemulator-4.3’ or ‘mozemulator-x86’.
+Defaults to ‘mozemulator-4.3’</li>
+<li><strong>avd_home</strong> – Path to avd parent directory</li>
+<li><strong>logdir</strong> – Path to save logfiles such as logcat and qemu output.</li>
+<li><strong>serial</strong> – Serial of emulator to connect to as seen in <cite>adb devices</cite>.
+Defaults to the first entry in <cite>adb devices</cite>.</li>
+<li><strong>binary</strong> – Path to emulator binary.
+Defaults to None, which causes the device_class to guess based on PATH.</li>
+<li><strong>app</strong> – Name of Fennec app (often org.mozilla.fennec_$USER)
+Defaults to ‘org.mozilla.fennec’</li>
+<li><strong>cmdargs</strong> – Arguments to pass into binary.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A DeviceRunner for Android emulators.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozrunner.runners.FirefoxRunner">
+<code class="descclassname">mozrunner.runners.</code><code class="descname">FirefoxRunner</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#mozrunner.runners.FirefoxRunner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a desktop Firefox runner.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>binary</strong> – Path to Firefox binary.</li>
+<li><strong>cmdargs</strong> – Arguments to pass into binary.</li>
+<li><strong>profile</strong> – Profile object to use.</li>
+<li><strong>env</strong> – Environment variables to pass into the gecko process.</li>
+<li><strong>clean_profile</strong> – If True, restores profile back to original state.</li>
+<li><strong>process_class</strong> – Class used to launch the binary.</li>
+<li><strong>process_args</strong> – Arguments to pass into process_class.</li>
+<li><strong>symbols_path</strong> – Path to symbol files used for crash analysis.</li>
+<li><strong>show_crash_reporter</strong> – allow the crash reporter window to pop up.
+Defaults to False.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A GeckoRuntimeRunner for Firefox.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozrunner.runners.Runner">
+<code class="descclassname">mozrunner.runners.</code><code class="descname">Runner</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#mozrunner.runners.Runner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a generic GeckoRuntime runner.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>binary</strong> – Path to binary.</li>
+<li><strong>cmdargs</strong> – Arguments to pass into binary.</li>
+<li><strong>profile</strong> – Profile object to use.</li>
+<li><strong>env</strong> – Environment variables to pass into the gecko process.</li>
+<li><strong>clean_profile</strong> – If True, restores profile back to original state.</li>
+<li><strong>process_class</strong> – Class used to launch the binary.</li>
+<li><strong>process_args</strong> – Arguments to pass into process_class.</li>
+<li><strong>symbols_path</strong> – Path to symbol files used for crash analysis.</li>
+<li><strong>show_crash_reporter</strong> – allow the crash reporter window to pop up.
+Defaults to False.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A generic GeckoRuntimeRunner.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozrunner.runners.ThunderbirdRunner">
+<code class="descclassname">mozrunner.runners.</code><code class="descname">ThunderbirdRunner</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#mozrunner.runners.ThunderbirdRunner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a desktop Thunderbird runner.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>binary</strong> – Path to Thunderbird binary.</li>
+<li><strong>cmdargs</strong> – Arguments to pass into binary.</li>
+<li><strong>profile</strong> – Profile object to use.</li>
+<li><strong>env</strong> – Environment variables to pass into the gecko process.</li>
+<li><strong>clean_profile</strong> – If True, restores profile back to original state.</li>
+<li><strong>process_class</strong> – Class used to launch the binary.</li>
+<li><strong>process_args</strong> – Arguments to pass into process_class.</li>
+<li><strong>symbols_path</strong> – Path to symbol files used for crash analysis.</li>
+<li><strong>show_crash_reporter</strong> – allow the crash reporter window to pop up.
+Defaults to False.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A GeckoRuntimeRunner for Thunderbird.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="baserunner">
+<h3>BaseRunner<a class="headerlink" href="#baserunner" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="mozrunner.base.BaseRunner">
+<em class="property">class </em><code class="descclassname">mozrunner.base.</code><code class="descname">BaseRunner</code><span class="sig-paren">(</span><em>app_ctx=None</em>, <em>profile=None</em>, <em>clean_profile=True</em>, <em>env=None</em>, <em>process_class=None</em>, <em>process_args=None</em>, <em>symbols_path=None</em>, <em>dump_save_path=None</em>, <em>addons=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozrunner.base.BaseRunner" title="Permalink to this definition">¶</a></dt>
+<dd><p>The base runner class for all mozrunner objects, both local and remote.</p>
+<dl class="method">
+<dt id="mozrunner.base.BaseRunner.check_for_crashes">
+<code class="descname">check_for_crashes</code><span class="sig-paren">(</span><em>dump_directory=None</em>, <em>dump_save_path=None</em>, <em>test_name=None</em>, <em>quiet=False</em><span class="sig-paren">)</span><a class="headerlink" href="#mozrunner.base.BaseRunner.check_for_crashes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check for possible crashes and output the stack traces.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dump_directory</strong> – Directory to search for minidump files</li>
+<li><strong>dump_save_path</strong> – Directory to save the minidump files to</li>
+<li><strong>test_name</strong> – Name to use in the crash output</li>
+<li><strong>quiet</strong> – If <cite>True</cite> don’t print the PROCESS-CRASH message to stdout</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Number of crashes which have been detected since the last invocation</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozrunner.base.BaseRunner.cleanup">
+<code class="descname">cleanup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozrunner.base.BaseRunner.cleanup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cleanup all runner state</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozrunner.base.BaseRunner.command">
+<code class="descname">command</code><a class="headerlink" href="#mozrunner.base.BaseRunner.command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the command list to run.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozrunner.base.BaseRunner.is_running">
+<code class="descname">is_running</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozrunner.base.BaseRunner.is_running" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if the process is running.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if the process is active</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozrunner.base.BaseRunner.reset">
+<code class="descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozrunner.base.BaseRunner.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the runner to its default state.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozrunner.base.BaseRunner.returncode">
+<code class="descname">returncode</code><a class="headerlink" href="#mozrunner.base.BaseRunner.returncode" title="Permalink to this definition">¶</a></dt>
+<dd><p>The returncode of the process_handler. A value of None
+indicates the process is still running. A negative
+value indicates the process was killed with the
+specified signal.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">RunnerNotStartedError</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozrunner.base.BaseRunner.start">
+<code class="descname">start</code><span class="sig-paren">(</span><em>debug_args=None</em>, <em>interactive=False</em>, <em>timeout=None</em>, <em>outputTimeout=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozrunner.base.BaseRunner.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run self.command in the proper environment.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>debug_args</strong> – arguments for a debugger</li>
+<li><strong>interactive</strong> – uses subprocess.Popen directly</li>
+<li><strong>timeout</strong> – see process_handler.run()</li>
+<li><strong>outputTimeout</strong> – see process_handler.run()</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the process id</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozrunner.base.BaseRunner.stop">
+<code class="descname">stop</code><span class="sig-paren">(</span><em>sig=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozrunner.base.BaseRunner.stop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Kill the process.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>sig</strong> – Signal used to kill the process, defaults to SIGKILL
+(has no effect on Windows).</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the process return code if process was already stopped,
+-&lt;signal&gt; if process was killed (Unix only)</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">RunnerNotStartedError</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozrunner.base.BaseRunner.wait">
+<code class="descname">wait</code><span class="sig-paren">(</span><em>timeout=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozrunner.base.BaseRunner.wait" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wait for the process to exit.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>timeout</strong> – if not None, will return after timeout seconds.
+Timeout is ignored if interactive was set to True.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the process return code if process exited normally,
+-&lt;signal&gt; if process was killed (Unix only),
+None if timeout was reached and the process is still running.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">RunnerNotStartedError</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="geckoruntimerunner">
+<h3>GeckoRuntimeRunner<a class="headerlink" href="#geckoruntimerunner" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="mozrunner.base.GeckoRuntimeRunner">
+<em class="property">class </em><code class="descclassname">mozrunner.base.</code><code class="descname">GeckoRuntimeRunner</code><span class="sig-paren">(</span><em>binary</em>, <em>cmdargs=None</em>, <em>**runner_args</em><span class="sig-paren">)</span><a class="headerlink" href="#mozrunner.base.GeckoRuntimeRunner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">mozrunner.base.runner.BaseRunner</span></code></p>
+<p>The base runner class used for local gecko runtime binaries,
+such as Firefox and Thunderbird.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="devicerunner">
+<h3>DeviceRunner<a class="headerlink" href="#devicerunner" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="mozrunner.base.DeviceRunner">
+<em class="property">class </em><code class="descclassname">mozrunner.base.</code><code class="descname">DeviceRunner</code><span class="sig-paren">(</span><em>device_class</em>, <em>device_args=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#mozrunner.base.DeviceRunner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">mozrunner.base.runner.BaseRunner</span></code></p>
+<p>The base runner class used for running gecko on
+remote devices (or emulators), such as B2G.</p>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="device-api-documentation">
+<h2>Device API Documentation<a class="headerlink" href="#device-api-documentation" title="Permalink to this headline">¶</a></h2>
+<p>Generally using the device classes directly shouldn’t be required, but in some
+cases it may be desirable.</p>
+<div class="section" id="device">
+<h3>Device<a class="headerlink" href="#device" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="mozrunner.devices.Device">
+<em class="property">class </em><code class="descclassname">mozrunner.devices.</code><code class="descname">Device</code><span class="sig-paren">(</span><em>app_ctx</em>, <em>logdir=None</em>, <em>serial=None</em>, <em>restore=True</em><span class="sig-paren">)</span><a class="headerlink" href="#mozrunner.devices.Device" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="mozrunner.devices.Device.cleanup">
+<code class="descname">cleanup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozrunner.devices.Device.cleanup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cleanup the device.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozrunner.devices.Device.connect">
+<code class="descname">connect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozrunner.devices.Device.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connects to a running device. If no serial was specified in the
+constructor, defaults to the first entry in <cite>adb devices</cite>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozrunner.devices.Device.install_busybox">
+<code class="descname">install_busybox</code><span class="sig-paren">(</span><em>busybox</em><span class="sig-paren">)</span><a class="headerlink" href="#mozrunner.devices.Device.install_busybox" title="Permalink to this definition">¶</a></dt>
+<dd><p>Installs busybox on the device.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>busybox</strong> – Path to busybox binary to install.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozrunner.devices.Device.pull_minidumps">
+<code class="descname">pull_minidumps</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozrunner.devices.Device.pull_minidumps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves any minidumps found in the remote profile on the local filesystem.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Path to directory containing the dumps.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozrunner.devices.Device.reboot">
+<code class="descname">reboot</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozrunner.devices.Device.reboot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reboots the device via adb.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozrunner.devices.Device.remote_profiles">
+<code class="descname">remote_profiles</code><a class="headerlink" href="#mozrunner.devices.Device.remote_profiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list of remote profiles on the device.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozrunner.devices.Device.setup_profile">
+<code class="descname">setup_profile</code><span class="sig-paren">(</span><em>profile</em><span class="sig-paren">)</span><a class="headerlink" href="#mozrunner.devices.Device.setup_profile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy profile to the device and update the remote profiles.ini
+to point to the new profile.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>profile</strong> – mozprofile object to copy over.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="emulator">
+<h3>Emulator<a class="headerlink" href="#emulator" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="mozrunner.devices.Emulator">
+<em class="property">class </em><code class="descclassname">mozrunner.devices.</code><code class="descname">Emulator</code><span class="sig-paren">(</span><em>app_ctx</em>, <em>arch</em>, <em>resolution=None</em>, <em>sdcard=None</em>, <em>userdata=None</em>, <em>no_window=None</em>, <em>binary=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#mozrunner.devices.Emulator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">mozrunner.devices.emulator.BaseEmulator</span></code></p>
+<dl class="attribute">
+<dt id="mozrunner.devices.Emulator.args">
+<code class="descname">args</code><a class="headerlink" href="#mozrunner.devices.Emulator.args" title="Permalink to this definition">¶</a></dt>
+<dd><p>Arguments to pass into the emulator binary.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozrunner.devices.Emulator.cleanup">
+<code class="descname">cleanup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozrunner.devices.Emulator.cleanup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cleans up and kills the emulator, if it was started by mozrunner.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozrunner.devices.Emulator.connect">
+<code class="descname">connect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozrunner.devices.Emulator.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connects to a running device. If no serial was specified in the
+constructor, defaults to the first entry in <cite>adb devices</cite>.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="mozcrash.html" class="btn btn-neutral float-right" title="mozcrash — Print stack traces from minidumps left behind by crashed processes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="mozprocess.html" class="btn btn-neutral" title="mozprocess — Launch and manage processes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

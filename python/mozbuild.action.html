@@ -1,0 +1,1046 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mozbuild.action package &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../index.html"/>
+        <link rel="up" title="mozbuild package" href="mozbuild.html"/>
+        <link rel="next" title="mozbuild.backend package" href="mozbuild.backend.html"/>
+        <link rel="prev" title="mozbuild package" href="mozbuild.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="mach.html">mach package</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="mozbuild.html">mozbuild package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="mozbuild.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">mozbuild.action package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.action.buildlist">mozbuild.action.buildlist module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mozbuild-action-cl-module">mozbuild.action.cl module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.action.dump_env">mozbuild.action.dump_env module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.action.dumpsymbols">mozbuild.action.dumpsymbols module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.action.exe_7z_archive">mozbuild.action.exe_7z_archive module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.action.exe_7z_extract">mozbuild.action.exe_7z_extract module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.action.explode_aar">mozbuild.action.explode_aar module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.action.file_generate">mozbuild.action.file_generate module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.action.generate_browsersearch">mozbuild.action.generate_browsersearch module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mozbuild-action-generate-searchjson-module">mozbuild.action.generate_searchjson module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.action.generate_suggestedsites">mozbuild.action.generate_suggestedsites module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.action.generate_symbols_file">mozbuild.action.generate_symbols_file module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.action.jar_maker">mozbuild.action.jar_maker module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.action.langpack_manifest">mozbuild.action.langpack_manifest module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.action.make_dmg">mozbuild.action.make_dmg module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.action.make_unzip">mozbuild.action.make_unzip module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.action.make_zip">mozbuild.action.make_zip module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mozbuild-action-output-searchplugins-list-module">mozbuild.action.output_searchplugins_list module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.action.package_fennec_apk">mozbuild.action.package_fennec_apk module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.action.package_generated_sources">mozbuild.action.package_generated_sources module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.action.preprocessor">mozbuild.action.preprocessor module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.action.process_define_files">mozbuild.action.process_define_files module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.action.process_install_manifest">mozbuild.action.process_install_manifest module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.action.symbols_archive">mozbuild.action.symbols_archive module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.action.test_archive">mozbuild.action.test_archive module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.action.tooltool">mozbuild.action.tooltool module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.action.unpack_dmg">mozbuild.action.unpack_dmg module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.action.webidl">mozbuild.action.webidl module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.action.xpccheck">mozbuild.action.xpccheck module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mozbuild-action-xpidl-process-module">mozbuild.action.xpidl-process module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.action.zip">mozbuild.action.zip module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.action">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.backend.html">mozbuild.backend package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.codecoverage.html">mozbuild.codecoverage package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.compilation.html">mozbuild.compilation package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.configure.html">mozbuild.configure package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.controller.html">mozbuild.controller package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.frontend.html">mozbuild.frontend package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.repackaging.html">mozbuild.repackaging package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.test.html">mozbuild.test package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.android_version_code">mozbuild.android_version_code module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.artifacts">mozbuild.artifacts module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.base">mozbuild.base module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.chunkify">mozbuild.chunkify module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.config_status">mozbuild.config_status module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.doctor">mozbuild.doctor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.dotproperties">mozbuild.dotproperties module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#mozbuild-faster-daemon-module">mozbuild.faster_daemon module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.generated_sources">mozbuild.generated_sources module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.html_build_viewer">mozbuild.html_build_viewer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.jar">mozbuild.jar module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.mach_commands">mozbuild.mach_commands module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.makeutil">mozbuild.makeutil module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.milestone">mozbuild.milestone module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.mozconfig">mozbuild.mozconfig module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.mozinfo">mozbuild.mozinfo module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.preprocessor">mozbuild.preprocessor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.pythonutil">mozbuild.pythonutil module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.schedules">mozbuild.schedules module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.shellutil">mozbuild.shellutil module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.sphinx">mozbuild.sphinx module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.testing">mozbuild.testing module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.util">mozbuild.util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.vendor_aom">mozbuild.vendor_aom module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.vendor_rust">mozbuild.vendor_rust module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.virtualenv">mozbuild.virtualenv module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="mozbuild.html">mozbuild package</a> &raquo;</li>
+        
+      <li>mozbuild.action package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/python/mozbuild.action.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mozbuild-action-package">
+<h1>mozbuild.action package<a class="headerlink" href="#mozbuild-action-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-mozbuild.action.buildlist">
+<span id="mozbuild-action-buildlist-module"></span><h2>mozbuild.action.buildlist module<a class="headerlink" href="#module-mozbuild.action.buildlist" title="Permalink to this headline">¶</a></h2>
+<p>A generic script to add entries to a file
+if the entry does not already exist.</p>
+<p>Usage: buildlist.py &lt;filename&gt; &lt;entry&gt; [&lt;entry&gt; …]</p>
+<dl class="function">
+<dt id="mozbuild.action.buildlist.addEntriesToListFile">
+<code class="descclassname">mozbuild.action.buildlist.</code><code class="descname">addEntriesToListFile</code><span class="sig-paren">(</span><em>listFile</em>, <em>entries</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.buildlist.addEntriesToListFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a file <a href="#id3"><span class="problematic" id="id4">|listFile|</span></a> containing one entry per line,
+add each entry in <a href="#id5"><span class="problematic" id="id6">|entries|</span></a> to the file, unless it is already
+present.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.buildlist.main">
+<code class="descclassname">mozbuild.action.buildlist.</code><code class="descname">main</code><span class="sig-paren">(</span><em>args</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.buildlist.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="mozbuild-action-cl-module">
+<h2>mozbuild.action.cl module<a class="headerlink" href="#mozbuild-action-cl-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-mozbuild.action.dump_env">
+<span id="mozbuild-action-dump-env-module"></span><h2>mozbuild.action.dump_env module<a class="headerlink" href="#module-mozbuild.action.dump_env" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-mozbuild.action.dumpsymbols">
+<span id="mozbuild-action-dumpsymbols-module"></span><h2>mozbuild.action.dumpsymbols module<a class="headerlink" href="#module-mozbuild.action.dumpsymbols" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mozbuild.action.dumpsymbols.dump_symbols">
+<code class="descclassname">mozbuild.action.dumpsymbols.</code><code class="descname">dump_symbols</code><span class="sig-paren">(</span><em>target</em>, <em>tracking_file</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.dumpsymbols.dump_symbols" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.dumpsymbols.main">
+<code class="descclassname">mozbuild.action.dumpsymbols.</code><code class="descname">main</code><span class="sig-paren">(</span><em>argv</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.dumpsymbols.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.action.exe_7z_archive">
+<span id="mozbuild-action-exe-7z-archive-module"></span><h2>mozbuild.action.exe_7z_archive module<a class="headerlink" href="#module-mozbuild.action.exe_7z_archive" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mozbuild.action.exe_7z_archive.archive_exe">
+<code class="descclassname">mozbuild.action.exe_7z_archive.</code><code class="descname">archive_exe</code><span class="sig-paren">(</span><em>pkg_dir</em>, <em>tagfile</em>, <em>sfx_package</em>, <em>package</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.exe_7z_archive.archive_exe" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.exe_7z_archive.main">
+<code class="descclassname">mozbuild.action.exe_7z_archive.</code><code class="descname">main</code><span class="sig-paren">(</span><em>args</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.exe_7z_archive.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.action.exe_7z_extract">
+<span id="mozbuild-action-exe-7z-extract-module"></span><h2>mozbuild.action.exe_7z_extract module<a class="headerlink" href="#module-mozbuild.action.exe_7z_extract" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mozbuild.action.exe_7z_extract.extract_exe">
+<code class="descclassname">mozbuild.action.exe_7z_extract.</code><code class="descname">extract_exe</code><span class="sig-paren">(</span><em>package</em>, <em>target</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.exe_7z_extract.extract_exe" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.exe_7z_extract.main">
+<code class="descclassname">mozbuild.action.exe_7z_extract.</code><code class="descname">main</code><span class="sig-paren">(</span><em>args</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.exe_7z_extract.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.action.explode_aar">
+<span id="mozbuild-action-explode-aar-module"></span><h2>mozbuild.action.explode_aar module<a class="headerlink" href="#module-mozbuild.action.explode_aar" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mozbuild.action.explode_aar.explode">
+<code class="descclassname">mozbuild.action.explode_aar.</code><code class="descname">explode</code><span class="sig-paren">(</span><em>aar</em>, <em>destdir</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.explode_aar.explode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.explode_aar.main">
+<code class="descclassname">mozbuild.action.explode_aar.</code><code class="descname">main</code><span class="sig-paren">(</span><em>argv</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.explode_aar.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.action.file_generate">
+<span id="mozbuild-action-file-generate-module"></span><h2>mozbuild.action.file_generate module<a class="headerlink" href="#module-mozbuild.action.file_generate" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mozbuild.action.file_generate.main">
+<code class="descclassname">mozbuild.action.file_generate.</code><code class="descname">main</code><span class="sig-paren">(</span><em>argv</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.file_generate.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.action.generate_browsersearch">
+<span id="mozbuild-action-generate-browsersearch-module"></span><h2>mozbuild.action.generate_browsersearch module<a class="headerlink" href="#module-mozbuild.action.generate_browsersearch" title="Permalink to this headline">¶</a></h2>
+<p>Script to generate the browsersearch.json file for Fennec.</p>
+<p>This script follows these steps:</p>
+<p>1. Read the region.properties file in all the given source directories (see
+srcdir option). Merge all properties into a single dict accounting for the
+priority of source directories.</p>
+<ol class="arabic simple" start="2">
+<li>Read the default search plugin from ‘browser.search.defaultenginename’.</li>
+</ol>
+<p>3. Read the list of search plugins from the ‘browser.search.order.INDEX’
+properties with values identifying particular search plugins by name.</p>
+<p>4. Read each region-specific default search plugin from each property named like
+‘browser.search.defaultenginename.REGION’.</p>
+<p>5. Read the list of region-specific search plugins from the
+‘browser.search.order.REGION.INDEX’ properties with values identifying
+particular search plugins by name. Here, REGION is derived from a REGION for
+which we have seen a region-specific default plugin.</p>
+<p>6. Generate a JSON representation of the above information, and write the result
+to browsersearch.json in the locale-specific raw resource directory
+e.g. raw/browsersearch.json, raw-pt-rBR/browsersearch.json.</p>
+<dl class="function">
+<dt id="mozbuild.action.generate_browsersearch.main">
+<code class="descclassname">mozbuild.action.generate_browsersearch.</code><code class="descname">main</code><span class="sig-paren">(</span><em>args</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.generate_browsersearch.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.generate_browsersearch.merge_properties">
+<code class="descclassname">mozbuild.action.generate_browsersearch.</code><code class="descname">merge_properties</code><span class="sig-paren">(</span><em>filename</em>, <em>srcdirs</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.generate_browsersearch.merge_properties" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merges properties from the given file in the given source directories.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="mozbuild-action-generate-searchjson-module">
+<h2>mozbuild.action.generate_searchjson module<a class="headerlink" href="#mozbuild-action-generate-searchjson-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-mozbuild.action.generate_suggestedsites">
+<span id="mozbuild-action-generate-suggestedsites-module"></span><h2>mozbuild.action.generate_suggestedsites module<a class="headerlink" href="#module-mozbuild.action.generate_suggestedsites" title="Permalink to this headline">¶</a></h2>
+<p>Script to generate the suggestedsites.json file for Fennec.</p>
+<p>This script follows these steps:</p>
+<p>1. Read the region.properties file in all the given source directories
+(see srcdir option). Merge all properties into a single dict accounting for
+the priority of source directories.</p>
+<p>2. Read the list of sites from the list ‘browser.suggestedsites.list.INDEX’ and
+‘browser.suggestedsites.restricted.list.INDEX’ properties with value of these keys
+being an identifier for each suggested site e.g. browser.suggestedsites.list.0=mozilla,
+browser.suggestedsites.list.1=fxmarketplace.</p>
+<p>3. For each site identifier defined by the list keys, look for matching branches
+containing the respective properties i.e. url, title, etc. For example,
+for a ‘mozilla’ identifier, we’ll look for keys like:
+browser.suggestedsites.mozilla.url, browser.suggestedsites.mozilla.title, etc.</p>
+<p>4. Generate a JSON representation of each site, join them in a JSON array, and
+write the result to suggestedsites.json on the locale-specific raw resource
+directory e.g. raw/suggestedsites.json, raw-pt-rBR/suggestedsites.json.</p>
+<dl class="function">
+<dt id="mozbuild.action.generate_suggestedsites.main">
+<code class="descclassname">mozbuild.action.generate_suggestedsites.</code><code class="descname">main</code><span class="sig-paren">(</span><em>args</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.generate_suggestedsites.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.generate_suggestedsites.merge_properties">
+<code class="descclassname">mozbuild.action.generate_suggestedsites.</code><code class="descname">merge_properties</code><span class="sig-paren">(</span><em>filename</em>, <em>srcdirs</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.generate_suggestedsites.merge_properties" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merges properties from the given file in the given source directories.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.action.generate_symbols_file">
+<span id="mozbuild-action-generate-symbols-file-module"></span><h2>mozbuild.action.generate_symbols_file module<a class="headerlink" href="#module-mozbuild.action.generate_symbols_file" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mozbuild.action.generate_symbols_file.generate_symbols_file">
+<code class="descclassname">mozbuild.action.generate_symbols_file.</code><code class="descname">generate_symbols_file</code><span class="sig-paren">(</span><em>output</em>, <em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.generate_symbols_file.generate_symbols_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.action.jar_maker">
+<span id="mozbuild-action-jar-maker-module"></span><h2>mozbuild.action.jar_maker module<a class="headerlink" href="#module-mozbuild.action.jar_maker" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mozbuild.action.jar_maker.main">
+<code class="descclassname">mozbuild.action.jar_maker.</code><code class="descname">main</code><span class="sig-paren">(</span><em>args</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.jar_maker.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.action.langpack_manifest">
+<span id="mozbuild-action-langpack-manifest-module"></span><h2>mozbuild.action.langpack_manifest module<a class="headerlink" href="#module-mozbuild.action.langpack_manifest" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mozbuild.action.langpack_manifest.build_author_string">
+<code class="descclassname">mozbuild.action.langpack_manifest.</code><code class="descname">build_author_string</code><span class="sig-paren">(</span><em>author</em>, <em>contributors</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.langpack_manifest.build_author_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.langpack_manifest.convert_contributors">
+<code class="descclassname">mozbuild.action.langpack_manifest.</code><code class="descname">convert_contributors</code><span class="sig-paren">(</span><em>str</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.langpack_manifest.convert_contributors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.langpack_manifest.convert_entry_flags_to_platform_codes">
+<code class="descclassname">mozbuild.action.langpack_manifest.</code><code class="descname">convert_entry_flags_to_platform_codes</code><span class="sig-paren">(</span><em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.langpack_manifest.convert_entry_flags_to_platform_codes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.langpack_manifest.create_webmanifest">
+<code class="descclassname">mozbuild.action.langpack_manifest.</code><code class="descname">create_webmanifest</code><span class="sig-paren">(</span><em>locstr</em>, <em>min_app_ver</em>, <em>max_app_ver</em>, <em>app_name</em>, <em>l10n_basedir</em>, <em>defines</em>, <em>chrome_entries</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.langpack_manifest.create_webmanifest" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.langpack_manifest.get_dt_from_hg">
+<code class="descclassname">mozbuild.action.langpack_manifest.</code><code class="descname">get_dt_from_hg</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.langpack_manifest.get_dt_from_hg" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.langpack_manifest.get_timestamp_for_locale">
+<code class="descclassname">mozbuild.action.langpack_manifest.</code><code class="descname">get_timestamp_for_locale</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.langpack_manifest.get_timestamp_for_locale" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.langpack_manifest.main">
+<code class="descclassname">mozbuild.action.langpack_manifest.</code><code class="descname">main</code><span class="sig-paren">(</span><em>args</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.langpack_manifest.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.langpack_manifest.parse_chrome_manifest">
+<code class="descclassname">mozbuild.action.langpack_manifest.</code><code class="descname">parse_chrome_manifest</code><span class="sig-paren">(</span><em>path</em>, <em>base_path</em>, <em>chrome_entries</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.langpack_manifest.parse_chrome_manifest" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.langpack_manifest.parse_defines">
+<code class="descclassname">mozbuild.action.langpack_manifest.</code><code class="descname">parse_defines</code><span class="sig-paren">(</span><em>paths</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.langpack_manifest.parse_defines" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.langpack_manifest.write_file">
+<code class="descclassname">mozbuild.action.langpack_manifest.</code><code class="descname">write_file</code><span class="sig-paren">(</span><em>path</em>, <em>content</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.langpack_manifest.write_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.action.make_dmg">
+<span id="mozbuild-action-make-dmg-module"></span><h2>mozbuild.action.make_dmg module<a class="headerlink" href="#module-mozbuild.action.make_dmg" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mozbuild.action.make_dmg.main">
+<code class="descclassname">mozbuild.action.make_dmg.</code><code class="descname">main</code><span class="sig-paren">(</span><em>args</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.make_dmg.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.make_dmg.make_dmg">
+<code class="descclassname">mozbuild.action.make_dmg.</code><code class="descname">make_dmg</code><span class="sig-paren">(</span><em>source_directory</em>, <em>output_dmg</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.make_dmg.make_dmg" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.action.make_unzip">
+<span id="mozbuild-action-make-unzip-module"></span><h2>mozbuild.action.make_unzip module<a class="headerlink" href="#module-mozbuild.action.make_unzip" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mozbuild.action.make_unzip.main">
+<code class="descclassname">mozbuild.action.make_unzip.</code><code class="descname">main</code><span class="sig-paren">(</span><em>args</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.make_unzip.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.make_unzip.make_unzip">
+<code class="descclassname">mozbuild.action.make_unzip.</code><code class="descname">make_unzip</code><span class="sig-paren">(</span><em>package</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.make_unzip.make_unzip" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.action.make_zip">
+<span id="mozbuild-action-make-zip-module"></span><h2>mozbuild.action.make_zip module<a class="headerlink" href="#module-mozbuild.action.make_zip" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mozbuild.action.make_zip.main">
+<code class="descclassname">mozbuild.action.make_zip.</code><code class="descname">main</code><span class="sig-paren">(</span><em>args</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.make_zip.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.make_zip.make_zip">
+<code class="descclassname">mozbuild.action.make_zip.</code><code class="descname">make_zip</code><span class="sig-paren">(</span><em>source</em>, <em>package</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.make_zip.make_zip" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="mozbuild-action-output-searchplugins-list-module">
+<h2>mozbuild.action.output_searchplugins_list module<a class="headerlink" href="#mozbuild-action-output-searchplugins-list-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-mozbuild.action.package_fennec_apk">
+<span id="mozbuild-action-package-fennec-apk-module"></span><h2>mozbuild.action.package_fennec_apk module<a class="headerlink" href="#module-mozbuild.action.package_fennec_apk" title="Permalink to this headline">¶</a></h2>
+<p>Script to produce an Android package (.apk) for Fennec.</p>
+<dl class="function">
+<dt id="mozbuild.action.package_fennec_apk.main">
+<code class="descclassname">mozbuild.action.package_fennec_apk.</code><code class="descname">main</code><span class="sig-paren">(</span><em>args</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.package_fennec_apk.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.package_fennec_apk.package_fennec_apk">
+<code class="descclassname">mozbuild.action.package_fennec_apk.</code><code class="descname">package_fennec_apk</code><span class="sig-paren">(</span><em>inputs=[]</em>, <em>omni_ja=None</em>, <em>classes_dex=None</em>, <em>lib_dirs=[]</em>, <em>assets_dirs=[]</em>, <em>features_dirs=[]</em>, <em>root_files=[]</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.package_fennec_apk.package_fennec_apk" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.action.package_generated_sources">
+<span id="mozbuild-action-package-generated-sources-module"></span><h2>mozbuild.action.package_generated_sources module<a class="headerlink" href="#module-mozbuild.action.package_generated_sources" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mozbuild.action.package_generated_sources.main">
+<code class="descclassname">mozbuild.action.package_generated_sources.</code><code class="descname">main</code><span class="sig-paren">(</span><em>argv</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.package_generated_sources.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.action.preprocessor">
+<span id="mozbuild-action-preprocessor-module"></span><h2>mozbuild.action.preprocessor module<a class="headerlink" href="#module-mozbuild.action.preprocessor" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mozbuild.action.preprocessor.generate">
+<code class="descclassname">mozbuild.action.preprocessor.</code><code class="descname">generate</code><span class="sig-paren">(</span><em>output</em>, <em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.preprocessor.generate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.preprocessor.main">
+<code class="descclassname">mozbuild.action.preprocessor.</code><code class="descname">main</code><span class="sig-paren">(</span><em>args</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.preprocessor.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.action.process_define_files">
+<span id="mozbuild-action-process-define-files-module"></span><h2>mozbuild.action.process_define_files module<a class="headerlink" href="#module-mozbuild.action.process_define_files" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mozbuild.action.process_define_files.main">
+<code class="descclassname">mozbuild.action.process_define_files.</code><code class="descname">main</code><span class="sig-paren">(</span><em>argv</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.process_define_files.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.process_define_files.process_define_file">
+<code class="descclassname">mozbuild.action.process_define_files.</code><code class="descname">process_define_file</code><span class="sig-paren">(</span><em>output</em>, <em>input</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.process_define_files.process_define_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates the given config header. A config header is generated by
+taking the corresponding source file and replacing some #define/#undef
+occurences:</p>
+<blockquote>
+<div>“#undef NAME” is turned into “#define NAME VALUE”
+“#define NAME” is unchanged
+“#define NAME ORIGINAL_VALUE” is turned into “#define NAME VALUE”
+“#undef UNKNOWN_NAME” is turned into “/* #undef UNKNOWN_NAME <a href="#id1"><span class="problematic" id="id2">*</span></a>/”
+Whitespaces are preserved.</div></blockquote>
+<p>As a special rule, “#undef ALLDEFINES” is turned into “#define NAME
+VALUE” for all the defined variables.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.action.process_install_manifest">
+<span id="mozbuild-action-process-install-manifest-module"></span><h2>mozbuild.action.process_install_manifest module<a class="headerlink" href="#module-mozbuild.action.process_install_manifest" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mozbuild.action.process_install_manifest.main">
+<code class="descclassname">mozbuild.action.process_install_manifest.</code><code class="descname">main</code><span class="sig-paren">(</span><em>argv</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.process_install_manifest.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.process_install_manifest.process_manifest">
+<code class="descclassname">mozbuild.action.process_install_manifest.</code><code class="descname">process_manifest</code><span class="sig-paren">(</span><em>destdir</em>, <em>paths</em>, <em>track</em>, <em>no_symlinks=False</em>, <em>defines={}</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.process_install_manifest.process_manifest" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.action.symbols_archive">
+<span id="mozbuild-action-symbols-archive-module"></span><h2>mozbuild.action.symbols_archive module<a class="headerlink" href="#module-mozbuild.action.symbols_archive" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mozbuild.action.symbols_archive.main">
+<code class="descclassname">mozbuild.action.symbols_archive.</code><code class="descname">main</code><span class="sig-paren">(</span><em>argv</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.symbols_archive.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.symbols_archive.make_archive">
+<code class="descclassname">mozbuild.action.symbols_archive.</code><code class="descname">make_archive</code><span class="sig-paren">(</span><em>archive_name</em>, <em>base</em>, <em>exclude</em>, <em>include</em>, <em>compress</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.symbols_archive.make_archive" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.action.test_archive">
+<span id="mozbuild-action-test-archive-module"></span><h2>mozbuild.action.test_archive module<a class="headerlink" href="#module-mozbuild.action.test_archive" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mozbuild.action.test_archive.find_files">
+<code class="descclassname">mozbuild.action.test_archive.</code><code class="descname">find_files</code><span class="sig-paren">(</span><em>archive</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.test_archive.find_files" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.test_archive.find_generated_harness_files">
+<code class="descclassname">mozbuild.action.test_archive.</code><code class="descname">find_generated_harness_files</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.test_archive.find_generated_harness_files" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.test_archive.find_manifest_dirs">
+<code class="descclassname">mozbuild.action.test_archive.</code><code class="descname">find_manifest_dirs</code><span class="sig-paren">(</span><em>topsrcdir</em>, <em>manifests</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.test_archive.find_manifest_dirs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Routine to retrieve directories specified in a manifest, relative to topsrcdir.</p>
+<p>It does not recurse into manifests, as we currently have no need for that.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.test_archive.main">
+<code class="descclassname">mozbuild.action.test_archive.</code><code class="descname">main</code><span class="sig-paren">(</span><em>argv</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.test_archive.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.action.tooltool">
+<span id="mozbuild-action-tooltool-module"></span><h2>mozbuild.action.tooltool module<a class="headerlink" href="#module-mozbuild.action.tooltool" title="Permalink to this headline">¶</a></h2>
+<dl class="exception">
+<dt id="mozbuild.action.tooltool.BadFilenameException">
+<em class="property">exception </em><code class="descclassname">mozbuild.action.tooltool.</code><code class="descname">BadFilenameException</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.tooltool.BadFilenameException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.action.tooltool.ExceptionWithFilename" title="mozbuild.action.tooltool.ExceptionWithFilename"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.action.tooltool.ExceptionWithFilename</span></code></a></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="mozbuild.action.tooltool.DigestMismatchException">
+<em class="property">exception </em><code class="descclassname">mozbuild.action.tooltool.</code><code class="descname">DigestMismatchException</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.tooltool.DigestMismatchException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.action.tooltool.ExceptionWithFilename" title="mozbuild.action.tooltool.ExceptionWithFilename"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.action.tooltool.ExceptionWithFilename</span></code></a></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="mozbuild.action.tooltool.ExceptionWithFilename">
+<em class="property">exception </em><code class="descclassname">mozbuild.action.tooltool.</code><code class="descname">ExceptionWithFilename</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.tooltool.ExceptionWithFilename" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></code></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.action.tooltool.FileRecord">
+<em class="property">class </em><code class="descclassname">mozbuild.action.tooltool.</code><code class="descname">FileRecord</code><span class="sig-paren">(</span><em>filename</em>, <em>size</em>, <em>digest</em>, <em>algorithm</em>, <em>unpack=False</em>, <em>version=None</em>, <em>visibility=None</em>, <em>setup=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.tooltool.FileRecord" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="mozbuild.action.tooltool.FileRecord.describe">
+<code class="descname">describe</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.tooltool.FileRecord.describe" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.action.tooltool.FileRecord.present">
+<code class="descname">present</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.tooltool.FileRecord.present" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.action.tooltool.FileRecord.validate">
+<code class="descname">validate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.tooltool.FileRecord.validate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.action.tooltool.FileRecord.validate_digest">
+<code class="descname">validate_digest</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.tooltool.FileRecord.validate_digest" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.action.tooltool.FileRecord.validate_size">
+<code class="descname">validate_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.tooltool.FileRecord.validate_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.action.tooltool.FileRecordJSONDecoder">
+<em class="property">class </em><code class="descclassname">mozbuild.action.tooltool.</code><code class="descname">FileRecordJSONDecoder</code><span class="sig-paren">(</span><em>encoding=None</em>, <em>object_hook=None</em>, <em>parse_float=None</em>, <em>parse_int=None</em>, <em>parse_constant=None</em>, <em>strict=True</em>, <em>object_pairs_hook=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.tooltool.FileRecordJSONDecoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">json.decoder.JSONDecoder</span></code></p>
+<p>I help the json module materialize a FileRecord from
+a JSON file.  I understand FileRecords and lists of
+FileRecords.  I ignore things that I don’t expect for now</p>
+<dl class="method">
+<dt id="mozbuild.action.tooltool.FileRecordJSONDecoder.decode">
+<code class="descname">decode</code><span class="sig-paren">(</span><em>s</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.tooltool.FileRecordJSONDecoder.decode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.action.tooltool.FileRecordJSONDecoder.process_file_records">
+<code class="descname">process_file_records</code><span class="sig-paren">(</span><em>obj</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.tooltool.FileRecordJSONDecoder.process_file_records" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.action.tooltool.FileRecordJSONEncoder">
+<em class="property">class </em><code class="descclassname">mozbuild.action.tooltool.</code><code class="descname">FileRecordJSONEncoder</code><span class="sig-paren">(</span><em>skipkeys=False</em>, <em>ensure_ascii=True</em>, <em>check_circular=True</em>, <em>allow_nan=True</em>, <em>sort_keys=False</em>, <em>indent=None</em>, <em>separators=None</em>, <em>encoding='utf-8'</em>, <em>default=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.tooltool.FileRecordJSONEncoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">json.encoder.JSONEncoder</span></code></p>
+<dl class="method">
+<dt id="mozbuild.action.tooltool.FileRecordJSONEncoder.default">
+<code class="descname">default</code><span class="sig-paren">(</span><em>f</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.tooltool.FileRecordJSONEncoder.default" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.action.tooltool.FileRecordJSONEncoder.encode_file_record">
+<code class="descname">encode_file_record</code><span class="sig-paren">(</span><em>obj</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.tooltool.FileRecordJSONEncoder.encode_file_record" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="mozbuild.action.tooltool.FileRecordJSONEncoderException">
+<em class="property">exception </em><code class="descclassname">mozbuild.action.tooltool.</code><code class="descname">FileRecordJSONEncoderException</code><a class="headerlink" href="#mozbuild.action.tooltool.FileRecordJSONEncoderException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></code></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="mozbuild.action.tooltool.InvalidManifest">
+<em class="property">exception </em><code class="descclassname">mozbuild.action.tooltool.</code><code class="descname">InvalidManifest</code><a class="headerlink" href="#mozbuild.action.tooltool.InvalidManifest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></code></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.action.tooltool.Manifest">
+<em class="property">class </em><code class="descclassname">mozbuild.action.tooltool.</code><code class="descname">Manifest</code><span class="sig-paren">(</span><em>file_records=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.tooltool.Manifest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="mozbuild.action.tooltool.Manifest.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.tooltool.Manifest.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.action.tooltool.Manifest.dump">
+<code class="descname">dump</code><span class="sig-paren">(</span><em>output_file</em>, <em>fmt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.tooltool.Manifest.dump" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.action.tooltool.Manifest.dumps">
+<code class="descname">dumps</code><span class="sig-paren">(</span><em>fmt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.tooltool.Manifest.dumps" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.action.tooltool.Manifest.load">
+<code class="descname">load</code><span class="sig-paren">(</span><em>data_file</em>, <em>fmt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.tooltool.Manifest.load" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.action.tooltool.Manifest.loads">
+<code class="descname">loads</code><span class="sig-paren">(</span><em>data_string</em>, <em>fmt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.tooltool.Manifest.loads" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.action.tooltool.Manifest.present">
+<code class="descname">present</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.tooltool.Manifest.present" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.action.tooltool.Manifest.valid_formats">
+<code class="descname">valid_formats</code><em class="property"> = ('json',)</em><a class="headerlink" href="#mozbuild.action.tooltool.Manifest.valid_formats" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.action.tooltool.Manifest.validate">
+<code class="descname">validate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.tooltool.Manifest.validate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.action.tooltool.Manifest.validate_digests">
+<code class="descname">validate_digests</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.tooltool.Manifest.validate_digests" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.action.tooltool.Manifest.validate_sizes">
+<code class="descname">validate_sizes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.tooltool.Manifest.validate_sizes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="mozbuild.action.tooltool.MissingFileException">
+<em class="property">exception </em><code class="descclassname">mozbuild.action.tooltool.</code><code class="descname">MissingFileException</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.tooltool.MissingFileException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.action.tooltool.ExceptionWithFilename" title="mozbuild.action.tooltool.ExceptionWithFilename"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.action.tooltool.ExceptionWithFilename</span></code></a></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.tooltool.add_files">
+<code class="descclassname">mozbuild.action.tooltool.</code><code class="descname">add_files</code><span class="sig-paren">(</span><em>manifest_file</em>, <em>algorithm</em>, <em>filenames</em>, <em>version</em>, <em>visibility</em>, <em>unpack</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.tooltool.add_files" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.tooltool.clean_path">
+<code class="descclassname">mozbuild.action.tooltool.</code><code class="descname">clean_path</code><span class="sig-paren">(</span><em>dirname</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.tooltool.clean_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a subtree if is exists. Helper for unpack_file().</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.tooltool.create_file_record">
+<code class="descclassname">mozbuild.action.tooltool.</code><code class="descname">create_file_record</code><span class="sig-paren">(</span><em>filename</em>, <em>algorithm</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.tooltool.create_file_record" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.tooltool.digest_file">
+<code class="descclassname">mozbuild.action.tooltool.</code><code class="descname">digest_file</code><span class="sig-paren">(</span><em>f</em>, <em>a</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.tooltool.digest_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>I take a file like object ‘f’ and return a hex-string containing
+of the result of the algorithm ‘a’ applied to ‘f’.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.tooltool.execute">
+<code class="descclassname">mozbuild.action.tooltool.</code><code class="descname">execute</code><span class="sig-paren">(</span><em>cmd</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.tooltool.execute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute CMD, logging its stdout at the info level</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.tooltool.fetch_file">
+<code class="descclassname">mozbuild.action.tooltool.</code><code class="descname">fetch_file</code><span class="sig-paren">(</span><em>base_urls</em>, <em>file_record</em>, <em>grabchunk=4096</em>, <em>auth_file=None</em>, <em>region=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.tooltool.fetch_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.tooltool.fetch_files">
+<code class="descclassname">mozbuild.action.tooltool.</code><code class="descname">fetch_files</code><span class="sig-paren">(</span><em>manifest_file</em>, <em>base_urls</em>, <em>filenames=[]</em>, <em>cache_folder=None</em>, <em>auth_file=None</em>, <em>region=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.tooltool.fetch_files" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.tooltool.freespace">
+<code class="descclassname">mozbuild.action.tooltool.</code><code class="descname">freespace</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.tooltool.freespace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of bytes free under directory <cite>p</cite></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.tooltool.list_manifest">
+<code class="descclassname">mozbuild.action.tooltool.</code><code class="descname">list_manifest</code><span class="sig-paren">(</span><em>manifest_file</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.tooltool.list_manifest" title="Permalink to this definition">¶</a></dt>
+<dd><p>I know how print all the files in a location</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.tooltool.main">
+<code class="descclassname">mozbuild.action.tooltool.</code><code class="descname">main</code><span class="sig-paren">(</span><em>argv</em>, <em>_skip_logging=False</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.tooltool.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.tooltool.open_manifest">
+<code class="descclassname">mozbuild.action.tooltool.</code><code class="descname">open_manifest</code><span class="sig-paren">(</span><em>manifest_file</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.tooltool.open_manifest" title="Permalink to this definition">¶</a></dt>
+<dd><p>I know how to take a filename and load it into a Manifest object</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.tooltool.process_command">
+<code class="descclassname">mozbuild.action.tooltool.</code><code class="descname">process_command</code><span class="sig-paren">(</span><em>options</em>, <em>args</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.tooltool.process_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>I know how to take a list of program arguments and
+start doing the right thing with them</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.tooltool.purge">
+<code class="descclassname">mozbuild.action.tooltool.</code><code class="descname">purge</code><span class="sig-paren">(</span><em>folder</em>, <em>gigs</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.tooltool.purge" title="Permalink to this definition">¶</a></dt>
+<dd><p>If gigs is non 0, it deletes files in <cite>folder</cite> until <cite>gigs</cite> GB are free,
+starting from older files.  If gigs is 0, a full purge will be performed.
+No recursive deletion of files in subfolder is performed.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.tooltool.touch">
+<code class="descclassname">mozbuild.action.tooltool.</code><code class="descname">touch</code><span class="sig-paren">(</span><em>f</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.tooltool.touch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used to modify mtime in cached files;
+mtime is used by the purge command</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.tooltool.unpack_file">
+<code class="descclassname">mozbuild.action.tooltool.</code><code class="descname">unpack_file</code><span class="sig-paren">(</span><em>filename</em>, <em>setup=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.tooltool.unpack_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Untar <cite>filename</cite>, assuming it is uncompressed or compressed with bzip2,
+xz, gzip, or unzip a zip file. The file is assumed to contain a single
+directory with a name matching the base of the given filename.
+Xz support is handled by shelling out to ‘tar’.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.tooltool.upload">
+<code class="descclassname">mozbuild.action.tooltool.</code><code class="descname">upload</code><span class="sig-paren">(</span><em>manifest</em>, <em>message</em>, <em>base_urls</em>, <em>auth_file</em>, <em>region</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.tooltool.upload" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.tooltool.validate_manifest">
+<code class="descclassname">mozbuild.action.tooltool.</code><code class="descname">validate_manifest</code><span class="sig-paren">(</span><em>manifest_file</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.tooltool.validate_manifest" title="Permalink to this definition">¶</a></dt>
+<dd><p>I validate that all files in a manifest are present and valid but
+don’t fetch or delete them if they aren’t</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.action.unpack_dmg">
+<span id="mozbuild-action-unpack-dmg-module"></span><h2>mozbuild.action.unpack_dmg module<a class="headerlink" href="#module-mozbuild.action.unpack_dmg" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mozbuild.action.unpack_dmg.main">
+<code class="descclassname">mozbuild.action.unpack_dmg.</code><code class="descname">main</code><span class="sig-paren">(</span><em>args</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.unpack_dmg.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.action.webidl">
+<span id="mozbuild-action-webidl-module"></span><h2>mozbuild.action.webidl module<a class="headerlink" href="#module-mozbuild.action.webidl" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mozbuild.action.webidl.main">
+<code class="descclassname">mozbuild.action.webidl.</code><code class="descname">main</code><span class="sig-paren">(</span><em>argv</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.webidl.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform WebIDL code generation required by the build system.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.action.xpccheck">
+<span id="mozbuild-action-xpccheck-module"></span><h2>mozbuild.action.xpccheck module<a class="headerlink" href="#module-mozbuild.action.xpccheck" title="Permalink to this headline">¶</a></h2>
+<p>A generic script to verify all test files are in the
+corresponding .ini file.</p>
+<p>Usage: xpccheck.py &lt;directory&gt; [&lt;directory&gt; …]</p>
+<dl class="function">
+<dt id="mozbuild.action.xpccheck.getIniTests">
+<code class="descclassname">mozbuild.action.xpccheck.</code><code class="descname">getIniTests</code><span class="sig-paren">(</span><em>testdir</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.xpccheck.getIniTests" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.xpccheck.main">
+<code class="descclassname">mozbuild.action.xpccheck.</code><code class="descname">main</code><span class="sig-paren">(</span><em>argv</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.xpccheck.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.xpccheck.verifyDirectory">
+<code class="descclassname">mozbuild.action.xpccheck.</code><code class="descname">verifyDirectory</code><span class="sig-paren">(</span><em>initests</em>, <em>directory</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.xpccheck.verifyDirectory" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.action.xpccheck.verifyIniFile">
+<code class="descclassname">mozbuild.action.xpccheck.</code><code class="descname">verifyIniFile</code><span class="sig-paren">(</span><em>initests</em>, <em>directory</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.xpccheck.verifyIniFile" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="mozbuild-action-xpidl-process-module">
+<h2>mozbuild.action.xpidl-process module<a class="headerlink" href="#mozbuild-action-xpidl-process-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-mozbuild.action.zip">
+<span id="mozbuild-action-zip-module"></span><h2>mozbuild.action.zip module<a class="headerlink" href="#module-mozbuild.action.zip" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mozbuild.action.zip.main">
+<code class="descclassname">mozbuild.action.zip.</code><code class="descname">main</code><span class="sig-paren">(</span><em>args</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.action.zip.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.action">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-mozbuild.action" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="mozbuild.backend.html" class="btn btn-neutral float-right" title="mozbuild.backend package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="mozbuild.html" class="btn btn-neutral" title="mozbuild package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

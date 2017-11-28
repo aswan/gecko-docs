@@ -1,0 +1,437 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Releasing geckodriver &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../../../index.html"/>
+        <link rel="up" title="geckodriver" href="index.html"/>
+        <link rel="next" title="Marionette" href="../../marionette/marionette/index.html"/>
+        <link rel="prev" title="Enabling trace logs" href="TraceLogs.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">geckodriver</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#for-users">For users</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#for-developers">For developers</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Releasing geckodriver</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#release-new-webdriver-crate">Release new webdriver crate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update-the-change-log">Update the change log</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update-libraries">Update libraries</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bump-the-version-number">Bump the version number</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#export-to-github">Export to GitHub</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#manually-change-webdriver-dependency">Manually change <code class="docutils literal"><span class="pre">webdriver</span></code> dependency</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#commit-local-changes">Commit local changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tag-the-release">Tag the release</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#make-the-release">Make the release</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update-the-release-description">Update the release description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#future-work">Future work</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">geckodriver</a> &raquo;</li>
+        
+      <li>Releasing geckodriver</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/testing/geckodriver/geckodriver/Releasing.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="releasing-geckodriver">
+<span id="releasing-geckodriver"></span><h1>Releasing geckodriver<a class="headerlink" href="#releasing-geckodriver" title="Permalink to this headline">¶</a></h1>
+<p>Releasing geckodriver is not as easy as it once used to be when the
+project’s canonical home was on GitHub.  Today geckodriver is hosted
+in <a class="reference external" href="https://hg.mozilla.org/mozilla-central/">mozilla-central</a>, and whilst we do want to make future releases
+from <a class="reference external" href="https://treeherder.mozilla.org/">Mozilla’s CI infrastructure</a>, we are currently in between two
+worlds: development happens in m-c, but releases continue to be made
+from GitHub using Travis.</p>
+<p>The reason for this is that we do not compile geckodriver for all
+our target platforms, that Rust cross-compilation on TaskCluster
+builders is somewhat broken, and that tests are not run in automation.
+We intend to fix all these problems.</p>
+<p>In any case, the steps to release geckodriver are as follows:</p>
+<div class="section" id="release-new-webdriver-crate">
+<span id="release-new-webdriver-crate"></span><h2>Release new webdriver crate<a class="headerlink" href="#release-new-webdriver-crate" title="Permalink to this headline">¶</a></h2>
+<p>geckodriver depends on the <a class="reference external" href="../webdriver">webdriver</a> crate, also hosted in
+mozilla-central, by pointing to its in-tree relative path:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">dependencies</span><span class="p">]</span>
+<span class="n">webdriver</span> <span class="o">=</span> <span class="p">{</span> <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;../webdriver&quot;</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>Because we need to export the geckodriver source code to the old GitHub
+repository in order to release, we need to publish any changes that
+have been made to webdriver in the interim.  If no changes have been
+made, you can skip these steps:</p>
+<ol class="simple">
+<li>Bump the version number in testing/webdriver/Cargo.toml</li>
+<li><code class="docutils literal"><span class="pre">cargo</span> <span class="pre">publish</span></code></li>
+</ol>
+</div>
+<div class="section" id="update-the-change-log">
+<span id="update-the-change-log"></span><h2>Update the change log<a class="headerlink" href="#update-the-change-log" title="Permalink to this headline">¶</a></h2>
+<p>Notable changes to geckodriver are mentioned in <a class="reference external" href="../CHANGES.md">CHANGES.md</a>. Many
+users rely on this, so it’s important that you make it <strong>relevant
+to end-users</strong>.  For example, we only mention changes that are visible
+to users.  The change log is not a complete anthology of commits,
+as these often will not convey the essence of a change to end-users.
+If a feature was added but removed before release, there is no reason
+to list it as a change.</p>
+<p>It is good practice to also include relevant information from the
+<a class="reference external" href="../webdriver">webdriver</a> and <a class="reference external" href="https://github.com/jgraham/rust_mozrunner">rust-mozrunner</a> crates, since these are the two most
+important dependencies of geckodriver and a lot of its functionality
+is implemented there.</p>
+<p>We follow the writing style of the existing change log, with
+one section per version (with a release date), with subsections
+‘Added’, ‘Changed’, and ‘Removed’.  If the targetted
+Firefox or Selenium versions have changed, it is good to make a
+mention of this.  Lines are optimally formatted at roughly 72 columns
+to make the file readable in a text editor as well as rendered HTML.
+fmt(1) does a splendid job at text formatting.</p>
+</div>
+<div class="section" id="update-libraries">
+<span id="update-libraries"></span><h2>Update libraries<a class="headerlink" href="#update-libraries" title="Permalink to this headline">¶</a></h2>
+<p>Make relevant changes to <a class="reference external" href="../Cargo.toml">Cargo.toml</a> to upgrade dependencies, then run</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="o">./</span><span class="n">mach</span> <span class="n">vendor</span> <span class="n">rust</span>
+<span class="o">%</span> <span class="o">./</span><span class="n">mach</span> <span class="n">build</span> <span class="n">testing</span><span class="o">/</span><span class="n">geckodriver</span>
+</pre></div>
+</div>
+<p>to pull down and vendor the upgraded libraries.  Remember to check
+in the <a class="reference external" href="../Cargo.lock">Cargo.lock</a> file, since unlike we want geckodriver builds to
+be reproducible.</p>
+<p>Updating dependencies should always be made as a separate commit to
+not confuse reviewers because vendoring involves checking in a lot
+of extra code reviewed downstream.</p>
+</div>
+<div class="section" id="bump-the-version-number">
+<span id="bump-the-version-number"></span><h2>Bump the version number<a class="headerlink" href="#bump-the-version-number" title="Permalink to this headline">¶</a></h2>
+<p>Bump the version number in <a class="reference external" href="../Cargo.toml">Cargo.toml</a> to the next version.
+geckodriver follows <a class="reference external" href="http://semver.org/">semantic versioning</a> so it’s a good idea to
+familiarise yourself wih that before deciding on the version number.</p>
+<p>After you’ve changed the version number, run</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="o">./</span><span class="n">mach</span> <span class="n">build</span> <span class="n">testing</span><span class="o">/</span><span class="n">geckodriver</span>
+</pre></div>
+</div>
+<p>again to update <a class="reference external" href="../Cargo.lock">Cargo.lock</a>, and check in the file.</p>
+</div>
+<div class="section" id="export-to-github">
+<span id="export-to-github"></span><h2>Export to GitHub<a class="headerlink" href="#export-to-github" title="Permalink to this headline">¶</a></h2>
+<p>The canonical GitHub repository is</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">mozilla</span><span class="o">/</span><span class="n">geckodriver</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<p>so make sure you have a local clone of that.  It has three branches:
+<em>master</em> which only contains the [README.md]; <em>old</em> which was the
+state of the project when it was exported to mozilla-central; and
+<em>release</em>, from where releases are made.  We will export the contents
+of <a class="reference external" href="../">testing/geckodriver</a> to the latter branch:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>% cd $SRC/geckodriver
+% git checkout release
+% git rm -rf .
+% git clean -fxd
+% cp -r $SRC/gecko/testing/geckodriver/* .
+</pre></div>
+</div>
+</div>
+<div class="section" id="manually-change-webdriver-dependency">
+<span id="manually-change-webdriver-dependency"></span><h2>Manually change <code class="docutils literal"><span class="pre">webdriver</span></code> dependency<a class="headerlink" href="#manually-change-webdriver-dependency" title="Permalink to this headline">¶</a></h2>
+<p>After the source code has been imported we need to change the
+dependency information for the <a class="reference external" href="../webdriver">webdriver</a> crate.  As explained
+previously geckodriver depends on a relative path in in the
+mozilla-central repository to build with the latest unreleased
+source code.</p>
+<p>This relative path does not exist in the GitHub repository and the
+build will fail unless we change it to the latest <a class="reference external" href="../webdriver">webdriver</a> crate
+version from crates.io.  That version will either be the crate you
+published earlier, or the latest version available if no changes have
+been made to it since the last geckodriver release.</p>
+</div>
+<div class="section" id="commit-local-changes">
+<span id="commit-local-changes"></span><h2>Commit local changes<a class="headerlink" href="#commit-local-changes" title="Permalink to this headline">¶</a></h2>
+<p>Now commit all the changes you have made locally to the <em>release</em> branch:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
+<span class="o">%</span> <span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">am</span> <span class="s2">&quot;import of vX.Y.Z&quot;</span>
+</pre></div>
+</div>
+<p>As indicated above, the changes you make to this branch will not
+be upstreamed back into mozilla-central.  It is merely used as a
+staging ground for pushing builds to Travis.</p>
+</div>
+<div class="section" id="tag-the-release">
+<span id="tag-the-release"></span><h2>Tag the release<a class="headerlink" href="#tag-the-release" title="Permalink to this headline">¶</a></h2>
+<p>Run the following command to tag the release:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">git</span> <span class="n">tag</span> <span class="s1">&#39;vX.Y.Z&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="make-the-release">
+<span id="make-the-release"></span><h2>Make the release<a class="headerlink" href="#make-the-release" title="Permalink to this headline">¶</a></h2>
+<p>geckodriver is released and automatically uploaded from Travis by
+pushing a new version tag to the <em>release</em> branch:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">git</span> <span class="n">push</span>
+<span class="o">%</span> <span class="n">git</span> <span class="n">push</span> <span class="o">--</span><span class="n">tags</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="update-the-release-description">
+<span id="update-the-release-description"></span><h2>Update the release description<a class="headerlink" href="#update-the-release-description" title="Permalink to this headline">¶</a></h2>
+<p>Copy the raw Markdown source from <a class="reference external" href="../CHANGES.md">CHANGES.md</a> into the description
+of the <a class="reference external" href="https://github.com/mozilla/geckodriver/releases">latest release</a>.  This will highlight for end-users what
+changes were made in that particular package when they visit the
+GitHub downloads section.</p>
+<p>Congratulations!  You’ve released geckodriver!</p>
+</div>
+<div class="section" id="future-work">
+<span id="future-work"></span><h2>Future work<a class="headerlink" href="#future-work" title="Permalink to this headline">¶</a></h2>
+<p>In the future, we intend to <a class="reference external" href="https://github.com/mozilla/geckodriver/issues/292">sign releases</a> so that they are
+verifiable.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../marionette/marionette/index.html" class="btn btn-neutral float-right" title="Marionette" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="TraceLogs.html" class="btn btn-neutral" title="Enabling trace logs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

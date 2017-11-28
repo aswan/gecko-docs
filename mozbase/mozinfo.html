@@ -1,0 +1,386 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mozinfo — Get system information &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../index.html"/>
+        <link rel="up" title="Getting information on the system under test" href="gettinginfo.html"/>
+        <link rel="next" title="moznetwork — Get network information" href="moznetwork.html"/>
+        <link rel="prev" title="Getting information on the system under test" href="gettinginfo.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">mozbase</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="manifestparser.html">Managing lists of tests</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="gettinginfo.html">Getting information on the system under test</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="docutils literal"><span class="pre">mozinfo</span></code> — Get system information</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#api-usage">API Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#command-line-usage">Command Line Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="moznetwork.html"><code class="docutils literal"><span class="pre">moznetwork</span></code> — Get network information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozversion.html"><code class="docutils literal"><span class="pre">mozversion</span></code> — Get application information</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="setuprunning.html">Set up and running</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozhttpd.html">Serving up content to be consumed by the browser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loggingreporting.html">Logging and reporting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python/mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">mozbase</a> &raquo;</li>
+        
+          <li><a href="gettinginfo.html">Getting information on the system under test</a> &raquo;</li>
+        
+      <li><code class="docutils literal"><span class="pre">mozinfo</span></code> — Get system information</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/mozbase/mozinfo.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mozinfo-get-system-information">
+<h1><a class="reference internal" href="#module-mozinfo" title="mozinfo"><code class="xref py py-mod docutils literal"><span class="pre">mozinfo</span></code></a> — Get system information<a class="headerlink" href="#mozinfo-get-system-information" title="Permalink to this headline">¶</a></h1>
+<p>Throughout <a class="reference external" href="https://developer.mozilla.org/en/Mozmill">mozmill</a>
+and other Mozilla python code, checking the underlying
+platform is done in many different ways.  The various checks needed
+lead to a lot of copy+pasting, leaving the reader to wonder….is this
+specific check necessary for (e.g.) an operating system?  Because
+information is not consolidated, checks are not done consistently, nor
+is it defined what we are checking for.</p>
+<p><a class="reference external" href="https://github.com/mozilla/mozbase/tree/master/mozinfo">mozinfo</a>
+proposes to solve this problem.  mozinfo is a bridge interface,
+making the underlying (complex) plethora of OS and architecture
+combinations conform to a subset of values of relevance to
+Mozilla software. The current implementation exposes relevant keys and
+values such as: <code class="docutils literal"><span class="pre">os</span></code>, <code class="docutils literal"><span class="pre">version</span></code>, <code class="docutils literal"><span class="pre">bits</span></code>, and <code class="docutils literal"><span class="pre">processor</span></code>.  Additionally, the
+service pack in use is available on the windows platform.</p>
+<div class="section" id="api-usage">
+<h2>API Usage<a class="headerlink" href="#api-usage" title="Permalink to this headline">¶</a></h2>
+<p>mozinfo is a python package.  Downloading the software and running
+<code class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">develop</span></code> will allow you to do <code class="docutils literal"><span class="pre">import</span> <span class="pre">mozinfo</span></code>
+from python.
+<a class="reference external" href="https://raw.github.com/mozilla/mozbase/master/mozinfo/mozinfo/mozinfo.py">mozinfo.py</a>
+is the only file contained is this package,
+so if you need a single-file solution, you can just download or call
+this file through the web.</p>
+<p>The top level attributes (<code class="docutils literal"><span class="pre">os</span></code>, <code class="docutils literal"><span class="pre">version</span></code>, <code class="docutils literal"><span class="pre">bits</span></code>, <code class="docutils literal"><span class="pre">processor</span></code>) are
+available as module globals:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">mozinfo</span><span class="o">.</span><span class="n">os</span> <span class="o">==</span> <span class="s1">&#39;win&#39;</span><span class="p">:</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>In addition, mozinfo exports a dictionary, <code class="docutils literal"><span class="pre">mozinfo.info</span></code>, that
+contain these values.  mozinfo also exports:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">choices</span></code>: a dictionary of possible values for os, bits, and
+processor</li>
+<li><code class="docutils literal"><span class="pre">main</span></code>: the console_script entry point for mozinfo</li>
+<li><code class="docutils literal"><span class="pre">unknown</span></code>: a singleton denoting a value that cannot be determined</li>
+</ul>
+<p><code class="docutils literal"><span class="pre">unknown</span></code> has the string representation <code class="docutils literal"><span class="pre">&quot;UNKNOWN&quot;</span></code>.
+<code class="docutils literal"><span class="pre">unknown</span></code> will evaluate as <code class="docutils literal"><span class="pre">False</span></code> in python:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="n">mozinfo</span><span class="o">.</span><span class="n">os</span><span class="p">:</span> <span class="o">...</span> <span class="c1"># unknown!</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="command-line-usage">
+<h2>Command Line Usage<a class="headerlink" href="#command-line-usage" title="Permalink to this headline">¶</a></h2>
+<p>mozinfo comes with a command line program, <code class="docutils literal"><span class="pre">mozinfo</span></code> which may be used to
+diagnose one’s current system.</p>
+<p>Example output:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">os</span><span class="p">:</span> <span class="n">linux</span>
+<span class="n">version</span><span class="p">:</span> <span class="n">Ubuntu</span> <span class="mf">10.10</span>
+<span class="n">bits</span><span class="p">:</span> <span class="mi">32</span>
+<span class="n">processor</span><span class="p">:</span> <span class="n">x86</span>
+</pre></div>
+</div>
+<p>Three of these fields, os, bits, and processor, have a finite set of
+choices.  You may display the value of these choices using
+<code class="docutils literal"><span class="pre">mozinfo</span> <span class="pre">--os</span></code>, <code class="docutils literal"><span class="pre">mozinfo</span> <span class="pre">--bits</span></code>, and <code class="docutils literal"><span class="pre">mozinfo</span> <span class="pre">--processor</span></code>.
+<code class="docutils literal"><span class="pre">mozinfo</span> <span class="pre">--help</span></code> documents command-line usage.</p>
+<span class="target" id="module-mozinfo"></span><dl class="function">
+<dt id="mozinfo.update">
+<code class="descclassname">mozinfo.</code><code class="descname">update</code><span class="sig-paren">(</span><em>new_info</em><span class="sig-paren">)</span><a class="headerlink" href="#mozinfo.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the info.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>new_info</strong> – Either a dict containing the new info or a path/url
+to a json file containing the new info.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozinfo.find_and_update_from_json">
+<code class="descclassname">mozinfo.</code><code class="descname">find_and_update_from_json</code><span class="sig-paren">(</span><em>*dirs</em><span class="sig-paren">)</span><a class="headerlink" href="#mozinfo.find_and_update_from_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find a mozinfo.json file, load it, and update the info with the
+contents.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dirs</strong> – Directories in which to look for the file. They will be
+searched after first looking in the root of the objdir
+if the current script is being run from a Mozilla objdir.</td>
+</tr>
+</tbody>
+</table>
+<p>Returns the full path to mozinfo.json if it was found, or None otherwise.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mozinfo.StringVersion">
+<em class="property">class </em><code class="descclassname">mozinfo.</code><code class="descname">StringVersion</code><span class="sig-paren">(</span><em>vstring</em><span class="sig-paren">)</span><a class="headerlink" href="#mozinfo.StringVersion" title="Permalink to this definition">¶</a></dt>
+<dd><p>A string version that can be compared with comparison operators.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="moznetwork.html" class="btn btn-neutral float-right" title="moznetwork — Get network information" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="gettinginfo.html" class="btn btn-neutral" title="Getting information on the system under test" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

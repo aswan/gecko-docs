@@ -1,0 +1,2630 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mozbuild.frontend package &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../index.html"/>
+        <link rel="up" title="mozbuild package" href="mozbuild.html"/>
+        <link rel="next" title="mozbuild.repackaging package" href="mozbuild.repackaging.html"/>
+        <link rel="prev" title="mozbuild.controller package" href="mozbuild.controller.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="mach.html">mach package</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="mozbuild.html">mozbuild package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="mozbuild.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.action.html">mozbuild.action package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.backend.html">mozbuild.backend package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.codecoverage.html">mozbuild.codecoverage package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.compilation.html">mozbuild.compilation package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.configure.html">mozbuild.configure package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.controller.html">mozbuild.controller package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">mozbuild.frontend package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.frontend.context">mozbuild.frontend.context module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.frontend.data">mozbuild.frontend.data module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.frontend.emitter">mozbuild.frontend.emitter module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.frontend.gyp_reader">mozbuild.frontend.gyp_reader module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.frontend.mach_commands">mozbuild.frontend.mach_commands module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.frontend.reader">mozbuild.frontend.reader module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.frontend.sandbox">mozbuild.frontend.sandbox module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.frontend">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.repackaging.html">mozbuild.repackaging package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.test.html">mozbuild.test package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.android_version_code">mozbuild.android_version_code module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.artifacts">mozbuild.artifacts module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.base">mozbuild.base module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.chunkify">mozbuild.chunkify module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.config_status">mozbuild.config_status module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.doctor">mozbuild.doctor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.dotproperties">mozbuild.dotproperties module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#mozbuild-faster-daemon-module">mozbuild.faster_daemon module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.generated_sources">mozbuild.generated_sources module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.html_build_viewer">mozbuild.html_build_viewer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.jar">mozbuild.jar module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.mach_commands">mozbuild.mach_commands module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.makeutil">mozbuild.makeutil module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.milestone">mozbuild.milestone module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.mozconfig">mozbuild.mozconfig module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.mozinfo">mozbuild.mozinfo module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.preprocessor">mozbuild.preprocessor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.pythonutil">mozbuild.pythonutil module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.schedules">mozbuild.schedules module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.shellutil">mozbuild.shellutil module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.sphinx">mozbuild.sphinx module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.testing">mozbuild.testing module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.util">mozbuild.util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.vendor_aom">mozbuild.vendor_aom module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.vendor_rust">mozbuild.vendor_rust module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.virtualenv">mozbuild.virtualenv module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="mozbuild.html">mozbuild package</a> &raquo;</li>
+        
+      <li>mozbuild.frontend package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/python/mozbuild.frontend.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mozbuild-frontend-package">
+<h1>mozbuild.frontend package<a class="headerlink" href="#mozbuild-frontend-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-mozbuild.frontend.context">
+<span id="mozbuild-frontend-context-module"></span><h2>mozbuild.frontend.context module<a class="headerlink" href="#module-mozbuild.frontend.context" title="Permalink to this headline">¶</a></h2>
+<p>This module contains the data structure (context) holding the configuration
+from a moz.build. The data emitted by the frontend derives from those contexts.</p>
+<p>It also defines the set of variables and functions available in moz.build.
+If you are looking for the absolute authority on what moz.build files can
+contain, you’ve come to the right place.</p>
+<dl class="class">
+<dt id="mozbuild.frontend.context.AbsolutePath">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.context.</code><code class="descname">AbsolutePath</code><span class="sig-paren">(</span><em>context</em>, <em>value=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.context.AbsolutePath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.context.Path" title="mozbuild.frontend.context.Path"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.context.Path</span></code></a></p>
+<p>Like Path, but allows arbitrary paths outside the source and object directories.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.context.AsmFlags">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.context.</code><code class="descname">AsmFlags</code><span class="sig-paren">(</span><em>context</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.context.AsmFlags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.context.BaseCompileFlags" title="mozbuild.frontend.context.BaseCompileFlags"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.context.BaseCompileFlags</span></code></a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.context.BaseCompileFlags">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.context.</code><code class="descname">BaseCompileFlags</code><span class="sig-paren">(</span><em>context</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.context.BaseCompileFlags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.context.ContextDerivedValue" title="mozbuild.frontend.context.ContextDerivedValue"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.context.ContextDerivedValue</span></code></a>, <code class="xref py py-class docutils literal"><span class="pre">dict</span></code></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.context.CompileFlags">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.context.</code><code class="descname">CompileFlags</code><span class="sig-paren">(</span><em>context</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.context.CompileFlags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.context.BaseCompileFlags" title="mozbuild.frontend.context.BaseCompileFlags"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.context.BaseCompileFlags</span></code></a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.context.Context">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.context.</code><code class="descname">Context</code><span class="sig-paren">(</span><em>allowed_variables={}</em>, <em>config=None</em>, <em>finder=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.context.Context" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="mozbuild.html#mozbuild.util.KeyedDefaultDict" title="mozbuild.util.KeyedDefaultDict"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.util.KeyedDefaultDict</span></code></a></p>
+<p>Represents a moz.build configuration context.</p>
+<p>Instances of this class are filled by the execution of sandboxes.
+At the core, a Context is a dict, with a defined set of possible keys we’ll
+call variables. Each variable is associated with a type.</p>
+<p>When reading a value for a given key, we first try to read the existing
+value. If a value is not found and it is defined in the allowed variables
+set, we return a new instance of the class for that variable. We don’t
+assign default instances until they are accessed because this makes
+debugging the end-result much simpler. Instead of a data structure with
+lots of empty/default values, you have a data structure with only the
+values that were read or touched.</p>
+<p>Instances of variables classes are created by invoking <code class="docutils literal"><span class="pre">class_name()</span></code>,
+except when class_name derives from <code class="docutils literal"><span class="pre">ContextDerivedValue</span></code> or
+<code class="docutils literal"><span class="pre">SubContext</span></code>, in which case <code class="docutils literal"><span class="pre">class_name(instance_of_the_context)</span></code> or
+<code class="docutils literal"><span class="pre">class_name(self)</span></code> is invoked. A value is added to those calls when
+instances are created during assignment (setitem).</p>
+<p>allowed_variables is a dict of the variables that can be set and read in
+this context instance. Keys in this dict are the strings representing keys
+in this context which are valid. Values are tuples of stored type,
+assigned type, default value, a docstring describing the purpose of the
+variable, and a tier indicator (see comment above the VARIABLES declaration
+in this module).</p>
+<p>config is the ConfigEnvironment for this context.</p>
+<dl class="method">
+<dt id="mozbuild.frontend.context.Context.add_source">
+<code class="descname">add_source</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.context.Context.add_source" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the given path as source of the data from this context.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.context.Context.all_paths">
+<code class="descname">all_paths</code><a class="headerlink" href="#mozbuild.frontend.context.Context.all_paths" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns all paths ever added to the context.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.context.Context.error_is_fatal">
+<code class="descname">error_is_fatal</code><a class="headerlink" href="#mozbuild.frontend.context.Context.error_is_fatal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if the error function should be fatal.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.context.Context.objdir">
+<code class="descname">objdir</code><a class="headerlink" href="#mozbuild.frontend.context.Context.objdir" title="Permalink to this definition">¶</a></dt>
+<dd><p>A specialized version of the memoize decorator that works for
+class instance properties.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.frontend.context.Context.pop_source">
+<code class="descname">pop_source</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.context.Context.pop_source" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get back to the previous current path for the context.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.frontend.context.Context.push_source">
+<code class="descname">push_source</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.context.Context.push_source" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the given path as source of the data from this context and make
+it the current path for the context.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.context.Context.relobjdir">
+<code class="descname">relobjdir</code><a class="headerlink" href="#mozbuild.frontend.context.Context.relobjdir" title="Permalink to this definition">¶</a></dt>
+<dd><p>A specialized version of the memoize decorator that works for
+class instance properties.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.context.Context.relsrcdir">
+<code class="descname">relsrcdir</code><a class="headerlink" href="#mozbuild.frontend.context.Context.relsrcdir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.context.Context.source_stack">
+<code class="descname">source_stack</code><a class="headerlink" href="#mozbuild.frontend.context.Context.source_stack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current stack of pushed sources.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.context.Context.srcdir">
+<code class="descname">srcdir</code><a class="headerlink" href="#mozbuild.frontend.context.Context.srcdir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.frontend.context.Context.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>iterable={}</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.context.Context.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Like dict.update(), but using the context’s setitem.</p>
+<p>This function is transactional: if setitem fails for one of the values,
+the context is not updated at all.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.context.ContextDerivedTypedHierarchicalStringList">
+<code class="descclassname">mozbuild.frontend.context.</code><code class="descname">ContextDerivedTypedHierarchicalStringList</code><a class="headerlink" href="#mozbuild.frontend.context.ContextDerivedTypedHierarchicalStringList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specialized HierarchicalStringList for use with ContextDerivedValue
+types.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.context.ContextDerivedTypedList">
+<code class="descclassname">mozbuild.frontend.context.</code><code class="descname">ContextDerivedTypedList</code><a class="headerlink" href="#mozbuild.frontend.context.ContextDerivedTypedList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specialized TypedList for use with ContextDerivedValue types.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.context.ContextDerivedTypedListWithItems">
+<code class="descclassname">mozbuild.frontend.context.</code><code class="descname">ContextDerivedTypedListWithItems</code><a class="headerlink" href="#mozbuild.frontend.context.ContextDerivedTypedListWithItems" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specialized TypedList for use with ContextDerivedValue types.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.context.ContextDerivedTypedRecord">
+<code class="descclassname">mozbuild.frontend.context.</code><code class="descname">ContextDerivedTypedRecord</code><a class="headerlink" href="#mozbuild.frontend.context.ContextDerivedTypedRecord" title="Permalink to this definition">¶</a></dt>
+<dd><p>Factory for objects with certain properties and dynamic
+type checks.</p>
+<p>This API is extremely similar to the TypedNamedTuple API,
+except that properties may be mutated. This supports syntax like:</p>
+<dl class="docutils">
+<dt>VARIABLE_NAME.property += [</dt>
+<dd>‘item1’,
+‘item2’,</dd>
+</dl>
+<p>]</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.context.ContextDerivedValue">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.context.</code><code class="descname">ContextDerivedValue</code><a class="headerlink" href="#mozbuild.frontend.context.ContextDerivedValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Classes deriving from this one receive a special treatment in a
+Context. See Context documentation.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.context.DependentTestsEntry">
+<code class="descclassname">mozbuild.frontend.context.</code><code class="descname">DependentTestsEntry</code><a class="headerlink" href="#mozbuild.frontend.context.DependentTestsEntry" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">_TypedRecord</span></code></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.frontend.context.Enum">
+<code class="descclassname">mozbuild.frontend.context.</code><code class="descname">Enum</code><span class="sig-paren">(</span><em>*values</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.context.Enum" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.context.Files">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.context.</code><code class="descname">Files</code><span class="sig-paren">(</span><em>parent</em>, <em>pattern=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.context.Files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.context.SubContext" title="mozbuild.frontend.context.SubContext"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.context.SubContext</span></code></a></p>
+<p>Metadata attached to files.</p>
+<p>It is common to want to annotate files with metadata, such as which
+Bugzilla component tracks issues with certain files. This sub-context is
+where we stick that metadata.</p>
+<p>The argument to this sub-context is a file matching pattern that is applied
+against the host file’s directory. If the pattern matches a file whose info
+is currently being sought, the metadata attached to this instance will be
+applied to that file.</p>
+<p>Patterns are collections of filename characters with <code class="docutils literal"><span class="pre">/</span></code> used as the
+directory separate (UNIX-style paths) and <code class="docutils literal"><span class="pre">*</span></code> and <code class="docutils literal"><span class="pre">**</span></code> used to denote
+wildcard matching.</p>
+<p>Patterns without the <code class="docutils literal"><span class="pre">*</span></code> character are literal matches and will match at
+most one entity.</p>
+<p>Patterns with <code class="docutils literal"><span class="pre">*</span></code> or <code class="docutils literal"><span class="pre">**</span></code> are wildcard matches. <code class="docutils literal"><span class="pre">*</span></code> matches files
+at least within a single directory. <code class="docutils literal"><span class="pre">**</span></code> matches files across several
+directories.</p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">foo.html</span></code></dt>
+<dd>Will match only the <code class="docutils literal"><span class="pre">foo.html</span></code> file in the current directory.</dd>
+<dt><code class="docutils literal"><span class="pre">*.jsm</span></code></dt>
+<dd>Will match all <code class="docutils literal"><span class="pre">.jsm</span></code> files in the current directory.</dd>
+<dt><code class="docutils literal"><span class="pre">**/*.cpp</span></code></dt>
+<dd>Will match all <code class="docutils literal"><span class="pre">.cpp</span></code> files in this and all child directories.</dd>
+<dt><code class="docutils literal"><span class="pre">foo/*.css</span></code></dt>
+<dd>Will match all <code class="docutils literal"><span class="pre">.css</span></code> files in the <code class="docutils literal"><span class="pre">foo/</span></code> directory.</dd>
+<dt><code class="docutils literal"><span class="pre">bar/*</span></code></dt>
+<dd>Will match all files in the <code class="docutils literal"><span class="pre">bar/</span></code> directory and all of its
+children directories.</dd>
+<dt><code class="docutils literal"><span class="pre">bar/**</span></code></dt>
+<dd>This is equivalent to <code class="docutils literal"><span class="pre">bar/*</span></code> above.</dd>
+<dt><code class="docutils literal"><span class="pre">bar/**/foo</span></code></dt>
+<dd>Will match all <code class="docutils literal"><span class="pre">foo</span></code> files in the <code class="docutils literal"><span class="pre">bar/</span></code> directory and all of its
+children directories.</dd>
+</dl>
+<p>The difference in behavior between <code class="docutils literal"><span class="pre">*</span></code> and <code class="docutils literal"><span class="pre">**</span></code> is only evident if
+a pattern follows the <code class="docutils literal"><span class="pre">*</span></code> or <code class="docutils literal"><span class="pre">**</span></code>. A pattern ending with <code class="docutils literal"><span class="pre">*</span></code> is
+greedy. <code class="docutils literal"><span class="pre">**</span></code> is needed when you need an additional pattern after the
+wildcard. e.g. <code class="docutils literal"><span class="pre">**/foo</span></code>.</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.context.Files.VARIABLES">
+<code class="descname">VARIABLES</code><em class="property"> = {u'BUG_COMPONENT': (&lt;class 'mozbuild.util.TypedTuple'&gt;, &lt;type 'tuple'&gt;, u&quot;The bug component that tracks changes to these files.\n\n            Values are a 2-tuple of unicode describing the Bugzilla product and\n            component. e.g. ``('Core', 'Build Config')``.\n            &quot;), u'FINAL': (&lt;type 'bool'&gt;, &lt;type 'bool'&gt;, u'Mark variable assignments as finalized.\n\n            During normal processing, values from newer Files contexts\n            overwrite previously set values. Last write wins. This behavior is\n            not always desired. ``FINAL`` provides a mechanism to prevent\n            further updates to a variable.\n\n            When ``FINAL`` is set, the value of all variables defined in this\n            context are marked as frozen and all subsequent writes to them\n            are ignored during metadata reading.\n\n            See :ref:`mozbuild_files_metadata_finalizing` for more info.\n            '), u'SCHEDULES': (&lt;class 'mozbuild.frontend.context.Schedules'&gt;, &lt;type 'list'&gt;, u'Maps source files to the CI tasks that should be scheduled when\n            they change.  The tasks are grouped by named components, and those\n            names appear again in the taskgraph configuration\n            `($topsrcdir/taskgraph/).\n\n            Some components are &quot;inclusive&quot;, meaning that changes to most files\n            do not schedule them, aside from those described in a Files\n            subcontext.  For example, py-lint tasks need not be scheduled for\n            most changes, but should be scheduled when any Python file changes.\n            Such components are named by appending to `SCHEDULES.inclusive`:\n\n            with Files(\'**.py\'):\n                SCHEDULES.inclusive += [\'py-lint\']\n\n            Other components are \'exclusive\', meaning that changes to most\n            files schedule them, but some files affect only one or two\n            components. For example, most files schedule builds and tests of\n            Firefox for Android, OS X, Windows, and Linux, but files under\n            `mobile/android/` affect Android builds and tests exclusively, so\n            builds for other operating systems are not needed.  Test suites\n            provide another example: most files schedule reftests, but changes\n            to reftest scripts need only schedule reftests and no other suites.\n\n            Exclusive components are named by setting `SCHEDULES.exclusive`:\n\n            with Files(\'mobile/android/**\'):\n                SCHEDULES.exclusive = [\'android\']\n            '), u'IMPACTED_TESTS': (&lt;class 'mozbuild.frontend.context._TypedRecord'&gt;, &lt;type 'list'&gt;, u&quot;File patterns, tags, and flavors for tests relevant to these files.\n\n            Maps source files to the tests potentially impacted by those files.\n            Tests can be specified by file pattern, tag, or flavor.\n\n            For example:\n\n            with Files('runtests.py'):\n               IMPACTED_TESTS.files += [\n                   '**',\n               ]\n\n            in testing/mochitest/moz.build will suggest that any of the tests\n            under testing/mochitest may be impacted by a change to runtests.py.\n\n            File patterns may be made relative to the topsrcdir with a leading\n            '/', so\n\n            with Files('httpd.js'):\n               IMPACTED_TESTS.files += [\n                   '/testing/mochitest/tests/Harness_sanity/**',\n               ]\n\n            in netwerk/test/httpserver/moz.build will suggest that any change to httpd.js\n            will be relevant to the mochitest sanity tests.\n\n            Tags and flavors are sorted string lists (flavors are limited to valid\n            values).\n\n            For example:\n\n            with Files('toolkit/devtools/*'):\n                IMPACTED_TESTS.tags += [\n                    'devtools',\n                ]\n\n            in the root moz.build would suggest that any test tagged 'devtools' would\n            potentially be impacted by a change to a file under toolkit/devtools, and\n\n            with Files('dom/base/nsGlobalWindow.cpp'):\n                IMPACTED_TESTS.flavors += [\n                    'mochitest',\n                ]\n\n            Would suggest that nsGlobalWindow.cpp is potentially relevant to\n            any plain mochitest.\n            &quot;)}</em><a class="headerlink" href="#mozbuild.frontend.context.Files.VARIABLES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="mozbuild.frontend.context.Files.aggregate">
+<em class="property">static </em><code class="descname">aggregate</code><span class="sig-paren">(</span><em>files</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.context.Files.aggregate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a mapping of path to Files, obtain aggregate results.</p>
+<p>Consumers may want to extract useful information from a collection of
+Files describing paths. e.g. given the files info data for N paths,
+recommend a single bug component based on the most frequent one. This
+function provides logic for deriving aggregate knowledge from a
+collection of path File metadata.</p>
+<p>Note: the intent of this function is to operate on the result of
+<a class="reference internal" href="#mozbuild.frontend.reader.BuildReader.files_info" title="mozbuild.frontend.reader.BuildReader.files_info"><code class="xref py py-func docutils literal"><span class="pre">mozbuild.frontend.reader.BuildReader.files_info()</span></code></a>. The
+<a class="reference internal" href="#mozbuild.frontend.context.Files" title="mozbuild.frontend.context.Files"><code class="xref py py-func docutils literal"><span class="pre">mozbuild.frontend.context.Files()</span></code></a> instances passed in are
+thus the “collapsed” (<code class="docutils literal"><span class="pre">__iadd__``ed)</span> <span class="pre">results</span> <span class="pre">of</span> <span class="pre">all</span> <span class="pre">``Files</span></code> from all
+moz.build files relevant to a specific path, not individual <code class="docutils literal"><span class="pre">Files</span></code>
+instances from a single moz.build file.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.frontend.context.Files.asdict">
+<code class="descname">asdict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.context.Files.asdict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return this instance as a dict with built-in data structures.</p>
+<p>Call this to obtain an object suitable for serializing.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.context.FinalTargetValue">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.context.</code><code class="descname">FinalTargetValue</code><a class="headerlink" href="#mozbuild.frontend.context.FinalTargetValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.context.ContextDerivedValue" title="mozbuild.frontend.context.ContextDerivedValue"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.context.ContextDerivedValue</span></code></a>, <code class="xref py py-class docutils literal"><span class="pre">unicode</span></code></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.context.HostCompileFlags">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.context.</code><code class="descname">HostCompileFlags</code><span class="sig-paren">(</span><em>context</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.context.HostCompileFlags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.context.BaseCompileFlags" title="mozbuild.frontend.context.BaseCompileFlags"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.context.BaseCompileFlags</span></code></a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.context.InitializedDefines">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.context.</code><code class="descname">InitializedDefines</code><span class="sig-paren">(</span><em>context</em>, <em>value=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.context.InitializedDefines" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.context.ContextDerivedValue" title="mozbuild.frontend.context.ContextDerivedValue"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.context.ContextDerivedValue</span></code></a>, <code class="xref py py-class docutils literal"><span class="pre">collections.OrderedDict</span></code></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.context.LinkFlags">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.context.</code><code class="descname">LinkFlags</code><span class="sig-paren">(</span><em>context</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.context.LinkFlags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.context.BaseCompileFlags" title="mozbuild.frontend.context.BaseCompileFlags"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.context.BaseCompileFlags</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.context.ManifestparserManifestList">
+<code class="descclassname">mozbuild.frontend.context.</code><code class="descname">ManifestparserManifestList</code><a class="headerlink" href="#mozbuild.frontend.context.ManifestparserManifestList" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">_OrderedListWithAction</span></code></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.context.ObjDirPath">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.context.</code><code class="descname">ObjDirPath</code><span class="sig-paren">(</span><em>context</em>, <em>value=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.context.ObjDirPath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.context.Path" title="mozbuild.frontend.context.Path"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.context.Path</span></code></a></p>
+<p>Like Path, but limited to paths in the object directory.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.frontend.context.OrderedPathListWithAction">
+<code class="descclassname">mozbuild.frontend.context.</code><code class="descname">OrderedPathListWithAction</code><span class="sig-paren">(</span><em>action</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.context.OrderedPathListWithAction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a class which behaves as a StrictOrderingOnAppendList, but
+invokes the given callable with each input and a context as it is
+read, storing a tuple including the result and the original item.</p>
+<p>This used to extend moz.build reading to make more data available in
+filesystem-reading mode.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.context.OrderedSourceList">
+<code class="descclassname">mozbuild.frontend.context.</code><code class="descname">OrderedSourceList</code><a class="headerlink" href="#mozbuild.frontend.context.OrderedSourceList" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">_TypedList</span></code></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.context.Path">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.context.</code><code class="descname">Path</code><span class="sig-paren">(</span><em>context</em>, <em>value=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.context.Path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.context.ContextDerivedValue" title="mozbuild.frontend.context.ContextDerivedValue"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.context.ContextDerivedValue</span></code></a>, <code class="xref py py-class docutils literal"><span class="pre">unicode</span></code></p>
+<p>Stores and resolves a source path relative to a given context</p>
+<p>This class is used as a backing type for some of the sandbox variables.
+It expresses paths relative to a context. Supported paths are:</p>
+<blockquote>
+<div><ul class="simple">
+<li>‘/topsrcdir/relative/paths’</li>
+<li>‘srcdir/relative/paths’</li>
+<li>‘!/topobjdir/relative/paths’</li>
+<li>‘!objdir/relative/paths’</li>
+<li>‘%/filesystem/absolute/paths’</li>
+</ul>
+</div></blockquote>
+<dl class="method">
+<dt id="mozbuild.frontend.context.Path.join">
+<code class="descname">join</code><span class="sig-paren">(</span><em>*p</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.context.Path.join" title="Permalink to this definition">¶</a></dt>
+<dd><p>ContextDerived equivalent of mozpath.join(self, <a href="#id1"><span class="problematic" id="id2">*</span></a>p), returning a
+new Path instance.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.context.Path.target_basename">
+<code class="descname">target_basename</code><a class="headerlink" href="#mozbuild.frontend.context.Path.target_basename" title="Permalink to this definition">¶</a></dt>
+<dd><p>A specialized version of the memoize decorator that works for
+class instance properties.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.context.PathMeta">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.context.</code><code class="descname">PathMeta</code><a class="headerlink" href="#mozbuild.frontend.context.PathMeta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">type</span></code></p>
+<p>Meta class for the Path family of classes.</p>
+<p>It handles calling __new__ and __init__ with the right arguments
+in cases where a Path is instantiated with another instance of
+Path instead of having received a context.</p>
+<p>It also makes Path(context, value) instantiate one of the
+subclasses depending on the value, allowing callers to do
+standard type checking (isinstance(path, ObjDirPath)) instead
+of checking the value itself (path.startswith(‘!’)).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.context.ReftestManifestList">
+<code class="descclassname">mozbuild.frontend.context.</code><code class="descname">ReftestManifestList</code><a class="headerlink" href="#mozbuild.frontend.context.ReftestManifestList" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">_OrderedListWithAction</span></code></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.context.RenamedSourcePath">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.context.</code><code class="descname">RenamedSourcePath</code><span class="sig-paren">(</span><em>context</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.context.RenamedSourcePath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.context.SourcePath" title="mozbuild.frontend.context.SourcePath"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.context.SourcePath</span></code></a></p>
+<p>Like SourcePath, but with a different base name when installed.</p>
+<p>The constructor takes a tuple of (source, target_basename).</p>
+<p>This class is not meant to be exposed to moz.build sandboxes as of now,
+and is not supported by the RecursiveMake backend.</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.context.RenamedSourcePath.target_basename">
+<code class="descname">target_basename</code><a class="headerlink" href="#mozbuild.frontend.context.RenamedSourcePath.target_basename" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.context.Schedules">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.context.</code><code class="descname">Schedules</code><a class="headerlink" href="#mozbuild.frontend.context.Schedules" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Similar to a ContextDerivedTypedRecord, but with different behavior
+for the properties:</p>
+<blockquote>
+<div><ul class="simple">
+<li>VAR.inclusive can only be appended to (+=), and can only contain values
+from mozbuild.schedules.INCLUSIVE_COMPONENTS</li>
+<li>VAR.exclusive can only be assigned to (no +=), and can only contain
+values from mozbuild.schedules.ALL_COMPONENTS</li>
+</ul>
+</div></blockquote>
+<dl class="attribute">
+<dt id="mozbuild.frontend.context.Schedules.components">
+<code class="descname">components</code><a class="headerlink" href="#mozbuild.frontend.context.Schedules.components" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.context.Schedules.exclusive">
+<code class="descname">exclusive</code><a class="headerlink" href="#mozbuild.frontend.context.Schedules.exclusive" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.context.Schedules.inclusive">
+<code class="descname">inclusive</code><a class="headerlink" href="#mozbuild.frontend.context.Schedules.inclusive" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.context.SchedulingComponents">
+<code class="descclassname">mozbuild.frontend.context.</code><code class="descname">SchedulingComponents</code><a class="headerlink" href="#mozbuild.frontend.context.SchedulingComponents" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">_TypedRecord</span></code></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.context.SourcePath">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.context.</code><code class="descname">SourcePath</code><span class="sig-paren">(</span><em>context</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.context.SourcePath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.context.Path" title="mozbuild.frontend.context.Path"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.context.Path</span></code></a></p>
+<p>Like Path, but limited to paths in the source directory.</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.context.SourcePath.translated">
+<code class="descname">translated</code><a class="headerlink" href="#mozbuild.frontend.context.SourcePath.translated" title="Permalink to this definition">¶</a></dt>
+<dd><p>A specialized version of the memoize decorator that works for
+class instance properties.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.context.SubContext">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.context.</code><code class="descname">SubContext</code><span class="sig-paren">(</span><em>parent</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.context.SubContext" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.context.Context" title="mozbuild.frontend.context.Context"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.context.Context</span></code></a>, <a class="reference internal" href="#mozbuild.frontend.context.ContextDerivedValue" title="mozbuild.frontend.context.ContextDerivedValue"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.context.ContextDerivedValue</span></code></a></p>
+<p>A Context derived from another Context.</p>
+<p>Sub-contexts are intended to be used as context managers.</p>
+<p>Sub-contexts inherit paths and other relevant state from the parent
+context.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.context.TemplateContext">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.context.</code><code class="descname">TemplateContext</code><span class="sig-paren">(</span><em>template=None</em>, <em>allowed_variables={}</em>, <em>config=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.context.TemplateContext" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.context.Context" title="mozbuild.frontend.context.Context"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.context.Context</span></code></a></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.frontend.context.TypedListWithAction">
+<code class="descclassname">mozbuild.frontend.context.</code><code class="descname">TypedListWithAction</code><span class="sig-paren">(</span><em>typ</em>, <em>action</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.context.TypedListWithAction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a class which behaves as a TypedList with the provided type, but
+invokes the given given callable with each input and a context as it is
+read, storing a tuple including the result and the original item.</p>
+<p>This used to extend moz.build reading to make more data available in
+filesystem-reading mode.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.context.WptManifestList">
+<code class="descclassname">mozbuild.frontend.context.</code><code class="descname">WptManifestList</code><a class="headerlink" href="#mozbuild.frontend.context.WptManifestList" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">_TypedListWithAction</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.context.cls">
+<code class="descclassname">mozbuild.frontend.context.</code><code class="descname">cls</code><a class="headerlink" href="#mozbuild.frontend.context.cls" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#mozbuild.frontend.context.Files" title="mozbuild.frontend.context.Files"><code class="xref py py-class docutils literal"><span class="pre">Files</span></code></a></p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.frontend.data">
+<span id="mozbuild-frontend-data-module"></span><h2>mozbuild.frontend.data module<a class="headerlink" href="#module-mozbuild.frontend.data" title="Permalink to this headline">¶</a></h2>
+<p>Data structures representing Mozilla’s source tree.</p>
+<p>The frontend files are parsed into static data structures. These data
+structures are defined in this module.</p>
+<p>All data structures of interest are children of the TreeMetadata class.</p>
+<p>Logic for populating these data structures is not defined in this class.
+Instead, what we have here are dumb container classes. The emitter module
+contains the code for converting executed mozbuild files into these data
+structures.</p>
+<dl class="class">
+<dt id="mozbuild.frontend.data.AndroidAssetsDirs">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">AndroidAssetsDirs</code><span class="sig-paren">(</span><em>context</em>, <em>paths</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.AndroidAssetsDirs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.ContextDerived" title="mozbuild.frontend.data.ContextDerived"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.ContextDerived</span></code></a></p>
+<p>Represents Android assets directories.</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.AndroidAssetsDirs.paths">
+<code class="descname">paths</code><a class="headerlink" href="#mozbuild.frontend.data.AndroidAssetsDirs.paths" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.AndroidExtraPackages">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">AndroidExtraPackages</code><span class="sig-paren">(</span><em>context</em>, <em>packages</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.AndroidExtraPackages" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.ContextDerived" title="mozbuild.frontend.data.ContextDerived"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.ContextDerived</span></code></a></p>
+<p>Represents Android extra packages.</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.AndroidExtraPackages.packages">
+<code class="descname">packages</code><a class="headerlink" href="#mozbuild.frontend.data.AndroidExtraPackages.packages" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.AndroidExtraResDirs">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">AndroidExtraResDirs</code><span class="sig-paren">(</span><em>context</em>, <em>paths</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.AndroidExtraResDirs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.ContextDerived" title="mozbuild.frontend.data.ContextDerived"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.ContextDerived</span></code></a></p>
+<p>Represents Android extra resource directories.</p>
+<p>Extra resources are resources provided by libraries and including in a
+packaged APK, but not otherwise redistributed.  In practice, this means
+resources included in Fennec but not in GeckoView.</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.AndroidExtraResDirs.paths">
+<code class="descname">paths</code><a class="headerlink" href="#mozbuild.frontend.data.AndroidExtraResDirs.paths" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.AndroidResDirs">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">AndroidResDirs</code><span class="sig-paren">(</span><em>context</em>, <em>paths</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.AndroidResDirs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.ContextDerived" title="mozbuild.frontend.data.ContextDerived"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.ContextDerived</span></code></a></p>
+<p>Represents Android resource directories.</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.AndroidResDirs.paths">
+<code class="descname">paths</code><a class="headerlink" href="#mozbuild.frontend.data.AndroidResDirs.paths" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.BaseConfigSubstitution">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">BaseConfigSubstitution</code><span class="sig-paren">(</span><em>context</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.BaseConfigSubstitution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.ContextDerived" title="mozbuild.frontend.data.ContextDerived"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.ContextDerived</span></code></a></p>
+<p>Base class describing autogenerated files as part of config.status.</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.BaseConfigSubstitution.input_path">
+<code class="descname">input_path</code><a class="headerlink" href="#mozbuild.frontend.data.BaseConfigSubstitution.input_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.BaseConfigSubstitution.output_path">
+<code class="descname">output_path</code><a class="headerlink" href="#mozbuild.frontend.data.BaseConfigSubstitution.output_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.BaseConfigSubstitution.relpath">
+<code class="descname">relpath</code><a class="headerlink" href="#mozbuild.frontend.data.BaseConfigSubstitution.relpath" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.BaseDefines">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">BaseDefines</code><span class="sig-paren">(</span><em>context</em>, <em>defines</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.BaseDefines" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.ContextDerived" title="mozbuild.frontend.data.ContextDerived"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.ContextDerived</span></code></a></p>
+<p>Context derived container object for DEFINES/HOST_DEFINES,
+which are OrderedDicts.</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.BaseDefines.defines">
+<code class="descname">defines</code><a class="headerlink" href="#mozbuild.frontend.data.BaseDefines.defines" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.frontend.data.BaseDefines.get_defines">
+<code class="descname">get_defines</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.BaseDefines.get_defines" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.frontend.data.BaseDefines.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>more_defines</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.BaseDefines.update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.BaseLibrary">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">BaseLibrary</code><span class="sig-paren">(</span><em>context</em>, <em>basename</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.BaseLibrary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.Linkable" title="mozbuild.frontend.data.Linkable"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.Linkable</span></code></a></p>
+<p>Generic context derived container object for libraries.</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.BaseLibrary.basename">
+<code class="descname">basename</code><a class="headerlink" href="#mozbuild.frontend.data.BaseLibrary.basename" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.BaseLibrary.import_name">
+<code class="descname">import_name</code><a class="headerlink" href="#mozbuild.frontend.data.BaseLibrary.import_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.BaseLibrary.lib_name">
+<code class="descname">lib_name</code><a class="headerlink" href="#mozbuild.frontend.data.BaseLibrary.lib_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.BaseLibrary.refs">
+<code class="descname">refs</code><a class="headerlink" href="#mozbuild.frontend.data.BaseLibrary.refs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.BaseProgram">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">BaseProgram</code><span class="sig-paren">(</span><em>context</em>, <em>program</em>, <em>is_unit_test=False</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.BaseProgram" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.Linkable" title="mozbuild.frontend.data.Linkable"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.Linkable</span></code></a></p>
+<p>Context derived container object for programs, which is a unicode
+string.</p>
+<p>This class handles automatically appending a binary suffix to the program
+name.
+If the suffix is not defined, the program name is unchanged.
+Otherwise, if the program name ends with the given suffix, it is unchanged
+Otherwise, the suffix is appended to the program name.</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.BaseProgram.DICT_ATTRS">
+<code class="descname">DICT_ATTRS</code><em class="property"> = set([u'relobjdir', u'install_target', u'KIND', u'program'])</em><a class="headerlink" href="#mozbuild.frontend.data.BaseProgram.DICT_ATTRS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.BaseProgram.program">
+<code class="descname">program</code><a class="headerlink" href="#mozbuild.frontend.data.BaseProgram.program" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.BaseRustProgram">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">BaseRustProgram</code><span class="sig-paren">(</span><em>context</em>, <em>name</em>, <em>cargo_file</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.BaseRustProgram" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.ContextDerived" title="mozbuild.frontend.data.ContextDerived"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.ContextDerived</span></code></a></p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.BaseRustProgram.KIND">
+<code class="descname">KIND</code><a class="headerlink" href="#mozbuild.frontend.data.BaseRustProgram.KIND" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.BaseRustProgram.SUFFIX_VAR">
+<code class="descname">SUFFIX_VAR</code><a class="headerlink" href="#mozbuild.frontend.data.BaseRustProgram.SUFFIX_VAR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.BaseRustProgram.TARGET_SUBST_VAR">
+<code class="descname">TARGET_SUBST_VAR</code><a class="headerlink" href="#mozbuild.frontend.data.BaseRustProgram.TARGET_SUBST_VAR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.BaseRustProgram.cargo_file">
+<code class="descname">cargo_file</code><a class="headerlink" href="#mozbuild.frontend.data.BaseRustProgram.cargo_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.BaseRustProgram.location">
+<code class="descname">location</code><a class="headerlink" href="#mozbuild.frontend.data.BaseRustProgram.location" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.BaseRustProgram.name">
+<code class="descname">name</code><a class="headerlink" href="#mozbuild.frontend.data.BaseRustProgram.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.BaseSources">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">BaseSources</code><span class="sig-paren">(</span><em>context</em>, <em>files</em>, <em>canonical_suffix</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.BaseSources" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.ContextDerived" title="mozbuild.frontend.data.ContextDerived"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.ContextDerived</span></code></a></p>
+<p>Base class for files to be compiled during the build.</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.BaseSources.canonical_suffix">
+<code class="descname">canonical_suffix</code><a class="headerlink" href="#mozbuild.frontend.data.BaseSources.canonical_suffix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.BaseSources.files">
+<code class="descname">files</code><a class="headerlink" href="#mozbuild.frontend.data.BaseSources.files" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.BrandingFiles">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">BrandingFiles</code><span class="sig-paren">(</span><em>sandbox</em>, <em>files</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.BrandingFiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.FinalTargetFiles" title="mozbuild.frontend.data.FinalTargetFiles"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.FinalTargetFiles</span></code></a></p>
+<p>Sandbox container object for BRANDING_FILES, which is a
+HierarchicalStringList.</p>
+<p>We need an object derived from ContextDerived for use in the backend, so
+this object fills that role. It just has a reference to the underlying
+HierarchicalStringList, which is created when parsing BRANDING_FILES.</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.BrandingFiles.install_target">
+<code class="descname">install_target</code><a class="headerlink" href="#mozbuild.frontend.data.BrandingFiles.install_target" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.ChromeManifestEntry">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">ChromeManifestEntry</code><span class="sig-paren">(</span><em>context</em>, <em>manifest_path</em>, <em>entry</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.ChromeManifestEntry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.ContextDerived" title="mozbuild.frontend.data.ContextDerived"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.ContextDerived</span></code></a></p>
+<p>Represents a chrome.manifest entry.</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.ChromeManifestEntry.entry">
+<code class="descname">entry</code><a class="headerlink" href="#mozbuild.frontend.data.ChromeManifestEntry.entry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.ChromeManifestEntry.path">
+<code class="descname">path</code><a class="headerlink" href="#mozbuild.frontend.data.ChromeManifestEntry.path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.ComputedFlags">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">ComputedFlags</code><span class="sig-paren">(</span><em>context</em>, <em>reader_flags</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.ComputedFlags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.ContextDerived" title="mozbuild.frontend.data.ContextDerived"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.ContextDerived</span></code></a></p>
+<p>Aggregate flags for consumption by various backends.</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.ComputedFlags.flags">
+<code class="descname">flags</code><a class="headerlink" href="#mozbuild.frontend.data.ComputedFlags.flags" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.frontend.data.ComputedFlags.get_flags">
+<code class="descname">get_flags</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.ComputedFlags.get_flags" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.frontend.data.ComputedFlags.resolve_flags">
+<code class="descname">resolve_flags</code><span class="sig-paren">(</span><em>key</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.ComputedFlags.resolve_flags" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.ConfigFileSubstitution">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">ConfigFileSubstitution</code><span class="sig-paren">(</span><em>context</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.ConfigFileSubstitution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.BaseConfigSubstitution" title="mozbuild.frontend.data.BaseConfigSubstitution"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.BaseConfigSubstitution</span></code></a></p>
+<p>Describes a config file that will be generated using substitutions.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.ContextDerived">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">ContextDerived</code><span class="sig-paren">(</span><em>context</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.ContextDerived" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.TreeMetadata" title="mozbuild.frontend.data.TreeMetadata"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.TreeMetadata</span></code></a></p>
+<p>Build object derived from a single Context instance.</p>
+<p>It holds fields common to all context derived classes. This class is likely
+never instantiated directly but is instead derived from.</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.ContextDerived.config">
+<code class="descname">config</code><a class="headerlink" href="#mozbuild.frontend.data.ContextDerived.config" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.ContextDerived.context_all_paths">
+<code class="descname">context_all_paths</code><a class="headerlink" href="#mozbuild.frontend.data.ContextDerived.context_all_paths" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.ContextDerived.context_main_path">
+<code class="descname">context_main_path</code><a class="headerlink" href="#mozbuild.frontend.data.ContextDerived.context_main_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.ContextDerived.defines">
+<code class="descname">defines</code><a class="headerlink" href="#mozbuild.frontend.data.ContextDerived.defines" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.ContextDerived.install_target">
+<code class="descname">install_target</code><a class="headerlink" href="#mozbuild.frontend.data.ContextDerived.install_target" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.ContextDerived.objdir">
+<code class="descname">objdir</code><a class="headerlink" href="#mozbuild.frontend.data.ContextDerived.objdir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.ContextDerived.relativedir">
+<code class="descname">relativedir</code><a class="headerlink" href="#mozbuild.frontend.data.ContextDerived.relativedir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.ContextDerived.relobjdir">
+<code class="descname">relobjdir</code><a class="headerlink" href="#mozbuild.frontend.data.ContextDerived.relobjdir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.ContextDerived.srcdir">
+<code class="descname">srcdir</code><a class="headerlink" href="#mozbuild.frontend.data.ContextDerived.srcdir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.ContextDerived.topobjdir">
+<code class="descname">topobjdir</code><a class="headerlink" href="#mozbuild.frontend.data.ContextDerived.topobjdir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.ContextDerived.topsrcdir">
+<code class="descname">topsrcdir</code><a class="headerlink" href="#mozbuild.frontend.data.ContextDerived.topsrcdir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.ContextWrapped">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">ContextWrapped</code><span class="sig-paren">(</span><em>context</em>, <em>wrapped</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.ContextWrapped" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.ContextDerived" title="mozbuild.frontend.data.ContextDerived"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.ContextDerived</span></code></a></p>
+<p>Generic context derived container object for a wrapped rich object.</p>
+<p>Use this wrapper class to shuttle a rich build system object
+completely defined in moz.build files through the tree metadata
+emitter to the build backend for processing as-is.</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.ContextWrapped.wrapped">
+<code class="descname">wrapped</code><a class="headerlink" href="#mozbuild.frontend.data.ContextWrapped.wrapped" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.Defines">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">Defines</code><span class="sig-paren">(</span><em>context</em>, <em>defines</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.Defines" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.BaseDefines" title="mozbuild.frontend.data.BaseDefines"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.BaseDefines</span></code></a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.DirectoryTraversal">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">DirectoryTraversal</code><span class="sig-paren">(</span><em>context</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.DirectoryTraversal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.ContextDerived" title="mozbuild.frontend.data.ContextDerived"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.ContextDerived</span></code></a></p>
+<p>Describes how directory traversal for building should work.</p>
+<p>This build object is likely only of interest to the recursive make backend.
+Other build backends should (ideally) not attempt to mimic the behavior of
+the recursive make backend. The only reason this exists is to support the
+existing recursive make backend while the transition to mozbuild frontend
+files is complete and we move to a more optimal build backend.</p>
+<p>Fields in this class correspond to similarly named variables in the
+frontend files.</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.DirectoryTraversal.dirs">
+<code class="descname">dirs</code><a class="headerlink" href="#mozbuild.frontend.data.DirectoryTraversal.dirs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.ExampleWebIDLInterface">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">ExampleWebIDLInterface</code><span class="sig-paren">(</span><em>context</em>, <em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.ExampleWebIDLInterface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.ContextDerived" title="mozbuild.frontend.data.ContextDerived"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.ContextDerived</span></code></a></p>
+<p>An individual WebIDL interface to generate.</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.ExampleWebIDLInterface.name">
+<code class="descname">name</code><a class="headerlink" href="#mozbuild.frontend.data.ExampleWebIDLInterface.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.Exports">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">Exports</code><span class="sig-paren">(</span><em>sandbox</em>, <em>files</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.Exports" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.FinalTargetFiles" title="mozbuild.frontend.data.FinalTargetFiles"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.FinalTargetFiles</span></code></a></p>
+<p>Context derived container object for EXPORTS, which is a
+HierarchicalStringList.</p>
+<p>We need an object derived from ContextDerived for use in the backend, so
+this object fills that role. It just has a reference to the underlying
+HierarchicalStringList, which is created when parsing EXPORTS.</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.Exports.install_target">
+<code class="descname">install_target</code><a class="headerlink" href="#mozbuild.frontend.data.Exports.install_target" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.ExternalLibrary">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">ExternalLibrary</code><a class="headerlink" href="#mozbuild.frontend.data.ExternalLibrary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Empty mixin for libraries built by an external build system.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.ExternalSharedLibrary">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">ExternalSharedLibrary</code><span class="sig-paren">(</span><em>context</em>, <em>basename</em>, <em>real_name=None</em>, <em>soname=None</em>, <em>variant=None</em>, <em>symbols_file=False</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.ExternalSharedLibrary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.SharedLibrary" title="mozbuild.frontend.data.SharedLibrary"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.SharedLibrary</span></code></a>, <a class="reference internal" href="#mozbuild.frontend.data.ExternalLibrary" title="mozbuild.frontend.data.ExternalLibrary"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.ExternalLibrary</span></code></a></p>
+<p>Context derived container for shared libraries built by an external
+build system.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.ExternalStaticLibrary">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">ExternalStaticLibrary</code><span class="sig-paren">(</span><em>context</em>, <em>basename</em>, <em>real_name=None</em>, <em>link_into=None</em>, <em>no_expand_lib=False</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.ExternalStaticLibrary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.StaticLibrary" title="mozbuild.frontend.data.StaticLibrary"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.StaticLibrary</span></code></a>, <a class="reference internal" href="#mozbuild.frontend.data.ExternalLibrary" title="mozbuild.frontend.data.ExternalLibrary"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.ExternalLibrary</span></code></a></p>
+<p>Context derived container for static libraries built by an external
+build system.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.FinalTargetFiles">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">FinalTargetFiles</code><span class="sig-paren">(</span><em>sandbox</em>, <em>files</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.FinalTargetFiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.ContextDerived" title="mozbuild.frontend.data.ContextDerived"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.ContextDerived</span></code></a></p>
+<p>Sandbox container object for FINAL_TARGET_FILES, which is a
+HierarchicalStringList.</p>
+<p>We need an object derived from ContextDerived for use in the backend, so
+this object fills that role. It just has a reference to the underlying
+HierarchicalStringList, which is created when parsing FINAL_TARGET_FILES.</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.FinalTargetFiles.files">
+<code class="descname">files</code><a class="headerlink" href="#mozbuild.frontend.data.FinalTargetFiles.files" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.FinalTargetPreprocessedFiles">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">FinalTargetPreprocessedFiles</code><span class="sig-paren">(</span><em>sandbox</em>, <em>files</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.FinalTargetPreprocessedFiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.ContextDerived" title="mozbuild.frontend.data.ContextDerived"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.ContextDerived</span></code></a></p>
+<p>Sandbox container object for FINAL_TARGET_PP_FILES, which is a
+HierarchicalStringList.</p>
+<p>We need an object derived from ContextDerived for use in the backend, so
+this object fills that role. It just has a reference to the underlying
+HierarchicalStringList, which is created when parsing
+FINAL_TARGET_PP_FILES.</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.FinalTargetPreprocessedFiles.files">
+<code class="descname">files</code><a class="headerlink" href="#mozbuild.frontend.data.FinalTargetPreprocessedFiles.files" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.GeneratedEventWebIDLFile">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">GeneratedEventWebIDLFile</code><span class="sig-paren">(</span><em>context</em>, <em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.GeneratedEventWebIDLFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.ContextDerived" title="mozbuild.frontend.data.ContextDerived"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.ContextDerived</span></code></a></p>
+<p>Describes an individual .webidl source file.</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.GeneratedEventWebIDLFile.basename">
+<code class="descname">basename</code><a class="headerlink" href="#mozbuild.frontend.data.GeneratedEventWebIDLFile.basename" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.GeneratedFile">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">GeneratedFile</code><span class="sig-paren">(</span><em>context</em>, <em>script</em>, <em>method</em>, <em>outputs</em>, <em>inputs</em>, <em>flags=()</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.GeneratedFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.ContextDerived" title="mozbuild.frontend.data.ContextDerived"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.ContextDerived</span></code></a></p>
+<p>Represents a generated file.</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.GeneratedFile.flags">
+<code class="descname">flags</code><a class="headerlink" href="#mozbuild.frontend.data.GeneratedFile.flags" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.GeneratedFile.inputs">
+<code class="descname">inputs</code><a class="headerlink" href="#mozbuild.frontend.data.GeneratedFile.inputs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.GeneratedFile.method">
+<code class="descname">method</code><a class="headerlink" href="#mozbuild.frontend.data.GeneratedFile.method" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.GeneratedFile.outputs">
+<code class="descname">outputs</code><a class="headerlink" href="#mozbuild.frontend.data.GeneratedFile.outputs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.GeneratedFile.script">
+<code class="descname">script</code><a class="headerlink" href="#mozbuild.frontend.data.GeneratedFile.script" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.GeneratedSources">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">GeneratedSources</code><span class="sig-paren">(</span><em>context</em>, <em>files</em>, <em>canonical_suffix</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.GeneratedSources" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.BaseSources" title="mozbuild.frontend.data.BaseSources"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.BaseSources</span></code></a></p>
+<p>Represents generated files to be compiled during the build.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.GeneratedWebIDLFile">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">GeneratedWebIDLFile</code><span class="sig-paren">(</span><em>context</em>, <em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.GeneratedWebIDLFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.ContextDerived" title="mozbuild.frontend.data.ContextDerived"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.ContextDerived</span></code></a></p>
+<p>Describes an individual .webidl source file that is generated from
+build rules.</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.GeneratedWebIDLFile.basename">
+<code class="descname">basename</code><a class="headerlink" href="#mozbuild.frontend.data.GeneratedWebIDLFile.basename" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.HostDefines">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">HostDefines</code><span class="sig-paren">(</span><em>context</em>, <em>defines</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.HostDefines" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.BaseDefines" title="mozbuild.frontend.data.BaseDefines"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.BaseDefines</span></code></a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.HostLibrary">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">HostLibrary</code><span class="sig-paren">(</span><em>context</em>, <em>basename</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.HostLibrary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.HostMixin" title="mozbuild.frontend.data.HostMixin"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.HostMixin</span></code></a>, <a class="reference internal" href="#mozbuild.frontend.data.BaseLibrary" title="mozbuild.frontend.data.BaseLibrary"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.BaseLibrary</span></code></a></p>
+<p>Context derived container object for a host library</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.HostLibrary.KIND">
+<code class="descname">KIND</code><em class="property"> = u'host'</em><a class="headerlink" href="#mozbuild.frontend.data.HostLibrary.KIND" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.HostMixin">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">HostMixin</code><a class="headerlink" href="#mozbuild.frontend.data.HostMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.HostMixin.defines">
+<code class="descname">defines</code><a class="headerlink" href="#mozbuild.frontend.data.HostMixin.defines" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.HostProgram">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">HostProgram</code><span class="sig-paren">(</span><em>context</em>, <em>program</em>, <em>is_unit_test=False</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.HostProgram" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.HostMixin" title="mozbuild.frontend.data.HostMixin"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.HostMixin</span></code></a>, <a class="reference internal" href="#mozbuild.frontend.data.BaseProgram" title="mozbuild.frontend.data.BaseProgram"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.BaseProgram</span></code></a></p>
+<p>Context derived container object for HOST_PROGRAM</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.HostProgram.KIND">
+<code class="descname">KIND</code><em class="property"> = u'host'</em><a class="headerlink" href="#mozbuild.frontend.data.HostProgram.KIND" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.HostProgram.SUFFIX_VAR">
+<code class="descname">SUFFIX_VAR</code><em class="property"> = u'HOST_BIN_SUFFIX'</em><a class="headerlink" href="#mozbuild.frontend.data.HostProgram.SUFFIX_VAR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.HostRustLibrary">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">HostRustLibrary</code><span class="sig-paren">(</span><em>context</em>, <em>basename</em>, <em>cargo_file</em>, <em>crate_type</em>, <em>dependencies</em>, <em>features</em>, <em>target_dir</em>, <em>**args</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.HostRustLibrary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.HostMixin" title="mozbuild.frontend.data.HostMixin"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.HostMixin</span></code></a>, <a class="reference internal" href="#mozbuild.frontend.data.RustLibrary" title="mozbuild.frontend.data.RustLibrary"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.RustLibrary</span></code></a></p>
+<p>Context derived container object for a host rust library</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.HostRustLibrary.FEATURES_VAR">
+<code class="descname">FEATURES_VAR</code><em class="property"> = u'HOST_RUST_LIBRARY_FEATURES'</em><a class="headerlink" href="#mozbuild.frontend.data.HostRustLibrary.FEATURES_VAR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.HostRustLibrary.KIND">
+<code class="descname">KIND</code><em class="property"> = u'host'</em><a class="headerlink" href="#mozbuild.frontend.data.HostRustLibrary.KIND" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.HostRustLibrary.LIB_FILE_VAR">
+<code class="descname">LIB_FILE_VAR</code><em class="property"> = u'HOST_RUST_LIBRARY_FILE'</em><a class="headerlink" href="#mozbuild.frontend.data.HostRustLibrary.LIB_FILE_VAR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.HostRustLibrary.TARGET_SUBST_VAR">
+<code class="descname">TARGET_SUBST_VAR</code><em class="property"> = u'RUST_HOST_TARGET'</em><a class="headerlink" href="#mozbuild.frontend.data.HostRustLibrary.TARGET_SUBST_VAR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.HostRustProgram">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">HostRustProgram</code><span class="sig-paren">(</span><em>context</em>, <em>name</em>, <em>cargo_file</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.HostRustProgram" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.BaseRustProgram" title="mozbuild.frontend.data.BaseRustProgram"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.BaseRustProgram</span></code></a></p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.HostRustProgram.KIND">
+<code class="descname">KIND</code><em class="property"> = u'host'</em><a class="headerlink" href="#mozbuild.frontend.data.HostRustProgram.KIND" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.HostRustProgram.SUFFIX_VAR">
+<code class="descname">SUFFIX_VAR</code><em class="property"> = u'HOST_BIN_SUFFIX'</em><a class="headerlink" href="#mozbuild.frontend.data.HostRustProgram.SUFFIX_VAR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.HostRustProgram.TARGET_SUBST_VAR">
+<code class="descname">TARGET_SUBST_VAR</code><em class="property"> = u'RUST_HOST_TARGET'</em><a class="headerlink" href="#mozbuild.frontend.data.HostRustProgram.TARGET_SUBST_VAR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.HostSimpleProgram">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">HostSimpleProgram</code><span class="sig-paren">(</span><em>context</em>, <em>program</em>, <em>is_unit_test=False</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.HostSimpleProgram" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.HostMixin" title="mozbuild.frontend.data.HostMixin"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.HostMixin</span></code></a>, <a class="reference internal" href="#mozbuild.frontend.data.BaseProgram" title="mozbuild.frontend.data.BaseProgram"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.BaseProgram</span></code></a></p>
+<p>Context derived container object for each program in
+HOST_SIMPLE_PROGRAMS</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.HostSimpleProgram.KIND">
+<code class="descname">KIND</code><em class="property"> = u'host'</em><a class="headerlink" href="#mozbuild.frontend.data.HostSimpleProgram.KIND" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.HostSimpleProgram.SUFFIX_VAR">
+<code class="descname">SUFFIX_VAR</code><em class="property"> = u'HOST_BIN_SUFFIX'</em><a class="headerlink" href="#mozbuild.frontend.data.HostSimpleProgram.SUFFIX_VAR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.HostSources">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">HostSources</code><span class="sig-paren">(</span><em>context</em>, <em>files</em>, <em>canonical_suffix</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.HostSources" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.HostMixin" title="mozbuild.frontend.data.HostMixin"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.HostMixin</span></code></a>, <a class="reference internal" href="#mozbuild.frontend.data.BaseSources" title="mozbuild.frontend.data.BaseSources"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.BaseSources</span></code></a></p>
+<p>Represents files to be compiled for the host during the build.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.IPDLFile">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">IPDLFile</code><span class="sig-paren">(</span><em>context</em>, <em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.IPDLFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.ContextDerived" title="mozbuild.frontend.data.ContextDerived"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.ContextDerived</span></code></a></p>
+<p>Describes an individual .ipdl source file.</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.IPDLFile.basename">
+<code class="descname">basename</code><a class="headerlink" href="#mozbuild.frontend.data.IPDLFile.basename" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.InstallationTarget">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">InstallationTarget</code><span class="sig-paren">(</span><em>context</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.InstallationTarget" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.ContextDerived" title="mozbuild.frontend.data.ContextDerived"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.ContextDerived</span></code></a></p>
+<p>Describes the rules that affect where files get installed to.</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.InstallationTarget.enabled">
+<code class="descname">enabled</code><a class="headerlink" href="#mozbuild.frontend.data.InstallationTarget.enabled" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.frontend.data.InstallationTarget.is_custom">
+<code class="descname">is_custom</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.InstallationTarget.is_custom" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns whether or not the target is not derived from the default
+given xpiname and subdir.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.InstallationTarget.subdir">
+<code class="descname">subdir</code><a class="headerlink" href="#mozbuild.frontend.data.InstallationTarget.subdir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.InstallationTarget.target">
+<code class="descname">target</code><a class="headerlink" href="#mozbuild.frontend.data.InstallationTarget.target" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.InstallationTarget.xpiname">
+<code class="descname">xpiname</code><a class="headerlink" href="#mozbuild.frontend.data.InstallationTarget.xpiname" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.JARManifest">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">JARManifest</code><span class="sig-paren">(</span><em>context</em>, <em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.JARManifest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.ContextDerived" title="mozbuild.frontend.data.ContextDerived"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.ContextDerived</span></code></a></p>
+<p>Describes an individual JAR manifest file and how to process it.</p>
+<p>This class isn’t very useful for optimizing backends yet because we don’t
+capture defines. We can’t capture defines safely until all of them are
+defined in moz.build and not Makefile.in files.</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.JARManifest.path">
+<code class="descname">path</code><a class="headerlink" href="#mozbuild.frontend.data.JARManifest.path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.JavaJarData">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">JavaJarData</code><span class="sig-paren">(</span><em>name</em>, <em>sources=[]</em>, <em>generated_sources=[]</em>, <em>extra_jars=[]</em>, <em>javac_flags=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.JavaJarData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Represents a Java JAR file.</p>
+<dl class="docutils">
+<dt>A Java JAR has the following members:</dt>
+<dd><ul class="first last simple">
+<li>sources - strictly ordered list of input java sources</li>
+<li>generated_sources - strictly ordered list of generated input
+java sources</li>
+<li>extra_jars - list of JAR file dependencies to include on the
+javac compiler classpath</li>
+<li>javac_flags - list containing extra flags passed to the
+javac compiler</li>
+</ul>
+</dd>
+</dl>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.JavaJarData.extra_jars">
+<code class="descname">extra_jars</code><a class="headerlink" href="#mozbuild.frontend.data.JavaJarData.extra_jars" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.JavaJarData.generated_sources">
+<code class="descname">generated_sources</code><a class="headerlink" href="#mozbuild.frontend.data.JavaJarData.generated_sources" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.JavaJarData.javac_flags">
+<code class="descname">javac_flags</code><a class="headerlink" href="#mozbuild.frontend.data.JavaJarData.javac_flags" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.JavaJarData.name">
+<code class="descname">name</code><a class="headerlink" href="#mozbuild.frontend.data.JavaJarData.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.JavaJarData.sources">
+<code class="descname">sources</code><a class="headerlink" href="#mozbuild.frontend.data.JavaJarData.sources" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.Library">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">Library</code><span class="sig-paren">(</span><em>context</em>, <em>basename</em>, <em>real_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.Library" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.BaseLibrary" title="mozbuild.frontend.data.BaseLibrary"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.BaseLibrary</span></code></a></p>
+<p>Context derived container object for a library</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.Library.KIND">
+<code class="descname">KIND</code><em class="property"> = u'target'</em><a class="headerlink" href="#mozbuild.frontend.data.Library.KIND" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.Linkable">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">Linkable</code><span class="sig-paren">(</span><em>context</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.Linkable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.ContextDerived" title="mozbuild.frontend.data.ContextDerived"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.ContextDerived</span></code></a></p>
+<p>Generic context derived container object for programs and libraries</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.Linkable.cxx_link">
+<code class="descname">cxx_link</code><a class="headerlink" href="#mozbuild.frontend.data.Linkable.cxx_link" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.Linkable.lib_defines">
+<code class="descname">lib_defines</code><a class="headerlink" href="#mozbuild.frontend.data.Linkable.lib_defines" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.frontend.data.Linkable.link_library">
+<code class="descname">link_library</code><span class="sig-paren">(</span><em>obj</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.Linkable.link_library" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.frontend.data.Linkable.link_system_library">
+<code class="descname">link_system_library</code><span class="sig-paren">(</span><em>lib</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.Linkable.link_system_library" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.Linkable.linked_libraries">
+<code class="descname">linked_libraries</code><a class="headerlink" href="#mozbuild.frontend.data.Linkable.linked_libraries" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.Linkable.linked_system_libs">
+<code class="descname">linked_system_libs</code><a class="headerlink" href="#mozbuild.frontend.data.Linkable.linked_system_libs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="mozbuild.frontend.data.LinkageMultipleRustLibrariesError">
+<em class="property">exception </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">LinkageMultipleRustLibrariesError</code><a class="headerlink" href="#mozbuild.frontend.data.LinkageMultipleRustLibrariesError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></code></p>
+<p>Error thrown when trying to link multiple Rust libraries to an object</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="mozbuild.frontend.data.LinkageWrongKindError">
+<em class="property">exception </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">LinkageWrongKindError</code><a class="headerlink" href="#mozbuild.frontend.data.LinkageWrongKindError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></code></p>
+<p>Error thrown when trying to link objects of the wrong kind</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.LocalInclude">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">LocalInclude</code><span class="sig-paren">(</span><em>context</em>, <em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.LocalInclude" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.ContextDerived" title="mozbuild.frontend.data.ContextDerived"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.ContextDerived</span></code></a></p>
+<p>Describes an individual local include path.</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.LocalInclude.path">
+<code class="descname">path</code><a class="headerlink" href="#mozbuild.frontend.data.LocalInclude.path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.LocalizedFiles">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">LocalizedFiles</code><span class="sig-paren">(</span><em>sandbox</em>, <em>files</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.LocalizedFiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.FinalTargetFiles" title="mozbuild.frontend.data.FinalTargetFiles"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.FinalTargetFiles</span></code></a></p>
+<p>Sandbox container object for LOCALIZED_FILES, which is a
+HierarchicalStringList.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.LocalizedPreprocessedFiles">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">LocalizedPreprocessedFiles</code><span class="sig-paren">(</span><em>sandbox</em>, <em>files</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.LocalizedPreprocessedFiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.FinalTargetPreprocessedFiles" title="mozbuild.frontend.data.FinalTargetPreprocessedFiles"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.FinalTargetPreprocessedFiles</span></code></a></p>
+<p>Sandbox container object for LOCALIZED_PP_FILES, which is a
+HierarchicalStringList.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.ObjdirFiles">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">ObjdirFiles</code><span class="sig-paren">(</span><em>sandbox</em>, <em>files</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.ObjdirFiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.FinalTargetFiles" title="mozbuild.frontend.data.FinalTargetFiles"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.FinalTargetFiles</span></code></a></p>
+<p>Sandbox container object for OBJDIR_FILES, which is a
+HierarchicalStringList.</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.ObjdirFiles.install_target">
+<code class="descname">install_target</code><a class="headerlink" href="#mozbuild.frontend.data.ObjdirFiles.install_target" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.ObjdirPreprocessedFiles">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">ObjdirPreprocessedFiles</code><span class="sig-paren">(</span><em>sandbox</em>, <em>files</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.ObjdirPreprocessedFiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.FinalTargetPreprocessedFiles" title="mozbuild.frontend.data.FinalTargetPreprocessedFiles"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.FinalTargetPreprocessedFiles</span></code></a></p>
+<p>Sandbox container object for OBJDIR_PP_FILES, which is a
+HierarchicalStringList.</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.ObjdirPreprocessedFiles.install_target">
+<code class="descname">install_target</code><a class="headerlink" href="#mozbuild.frontend.data.ObjdirPreprocessedFiles.install_target" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.PerSourceFlag">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">PerSourceFlag</code><span class="sig-paren">(</span><em>context</em>, <em>file_name</em>, <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.PerSourceFlag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.ContextDerived" title="mozbuild.frontend.data.ContextDerived"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.ContextDerived</span></code></a></p>
+<p>Describes compiler flags specified for individual source files.</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.PerSourceFlag.file_name">
+<code class="descname">file_name</code><a class="headerlink" href="#mozbuild.frontend.data.PerSourceFlag.file_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.PerSourceFlag.flags">
+<code class="descname">flags</code><a class="headerlink" href="#mozbuild.frontend.data.PerSourceFlag.flags" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.PreprocessedTestWebIDLFile">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">PreprocessedTestWebIDLFile</code><span class="sig-paren">(</span><em>context</em>, <em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.PreprocessedTestWebIDLFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.ContextDerived" title="mozbuild.frontend.data.ContextDerived"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.ContextDerived</span></code></a></p>
+<p>Describes an individual test-only .webidl source file that requires
+preprocessing.</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.PreprocessedTestWebIDLFile.basename">
+<code class="descname">basename</code><a class="headerlink" href="#mozbuild.frontend.data.PreprocessedTestWebIDLFile.basename" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.PreprocessedWebIDLFile">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">PreprocessedWebIDLFile</code><span class="sig-paren">(</span><em>context</em>, <em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.PreprocessedWebIDLFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.ContextDerived" title="mozbuild.frontend.data.ContextDerived"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.ContextDerived</span></code></a></p>
+<p>Describes an individual .webidl source file that requires preprocessing.</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.PreprocessedWebIDLFile.basename">
+<code class="descname">basename</code><a class="headerlink" href="#mozbuild.frontend.data.PreprocessedWebIDLFile.basename" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.Program">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">Program</code><span class="sig-paren">(</span><em>context</em>, <em>program</em>, <em>is_unit_test=False</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.Program" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.BaseProgram" title="mozbuild.frontend.data.BaseProgram"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.BaseProgram</span></code></a></p>
+<p>Context derived container object for PROGRAM</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.Program.KIND">
+<code class="descname">KIND</code><em class="property"> = u'target'</em><a class="headerlink" href="#mozbuild.frontend.data.Program.KIND" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.Program.SUFFIX_VAR">
+<code class="descname">SUFFIX_VAR</code><em class="property"> = u'BIN_SUFFIX'</em><a class="headerlink" href="#mozbuild.frontend.data.Program.SUFFIX_VAR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.RustLibrary">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">RustLibrary</code><span class="sig-paren">(</span><em>context</em>, <em>basename</em>, <em>cargo_file</em>, <em>crate_type</em>, <em>dependencies</em>, <em>features</em>, <em>target_dir</em>, <em>**args</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.RustLibrary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.StaticLibrary" title="mozbuild.frontend.data.StaticLibrary"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.StaticLibrary</span></code></a></p>
+<p>Context derived container object for a static library</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.RustLibrary.FEATURES_VAR">
+<code class="descname">FEATURES_VAR</code><em class="property"> = u'RUST_LIBRARY_FEATURES'</em><a class="headerlink" href="#mozbuild.frontend.data.RustLibrary.FEATURES_VAR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.RustLibrary.LIB_FILE_VAR">
+<code class="descname">LIB_FILE_VAR</code><em class="property"> = u'RUST_LIBRARY_FILE'</em><a class="headerlink" href="#mozbuild.frontend.data.RustLibrary.LIB_FILE_VAR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.RustLibrary.TARGET_SUBST_VAR">
+<code class="descname">TARGET_SUBST_VAR</code><em class="property"> = u'RUST_TARGET'</em><a class="headerlink" href="#mozbuild.frontend.data.RustLibrary.TARGET_SUBST_VAR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.RustLibrary.cargo_file">
+<code class="descname">cargo_file</code><a class="headerlink" href="#mozbuild.frontend.data.RustLibrary.cargo_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.RustLibrary.crate_type">
+<code class="descname">crate_type</code><a class="headerlink" href="#mozbuild.frontend.data.RustLibrary.crate_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.RustLibrary.dependencies">
+<code class="descname">dependencies</code><a class="headerlink" href="#mozbuild.frontend.data.RustLibrary.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.RustLibrary.deps_path">
+<code class="descname">deps_path</code><a class="headerlink" href="#mozbuild.frontend.data.RustLibrary.deps_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.RustLibrary.features">
+<code class="descname">features</code><a class="headerlink" href="#mozbuild.frontend.data.RustLibrary.features" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.RustLibrary.target_dir">
+<code class="descname">target_dir</code><a class="headerlink" href="#mozbuild.frontend.data.RustLibrary.target_dir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.RustProgram">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">RustProgram</code><span class="sig-paren">(</span><em>context</em>, <em>name</em>, <em>cargo_file</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.RustProgram" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.BaseRustProgram" title="mozbuild.frontend.data.BaseRustProgram"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.BaseRustProgram</span></code></a></p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.RustProgram.KIND">
+<code class="descname">KIND</code><em class="property"> = u'target'</em><a class="headerlink" href="#mozbuild.frontend.data.RustProgram.KIND" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.RustProgram.SUFFIX_VAR">
+<code class="descname">SUFFIX_VAR</code><em class="property"> = u'BIN_SUFFIX'</em><a class="headerlink" href="#mozbuild.frontend.data.RustProgram.SUFFIX_VAR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.RustProgram.TARGET_SUBST_VAR">
+<code class="descname">TARGET_SUBST_VAR</code><em class="property"> = u'RUST_TARGET'</em><a class="headerlink" href="#mozbuild.frontend.data.RustProgram.TARGET_SUBST_VAR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.RustTest">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">RustTest</code><span class="sig-paren">(</span><em>context</em>, <em>name</em>, <em>features</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.RustTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.ContextDerived" title="mozbuild.frontend.data.ContextDerived"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.ContextDerived</span></code></a></p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.RustTest.features">
+<code class="descname">features</code><a class="headerlink" href="#mozbuild.frontend.data.RustTest.features" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.RustTest.name">
+<code class="descname">name</code><a class="headerlink" href="#mozbuild.frontend.data.RustTest.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.SharedLibrary">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">SharedLibrary</code><span class="sig-paren">(</span><em>context</em>, <em>basename</em>, <em>real_name=None</em>, <em>soname=None</em>, <em>variant=None</em>, <em>symbols_file=False</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.SharedLibrary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.Library" title="mozbuild.frontend.data.Library"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.Library</span></code></a></p>
+<p>Context derived container object for a shared library</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.SharedLibrary.DICT_ATTRS">
+<code class="descname">DICT_ATTRS</code><em class="property"> = set([u'install_target', u'soname', u'basename', u'relobjdir', u'lib_name', u'import_name'])</em><a class="headerlink" href="#mozbuild.frontend.data.SharedLibrary.DICT_ATTRS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.SharedLibrary.FRAMEWORK">
+<code class="descname">FRAMEWORK</code><em class="property"> = 1</em><a class="headerlink" href="#mozbuild.frontend.data.SharedLibrary.FRAMEWORK" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.SharedLibrary.MAX_VARIANT">
+<code class="descname">MAX_VARIANT</code><em class="property"> = 2</em><a class="headerlink" href="#mozbuild.frontend.data.SharedLibrary.MAX_VARIANT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.SharedLibrary.soname">
+<code class="descname">soname</code><a class="headerlink" href="#mozbuild.frontend.data.SharedLibrary.soname" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.SharedLibrary.symbols_file">
+<code class="descname">symbols_file</code><a class="headerlink" href="#mozbuild.frontend.data.SharedLibrary.symbols_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.SharedLibrary.variant">
+<code class="descname">variant</code><a class="headerlink" href="#mozbuild.frontend.data.SharedLibrary.variant" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.SimpleProgram">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">SimpleProgram</code><span class="sig-paren">(</span><em>context</em>, <em>program</em>, <em>is_unit_test=False</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.SimpleProgram" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.BaseProgram" title="mozbuild.frontend.data.BaseProgram"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.BaseProgram</span></code></a></p>
+<p>Context derived container object for each program in SIMPLE_PROGRAMS</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.SimpleProgram.KIND">
+<code class="descname">KIND</code><em class="property"> = u'target'</em><a class="headerlink" href="#mozbuild.frontend.data.SimpleProgram.KIND" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.SimpleProgram.SUFFIX_VAR">
+<code class="descname">SUFFIX_VAR</code><em class="property"> = u'BIN_SUFFIX'</em><a class="headerlink" href="#mozbuild.frontend.data.SimpleProgram.SUFFIX_VAR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.Sources">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">Sources</code><span class="sig-paren">(</span><em>context</em>, <em>files</em>, <em>canonical_suffix</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.Sources" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.BaseSources" title="mozbuild.frontend.data.BaseSources"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.BaseSources</span></code></a></p>
+<p>Represents files to be compiled during the build.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.StaticLibrary">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">StaticLibrary</code><span class="sig-paren">(</span><em>context</em>, <em>basename</em>, <em>real_name=None</em>, <em>link_into=None</em>, <em>no_expand_lib=False</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.StaticLibrary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.Library" title="mozbuild.frontend.data.Library"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.Library</span></code></a></p>
+<p>Context derived container object for a static library</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.StaticLibrary.link_into">
+<code class="descname">link_into</code><a class="headerlink" href="#mozbuild.frontend.data.StaticLibrary.link_into" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.StaticLibrary.no_expand_lib">
+<code class="descname">no_expand_lib</code><a class="headerlink" href="#mozbuild.frontend.data.StaticLibrary.no_expand_lib" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.TestHarnessFiles">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">TestHarnessFiles</code><span class="sig-paren">(</span><em>sandbox</em>, <em>files</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.TestHarnessFiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.FinalTargetFiles" title="mozbuild.frontend.data.FinalTargetFiles"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.FinalTargetFiles</span></code></a></p>
+<p>Sandbox container object for TEST_HARNESS_FILES,
+which is a HierarchicalStringList.</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.TestHarnessFiles.install_target">
+<code class="descname">install_target</code><a class="headerlink" href="#mozbuild.frontend.data.TestHarnessFiles.install_target" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.TestManifest">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">TestManifest</code><span class="sig-paren">(</span><em>context</em>, <em>path</em>, <em>manifest</em>, <em>flavor=None</em>, <em>install_prefix=None</em>, <em>relpath=None</em>, <em>sources=()</em>, <em>dupe_manifest=False</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.TestManifest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.ContextDerived" title="mozbuild.frontend.data.ContextDerived"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.ContextDerived</span></code></a></p>
+<p>Represents a manifest file containing information about tests.</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.TestManifest.deferred_installs">
+<code class="descname">deferred_installs</code><a class="headerlink" href="#mozbuild.frontend.data.TestManifest.deferred_installs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.TestManifest.directory">
+<code class="descname">directory</code><a class="headerlink" href="#mozbuild.frontend.data.TestManifest.directory" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.TestManifest.dupe_manifest">
+<code class="descname">dupe_manifest</code><a class="headerlink" href="#mozbuild.frontend.data.TestManifest.dupe_manifest" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.TestManifest.external_installs">
+<code class="descname">external_installs</code><a class="headerlink" href="#mozbuild.frontend.data.TestManifest.external_installs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.TestManifest.flavor">
+<code class="descname">flavor</code><a class="headerlink" href="#mozbuild.frontend.data.TestManifest.flavor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.TestManifest.install_prefix">
+<code class="descname">install_prefix</code><a class="headerlink" href="#mozbuild.frontend.data.TestManifest.install_prefix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.TestManifest.installs">
+<code class="descname">installs</code><a class="headerlink" href="#mozbuild.frontend.data.TestManifest.installs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.TestManifest.manifest">
+<code class="descname">manifest</code><a class="headerlink" href="#mozbuild.frontend.data.TestManifest.manifest" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.TestManifest.manifest_obj_relpath">
+<code class="descname">manifest_obj_relpath</code><a class="headerlink" href="#mozbuild.frontend.data.TestManifest.manifest_obj_relpath" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.TestManifest.manifest_relpath">
+<code class="descname">manifest_relpath</code><a class="headerlink" href="#mozbuild.frontend.data.TestManifest.manifest_relpath" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.TestManifest.path">
+<code class="descname">path</code><a class="headerlink" href="#mozbuild.frontend.data.TestManifest.path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.TestManifest.pattern_installs">
+<code class="descname">pattern_installs</code><a class="headerlink" href="#mozbuild.frontend.data.TestManifest.pattern_installs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.TestManifest.source_relpaths">
+<code class="descname">source_relpaths</code><a class="headerlink" href="#mozbuild.frontend.data.TestManifest.source_relpaths" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.TestManifest.tests">
+<code class="descname">tests</code><a class="headerlink" href="#mozbuild.frontend.data.TestManifest.tests" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.TestWebIDLFile">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">TestWebIDLFile</code><span class="sig-paren">(</span><em>context</em>, <em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.TestWebIDLFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.ContextDerived" title="mozbuild.frontend.data.ContextDerived"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.ContextDerived</span></code></a></p>
+<p>Describes an individual test-only .webidl source file.</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.TestWebIDLFile.basename">
+<code class="descname">basename</code><a class="headerlink" href="#mozbuild.frontend.data.TestWebIDLFile.basename" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.TreeMetadata">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">TreeMetadata</code><a class="headerlink" href="#mozbuild.frontend.data.TreeMetadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Base class for all data being captured.</p>
+<dl class="method">
+<dt id="mozbuild.frontend.data.TreeMetadata.to_dict">
+<code class="descname">to_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.TreeMetadata.to_dict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.UnifiedSources">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">UnifiedSources</code><span class="sig-paren">(</span><em>context</em>, <em>files</em>, <em>canonical_suffix</em>, <em>files_per_unified_file</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.UnifiedSources" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.BaseSources" title="mozbuild.frontend.data.BaseSources"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.BaseSources</span></code></a></p>
+<p>Represents files to be compiled in a unified fashion during the build.</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.UnifiedSources.have_unified_mapping">
+<code class="descname">have_unified_mapping</code><a class="headerlink" href="#mozbuild.frontend.data.UnifiedSources.have_unified_mapping" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.UnifiedSources.unified_source_mapping">
+<code class="descname">unified_source_mapping</code><a class="headerlink" href="#mozbuild.frontend.data.UnifiedSources.unified_source_mapping" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.VariablePassthru">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">VariablePassthru</code><span class="sig-paren">(</span><em>context</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.VariablePassthru" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.ContextDerived" title="mozbuild.frontend.data.ContextDerived"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.ContextDerived</span></code></a></p>
+<p>A dict of variables to pass through to backend.mk unaltered.</p>
+<p>The purpose of this object is to facilitate rapid transitioning of
+variables from Makefile.in to moz.build. In the ideal world, this class
+does not exist and every variable has a richer class representing it.
+As long as we rely on this class, we lose the ability to have flexibility
+in our build backends since we will continue to be tied to our rules.mk.</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.VariablePassthru.variables">
+<code class="descname">variables</code><a class="headerlink" href="#mozbuild.frontend.data.VariablePassthru.variables" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.WebIDLFile">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">WebIDLFile</code><span class="sig-paren">(</span><em>context</em>, <em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.WebIDLFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.ContextDerived" title="mozbuild.frontend.data.ContextDerived"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.ContextDerived</span></code></a></p>
+<p>Describes an individual .webidl source file.</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.WebIDLFile.basename">
+<code class="descname">basename</code><a class="headerlink" href="#mozbuild.frontend.data.WebIDLFile.basename" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.data.XPIDLFile">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.data.</code><code class="descname">XPIDLFile</code><span class="sig-paren">(</span><em>context</em>, <em>source</em>, <em>module</em>, <em>add_to_manifest</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.XPIDLFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.data.ContextDerived" title="mozbuild.frontend.data.ContextDerived"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.data.ContextDerived</span></code></a></p>
+<p>Describes an XPIDL file to be compiled.</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.XPIDLFile.add_to_manifest">
+<code class="descname">add_to_manifest</code><a class="headerlink" href="#mozbuild.frontend.data.XPIDLFile.add_to_manifest" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.XPIDLFile.basename">
+<code class="descname">basename</code><a class="headerlink" href="#mozbuild.frontend.data.XPIDLFile.basename" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.XPIDLFile.module">
+<code class="descname">module</code><a class="headerlink" href="#mozbuild.frontend.data.XPIDLFile.module" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.data.XPIDLFile.source_path">
+<code class="descname">source_path</code><a class="headerlink" href="#mozbuild.frontend.data.XPIDLFile.source_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.frontend.data.cargo_output_directory">
+<code class="descclassname">mozbuild.frontend.data.</code><code class="descname">cargo_output_directory</code><span class="sig-paren">(</span><em>context</em>, <em>target_var</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.data.cargo_output_directory" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.frontend.emitter">
+<span id="mozbuild-frontend-emitter-module"></span><h2>mozbuild.frontend.emitter module<a class="headerlink" href="#module-mozbuild.frontend.emitter" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozbuild.frontend.emitter.TreeMetadataEmitter">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.emitter.</code><code class="descname">TreeMetadataEmitter</code><span class="sig-paren">(</span><em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.emitter.TreeMetadataEmitter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="mach.mixin.html#mach.mixin.logging.LoggingMixin" title="mach.mixin.logging.LoggingMixin"><code class="xref py py-class docutils literal"><span class="pre">mach.mixin.logging.LoggingMixin</span></code></a></p>
+<p>Converts the executed mozbuild files into data structures.</p>
+<p>This is a bridge between reader.py and data.py. It takes what was read by
+reader.BuildReader and converts it into the classes defined in the data
+module.</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.emitter.TreeMetadataEmitter.LIBRARY_NAME_VAR">
+<code class="descname">LIBRARY_NAME_VAR</code><em class="property"> = {u'host': u'HOST_LIBRARY_NAME', u'target': u'LIBRARY_NAME'}</em><a class="headerlink" href="#mozbuild.frontend.emitter.TreeMetadataEmitter.LIBRARY_NAME_VAR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.frontend.emitter.TreeMetadataEmitter.emit">
+<code class="descname">emit</code><span class="sig-paren">(</span><em>output</em>, <em>emitfn=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.emitter.TreeMetadataEmitter.emit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert the BuildReader output into data structures.</p>
+<p>The return value from BuildReader.read_topsrcdir() (a generator) is
+typically fed into this function.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.frontend.emitter.TreeMetadataEmitter.emit_from_context">
+<code class="descname">emit_from_context</code><span class="sig-paren">(</span><em>context</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.emitter.TreeMetadataEmitter.emit_from_context" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a Context to tree metadata objects.</p>
+<p>This is a generator of mozbuild.frontend.data.ContextDerived instances.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.frontend.emitter.TreeMetadataEmitter.summary">
+<code class="descname">summary</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.emitter.TreeMetadataEmitter.summary" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.frontend.gyp_reader">
+<span id="mozbuild-frontend-gyp-reader-module"></span><h2>mozbuild.frontend.gyp_reader module<a class="headerlink" href="#module-mozbuild.frontend.gyp_reader" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozbuild.frontend.gyp_reader.GypContext">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.gyp_reader.</code><code class="descname">GypContext</code><span class="sig-paren">(</span><em>config</em>, <em>relobjdir</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.gyp_reader.GypContext" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.context.TemplateContext" title="mozbuild.frontend.context.TemplateContext"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.context.TemplateContext</span></code></a></p>
+<p>Specialized Context for use with data extracted from Gyp.</p>
+<p>config is the ConfigEnvironment for this context.
+relobjdir is the object directory that will be used for this context,
+relative to the topobjdir defined in the ConfigEnvironment.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.gyp_reader.GypProcessor">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.gyp_reader.</code><code class="descname">GypProcessor</code><span class="sig-paren">(</span><em>config</em>, <em>gyp_dir_attrs</em>, <em>path</em>, <em>output</em>, <em>executor</em>, <em>action_overrides</em>, <em>non_unified_sources</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.gyp_reader.GypProcessor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Reads a gyp configuration in the background using the given executor and
+emits GypContexts for the backend to process.</p>
+<p>config is a ConfigEnvironment, path is the path to a root gyp configuration
+file, and output is the base path under which the objdir for the various
+gyp dependencies will be. gyp_dir_attrs are attributes set for the dir
+from moz.build.</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.gyp_reader.GypProcessor.results">
+<code class="descname">results</code><a class="headerlink" href="#mozbuild.frontend.gyp_reader.GypProcessor.results" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.frontend.gyp_reader.encode">
+<code class="descclassname">mozbuild.frontend.gyp_reader.</code><code class="descname">encode</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.gyp_reader.encode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.frontend.gyp_reader.handle_actions">
+<code class="descclassname">mozbuild.frontend.gyp_reader.</code><code class="descname">handle_actions</code><span class="sig-paren">(</span><em>actions</em>, <em>context</em>, <em>action_overrides</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.gyp_reader.handle_actions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.frontend.gyp_reader.handle_copies">
+<code class="descclassname">mozbuild.frontend.gyp_reader.</code><code class="descname">handle_copies</code><span class="sig-paren">(</span><em>copies</em>, <em>context</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.gyp_reader.handle_copies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.frontend.gyp_reader.load_gyp">
+<code class="descclassname">mozbuild.frontend.gyp_reader.</code><code class="descname">load_gyp</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.gyp_reader.load_gyp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.frontend.gyp_reader.process_gyp_result">
+<code class="descclassname">mozbuild.frontend.gyp_reader.</code><code class="descname">process_gyp_result</code><span class="sig-paren">(</span><em>gyp_result</em>, <em>gyp_dir_attrs</em>, <em>path</em>, <em>config</em>, <em>output</em>, <em>non_unified_sources</em>, <em>action_overrides</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.gyp_reader.process_gyp_result" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.frontend.mach_commands">
+<span id="mozbuild-frontend-mach-commands-module"></span><h2>mozbuild.frontend.mach_commands module<a class="headerlink" href="#module-mozbuild.frontend.mach_commands" title="Permalink to this headline">¶</a></h2>
+<dl class="exception">
+<dt id="mozbuild.frontend.mach_commands.InvalidPathException">
+<em class="property">exception </em><code class="descclassname">mozbuild.frontend.mach_commands.</code><code class="descname">InvalidPathException</code><a class="headerlink" href="#mozbuild.frontend.mach_commands.InvalidPathException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></code></p>
+<p>Represents an error due to an invalid path.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.mach_commands.MozbuildFileCommands">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.mach_commands.</code><code class="descname">MozbuildFileCommands</code><span class="sig-paren">(</span><em>context</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.mach_commands.MozbuildFileCommands" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="mozbuild.html#mozbuild.base.MachCommandBase" title="mozbuild.base.MachCommandBase"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.base.MachCommandBase</span></code></a></p>
+<dl class="method">
+<dt id="mozbuild.frontend.mach_commands.MozbuildFileCommands.bugzilla_automation">
+<code class="descname">bugzilla_automation</code><span class="sig-paren">(</span><em>out_dir</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.mach_commands.MozbuildFileCommands.bugzilla_automation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Analyze and validate Bugzilla metadata as required by automation.</p>
+<p>This will write out JSON and gzipped JSON files for Bugzilla metadata.</p>
+<p>The exit code will be non-0 if Bugzilla metadata fails validation.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.frontend.mach_commands.MozbuildFileCommands.file_info">
+<code class="descname">file_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.mach_commands.MozbuildFileCommands.file_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show files metadata derived from moz.build files.</p>
+<p>moz.build files contain “Files” sub-contexts for declaring metadata
+against file patterns. This command suite is used to query that data.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.frontend.mach_commands.MozbuildFileCommands.file_info_bugzilla">
+<code class="descname">file_info_bugzilla</code><span class="sig-paren">(</span><em>paths</em>, <em>rev=None</em>, <em>fmt=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.mach_commands.MozbuildFileCommands.file_info_bugzilla" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show Bugzilla component for a set of files.</p>
+<p>Given a requested set of files (which can be specified using
+wildcards), print the Bugzilla component for each file.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.frontend.mach_commands.MozbuildFileCommands.file_info_missing_bugzilla">
+<code class="descname">file_info_missing_bugzilla</code><span class="sig-paren">(</span><em>paths</em>, <em>rev=None</em>, <em>fmt=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.mach_commands.MozbuildFileCommands.file_info_missing_bugzilla" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.frontend.mach_commands.MozbuildFileCommands.file_info_schedules">
+<code class="descname">file_info_schedules</code><span class="sig-paren">(</span><em>paths</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.mach_commands.MozbuildFileCommands.file_info_schedules" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show what is scheduled by the given files.</p>
+<p>Given a requested set of files (which can be specified using
+wildcards), print the total set of scheduled components.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.frontend.mach_commands.MozbuildFileCommands.file_info_test_deps">
+<code class="descname">file_info_test_deps</code><span class="sig-paren">(</span><em>paths</em>, <em>rev=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.mach_commands.MozbuildFileCommands.file_info_test_deps" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.frontend.mach_commands.MozbuildFileCommands.reference">
+<code class="descname">reference</code><span class="sig-paren">(</span><em>symbol</em>, <em>name_only=False</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.mach_commands.MozbuildFileCommands.reference" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.frontend.reader">
+<span id="mozbuild-frontend-reader-module"></span><h2>mozbuild.frontend.reader module<a class="headerlink" href="#module-mozbuild.frontend.reader" title="Permalink to this headline">¶</a></h2>
+<p>Read build frontend files into data structures.</p>
+<p>In terms of code architecture, the main interface is BuildReader. BuildReader
+starts with a root mozbuild file. It creates a new execution environment for
+this file, which is represented by the Sandbox class. The Sandbox class is used
+to fill a Context, representing the output of an individual mozbuild file. The</p>
+<p>The BuildReader contains basic logic for traversing a tree of mozbuild files.
+It does this by examining specific variables populated during execution.</p>
+<dl class="class">
+<dt id="mozbuild.frontend.reader.BuildReader">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.reader.</code><code class="descname">BuildReader</code><span class="sig-paren">(</span><em>config</em>, <em>finder=&lt;mozpack.files.FileFinder object&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.reader.BuildReader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Read a tree of mozbuild files into data structures.</p>
+<p>This is where the build system starts. You give it a tree configuration
+(the output of configuration) and it executes the moz.build files and
+collects the data they define.</p>
+<p>The reader can optionally call a callable after each sandbox is evaluated
+but before its evaluated content is processed. This gives callers the
+opportunity to modify contexts before side-effects occur from their
+content. This callback receives the <code class="docutils literal"><span class="pre">Context</span></code> containing the result of
+each sandbox evaluation. Its return value is ignored.</p>
+<dl class="method">
+<dt id="mozbuild.frontend.reader.BuildReader.all_mozbuild_paths">
+<code class="descname">all_mozbuild_paths</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.reader.BuildReader.all_mozbuild_paths" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterator over all available moz.build files.</p>
+<p>This method has little to do with the reader. It should arguably belong
+elsewhere.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.frontend.reader.BuildReader.files_info">
+<code class="descname">files_info</code><span class="sig-paren">(</span><em>paths</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.reader.BuildReader.files_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Obtain aggregate data from Files for a set of files.</p>
+<p>Given a set of input paths, determine which moz.build files may
+define metadata for them, evaluate those moz.build files, and
+apply file metadata rules defined within to determine metadata
+values for each file requested.</p>
+<p>Essentially, for each input path:</p>
+<ol class="arabic simple">
+<li>Determine the set of moz.build files relevant to that file by
+looking for moz.build files in ancestor directories.</li>
+<li>Evaluate moz.build files starting with the most distant.</li>
+<li>Iterate over Files sub-contexts.</li>
+<li>If the file pattern matches the file we’re seeking info on,
+apply attribute updates.</li>
+<li>Return the most recent value of attributes.</li>
+</ol>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.frontend.reader.BuildReader.find_sphinx_variables">
+<code class="descname">find_sphinx_variables</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.reader.BuildReader.find_sphinx_variables" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function finds all assignments of Sphinx documentation variables.</p>
+<p>This is a generator of tuples of (moz.build path, var, key, value). For
+variables that assign to keys in objects, key will be defined.</p>
+<p>With a little work, this function could be made more generic. But if we
+end up writing a lot of ast code, it might be best to import a
+high-level AST manipulation library into the tree.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.frontend.reader.BuildReader.gyp_summary">
+<code class="descname">gyp_summary</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.reader.BuildReader.gyp_summary" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.frontend.reader.BuildReader.read_mozbuild">
+<code class="descname">read_mozbuild</code><span class="sig-paren">(</span><em>path</em>, <em>config</em>, <em>descend=True</em>, <em>metadata={}</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.reader.BuildReader.read_mozbuild" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read and process a mozbuild file, descending into children.</p>
+<p>This starts with a single mozbuild file, executes it, and descends into
+other referenced files per our traversal logic.</p>
+<p>The traversal logic is to iterate over the <a href="#id3"><span class="problematic" id="id4">*</span></a>DIRS variables, treating
+each element as a relative directory path. For each encountered
+directory, we will open the moz.build file located in that
+directory in a new Sandbox and process it.</p>
+<p>If descend is True (the default), we will descend into child
+directories and files per variable values.</p>
+<p>Arbitrary metadata in the form of a dict can be passed into this
+function. This feature is intended to facilitate the build reader
+injecting state and annotations into moz.build files that is
+independent of the sandbox’s execution context.</p>
+<p>Traversal is performed depth first (for no particular reason).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.frontend.reader.BuildReader.read_relevant_mozbuilds">
+<code class="descname">read_relevant_mozbuilds</code><span class="sig-paren">(</span><em>paths</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.reader.BuildReader.read_relevant_mozbuilds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read and process moz.build files relevant for a set of paths.</p>
+<p>For an iterable of relative-to-root filesystem paths <code class="docutils literal"><span class="pre">paths</span></code>,
+find all moz.build files that may apply to them based on filesystem
+hierarchy and read those moz.build files.</p>
+<p>The return value is a 2-tuple. The first item is a dict mapping each
+input filesystem path to a list of Context instances that are relevant
+to that path. The second item is a list of all Context instances. Each
+Context instance is in both data structures.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.frontend.reader.BuildReader.read_topsrcdir">
+<code class="descname">read_topsrcdir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.reader.BuildReader.read_topsrcdir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read the tree of linked moz.build files.</p>
+<p>This starts with the tree’s top-most moz.build file and descends into
+all linked moz.build files until all relevant files have been evaluated.</p>
+<p>This is a generator of Context instances. As each moz.build file is
+read, a new Context is created and emitted.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.frontend.reader.BuildReader.summary">
+<code class="descname">summary</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.reader.BuildReader.summary" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.frontend.reader.BuildReader.test_defaults_for_path">
+<code class="descname">test_defaults_for_path</code><span class="sig-paren">(</span><em>ctxs</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.reader.BuildReader.test_defaults_for_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="mozbuild.frontend.reader.BuildReaderError">
+<em class="property">exception </em><code class="descclassname">mozbuild.frontend.reader.</code><code class="descname">BuildReaderError</code><span class="sig-paren">(</span><em>file_stack</em>, <em>trace</em>, <em>sandbox_exec_error=None</em>, <em>sandbox_load_error=None</em>, <em>validation_error=None</em>, <em>other_error=None</em>, <em>sandbox_called_error=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.reader.BuildReaderError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></code></p>
+<p>Represents errors encountered during BuildReader execution.</p>
+<p>The main purpose of this class is to facilitate user-actionable error
+messages. Execution errors should say:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Why they failed</li>
+<li>Where they failed</li>
+<li>What can be done to prevent the error</li>
+</ul>
+</div></blockquote>
+<p>A lot of the code in this class should arguably be inside sandbox.py.
+However, extraction is somewhat difficult given the additions
+MozbuildSandbox has over Sandbox (e.g. the concept of included files -
+which affect error messages, of course).</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.reader.BuildReaderError.actual_file">
+<code class="descname">actual_file</code><a class="headerlink" href="#mozbuild.frontend.reader.BuildReaderError.actual_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.reader.BuildReaderError.main_file">
+<code class="descname">main_file</code><a class="headerlink" href="#mozbuild.frontend.reader.BuildReaderError.main_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.reader.BuildReaderError.sandbox_error">
+<code class="descname">sandbox_error</code><a class="headerlink" href="#mozbuild.frontend.reader.BuildReaderError.sandbox_error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.reader.EmptyConfig">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.reader.</code><code class="descname">EmptyConfig</code><span class="sig-paren">(</span><em>topsrcdir</em>, <em>substs=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.reader.EmptyConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>A config object that is empty.</p>
+<p>This config object is suitable for using with a BuildReader on a vanilla
+checkout, without any existing configuration. The config is simply
+bootstrapped from a top source directory path.</p>
+<dl class="class">
+<dt id="mozbuild.frontend.reader.EmptyConfig.PopulateOnGetDict">
+<em class="property">class </em><code class="descname">PopulateOnGetDict</code><span class="sig-paren">(</span><em>default_factory</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.reader.EmptyConfig.PopulateOnGetDict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="mozbuild.html#mozbuild.util.ReadOnlyDefaultDict" title="mozbuild.util.ReadOnlyDefaultDict"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.util.ReadOnlyDefaultDict</span></code></a></p>
+<p>A variation on ReadOnlyDefaultDict that populates during .get().</p>
+<p>This variation is needed because CONFIG uses .get() to access members.
+Without it, None (instead of our EmptyValue types) would be returned.</p>
+<dl class="method">
+<dt id="mozbuild.frontend.reader.EmptyConfig.PopulateOnGetDict.get">
+<code class="descname">get</code><span class="sig-paren">(</span><em>key</em>, <em>default=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.reader.EmptyConfig.PopulateOnGetDict.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.frontend.reader.EmptyConfig.default_substs">
+<code class="descname">default_substs</code><em class="property"> = {'JS_STANDALONE': '1', 'MOZ_APP_NAME': 'empty', 'MOZ_CHILD_PROCESS_NAME': 'empty'}</em><a class="headerlink" href="#mozbuild.frontend.reader.EmptyConfig.default_substs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.reader.MozbuildSandbox">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.reader.</code><code class="descname">MozbuildSandbox</code><span class="sig-paren">(</span><em>context</em>, <em>metadata={}</em>, <em>finder=&lt;mozpack.files.FileFinder object&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.reader.MozbuildSandbox" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.sandbox.Sandbox" title="mozbuild.frontend.sandbox.Sandbox"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.sandbox.Sandbox</span></code></a></p>
+<p>Implementation of a Sandbox tailored for mozbuild files.</p>
+<p>We expose a few useful functions and expose the set of variables defining
+Mozilla’s build system.</p>
+<p>context is a Context instance.</p>
+<p>metadata is a dict of metadata that can be used during the sandbox
+evaluation.</p>
+<dl class="method">
+<dt id="mozbuild.frontend.reader.MozbuildSandbox.exec_file">
+<code class="descname">exec_file</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.reader.MozbuildSandbox.exec_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override exec_file to normalize paths and restrict file loading.</p>
+<p>Paths will be rejected if they do not fall under topsrcdir or one of
+the external roots.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.frontend.reader.MozbuildSandbox.recompute_exports">
+<code class="descname">recompute_exports</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.reader.MozbuildSandbox.recompute_exports" title="Permalink to this definition">¶</a></dt>
+<dd><p>Recompute the variables to export to subdirectories with the current
+values in the subdirectory.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="mozbuild.frontend.reader.SandboxCalledError">
+<em class="property">exception </em><code class="descclassname">mozbuild.frontend.reader.</code><code class="descname">SandboxCalledError</code><span class="sig-paren">(</span><em>file_stack</em>, <em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.reader.SandboxCalledError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.sandbox.SandboxError" title="mozbuild.frontend.sandbox.SandboxError"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.sandbox.SandboxError</span></code></a></p>
+<p>Represents an error resulting from calling the error() function.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="mozbuild.frontend.reader.SandboxValidationError">
+<em class="property">exception </em><code class="descclassname">mozbuild.frontend.reader.</code><code class="descname">SandboxValidationError</code><span class="sig-paren">(</span><em>message</em>, <em>context</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.reader.SandboxValidationError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></code></p>
+<p>Represents an error encountered when validating sandbox results.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.frontend.reader.TemplateFunction">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.reader.</code><code class="descname">TemplateFunction</code><span class="sig-paren">(</span><em>func</em>, <em>sandbox</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.reader.TemplateFunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="class">
+<dt id="mozbuild.frontend.reader.TemplateFunction.RewriteName">
+<em class="property">class </em><code class="descname">RewriteName</code><span class="sig-paren">(</span><em>sandbox</em>, <em>global_name</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.reader.TemplateFunction.RewriteName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">ast.NodeTransformer</span></code></p>
+<p>AST Node Transformer to rewrite variable accesses to go through
+a dict.</p>
+<dl class="method">
+<dt id="mozbuild.frontend.reader.TemplateFunction.RewriteName.visit_Name">
+<code class="descname">visit_Name</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.reader.TemplateFunction.RewriteName.visit_Name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.frontend.reader.TemplateFunction.RewriteName.visit_Str">
+<code class="descname">visit_Str</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.reader.TemplateFunction.RewriteName.visit_Str" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.frontend.reader.TemplateFunction.exec_in_sandbox">
+<code class="descname">exec_in_sandbox</code><span class="sig-paren">(</span><em>sandbox</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.reader.TemplateFunction.exec_in_sandbox" title="Permalink to this definition">¶</a></dt>
+<dd><p>Executes the template function in the given sandbox.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.frontend.reader.is_read_allowed">
+<code class="descclassname">mozbuild.frontend.reader.</code><code class="descname">is_read_allowed</code><span class="sig-paren">(</span><em>path</em>, <em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.reader.is_read_allowed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether we are allowed to load a mozbuild file at the specified path.</p>
+<p>This is used as cheap security to ensure the build is isolated to known
+source directories.</p>
+<p>We are allowed to read from the main source directory and any defined
+external source directories. The latter is to allow 3rd party applications
+to hook into our build system.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.frontend.reader.log">
+<code class="descclassname">mozbuild.frontend.reader.</code><code class="descname">log</code><span class="sig-paren">(</span><em>logger</em>, <em>level</em>, <em>action</em>, <em>params</em>, <em>formatter</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.reader.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.frontend.sandbox">
+<span id="mozbuild-frontend-sandbox-module"></span><h2>mozbuild.frontend.sandbox module<a class="headerlink" href="#module-mozbuild.frontend.sandbox" title="Permalink to this headline">¶</a></h2>
+<p>Python sandbox implementation for build files.</p>
+<p>This module contains classes for Python sandboxes that execute in a
+highly-controlled environment.</p>
+<p>The main class is <cite>Sandbox</cite>. This provides an execution environment for Python
+code and is used to fill a Context instance for the takeaway information from
+the execution.</p>
+<p>Code in this module takes a different approach to exception handling compared
+to what you’d see elsewhere in Python. Arguments to built-in exceptions like
+KeyError are machine parseable. This machine-friendly data is used to present
+user-friendly error messages in the case of errors.</p>
+<dl class="class">
+<dt id="mozbuild.frontend.sandbox.Sandbox">
+<em class="property">class </em><code class="descclassname">mozbuild.frontend.sandbox.</code><code class="descname">Sandbox</code><span class="sig-paren">(</span><em>context</em>, <em>finder=&lt;mozpack.files.FileFinder object&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.sandbox.Sandbox" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">dict</span></code></p>
+<p>Represents a sandbox for executing Python code.</p>
+<p>This class provides a sandbox for execution of a single mozbuild frontend
+file. The results of that execution is stored in the Context instance given
+as the <code class="docutils literal"><span class="pre">context</span></code> argument.</p>
+<p>Sandbox is effectively a glorified wrapper around compile() + exec(). You
+point it at some Python code and it executes it. The main difference from
+executing Python code like normal is that the executed code is very limited
+in what it can do: the sandbox only exposes a very limited set of Python
+functionality. Only specific types and functions are available. This
+prevents executed code from doing things like import modules, open files,
+etc.</p>
+<p>Sandbox instances act as global namespace for the sandboxed execution
+itself. They shall not be used to access the results of the execution.
+Those results are available in the given Context instance after execution.</p>
+<p>The Sandbox itself is responsible for enforcing rules such as forbidding
+reassignment of variables.</p>
+<p>Implementation note: Sandbox derives from dict because exec() insists that
+what it is given for namespaces is a dict.</p>
+<dl class="attribute">
+<dt id="mozbuild.frontend.sandbox.Sandbox.BUILTINS">
+<code class="descname">BUILTINS</code><em class="property"> = {u'None': None, u'set': &lt;type 'set'&gt;, u'False': False, u'tuple': &lt;type 'tuple'&gt;, u'int': &lt;type 'int'&gt;, u'sorted': &lt;function alphabetical_sorted&gt;, u'True': True}</em><a class="headerlink" href="#mozbuild.frontend.sandbox.Sandbox.BUILTINS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.frontend.sandbox.Sandbox.exec_file">
+<code class="descname">exec_file</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.sandbox.Sandbox.exec_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute code at a path in the sandbox.</p>
+<p>The path must be absolute.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.frontend.sandbox.Sandbox.exec_function">
+<code class="descname">exec_function</code><span class="sig-paren">(</span><em>func</em>, <em>args=()</em>, <em>kwargs={}</em>, <em>path=u''</em>, <em>becomes_current_path=True</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.sandbox.Sandbox.exec_function" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute function with the given arguments in the sandbox.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.frontend.sandbox.Sandbox.exec_source">
+<code class="descname">exec_source</code><span class="sig-paren">(</span><em>source</em>, <em>path=u''</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.sandbox.Sandbox.exec_source" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute Python code within a string.</p>
+<p>The passed string should contain Python code to be executed. The string
+will be compiled and executed.</p>
+<p>You should almost always go through exec_file() because exec_source()
+does not perform extra path normalization. This can cause relative
+paths to behave weirdly.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.frontend.sandbox.Sandbox.get">
+<code class="descname">get</code><span class="sig-paren">(</span><em>key</em>, <em>default=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.sandbox.Sandbox.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.frontend.sandbox.Sandbox.pop_subcontext">
+<code class="descname">pop_subcontext</code><span class="sig-paren">(</span><em>context</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.sandbox.Sandbox.pop_subcontext" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pop a SubContext off the execution stack.</p>
+<p>SubContexts must be pushed and popped in opposite order. This is
+validated as part of the function call to ensure proper consumer API
+use.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.frontend.sandbox.Sandbox.push_subcontext">
+<code class="descname">push_subcontext</code><span class="sig-paren">(</span><em>context</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.sandbox.Sandbox.push_subcontext" title="Permalink to this definition">¶</a></dt>
+<dd><p>Push a SubContext onto the execution stack.</p>
+<p>When called, the active context will be set to the specified context,
+meaning all variable accesses will go through it. We also record this
+SubContext as having been executed as part of this sandbox.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="mozbuild.frontend.sandbox.SandboxError">
+<em class="property">exception </em><code class="descclassname">mozbuild.frontend.sandbox.</code><code class="descname">SandboxError</code><span class="sig-paren">(</span><em>file_stack</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.sandbox.SandboxError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></code></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="mozbuild.frontend.sandbox.SandboxExecutionError">
+<em class="property">exception </em><code class="descclassname">mozbuild.frontend.sandbox.</code><code class="descname">SandboxExecutionError</code><span class="sig-paren">(</span><em>file_stack</em>, <em>exc_type</em>, <em>exc_value</em>, <em>trace</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.sandbox.SandboxExecutionError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.sandbox.SandboxError" title="mozbuild.frontend.sandbox.SandboxError"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.sandbox.SandboxError</span></code></a></p>
+<p>Represents errors encountered during execution of a Sandbox.</p>
+<p>This is a simple container exception. It’s purpose is to capture state
+so something else can report on it.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="mozbuild.frontend.sandbox.SandboxLoadError">
+<em class="property">exception </em><code class="descclassname">mozbuild.frontend.sandbox.</code><code class="descname">SandboxLoadError</code><span class="sig-paren">(</span><em>file_stack</em>, <em>trace</em>, <em>illegal_path=None</em>, <em>read_error=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.sandbox.SandboxLoadError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.frontend.sandbox.SandboxError" title="mozbuild.frontend.sandbox.SandboxError"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.frontend.sandbox.SandboxError</span></code></a></p>
+<p>Represents errors encountered when loading a file for execution.</p>
+<p>This exception represents errors in a Sandbox that occurred as part of
+loading a file. The error could have occurred in the course of executing
+a file. If so, the file_stack will be non-empty and the file that caused
+the load will be on top of the stack.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.frontend.sandbox.alphabetical_sorted">
+<code class="descclassname">mozbuild.frontend.sandbox.</code><code class="descname">alphabetical_sorted</code><span class="sig-paren">(</span><em>iterable</em>, <em>cmp=None</em>, <em>key=&lt;function &lt;lambda&gt;&gt;</em>, <em>reverse=False</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.frontend.sandbox.alphabetical_sorted" title="Permalink to this definition">¶</a></dt>
+<dd><p>sorted() replacement for the sandbox, ordering alphabetically by
+default.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.frontend">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-mozbuild.frontend" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="mozbuild.repackaging.html" class="btn btn-neutral float-right" title="mozbuild.repackaging package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="mozbuild.controller.html" class="btn btn-neutral" title="mozbuild.controller package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

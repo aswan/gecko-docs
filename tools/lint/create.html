@@ -1,0 +1,410 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Adding a New Linter to the Tree &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../../index.html"/>
+        <link rel="up" title="Linting" href="index.html"/>
+        <link rel="next" title="ESLint" href="linters/eslint.html"/>
+        <link rel="prev" title="Running Linters Locally" href="usage.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Linting</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="usage.html">Running Linters Locally</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#fixing-lint-errors">Fixing Lint Errors</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Adding a New Linter to the Tree</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#linter-types">Linter Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#linter-definition">Linter Definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="linters/eslint.html">ESLint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linters/flake8.html">Flake8</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Linting</a> &raquo;</li>
+        
+      <li>Adding a New Linter to the Tree</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/tools/lint/create.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="adding-a-new-linter-to-the-tree">
+<h1>Adding a New Linter to the Tree<a class="headerlink" href="#adding-a-new-linter-to-the-tree" title="Permalink to this headline">¶</a></h1>
+<p>A linter is a yaml file with a <code class="docutils literal"><span class="pre">.yml</span></code> extension. Depending on how the type of linter, there may
+be python code alongside the definition, pointed to by the ‘payload’ attribute.</p>
+<p>Here’s a trivial example:</p>
+<p>no-eval.yml</p>
+<p>Now <code class="docutils literal"><span class="pre">no-eval.yml</span></code> gets passed into <code class="xref py py-func docutils literal"><span class="pre">LintRoller.read()</span></code>.</p>
+<div class="section" id="linter-types">
+<h2>Linter Types<a class="headerlink" href="#linter-types" title="Permalink to this headline">¶</a></h2>
+<p>There are four types of linters, though more may be added in the future.</p>
+<ol class="arabic simple">
+<li>string - fails if substring is found</li>
+<li>regex - fails if regex matches</li>
+<li>external - fails if a python function returns a non-empty result list</li>
+<li>structured_log - fails if a mozlog logger emits any lint_error or lint_warning log messages</li>
+</ol>
+<p>As seen from the example above, string and regex linters are very easy to create, but they
+should be avoided if possible. It is much better to use a context aware linter for the language you
+are trying to lint. For example, use eslint to lint JavaScript files, use flake8 to lint python
+files, etc.</p>
+<p>Which brings us to the third and most interesting type of linter,
+external.  External linters call an arbitrary python function which is
+responsible for not only running the linter, but ensuring the results
+are structured properly. For example, an external type could shell out
+to a 3rd party linter, collect the output and format it into a list of
+<code class="xref py py-class docutils literal"><span class="pre">ResultContainer</span></code> objects. The signature for this python
+function is <code class="docutils literal"><span class="pre">lint(files,</span> <span class="pre">config,</span> <span class="pre">**kwargs)</span></code>, where <code class="docutils literal"><span class="pre">files</span></code> is a list of
+files to lint and <code class="docutils literal"><span class="pre">config</span></code> is the linter definition defined in the <code class="docutils literal"><span class="pre">.yml</span></code>
+file.</p>
+<p>Structured log linters are much like external linters, but suitable
+for cases where the linter code is using mozlog and emits
+<code class="docutils literal"><span class="pre">lint_error</span></code> or <code class="docutils literal"><span class="pre">lint_warning</span></code> logging messages when the lint
+fails. This is recommended for writing novel gecko-specific lints. In
+this case the signature for lint functions is <code class="docutils literal"><span class="pre">lint(files,</span> <span class="pre">config,</span> <span class="pre">logger,</span>
+<span class="pre">**kwargs)</span></code>.</p>
+</div>
+<div class="section" id="linter-definition">
+<h2>Linter Definition<a class="headerlink" href="#linter-definition" title="Permalink to this headline">¶</a></h2>
+<p>Each <code class="docutils literal"><span class="pre">.yml</span></code> file must have at least one linter defined in it. Here are the supported keys:</p>
+<ul class="simple">
+<li>description - A brief description of the linter’s purpose (required)</li>
+<li>type - One of ‘string’, ‘regex’ or ‘external’ (required)</li>
+<li>payload - The actual linting logic, depends on the type (required)</li>
+<li>include - A list of glob patterns that must be matched (optional)</li>
+<li>exclude - A list of glob patterns that must not be matched (optional)</li>
+<li>extensions - A list of file extensions to be considered (optional)</li>
+<li>setup - A function that sets up external dependencies (optional)</li>
+</ul>
+<p>In addition to the above, some <code class="docutils literal"><span class="pre">.yml</span></code> files correspond to a single lint rule. For these, the
+following additional keys may be specified:</p>
+<ul class="simple">
+<li>message - A string to print on infraction (optional)</li>
+<li>hint - A string with a clue on how to fix the infraction (optional)</li>
+<li>rule - An id string for the lint rule (optional)</li>
+<li>level - The severity of the infraction, either ‘error’ or ‘warning’ (optional)</li>
+</ul>
+<p>For structured_log lints the following additional keys apply:</p>
+<ul class="simple">
+<li>logger - A StructuredLog object to use for logging. If not supplied
+one will be created (optional)</li>
+</ul>
+</div>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>Here is an example of an external linter that shells out to the python flake8 linter,
+let’s call the file <code class="docutils literal"><span class="pre">flake8_lint.py</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+
+<span class="kn">from</span> <span class="nn">mozlint</span> <span class="kn">import</span> <span class="n">result</span>
+
+
+<span class="n">FLAKE8_NOT_FOUND</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">Could not find flake8! Install flake8 and try again.</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">lint</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="o">**</span><span class="n">lintargs</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">which</span>
+
+    <span class="n">binary</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;FLAKE8&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">binary</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">binary</span> <span class="o">=</span> <span class="n">which</span><span class="o">.</span><span class="n">which</span><span class="p">(</span><span class="s1">&#39;flake8&#39;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">which</span><span class="o">.</span><span class="n">WhichError</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">FLAKE8_NOT_FOUND</span><span class="p">)</span>
+            <span class="k">return</span> <span class="mi">1</span>
+
+    <span class="c1"># Flake8 allows passing in a custom format string. We use</span>
+    <span class="c1"># this to help mold the default flake8 format into what</span>
+    <span class="c1"># mozlint&#39;s ResultContainer object expects.</span>
+    <span class="n">cmdargs</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">binary</span><span class="p">,</span>
+        <span class="s1">&#39;--format&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;{&quot;path&quot;:&quot;</span><span class="si">%(path)s</span><span class="s1">&quot;,&quot;lineno&quot;:</span><span class="si">%(row)s</span><span class="s1">,&quot;column&quot;:</span><span class="si">%(col)s</span><span class="s1">,&quot;rule&quot;:&quot;</span><span class="si">%(code)s</span><span class="s1">&quot;,&quot;message&quot;:&quot;</span><span class="si">%(text)s</span><span class="s1">&quot;}&#39;</span><span class="p">,</span>
+    <span class="p">]</span> <span class="o">+</span> <span class="n">files</span>
+
+    <span class="n">proc</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="n">cmdargs</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">)</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">proc</span><span class="o">.</span><span class="n">communicate</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="c1"># all passed</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">output</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[]</span>
+
+    <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">output</span><span class="o">.</span><span class="n">splitlines</span><span class="p">():</span>
+        <span class="c1"># res is a dict of the form specified by --format above</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+        <span class="c1"># parse level out of the id string</span>
+        <span class="k">if</span> <span class="s1">&#39;code&#39;</span> <span class="ow">in</span> <span class="n">res</span> <span class="ow">and</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;code&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;W&#39;</span><span class="p">):</span>
+            <span class="n">res</span><span class="p">[</span><span class="s1">&#39;level&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;warning&#39;</span>
+
+        <span class="c1"># result.from_linter is a convenience method that</span>
+        <span class="c1"># creates a ResultContainer using a LINTER definition</span>
+        <span class="c1"># to populate some defaults.</span>
+        <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="o">**</span><span class="n">res</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">results</span>
+</pre></div>
+</div>
+<p>Now here is the linter definition that would call it:</p>
+<p>Notice the payload has two parts, delimited by ‘:’. The first is the module path, which
+<code class="docutils literal"><span class="pre">mozlint</span></code> will attempt to import (e.g, the name of a function to call). The second is
+the object path within that module. It is up to consumers of <code class="docutils literal"><span class="pre">mozlint</span></code> to ensure the
+module is in <code class="docutils literal"><span class="pre">sys.path</span></code>. Structured log linters use the same import mechanism.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="linters/eslint.html" class="btn btn-neutral float-right" title="ESLint" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="usage.html" class="btn btn-neutral" title="Running Linters Locally" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

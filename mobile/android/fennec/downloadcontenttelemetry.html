@@ -1,0 +1,342 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Downloadable content (DLC) UI Telemetry &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Firefox for Android" href="index.html"/>
+        <link rel="next" title="Install tracking with the Adjust SDK" href="adjust.html"/>
+        <link rel="prev" title="Activity Stream UI Telemetry" href="activitystreamtelemetry.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Firefox for Android</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="localeswitching.html">Runtime locale switching in Fennec</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uitelemetry.html">UI Telemetry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="activitystreamtelemetry.html">Activity Stream UI Telemetry</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Downloadable content (DLC) UI Telemetry</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#downloading-content">Downloading content</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#synchronizing-catalog">Synchronizing catalog</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adjust.html">Install tracking with the Adjust SDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mma.html">MMA Mobile Marketing Automation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="defaultdomains.html">Shipping Default Domains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shutdown.html">Shutting down Firefox for Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="push.html">The architecture of the Fennec Webpush implementation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Firefox for Android</a> &raquo;</li>
+        
+      <li>Downloadable content (DLC) UI Telemetry</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/mobile/android/fennec/downloadcontenttelemetry.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="downloadable-content-dlc-ui-telemetry">
+<h1>Downloadable content (DLC) UI Telemetry<a class="headerlink" href="#downloadable-content-dlc-ui-telemetry" title="Permalink to this headline">¶</a></h1>
+<p>The downloadable content service (DLC) uses UI telemetry to report successful and failed performed actions (like downloading new content or synchronizing the catalog of available content).</p>
+<p>Note: The download content service downloads additional assets for using the browser (like fonts, dictionaries or translations) and is not related to downloads that the user performs when browsing.</p>
+<p>All UI events use action <code class="docutils literal"><span class="pre">action.1</span></code> and method <code class="docutils literal"><span class="pre">service</span></code>. Additional information is structured as JSON blobs (<code class="docutils literal"><span class="pre">extras</span></code> field).</p>
+<div class="section" id="downloading-content">
+<h2>Downloading content<a class="headerlink" href="#downloading-content" title="Permalink to this headline">¶</a></h2>
+<p>Telemetry about downloaded content has the extra field <code class="docutils literal"><span class="pre">action</span></code> set to <code class="docutils literal"><span class="pre">dlc_download</span></code>. The <code class="docutils literal"><span class="pre">result</span></code> field will be set to <code class="docutils literal"><span class="pre">success</span></code> or <code class="docutils literal"><span class="pre">failure</span></code> depending on whether the content could be downloaded successfully. The <code class="docutils literal"><span class="pre">content</span></code> field will contain the UUID of the content (as listed in the catalog, see “Synchronizing catalog” section) that was downloaded or failed to be downloaded. This is helpful to identify potentially corrupt content.</p>
+<p>Telemetry extras sent for a successful content download might look like this:</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">extras</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;action&quot;</span><span class="o">:</span> <span class="s2">&quot;dlc_download&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;content&quot;</span><span class="o">:</span> <span class="s2">&quot;25610abb-5dc8-fd75-40e7-990507f010c4&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>For failed content downloads an additional <code class="docutils literal"><span class="pre">error</span></code> field contains the error type that occured when downloading the content. The value can be one of:</p>
+<ul class="simple">
+<li>no_network</li>
+<li>network_metered</li>
+<li>disk_space</li>
+<li>checksum</li>
+<li>io_disk</li>
+<li>io_network</li>
+<li>memory</li>
+<li>server</li>
+<li>logic</li>
+<li>unrecoverable</li>
+</ul>
+<p>Telemetry extras sent for a failed content download might look like this:</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">extras</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;action&quot;</span><span class="o">:</span> <span class="s2">&quot;dlc_download&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="s2">&quot;failure&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;content&quot;</span><span class="o">:</span> <span class="s2">&quot;25610abb-5dc8-fd75-40e7-990507f010c4&quot;</span>
+    <span class="s2">&quot;error&quot;</span><span class="o">:</span> <span class="s2">&quot;io_network&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="synchronizing-catalog">
+<h2>Synchronizing catalog<a class="headerlink" href="#synchronizing-catalog" title="Permalink to this headline">¶</a></h2>
+<p>The app has a local catalog of content that can be downloaded. This catalog can be updated and is synchronized from a server. Telemetry about synchronizing the catalog has the extra field <code class="docutils literal"><span class="pre">action</span></code> set to <code class="docutils literal"><span class="pre">dlc_sync</span></code>. Like for content downloads the <code class="docutils literal"><span class="pre">result</span></code> field will be set to <code class="docutils literal"><span class="pre">success</span></code> or <code class="docutils literal"><span class="pre">failure</span></code> depending on whether the synchronization was successful or not.</p>
+<p>Telemetry extras for a successful synchronization contain two additional fields:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">updated</span></code> - This field is set to <code class="docutils literal"><span class="pre">true</span></code> if the local catalog was updated or false if a synchronization was successful but the catalog has not changed since the last synchronization</li>
+<li><code class="docutils literal"><span class="pre">action_required</span></code> - If the value is <code class="docutils literal"><span class="pre">true</span></code> then this update required a local action: New or updated content needs to be downloaded or old content needs to be removed. If the value is <code class="docutils literal"><span class="pre">false</span></code> then the catalog was updated but no further action is required by the client.</li>
+</ul>
+<p>A successful synchronization might send the following telemetry extras:</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">extras</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;action&quot;</span><span class="o">:</span> <span class="s2">&quot;dlc_sync&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;updated&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="s2">&quot;action_required&quot;</span><span class="o">:</span> <span class="kc">false</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Telemetry extras for a failed synchronization will contain an additional <code class="docutils literal"><span class="pre">error</span></code> field with the same possible values as listed for the failed download case.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="adjust.html" class="btn btn-neutral float-right" title="Install tracking with the Adjust SDK" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="activitystreamtelemetry.html" class="btn btn-neutral" title="Activity Stream UI Telemetry" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

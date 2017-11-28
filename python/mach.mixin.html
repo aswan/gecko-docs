@@ -1,0 +1,380 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mach.mixin package &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../index.html"/>
+        <link rel="up" title="mach package" href="mach.html"/>
+        <link rel="next" title="mach.test package" href="mach.test.html"/>
+        <link rel="prev" title="mach.commands package" href="mach.commands.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="mach.html">mach package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="mach.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="mach.commands.html">mach.commands package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">mach.mixin package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mach.mixin.logging">mach.mixin.logging module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mach.mixin.process">mach.mixin.process module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mach.mixin">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mach.test.html">mach.test package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mach.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mach.html#module-mach.base">mach.base module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mach.html#module-mach.config">mach.config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mach.html#module-mach.decorators">mach.decorators module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mach.html#module-mach.dispatcher">mach.dispatcher module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mach.html#module-mach.logging">mach.logging module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mach.html#module-mach.main">mach.main module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mach.html#module-mach.registrar">mach.registrar module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mach.html#module-mach.terminal">mach.terminal module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mach.html#module-mach">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="mach.html">mach package</a> &raquo;</li>
+        
+      <li>mach.mixin package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/python/mach.mixin.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mach-mixin-package">
+<h1>mach.mixin package<a class="headerlink" href="#mach-mixin-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-mach.mixin.logging">
+<span id="mach-mixin-logging-module"></span><h2>mach.mixin.logging module<a class="headerlink" href="#module-mach.mixin.logging" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mach.mixin.logging.LoggingMixin">
+<em class="property">class </em><code class="descclassname">mach.mixin.logging.</code><code class="descname">LoggingMixin</code><a class="headerlink" href="#mach.mixin.logging.LoggingMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Provides functionality to control logging.</p>
+<dl class="method">
+<dt id="mach.mixin.logging.LoggingMixin.log">
+<code class="descname">log</code><span class="sig-paren">(</span><em>level</em>, <em>action</em>, <em>params</em>, <em>format_str</em><span class="sig-paren">)</span><a class="headerlink" href="#mach.mixin.logging.LoggingMixin.log" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log a structured log event.</p>
+<p>A structured log event consists of a logging level, a string action, a
+dictionary of attributes, and a formatting string.</p>
+<p>The logging level is one of the logging.* constants, such as
+logging.INFO.</p>
+<p>The action string is essentially the enumeration of the event. Each
+different type of logged event should have a different action.</p>
+<p>The params dict is the metadata constituting the logged event.</p>
+<p>The formatting string is used to convert the structured message back to
+human-readable format. Conversion back to human-readable form is
+performed by calling format() on this string, feeding into it the dict
+of attributes constituting the event.</p>
+<dl class="docutils">
+<dt>self.log(logging.DEBUG, ‘login’, {‘username’: ‘johndoe’},</dt>
+<dd>‘User login: {username}’)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="mach.mixin.logging.LoggingMixin.populate_logger">
+<code class="descname">populate_logger</code><span class="sig-paren">(</span><em>name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mach.mixin.logging.LoggingMixin.populate_logger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ensure this class instance has a logger associated with it.</p>
+<p>Users of this mixin that call log() will need to ensure self._logger is
+a logging.Logger instance before they call log(). This function ensures
+self._logger is defined by populating it if it isn’t.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mach.mixin.process">
+<span id="mach-mixin-process-module"></span><h2>mach.mixin.process module<a class="headerlink" href="#module-mach.mixin.process" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mach.mixin.process.ProcessExecutionMixin">
+<em class="property">class </em><code class="descclassname">mach.mixin.process.</code><code class="descname">ProcessExecutionMixin</code><a class="headerlink" href="#mach.mixin.process.ProcessExecutionMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mach.mixin.logging.LoggingMixin" title="mach.mixin.logging.LoggingMixin"><code class="xref py py-class docutils literal"><span class="pre">mach.mixin.logging.LoggingMixin</span></code></a></p>
+<p>Mix-in that provides process execution functionality.</p>
+<dl class="method">
+<dt id="mach.mixin.process.ProcessExecutionMixin.run_process">
+<code class="descname">run_process</code><span class="sig-paren">(</span><em>args=None</em>, <em>cwd=None</em>, <em>append_env=None</em>, <em>explicit_env=None</em>, <em>log_name=None</em>, <em>log_level=20</em>, <em>line_handler=None</em>, <em>require_unix_environment=False</em>, <em>ensure_exit_code=0</em>, <em>ignore_children=False</em>, <em>pass_thru=False</em><span class="sig-paren">)</span><a class="headerlink" href="#mach.mixin.process.ProcessExecutionMixin.run_process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs a single process to completion.</p>
+<p>Takes a list of arguments to run where the first item is the
+executable. Runs the command in the specified directory and
+with optional environment variables.</p>
+<dl class="docutils">
+<dt>append_env – Dict of environment variables to append to the current</dt>
+<dd>set of environment variables.</dd>
+<dt>explicit_env – Dict of environment variables to set for the new</dt>
+<dd>process. Any existing environment variables will be ignored.</dd>
+</dl>
+<p>require_unix_environment if True will ensure the command is executed
+within a UNIX environment. Basically, if we are on Windows, it will
+execute the command via an appropriate UNIX-like shell.</p>
+<p>ignore_children is proxied to mozprocess’s ignore_children.</p>
+<p>ensure_exit_code is used to ensure the exit code of a process matches
+what is expected. If it is an integer, we raise an Exception if the
+exit code does not match this value. If it is True, we ensure the exit
+code is 0. If it is False, we don’t perform any exit code validation.</p>
+<p>pass_thru is a special execution mode where the child process inherits
+this process’s standard file handles (stdin, stdout, stderr) as well as
+additional file descriptors. It should be used for interactive processes
+where buffering from mozprocess could be an issue. pass_thru does not
+use mozprocess. Therefore, arguments like log_name, line_handler,
+and ignore_children have no effect.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mach.mixin">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-mach.mixin" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="mach.test.html" class="btn btn-neutral float-right" title="mach.test package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="mach.commands.html" class="btn btn-neutral" title="mach.commands package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

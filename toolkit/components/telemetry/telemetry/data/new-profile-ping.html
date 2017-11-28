@@ -1,0 +1,363 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>“new-profile” ping &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../../../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../../../../../index.html"/>
+        <link rel="up" title="Data documentation" href="index.html"/>
+        <link rel="next" title="“sync” ping" href="sync-ping.html"/>
+        <link rel="prev" title="“modules” ping" href="modules-ping.html"/> 
+
+  
+  <script src="../../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Telemetry</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../concepts/index.html">Concepts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../collection/index.html">Data collection</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Data documentation</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="common-ping.html">Common ping format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="environment.html">Environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="main-ping.html">“main” ping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deletion-ping.html">“deletion” ping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="crash-ping.html">“crash” ping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="crash-ping.html#version-history">Version History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="backgroundhangmonitor-ping.html">“backgroundhangmonitor” ping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="anonymous-ping.html">“anonymous” ping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="first-shutdown-ping.html">“first-shutdown” ping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="addons-malware-ping.html">Add-ons malware ping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="core-ping.html">“core” ping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="health-ping.html">“health” ping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="heartbeat-ping.html">“heartbeat” ping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules-ping.html">“modules” ping</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">“new-profile” ping</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#payload-reason">payload.reason</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#duplicate-pings">Duplicate pings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#expected-behaviours">Expected behaviours</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sync-ping.html">“sync” ping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="uitour-ping.html">“uitour-tag” ping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="update-ping.html">“update” ping</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../internals/index.html">Internals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fhr/index.html">Firefox Health Report (Obsolete)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Telemetry</a> &raquo;</li>
+        
+          <li><a href="index.html">Data documentation</a> &raquo;</li>
+        
+      <li>“new-profile” ping</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../../_sources/toolkit/components/telemetry/telemetry/data/new-profile-ping.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="new-profile-ping">
+<h1>“new-profile” ping<a class="headerlink" href="#new-profile-ping" title="Permalink to this headline">¶</a></h1>
+<p>This opt-out ping is sent from Firefox Desktop 30 minutes after the browser is started, on the first session
+of a newly created profile. If the first session of a newly-created profile was shorter than 30 minutes, it
+gets sent using the <a class="reference internal" href="../internals/pingsender.html"><span class="doc">Ping Sender</span></a> at shutdown.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">We don’t sent the ping immediately after Telemetry completes initialization to give the user enough
+time to tweak their data collection preferences.</p>
+</div>
+<p>Structure:</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;new-profile&quot;</span><span class="p">,</span>
+  <span class="p">...</span> <span class="nx">common</span> <span class="nx">ping</span> <span class="nx">data</span>
+  <span class="nx">clientId</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">UUID</span><span class="o">&gt;</span><span class="p">,</span>
+  <span class="nx">environment</span><span class="o">:</span> <span class="p">{</span> <span class="p">...</span> <span class="p">},</span>
+  <span class="nx">payload</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">reason</span><span class="o">:</span> <span class="s2">&quot;startup&quot;</span> <span class="c1">// or &quot;shutdown&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="payload-reason">
+<h2>payload.reason<a class="headerlink" href="#payload-reason" title="Permalink to this headline">¶</a></h2>
+<p>If this field contains <code class="docutils literal"><span class="pre">startup</span></code>, then the ping was generated at the scheduled time after
+startup. If it contains <code class="docutils literal"><span class="pre">shutdown</span></code>, then the browser was closed before the time the
+ping was scheduled. In the latter case, the ping is generated during shutdown and sent
+using the <a class="reference internal" href="../internals/pingsender.html"><span class="doc">Ping Sender</span></a>.</p>
+</div>
+<div class="section" id="duplicate-pings">
+<h2>Duplicate pings<a class="headerlink" href="#duplicate-pings" title="Permalink to this headline">¶</a></h2>
+<p>We expect a low fraction of duplicates of this ping, mostly due to crashes happening
+right after sending the ping and before the telemetry state gets flushed to the disk. This should
+be fairly low in practice and manageable during the analysis phase.</p>
+</div>
+<div class="section" id="expected-behaviours">
+<h2>Expected behaviours<a class="headerlink" href="#expected-behaviours" title="Permalink to this headline">¶</a></h2>
+<p>The following is a list of conditions and expected behaviours for the <code class="docutils literal"><span class="pre">new-profile</span></code> ping:</p>
+<ul class="simple">
+<li><strong>The ping is generated at the browser shutdown on a new profile, after the privacy policy is displayed:</strong><ul>
+<li><em>for an user initiated browser shutdown</em>, <code class="docutils literal"><span class="pre">new-profile</span></code> is sent immediately using the <a class="reference internal" href="../internals/pingsender.html"><span class="doc">Ping Sender</span></a>;</li>
+<li><em>for a browser shutdown triggered by OS shutdown</em>, <code class="docutils literal"><span class="pre">new-profile</span></code> is saved to disk and sent next time the browser restarts.</li>
+</ul>
+</li>
+<li><strong>The ping is generated before the privacy policy is displayed</strong>: <code class="docutils literal"><span class="pre">new-profile</span></code> is saved to disk and sent
+next time the browser restarts.</li>
+<li><strong>The ping is set to be generated and Telemetry is disabled</strong>: <code class="docutils literal"><span class="pre">new-profile</span></code> is never sent, even if Telemetry is
+turned back on later.</li>
+<li><strong>Firefox crashes before the ping can be generated</strong>: <code class="docutils literal"><span class="pre">new-profile</span></code> will be scheduled to be generated and
+sent again on the next restart.</li>
+<li><strong>User performs a profile refresh</strong>:<ul>
+<li><em>the ping was already sent</em>: <code class="docutils literal"><span class="pre">new-profile</span></code> will not be sent again.</li>
+<li><em>the ping was not sent</em>: <code class="docutils literal"><span class="pre">new-profile</span></code> will be generated and sent.</li>
+<li><em>the refresh happens immediately after the profile creation, before the policy is shown</em>: <code class="docutils literal"><span class="pre">new-profile</span></code> will not be sent again.</li>
+</ul>
+</li>
+<li><strong>Firefox is run with an old profile that already sent Telemetry data</strong>: <code class="docutils literal"><span class="pre">new-profile</span></code> will not be generated
+nor sent.</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sync-ping.html" class="btn btn-neutral float-right" title="“sync” ping" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="modules-ping.html" class="btn btn-neutral" title="“modules” ping" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+mach\.commands package
+======================
+
+Submodules
+----------
+
+mach\.commands\.commandinfo module
+----------------------------------
+
+.. automodule:: mach.commands.commandinfo
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+mach\.commands\.settings module
+-------------------------------
+
+.. automodule:: mach.commands.settings
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: mach.commands
+    :members:
+    :undoc-members:
+    :show-inheritance:

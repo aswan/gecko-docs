@@ -1,0 +1,467 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Supbrocess Module &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../../../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../../../../../index.html"/>
+        <link rel="next" title="Toolkit modules" href="../../../toolkit_modules/index.html"/>
+        <link rel="prev" title="Crash Reporter" href="../../../../crashreporter/crashreporter/index.html"/> 
+
+  
+  <script src="../../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Supbrocess Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#input-and-output-redirection">Input and Output Redirection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#process-and-pipe-lifecycles">Process and Pipe Lifecycles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bidirectional-io">Bidirectional IO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#arguments">Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#process-environment">Process Environment</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../python/taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Supbrocess Module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../../_sources/toolkit/modules/subprocess/toolkit_modules/subprocess/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="supbrocess-module">
+<span id="subprocess"></span><h1>Supbrocess Module<a class="headerlink" href="#supbrocess-module" title="Permalink to this headline">¶</a></h1>
+<p>The Subprocess module allows a caller to spawn a native host executable, and
+communicate with it asynchronously over its standard input and output pipes.</p>
+<p>Processes are launched asynchronously <code class="docutils literal"><span class="pre">Subprocess.call</span></code> method, based
+on the properties of a single options object. The method returns a promise
+which resolves, once the process has successfully launched, to a <code class="docutils literal"><span class="pre">Process</span></code>
+object, which can be used to communicate with and control the process.</p>
+<p>A simple Hello World invocation, which writes a message to a process, reads it
+back, logs it, and waits for the process to exit looks something like:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nx">proc</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">Subprocess</span><span class="p">.</span><span class="nx">call</span><span class="p">({</span>
+  <span class="nx">command</span><span class="o">:</span> <span class="s2">&quot;/bin/cat&quot;</span><span class="p">,</span>
+<span class="p">});</span>
+
+<span class="nx">proc</span><span class="p">.</span><span class="nx">stdin</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">&quot;Hello World!&quot;</span><span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">proc</span><span class="p">.</span><span class="nx">stdout</span><span class="p">.</span><span class="nx">readString</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+
+<span class="nx">proc</span><span class="p">.</span><span class="nx">stdin</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+<span class="kd">let</span> <span class="p">{</span><span class="nx">exitCode</span><span class="p">}</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">proc</span><span class="p">.</span><span class="nx">wait</span><span class="p">();</span>
+</pre></div>
+</div>
+<div class="section" id="input-and-output-redirection">
+<h2>Input and Output Redirection<a class="headerlink" href="#input-and-output-redirection" title="Permalink to this headline">¶</a></h2>
+<p>Communication with the child process happens entirely via one-way pipes tied
+to its standard input, standard output, and standard error file descriptors.
+While standard input and output are always redirected to pipes, standard error
+is inherited from the parent process by default. Standard error can, however,
+optionally be either redirected to its own pipe or merged into the standard
+output pipe.</p>
+<p>The module is designed primarily for use with processes following a strict
+IO protocol, with predictable message sizes. Its read operations, therefore,
+either complete after reading the exact amount of data specified, or do not
+complete at all. For cases where this is not desirable, <code class="docutils literal"><span class="pre">read()</span></code> and
+<code class="docutils literal"><span class="pre">readString</span></code> may be called without any length argument, and will return a
+chunk of data of an arbitrary size.</p>
+</div>
+<div class="section" id="process-and-pipe-lifecycles">
+<h2>Process and Pipe Lifecycles<a class="headerlink" href="#process-and-pipe-lifecycles" title="Permalink to this headline">¶</a></h2>
+<p>Once the process exits, any buffered data from its output pipes may still be
+read until the pipe is explicitly closed. Unless the pipe is explicitly
+closed, however, any pending buffered data <em>must</em> be read from the pipe, or
+the resources associated with the pipe will not be freed.</p>
+<p>Beyond this, no explicit cleanup is required for either processes or their
+pipes. So long as the caller ensures that the process exits, and there is no
+pending input to be read on its <code class="docutils literal"><span class="pre">stdout</span></code> or <code class="docutils literal"><span class="pre">stderr</span></code> pipes, all resources
+will be freed automatically.</p>
+<p>The preferred way to ensure that a process exits is to close its input pipe
+and wait for it to exit gracefully. Processes which haven’t exited gracefully
+by shutdown time, however, must be forcibly terminated:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nx">proc</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">Subprocess</span><span class="p">.</span><span class="nx">call</span><span class="p">({</span>
+  <span class="nx">command</span><span class="o">:</span> <span class="s2">&quot;/usr/bin/subprocess.py&quot;</span><span class="p">,</span>
+<span class="p">});</span>
+
+<span class="c1">// Kill the process if it hasn&#39;t gracefully exited by shutdown time.</span>
+<span class="kd">let</span> <span class="nx">blocker</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="nx">proc</span><span class="p">.</span><span class="nx">kill</span><span class="p">();</span>
+
+<span class="nx">AsyncShutdown</span><span class="p">.</span><span class="nx">profileBeforeChange</span><span class="p">.</span><span class="nx">addBlocker</span><span class="p">(</span>
+  <span class="s2">&quot;Subprocess: Killing hung process&quot;</span><span class="p">,</span>
+  <span class="nx">blocker</span><span class="p">);</span>
+
+<span class="nx">proc</span><span class="p">.</span><span class="nx">wait</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// Remove the shutdown blocker once we&#39;ve exited.</span>
+  <span class="nx">AsyncShutdown</span><span class="p">.</span><span class="nx">profileBeforeChange</span><span class="p">.</span><span class="nx">removeBlocker</span><span class="p">(</span><span class="nx">blocker</span><span class="p">);</span>
+
+  <span class="c1">// Close standard output, in case there&#39;s any buffered data we haven&#39;t read.</span>
+  <span class="nx">proc</span><span class="p">.</span><span class="nx">stdout</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+<span class="p">});</span>
+
+<span class="c1">// Send a message to the process, and close stdin, so the process knows to</span>
+<span class="c1">// exit.</span>
+<span class="nx">proc</span><span class="p">.</span><span class="nx">stdin</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+<span class="nx">proc</span><span class="p">.</span><span class="nx">stdin</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>In the simpler case of a short-running process which takes no input, and exits
+immediately after producing output, it’s generally enough to simply read its
+output stream until EOF:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nx">proc</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">Subprocess</span><span class="p">.</span><span class="nx">call</span><span class="p">({</span>
+  <span class="nx">command</span><span class="o">:</span> <span class="nx">await</span> <span class="nx">Subprocess</span><span class="p">.</span><span class="nx">pathSearch</span><span class="p">(</span><span class="s2">&quot;ifconfig&quot;</span><span class="p">),</span>
+<span class="p">});</span>
+
+<span class="c1">// Read all of the process output.</span>
+<span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">string</span><span class="p">;</span>
+<span class="k">while</span> <span class="p">((</span><span class="nx">string</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">proc</span><span class="p">.</span><span class="nx">stdout</span><span class="p">.</span><span class="nx">readString</span><span class="p">()))</span> <span class="p">{</span>
+  <span class="nx">result</span> <span class="o">+=</span> <span class="nx">string</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+
+<span class="c1">// The output pipe is closed and no buffered data remains to be read.</span>
+<span class="c1">// This means the process has exited, and no further cleanup is necessary.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="bidirectional-io">
+<h2>Bidirectional IO<a class="headerlink" href="#bidirectional-io" title="Permalink to this headline">¶</a></h2>
+<p>When performing bidirectional IO, special care needs to be taken to avoid
+deadlocks. While all IO operations in the Subprocess API are asynchronous,
+careless ordering of operations can still lead to a state where both processes
+are blocked on a read or write operation at the same time. For example,</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nx">proc</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">Subprocess</span><span class="p">.</span><span class="nx">call</span><span class="p">({</span>
+  <span class="nx">command</span><span class="o">:</span> <span class="s2">&quot;/bin/cat&quot;</span><span class="p">,</span>
+<span class="p">});</span>
+
+<span class="kd">let</span> <span class="nx">size</span> <span class="o">=</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">;</span>
+<span class="nx">await</span> <span class="nx">proc</span><span class="p">.</span><span class="nx">stdin</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="k">new</span> <span class="nx">ArrayBuffer</span><span class="p">(</span><span class="nx">size</span><span class="p">));</span>
+
+<span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">proc</span><span class="p">.</span><span class="nx">stdout</span><span class="p">.</span><span class="nx">read</span><span class="p">(</span><span class="nx">size</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The code attempts to write 1MB of data to an input pipe, and then read it back
+from the output pipe. Because the data is big enough to fill both the input
+and output pipe buffers, though, and because the code waits for the write
+operation to complete before attempting any reads, the <code class="docutils literal"><span class="pre">cat</span></code> process will
+block trying to write to its output indefinitely, and never finish reading the
+data from its standard input.</p>
+<p>In order to avoid the deadlock, we need to avoid blocking on the write
+operation:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nx">size</span> <span class="o">=</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">;</span>
+<span class="nx">proc</span><span class="p">.</span><span class="nx">stdin</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="k">new</span> <span class="nx">ArrayBuffer</span><span class="p">(</span><span class="nx">size</span><span class="p">));</span>
+
+<span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">proc</span><span class="p">.</span><span class="nx">stdout</span><span class="p">.</span><span class="nx">read</span><span class="p">(</span><span class="nx">size</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>There is no silver bullet to avoiding deadlocks in this type of situation,
+though. Any input operations that depend on output operations, or vice versa,
+have the possibility of triggering deadlocks, and need to be thought out
+carefully.</p>
+</div>
+<div class="section" id="arguments">
+<h2>Arguments<a class="headerlink" href="#arguments" title="Permalink to this headline">¶</a></h2>
+<p>Arguments may be passed to the process in the form an array of strings.
+Arguments are never split, or subjected to any sort of shell expansion, so the
+target process will receive the exact arguments array as passed to
+<code class="docutils literal"><span class="pre">Subprocess.call</span></code>. Argument 0 will always be the full path to the
+executable, as passed via the <code class="docutils literal"><span class="pre">command</span></code> argument:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nx">proc</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">Subprocess</span><span class="p">.</span><span class="nx">call</span><span class="p">({</span>
+  <span class="nx">command</span><span class="o">:</span> <span class="s2">&quot;/bin/sh&quot;</span><span class="p">,</span>
+  <span class="nx">arguments</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;-c&quot;</span><span class="p">,</span> <span class="s2">&quot;echo -n $0&quot;</span><span class="p">],</span>
+<span class="p">});</span>
+
+<span class="kd">let</span> <span class="nx">output</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">proc</span><span class="p">.</span><span class="nx">stdout</span><span class="p">.</span><span class="nx">readString</span><span class="p">();</span>
+<span class="nx">assert</span><span class="p">(</span><span class="nx">output</span> <span class="o">===</span> <span class="s2">&quot;/bin/sh&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="process-environment">
+<h2>Process Environment<a class="headerlink" href="#process-environment" title="Permalink to this headline">¶</a></h2>
+<p>By default, the process is launched with the same environment variables and
+working directory as the parent process, but either can be changed if
+necessary. The working directory may be changed simply by passing a
+<code class="docutils literal"><span class="pre">workdir</span></code> option:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nx">proc</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">Subprocess</span><span class="p">.</span><span class="nx">call</span><span class="p">({</span>
+  <span class="nx">command</span><span class="o">:</span> <span class="s2">&quot;/bin/pwd&quot;</span><span class="p">,</span>
+  <span class="nx">workdir</span><span class="o">:</span> <span class="s2">&quot;/tmp&quot;</span><span class="p">,</span>
+<span class="p">});</span>
+
+<span class="kd">let</span> <span class="nx">output</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">proc</span><span class="p">.</span><span class="nx">stdout</span><span class="p">.</span><span class="nx">readString</span><span class="p">();</span>
+<span class="nx">assert</span><span class="p">(</span><span class="nx">output</span> <span class="o">===</span> <span class="s2">&quot;/tmp\n&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The process’s environment variables can be changed using the <code class="docutils literal"><span class="pre">environment</span></code>
+and <code class="docutils literal"><span class="pre">environmentAppend</span></code> options. By default, passing an <code class="docutils literal"><span class="pre">environment</span></code>
+object replaces the process’s entire environment with the properties in that
+object:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nx">proc</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">Subprocess</span><span class="p">.</span><span class="nx">call</span><span class="p">({</span>
+  <span class="nx">command</span><span class="o">:</span> <span class="s2">&quot;/bin/pwd&quot;</span><span class="p">,</span>
+  <span class="nx">environment</span><span class="o">:</span> <span class="p">{</span><span class="nx">FOO</span><span class="o">:</span> <span class="s2">&quot;BAR&quot;</span><span class="p">},</span>
+<span class="p">});</span>
+
+<span class="kd">let</span> <span class="nx">output</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">proc</span><span class="p">.</span><span class="nx">stdout</span><span class="p">.</span><span class="nx">readString</span><span class="p">();</span>
+<span class="nx">assert</span><span class="p">(</span><span class="nx">output</span> <span class="o">===</span> <span class="s2">&quot;FOO=BAR\n&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>In order to add variables to, or change variables from, the current set of
+environment variables, the <code class="docutils literal"><span class="pre">environmentAppend</span></code> object must be passed in
+addition:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nx">proc</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">Subprocess</span><span class="p">.</span><span class="nx">call</span><span class="p">({</span>
+  <span class="nx">command</span><span class="o">:</span> <span class="s2">&quot;/bin/pwd&quot;</span><span class="p">,</span>
+  <span class="nx">environment</span><span class="o">:</span> <span class="p">{</span><span class="nx">FOO</span><span class="o">:</span> <span class="s2">&quot;BAR&quot;</span><span class="p">},</span>
+  <span class="nx">environmentAppend</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+<span class="p">});</span>
+
+<span class="kd">let</span> <span class="nx">output</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="k">while</span> <span class="p">((</span><span class="nx">string</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">proc</span><span class="p">.</span><span class="nx">stdout</span><span class="p">.</span><span class="nx">readString</span><span class="p">()))</span> <span class="p">{</span>
+  <span class="nx">output</span> <span class="o">+=</span> <span class="nx">string</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">assert</span><span class="p">(</span><span class="nx">output</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s2">&quot;FOO=BAR\n&quot;</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../../toolkit_modules/index.html" class="btn btn-neutral float-right" title="Toolkit modules" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../../../../crashreporter/crashreporter/index.html" class="btn btn-neutral" title="Crash Reporter" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

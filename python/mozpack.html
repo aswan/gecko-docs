@@ -1,0 +1,2086 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mozpack package &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../index.html"/>
+        <link rel="next" title="mozpack.chrome package" href="mozpack.chrome.html"/>
+        <link rel="prev" title="mozlint.formatters package" href="mozlint.formatters.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozlint.html">mozlint package</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">mozpack package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mozpack.chrome.html">mozpack.chrome package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozpack.packager.html">mozpack.packager package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozpack.test.html">mozpack.test package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-mozpack.archive">mozpack.archive module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-mozpack.copier">mozpack.copier module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-mozpack.dmg">mozpack.dmg module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-mozpack.errors">mozpack.errors module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-mozpack.executables">mozpack.executables module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-mozpack.files">mozpack.files module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-mozpack.hg">mozpack.hg module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-mozpack.manifests">mozpack.manifests module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-mozpack.mozjar">mozpack.mozjar module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-mozpack.path">mozpack.path module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-mozpack">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>mozpack package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/python/mozpack.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mozpack-package">
+<h1>mozpack package<a class="headerlink" href="#mozpack-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mozpack.chrome.html">mozpack.chrome package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.chrome.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.chrome.html#module-mozpack.chrome.flags">mozpack.chrome.flags module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.chrome.html#module-mozpack.chrome.manifest">mozpack.chrome.manifest module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.chrome.html#module-mozpack.chrome">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mozpack.packager.html">mozpack.packager package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.packager.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.packager.html#module-mozpack.packager.formats">mozpack.packager.formats module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.packager.html#module-mozpack.packager.l10n">mozpack.packager.l10n module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.packager.html#module-mozpack.packager.unpack">mozpack.packager.unpack module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.packager.html#module-mozpack.packager">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mozpack.test.html">mozpack.test package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.test.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.test.html#module-mozpack.test.test_archive">mozpack.test.test_archive module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.test.html#module-mozpack.test.test_chrome_flags">mozpack.test.test_chrome_flags module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.test.html#module-mozpack.test.test_chrome_manifest">mozpack.test.test_chrome_manifest module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.test.html#module-mozpack.test.test_copier">mozpack.test.test_copier module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.test.html#module-mozpack.test.test_errors">mozpack.test.test_errors module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.test.html#module-mozpack.test.test_files">mozpack.test.test_files module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.test.html#module-mozpack.test.test_manifests">mozpack.test.test_manifests module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.test.html#module-mozpack.test.test_mozjar">mozpack.test.test_mozjar module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.test.html#module-mozpack.test.test_packager">mozpack.test.test_packager module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.test.html#module-mozpack.test.test_packager_formats">mozpack.test.test_packager_formats module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.test.html#module-mozpack.test.test_packager_l10n">mozpack.test.test_packager_l10n module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.test.html#module-mozpack.test.test_packager_unpack">mozpack.test.test_packager_unpack module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.test.html#module-mozpack.test.test_path">mozpack.test.test_path module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.test.html#module-mozpack.test">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-mozpack.archive">
+<span id="mozpack-archive-module"></span><h2>mozpack.archive module<a class="headerlink" href="#module-mozpack.archive" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mozpack.archive.create_tar_bz2_from_files">
+<code class="descclassname">mozpack.archive.</code><code class="descname">create_tar_bz2_from_files</code><span class="sig-paren">(</span><em>fp</em>, <em>files</em>, <em>compresslevel=9</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.archive.create_tar_bz2_from_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a tar.bz2 file deterministically from files.</p>
+<p>This is a glorified wrapper around <code class="docutils literal"><span class="pre">create_tar_from_files</span></code> that
+adds bzip2 compression.</p>
+<p>This function is similar to <code class="docutils literal"><span class="pre">create_tar_gzip_from_files()</span></code>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozpack.archive.create_tar_from_files">
+<code class="descclassname">mozpack.archive.</code><code class="descname">create_tar_from_files</code><span class="sig-paren">(</span><em>fp</em>, <em>files</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.archive.create_tar_from_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a tar file deterministically.</p>
+<p>Receives a dict mapping names of files in the archive to local filesystem
+paths or <code class="docutils literal"><span class="pre">mozpack.files.BaseFile</span></code> instances.</p>
+<p>The files will be archived and written to the passed file handle opened
+for writing.</p>
+<p>Only regular files can be written.</p>
+<p>FUTURE accept a filename argument (or create APIs to write files)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozpack.archive.create_tar_gz_from_files">
+<code class="descclassname">mozpack.archive.</code><code class="descname">create_tar_gz_from_files</code><span class="sig-paren">(</span><em>fp</em>, <em>files</em>, <em>filename=None</em>, <em>compresslevel=9</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.archive.create_tar_gz_from_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a tar.gz file deterministically from files.</p>
+<p>This is a glorified wrapper around <code class="docutils literal"><span class="pre">create_tar_from_files</span></code> that
+adds gzip compression.</p>
+<p>The passed file handle should be opened for writing in binary mode.
+When the function returns, all data has been written to the handle.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozpack.copier">
+<span id="mozpack-copier-module"></span><h2>mozpack.copier module<a class="headerlink" href="#module-mozpack.copier" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozpack.copier.FileCopier">
+<em class="property">class </em><code class="descclassname">mozpack.copier.</code><code class="descname">FileCopier</code><a class="headerlink" href="#mozpack.copier.FileCopier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.copier.FileRegistry" title="mozpack.copier.FileRegistry"><code class="xref py py-class docutils literal"><span class="pre">mozpack.copier.FileRegistry</span></code></a></p>
+<p>FileRegistry with the ability to copy the registered files to a separate
+directory.</p>
+<dl class="method">
+<dt id="mozpack.copier.FileCopier.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><em>destination</em>, <em>skip_if_older=True</em>, <em>remove_unaccounted=True</em>, <em>remove_all_directory_symlinks=True</em>, <em>remove_empty_directories=True</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.copier.FileCopier.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy all registered files to the given destination path. The given
+destination can be an existing directory, or not exist at all. It
+can’t be e.g. a file.
+The copy process acts a bit like rsync: files are not copied when they
+don’t need to (see mozpack.files for details on file.copy).</p>
+<p>By default, files in the destination directory that aren’t
+registered are removed and empty directories are deleted. In
+addition, all directory symlinks in the destination directory
+are deleted: this is a conservative approach to ensure that we
+never accidently write files into a directory that is not the
+destination directory. In the worst case, we might have a
+directory symlink in the object directory to the source
+directory.</p>
+<p>To disable removing of unregistered files, pass
+remove_unaccounted=False. To disable removing empty
+directories, pass remove_empty_directories=False. In rare
+cases, you might want to maintain directory symlinks in the
+destination directory (at least those that are not required to
+be regular directories): pass
+remove_all_directory_symlinks=False. Exercise caution with
+this flag: you almost certainly do not want to preserve
+directory symlinks.</p>
+<p>Returns a FileCopyResult that details what changed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.copier.FileCopyResult">
+<em class="property">class </em><code class="descclassname">mozpack.copier.</code><code class="descname">FileCopyResult</code><a class="headerlink" href="#mozpack.copier.FileCopyResult" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Represents results of a FileCopier.copy operation.</p>
+<dl class="attribute">
+<dt id="mozpack.copier.FileCopyResult.existing_files_count">
+<code class="descname">existing_files_count</code><a class="headerlink" href="#mozpack.copier.FileCopyResult.existing_files_count" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozpack.copier.FileCopyResult.removed_directories_count">
+<code class="descname">removed_directories_count</code><a class="headerlink" href="#mozpack.copier.FileCopyResult.removed_directories_count" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozpack.copier.FileCopyResult.removed_files_count">
+<code class="descname">removed_files_count</code><a class="headerlink" href="#mozpack.copier.FileCopyResult.removed_files_count" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozpack.copier.FileCopyResult.updated_files_count">
+<code class="descname">updated_files_count</code><a class="headerlink" href="#mozpack.copier.FileCopyResult.updated_files_count" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.copier.FileRegistry">
+<em class="property">class </em><code class="descclassname">mozpack.copier.</code><code class="descname">FileRegistry</code><a class="headerlink" href="#mozpack.copier.FileRegistry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Generic container to keep track of a set of BaseFile instances. It
+preserves the order under which the files are added, but doesn’t keep
+track of empty directories (directories are not stored at all).
+The paths associated with the BaseFile instances are relative to an
+unspecified (virtual) root directory.</p>
+<blockquote>
+<div>registry = FileRegistry()
+registry.add(‘foo/bar’, file_instance)</div></blockquote>
+<dl class="method">
+<dt id="mozpack.copier.FileRegistry.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>path</em>, <em>content</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.copier.FileRegistry.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a BaseFile instance to the container, under the given path.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.copier.FileRegistry.contains">
+<code class="descname">contains</code><span class="sig-paren">(</span><em>pattern</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.copier.FileRegistry.contains" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return whether the container contains paths matching the given
+pattern. See the mozpack.path.match documentation for a description of
+the handled patterns.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.copier.FileRegistry.input_to_outputs_tree">
+<code class="descname">input_to_outputs_tree</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.copier.FileRegistry.input_to_outputs_tree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a dictionary mapping each input path to the set of
+impacted output paths.</p>
+<p>All paths are normalized.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.copier.FileRegistry.match">
+<code class="descname">match</code><span class="sig-paren">(</span><em>pattern</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.copier.FileRegistry.match" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the list of paths, stored in the container, matching the
+given pattern. See the mozpack.path.match documentation for a
+description of the handled patterns.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.copier.FileRegistry.output_to_inputs_tree">
+<code class="descname">output_to_inputs_tree</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.copier.FileRegistry.output_to_inputs_tree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a dictionary mapping each output path to the set of its
+required input paths.</p>
+<p>All paths are normalized.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.copier.FileRegistry.paths">
+<code class="descname">paths</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.copier.FileRegistry.paths" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return all paths stored in the container, in the order they were added.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.copier.FileRegistry.remove">
+<code class="descname">remove</code><span class="sig-paren">(</span><em>pattern</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.copier.FileRegistry.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove paths matching the given pattern from the container. See the
+mozpack.path.match documentation for a description of the handled
+patterns.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.copier.FileRegistry.required_directories">
+<code class="descname">required_directories</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.copier.FileRegistry.required_directories" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the set of directories required by the paths in the container,
+in no particular order.  The returned directories are relative to an
+unspecified (virtual) root directory (and do not include said root
+directory).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.copier.FileRegistrySubtree">
+<em class="property">class </em><code class="descclassname">mozpack.copier.</code><code class="descname">FileRegistrySubtree</code><span class="sig-paren">(</span><em>base</em>, <em>registry</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.copier.FileRegistrySubtree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>A proxy class to give access to a subtree of an existing FileRegistry.</p>
+<p>Note this doesn’t implement the whole FileRegistry interface.</p>
+<dl class="method">
+<dt id="mozpack.copier.FileRegistrySubtree.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>path</em>, <em>content</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.copier.FileRegistrySubtree.add" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.copier.FileRegistrySubtree.contains">
+<code class="descname">contains</code><span class="sig-paren">(</span><em>pattern</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.copier.FileRegistrySubtree.contains" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.copier.FileRegistrySubtree.match">
+<code class="descname">match</code><span class="sig-paren">(</span><em>pattern</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.copier.FileRegistrySubtree.match" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.copier.FileRegistrySubtree.paths">
+<code class="descname">paths</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.copier.FileRegistrySubtree.paths" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.copier.FileRegistrySubtree.remove">
+<code class="descname">remove</code><span class="sig-paren">(</span><em>pattern</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.copier.FileRegistrySubtree.remove" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.copier.Jarrer">
+<em class="property">class </em><code class="descclassname">mozpack.copier.</code><code class="descname">Jarrer</code><span class="sig-paren">(</span><em>compress=True</em>, <em>optimize=True</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.copier.Jarrer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.copier.FileRegistry" title="mozpack.copier.FileRegistry"><code class="xref py py-class docutils literal"><span class="pre">mozpack.copier.FileRegistry</span></code></a>, <a class="reference internal" href="#mozpack.files.BaseFile" title="mozpack.files.BaseFile"><code class="xref py py-class docutils literal"><span class="pre">mozpack.files.BaseFile</span></code></a></p>
+<p>FileRegistry with the ability to copy and pack the registered files as a
+jar file. Also acts as a BaseFile instance, to be copied with a FileCopier.</p>
+<dl class="method">
+<dt id="mozpack.copier.Jarrer.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>path</em>, <em>content</em>, <em>compress=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.copier.Jarrer.add" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.copier.Jarrer.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><em>dest</em>, <em>skip_if_older=True</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.copier.Jarrer.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pack all registered files in the given destination jar. The given
+destination jar may be a path to jar file, or a Dest instance for
+a jar file.
+If the destination jar file exists, its (compressed) contents are used
+instead of the registered BaseFile instances when appropriate.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.copier.Jarrer.open">
+<code class="descname">open</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.copier.Jarrer.open" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.copier.Jarrer.preload">
+<code class="descname">preload</code><span class="sig-paren">(</span><em>paths</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.copier.Jarrer.preload" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add the given set of paths to the list of preloaded files. See
+mozpack.mozjar.JarWriter documentation for details on jar preloading.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozpack.dmg">
+<span id="mozpack-dmg-module"></span><h2>mozpack.dmg module<a class="headerlink" href="#module-mozpack.dmg" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mozpack.dmg.check_tools">
+<code class="descclassname">mozpack.dmg.</code><code class="descname">check_tools</code><span class="sig-paren">(</span><em>*tools</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.dmg.check_tools" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check that each tool named in tools exists in SUBSTS and is executable.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozpack.dmg.chmod">
+<code class="descclassname">mozpack.dmg.</code><code class="descname">chmod</code><span class="sig-paren">(</span><em>dir</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.dmg.chmod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set permissions of DMG contents correctly</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozpack.dmg.create_app_symlink">
+<code class="descclassname">mozpack.dmg.</code><code class="descname">create_app_symlink</code><span class="sig-paren">(</span><em>stagedir</em>, <em>tmpdir</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.dmg.create_app_symlink" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a symlink to /Applications. The symlink name is a space
+so we don’t have to localize it. The Applications folder icon
+will be shown in Finder, which should be clear enough for users.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozpack.dmg.create_dmg">
+<code class="descclassname">mozpack.dmg.</code><code class="descname">create_dmg</code><span class="sig-paren">(</span><em>source_directory</em>, <em>output_dmg</em>, <em>volume_name</em>, <em>extra_files</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.dmg.create_dmg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a DMG disk image at the path output_dmg from source_directory.</p>
+<p>Use volume_name as the disk image volume name, and
+use extra_files as a list of tuples of (filename, relative path) to copy
+into the disk image.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozpack.dmg.create_dmg_from_staged">
+<code class="descclassname">mozpack.dmg.</code><code class="descname">create_dmg_from_staged</code><span class="sig-paren">(</span><em>stagedir</em>, <em>output_dmg</em>, <em>tmpdir</em>, <em>volume_name</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.dmg.create_dmg_from_staged" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a prepared directory stagedir, produce a DMG at output_dmg.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozpack.dmg.extract_dmg">
+<code class="descclassname">mozpack.dmg.</code><code class="descname">extract_dmg</code><span class="sig-paren">(</span><em>dmgfile</em>, <em>output</em>, <em>dsstore=None</em>, <em>icon=None</em>, <em>background=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.dmg.extract_dmg" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozpack.dmg.extract_dmg_contents">
+<code class="descclassname">mozpack.dmg.</code><code class="descname">extract_dmg_contents</code><span class="sig-paren">(</span><em>dmgfile</em>, <em>destdir</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.dmg.extract_dmg_contents" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozpack.dmg.generate_hfs_file">
+<code class="descclassname">mozpack.dmg.</code><code class="descname">generate_hfs_file</code><span class="sig-paren">(</span><em>stagedir</em>, <em>tmpdir</em>, <em>volume_name</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.dmg.generate_hfs_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>When cross compiling, we zero fill an hfs file, that we will turn into
+a DMG. To do so we test the size of the staged dir, and add some slight
+padding to that.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozpack.dmg.mkdir">
+<code class="descclassname">mozpack.dmg.</code><code class="descname">mkdir</code><span class="sig-paren">(</span><em>dir</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.dmg.mkdir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozpack.dmg.rsync">
+<code class="descclassname">mozpack.dmg.</code><code class="descname">rsync</code><span class="sig-paren">(</span><em>source</em>, <em>dest</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.dmg.rsync" title="Permalink to this definition">¶</a></dt>
+<dd><p>rsync the contents of directory source into directory dest</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozpack.dmg.set_folder_icon">
+<code class="descclassname">mozpack.dmg.</code><code class="descname">set_folder_icon</code><span class="sig-paren">(</span><em>dir</em>, <em>tmpdir</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.dmg.set_folder_icon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set HFS attributes of dir to use a custom icon</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozpack.errors">
+<span id="mozpack-errors-module"></span><h2>mozpack.errors module<a class="headerlink" href="#module-mozpack.errors" title="Permalink to this headline">¶</a></h2>
+<dl class="exception">
+<dt id="mozpack.errors.AccumulatedErrors">
+<em class="property">exception </em><code class="descclassname">mozpack.errors.</code><code class="descname">AccumulatedErrors</code><a class="headerlink" href="#mozpack.errors.AccumulatedErrors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></code></p>
+<p>Exception type raised from errors.accumulate()</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.errors.ErrorCollector">
+<em class="property">class </em><code class="descclassname">mozpack.errors.</code><code class="descname">ErrorCollector</code><a class="headerlink" href="#mozpack.errors.ErrorCollector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Error handling/logging class. A global instance, errors, is provided for
+convenience.</p>
+<p>Warnings, errors and fatal errors may be logged by calls to the following
+functions:</p>
+<blockquote>
+<div>errors.warn(message)
+errors.error(message)
+errors.fatal(message)</div></blockquote>
+<p>Warnings only send the message on the logging output, while errors and
+fatal errors send the message and throw an ErrorMessage exception. The
+exception, however, may be deferred. See further below.</p>
+<dl class="docutils">
+<dt>Errors may be ignored by calling:</dt>
+<dd>errors.ignore_errors()</dd>
+</dl>
+<p>After calling that function, only fatal errors throw an exception.</p>
+<p>The warnings, errors or fatal errors messages may be augmented with context
+information when a context is provided. Context is defined by a pair
+(filename, linenumber), and may be set with errors.context() used as a
+context manager:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>with errors.context(filename, linenumber):</dt>
+<dd>errors.warn(message)</dd>
+</dl>
+</div></blockquote>
+<dl class="docutils">
+<dt>Arbitrary nesting is supported, both for errors.context calls:</dt>
+<dd><dl class="first last docutils">
+<dt>with errors.context(filename1, linenumber1):</dt>
+<dd><p class="first">errors.warn(message)
+with errors.context(filename2, linenumber2):</p>
+<blockquote class="last">
+<div>errors.warn(message)</div></blockquote>
+</dd>
+</dl>
+</dd>
+<dt>as well as for function calls:</dt>
+<dd><dl class="first last docutils">
+<dt>def func():</dt>
+<dd>errors.warn(message)</dd>
+<dt>with errors.context(filename, linenumber):</dt>
+<dd>func()</dd>
+</dl>
+</dd>
+</dl>
+<p>Errors and fatal errors can have their exception thrown at a later time,
+allowing for several different errors to be reported at once before
+throwing. This is achieved with errors.accumulate() as a context manager:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>with errors.accumulate():</dt>
+<dd><dl class="first last docutils">
+<dt>if test1:</dt>
+<dd>errors.error(message1)</dd>
+<dt>if test2:</dt>
+<dd>errors.error(message2)</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+<p>In such cases, a single AccumulatedErrors exception is thrown, but doesn’t
+contain information about the exceptions. The logged messages do.</p>
+<dl class="attribute">
+<dt id="mozpack.errors.ErrorCollector.ERROR">
+<code class="descname">ERROR</code><em class="property"> = 2</em><a class="headerlink" href="#mozpack.errors.ErrorCollector.ERROR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozpack.errors.ErrorCollector.FATAL">
+<code class="descname">FATAL</code><em class="property"> = 3</em><a class="headerlink" href="#mozpack.errors.ErrorCollector.FATAL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozpack.errors.ErrorCollector.WARN">
+<code class="descname">WARN</code><em class="property"> = 1</em><a class="headerlink" href="#mozpack.errors.ErrorCollector.WARN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.errors.ErrorCollector.accumulate">
+<code class="descname">accumulate</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwds</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.errors.ErrorCollector.accumulate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.errors.ErrorCollector.context">
+<code class="descname">context</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwds</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.errors.ErrorCollector.context" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozpack.errors.ErrorCollector.count">
+<code class="descname">count</code><a class="headerlink" href="#mozpack.errors.ErrorCollector.count" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.errors.ErrorCollector.error">
+<code class="descname">error</code><span class="sig-paren">(</span><em>msg</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.errors.ErrorCollector.error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.errors.ErrorCollector.fatal">
+<code class="descname">fatal</code><span class="sig-paren">(</span><em>msg</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.errors.ErrorCollector.fatal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.errors.ErrorCollector.get_context">
+<code class="descname">get_context</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.errors.ErrorCollector.get_context" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.errors.ErrorCollector.ignore_errors">
+<code class="descname">ignore_errors</code><span class="sig-paren">(</span><em>ignore=True</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.errors.ErrorCollector.ignore_errors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozpack.errors.ErrorCollector.out">
+<code class="descname">out</code><em class="property"> = &lt;open file '&lt;stderr&gt;', mode 'w'&gt;</em><a class="headerlink" href="#mozpack.errors.ErrorCollector.out" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.errors.ErrorCollector.warn">
+<code class="descname">warn</code><span class="sig-paren">(</span><em>msg</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.errors.ErrorCollector.warn" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="mozpack.errors.ErrorMessage">
+<em class="property">exception </em><code class="descclassname">mozpack.errors.</code><code class="descname">ErrorMessage</code><a class="headerlink" href="#mozpack.errors.ErrorMessage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></code></p>
+<p>Exception type raised from errors.error() and errors.fatal()</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozpack.executables">
+<span id="mozpack-executables-module"></span><h2>mozpack.executables module<a class="headerlink" href="#module-mozpack.executables" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mozpack.executables.elfhack">
+<code class="descclassname">mozpack.executables.</code><code class="descname">elfhack</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.executables.elfhack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute the elfhack command on the given path.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozpack.executables.get_type">
+<code class="descclassname">mozpack.executables.</code><code class="descname">get_type</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.executables.get_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check the signature of the give file and returns what kind of executable
+matches.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozpack.executables.is_executable">
+<code class="descclassname">mozpack.executables.</code><code class="descname">is_executable</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.executables.is_executable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return whether a given file path points to an executable or a library,
+where an executable or library is identified by:</p>
+<blockquote>
+<div><ul class="simple">
+<li>the file extension on OS/2 and WINNT</li>
+<li>the file signature on OS/X and ELF systems (GNU/Linux, Android, BSD,
+Solaris)</li>
+</ul>
+</div></blockquote>
+<p>As this function is intended for use to choose between the ExecutableFile
+and File classes in FileFinder, and choosing ExecutableFile only matters
+on OS/2, OS/X, ELF and WINNT (in GCC build) systems, we don’t bother
+detecting other kind of executables.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozpack.executables.may_elfhack">
+<code class="descclassname">mozpack.executables.</code><code class="descname">may_elfhack</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.executables.may_elfhack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return whether elfhack() should be called</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozpack.executables.may_strip">
+<code class="descclassname">mozpack.executables.</code><code class="descname">may_strip</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.executables.may_strip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return whether strip() should be called</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozpack.executables.strip">
+<code class="descclassname">mozpack.executables.</code><code class="descname">strip</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.executables.strip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute the STRIP command with STRIP_FLAGS on the given path.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozpack.files">
+<span id="mozpack-files-module"></span><h2>mozpack.files module<a class="headerlink" href="#module-mozpack.files" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozpack.files.AbsoluteSymlinkFile">
+<em class="property">class </em><code class="descclassname">mozpack.files.</code><code class="descname">AbsoluteSymlinkFile</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.AbsoluteSymlinkFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.files.File" title="mozpack.files.File"><code class="xref py py-class docutils literal"><span class="pre">mozpack.files.File</span></code></a></p>
+<p>File class that is copied by symlinking (if available).</p>
+<p>This class only works if the target path is absolute.</p>
+<dl class="method">
+<dt id="mozpack.files.AbsoluteSymlinkFile.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><em>dest</em>, <em>skip_if_older=True</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.AbsoluteSymlinkFile.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.files.BaseFile">
+<em class="property">class </em><code class="descclassname">mozpack.files.</code><code class="descname">BaseFile</code><a class="headerlink" href="#mozpack.files.BaseFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Base interface and helper for file copying. Derived class may implement
+their own copy function, or rely on BaseFile.copy using the open() member
+function and/or the path property.</p>
+<dl class="staticmethod">
+<dt id="mozpack.files.BaseFile.any_newer">
+<em class="property">static </em><code class="descname">any_newer</code><span class="sig-paren">(</span><em>dest</em>, <em>inputs</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.BaseFile.any_newer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compares the modification time of <code class="docutils literal"><span class="pre">dest</span></code> to multiple input files, and
+returns whether any of the <code class="docutils literal"><span class="pre">inputs</span></code> is newer (has a later mtime) than
+<code class="docutils literal"><span class="pre">dest</span></code>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.files.BaseFile.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><em>dest</em>, <em>skip_if_older=True</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.BaseFile.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy the BaseFile content to the destination given as a string or a
+Dest instance. Avoids replacing existing files if the BaseFile content
+matches that of the destination, or in case of plain files, if the
+destination is newer than the original file. This latter behaviour is
+disabled when skip_if_older is False.
+Returns whether a copy was actually performed (True) or not (False).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.files.BaseFile.inputs">
+<code class="descname">inputs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.BaseFile.inputs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an iterable of the input file paths that impact this output file.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="mozpack.files.BaseFile.is_older">
+<em class="property">static </em><code class="descname">is_older</code><span class="sig-paren">(</span><em>first</em>, <em>second</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.BaseFile.is_older" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compares the modification time of two files, and returns whether the
+<code class="docutils literal"><span class="pre">first</span></code> file is older than the <code class="docutils literal"><span class="pre">second</span></code> file.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozpack.files.BaseFile.mode">
+<code class="descname">mode</code><a class="headerlink" href="#mozpack.files.BaseFile.mode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the file’s unix mode, or None if it has no meaning.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="mozpack.files.BaseFile.normalize_mode">
+<em class="property">static </em><code class="descname">normalize_mode</code><span class="sig-paren">(</span><em>mode</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.BaseFile.normalize_mode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.files.BaseFile.open">
+<code class="descname">open</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.BaseFile.open" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a file-like object allowing to read() the content of the
+associated file. This is meant to be overloaded in subclasses to return
+a custom file-like object.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.files.BaseFile.read">
+<code class="descname">read</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.BaseFile.read" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.files.BaseFile.size">
+<code class="descname">size</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.BaseFile.size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns size of the entry.</p>
+<p>Derived classes are highly encouraged to override this with a more
+optimal implementation.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.files.BaseFinder">
+<em class="property">class </em><code class="descclassname">mozpack.files.</code><code class="descname">BaseFinder</code><span class="sig-paren">(</span><em>base</em>, <em>minify=False</em>, <em>minify_js=False</em>, <em>minify_js_verify_command=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.BaseFinder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="mozpack.files.BaseFinder.contains">
+<code class="descname">contains</code><span class="sig-paren">(</span><em>pattern</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.BaseFinder.contains" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return whether some files under the base directory match the given
+pattern. See the mozpack.path.match documentation for a description of
+the handled patterns.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.files.BaseFinder.find">
+<code class="descname">find</code><span class="sig-paren">(</span><em>pattern</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.BaseFinder.find" title="Permalink to this definition">¶</a></dt>
+<dd><p>Yield path, BaseFile_instance pairs for all files under the base
+directory and its subdirectories that match the given pattern. See the
+mozpack.path.match documentation for a description of the handled
+patterns.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.files.BaseFinder.get">
+<code class="descname">get</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.BaseFinder.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Obtain a single file.</p>
+<p>Where <code class="docutils literal"><span class="pre">find</span></code> is tailored towards matching multiple files, this method
+is used for retrieving a single file. Use this method when performance
+is critical.</p>
+<p>Returns a <code class="docutils literal"><span class="pre">BaseFile</span></code> if at most one file exists or <code class="docutils literal"><span class="pre">None</span></code> otherwise.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.files.ComposedFinder">
+<em class="property">class </em><code class="descclassname">mozpack.files.</code><code class="descname">ComposedFinder</code><span class="sig-paren">(</span><em>finders</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.ComposedFinder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.files.BaseFinder" title="mozpack.files.BaseFinder"><code class="xref py py-class docutils literal"><span class="pre">mozpack.files.BaseFinder</span></code></a></p>
+<p>Composes multiple File Finders in some sort of virtual file system.</p>
+<p>A ComposedFinder is initialized from a dictionary associating paths to
+<a href="#id1"><span class="problematic" id="id2">*</span></a>Finder instances.</p>
+<p>Note this could be optimized to be smarter than getting all the files
+in advance.</p>
+<dl class="method">
+<dt id="mozpack.files.ComposedFinder.find">
+<code class="descname">find</code><span class="sig-paren">(</span><em>pattern</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.ComposedFinder.find" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.files.DeflatedFile">
+<em class="property">class </em><code class="descclassname">mozpack.files.</code><code class="descname">DeflatedFile</code><span class="sig-paren">(</span><em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.DeflatedFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.files.BaseFile" title="mozpack.files.BaseFile"><code class="xref py py-class docutils literal"><span class="pre">mozpack.files.BaseFile</span></code></a></p>
+<p>File class for members of a jar archive. DeflatedFile.copy() effectively
+extracts the file from the jar archive.</p>
+<dl class="method">
+<dt id="mozpack.files.DeflatedFile.open">
+<code class="descname">open</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.DeflatedFile.open" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.files.Dest">
+<em class="property">class </em><code class="descclassname">mozpack.files.</code><code class="descname">Dest</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.Dest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Helper interface for BaseFile.copy. The interface works as follows:
+- read() and write() can be used to sequentially read/write from the</p>
+<blockquote>
+<div>underlying file.</div></blockquote>
+<ul class="simple">
+<li>a call to read() after a write() will re-open the underlying file and
+read from it.</li>
+<li>a call to write() after a read() will re-open the underlying file,
+emptying it, and write to it.</li>
+</ul>
+<dl class="method">
+<dt id="mozpack.files.Dest.close">
+<code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.Dest.close" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.files.Dest.exists">
+<code class="descname">exists</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.Dest.exists" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozpack.files.Dest.name">
+<code class="descname">name</code><a class="headerlink" href="#mozpack.files.Dest.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.files.Dest.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>length=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.Dest.read" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.files.Dest.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.Dest.write" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.files.ExecutableFile">
+<em class="property">class </em><code class="descclassname">mozpack.files.</code><code class="descname">ExecutableFile</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.ExecutableFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.files.File" title="mozpack.files.File"><code class="xref py py-class docutils literal"><span class="pre">mozpack.files.File</span></code></a></p>
+<p>File class for executable and library files on OS/2, OS/X and ELF systems.
+(see mozpack.executables.is_executable documentation).</p>
+<dl class="method">
+<dt id="mozpack.files.ExecutableFile.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><em>dest</em>, <em>skip_if_older=True</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.ExecutableFile.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.files.ExistingFile">
+<em class="property">class </em><code class="descclassname">mozpack.files.</code><code class="descname">ExistingFile</code><span class="sig-paren">(</span><em>required</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.ExistingFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.files.BaseFile" title="mozpack.files.BaseFile"><code class="xref py py-class docutils literal"><span class="pre">mozpack.files.BaseFile</span></code></a></p>
+<p>File class that represents a file that may exist but whose content comes
+from elsewhere.</p>
+<p>This purpose of this class is to account for files that are installed via
+external means. It is typically only used in manifests or in registries to
+account for files.</p>
+<p>When asked to copy, this class does nothing because nothing is known about
+the source file/data.</p>
+<p>Instances of this class come in two flavors: required and optional. If an
+existing file is required, it must exist during copy() or an error is
+raised.</p>
+<dl class="method">
+<dt id="mozpack.files.ExistingFile.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><em>dest</em>, <em>skip_if_older=True</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.ExistingFile.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.files.ExistingFile.inputs">
+<code class="descname">inputs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.ExistingFile.inputs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.files.ExtractedTarFile">
+<em class="property">class </em><code class="descclassname">mozpack.files.</code><code class="descname">ExtractedTarFile</code><span class="sig-paren">(</span><em>tar</em>, <em>info</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.ExtractedTarFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.files.GeneratedFile" title="mozpack.files.GeneratedFile"><code class="xref py py-class docutils literal"><span class="pre">mozpack.files.GeneratedFile</span></code></a></p>
+<p>File class for members of a tar archive. Contents of the underlying file
+are extracted immediately and stored in memory.</p>
+<dl class="attribute">
+<dt id="mozpack.files.ExtractedTarFile.mode">
+<code class="descname">mode</code><a class="headerlink" href="#mozpack.files.ExtractedTarFile.mode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.files.ExtractedTarFile.read">
+<code class="descname">read</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.ExtractedTarFile.read" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.files.File">
+<em class="property">class </em><code class="descclassname">mozpack.files.</code><code class="descname">File</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.File" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.files.BaseFile" title="mozpack.files.BaseFile"><code class="xref py py-class docutils literal"><span class="pre">mozpack.files.BaseFile</span></code></a></p>
+<p>File class for plain files.</p>
+<dl class="method">
+<dt id="mozpack.files.File.inputs">
+<code class="descname">inputs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.File.inputs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozpack.files.File.mode">
+<code class="descname">mode</code><a class="headerlink" href="#mozpack.files.File.mode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the file’s unix mode, as returned by os.stat().st_mode.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.files.File.read">
+<code class="descname">read</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.File.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the contents of the file.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.files.File.size">
+<code class="descname">size</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.File.size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.files.FileFinder">
+<em class="property">class </em><code class="descclassname">mozpack.files.</code><code class="descname">FileFinder</code><span class="sig-paren">(</span><em>base</em>, <em>find_executables=False</em>, <em>ignore=()</em>, <em>find_dotfiles=False</em>, <em>**kargs</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.FileFinder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.files.BaseFinder" title="mozpack.files.BaseFinder"><code class="xref py py-class docutils literal"><span class="pre">mozpack.files.BaseFinder</span></code></a></p>
+<p>Helper to get appropriate BaseFile instances from the file system.</p>
+<dl class="method">
+<dt id="mozpack.files.FileFinder.get">
+<code class="descname">get</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.FileFinder.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.files.GeneratedFile">
+<em class="property">class </em><code class="descclassname">mozpack.files.</code><code class="descname">GeneratedFile</code><span class="sig-paren">(</span><em>content</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.GeneratedFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.files.BaseFile" title="mozpack.files.BaseFile"><code class="xref py py-class docutils literal"><span class="pre">mozpack.files.BaseFile</span></code></a></p>
+<p>File class for content with no previous existence on the filesystem.</p>
+<dl class="method">
+<dt id="mozpack.files.GeneratedFile.inputs">
+<code class="descname">inputs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.GeneratedFile.inputs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.files.GeneratedFile.open">
+<code class="descname">open</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.GeneratedFile.open" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.files.GeneratedFile.read">
+<code class="descname">read</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.GeneratedFile.read" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.files.GeneratedFile.size">
+<code class="descname">size</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.GeneratedFile.size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.files.HardlinkFile">
+<em class="property">class </em><code class="descclassname">mozpack.files.</code><code class="descname">HardlinkFile</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.HardlinkFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.files.File" title="mozpack.files.File"><code class="xref py py-class docutils literal"><span class="pre">mozpack.files.File</span></code></a></p>
+<p>File class that is copied by hard linking (if available)</p>
+<p>This is similar to the AbsoluteSymlinkFile, but with hard links. The symlink
+implementation requires paths to be absolute, because they are resolved at
+read time, which makes relative paths messy. Hard links resolve paths at
+link-creation time, so relative paths are fine.</p>
+<dl class="method">
+<dt id="mozpack.files.HardlinkFile.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><em>dest</em>, <em>skip_if_older=True</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.HardlinkFile.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.files.JarFinder">
+<em class="property">class </em><code class="descclassname">mozpack.files.</code><code class="descname">JarFinder</code><span class="sig-paren">(</span><em>base</em>, <em>reader</em>, <em>**kargs</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.JarFinder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.files.BaseFinder" title="mozpack.files.BaseFinder"><code class="xref py py-class docutils literal"><span class="pre">mozpack.files.BaseFinder</span></code></a></p>
+<p>Helper to get appropriate DeflatedFile instances from a JarReader.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.files.ManifestFile">
+<em class="property">class </em><code class="descclassname">mozpack.files.</code><code class="descname">ManifestFile</code><span class="sig-paren">(</span><em>base</em>, <em>entries=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.ManifestFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.files.BaseFile" title="mozpack.files.BaseFile"><code class="xref py py-class docutils literal"><span class="pre">mozpack.files.BaseFile</span></code></a></p>
+<p>File class for a manifest file. It takes individual manifest entries (using
+the add() and remove() member functions), and adjusts them to be relative
+to the base path for the manifest, given at creation.
+.. rubric:: Example</p>
+<p>There is a manifest entry “content foobar foobar/content/” relative
+to “foobar/chrome”. When packaging, the entry will be stored in
+<a class="reference external" href="jar:foobar/omni.ja!/chrome/chrome.manifest">jar:foobar/omni.ja!/chrome/chrome.manifest</a>, which means the entry
+will have to be relative to “chrome” instead of “foobar/chrome”. This
+doesn’t really matter when serializing the entry, since this base path
+is not written out, but it matters when moving the entry at the same
+time, e.g. to <a class="reference external" href="jar:foobar/omni.ja!/chrome.manifest">jar:foobar/omni.ja!/chrome.manifest</a>, which we don’t do
+currently but could in the future.</p>
+<dl class="method">
+<dt id="mozpack.files.ManifestFile.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>entry</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.ManifestFile.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add the given entry to the manifest. Entries are rebased at open() time
+instead of add() time so that they can be more easily remove()d.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.files.ManifestFile.isempty">
+<code class="descname">isempty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.ManifestFile.isempty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return whether there are manifest entries to write</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.files.ManifestFile.open">
+<code class="descname">open</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.ManifestFile.open" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a file-like object allowing to read() the serialized content of
+the manifest.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.files.ManifestFile.remove">
+<code class="descname">remove</code><span class="sig-paren">(</span><em>entry</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.ManifestFile.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the given entry from the manifest.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.files.MercurialFile">
+<em class="property">class </em><code class="descclassname">mozpack.files.</code><code class="descname">MercurialFile</code><span class="sig-paren">(</span><em>client</em>, <em>rev</em>, <em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.MercurialFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.files.BaseFile" title="mozpack.files.BaseFile"><code class="xref py py-class docutils literal"><span class="pre">mozpack.files.BaseFile</span></code></a></p>
+<p>File class for holding data from Mercurial.</p>
+<dl class="method">
+<dt id="mozpack.files.MercurialFile.read">
+<code class="descname">read</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.MercurialFile.read" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.files.MercurialRevisionFinder">
+<em class="property">class </em><code class="descclassname">mozpack.files.</code><code class="descname">MercurialRevisionFinder</code><span class="sig-paren">(</span><em>repo</em>, <em>rev='.'</em>, <em>recognize_repo_paths=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.MercurialRevisionFinder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.files.BaseFinder" title="mozpack.files.BaseFinder"><code class="xref py py-class docutils literal"><span class="pre">mozpack.files.BaseFinder</span></code></a></p>
+<p>A finder that operates on a specific Mercurial revision.</p>
+<dl class="method">
+<dt id="mozpack.files.MercurialRevisionFinder.get">
+<code class="descname">get</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.MercurialRevisionFinder.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.files.MinifiedJavaScript">
+<em class="property">class </em><code class="descclassname">mozpack.files.</code><code class="descname">MinifiedJavaScript</code><span class="sig-paren">(</span><em>file</em>, <em>verify_command=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.MinifiedJavaScript" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.files.BaseFile" title="mozpack.files.BaseFile"><code class="xref py py-class docutils literal"><span class="pre">mozpack.files.BaseFile</span></code></a></p>
+<p>File class for minifying JavaScript files.</p>
+<dl class="method">
+<dt id="mozpack.files.MinifiedJavaScript.open">
+<code class="descname">open</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.MinifiedJavaScript.open" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.files.MinifiedProperties">
+<em class="property">class </em><code class="descclassname">mozpack.files.</code><code class="descname">MinifiedProperties</code><span class="sig-paren">(</span><em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.MinifiedProperties" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.files.BaseFile" title="mozpack.files.BaseFile"><code class="xref py py-class docutils literal"><span class="pre">mozpack.files.BaseFile</span></code></a></p>
+<p>File class for minified properties. This wraps around a BaseFile instance,
+and removes lines starting with a # from its content.</p>
+<dl class="method">
+<dt id="mozpack.files.MinifiedProperties.open">
+<code class="descname">open</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.MinifiedProperties.open" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a file-like object allowing to read() the minified content of
+the properties file.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.files.PreprocessedFile">
+<em class="property">class </em><code class="descclassname">mozpack.files.</code><code class="descname">PreprocessedFile</code><span class="sig-paren">(</span><em>path</em>, <em>depfile_path</em>, <em>marker</em>, <em>defines</em>, <em>extra_depends=None</em>, <em>silence_missing_directive_warnings=False</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.PreprocessedFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.files.BaseFile" title="mozpack.files.BaseFile"><code class="xref py py-class docutils literal"><span class="pre">mozpack.files.BaseFile</span></code></a></p>
+<p>File class for a file that is preprocessed. PreprocessedFile.copy() runs
+the preprocessor on the file to create the output.</p>
+<dl class="method">
+<dt id="mozpack.files.PreprocessedFile.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><em>dest</em>, <em>skip_if_older=True</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.PreprocessedFile.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Invokes the preprocessor to create the destination file.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.files.PreprocessedFile.inputs">
+<code class="descname">inputs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.PreprocessedFile.inputs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.files.TarFinder">
+<em class="property">class </em><code class="descclassname">mozpack.files.</code><code class="descname">TarFinder</code><span class="sig-paren">(</span><em>base</em>, <em>tar</em>, <em>**kargs</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.TarFinder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.files.BaseFinder" title="mozpack.files.BaseFinder"><code class="xref py py-class docutils literal"><span class="pre">mozpack.files.BaseFinder</span></code></a></p>
+<p>Helper to get files from a TarFile.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.files.XPTFile">
+<em class="property">class </em><code class="descclassname">mozpack.files.</code><code class="descname">XPTFile</code><a class="headerlink" href="#mozpack.files.XPTFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.files.GeneratedFile" title="mozpack.files.GeneratedFile"><code class="xref py py-class docutils literal"><span class="pre">mozpack.files.GeneratedFile</span></code></a></p>
+<p>File class for a linked XPT file. It takes several XPT files as input
+(using the add() and remove() member functions), and links them at copy()
+time.</p>
+<dl class="method">
+<dt id="mozpack.files.XPTFile.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>xpt</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.XPTFile.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add the given XPT file (as a BaseFile instance) to the list of XPTs
+to link.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.files.XPTFile.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><em>dest</em>, <em>skip_if_older=True</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.XPTFile.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Link the registered XPTs and place the resulting linked XPT at the
+destination given as a string or a Dest instance. Avoids an expensive
+XPT linking if the interfaces in an existing destination match those of
+the individual XPTs to link.
+skip_if_older is ignored.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.files.XPTFile.isempty">
+<code class="descname">isempty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.XPTFile.isempty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return whether there are XPT files to link.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.files.XPTFile.open">
+<code class="descname">open</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.XPTFile.open" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.files.XPTFile.remove">
+<code class="descname">remove</code><span class="sig-paren">(</span><em>xpt</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.files.XPTFile.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the given XPT file (as a BaseFile instance) from the list of
+XPTs to link.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozpack.hg">
+<span id="mozpack-hg-module"></span><h2>mozpack.hg module<a class="headerlink" href="#module-mozpack.hg" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozpack.hg.MercurialNativeFile">
+<em class="property">class </em><code class="descclassname">mozpack.hg.</code><code class="descname">MercurialNativeFile</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.hg.MercurialNativeFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.files.MercurialFile" title="mozpack.files.MercurialFile"><code class="xref py py-class docutils literal"><span class="pre">mozpack.files.MercurialFile</span></code></a></p>
+<dl class="method">
+<dt id="mozpack.hg.MercurialNativeFile.read">
+<code class="descname">read</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.hg.MercurialNativeFile.read" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.hg.MercurialNativeRevisionFinder">
+<em class="property">class </em><code class="descclassname">mozpack.hg.</code><code class="descname">MercurialNativeRevisionFinder</code><span class="sig-paren">(</span><em>repo</em>, <em>rev='.'</em>, <em>recognize_repo_paths=False</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.hg.MercurialNativeRevisionFinder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.files.BaseFinder" title="mozpack.files.BaseFinder"><code class="xref py py-class docutils literal"><span class="pre">mozpack.files.BaseFinder</span></code></a></p>
+<dl class="method">
+<dt id="mozpack.hg.MercurialNativeRevisionFinder.get">
+<code class="descname">get</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.hg.MercurialNativeRevisionFinder.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozpack.manifests">
+<span id="mozpack-manifests-module"></span><h2>mozpack.manifests module<a class="headerlink" href="#module-mozpack.manifests" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozpack.manifests.InstallManifest">
+<em class="property">class </em><code class="descclassname">mozpack.manifests.</code><code class="descname">InstallManifest</code><span class="sig-paren">(</span><em>path=None</em>, <em>fileobj=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.manifests.InstallManifest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Describes actions to be used with a copier.FileCopier instance.</p>
+<p>This class facilitates serialization and deserialization of data used to
+construct a copier.FileCopier and to perform copy operations.</p>
+<p>The manifest defines source paths, destination paths, and a mechanism by
+which the destination file should come into existence.</p>
+<p>Entries in the manifest correspond to the following types:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>copy – The file specified as the source path will be copied to the</dt>
+<dd>destination path.</dd>
+<dt>link – The destination path will be a symlink or hardlink to the source</dt>
+<dd>path. If symlinks are not supported, a copy will be performed.</dd>
+<dt>exists – The destination path is accounted for and won’t be deleted by</dt>
+<dd>the FileCopier. If the destination path doesn’t exist, an error is
+raised.</dd>
+<dt>optional – The destination path is accounted for and won’t be deleted by</dt>
+<dd>the FileCopier. No error is raised if the destination path does not
+exist.</dd>
+<dt>patternlink – Paths matched by the expression in the source path</dt>
+<dd>will be symlinked or hardlinked to the destination directory.</dd>
+<dt>patterncopy – Similar to patternlink except files are copied, not</dt>
+<dd>symlinked/hardlinked.</dd>
+<dt>preprocess – The file specified at the source path will be run through</dt>
+<dd>the preprocessor, and the output will be written to the destination
+path.</dd>
+</dl>
+<p>content – The destination file will be created with the given content.</p>
+</div></blockquote>
+<p>Version 1 of the manifest was the initial version.
+Version 2 added optional path support
+Version 3 added support for pattern entries.
+Version 4 added preprocessed file support.
+Version 5 added content support.</p>
+<dl class="attribute">
+<dt id="mozpack.manifests.InstallManifest.CONTENT">
+<code class="descname">CONTENT</code><em class="property"> = 8</em><a class="headerlink" href="#mozpack.manifests.InstallManifest.CONTENT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozpack.manifests.InstallManifest.COPY">
+<code class="descname">COPY</code><em class="property"> = 2</em><a class="headerlink" href="#mozpack.manifests.InstallManifest.COPY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozpack.manifests.InstallManifest.CURRENT_VERSION">
+<code class="descname">CURRENT_VERSION</code><em class="property"> = 5</em><a class="headerlink" href="#mozpack.manifests.InstallManifest.CURRENT_VERSION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozpack.manifests.InstallManifest.FIELD_SEPARATOR">
+<code class="descname">FIELD_SEPARATOR</code><em class="property"> = u'\x1f'</em><a class="headerlink" href="#mozpack.manifests.InstallManifest.FIELD_SEPARATOR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozpack.manifests.InstallManifest.LINK">
+<code class="descname">LINK</code><em class="property"> = 1</em><a class="headerlink" href="#mozpack.manifests.InstallManifest.LINK" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozpack.manifests.InstallManifest.OPTIONAL_EXISTS">
+<code class="descname">OPTIONAL_EXISTS</code><em class="property"> = 4</em><a class="headerlink" href="#mozpack.manifests.InstallManifest.OPTIONAL_EXISTS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozpack.manifests.InstallManifest.PATTERN_COPY">
+<code class="descname">PATTERN_COPY</code><em class="property"> = 6</em><a class="headerlink" href="#mozpack.manifests.InstallManifest.PATTERN_COPY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozpack.manifests.InstallManifest.PATTERN_LINK">
+<code class="descname">PATTERN_LINK</code><em class="property"> = 5</em><a class="headerlink" href="#mozpack.manifests.InstallManifest.PATTERN_LINK" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozpack.manifests.InstallManifest.PREPROCESS">
+<code class="descname">PREPROCESS</code><em class="property"> = 7</em><a class="headerlink" href="#mozpack.manifests.InstallManifest.PREPROCESS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozpack.manifests.InstallManifest.REQUIRED_EXISTS">
+<code class="descname">REQUIRED_EXISTS</code><em class="property"> = 3</em><a class="headerlink" href="#mozpack.manifests.InstallManifest.REQUIRED_EXISTS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.manifests.InstallManifest.add_content">
+<code class="descname">add_content</code><span class="sig-paren">(</span><em>content</em>, <em>dest</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.manifests.InstallManifest.add_content" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a file with the given content.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.manifests.InstallManifest.add_copy">
+<code class="descname">add_copy</code><span class="sig-paren">(</span><em>source</em>, <em>dest</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.manifests.InstallManifest.add_copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a copy to this manifest.</p>
+<p>source will be copied to dest.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.manifests.InstallManifest.add_entries_from">
+<code class="descname">add_entries_from</code><span class="sig-paren">(</span><em>other</em>, <em>base=u''</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.manifests.InstallManifest.add_entries_from" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy data from another mozpack.copier.InstallManifest
+instance, adding an optional base prefix to the destination.</p>
+<p>This allows to merge two manifests into a single manifest, or
+two take the tagged union of two manifests.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.manifests.InstallManifest.add_link">
+<code class="descname">add_link</code><span class="sig-paren">(</span><em>source</em>, <em>dest</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.manifests.InstallManifest.add_link" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a link to this manifest.</p>
+<p>dest will be either a symlink or hardlink to source.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.manifests.InstallManifest.add_optional_exists">
+<code class="descname">add_optional_exists</code><span class="sig-paren">(</span><em>dest</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.manifests.InstallManifest.add_optional_exists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Record that a destination file may exist.</p>
+<p>This effectively prevents the listed file from being deleted. Unlike a
+“required exists” file, files of this type do not raise errors if the
+destination file does not exist.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.manifests.InstallManifest.add_pattern_copy">
+<code class="descname">add_pattern_copy</code><span class="sig-paren">(</span><em>base</em>, <em>pattern</em>, <em>dest</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.manifests.InstallManifest.add_pattern_copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a pattern match that results in copies.</p>
+<p>See <code class="docutils literal"><span class="pre">add_pattern_link()</span></code> for usage.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.manifests.InstallManifest.add_pattern_link">
+<code class="descname">add_pattern_link</code><span class="sig-paren">(</span><em>base</em>, <em>pattern</em>, <em>dest</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.manifests.InstallManifest.add_pattern_link" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a pattern match that results in links being created.</p>
+<p>A <code class="docutils literal"><span class="pre">FileFinder</span></code> will be created with its base set to <code class="docutils literal"><span class="pre">base</span></code>
+and <code class="docutils literal"><span class="pre">FileFinder.find()</span></code> will be called with <code class="docutils literal"><span class="pre">pattern</span></code> to discover
+source files. Each source file will be either symlinked or hardlinked
+under <code class="docutils literal"><span class="pre">dest</span></code>.</p>
+<p>Filenames under <code class="docutils literal"><span class="pre">dest</span></code> are constructed by taking the path fragment
+after <code class="docutils literal"><span class="pre">base</span></code> and concatenating it with <code class="docutils literal"><span class="pre">dest</span></code>. e.g.</p>
+<blockquote>
+<div>&lt;base&gt;/foo/bar.h -&gt; &lt;dest&gt;/foo/bar.h</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.manifests.InstallManifest.add_preprocess">
+<code class="descname">add_preprocess</code><span class="sig-paren">(</span><em>source</em>, <em>dest</em>, <em>deps</em>, <em>marker=u'#'</em>, <em>defines={}</em>, <em>silence_missing_directive_warnings=False</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.manifests.InstallManifest.add_preprocess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a preprocessed file to this manifest.</p>
+<p><code class="docutils literal"><span class="pre">source</span></code> will be passed through preprocessor.py, and the output will be
+written to <code class="docutils literal"><span class="pre">dest</span></code>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.manifests.InstallManifest.add_required_exists">
+<code class="descname">add_required_exists</code><span class="sig-paren">(</span><em>dest</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.manifests.InstallManifest.add_required_exists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Record that a destination file must exist.</p>
+<p>This effectively prevents the listed file from being deleted.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.manifests.InstallManifest.populate_registry">
+<code class="descname">populate_registry</code><span class="sig-paren">(</span><em>registry</em>, <em>defines_override={}</em>, <em>link_policy=u'symlink'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.manifests.InstallManifest.populate_registry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Populate a mozpack.copier.FileRegistry instance with data from us.</p>
+<p>The caller supplied a FileRegistry instance (or at least something that
+conforms to its interface) and that instance is populated with data
+from this manifest.</p>
+<p>Defines can be given to override the ones in the manifest for
+preprocessing.</p>
+<p>The caller can set a link policy. This determines whether symlinks,
+hardlinks, or copies are used for LINK and PATTERN_LINK.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.manifests.InstallManifest.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>path=None</em>, <em>fileobj=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.manifests.InstallManifest.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serialize this manifest to a file or file object.</p>
+<p>If path is specified, that file will be written to. If fileobj is specified,
+the serialized content will be written to that file object.</p>
+<p>It is an error if both are specified.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="mozpack.manifests.UnreadableInstallManifest">
+<em class="property">exception </em><code class="descclassname">mozpack.manifests.</code><code class="descname">UnreadableInstallManifest</code><a class="headerlink" href="#mozpack.manifests.UnreadableInstallManifest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></code></p>
+<p>Raised when an invalid install manifest is parsed.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozpack.mozjar">
+<span id="mozpack-mozjar-module"></span><h2>mozpack.mozjar module<a class="headerlink" href="#module-mozpack.mozjar" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozpack.mozjar.Brotli">
+<em class="property">class </em><code class="descclassname">mozpack.mozjar.</code><code class="descname">Brotli</code><a class="headerlink" href="#mozpack.mozjar.Brotli" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="mozpack.mozjar.Brotli.brotli_tool">
+<code class="descname">brotli_tool</code><a class="headerlink" href="#mozpack.mozjar.Brotli.brotli_tool" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="mozpack.mozjar.Brotli.compress">
+<em class="property">static </em><code class="descname">compress</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.mozjar.Brotli.compress" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="mozpack.mozjar.Brotli.decompress">
+<em class="property">static </em><code class="descname">decompress</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.mozjar.Brotli.decompress" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="mozpack.mozjar.Brotli.run_brotli_tool">
+<em class="property">static </em><code class="descname">run_brotli_tool</code><span class="sig-paren">(</span><em>args</em>, <em>input</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.mozjar.Brotli.run_brotli_tool" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.mozjar.BrotliCompress">
+<em class="property">class </em><code class="descclassname">mozpack.mozjar.</code><code class="descname">BrotliCompress</code><a class="headerlink" href="#mozpack.mozjar.BrotliCompress" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="mozpack.mozjar.BrotliCompress.compress">
+<code class="descname">compress</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.mozjar.BrotliCompress.compress" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.mozjar.BrotliCompress.flush">
+<code class="descname">flush</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.mozjar.BrotliCompress.flush" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.mozjar.Deflater">
+<em class="property">class </em><code class="descclassname">mozpack.mozjar.</code><code class="descname">Deflater</code><span class="sig-paren">(</span><em>compress=True</em>, <em>compress_level=9</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.mozjar.Deflater" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>File-like interface to zlib compression. The data is actually not
+compressed unless the compressed form is smaller than the uncompressed
+data.</p>
+<dl class="method">
+<dt id="mozpack.mozjar.Deflater.close">
+<code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.mozjar.Deflater.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close the Deflater.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozpack.mozjar.Deflater.compressed">
+<code class="descname">compressed</code><a class="headerlink" href="#mozpack.mozjar.Deflater.compressed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return whether the data should be compressed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozpack.mozjar.Deflater.compressed_data">
+<code class="descname">compressed_data</code><a class="headerlink" href="#mozpack.mozjar.Deflater.compressed_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the compressed data, if the data should be compressed (real
+compressed size smaller than the uncompressed size), or the
+uncompressed data otherwise.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozpack.mozjar.Deflater.compressed_size">
+<code class="descname">compressed_size</code><a class="headerlink" href="#mozpack.mozjar.Deflater.compressed_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the compressed size of the data written to the Deflater. If the
+Deflater is set not to compress, the uncompressed size is returned.
+Otherwise, if the data should not be compressed (the real compressed
+size is bigger than the uncompressed size), return the uncompressed
+size.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozpack.mozjar.Deflater.uncompressed_size">
+<code class="descname">uncompressed_size</code><a class="headerlink" href="#mozpack.mozjar.Deflater.uncompressed_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the size of the data written to the Deflater.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.mozjar.Deflater.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.mozjar.Deflater.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Append a buffer to the Deflater.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.mozjar.JarCdirEnd">
+<em class="property">class </em><code class="descclassname">mozpack.mozjar.</code><code class="descname">JarCdirEnd</code><span class="sig-paren">(</span><em>data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.mozjar.JarCdirEnd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.mozjar.JarStruct" title="mozpack.mozjar.JarStruct"><code class="xref py py-class docutils literal"><span class="pre">mozpack.mozjar.JarStruct</span></code></a></p>
+<p>End of central directory record.</p>
+<dl class="attribute">
+<dt id="mozpack.mozjar.JarCdirEnd.MAGIC">
+<code class="descname">MAGIC</code><em class="property"> = 101010256</em><a class="headerlink" href="#mozpack.mozjar.JarCdirEnd.MAGIC" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozpack.mozjar.JarCdirEnd.STRUCT">
+<code class="descname">STRUCT</code><em class="property"> = OrderedDict([('disk_num', 'uint16'), ('cdir_disk', 'uint16'), ('disk_entries', 'uint16'), ('cdir_entries', 'uint16'), ('cdir_size', 'uint32'), ('cdir_offset', 'uint32'), ('comment_size', 'uint16'), ('comment', 'comment_size')])</em><a class="headerlink" href="#mozpack.mozjar.JarCdirEnd.STRUCT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.mozjar.JarCdirEntry">
+<em class="property">class </em><code class="descclassname">mozpack.mozjar.</code><code class="descname">JarCdirEntry</code><span class="sig-paren">(</span><em>data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.mozjar.JarCdirEntry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.mozjar.JarStruct" title="mozpack.mozjar.JarStruct"><code class="xref py py-class docutils literal"><span class="pre">mozpack.mozjar.JarStruct</span></code></a></p>
+<p>Central directory file header</p>
+<dl class="attribute">
+<dt id="mozpack.mozjar.JarCdirEntry.MAGIC">
+<code class="descname">MAGIC</code><em class="property"> = 33639248</em><a class="headerlink" href="#mozpack.mozjar.JarCdirEntry.MAGIC" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozpack.mozjar.JarCdirEntry.STRUCT">
+<code class="descname">STRUCT</code><em class="property"> = OrderedDict([('creator_version', 'uint16'), ('min_version', 'uint16'), ('general_flag', 'uint16'), ('compression', 'uint16'), ('lastmod_time', 'uint16'), ('lastmod_date', 'uint16'), ('crc32', 'uint32'), ('compressed_size', 'uint32'), ('uncompressed_size', 'uint32'), ('filename_size', 'uint16'), ('extrafield_size', 'uint16'), ('filecomment_size', 'uint16'), ('disknum', 'uint16'), ('internal_attr', 'uint16'), ('external_attr', 'uint32'), ('offset', 'uint32'), ('filename', 'filename_size'), ('extrafield', 'extrafield_size'), ('filecomment', 'filecomment_size')])</em><a class="headerlink" href="#mozpack.mozjar.JarCdirEntry.STRUCT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.mozjar.JarFileReader">
+<em class="property">class </em><code class="descclassname">mozpack.mozjar.</code><code class="descname">JarFileReader</code><span class="sig-paren">(</span><em>header</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.mozjar.JarFileReader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>File-like class for use by JarReader to give access to individual files
+within a Jar archive.</p>
+<dl class="method">
+<dt id="mozpack.mozjar.JarFileReader.close">
+<code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.mozjar.JarFileReader.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Free the uncompressed data buffer.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozpack.mozjar.JarFileReader.compressed_data">
+<code class="descname">compressed_data</code><a class="headerlink" href="#mozpack.mozjar.JarFileReader.compressed_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the raw compressed data.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.mozjar.JarFileReader.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>length=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.mozjar.JarFileReader.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read some amount of uncompressed data.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.mozjar.JarFileReader.readlines">
+<code class="descname">readlines</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.mozjar.JarFileReader.readlines" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list containing all the lines of data in the uncompressed
+data.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.mozjar.JarFileReader.seek">
+<code class="descname">seek</code><span class="sig-paren">(</span><em>pos</em>, <em>whence=0</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.mozjar.JarFileReader.seek" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change the current position in the uncompressed data. Subsequent reads
+will start from there.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozpack.mozjar.JarFileReader.uncompressed_data">
+<code class="descname">uncompressed_data</code><a class="headerlink" href="#mozpack.mozjar.JarFileReader.uncompressed_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the uncompressed data.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.mozjar.JarLocalFileHeader">
+<em class="property">class </em><code class="descclassname">mozpack.mozjar.</code><code class="descname">JarLocalFileHeader</code><span class="sig-paren">(</span><em>data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.mozjar.JarLocalFileHeader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.mozjar.JarStruct" title="mozpack.mozjar.JarStruct"><code class="xref py py-class docutils literal"><span class="pre">mozpack.mozjar.JarStruct</span></code></a></p>
+<p>Local file header</p>
+<dl class="attribute">
+<dt id="mozpack.mozjar.JarLocalFileHeader.MAGIC">
+<code class="descname">MAGIC</code><em class="property"> = 67324752</em><a class="headerlink" href="#mozpack.mozjar.JarLocalFileHeader.MAGIC" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozpack.mozjar.JarLocalFileHeader.STRUCT">
+<code class="descname">STRUCT</code><em class="property"> = OrderedDict([('min_version', 'uint16'), ('general_flag', 'uint16'), ('compression', 'uint16'), ('lastmod_time', 'uint16'), ('lastmod_date', 'uint16'), ('crc32', 'uint32'), ('compressed_size', 'uint32'), ('uncompressed_size', 'uint32'), ('filename_size', 'uint16'), ('extra_field_size', 'uint16'), ('filename', 'filename_size'), ('extra_field', 'extra_field_size')])</em><a class="headerlink" href="#mozpack.mozjar.JarLocalFileHeader.STRUCT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.mozjar.JarLog">
+<em class="property">class </em><code class="descclassname">mozpack.mozjar.</code><code class="descname">JarLog</code><span class="sig-paren">(</span><em>file=None</em>, <em>fileobj=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.mozjar.JarLog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">dict</span></code></p>
+<p>Helper to read the file Gecko generates when setting MOZ_JAR_LOG_FILE.
+The jar log is then available as a dict with the jar path as key (see
+canonicalize for more details on the key value), and the corresponding
+access log as a list value. Only the first access to a given member of
+a jar is stored.</p>
+<dl class="staticmethod">
+<dt id="mozpack.mozjar.JarLog.canonicalize">
+<em class="property">static </em><code class="descname">canonicalize</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.mozjar.JarLog.canonicalize" title="Permalink to this definition">¶</a></dt>
+<dd><p>The jar path is stored in a MOZ_JAR_LOG_FILE log as a url. This method
+returns a unique value corresponding to such urls.
+- <a class="reference external" href="file://">file://</a>/{path} becomes {path}
+- <a class="reference external" href="jar:file://">jar:file://</a>/{path}!/{subpath} becomes ({path}, {subpath})
+- <a class="reference external" href="jar:jar:file://">jar:jar:file://</a>/{path}!/{subpath}!/{subpath2} becomes</p>
+<blockquote>
+<div>({path}, {subpath}, {subpath2})</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.mozjar.JarReader">
+<em class="property">class </em><code class="descclassname">mozpack.mozjar.</code><code class="descname">JarReader</code><span class="sig-paren">(</span><em>file=None</em>, <em>fileobj=None</em>, <em>data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.mozjar.JarReader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Class with methods to read Jar files. Can open standard jar files as well
+as Mozilla jar files (see further details in the JarWriter documentation).</p>
+<dl class="method">
+<dt id="mozpack.mozjar.JarReader.close">
+<code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.mozjar.JarReader.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Free some resources associated with the Jar.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozpack.mozjar.JarReader.compression">
+<code class="descname">compression</code><a class="headerlink" href="#mozpack.mozjar.JarReader.compression" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozpack.mozjar.JarReader.entries">
+<code class="descname">entries</code><a class="headerlink" href="#mozpack.mozjar.JarReader.entries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an ordered dict of central directory entries, indexed by
+filename, in the order they appear in the Jar archive central
+directory. Directory entries are skipped.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozpack.mozjar.JarReader.is_optimized">
+<code class="descname">is_optimized</code><a class="headerlink" href="#mozpack.mozjar.JarReader.is_optimized" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return whether the jar archive is optimized.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozpack.mozjar.JarReader.last_preloaded">
+<code class="descname">last_preloaded</code><a class="headerlink" href="#mozpack.mozjar.JarReader.last_preloaded" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the name of the last file that is set to be preloaded.
+See JarWriter documentation for more details on preloading.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="mozpack.mozjar.JarReaderError">
+<em class="property">exception </em><code class="descclassname">mozpack.mozjar.</code><code class="descname">JarReaderError</code><a class="headerlink" href="#mozpack.mozjar.JarReaderError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></code></p>
+<p>Error type for Jar reader errors.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.mozjar.JarStruct">
+<em class="property">class </em><code class="descclassname">mozpack.mozjar.</code><code class="descname">JarStruct</code><span class="sig-paren">(</span><em>data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.mozjar.JarStruct" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Helper used to define ZIP archive raw data structures. Data structures
+handled by this helper all start with a magic number, defined in
+subclasses MAGIC field as a 32-bits unsigned integer, followed by data
+structured as described in subclasses STRUCT field.</p>
+<p>The STRUCT field contains a list of (name, type) pairs where name is a
+field name, and the type can be one of ‘uint32’, ‘uint16’ or one of the
+field names. In the latter case, the field is considered to be a string
+buffer with a length given in that field.
+For example,</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>STRUCT = [</dt>
+<dd>(‘version’, ‘uint32’),
+(‘filename_size’, ‘uint16’),
+(‘filename’, ‘filename_size’)</dd>
+</dl>
+<p>]</p>
+</div></blockquote>
+<p>describes a structure with a ‘version’ 32-bits unsigned integer field,
+followed by a ‘filename_size’ 16-bits unsigned integer field, followed by a
+filename_size-long string buffer ‘filename’.</p>
+<p>Fields that are used as other fields size are not stored in objects. In the
+above example, an instance of such subclass would only have two attributes:</p>
+<blockquote>
+<div>obj[‘version’]
+obj[‘filename’]</div></blockquote>
+<p>filename_size would be obtained with len(obj[‘filename’]).</p>
+<p>JarStruct subclasses instances can be either initialized from existing data
+(deserialized), or with empty fields.</p>
+<dl class="attribute">
+<dt id="mozpack.mozjar.JarStruct.TYPE_MAPPING">
+<code class="descname">TYPE_MAPPING</code><em class="property"> = {'uint16': ('H', 2), 'uint32': ('I', 4)}</em><a class="headerlink" href="#mozpack.mozjar.JarStruct.TYPE_MAPPING" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="mozpack.mozjar.JarStruct.get_data">
+<em class="property">static </em><code class="descname">get_data</code><span class="sig-paren">(</span><em>type</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.mozjar.JarStruct.get_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deserialize a single field of given type (must be one of
+JarStruct.TYPE_MAPPING) at the given offset in the given data.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.mozjar.JarStruct.serialize">
+<code class="descname">serialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.mozjar.JarStruct.serialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serialize the data structure according to the data structure definition
+from self.STRUCT.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozpack.mozjar.JarStruct.size">
+<code class="descname">size</code><a class="headerlink" href="#mozpack.mozjar.JarStruct.size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the size of the data structure, given the current values of all
+variable length fields.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.mozjar.JarWriter">
+<em class="property">class </em><code class="descclassname">mozpack.mozjar.</code><code class="descname">JarWriter</code><span class="sig-paren">(</span><em>file=None</em>, <em>fileobj=None</em>, <em>compress=True</em>, <em>optimize=True</em>, <em>compress_level=9</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.mozjar.JarWriter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Class with methods to write Jar files. Can write more-or-less standard jar
+archives as well as jar archives optimized for Gecko. See the documentation
+for the close() member function for a description of both layouts.</p>
+<dl class="method">
+<dt id="mozpack.mozjar.JarWriter.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>name</em>, <em>data</em>, <em>compress=None</em>, <em>mode=None</em>, <em>skip_duplicates=False</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.mozjar.JarWriter.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a new member to the jar archive, with the given name and the given
+data.
+The compress option indicates how the given data should be compressed
+(one of JAR_STORED, JAR_DEFLATE or JAR_BROTLI), or compressed according
+to the default defined when creating the JarWriter (None). True and
+False are allowed values for backwards compatibility, mapping,
+respectively, to JAR_DEFLATE and JAR_STORED.
+When the data should be compressed, it is only really compressed if
+the compressed size is smaller than the uncompressed size.
+The mode option gives the unix permissions that should be stored
+for the jar entry.
+If a duplicated member is found skip_duplicates will prevent raising
+an exception if set to True.
+The given data may be a buffer, a file-like instance, a Deflater or a
+JarFileReader instance. The latter two allow to avoid uncompressing
+data to recompress it.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.mozjar.JarWriter.finish">
+<code class="descname">finish</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.mozjar.JarWriter.finish" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flush and close the Jar archive.</p>
+<dl class="docutils">
+<dt>Standard jar archives are laid out like the following:</dt>
+<dd><ul class="first last simple">
+<li>Local file header 1</li>
+<li>File data 1</li>
+<li>Local file header 2</li>
+<li>File data 2</li>
+<li>(…)</li>
+<li>Central directory entry pointing at Local file header 1</li>
+<li>Central directory entry pointing at Local file header 2</li>
+<li>(…)</li>
+<li>End of central directory, pointing at first central directory
+entry.</li>
+</ul>
+</dd>
+<dt>Jar archives optimized for Gecko are laid out like the following:</dt>
+<dd><ul class="first last simple">
+<li>32-bits unsigned integer giving the amount of data to preload.</li>
+<li>Central directory entry pointing at Local file header 1</li>
+<li>Central directory entry pointing at Local file header 2</li>
+<li>(…)</li>
+<li>End of central directory, pointing at first central directory
+entry.</li>
+<li>Local file header 1</li>
+<li>File data 1</li>
+<li>Local file header 2</li>
+<li>File data 2</li>
+<li>(…)</li>
+<li>End of central directory, pointing at first central directory
+entry.</li>
+</ul>
+</dd>
+</dl>
+<p>The duplication of the End of central directory is to accomodate some
+Zip reading tools that want an end of central directory structure to
+follow the central directory entries.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.mozjar.JarWriter.preload">
+<code class="descname">preload</code><span class="sig-paren">(</span><em>files</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.mozjar.JarWriter.preload" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set which members of the jar archive should be preloaded when opening
+the archive in Gecko. This reorders the members according to the order
+of given list.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="mozpack.mozjar.JarWriterError">
+<em class="property">exception </em><code class="descclassname">mozpack.mozjar.</code><code class="descname">JarWriterError</code><a class="headerlink" href="#mozpack.mozjar.JarWriterError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></code></p>
+<p>Error type for Jar writer errors.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozpack.path">
+<span id="mozpack-path-module"></span><h2>mozpack.path module<a class="headerlink" href="#module-mozpack.path" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mozpack.path.abspath">
+<code class="descclassname">mozpack.path.</code><code class="descname">abspath</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.path.abspath" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozpack.path.basedir">
+<code class="descclassname">mozpack.path.</code><code class="descname">basedir</code><span class="sig-paren">(</span><em>path</em>, <em>bases</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.path.basedir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a list of directories (bases), return which one contains the given
+path. If several matches are found, the deepest base directory is returned.</p>
+<blockquote>
+<div>basedir(‘foo/bar/baz’, [‘foo’, ‘baz’, ‘foo/bar’]) returns ‘foo/bar’
+(‘foo’ and ‘foo/bar’ both match, but ‘foo/bar’ is the deepest match)</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozpack.path.basename">
+<code class="descclassname">mozpack.path.</code><code class="descname">basename</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.path.basename" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozpack.path.commonprefix">
+<code class="descclassname">mozpack.path.</code><code class="descname">commonprefix</code><span class="sig-paren">(</span><em>paths</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.path.commonprefix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozpack.path.dirname">
+<code class="descclassname">mozpack.path.</code><code class="descname">dirname</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.path.dirname" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozpack.path.join">
+<code class="descclassname">mozpack.path.</code><code class="descname">join</code><span class="sig-paren">(</span><em>*paths</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.path.join" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozpack.path.match">
+<code class="descclassname">mozpack.path.</code><code class="descname">match</code><span class="sig-paren">(</span><em>path</em>, <em>pattern</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.path.match" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return whether the given path matches the given pattern.
+An asterisk can be used to match any string, including the null string, in
+one part of the path:</p>
+<blockquote>
+<div>‘foo’ matches ‘*’, ‘f*’ or ‘fo*o’</div></blockquote>
+<dl class="docutils">
+<dt>However, an asterisk matching a subdirectory may not match the null string:</dt>
+<dd>‘foo/bar’ does <em>not</em> match ‘foo/<a href="#id3"><span class="problematic" id="id4">*</span></a>/bar’</dd>
+</dl>
+<p>If the pattern matches one of the ancestor directories of the path, the
+patch is considered matching:</p>
+<blockquote>
+<div>‘foo/bar’ matches ‘foo’</div></blockquote>
+<p>Two adjacent asterisks can be used to match files and zero or more
+directories and subdirectories.</p>
+<blockquote>
+<div>‘foo/bar’ matches ‘foo/<strong>/bar’, or ‘</strong>/bar’</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozpack.path.normpath">
+<code class="descclassname">mozpack.path.</code><code class="descname">normpath</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.path.normpath" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozpack.path.normsep">
+<code class="descclassname">mozpack.path.</code><code class="descname">normsep</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.path.normsep" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalize path separators, by using forward slashes instead of whatever
+os.sep is.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozpack.path.realpath">
+<code class="descclassname">mozpack.path.</code><code class="descname">realpath</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.path.realpath" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozpack.path.rebase">
+<code class="descclassname">mozpack.path.</code><code class="descname">rebase</code><span class="sig-paren">(</span><em>oldbase</em>, <em>base</em>, <em>relativepath</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.path.rebase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return relativepath relative to base instead of oldbase.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozpack.path.relpath">
+<code class="descclassname">mozpack.path.</code><code class="descname">relpath</code><span class="sig-paren">(</span><em>path</em>, <em>start</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.path.relpath" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozpack.path.split">
+<code class="descclassname">mozpack.path.</code><code class="descname">split</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.path.split" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Return the normalized path as a list of its components.</dt>
+<dd>split(‘foo/bar/baz’) returns [‘foo’, ‘bar’, ‘baz’]</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozpack.path.splitext">
+<code class="descclassname">mozpack.path.</code><code class="descname">splitext</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.path.splitext" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-mozpack">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-mozpack" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="mozpack.chrome.html" class="btn btn-neutral float-right" title="mozpack.chrome package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="mozlint.formatters.html" class="btn btn-neutral" title="mozlint.formatters package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

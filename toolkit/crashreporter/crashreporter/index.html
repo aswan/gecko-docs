@@ -1,0 +1,465 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Crash Reporter &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../../../index.html"/>
+        <link rel="next" title="Supbrocess Module" href="../../modules/subprocess/toolkit_modules/subprocess/index.html"/>
+        <link rel="prev" title="List Based Flash Blocking" href="../../components/url-classifier/url-classifier/flash-block-lists.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Crash Reporter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-main-process-crash-handling-works">How Main-Process Crash Handling Works</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#plugin-and-child-process-crashes">Plugin and Child Process Crashes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#memory-reports">Memory Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#flash-process-crashes">Flash Process Crashes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#plugin-hangs">Plugin Hangs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#browser-hangs">Browser Hangs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#about-crashes">about:crashes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Crash Reporter</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/toolkit/crashreporter/crashreporter/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="crash-reporter">
+<h1>Crash Reporter<a class="headerlink" href="#crash-reporter" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>crash reporter</strong> is a subsystem to record and manage application
+crash data.</p>
+<p>While the subsystem is known as <em>crash reporter</em>, it helps to think of
+it more as a <em>process dump manager</em>. This is because the heart of this
+subsystem is really managing process dump files and these files are
+created not only from process crashes but also from hangs and other
+exceptional events.</p>
+<p>The crash reporter subsystem is composed of a number of pieces working
+together.</p>
+<dl class="docutils">
+<dt>Breakpad</dt>
+<dd>Breakpad is a library and set of tools to make collecting process
+information (notably dumps from crashes) easy. Breakpad is a 3rd
+party project (originaly developed by Google) that is imported into
+the tree.</dd>
+<dt>Dump files</dt>
+<dd>Breakpad produces files called <em>dump files</em> that hold process data
+(stacks, heap data, etc).</dd>
+<dt>Crash Reporter Client</dt>
+<dd>The crash reporter client is a standalone executable that is launched
+to handle dump files. This application optionally submits crashes to
+Mozilla (or the configured server).</dd>
+<dt>Minidump Analyzer</dt>
+<dd>The minidump analyzer is a standalone executable that is launched by the
+crash reporter client or by the browser itself to extract stack traces from
+the dump files generated during a crash. It appends the stack traces to the
+.extra file associated with the crash dump.</dd>
+<dt>Ping Sender</dt>
+<dd>The ping sender is a standalone executable that is launched by the crash
+reporter client to deliver a crash ping to our telemetry servers. The ping
+sender is used to speed up delivery of the crash ping which would otherwise
+have to wait for Firefox to be restarted in order to be sent.</dd>
+</dl>
+</div>
+<div class="section" id="how-main-process-crash-handling-works">
+<h2>How Main-Process Crash Handling Works<a class="headerlink" href="#how-main-process-crash-handling-works" title="Permalink to this headline">¶</a></h2>
+<p>The crash handler is hooked up very early in the Gecko process lifetime.
+It all starts in <code class="docutils literal"><span class="pre">XREMain::XRE_mainInit()</span></code> from <code class="docutils literal"><span class="pre">nsAppRunner.cpp</span></code>.
+Assuming crash reporting is enabled, this startup function registers an
+exception handler for the process and tells the crash reporter subsystem
+about basic metadata such as the application name and version.</p>
+<p>The registration of the crash reporter exception handler doubles as
+initialization of the crash reporter itself. This happens in
+<code class="docutils literal"><span class="pre">CrashReporter::SetExceptionHandler()</span></code> from <code class="docutils literal"><span class="pre">nsExceptionHandler.cpp</span></code>.
+The crash reporter figures out what application to use for reporting
+dumped crashes and where to store these dump files on disk. The Breakpad
+exception handler (really just a mechanism for dumping process state) is
+initialized as part of this function. The Breakpad exception handler is
+a <code class="docutils literal"><span class="pre">google_breakpad::ExceptionHandler</span></code> instance and it’s stored as
+<code class="docutils literal"><span class="pre">gExceptionHandler</span></code>.</p>
+<p>As the application runs, various other systems may write <em>annotations</em>
+or <em>notes</em> to the crash reporter to indicate state of the application,
+help with possible reasons for a current or future crash, etc. These are
+performed via <code class="docutils literal"><span class="pre">CrashReporter::AnnotateCrashReport()</span></code> and
+<code class="docutils literal"><span class="pre">CrashReporter::AppendAppNotesToCrashReport()</span></code> from
+<code class="docutils literal"><span class="pre">nsExceptionHandler.h</span></code>.</p>
+<p>For well running applications, this is all that happens. However, if a
+crash or similar exceptional event occurs (such as a hang), we need to
+write a crash report.</p>
+<p>When an event worthy of writing a dump occurs, the Breakpad exception
+handler is invoked and Breakpad does its thing. When Breakpad has
+finished, it calls back into <code class="docutils literal"><span class="pre">CrashReporter::MinidumpCallback()</span></code> from
+<code class="docutils literal"><span class="pre">nsExceptionHandler.cpp</span></code> to tell the crash reporter about what was
+written.</p>
+<p><code class="docutils literal"><span class="pre">MinidumpCallback()</span></code> performs a number of actions once a dump has been
+written. It writes a file with the time of the crash so other systems can
+easily determine the time of the last crash. It supplements the dump
+file with an <em>extra</em> file containing Mozilla-specific metadata. This data
+includes the annotations set via <code class="docutils literal"><span class="pre">CrashReporter::AnnotateCrashReport()</span></code>
+as well as time since last crash, whether garbage collection was active at
+the time of the crash, memory statistics, etc.</p>
+<p>If the <em>crash reporter client</em> is enabled, <code class="docutils literal"><span class="pre">MinidumpCallback()</span></code> invokes
+it. It simply tries to create a new <em>crash reporter client</em> process (e.g.
+<em>crashreporter.exe</em>) with the path to the written minidump file as an
+argument.</p>
+<p>The <em>crash reporter client</em> performs a number of roles. There’s a lot going
+on, so you may want to look at <code class="docutils literal"><span class="pre">main()</span></code> in <code class="docutils literal"><span class="pre">crashreporter.cpp</span></code>. First,
+stack traces are extracted from the dump via the <em>minidump analyzer</em> tool.
+The resulting traces are appended to the .extra file of the crash together with
+the SHA256 hash of the minidump file. Once this
+is done a crash ping is assembled holding the same information as the one
+generated by the <code class="docutils literal"><span class="pre">`CrashManager`</span></code> and it’s sent to the telemetry servers via
+the <em>ping sender</em> program. The UUID of the ping is then stored in the extra
+file; the <code class="docutils literal"><span class="pre">`CrashManager`</span></code> will later pick it up and generate a new ping
+with the same UUID so that the telemetry server can deduplicate both pings.
+Then, the
+<em>crash reporter client</em> verifies that the dump data is sane. If it isn’t
+(e.g. required metadata is missing), the dump data is ignored. If dump data
+looks sane, the dump data
+is moved into the <em>pending</em> directory for the configured data directory
+(defined via the <code class="docutils literal"><span class="pre">MOZ_CRASHREPORTER_DATA_DIRECTORY</span></code> environment variable
+or from the UI). Once this is done, the main crash reporter UI is displayed
+via <code class="docutils literal"><span class="pre">UIShowCrashUI()</span></code>. The crash reporter UI is platform specific: there
+are separate versions for Windows, OS X, and various *NIX presentation
+flavors (such as GTK). The basic gist is a dialog is displayed to the user
+and the user has the opportunity to submit this dump data to a remote
+server.</p>
+<p>If a dump is submitted via the crash reporter, the raw dump files are
+removed from the <em>pending</em> directory and a file containing the
+crash ID from the remote server for the submitted dump is created in the
+<em>submitted</em> directory.</p>
+<p>If the user chooses not to submit a dump in the crash reporter UI, the dump
+files are deleted.</p>
+<p>And that’s pretty much what happens when a crash/dump is written!</p>
+</div>
+<div class="section" id="plugin-and-child-process-crashes">
+<h2>Plugin and Child Process Crashes<a class="headerlink" href="#plugin-and-child-process-crashes" title="Permalink to this headline">¶</a></h2>
+<p>Crashes in plugin and child processes are also managed by the crash
+reporting subsystem.</p>
+<p>Child process crashes are handled by the <code class="docutils literal"><span class="pre">mozilla::dom::CrashReporterParent</span></code>
+class defined in <code class="docutils literal"><span class="pre">dom/ipc</span></code>. When a child process crashes, the toplevel IPDL
+actor should check for it by calling TakeMinidump in its <code class="docutils literal"><span class="pre">ActorDestroy</span></code>
+Method: see <code class="docutils literal"><span class="pre">mozilla::plugins::PluginModuleParent::ActorDestroy</span></code> and
+<code class="docutils literal"><span class="pre">mozilla::plugins::PluginModuleParent::ProcessFirstMinidump</span></code>. That method
+is responsible for calling
+<code class="docutils literal"><span class="pre">mozilla::dom::CrashReporterParent::GenerateCrashReportForMinidump</span></code> with
+appropriate crash annotations specific to the crash. All child-process
+crashes are annotated with a <code class="docutils literal"><span class="pre">ProcessType</span></code> annotation, such as “content” or
+“plugin”.</p>
+<p>Once the minidump file has been generated the
+<code class="docutils literal"><span class="pre">mozilla::dom::CrashReporterHost</span></code> is notified of the crash. It will first
+try to extract the stack traces from the minidump file using the
+<em>minidump analyzer</em>. Then the stack traces will be stored in the extra file
+together with the rest of the crash annotations and finally the crash will be
+recorded by calling <code class="docutils literal"><span class="pre">`CrashService.addCrash()`</span></code>. This last step adds the
+crash to the <code class="docutils literal"><span class="pre">`CrashManager`</span></code> database and automatically sends a crash ping
+with information about the crash.</p>
+<p>Submission of child process crashes is handled by application code. This
+code prompts the user to submit crashes in context-appropriate UI and then
+submits the crashes using <code class="docutils literal"><span class="pre">CrashSubmit.jsm</span></code>.</p>
+</div>
+<div class="section" id="memory-reports">
+<h2>Memory Reports<a class="headerlink" href="#memory-reports" title="Permalink to this headline">¶</a></h2>
+<p>When a process detects that it is running low on memory, a memory report is
+saved. If the process crashes, the memory report will be included with the crash
+report. <code class="docutils literal"><span class="pre">nsThread::SaveMemoryReportNearOOM()</span></code> checks to see if the process is
+low on memory every 30 seconds at most and saves a report every 3 minutes at
+most. Since a child process cannot actually save to the hard drive, it instead
+notifies its parent process, which saves the report for it. If a crash does
+occur, the memory report is moved to the <em>pending</em> directory with the other dump
+data and an annotation is added to indicate the presence of the report. This
+happens in <code class="docutils literal"><span class="pre">nsExceptionHandler.cpp</span></code>, but occurs in different functions
+depending on what process crashed. When the main process crashes, this happens
+in <code class="docutils literal"><span class="pre">MinidumpCallback()</span></code>. When a child process crashes, it happens in
+<code class="docutils literal"><span class="pre">OnChildProcessDumpRequested()</span></code>, with the annotation being added in
+<code class="docutils literal"><span class="pre">WriteExtraData()</span></code>.</p>
+</div>
+<div class="section" id="flash-process-crashes">
+<h2>Flash Process Crashes<a class="headerlink" href="#flash-process-crashes" title="Permalink to this headline">¶</a></h2>
+<p>On Windows Vista+, the Adobe Flash plugin creates two extra processes in its
+Firefox plugin to implement OS-level sandboxing. In order to catch crashes in
+these processes, Firefox injects a crash report handler into the process using the code at <code class="docutils literal"><span class="pre">InjectCrashReporter.cpp</span></code>. When these crashes occur, the
+ProcessType=plugin annotation is present, and an additional annotation
+FlashProcessDump has the value “Sandbox” or “Broker”.</p>
+</div>
+<div class="section" id="plugin-hangs">
+<h2>Plugin Hangs<a class="headerlink" href="#plugin-hangs" title="Permalink to this headline">¶</a></h2>
+<p>Plugin hangs are handled as crash reports. If a plugin doesn’t respond to an
+IPC message after 60 seconds, the plugin IPC code will take minidumps of all
+of the processes involved and then kill the plugin.</p>
+<p>In this case, there will be only one .ini file with the crash report metadata,
+but there will be multiple dump files: at least one for the browser process and
+one for the plugin process, and perhaps also additional dumps for the Flash
+sandbox and broker processes. All of these files are submitted together as a
+unit. Before submission, the filenames of the files are linked:</p>
+<ul class="simple">
+<li><strong>uuid.ini</strong> - <em>annotations, includes an additional_minidumps field</em></li>
+<li><strong>uuid.dmp</strong> - <em>plugin process dump file</em></li>
+<li><strong>uuid-&lt;other&gt;.dmp</strong> - <em>other process dump file as listed in additional_minidumps</em></li>
+</ul>
+</div>
+<div class="section" id="browser-hangs">
+<h2>Browser Hangs<a class="headerlink" href="#browser-hangs" title="Permalink to this headline">¶</a></h2>
+<p>There is a feature of Firefox that will crash Firefox if it stops processing
+messages after a certain period of time. This feature doesn’t work well and is
+disabled by default. See <code class="docutils literal"><span class="pre">xpcom/threads/HangMonitor.cpp</span></code>. Hang crashes
+are annotated with <code class="docutils literal"><span class="pre">Hang=1</span></code>.</p>
+</div>
+<div class="section" id="about-crashes">
+<h2><a class="reference external" href="about:crashes">about:crashes</a><a class="headerlink" href="#about-crashes" title="Permalink to this headline">¶</a></h2>
+<p>If the crash reporter subsystem is enabled, the <em>about:crashes</em>
+page will be registered with the application. This page provides
+information about previous and submitted crashes.</p>
+<p>It is also possible to submit crashes from <em>about:crashes</em>.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../modules/subprocess/toolkit_modules/subprocess/index.html" class="btn btn-neutral float-right" title="Supbrocess Module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../../components/url-classifier/url-classifier/flash-block-lists.html" class="btn btn-neutral" title="List Based Flash Blocking" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

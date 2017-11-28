@@ -1,0 +1,791 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mozlint package &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../index.html"/>
+        <link rel="next" title="mozlint.formatters package" href="mozlint.formatters.html"/>
+        <link rel="prev" title="mozbuild.test.frontend package" href="mozbuild.test.frontend.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">mozlint package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mozlint.formatters.html">mozlint.formatters package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-mozlint.cli">mozlint.cli module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-mozlint.editor">mozlint.editor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-mozlint.errors">mozlint.errors module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-mozlint.parser">mozlint.parser module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-mozlint.pathutils">mozlint.pathutils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-mozlint.result">mozlint.result module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-mozlint.roller">mozlint.roller module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-mozlint.types">mozlint.types module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-mozlint">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>mozlint package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/python/mozlint.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mozlint-package">
+<h1>mozlint package<a class="headerlink" href="#mozlint-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mozlint.formatters.html">mozlint.formatters package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mozlint.formatters.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozlint.formatters.html#module-mozlint.formatters.compact">mozlint.formatters.compact module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozlint.formatters.html#module-mozlint.formatters.stylish">mozlint.formatters.stylish module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozlint.formatters.html#module-mozlint.formatters.treeherder">mozlint.formatters.treeherder module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozlint.formatters.html#module-mozlint.formatters.unix">mozlint.formatters.unix module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozlint.formatters.html#module-mozlint.formatters">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-mozlint.cli">
+<span id="mozlint-cli-module"></span><h2>mozlint.cli module<a class="headerlink" href="#module-mozlint.cli" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozlint.cli.MozlintParser">
+<em class="property">class </em><code class="descclassname">mozlint.cli.</code><code class="descname">MozlintParser</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#mozlint.cli.MozlintParser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">argparse.ArgumentParser</span></code></p>
+<dl class="attribute">
+<dt id="mozlint.cli.MozlintParser.arguments">
+<code class="descname">arguments</code><em class="property"> = [[[u'paths'], {u'default': None, u'nargs': u'*', u'help': u&quot;Paths to file or directories to lint, like 'browser/components/loop' or 'mobile/android'. Defaults to the current directory if not given.&quot;}], [[u'-l', u'--linter'], {u'dest': u'linters', u'default': [], u'action': u'append', u'help': u&quot;Linters to run, e.g 'eslint'. By default all linters are run for all the appropriate files.&quot;}], [[u'--list'], {u'dest': u'list_linters', u'default': False, u'action': u'store_true', u'help': u'List all available linters and exit.'}], [[u'-f', u'--format'], {u'dest': u'fmt', u'default': u'stylish', u'help': u&quot;Formatter to use. Defaults to 'stylish'.&quot;, u'choices': ['compact', 'stylish', 'json', 'treeherder', 'unix']}], [[u'-n', u'--no-filter'], {u'dest': u'use_filters', u'default': True, u'action': u'store_false', u'help': u&quot;Ignore all filtering. This is useful for quickly testing a directory that otherwise wouldn't be run, without needing to modify the config file.&quot;}], [[u'-o', u'--outgoing'], {u'nargs': u'?', u'const': u'default', u'help': u'Lint files touched by commits that are not on the remote repository. Without arguments, finds the default remote that would be pushed to. The remote branch can also be specified manually. Works with mercurial or git.'}], [[u'-w', u'--workdir'], {u'nargs': u'?', u'const': u'all', u'help': u&quot;Lint files touched by changes in the working directory (i.e haven't been committed yet). On git, --workdir=staged can be used to only consider staged files. Works with mercurial or git.&quot;, u'choices': [u'staged', u'all']}], [[u'--fix'], {u'action': u'store_true', u'default': False, u'help': u'Fix lint errors if possible. Any errors that could not be fixed will be printed as normal.'}], [[u'--edit'], {u'action': u'store_true', u'default': False, u'help': u'Each file containing lint errors will be opened in $EDITOR one after the other.'}], [[u'extra_args'], {u'nargs': '...', u'help': u'Extra arguments that will be forwarded to the underlying linter.'}]]</em><a class="headerlink" href="#mozlint.cli.MozlintParser.arguments" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozlint.cli.MozlintParser.parse_known_args">
+<code class="descname">parse_known_args</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#mozlint.cli.MozlintParser.parse_known_args" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozlint.cli.MozlintParser.validate">
+<code class="descname">validate</code><span class="sig-paren">(</span><em>args</em><span class="sig-paren">)</span><a class="headerlink" href="#mozlint.cli.MozlintParser.validate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="mozlint.cli.find_linters">
+<code class="descclassname">mozlint.cli.</code><code class="descname">find_linters</code><span class="sig-paren">(</span><em>linters=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozlint.cli.find_linters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozlint.cli.run">
+<code class="descclassname">mozlint.cli.</code><code class="descname">run</code><span class="sig-paren">(</span><em>paths</em>, <em>linters</em>, <em>fmt</em>, <em>outgoing</em>, <em>workdir</em>, <em>edit</em>, <em>list_linters=None</em>, <em>**lintargs</em><span class="sig-paren">)</span><a class="headerlink" href="#mozlint.cli.run" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-mozlint.editor">
+<span id="mozlint-editor-module"></span><h2>mozlint.editor module<a class="headerlink" href="#module-mozlint.editor" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mozlint.editor.edit_results">
+<code class="descclassname">mozlint.editor.</code><code class="descname">edit_results</code><span class="sig-paren">(</span><em>results</em><span class="sig-paren">)</span><a class="headerlink" href="#mozlint.editor.edit_results" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozlint.editor.get_editor">
+<code class="descclassname">mozlint.editor.</code><code class="descname">get_editor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozlint.editor.get_editor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-mozlint.errors">
+<span id="mozlint-errors-module"></span><h2>mozlint.errors module<a class="headerlink" href="#module-mozlint.errors" title="Permalink to this headline">¶</a></h2>
+<dl class="exception">
+<dt id="mozlint.errors.LintException">
+<em class="property">exception </em><code class="descclassname">mozlint.errors.</code><code class="descname">LintException</code><a class="headerlink" href="#mozlint.errors.LintException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></code></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="mozlint.errors.LinterNotFound">
+<em class="property">exception </em><code class="descclassname">mozlint.errors.</code><code class="descname">LinterNotFound</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozlint.errors.LinterNotFound" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozlint.errors.LintException" title="mozlint.errors.LintException"><code class="xref py py-class docutils literal"><span class="pre">mozlint.errors.LintException</span></code></a></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="mozlint.errors.LinterParseError">
+<em class="property">exception </em><code class="descclassname">mozlint.errors.</code><code class="descname">LinterParseError</code><span class="sig-paren">(</span><em>path</em>, <em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#mozlint.errors.LinterParseError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozlint.errors.LintException" title="mozlint.errors.LintException"><code class="xref py py-class docutils literal"><span class="pre">mozlint.errors.LintException</span></code></a></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="mozlint.errors.LintersNotConfigured">
+<em class="property">exception </em><code class="descclassname">mozlint.errors.</code><code class="descname">LintersNotConfigured</code><a class="headerlink" href="#mozlint.errors.LintersNotConfigured" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozlint.errors.LintException" title="mozlint.errors.LintException"><code class="xref py py-class docutils literal"><span class="pre">mozlint.errors.LintException</span></code></a></p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozlint.parser">
+<span id="mozlint-parser-module"></span><h2>mozlint.parser module<a class="headerlink" href="#module-mozlint.parser" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozlint.parser.Parser">
+<em class="property">class </em><code class="descclassname">mozlint.parser.</code><code class="descname">Parser</code><a class="headerlink" href="#mozlint.parser.Parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Reads and validates lint configuration files.</p>
+<dl class="method">
+<dt id="mozlint.parser.Parser.parse">
+<code class="descname">parse</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozlint.parser.Parser.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read a linter and return its LINTER definition.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> – Path to the linter.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">List of linter definitions ([dict])</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">LinterNotFound, LinterParseError</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozlint.parser.Parser.required_attributes">
+<code class="descname">required_attributes</code><em class="property"> = ('name', 'description', 'type', 'payload')</em><a class="headerlink" href="#mozlint.parser.Parser.required_attributes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozlint.pathutils">
+<span id="mozlint-pathutils-module"></span><h2>mozlint.pathutils module<a class="headerlink" href="#module-mozlint.pathutils" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozlint.pathutils.FilterPath">
+<em class="property">class </em><code class="descclassname">mozlint.pathutils.</code><code class="descname">FilterPath</code><span class="sig-paren">(</span><em>path</em>, <em>exclude=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozlint.pathutils.FilterPath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Helper class to make comparing and matching file paths easier.</p>
+<dl class="method">
+<dt id="mozlint.pathutils.FilterPath.contains">
+<code class="descname">contains</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="headerlink" href="#mozlint.pathutils.FilterPath.contains" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if other is a subdirectory of self or equals self.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozlint.pathutils.FilterPath.exists">
+<code class="descname">exists</code><a class="headerlink" href="#mozlint.pathutils.FilterPath.exists" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozlint.pathutils.FilterPath.ext">
+<code class="descname">ext</code><a class="headerlink" href="#mozlint.pathutils.FilterPath.ext" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozlint.pathutils.FilterPath.finder">
+<code class="descname">finder</code><a class="headerlink" href="#mozlint.pathutils.FilterPath.finder" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozlint.pathutils.FilterPath.isdir">
+<code class="descname">isdir</code><a class="headerlink" href="#mozlint.pathutils.FilterPath.isdir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozlint.pathutils.FilterPath.isfile">
+<code class="descname">isfile</code><a class="headerlink" href="#mozlint.pathutils.FilterPath.isfile" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozlint.pathutils.FilterPath.join">
+<code class="descname">join</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#mozlint.pathutils.FilterPath.join" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozlint.pathutils.FilterPath.match">
+<code class="descname">match</code><span class="sig-paren">(</span><em>patterns</em><span class="sig-paren">)</span><a class="headerlink" href="#mozlint.pathutils.FilterPath.match" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="mozlint.pathutils.ancestors">
+<code class="descclassname">mozlint.pathutils.</code><code class="descname">ancestors</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozlint.pathutils.ancestors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozlint.pathutils.filterpaths">
+<code class="descclassname">mozlint.pathutils.</code><code class="descname">filterpaths</code><span class="sig-paren">(</span><em>paths</em>, <em>linter</em>, <em>**lintargs</em><span class="sig-paren">)</span><a class="headerlink" href="#mozlint.pathutils.filterpaths" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filters a list of paths.</p>
+<p>Given a list of paths, and a linter definition plus extra
+arguments, return the set of paths that should be linted.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>paths</strong> – A starting list of paths to possibly lint.</li>
+<li><strong>linter</strong> – A linter definition.</li>
+<li><strong>lintargs</strong> – Extra arguments passed to the linter.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A list of file paths to lint.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozlint.pathutils.findobject">
+<code class="descclassname">mozlint.pathutils.</code><code class="descname">findobject</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozlint.pathutils.findobject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find a Python object given a path of the form &lt;modulepath&gt;:&lt;objectpath&gt;.
+Conceptually equivalent to</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>def find_object(modulepath, objectpath):</dt>
+<dd>import &lt;modulepath&gt; as mod
+return mod.&lt;objectpath&gt;</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozlint.pathutils.get_ancestors_by_name">
+<code class="descclassname">mozlint.pathutils.</code><code class="descname">get_ancestors_by_name</code><span class="sig-paren">(</span><em>name</em>, <em>path</em>, <em>root</em><span class="sig-paren">)</span><a class="headerlink" href="#mozlint.pathutils.get_ancestors_by_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of files called <cite>name</cite> in <cite>path</cite>’s ancestors,
+sorted from closest-&gt;furthest. This can be useful for finding
+relevant configuration files.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozlint.result">
+<span id="mozlint-result-module"></span><h2>mozlint.result module<a class="headerlink" href="#module-mozlint.result" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozlint.result.ResultContainer">
+<em class="property">class </em><code class="descclassname">mozlint.result.</code><code class="descname">ResultContainer</code><span class="sig-paren">(</span><em>linter</em>, <em>path</em>, <em>message</em>, <em>lineno</em>, <em>column=None</em>, <em>hint=None</em>, <em>source=None</em>, <em>level=None</em>, <em>rule=None</em>, <em>lineoffset=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozlint.result.ResultContainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Represents a single lint error and its related metadata.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>linter</strong> – name of the linter that flagged this error</li>
+<li><strong>path</strong> – path to the file containing the error</li>
+<li><strong>message</strong> – text describing the error</li>
+<li><strong>lineno</strong> – line number that contains the error</li>
+<li><strong>column</strong> – column containing the error</li>
+<li><strong>level</strong> – severity of the error, either ‘warning’ or ‘error’ (default ‘error’)</li>
+<li><strong>hint</strong> – suggestion for fixing the error (optional)</li>
+<li><strong>source</strong> – source code context of the error (optional)</li>
+<li><strong>rule</strong> – name of the rule that was violated (optional)</li>
+<li><strong>lineoffset</strong> – denotes an error spans multiple lines, of the form
+(&lt;lineno offset&gt;, &lt;num lines&gt;) (optional)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="mozlint.result.ResultContainer.column">
+<code class="descname">column</code><a class="headerlink" href="#mozlint.result.ResultContainer.column" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozlint.result.ResultContainer.hint">
+<code class="descname">hint</code><a class="headerlink" href="#mozlint.result.ResultContainer.hint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozlint.result.ResultContainer.level">
+<code class="descname">level</code><a class="headerlink" href="#mozlint.result.ResultContainer.level" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozlint.result.ResultContainer.lineno">
+<code class="descname">lineno</code><a class="headerlink" href="#mozlint.result.ResultContainer.lineno" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozlint.result.ResultContainer.lineoffset">
+<code class="descname">lineoffset</code><a class="headerlink" href="#mozlint.result.ResultContainer.lineoffset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozlint.result.ResultContainer.linter">
+<code class="descname">linter</code><a class="headerlink" href="#mozlint.result.ResultContainer.linter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozlint.result.ResultContainer.message">
+<code class="descname">message</code><a class="headerlink" href="#mozlint.result.ResultContainer.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozlint.result.ResultContainer.path">
+<code class="descname">path</code><a class="headerlink" href="#mozlint.result.ResultContainer.path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozlint.result.ResultContainer.rule">
+<code class="descname">rule</code><a class="headerlink" href="#mozlint.result.ResultContainer.rule" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozlint.result.ResultContainer.source">
+<code class="descname">source</code><a class="headerlink" href="#mozlint.result.ResultContainer.source" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozlint.result.ResultEncoder">
+<em class="property">class </em><code class="descclassname">mozlint.result.</code><code class="descname">ResultEncoder</code><span class="sig-paren">(</span><em>skipkeys=False</em>, <em>ensure_ascii=True</em>, <em>check_circular=True</em>, <em>allow_nan=True</em>, <em>sort_keys=False</em>, <em>indent=None</em>, <em>separators=None</em>, <em>encoding='utf-8'</em>, <em>default=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozlint.result.ResultEncoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">json.encoder.JSONEncoder</span></code></p>
+<p>Class for encoding :class:<a href="#id1"><span class="problematic" id="id2">`</span></a>~result.ResultContainer`s to json.</p>
+<p>Usage:</p>
+<blockquote>
+<div>json.dumps(results, cls=ResultEncoder)</div></blockquote>
+<dl class="method">
+<dt id="mozlint.result.ResultEncoder.default">
+<code class="descname">default</code><span class="sig-paren">(</span><em>o</em><span class="sig-paren">)</span><a class="headerlink" href="#mozlint.result.ResultEncoder.default" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="mozlint.result.from_config">
+<code class="descclassname">mozlint.result.</code><code class="descname">from_config</code><span class="sig-paren">(</span><em>config</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#mozlint.result.from_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a <code class="xref py py-class docutils literal"><span class="pre">ResultContainer</span></code> from a linter config.</p>
+<p>Convenience method that pulls defaults from a linter
+config and forwards them.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>config</strong> – linter config as defined in a .yml file</li>
+<li><strong>kwargs</strong> – same as <code class="xref py py-class docutils literal"><span class="pre">ResultContainer</span></code></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="xref py py-class docutils literal"><span class="pre">ResultContainer</span></code> object</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozlint.roller">
+<span id="mozlint-roller-module"></span><h2>mozlint.roller module<a class="headerlink" href="#module-mozlint.roller" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozlint.roller.LintRoller">
+<em class="property">class </em><code class="descclassname">mozlint.roller.</code><code class="descname">LintRoller</code><span class="sig-paren">(</span><em>root</em>, <em>**lintargs</em><span class="sig-paren">)</span><a class="headerlink" href="#mozlint.roller.LintRoller" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Registers and runs linters.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>root</strong> – Path to which relative paths will be joined. If
+unspecified, root will either be determined from
+version control or cwd.</li>
+<li><strong>lintargs</strong> – Arguments to pass to the underlying linter(s).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="mozlint.roller.LintRoller.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>paths</em><span class="sig-paren">)</span><a class="headerlink" href="#mozlint.roller.LintRoller.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse one or more linters and add them to the registry.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>paths</strong> – A path or iterable of paths to linter definitions.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozlint.roller.LintRoller.roll">
+<code class="descname">roll</code><span class="sig-paren">(</span><em>paths=None</em>, <em>outgoing=None</em>, <em>workdir=None</em>, <em>num_procs=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozlint.roller.LintRoller.roll" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run all of the registered linters against the specified file paths.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>paths</strong> – An iterable of files and/or directories to lint.</li>
+<li><strong>outgoing</strong> – Lint files touched by commits that are not on the remote repository.</li>
+<li><strong>workdir</strong> – Lint all files touched in the working directory.</li>
+<li><strong>num_procs</strong> – The number of processes to use. Default: cpu count</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A dictionary with file names as the key, and a list of
+:class:<a href="#id3"><span class="problematic" id="id4">`</span></a>~result.ResultContainer`s as the value.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozlint.types">
+<span id="mozlint-types-module"></span><h2>mozlint.types module<a class="headerlink" href="#module-mozlint.types" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozlint.types.BaseType">
+<em class="property">class </em><code class="descclassname">mozlint.types.</code><code class="descname">BaseType</code><a class="headerlink" href="#mozlint.types.BaseType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Abstract base class for all types of linters.</p>
+<dl class="attribute">
+<dt id="mozlint.types.BaseType.batch">
+<code class="descname">batch</code><em class="property"> = False</em><a class="headerlink" href="#mozlint.types.BaseType.batch" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozlint.types.ExternalType">
+<em class="property">class </em><code class="descclassname">mozlint.types.</code><code class="descname">ExternalType</code><a class="headerlink" href="#mozlint.types.ExternalType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozlint.types.BaseType" title="mozlint.types.BaseType"><code class="xref py py-class docutils literal"><span class="pre">mozlint.types.BaseType</span></code></a></p>
+<p>Linter type that runs an external function.</p>
+<p>The function is responsible for properly formatting the results
+into a list of <code class="xref py py-class docutils literal"><span class="pre">ResultContainer</span></code> objects.</p>
+<dl class="attribute">
+<dt id="mozlint.types.ExternalType.batch">
+<code class="descname">batch</code><em class="property"> = True</em><a class="headerlink" href="#mozlint.types.ExternalType.batch" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozlint.types.LineType">
+<em class="property">class </em><code class="descclassname">mozlint.types.</code><code class="descname">LineType</code><a class="headerlink" href="#mozlint.types.LineType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozlint.types.BaseType" title="mozlint.types.BaseType"><code class="xref py py-class docutils literal"><span class="pre">mozlint.types.BaseType</span></code></a></p>
+<p>Abstract base class for linter types that check each line individually.</p>
+<p>Subclasses of this linter type will read each file and check the provided
+payload against each line one by one.</p>
+<dl class="method">
+<dt id="mozlint.types.LineType.condition">
+<code class="descname">condition</code><span class="sig-paren">(</span><em>payload</em>, <em>line</em><span class="sig-paren">)</span><a class="headerlink" href="#mozlint.types.LineType.condition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozlint.types.LintHandler">
+<em class="property">class </em><code class="descclassname">mozlint.types.</code><code class="descname">LintHandler</code><span class="sig-paren">(</span><em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#mozlint.types.LintHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../mozbase/mozlog.html#mozlog.reader.LogHandler" title="mozlog.reader.LogHandler"><code class="xref py py-class docutils literal"><span class="pre">mozlog.reader.LogHandler</span></code></a></p>
+<dl class="method">
+<dt id="mozlint.types.LintHandler.lint">
+<code class="descname">lint</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#mozlint.types.LintHandler.lint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozlint.types.RegexType">
+<em class="property">class </em><code class="descclassname">mozlint.types.</code><code class="descname">RegexType</code><a class="headerlink" href="#mozlint.types.RegexType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozlint.types.LineType" title="mozlint.types.LineType"><code class="xref py py-class docutils literal"><span class="pre">mozlint.types.LineType</span></code></a></p>
+<p>Linter type that checks whether a regex match is found.</p>
+<dl class="method">
+<dt id="mozlint.types.RegexType.condition">
+<code class="descname">condition</code><span class="sig-paren">(</span><em>payload</em>, <em>line</em><span class="sig-paren">)</span><a class="headerlink" href="#mozlint.types.RegexType.condition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozlint.types.StringType">
+<em class="property">class </em><code class="descclassname">mozlint.types.</code><code class="descname">StringType</code><a class="headerlink" href="#mozlint.types.StringType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozlint.types.LineType" title="mozlint.types.LineType"><code class="xref py py-class docutils literal"><span class="pre">mozlint.types.LineType</span></code></a></p>
+<p>Linter type that checks whether a substring is found.</p>
+<dl class="method">
+<dt id="mozlint.types.StringType.condition">
+<code class="descname">condition</code><span class="sig-paren">(</span><em>payload</em>, <em>line</em><span class="sig-paren">)</span><a class="headerlink" href="#mozlint.types.StringType.condition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozlint.types.StructuredLogType">
+<em class="property">class </em><code class="descclassname">mozlint.types.</code><code class="descname">StructuredLogType</code><a class="headerlink" href="#mozlint.types.StructuredLogType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozlint.types.BaseType" title="mozlint.types.BaseType"><code class="xref py py-class docutils literal"><span class="pre">mozlint.types.BaseType</span></code></a></p>
+<dl class="attribute">
+<dt id="mozlint.types.StructuredLogType.batch">
+<code class="descname">batch</code><em class="property"> = True</em><a class="headerlink" href="#mozlint.types.StructuredLogType.batch" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="data">
+<dt id="mozlint.types.supported_types">
+<code class="descclassname">mozlint.types.</code><code class="descname">supported_types</code><em class="property"> = {u'regex': &lt;mozlint.types.RegexType object&gt;, u'structured_log': &lt;mozlint.types.StructuredLogType object&gt;, u'string': &lt;mozlint.types.StringType object&gt;, u'external': &lt;mozlint.types.ExternalType object&gt;}</em><a class="headerlink" href="#mozlint.types.supported_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mapping of type string to an associated instance.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozlint">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-mozlint" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="mozlint.formatters.html" class="btn btn-neutral float-right" title="mozlint.formatters package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="mozbuild.test.frontend.html" class="btn btn-neutral" title="mozbuild.test.frontend package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

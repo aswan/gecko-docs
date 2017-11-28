@@ -1,0 +1,1792 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mozpack.test package &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../index.html"/>
+        <link rel="up" title="mozpack package" href="mozpack.html"/>
+        <link rel="next" title="mozversioncontrol package" href="mozversioncontrol.html"/>
+        <link rel="prev" title="mozpack.packager package" href="mozpack.packager.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozlint.html">mozlint package</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="mozpack.html">mozpack package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="mozpack.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="mozpack.chrome.html">mozpack.chrome package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozpack.packager.html">mozpack.packager package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">mozpack.test package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozpack.test.test_archive">mozpack.test.test_archive module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozpack.test.test_chrome_flags">mozpack.test.test_chrome_flags module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozpack.test.test_chrome_manifest">mozpack.test.test_chrome_manifest module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozpack.test.test_copier">mozpack.test.test_copier module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozpack.test.test_errors">mozpack.test.test_errors module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozpack.test.test_files">mozpack.test.test_files module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozpack.test.test_manifests">mozpack.test.test_manifests module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozpack.test.test_mozjar">mozpack.test.test_mozjar module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozpack.test.test_packager">mozpack.test.test_packager module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozpack.test.test_packager_formats">mozpack.test.test_packager_formats module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozpack.test.test_packager_l10n">mozpack.test.test_packager_l10n module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozpack.test.test_packager_unpack">mozpack.test.test_packager_unpack module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozpack.test.test_path">mozpack.test.test_path module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozpack.test">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.html#module-mozpack.archive">mozpack.archive module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.html#module-mozpack.copier">mozpack.copier module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.html#module-mozpack.dmg">mozpack.dmg module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.html#module-mozpack.errors">mozpack.errors module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.html#module-mozpack.executables">mozpack.executables module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.html#module-mozpack.files">mozpack.files module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.html#module-mozpack.hg">mozpack.hg module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.html#module-mozpack.manifests">mozpack.manifests module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.html#module-mozpack.mozjar">mozpack.mozjar module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.html#module-mozpack.path">mozpack.path module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozpack.html#module-mozpack">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="mozpack.html">mozpack package</a> &raquo;</li>
+        
+      <li>mozpack.test package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/python/mozpack.test.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mozpack-test-package">
+<h1>mozpack.test package<a class="headerlink" href="#mozpack-test-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-mozpack.test.test_archive">
+<span id="mozpack-test-test-archive-module"></span><h2>mozpack.test.test_archive module<a class="headerlink" href="#module-mozpack.test.test_archive" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozpack.test.test_archive.TestArchive">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_archive.</code><code class="descname">TestArchive</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_archive.TestArchive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="mozpack.test.test_archive.TestArchive.test_create_tar_basic">
+<code class="descname">test_create_tar_basic</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_archive.TestArchive.test_create_tar_basic" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_archive.TestArchive.test_create_tar_bz2_basic">
+<code class="descname">test_create_tar_bz2_basic</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_archive.TestArchive.test_create_tar_bz2_basic" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_archive.TestArchive.test_create_tar_gz_basic">
+<code class="descname">test_create_tar_gz_basic</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_archive.TestArchive.test_create_tar_gz_basic" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_archive.TestArchive.test_dirs_refused">
+<code class="descname">test_dirs_refused</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_archive.TestArchive.test_dirs_refused" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_archive.TestArchive.test_executable_preserved">
+<code class="descname">test_executable_preserved</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_archive.TestArchive.test_executable_preserved" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_archive.TestArchive.test_setuid_setgid_refused">
+<code class="descname">test_setuid_setgid_refused</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_archive.TestArchive.test_setuid_setgid_refused" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_archive.TestArchive.test_tar_gz_name">
+<code class="descname">test_tar_gz_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_archive.TestArchive.test_tar_gz_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="mozpack.test.test_archive.file_hash">
+<code class="descclassname">mozpack.test.test_archive.</code><code class="descname">file_hash</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_archive.file_hash" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-mozpack.test.test_chrome_flags">
+<span id="mozpack-test-test-chrome-flags-module"></span><h2>mozpack.test.test_chrome_flags module<a class="headerlink" href="#module-mozpack.test.test_chrome_flags" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozpack.test.test_chrome_flags.TestFlag">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_chrome_flags.</code><code class="descname">TestFlag</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_chrome_flags.TestFlag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="mozpack.test.test_chrome_flags.TestFlag.test_flag">
+<code class="descname">test_flag</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_chrome_flags.TestFlag.test_flag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_chrome_flags.TestFlag.test_string_flag">
+<code class="descname">test_string_flag</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_chrome_flags.TestFlag.test_string_flag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_chrome_flags.TestFlag.test_version_flag">
+<code class="descname">test_version_flag</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_chrome_flags.TestFlag.test_version_flag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.test.test_chrome_flags.TestFlags">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_chrome_flags.</code><code class="descname">TestFlags</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_chrome_flags.TestFlags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="mozpack.test.test_chrome_flags.TestFlags.setUp">
+<code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_chrome_flags.TestFlags.setUp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_chrome_flags.TestFlags.test_flags_match">
+<code class="descname">test_flags_match</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_chrome_flags.TestFlags.test_flags_match" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_chrome_flags.TestFlags.test_flags_match_different">
+<code class="descname">test_flags_match_different</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_chrome_flags.TestFlags.test_flags_match_different" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_chrome_flags.TestFlags.test_flags_match_unset">
+<code class="descname">test_flags_match_unset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_chrome_flags.TestFlags.test_flags_match_unset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_chrome_flags.TestFlags.test_flags_match_version">
+<code class="descname">test_flags_match_version</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_chrome_flags.TestFlags.test_flags_match_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_chrome_flags.TestFlags.test_flags_str">
+<code class="descname">test_flags_str</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_chrome_flags.TestFlags.test_flags_str" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozpack.test.test_chrome_manifest">
+<span id="mozpack-test-test-chrome-manifest-module"></span><h2>mozpack.test.test_chrome_manifest module<a class="headerlink" href="#module-mozpack.test.test_chrome_manifest" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozpack.test.test_chrome_manifest.TestManifest">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_chrome_manifest.</code><code class="descname">TestManifest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_chrome_manifest.TestManifest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="mozpack.test.test_chrome_manifest.TestManifest.test_manifest_rebase">
+<code class="descname">test_manifest_rebase</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_chrome_manifest.TestManifest.test_manifest_rebase" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_chrome_manifest.TestManifest.test_parse_manifest">
+<code class="descname">test_parse_manifest</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_chrome_manifest.TestManifest.test_parse_manifest" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.test.test_chrome_manifest.TestManifestErrors">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_chrome_manifest.</code><code class="descname">TestManifestErrors</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_chrome_manifest.TestManifestErrors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.test.test_errors.TestErrors" title="mozpack.test.test_errors.TestErrors"><code class="xref py py-class docutils literal"><span class="pre">mozpack.test.test_errors.TestErrors</span></code></a>, <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="mozpack.test.test_chrome_manifest.TestManifestErrors.test_parse_manifest_errors">
+<code class="descname">test_parse_manifest_errors</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_chrome_manifest.TestManifestErrors.test_parse_manifest_errors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozpack.test.test_copier">
+<span id="mozpack-test-test-copier-module"></span><h2>mozpack.test.test_copier module<a class="headerlink" href="#module-mozpack.test.test_copier" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozpack.test.test_copier.BaseTestFileRegistry">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_copier.</code><code class="descname">BaseTestFileRegistry</code><a class="headerlink" href="#mozpack.test.test_copier.BaseTestFileRegistry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.test.test_files.MatchTestTemplate" title="mozpack.test.test_files.MatchTestTemplate"><code class="xref py py-class docutils literal"><span class="pre">mozpack.test.test_files.MatchTestTemplate</span></code></a></p>
+<dl class="method">
+<dt id="mozpack.test.test_copier.BaseTestFileRegistry.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_copier.BaseTestFileRegistry.add" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_copier.BaseTestFileRegistry.do_check">
+<code class="descname">do_check</code><span class="sig-paren">(</span><em>pattern</em>, <em>result</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_copier.BaseTestFileRegistry.do_check" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_copier.BaseTestFileRegistry.do_test_file_registry">
+<code class="descname">do_test_file_registry</code><span class="sig-paren">(</span><em>registry</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_copier.BaseTestFileRegistry.do_test_file_registry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_copier.BaseTestFileRegistry.do_test_registry_paths">
+<code class="descname">do_test_registry_paths</code><span class="sig-paren">(</span><em>registry</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_copier.BaseTestFileRegistry.do_test_registry_paths" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.test.test_copier.TestFileCopier">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_copier.</code><code class="descname">TestFileCopier</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_copier.TestFileCopier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.test.test_files.TestWithTmpDir" title="mozpack.test.test_files.TestWithTmpDir"><code class="xref py py-class docutils literal"><span class="pre">mozpack.test.test_files.TestWithTmpDir</span></code></a></p>
+<dl class="method">
+<dt id="mozpack.test.test_copier.TestFileCopier.all_dirs">
+<code class="descname">all_dirs</code><span class="sig-paren">(</span><em>base</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_copier.TestFileCopier.all_dirs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_copier.TestFileCopier.all_files">
+<code class="descname">all_files</code><span class="sig-paren">(</span><em>base</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_copier.TestFileCopier.all_files" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_copier.TestFileCopier.test_file_copier">
+<code class="descname">test_file_copier</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_copier.TestFileCopier.test_file_copier" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_copier.TestFileCopier.test_no_remove">
+<code class="descname">test_no_remove</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_copier.TestFileCopier.test_no_remove" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_copier.TestFileCopier.test_no_remove_empty_directories">
+<code class="descname">test_no_remove_empty_directories</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_copier.TestFileCopier.test_no_remove_empty_directories" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_copier.TestFileCopier.test_optional_exists_creates_unneeded_directory">
+<code class="descname">test_optional_exists_creates_unneeded_directory</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_copier.TestFileCopier.test_optional_exists_creates_unneeded_directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Demonstrate that a directory not strictly required, but specified
+as the path to an optional file, will be unnecessarily created.</p>
+<p>This behaviour is wrong; fixing it is tracked by Bug 972432;
+and this test exists to guard against unexpected changes in
+behaviour.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_copier.TestFileCopier.test_permissions">
+<code class="descname">test_permissions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_copier.TestFileCopier.test_permissions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ensure files without write permission can be deleted.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_copier.TestFileCopier.test_remove_unaccounted_directory_symlinks">
+<code class="descname">test_remove_unaccounted_directory_symlinks</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_copier.TestFileCopier.test_remove_unaccounted_directory_symlinks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Directory symlinks in destination that are not in the way are
+deleted according to remove_unaccounted and
+remove_all_directory_symlinks.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_copier.TestFileCopier.test_remove_unaccounted_file_registry">
+<code class="descname">test_remove_unaccounted_file_registry</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_copier.TestFileCopier.test_remove_unaccounted_file_registry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test FileCopier.copy(remove_unaccounted=FileRegistry())</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_copier.TestFileCopier.test_symlink_directory_replaced">
+<code class="descname">test_symlink_directory_replaced</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_copier.TestFileCopier.test_symlink_directory_replaced" title="Permalink to this definition">¶</a></dt>
+<dd><p>Directory symlinks in destination are replaced if they need to be
+real directories.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.test.test_copier.TestFileRegistry">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_copier.</code><code class="descname">TestFileRegistry</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_copier.TestFileRegistry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.test.test_copier.BaseTestFileRegistry" title="mozpack.test.test_copier.BaseTestFileRegistry"><code class="xref py py-class docutils literal"><span class="pre">mozpack.test.test_copier.BaseTestFileRegistry</span></code></a>, <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="mozpack.test.test_copier.TestFileRegistry.test_file_registry">
+<code class="descname">test_file_registry</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_copier.TestFileRegistry.test_file_registry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_copier.TestFileRegistry.test_partial_paths">
+<code class="descname">test_partial_paths</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_copier.TestFileRegistry.test_partial_paths" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_copier.TestFileRegistry.test_registry_paths">
+<code class="descname">test_registry_paths</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_copier.TestFileRegistry.test_registry_paths" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_copier.TestFileRegistry.test_required_directories">
+<code class="descname">test_required_directories</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_copier.TestFileRegistry.test_required_directories" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.test.test_copier.TestFileRegistrySubtree">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_copier.</code><code class="descname">TestFileRegistrySubtree</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_copier.TestFileRegistrySubtree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.test.test_copier.BaseTestFileRegistry" title="mozpack.test.test_copier.BaseTestFileRegistry"><code class="xref py py-class docutils literal"><span class="pre">mozpack.test.test_copier.BaseTestFileRegistry</span></code></a>, <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="mozpack.test.test_copier.TestFileRegistrySubtree.create_registry">
+<code class="descname">create_registry</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_copier.TestFileRegistrySubtree.create_registry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_copier.TestFileRegistrySubtree.test_file_registry_subtree">
+<code class="descname">test_file_registry_subtree</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_copier.TestFileRegistrySubtree.test_file_registry_subtree" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_copier.TestFileRegistrySubtree.test_file_registry_subtree_base">
+<code class="descname">test_file_registry_subtree_base</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_copier.TestFileRegistrySubtree.test_file_registry_subtree_base" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_copier.TestFileRegistrySubtree.test_registry_paths_subtree">
+<code class="descname">test_registry_paths_subtree</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_copier.TestFileRegistrySubtree.test_registry_paths_subtree" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.test.test_copier.TestJarrer">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_copier.</code><code class="descname">TestJarrer</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_copier.TestJarrer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="mozpack.test.test_copier.TestJarrer.check_jar">
+<code class="descname">check_jar</code><span class="sig-paren">(</span><em>dest</em>, <em>copier</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_copier.TestJarrer.check_jar" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_copier.TestJarrer.test_jarrer">
+<code class="descname">test_jarrer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_copier.TestJarrer.test_jarrer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_copier.TestJarrer.test_jarrer_compress">
+<code class="descname">test_jarrer_compress</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_copier.TestJarrer.test_jarrer_compress" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozpack.test.test_errors">
+<span id="mozpack-test-test-errors-module"></span><h2>mozpack.test.test_errors module<a class="headerlink" href="#module-mozpack.test.test_errors" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozpack.test.test_errors.TestErrors">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_errors.</code><code class="descname">TestErrors</code><a class="headerlink" href="#mozpack.test.test_errors.TestErrors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="mozpack.test.test_errors.TestErrors.get_output">
+<code class="descname">get_output</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_errors.TestErrors.get_output" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_errors.TestErrors.setUp">
+<code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_errors.TestErrors.setUp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_errors.TestErrors.tearDown">
+<code class="descname">tearDown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_errors.TestErrors.tearDown" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.test.test_errors.TestErrorsImpl">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_errors.</code><code class="descname">TestErrorsImpl</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_errors.TestErrorsImpl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.test.test_errors.TestErrors" title="mozpack.test.test_errors.TestErrors"><code class="xref py py-class docutils literal"><span class="pre">mozpack.test.test_errors.TestErrors</span></code></a>, <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="mozpack.test.test_errors.TestErrorsImpl.test_error_loop">
+<code class="descname">test_error_loop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_errors.TestErrorsImpl.test_error_loop" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_errors.TestErrorsImpl.test_errors_context">
+<code class="descname">test_errors_context</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_errors.TestErrorsImpl.test_errors_context" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_errors.TestErrorsImpl.test_ignore_errors">
+<code class="descname">test_ignore_errors</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_errors.TestErrorsImpl.test_ignore_errors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_errors.TestErrorsImpl.test_multiple_errors">
+<code class="descname">test_multiple_errors</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_errors.TestErrorsImpl.test_multiple_errors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_errors.TestErrorsImpl.test_no_error">
+<code class="descname">test_no_error</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_errors.TestErrorsImpl.test_no_error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_errors.TestErrorsImpl.test_plain_error">
+<code class="descname">test_plain_error</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_errors.TestErrorsImpl.test_plain_error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_errors.TestErrorsImpl.test_simple_error">
+<code class="descname">test_simple_error</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_errors.TestErrorsImpl.test_simple_error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozpack.test.test_files">
+<span id="mozpack-test-test-files-module"></span><h2>mozpack.test.test_files module<a class="headerlink" href="#module-mozpack.test.test_files" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozpack.test.test_files.DestNoWrite">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_files.</code><code class="descname">DestNoWrite</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.DestNoWrite" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="mozpack.html#mozpack.files.Dest" title="mozpack.files.Dest"><code class="xref py py-class docutils literal"><span class="pre">mozpack.files.Dest</span></code></a></p>
+<dl class="method">
+<dt id="mozpack.test.test_files.DestNoWrite.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.DestNoWrite.write" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.test.test_files.MatchTestTemplate">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_files.</code><code class="descname">MatchTestTemplate</code><a class="headerlink" href="#mozpack.test.test_files.MatchTestTemplate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="mozpack.test.test_files.MatchTestTemplate.do_finder_test">
+<code class="descname">do_finder_test</code><span class="sig-paren">(</span><em>finder</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.MatchTestTemplate.do_finder_test" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.MatchTestTemplate.do_match_test">
+<code class="descname">do_match_test</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.MatchTestTemplate.do_match_test" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.MatchTestTemplate.prepare_match_test">
+<code class="descname">prepare_match_test</code><span class="sig-paren">(</span><em>with_dotfiles=False</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.MatchTestTemplate.prepare_match_test" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.test.test_files.MockDest">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_files.</code><code class="descname">MockDest</code><a class="headerlink" href="#mozpack.test.test_files.MockDest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">_io.BytesIO</span></code>, <a class="reference internal" href="mozpack.html#mozpack.files.Dest" title="mozpack.files.Dest"><code class="xref py py-class docutils literal"><span class="pre">mozpack.files.Dest</span></code></a></p>
+<dl class="method">
+<dt id="mozpack.test.test_files.MockDest.close">
+<code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.MockDest.close" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.MockDest.exists">
+<code class="descname">exists</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.MockDest.exists" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.MockDest.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>length=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.MockDest.read" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.MockDest.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.MockDest.write" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.test.test_files.TestAbsoluteSymlinkFile">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_files.</code><code class="descname">TestAbsoluteSymlinkFile</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestAbsoluteSymlinkFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.test.test_files.TestWithTmpDir" title="mozpack.test.test_files.TestWithTmpDir"><code class="xref py py-class docutils literal"><span class="pre">mozpack.test.test_files.TestWithTmpDir</span></code></a></p>
+<dl class="method">
+<dt id="mozpack.test.test_files.TestAbsoluteSymlinkFile.test_absolute_relative">
+<code class="descname">test_absolute_relative</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestAbsoluteSymlinkFile.test_absolute_relative" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestAbsoluteSymlinkFile.test_noop">
+<code class="descname">test_noop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestAbsoluteSymlinkFile.test_noop" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestAbsoluteSymlinkFile.test_replace_file_with_symlink">
+<code class="descname">test_replace_file_with_symlink</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestAbsoluteSymlinkFile.test_replace_file_with_symlink" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestAbsoluteSymlinkFile.test_replace_symlink">
+<code class="descname">test_replace_symlink</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestAbsoluteSymlinkFile.test_replace_symlink" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestAbsoluteSymlinkFile.test_symlink_file">
+<code class="descname">test_symlink_file</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestAbsoluteSymlinkFile.test_symlink_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.test.test_files.TestComposedFinder">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_files.</code><code class="descname">TestComposedFinder</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestComposedFinder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.test.test_files.MatchTestTemplate" title="mozpack.test.test_files.MatchTestTemplate"><code class="xref py py-class docutils literal"><span class="pre">mozpack.test.test_files.MatchTestTemplate</span></code></a>, <a class="reference internal" href="#mozpack.test.test_files.TestWithTmpDir" title="mozpack.test.test_files.TestWithTmpDir"><code class="xref py py-class docutils literal"><span class="pre">mozpack.test.test_files.TestWithTmpDir</span></code></a></p>
+<dl class="method">
+<dt id="mozpack.test.test_files.TestComposedFinder.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>path</em>, <em>content=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestComposedFinder.add" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestComposedFinder.do_check">
+<code class="descname">do_check</code><span class="sig-paren">(</span><em>pattern</em>, <em>result</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestComposedFinder.do_check" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestComposedFinder.test_composed_finder">
+<code class="descname">test_composed_finder</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestComposedFinder.test_composed_finder" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.test.test_files.TestDeflatedFile">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_files.</code><code class="descname">TestDeflatedFile</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestDeflatedFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.test.test_files.TestWithTmpDir" title="mozpack.test.test_files.TestWithTmpDir"><code class="xref py py-class docutils literal"><span class="pre">mozpack.test.test_files.TestWithTmpDir</span></code></a></p>
+<dl class="method">
+<dt id="mozpack.test.test_files.TestDeflatedFile.test_deflated_file">
+<code class="descname">test_deflated_file</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestDeflatedFile.test_deflated_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check that DeflatedFile.copy yields the proper content in the
+destination file in all situations that trigger different code paths
+(see TestFile.test_file)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestDeflatedFile.test_deflated_file_no_write">
+<code class="descname">test_deflated_file_no_write</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestDeflatedFile.test_deflated_file_no_write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test various conditions where DeflatedFile.copy is expected not to
+write in the destination file.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestDeflatedFile.test_deflated_file_open">
+<code class="descname">test_deflated_file_open</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestDeflatedFile.test_deflated_file_open" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test whether DeflatedFile.open returns an appropriately reset file
+object.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.test.test_files.TestDest">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_files.</code><code class="descname">TestDest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestDest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.test.test_files.TestWithTmpDir" title="mozpack.test.test_files.TestWithTmpDir"><code class="xref py py-class docutils literal"><span class="pre">mozpack.test.test_files.TestWithTmpDir</span></code></a></p>
+<dl class="method">
+<dt id="mozpack.test.test_files.TestDest.test_dest">
+<code class="descname">test_dest</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestDest.test_dest" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.test.test_files.TestExistingFile">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_files.</code><code class="descname">TestExistingFile</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestExistingFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.test.test_files.TestWithTmpDir" title="mozpack.test.test_files.TestWithTmpDir"><code class="xref py py-class docutils literal"><span class="pre">mozpack.test.test_files.TestWithTmpDir</span></code></a></p>
+<dl class="method">
+<dt id="mozpack.test.test_files.TestExistingFile.test_optional_existing_dest">
+<code class="descname">test_optional_existing_dest</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestExistingFile.test_optional_existing_dest" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestExistingFile.test_optional_missing_dest">
+<code class="descname">test_optional_missing_dest</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestExistingFile.test_optional_missing_dest" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestExistingFile.test_required_existing_dest">
+<code class="descname">test_required_existing_dest</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestExistingFile.test_required_existing_dest" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestExistingFile.test_required_missing_dest">
+<code class="descname">test_required_missing_dest</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestExistingFile.test_required_missing_dest" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.test.test_files.TestFile">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_files.</code><code class="descname">TestFile</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.test.test_files.TestWithTmpDir" title="mozpack.test.test_files.TestWithTmpDir"><code class="xref py py-class docutils literal"><span class="pre">mozpack.test.test_files.TestWithTmpDir</span></code></a></p>
+<dl class="method">
+<dt id="mozpack.test.test_files.TestFile.test_file">
+<code class="descname">test_file</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestFile.test_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check that File.copy yields the proper content in the destination file
+in all situations that trigger different code paths:
+- different content
+- different content of the same size
+- same content
+- long content</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestFile.test_file_dest">
+<code class="descname">test_file_dest</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestFile.test_file_dest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Similar to test_file, but for a destination object instead of
+a destination file. This ensures the destination object is being
+used properly by File.copy, ensuring that other subclasses of Dest
+will work.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestFile.test_file_no_write">
+<code class="descname">test_file_no_write</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestFile.test_file_no_write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test various conditions where File.copy is expected not to write
+in the destination file.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestFile.test_file_open">
+<code class="descname">test_file_open</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestFile.test_file_open" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test whether File.open returns an appropriately reset file object.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.test.test_files.TestFileFinder">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_files.</code><code class="descname">TestFileFinder</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestFileFinder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.test.test_files.MatchTestTemplate" title="mozpack.test.test_files.MatchTestTemplate"><code class="xref py py-class docutils literal"><span class="pre">mozpack.test.test_files.MatchTestTemplate</span></code></a>, <a class="reference internal" href="#mozpack.test.test_files.TestWithTmpDir" title="mozpack.test.test_files.TestWithTmpDir"><code class="xref py py-class docutils literal"><span class="pre">mozpack.test.test_files.TestWithTmpDir</span></code></a></p>
+<dl class="method">
+<dt id="mozpack.test.test_files.TestFileFinder.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestFileFinder.add" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestFileFinder.do_check">
+<code class="descname">do_check</code><span class="sig-paren">(</span><em>pattern</em>, <em>result</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestFileFinder.do_check" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestFileFinder.test_dotfiles">
+<code class="descname">test_dotfiles</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestFileFinder.test_dotfiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finder can find files beginning with . is configured.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestFileFinder.test_dotfiles_plus_ignore">
+<code class="descname">test_dotfiles_plus_ignore</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestFileFinder.test_dotfiles_plus_ignore" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestFileFinder.test_file_finder">
+<code class="descname">test_file_finder</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestFileFinder.test_file_finder" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestFileFinder.test_get">
+<code class="descname">test_get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestFileFinder.test_get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestFileFinder.test_ignored_dirs">
+<code class="descname">test_ignored_dirs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestFileFinder.test_ignored_dirs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ignored directories should not have results returned.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestFileFinder.test_ignored_files">
+<code class="descname">test_ignored_files</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestFileFinder.test_ignored_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ignored files should not have results returned.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestFileFinder.test_ignored_patterns">
+<code class="descname">test_ignored_patterns</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestFileFinder.test_ignored_patterns" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ignore entries with patterns should be honored.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.test.test_files.TestGeneratedFile">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_files.</code><code class="descname">TestGeneratedFile</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestGeneratedFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.test.test_files.TestWithTmpDir" title="mozpack.test.test_files.TestWithTmpDir"><code class="xref py py-class docutils literal"><span class="pre">mozpack.test.test_files.TestWithTmpDir</span></code></a></p>
+<dl class="method">
+<dt id="mozpack.test.test_files.TestGeneratedFile.test_generated_file">
+<code class="descname">test_generated_file</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestGeneratedFile.test_generated_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check that GeneratedFile.copy yields the proper content in the
+destination file in all situations that trigger different code paths
+(see TestFile.test_file)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestGeneratedFile.test_generated_file_no_write">
+<code class="descname">test_generated_file_no_write</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestGeneratedFile.test_generated_file_no_write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test various conditions where GeneratedFile.copy is expected not to
+write in the destination file.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestGeneratedFile.test_generated_file_open">
+<code class="descname">test_generated_file_open</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestGeneratedFile.test_generated_file_open" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test whether GeneratedFile.open returns an appropriately reset file
+object.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.test.test_files.TestHardlinkFile">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_files.</code><code class="descname">TestHardlinkFile</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestHardlinkFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.test.test_files.TestWithTmpDir" title="mozpack.test.test_files.TestWithTmpDir"><code class="xref py py-class docutils literal"><span class="pre">mozpack.test.test_files.TestWithTmpDir</span></code></a></p>
+<dl class="method">
+<dt id="mozpack.test.test_files.TestHardlinkFile.test_absolute_relative">
+<code class="descname">test_absolute_relative</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestHardlinkFile.test_absolute_relative" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestHardlinkFile.test_hardlink_file">
+<code class="descname">test_hardlink_file</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestHardlinkFile.test_hardlink_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestHardlinkFile.test_noop">
+<code class="descname">test_noop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestHardlinkFile.test_noop" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestHardlinkFile.test_replace_file_with_hardlink">
+<code class="descname">test_replace_file_with_hardlink</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestHardlinkFile.test_replace_file_with_hardlink" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestHardlinkFile.test_replace_hardlink">
+<code class="descname">test_replace_hardlink</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestHardlinkFile.test_replace_hardlink" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.test.test_files.TestJarFinder">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_files.</code><code class="descname">TestJarFinder</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestJarFinder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.test.test_files.MatchTestTemplate" title="mozpack.test.test_files.MatchTestTemplate"><code class="xref py py-class docutils literal"><span class="pre">mozpack.test.test_files.MatchTestTemplate</span></code></a>, <a class="reference internal" href="#mozpack.test.test_files.TestWithTmpDir" title="mozpack.test.test_files.TestWithTmpDir"><code class="xref py py-class docutils literal"><span class="pre">mozpack.test.test_files.TestWithTmpDir</span></code></a></p>
+<dl class="method">
+<dt id="mozpack.test.test_files.TestJarFinder.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestJarFinder.add" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestJarFinder.do_check">
+<code class="descname">do_check</code><span class="sig-paren">(</span><em>pattern</em>, <em>result</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestJarFinder.do_check" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestJarFinder.test_jar_finder">
+<code class="descname">test_jar_finder</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestJarFinder.test_jar_finder" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.test.test_files.TestManifestFile">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_files.</code><code class="descname">TestManifestFile</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestManifestFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.test.test_files.TestWithTmpDir" title="mozpack.test.test_files.TestWithTmpDir"><code class="xref py py-class docutils literal"><span class="pre">mozpack.test.test_files.TestWithTmpDir</span></code></a></p>
+<dl class="method">
+<dt id="mozpack.test.test_files.TestManifestFile.test_manifest_file">
+<code class="descname">test_manifest_file</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestManifestFile.test_manifest_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.test.test_files.TestMercurialNativeRevisionFinder">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_files.</code><code class="descname">TestMercurialNativeRevisionFinder</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestMercurialNativeRevisionFinder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.test.test_files.TestMercurialRevisionFinder" title="mozpack.test.test_files.TestMercurialRevisionFinder"><code class="xref py py-class docutils literal"><span class="pre">mozpack.test.test_files.TestMercurialRevisionFinder</span></code></a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.test.test_files.TestMercurialRevisionFinder">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_files.</code><code class="descname">TestMercurialRevisionFinder</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestMercurialRevisionFinder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.test.test_files.MatchTestTemplate" title="mozpack.test.test_files.MatchTestTemplate"><code class="xref py py-class docutils literal"><span class="pre">mozpack.test.test_files.MatchTestTemplate</span></code></a>, <a class="reference internal" href="#mozpack.test.test_files.TestWithTmpDir" title="mozpack.test.test_files.TestWithTmpDir"><code class="xref py py-class docutils literal"><span class="pre">mozpack.test.test_files.TestWithTmpDir</span></code></a></p>
+<dl class="method">
+<dt id="mozpack.test.test_files.TestMercurialRevisionFinder.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestMercurialRevisionFinder.add" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestMercurialRevisionFinder.do_check">
+<code class="descname">do_check</code><span class="sig-paren">(</span><em>pattern</em>, <em>result</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestMercurialRevisionFinder.do_check" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestMercurialRevisionFinder.setUp">
+<code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestMercurialRevisionFinder.setUp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestMercurialRevisionFinder.tearDown">
+<code class="descname">tearDown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestMercurialRevisionFinder.tearDown" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestMercurialRevisionFinder.test_default_revision">
+<code class="descname">test_default_revision</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestMercurialRevisionFinder.test_default_revision" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestMercurialRevisionFinder.test_old_revision">
+<code class="descname">test_old_revision</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestMercurialRevisionFinder.test_old_revision" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestMercurialRevisionFinder.test_recognize_repo_paths">
+<code class="descname">test_recognize_repo_paths</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestMercurialRevisionFinder.test_recognize_repo_paths" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.test.test_files.TestMinifiedJavaScript">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_files.</code><code class="descname">TestMinifiedJavaScript</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestMinifiedJavaScript" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.test.test_files.TestWithTmpDir" title="mozpack.test.test_files.TestWithTmpDir"><code class="xref py py-class docutils literal"><span class="pre">mozpack.test.test_files.TestWithTmpDir</span></code></a></p>
+<dl class="attribute">
+<dt id="mozpack.test.test_files.TestMinifiedJavaScript.orig_lines">
+<code class="descname">orig_lines</code><em class="property"> = ['// Comment line', 'let foo = &quot;bar&quot;;', 'var bar = true;', '', '// Another comment']</em><a class="headerlink" href="#mozpack.test.test_files.TestMinifiedJavaScript.orig_lines" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestMinifiedJavaScript.test_minified_javascript">
+<code class="descname">test_minified_javascript</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestMinifiedJavaScript.test_minified_javascript" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestMinifiedJavaScript.test_minified_verify_failure">
+<code class="descname">test_minified_verify_failure</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestMinifiedJavaScript.test_minified_verify_failure" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestMinifiedJavaScript.test_minified_verify_success">
+<code class="descname">test_minified_verify_success</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestMinifiedJavaScript.test_minified_verify_success" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.test.test_files.TestMinifiedProperties">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_files.</code><code class="descname">TestMinifiedProperties</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestMinifiedProperties" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.test.test_files.TestWithTmpDir" title="mozpack.test.test_files.TestWithTmpDir"><code class="xref py py-class docutils literal"><span class="pre">mozpack.test.test_files.TestWithTmpDir</span></code></a></p>
+<dl class="method">
+<dt id="mozpack.test.test_files.TestMinifiedProperties.test_minified_properties">
+<code class="descname">test_minified_properties</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestMinifiedProperties.test_minified_properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.test.test_files.TestPreprocessedFile">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_files.</code><code class="descname">TestPreprocessedFile</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestPreprocessedFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.test.test_files.TestWithTmpDir" title="mozpack.test.test_files.TestWithTmpDir"><code class="xref py py-class docutils literal"><span class="pre">mozpack.test.test_files.TestWithTmpDir</span></code></a></p>
+<dl class="method">
+<dt id="mozpack.test.test_files.TestPreprocessedFile.test_preprocess">
+<code class="descname">test_preprocess</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestPreprocessedFile.test_preprocess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test that copying the file invokes the preprocessor</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestPreprocessedFile.test_preprocess_file_dependencies">
+<code class="descname">test_preprocess_file_dependencies</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestPreprocessedFile.test_preprocess_file_dependencies" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test that the preprocess runs if the dependencies of the source change</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestPreprocessedFile.test_preprocess_file_no_write">
+<code class="descname">test_preprocess_file_no_write</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestPreprocessedFile.test_preprocess_file_no_write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test various conditions where PreprocessedFile.copy is expected not to
+write in the destination file.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestPreprocessedFile.test_replace_symlink">
+<code class="descname">test_replace_symlink</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestPreprocessedFile.test_replace_symlink" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test that if the destination exists, and is a symlink, the target of
+the symlink is not overwritten by the preprocessor output.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.test.test_files.TestTarFinder">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_files.</code><code class="descname">TestTarFinder</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestTarFinder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.test.test_files.MatchTestTemplate" title="mozpack.test.test_files.MatchTestTemplate"><code class="xref py py-class docutils literal"><span class="pre">mozpack.test.test_files.MatchTestTemplate</span></code></a>, <a class="reference internal" href="#mozpack.test.test_files.TestWithTmpDir" title="mozpack.test.test_files.TestWithTmpDir"><code class="xref py py-class docutils literal"><span class="pre">mozpack.test.test_files.TestWithTmpDir</span></code></a></p>
+<dl class="method">
+<dt id="mozpack.test.test_files.TestTarFinder.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestTarFinder.add" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestTarFinder.do_check">
+<code class="descname">do_check</code><span class="sig-paren">(</span><em>pattern</em>, <em>result</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestTarFinder.do_check" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestTarFinder.test_tar_finder">
+<code class="descname">test_tar_finder</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestTarFinder.test_tar_finder" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.test.test_files.TestWithTmpDir">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_files.</code><code class="descname">TestWithTmpDir</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestWithTmpDir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="mozpack.test.test_files.TestWithTmpDir.setUp">
+<code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestWithTmpDir.setUp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestWithTmpDir.tearDown">
+<code class="descname">tearDown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestWithTmpDir.tearDown" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_files.TestWithTmpDir.tmppath">
+<code class="descname">tmppath</code><span class="sig-paren">(</span><em>relpath</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestWithTmpDir.tmppath" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.test.test_files.TestXPTFile">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_files.</code><code class="descname">TestXPTFile</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestXPTFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.test.test_files.TestWithTmpDir" title="mozpack.test.test_files.TestWithTmpDir"><code class="xref py py-class docutils literal"><span class="pre">mozpack.test.test_files.TestWithTmpDir</span></code></a></p>
+<dl class="method">
+<dt id="mozpack.test.test_files.TestXPTFile.test_xpt_file">
+<code class="descname">test_xpt_file</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.TestXPTFile.test_xpt_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="mozpack.test.test_files.do_check">
+<code class="descclassname">mozpack.test.test_files.</code><code class="descname">do_check</code><span class="sig-paren">(</span><em>test</em>, <em>finder</em>, <em>pattern</em>, <em>result</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.do_check" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozpack.test.test_files.read_interfaces">
+<code class="descclassname">mozpack.test.test_files.</code><code class="descname">read_interfaces</code><span class="sig-paren">(</span><em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_files.read_interfaces" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-mozpack.test.test_manifests">
+<span id="mozpack-test-test-manifests-module"></span><h2>mozpack.test.test_manifests module<a class="headerlink" href="#module-mozpack.test.test_manifests" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozpack.test.test_manifests.TestInstallManifest">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_manifests.</code><code class="descname">TestInstallManifest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_manifests.TestInstallManifest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.test.test_files.TestWithTmpDir" title="mozpack.test.test_files.TestWithTmpDir"><code class="xref py py-class docutils literal"><span class="pre">mozpack.test.test_files.TestWithTmpDir</span></code></a></p>
+<dl class="method">
+<dt id="mozpack.test.test_manifests.TestInstallManifest.test_adds">
+<code class="descname">test_adds</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_manifests.TestInstallManifest.test_adds" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_manifests.TestInstallManifest.test_construct">
+<code class="descname">test_construct</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_manifests.TestInstallManifest.test_construct" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_manifests.TestInstallManifest.test_copier_application">
+<code class="descname">test_copier_application</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_manifests.TestInstallManifest.test_copier_application" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_manifests.TestInstallManifest.test_malformed">
+<code class="descname">test_malformed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_manifests.TestInstallManifest.test_malformed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_manifests.TestInstallManifest.test_or">
+<code class="descname">test_or</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_manifests.TestInstallManifest.test_or" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_manifests.TestInstallManifest.test_pattern_expansion">
+<code class="descname">test_pattern_expansion</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_manifests.TestInstallManifest.test_pattern_expansion" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_manifests.TestInstallManifest.test_populate_registry">
+<code class="descname">test_populate_registry</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_manifests.TestInstallManifest.test_populate_registry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_manifests.TestInstallManifest.test_preprocessor">
+<code class="descname">test_preprocessor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_manifests.TestInstallManifest.test_preprocessor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_manifests.TestInstallManifest.test_preprocessor_dependencies">
+<code class="descname">test_preprocessor_dependencies</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_manifests.TestInstallManifest.test_preprocessor_dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_manifests.TestInstallManifest.test_serialization">
+<code class="descname">test_serialization</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_manifests.TestInstallManifest.test_serialization" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozpack.test.test_mozjar">
+<span id="mozpack-test-test-mozjar-module"></span><h2>mozpack.test.test_mozjar module<a class="headerlink" href="#module-mozpack.test.test_mozjar" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozpack.test.test_mozjar.TestDeflater">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_mozjar.</code><code class="descname">TestDeflater</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_mozjar.TestDeflater" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="mozpack.test.test_mozjar.TestDeflater.test_deflater_compress">
+<code class="descname">test_deflater_compress</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_mozjar.TestDeflater.test_deflater_compress" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_mozjar.TestDeflater.test_deflater_compress_no_gain">
+<code class="descname">test_deflater_compress_no_gain</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_mozjar.TestDeflater.test_deflater_compress_no_gain" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_mozjar.TestDeflater.test_deflater_empty">
+<code class="descname">test_deflater_empty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_mozjar.TestDeflater.test_deflater_empty" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_mozjar.TestDeflater.test_deflater_no_compress">
+<code class="descname">test_deflater_no_compress</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_mozjar.TestDeflater.test_deflater_no_compress" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_mozjar.TestDeflater.wrap">
+<code class="descname">wrap</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_mozjar.TestDeflater.wrap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.test.test_mozjar.TestDeflaterMemoryView">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_mozjar.</code><code class="descname">TestDeflaterMemoryView</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_mozjar.TestDeflaterMemoryView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.test.test_mozjar.TestDeflater" title="mozpack.test.test_mozjar.TestDeflater"><code class="xref py py-class docutils literal"><span class="pre">mozpack.test.test_mozjar.TestDeflater</span></code></a></p>
+<dl class="method">
+<dt id="mozpack.test.test_mozjar.TestDeflaterMemoryView.wrap">
+<code class="descname">wrap</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_mozjar.TestDeflaterMemoryView.wrap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.test.test_mozjar.TestJar">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_mozjar.</code><code class="descname">TestJar</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_mozjar.TestJar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="attribute">
+<dt id="mozpack.test.test_mozjar.TestJar.optimize">
+<code class="descname">optimize</code><em class="property"> = False</em><a class="headerlink" href="#mozpack.test.test_mozjar.TestJar.optimize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_mozjar.TestJar.test_add_from_finder">
+<code class="descname">test_add_from_finder</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_mozjar.TestJar.test_add_from_finder" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_mozjar.TestJar.test_jar">
+<code class="descname">test_jar</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_mozjar.TestJar.test_jar" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_mozjar.TestJar.test_rejar">
+<code class="descname">test_rejar</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_mozjar.TestJar.test_rejar" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.test.test_mozjar.TestJarLog">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_mozjar.</code><code class="descname">TestJarLog</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_mozjar.TestJarLog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="mozpack.test.test_mozjar.TestJarLog.test_jarlog">
+<code class="descname">test_jarlog</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_mozjar.TestJarLog.test_jarlog" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.test.test_mozjar.TestJarStruct">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_mozjar.</code><code class="descname">TestJarStruct</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_mozjar.TestJarStruct" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="class">
+<dt id="mozpack.test.test_mozjar.TestJarStruct.Foo">
+<em class="property">class </em><code class="descname">Foo</code><span class="sig-paren">(</span><em>data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_mozjar.TestJarStruct.Foo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="mozpack.html#mozpack.mozjar.JarStruct" title="mozpack.mozjar.JarStruct"><code class="xref py py-class docutils literal"><span class="pre">mozpack.mozjar.JarStruct</span></code></a></p>
+<dl class="attribute">
+<dt id="mozpack.test.test_mozjar.TestJarStruct.Foo.MAGIC">
+<code class="descname">MAGIC</code><em class="property"> = 16909060</em><a class="headerlink" href="#mozpack.test.test_mozjar.TestJarStruct.Foo.MAGIC" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozpack.test.test_mozjar.TestJarStruct.Foo.STRUCT">
+<code class="descname">STRUCT</code><em class="property"> = OrderedDict([('foo', 'uint32'), ('bar', 'uint16'), ('qux', 'uint16'), ('length', 'uint16'), ('length2', 'uint16'), ('string', 'length'), ('string2', 'length2')])</em><a class="headerlink" href="#mozpack.test.test_mozjar.TestJarStruct.Foo.STRUCT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_mozjar.TestJarStruct.do_test_read_jar_struct">
+<code class="descname">do_test_read_jar_struct</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_mozjar.TestJarStruct.do_test_read_jar_struct" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_mozjar.TestJarStruct.test_jar_struct">
+<code class="descname">test_jar_struct</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_mozjar.TestJarStruct.test_jar_struct" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_mozjar.TestJarStruct.test_read_jar_struct">
+<code class="descname">test_read_jar_struct</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_mozjar.TestJarStruct.test_read_jar_struct" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_mozjar.TestJarStruct.test_read_jar_struct_memoryview">
+<code class="descname">test_read_jar_struct_memoryview</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_mozjar.TestJarStruct.test_read_jar_struct_memoryview" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.test.test_mozjar.TestOptimizeJar">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_mozjar.</code><code class="descname">TestOptimizeJar</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_mozjar.TestOptimizeJar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.test.test_mozjar.TestJar" title="mozpack.test.test_mozjar.TestJar"><code class="xref py py-class docutils literal"><span class="pre">mozpack.test.test_mozjar.TestJar</span></code></a></p>
+<dl class="attribute">
+<dt id="mozpack.test.test_mozjar.TestOptimizeJar.optimize">
+<code class="descname">optimize</code><em class="property"> = True</em><a class="headerlink" href="#mozpack.test.test_mozjar.TestOptimizeJar.optimize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.test.test_mozjar.TestPreload">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_mozjar.</code><code class="descname">TestPreload</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_mozjar.TestPreload" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="mozpack.test.test_mozjar.TestPreload.test_preload">
+<code class="descname">test_preload</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_mozjar.TestPreload.test_preload" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozpack.test.test_packager">
+<span id="mozpack-test-test-packager-module"></span><h2>mozpack.test.test_packager module<a class="headerlink" href="#module-mozpack.test.test_packager" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozpack.test.test_packager.MockFinder">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_packager.</code><code class="descname">MockFinder</code><span class="sig-paren">(</span><em>files</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager.MockFinder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="mozpack.test.test_packager.MockFinder.find">
+<code class="descname">find</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager.MockFinder.find" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.test.test_packager.MockFormatter">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_packager.</code><code class="descname">MockFormatter</code><a class="headerlink" href="#mozpack.test.test_packager.MockFormatter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="mozpack.test.test_packager.MockFormatter.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager.MockFormatter.add" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_packager.MockFormatter.add_base">
+<code class="descname">add_base</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager.MockFormatter.add_base" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_packager.MockFormatter.add_interfaces">
+<code class="descname">add_interfaces</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager.MockFormatter.add_interfaces" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_packager.MockFormatter.add_manifest">
+<code class="descname">add_manifest</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager.MockFormatter.add_manifest" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.test.test_packager.TestCallDeque">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_packager.</code><code class="descname">TestCallDeque</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager.TestCallDeque" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="mozpack.test.test_packager.TestCallDeque.test_call_deque">
+<code class="descname">test_call_deque</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager.TestCallDeque.test_call_deque" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.test.test_packager.TestComponent">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_packager.</code><code class="descname">TestComponent</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager.TestComponent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="mozpack.test.test_packager.TestComponent.do_from_string">
+<code class="descname">do_from_string</code><span class="sig-paren">(</span><em>string</em>, <em>name</em>, <em>destdir=''</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager.TestComponent.do_from_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_packager.TestComponent.do_split">
+<code class="descname">do_split</code><span class="sig-paren">(</span><em>string</em>, <em>name</em>, <em>options</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager.TestComponent.do_split" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_packager.TestComponent.do_split_error">
+<code class="descname">do_split_error</code><span class="sig-paren">(</span><em>string</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager.TestComponent.do_split_error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_packager.TestComponent.test_component_from_string">
+<code class="descname">test_component_from_string</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager.TestComponent.test_component_from_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_packager.TestComponent.test_component_split_component_and_options">
+<code class="descname">test_component_split_component_and_options</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager.TestComponent.test_component_split_component_and_options" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_packager.TestComponent.test_component_split_component_and_options_errors">
+<code class="descname">test_component_split_component_and_options_errors</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager.TestComponent.test_component_split_component_and_options_errors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.test.test_packager.TestPreprocessManifest">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_packager.</code><code class="descname">TestPreprocessManifest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager.TestPreprocessManifest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="attribute">
+<dt id="mozpack.test.test_packager.TestPreprocessManifest.EXPECTED_LOG">
+<code class="descname">EXPECTED_LOG</code><em class="property"> = [(('/Users/andrewswan/src/mozilla-unified/manifest', 2), 'add', '', 'bar/*'), (('/Users/andrewswan/src/mozilla-unified/manifest', 4), 'add', 'foo', 'foo/*'), (('/Users/andrewswan/src/mozilla-unified/manifest', 5), 'remove', 'foo', 'foo/bar'), (('/Users/andrewswan/src/mozilla-unified/manifest', 6), 'add', 'foo', 'chrome.manifest'), (('/Users/andrewswan/src/mozilla-unified/manifest', 8), 'add', 'zot destdir=&quot;destdir&quot;', 'foo/zot')]</em><a class="headerlink" href="#mozpack.test.test_packager.TestPreprocessManifest.EXPECTED_LOG" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozpack.test.test_packager.TestPreprocessManifest.MANIFEST_PATH">
+<code class="descname">MANIFEST_PATH</code><em class="property"> = '/Users/andrewswan/src/mozilla-unified/manifest'</em><a class="headerlink" href="#mozpack.test.test_packager.TestPreprocessManifest.MANIFEST_PATH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_packager.TestPreprocessManifest.setUp">
+<code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager.TestPreprocessManifest.setUp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_packager.TestPreprocessManifest.test_preprocess_manifest">
+<code class="descname">test_preprocess_manifest</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager.TestPreprocessManifest.test_preprocess_manifest" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_packager.TestPreprocessManifest.test_preprocess_manifest_defines">
+<code class="descname">test_preprocess_manifest_defines</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager.TestPreprocessManifest.test_preprocess_manifest_defines" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_packager.TestPreprocessManifest.test_preprocess_manifest_missing_define">
+<code class="descname">test_preprocess_manifest_missing_define</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager.TestPreprocessManifest.test_preprocess_manifest_missing_define" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.test.test_packager.TestSimpleManifestSink">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_packager.</code><code class="descname">TestSimpleManifestSink</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager.TestSimpleManifestSink" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="mozpack.test.test_packager.TestSimpleManifestSink.test_simple_manifest_parser">
+<code class="descname">test_simple_manifest_parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager.TestSimpleManifestSink.test_simple_manifest_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.test.test_packager.TestSimplePackager">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_packager.</code><code class="descname">TestSimplePackager</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager.TestSimplePackager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="mozpack.test.test_packager.TestSimplePackager.test_simple_packager">
+<code class="descname">test_simple_packager</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager.TestSimplePackager.test_simple_packager" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_packager.TestSimplePackager.test_simple_packager_manifest_consistency">
+<code class="descname">test_simple_packager_manifest_consistency</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager.TestSimplePackager.test_simple_packager_manifest_consistency" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozpack.test.test_packager_formats">
+<span id="mozpack-test-test-packager-formats-module"></span><h2>mozpack.test.test_packager_formats module<a class="headerlink" href="#module-mozpack.test.test_packager_formats" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozpack.test.test_packager_formats.MockDest">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_packager_formats.</code><code class="descname">MockDest</code><a class="headerlink" href="#mozpack.test.test_packager_formats.MockDest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.test.test_files.MockDest" title="mozpack.test.test_files.MockDest"><code class="xref py py-class docutils literal"><span class="pre">mozpack.test.test_files.MockDest</span></code></a></p>
+<dl class="method">
+<dt id="mozpack.test.test_packager_formats.MockDest.exists">
+<code class="descname">exists</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager_formats.MockDest.exists" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozpack.test.test_packager_formats.TestFormatters">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_packager_formats.</code><code class="descname">TestFormatters</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager_formats.TestFormatters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.test.test_errors.TestErrors" title="mozpack.test.test_errors.TestErrors"><code class="xref py py-class docutils literal"><span class="pre">mozpack.test.test_errors.TestErrors</span></code></a>, <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="mozpack.test.test_packager_formats.TestFormatters.do_test_contents">
+<code class="descname">do_test_contents</code><span class="sig-paren">(</span><em>formatter</em>, <em>contents</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager_formats.TestFormatters.do_test_contents" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozpack.test.test_packager_formats.TestFormatters.maxDiff">
+<code class="descname">maxDiff</code><em class="property"> = None</em><a class="headerlink" href="#mozpack.test.test_packager_formats.TestFormatters.maxDiff" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_packager_formats.TestFormatters.test_bases">
+<code class="descname">test_bases</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager_formats.TestFormatters.test_bases" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_packager_formats.TestFormatters.test_chrome_override">
+<code class="descname">test_chrome_override</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager_formats.TestFormatters.test_chrome_override" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_packager_formats.TestFormatters.test_flat_formatter">
+<code class="descname">test_flat_formatter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager_formats.TestFormatters.test_flat_formatter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_packager_formats.TestFormatters.test_flat_formatter_with_base">
+<code class="descname">test_flat_formatter_with_base</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager_formats.TestFormatters.test_flat_formatter_with_base" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_packager_formats.TestFormatters.test_jar_formatter">
+<code class="descname">test_jar_formatter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager_formats.TestFormatters.test_jar_formatter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_packager_formats.TestFormatters.test_jar_formatter_with_base">
+<code class="descname">test_jar_formatter_with_base</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager_formats.TestFormatters.test_jar_formatter_with_base" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_packager_formats.TestFormatters.test_omnijar_formatter">
+<code class="descname">test_omnijar_formatter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager_formats.TestFormatters.test_omnijar_formatter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_packager_formats.TestFormatters.test_omnijar_formatter_with_base">
+<code class="descname">test_omnijar_formatter_with_base</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager_formats.TestFormatters.test_omnijar_formatter_with_base" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_packager_formats.TestFormatters.test_omnijar_is_resource">
+<code class="descname">test_omnijar_is_resource</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager_formats.TestFormatters.test_omnijar_is_resource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="mozpack.test.test_packager_formats.fill_formatter">
+<code class="descclassname">mozpack.test.test_packager_formats.</code><code class="descname">fill_formatter</code><span class="sig-paren">(</span><em>formatter</em>, <em>contents</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager_formats.fill_formatter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozpack.test.test_packager_formats.get_contents">
+<code class="descclassname">mozpack.test.test_packager_formats.</code><code class="descname">get_contents</code><span class="sig-paren">(</span><em>registry</em>, <em>read_all=False</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager_formats.get_contents" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozpack.test.test_packager_formats.result_with_base">
+<code class="descclassname">mozpack.test.test_packager_formats.</code><code class="descname">result_with_base</code><span class="sig-paren">(</span><em>results</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager_formats.result_with_base" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-mozpack.test.test_packager_l10n">
+<span id="mozpack-test-test-packager-l10n-module"></span><h2>mozpack.test.test_packager_l10n module<a class="headerlink" href="#module-mozpack.test.test_packager_l10n" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozpack.test.test_packager_l10n.TestL10NRepack">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_packager_l10n.</code><code class="descname">TestL10NRepack</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager_l10n.TestL10NRepack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="mozpack.test.test_packager_l10n.TestL10NRepack.test_l10n_repack">
+<code class="descname">test_l10n_repack</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager_l10n.TestL10NRepack.test_l10n_repack" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozpack.test.test_packager_unpack">
+<span id="mozpack-test-test-packager-unpack-module"></span><h2>mozpack.test.test_packager_unpack module<a class="headerlink" href="#module-mozpack.test.test_packager_unpack" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozpack.test.test_packager_unpack.TestUnpack">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_packager_unpack.</code><code class="descname">TestUnpack</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager_unpack.TestUnpack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozpack.test.test_files.TestWithTmpDir" title="mozpack.test.test_files.TestWithTmpDir"><code class="xref py py-class docutils literal"><span class="pre">mozpack.test.test_files.TestWithTmpDir</span></code></a></p>
+<dl class="attribute">
+<dt id="mozpack.test.test_packager_unpack.TestUnpack.maxDiff">
+<code class="descname">maxDiff</code><em class="property"> = None</em><a class="headerlink" href="#mozpack.test.test_packager_unpack.TestUnpack.maxDiff" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="mozpack.test.test_packager_unpack.TestUnpack.setUpClass">
+<em class="property">classmethod </em><code class="descname">setUpClass</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager_unpack.TestUnpack.setUpClass" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_packager_unpack.TestUnpack.test_flat_unpack">
+<code class="descname">test_flat_unpack</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager_unpack.TestUnpack.test_flat_unpack" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_packager_unpack.TestUnpack.test_jar_unpack">
+<code class="descname">test_jar_unpack</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager_unpack.TestUnpack.test_jar_unpack" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_packager_unpack.TestUnpack.test_omnijar_unpack">
+<code class="descname">test_omnijar_unpack</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_packager_unpack.TestUnpack.test_omnijar_unpack" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozpack.test.test_path">
+<span id="mozpack-test-test-path-module"></span><h2>mozpack.test.test_path module<a class="headerlink" href="#module-mozpack.test.test_path" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozpack.test.test_path.TestPath">
+<em class="property">class </em><code class="descclassname">mozpack.test.test_path.</code><code class="descname">TestPath</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_path.TestPath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="attribute">
+<dt id="mozpack.test.test_path.TestPath.SEP">
+<code class="descname">SEP</code><em class="property"> = '/'</em><a class="headerlink" href="#mozpack.test.test_path.TestPath.SEP" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_path.TestPath.test_basedir">
+<code class="descname">test_basedir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_path.TestPath.test_basedir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_path.TestPath.test_basename">
+<code class="descname">test_basename</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_path.TestPath.test_basename" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_path.TestPath.test_commonprefix">
+<code class="descname">test_commonprefix</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_path.TestPath.test_commonprefix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_path.TestPath.test_dirname">
+<code class="descname">test_dirname</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_path.TestPath.test_dirname" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_path.TestPath.test_join">
+<code class="descname">test_join</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_path.TestPath.test_join" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_path.TestPath.test_match">
+<code class="descname">test_match</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_path.TestPath.test_match" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_path.TestPath.test_normpath">
+<code class="descname">test_normpath</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_path.TestPath.test_normpath" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_path.TestPath.test_rebase">
+<code class="descname">test_rebase</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_path.TestPath.test_rebase" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_path.TestPath.test_relpath">
+<code class="descname">test_relpath</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_path.TestPath.test_relpath" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_path.TestPath.test_split">
+<code class="descname">test_split</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_path.TestPath.test_split" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozpack.test.test_path.TestPath.test_splitext">
+<code class="descname">test_splitext</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozpack.test.test_path.TestPath.test_splitext" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozpack.test">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-mozpack.test" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="mozversioncontrol.html" class="btn btn-neutral float-right" title="mozversioncontrol package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="mozpack.packager.html" class="btn btn-neutral" title="mozpack.packager package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

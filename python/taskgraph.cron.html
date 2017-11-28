@@ -1,0 +1,382 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>taskgraph.cron package &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../index.html"/>
+        <link rel="up" title="taskgraph package" href="taskgraph.html"/>
+        <link rel="next" title="taskgraph.loader package" href="taskgraph.loader.html"/>
+        <link rel="prev" title="taskgraph.actions package" href="taskgraph.actions.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="taskgraph.html">taskgraph package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="taskgraph.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="taskgraph.actions.html">taskgraph.actions package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">taskgraph.cron package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.cron.decision">taskgraph.cron.decision module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.cron.schema">taskgraph.cron.schema module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.cron.util">taskgraph.cron.util module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.cron">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="taskgraph.loader.html">taskgraph.loader package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="taskgraph.test.html">taskgraph.test package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="taskgraph.transforms.html">taskgraph.transforms package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="taskgraph.util.html">taskgraph.util package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.config">taskgraph.config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.create">taskgraph.create module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.decision">taskgraph.decision module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.docker">taskgraph.docker module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.files_changed">taskgraph.files_changed module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.filter_tasks">taskgraph.filter_tasks module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.generator">taskgraph.generator module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.graph">taskgraph.graph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.morph">taskgraph.morph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.optimize">taskgraph.optimize module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.parameters">taskgraph.parameters module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.target_tasks">taskgraph.target_tasks module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.task">taskgraph.task module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.taskgraph">taskgraph.taskgraph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.try_option_syntax">taskgraph.try_option_syntax module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="taskgraph.html">taskgraph package</a> &raquo;</li>
+        
+      <li>taskgraph.cron package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/python/taskgraph.cron.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="taskgraph-cron-package">
+<h1>taskgraph.cron package<a class="headerlink" href="#taskgraph-cron-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-taskgraph.cron.decision">
+<span id="taskgraph-cron-decision-module"></span><h2>taskgraph.cron.decision module<a class="headerlink" href="#module-taskgraph.cron.decision" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="taskgraph.cron.decision.make_decision_task">
+<code class="descclassname">taskgraph.cron.decision.</code><code class="descname">make_decision_task</code><span class="sig-paren">(</span><em>params</em>, <em>symbol</em>, <em>arguments=[]</em>, <em>head_rev=None</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.cron.decision.make_decision_task" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a basic decision task, based on the root .taskcluster.yml</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.cron.decision.run_decision_task">
+<code class="descclassname">taskgraph.cron.decision.</code><code class="descname">run_decision_task</code><span class="sig-paren">(</span><em>job</em>, <em>params</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.cron.decision.run_decision_task" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.cron.schema">
+<span id="taskgraph-cron-schema-module"></span><h2>taskgraph.cron.schema module<a class="headerlink" href="#module-taskgraph.cron.schema" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="taskgraph.cron.schema.even_15_minutes">
+<code class="descclassname">taskgraph.cron.schema.</code><code class="descname">even_15_minutes</code><span class="sig-paren">(</span><em>minutes</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.cron.schema.even_15_minutes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.cron.schema.validate">
+<code class="descclassname">taskgraph.cron.schema.</code><code class="descname">validate</code><span class="sig-paren">(</span><em>cron_yml</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.cron.schema.validate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.cron.util">
+<span id="taskgraph-cron-util-module"></span><h2>taskgraph.cron.util module<a class="headerlink" href="#module-taskgraph.cron.util" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="taskgraph.cron.util.calculate_head_rev">
+<code class="descclassname">taskgraph.cron.util.</code><code class="descname">calculate_head_rev</code><span class="sig-paren">(</span><em>options</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.cron.util.calculate_head_rev" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.cron.util.match_utc">
+<code class="descclassname">taskgraph.cron.util.</code><code class="descname">match_utc</code><span class="sig-paren">(</span><em>params</em>, <em>hour=None</em>, <em>minute=None</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.cron.util.match_utc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if params[‘time’] matches the given hour and minute.
+If hour is not specified, any hour will match.  If minute is not
+specified, then every multiple of fifteen minutes will match.  Times
+not an even multiple of fifteen minutes will result in an exception
+(since they would never run).</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.cron">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-taskgraph.cron" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="taskgraph.cron.calculate_time">
+<code class="descclassname">taskgraph.cron.</code><code class="descname">calculate_time</code><span class="sig-paren">(</span><em>options</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.cron.calculate_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.cron.load_jobs">
+<code class="descclassname">taskgraph.cron.</code><code class="descname">load_jobs</code><span class="sig-paren">(</span><em>params</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.cron.load_jobs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.cron.run_job">
+<code class="descclassname">taskgraph.cron.</code><code class="descname">run_job</code><span class="sig-paren">(</span><em>job_name</em>, <em>job</em>, <em>params</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.cron.run_job" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.cron.should_run">
+<code class="descclassname">taskgraph.cron.</code><code class="descname">should_run</code><span class="sig-paren">(</span><em>job</em>, <em>params</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.cron.should_run" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.cron.taskgraph_cron">
+<code class="descclassname">taskgraph.cron.</code><code class="descname">taskgraph_cron</code><span class="sig-paren">(</span><em>options</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.cron.taskgraph_cron" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="taskgraph.loader.html" class="btn btn-neutral float-right" title="taskgraph.loader package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="taskgraph.actions.html" class="btn btn-neutral" title="taskgraph.actions package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

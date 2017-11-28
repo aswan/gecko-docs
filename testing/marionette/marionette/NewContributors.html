@@ -1,0 +1,402 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>New contributors &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Marionette" href="index.html"/>
+        <link rel="next" title="Debugging" href="Debugging.html"/>
+        <link rel="prev" title="Protocol" href="Protocol.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Marionette</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#for-users">For users</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#for-marionette-developers">For marionette developers</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">New contributors</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#accounts-communication">Accounts, communication</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#getting-the-code-running-tests">Getting the code, running tests</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#work-on-bugs-and-get-code-review">Work on bugs and get code review</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#resources">Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Debugging.html">Debugging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PythonTests.html">Mn Python tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SeleniumAtoms.html">Selenium Atoms</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Marionette</a> &raquo;</li>
+        
+      <li>New contributors</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/testing/marionette/marionette/NewContributors.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="new-contributors">
+<span id="new-contributors"></span><h1>New contributors<a class="headerlink" href="#new-contributors" title="Permalink to this headline">¶</a></h1>
+<p>This page is aimed at people who are new to Mozilla and want to contribute
+to Mozilla source code related to Marionette Python tests, WebDriver
+spec tests and related test harnesses and tools. Mozilla has both
+git and Mercurial repositories, but this guide only describes Mercurial.</p>
+<p>If you run into issues, check out the Resources section below and
+<strong>don't hesitate to ask questions</strong>. :) The goal of these steps is
+to make sure you have the basics of your development environment
+working. Once you do, we can get you started with working on an
+actual bug, yay!</p>
+<div class="section" id="accounts-communication">
+<span id="accounts-communication"></span><h2>Accounts, communication<a class="headerlink" href="#accounts-communication" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li>Set up <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Mozilla/QA/Getting_Started_with_IRC">IRC</a>.</li>
+<li>Set up a <a class="reference external" href="https://bugzilla.mozilla.org/">Bugzilla</a> account and a <a class="reference external" href="https://mozillians.org/">Mozillians</a> profile.
+Please include your IRC nickname in both of these accounts
+so we can work with you more easily. For example, Eve Smith
+would set their Bugzilla name to &quot;Eve Smith (:esmith)&quot;, where
+esmith is their IRC nick.</li>
+<li>Join #ateam or #automation on irc.mozilla.org and introduce
+yourself to the whole team and :maja_zf. We're nice, I promise.</li>
+</ol>
+</div>
+<div class="section" id="getting-the-code-running-tests">
+<span id="getting-the-code-running-tests"></span><h2>Getting the code, running tests<a class="headerlink" href="#getting-the-code-running-tests" title="Permalink to this headline">¶</a></h2>
+<ol>
+<li><p class="first">Follow this tutorial to get a copy of Firefox source code and
+build it: http://areweeveryoneyet.org/onramp/desktop.html</p>
+<p>If you're asked to run a 'bootstrap' script, choose the option
+&quot;Firefox for Desktop Artifact Mode&quot;.  This significantly
+reduces the time it takes to build Firefox on your machine
+(from 30+ minutes to just 1-2 minutes).</p>
+</li>
+<li><p class="first">Check if you can run any marionette tests: Use <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Mozilla/Developer_guide/mach">mach</a> to run
+<a class="reference external" href="../README.md">Marionette</a> unit tests against the Firefox binary you just
+built in the previous step: <code class="docutils literal"><span class="pre">./mach</span> <span class="pre">marionette</span> <span class="pre">test</span></code> -- see
+<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Mozilla/QA/Marionette/Running_Tests">Running Marionette tests</a> for details.  If you see tests
+running, that's good enough: <strong>you don't have to run all the
+tests right now</strong>, that takes a long time.</p>
+<p>Fun fact: the set of tests that you just ran on your machine is
+triggered automatically for every changeset in the Mozilla source
+tree!  For example, here are the <a class="reference external" href="https://treeherder.mozilla.org/#/jobs?repo=mozilla-inbound&amp;filter-job_type_symbol=Mn">latest results on Treeherder</a>.</p>
+</li>
+<li><p class="first">As an exercise, try out this different way of running the
+Marionette unit tests, this time against Firefox Nightly
+instead of the binary in your source tree:</p>
+<ul class="simple">
+<li>Download and install <a class="reference external" href="https://nightly.mozilla.org/">Firefox Nightly</a>, then find
+the path to the executable binary that got installed.
+For example, on a macOS it might be something like
+<code class="docutils literal"><span class="pre">FF_NIGHTLY_PATH=/Applications/FirefoxNightly.app/Contents/MacOS/firefox-bin</span></code>.</li>
+<li>Create and activate a <a class="reference external" href="https://www.dabapps.com/blog/introduction-to-pip-and-virtualenv-python/">virtualenv</a> environment.</li>
+<li>Within your checkout of the Mozilla source, cd to
+<a class="reference external" href="https://dxr.mozilla.org/mozilla-central/source/testing/marionette/client">testing/marionette/client</a>.</li>
+<li>Run <code class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">develop</span></code> to install the marionette
+driver package in development mode in your virtualenv.</li>
+<li>Next cd to <a class="reference external" href="https://dxr.mozilla.org/mozilla-central/source/testing/marionette/harness">testing/marionette/harness</a>.</li>
+<li>Run <code class="docutils literal"><span class="pre">cd</span> <span class="pre">marionette</span> <span class="pre">&amp;&amp;</span> <span class="pre">python</span> <span class="pre">runtests.py</span> <span class="pre">tests/unit-tests.ini</span> <span class="pre">--binary</span> <span class="pre">$FF_NIGHTLY_PATH</span></code>.<ul>
+<li>These are the same tests that you ran with <code class="docutils literal"><span class="pre">./mach</span> <span class="pre">marionette</span> <span class="pre">test</span></code>, but they are testing the Firefox Nightly
+that you just installed.  (<code class="docutils literal"><span class="pre">./mach</span> <span class="pre">marionette</span> <span class="pre">tests</span></code>
+just calls code in runtests.py).</li>
+</ul>
+</li>
+<li>Configure Mercurial with helpful extensions for Mozilla
+development by running <code class="docutils literal"><span class="pre">./mach</span> <span class="pre">mercurial-setup</span></code>.<ul>
+<li>It should install extensions like firefox-trees and set
+you up to be able to use MozReview, our code-review tool.</li>
+<li>If it asks you about activating the mq extension, I suggest
+you respond with 'No'.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="work-on-bugs-and-get-code-review">
+<span id="work-on-bugs-and-get-code-review"></span><h2>Work on bugs and get code review<a class="headerlink" href="#work-on-bugs-and-get-code-review" title="Permalink to this headline">¶</a></h2>
+<p>Once you've completed the above basics, ask :maja_zf, :whimboo,
+or :ato in #ateam for a good first bug to work on.  (Or you can
+also take a look at the simple bugs listed on Bugs Ahoy.)</p>
+<p>If you're an Outreachy applicant and you find that we're offline or
+&quot;afk&quot; on IRC, feel free to send Maja an email instead: [myfirstname]
+at mozilla.com -- either way, be sure to tell me which bug you are
+interested in for your application!</p>
+<p>To work on the bug that is suggested to you and push a patch up
+for review, follow the <a class="reference external" href="https://mozilla-version-control-tools.readthedocs.org/en/latest/hgmozilla/firefoxworkflow.html">Firefox Workflow</a> in hg.</p>
+<p>After testing your code locally, you will push your patch to be
+reviewed in MozReview.  To set up MozReview, see this <a class="reference external" href="https://mozilla-version-control-tools.readthedocs.org/en/latest/mozreview/install-mercurial.html#configuring-mercurial-to-use-mozreview">configuration</a>
+page.  (Note: the only kind of account you need for MozReview is
+Bugzilla (not LDAP) and you can only use HTTPS, not SSH.)</p>
+</div>
+<div class="section" id="resources">
+<span id="resources"></span><h2>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Sometimes (often?) documentation is out-of-date.  If something looks
+off, do ask us for help!</li>
+<li>Search Mozilla's hg repositories with <a class="reference external" href="https://dxr.mozilla.org/">DXR</a>.</li>
+<li>Helpful <a class="reference external" href="https://ateam-bootcamp.readthedocs.org/en/latest/guide/index.html#new-contributor-guide">guide for new contributors</a>.  This is a good general
+resource if you ever get stuck on something.  The most relevant
+sections to you are about Bugzilla, Mercurial, Python and the
+Development Process.</li>
+<li><a class="reference external" href="https://mozilla-version-control-tools.readthedocs.org/en/latest/hgmozilla/index.html">Mercurial for Mozillians</a></li>
+<li>More general resources are available in this little <a class="reference external" href="https://gist.github.com/mjzffr/d2adef328a416081f543">guide</a> I wrote
+in 2015 to help a student get started with open source contributions.<ul>
+<li>Textbook about general open source practices: <a class="reference external" href="https://quaid.fedorapeople.org/TOS/Practical_Open_Source_Software_Exploration/html/index.html">Practical
+Open Source Software Exploration</a></li>
+</ul>
+</li>
+<li>This guide provides a one-track, simple flow for getting
+started with Marionette Test Runner development.
+The general guide to all Marionette development is at
+https://developer.mozilla.org/en-US/docs/Mozilla/QA/Marionette/Developer_setup.</li>
+<li>If you'd rather use git instead of hg, see git workflow for
+Gecko development and/or <a class="reference external" href="https://sny.no/2016/03/geckogit">this blog post by :ato</a>.</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Debugging.html" class="btn btn-neutral float-right" title="Debugging" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Protocol.html" class="btn btn-neutral" title="Protocol" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

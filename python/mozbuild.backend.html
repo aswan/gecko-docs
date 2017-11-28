@@ -1,0 +1,1137 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mozbuild.backend package &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../index.html"/>
+        <link rel="up" title="mozbuild package" href="mozbuild.html"/>
+        <link rel="next" title="mozbuild.codecoverage package" href="mozbuild.codecoverage.html"/>
+        <link rel="prev" title="mozbuild.action package" href="mozbuild.action.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="mach.html">mach package</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="mozbuild.html">mozbuild package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="mozbuild.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.action.html">mozbuild.action package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">mozbuild.backend package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.backend.base">mozbuild.backend.base module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.backend.common">mozbuild.backend.common module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.backend.configenvironment">mozbuild.backend.configenvironment module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.backend.cpp_eclipse">mozbuild.backend.cpp_eclipse module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.backend.fastermake">mozbuild.backend.fastermake module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.backend.mach_commands">mozbuild.backend.mach_commands module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.backend.recursivemake">mozbuild.backend.recursivemake module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.backend.test_manifest">mozbuild.backend.test_manifest module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.backend.tup">mozbuild.backend.tup module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.backend.visualstudio">mozbuild.backend.visualstudio module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.backend">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.codecoverage.html">mozbuild.codecoverage package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.compilation.html">mozbuild.compilation package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.configure.html">mozbuild.configure package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.controller.html">mozbuild.controller package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.frontend.html">mozbuild.frontend package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.repackaging.html">mozbuild.repackaging package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.test.html">mozbuild.test package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.android_version_code">mozbuild.android_version_code module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.artifacts">mozbuild.artifacts module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.base">mozbuild.base module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.chunkify">mozbuild.chunkify module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.config_status">mozbuild.config_status module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.doctor">mozbuild.doctor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.dotproperties">mozbuild.dotproperties module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#mozbuild-faster-daemon-module">mozbuild.faster_daemon module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.generated_sources">mozbuild.generated_sources module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.html_build_viewer">mozbuild.html_build_viewer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.jar">mozbuild.jar module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.mach_commands">mozbuild.mach_commands module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.makeutil">mozbuild.makeutil module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.milestone">mozbuild.milestone module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.mozconfig">mozbuild.mozconfig module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.mozinfo">mozbuild.mozinfo module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.preprocessor">mozbuild.preprocessor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.pythonutil">mozbuild.pythonutil module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.schedules">mozbuild.schedules module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.shellutil">mozbuild.shellutil module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.sphinx">mozbuild.sphinx module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.testing">mozbuild.testing module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.util">mozbuild.util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.vendor_aom">mozbuild.vendor_aom module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.vendor_rust">mozbuild.vendor_rust module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.virtualenv">mozbuild.virtualenv module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="mozbuild.html">mozbuild package</a> &raquo;</li>
+        
+      <li>mozbuild.backend package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/python/mozbuild.backend.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mozbuild-backend-package">
+<h1>mozbuild.backend package<a class="headerlink" href="#mozbuild-backend-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-mozbuild.backend.base">
+<span id="mozbuild-backend-base-module"></span><h2>mozbuild.backend.base module<a class="headerlink" href="#module-mozbuild.backend.base" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozbuild.backend.base.BuildBackend">
+<em class="property">class </em><code class="descclassname">mozbuild.backend.base.</code><code class="descname">BuildBackend</code><span class="sig-paren">(</span><em>environment</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.base.BuildBackend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="mach.mixin.html#mach.mixin.logging.LoggingMixin" title="mach.mixin.logging.LoggingMixin"><code class="xref py py-class docutils literal"><span class="pre">mach.mixin.logging.LoggingMixin</span></code></a></p>
+<p>Abstract base class for build backends.</p>
+<p>A build backend is merely a consumer of the build configuration (the output
+of the frontend processing). It does something with said data. What exactly
+is the discretion of the specific implementation.</p>
+<dl class="method">
+<dt id="mozbuild.backend.base.BuildBackend.build">
+<code class="descname">build</code><span class="sig-paren">(</span><em>config</em>, <em>output</em>, <em>jobs</em>, <em>verbose</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.base.BuildBackend.build" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when ‘mach build’ is executed.</p>
+<p>This should return the status value of a subprocess, where 0 denotes
+success and any other value is an error code. A return value of None
+indicates that the default ‘make -f client.mk’ should run.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.base.BuildBackend.consume">
+<code class="descname">consume</code><span class="sig-paren">(</span><em>objs</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.base.BuildBackend.consume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Consume a stream of TreeMetadata instances.</p>
+<p>This is the main method of the interface. This is what takes the
+frontend output and does something with it.</p>
+<p>Child classes are not expected to implement this method. Instead, the
+base class consumes objects and calls methods (possibly) implemented by
+child classes.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.base.BuildBackend.consume_finished">
+<code class="descname">consume_finished</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.base.BuildBackend.consume_finished" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when consume() has completed handling all objects.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.base.BuildBackend.consume_object">
+<code class="descname">consume_object</code><span class="sig-paren">(</span><em>obj</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.base.BuildBackend.consume_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Consumes an individual TreeMetadata instance.</p>
+<p>This is the main method used by child classes to react to build
+metadata.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.base.BuildBackend.summary">
+<code class="descname">summary</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.base.BuildBackend.summary" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.backend.base.HybridBackend">
+<code class="descclassname">mozbuild.backend.base.</code><code class="descname">HybridBackend</code><span class="sig-paren">(</span><em>*backends</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.base.HybridBackend" title="Permalink to this definition">¶</a></dt>
+<dd><p>A HybridBackend is the combination of one or more PartialBackends
+with a non-partial BuildBackend.</p>
+<p>Build configuration objects are passed to each backend, stopping at the
+first of them that declares having handled them.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.backend.base.PartialBackend">
+<em class="property">class </em><code class="descclassname">mozbuild.backend.base.</code><code class="descname">PartialBackend</code><span class="sig-paren">(</span><em>environment</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.base.PartialBackend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.backend.base.BuildBackend" title="mozbuild.backend.base.BuildBackend"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.backend.base.BuildBackend</span></code></a></p>
+<p>A PartialBackend is a BuildBackend declaring that its consume_object
+method may not handle all build configuration objects it’s passed, and
+that it’s fine.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.backend.common">
+<span id="mozbuild-backend-common-module"></span><h2>mozbuild.backend.common module<a class="headerlink" href="#module-mozbuild.backend.common" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozbuild.backend.common.BinariesCollection">
+<em class="property">class </em><code class="descclassname">mozbuild.backend.common.</code><code class="descname">BinariesCollection</code><a class="headerlink" href="#mozbuild.backend.common.BinariesCollection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Tracks state of binaries produced by the build.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.backend.common.CommonBackend">
+<em class="property">class </em><code class="descclassname">mozbuild.backend.common.</code><code class="descname">CommonBackend</code><span class="sig-paren">(</span><em>environment</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.common.CommonBackend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.backend.base.BuildBackend" title="mozbuild.backend.base.BuildBackend"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.backend.base.BuildBackend</span></code></a></p>
+<p>Holds logic common to all build backends.</p>
+<dl class="method">
+<dt id="mozbuild.backend.common.CommonBackend.consume_finished">
+<code class="descname">consume_finished</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.common.CommonBackend.consume_finished" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.common.CommonBackend.consume_object">
+<code class="descname">consume_object</code><span class="sig-paren">(</span><em>obj</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.common.CommonBackend.consume_object" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.backend.common.WebIDLCollection">
+<em class="property">class </em><code class="descclassname">mozbuild.backend.common.</code><code class="descname">WebIDLCollection</code><a class="headerlink" href="#mozbuild.backend.common.WebIDLCollection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Collects WebIDL info referenced during the build.</p>
+<dl class="method">
+<dt id="mozbuild.backend.common.WebIDLCollection.all_basenames">
+<code class="descname">all_basenames</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.common.WebIDLCollection.all_basenames" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.common.WebIDLCollection.all_non_static_basenames">
+<code class="descname">all_non_static_basenames</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.common.WebIDLCollection.all_non_static_basenames" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.common.WebIDLCollection.all_non_static_sources">
+<code class="descname">all_non_static_sources</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.common.WebIDLCollection.all_non_static_sources" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.common.WebIDLCollection.all_preprocessed_sources">
+<code class="descname">all_preprocessed_sources</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.common.WebIDLCollection.all_preprocessed_sources" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.common.WebIDLCollection.all_regular_basenames">
+<code class="descname">all_regular_basenames</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.common.WebIDLCollection.all_regular_basenames" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.common.WebIDLCollection.all_regular_bindinggen_stems">
+<code class="descname">all_regular_bindinggen_stems</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.common.WebIDLCollection.all_regular_bindinggen_stems" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.common.WebIDLCollection.all_regular_cpp_basenames">
+<code class="descname">all_regular_cpp_basenames</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.common.WebIDLCollection.all_regular_cpp_basenames" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.common.WebIDLCollection.all_regular_sources">
+<code class="descname">all_regular_sources</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.common.WebIDLCollection.all_regular_sources" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.common.WebIDLCollection.all_regular_stems">
+<code class="descname">all_regular_stems</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.common.WebIDLCollection.all_regular_stems" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.common.WebIDLCollection.all_sources">
+<code class="descname">all_sources</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.common.WebIDLCollection.all_sources" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.common.WebIDLCollection.all_static_sources">
+<code class="descname">all_static_sources</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.common.WebIDLCollection.all_static_sources" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.common.WebIDLCollection.all_stems">
+<code class="descname">all_stems</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.common.WebIDLCollection.all_stems" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.common.WebIDLCollection.all_test_basenames">
+<code class="descname">all_test_basenames</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.common.WebIDLCollection.all_test_basenames" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.common.WebIDLCollection.all_test_cpp_basenames">
+<code class="descname">all_test_cpp_basenames</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.common.WebIDLCollection.all_test_cpp_basenames" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.common.WebIDLCollection.all_test_sources">
+<code class="descname">all_test_sources</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.common.WebIDLCollection.all_test_sources" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.common.WebIDLCollection.all_test_stems">
+<code class="descname">all_test_stems</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.common.WebIDLCollection.all_test_stems" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.common.WebIDLCollection.generated_events_basenames">
+<code class="descname">generated_events_basenames</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.common.WebIDLCollection.generated_events_basenames" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.common.WebIDLCollection.generated_events_stems">
+<code class="descname">generated_events_stems</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.common.WebIDLCollection.generated_events_stems" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.backend.common.XPIDLManager">
+<em class="property">class </em><code class="descclassname">mozbuild.backend.common.</code><code class="descname">XPIDLManager</code><span class="sig-paren">(</span><em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.common.XPIDLManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Helps manage XPCOM IDLs in the context of the build system.</p>
+<dl class="method">
+<dt id="mozbuild.backend.common.XPIDLManager.register_idl">
+<code class="descname">register_idl</code><span class="sig-paren">(</span><em>idl</em>, <em>allow_existing=False</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.common.XPIDLManager.register_idl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers an IDL file with this instance.</p>
+<p>The IDL file will be built, installed, etc.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.backend.configenvironment">
+<span id="mozbuild-backend-configenvironment-module"></span><h2>mozbuild.backend.configenvironment module<a class="headerlink" href="#module-mozbuild.backend.configenvironment" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozbuild.backend.configenvironment.BuildConfig">
+<em class="property">class </em><code class="descclassname">mozbuild.backend.configenvironment.</code><code class="descname">BuildConfig</code><a class="headerlink" href="#mozbuild.backend.configenvironment.BuildConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Represents the output of configure.</p>
+<dl class="classmethod">
+<dt id="mozbuild.backend.configenvironment.BuildConfig.from_config_status">
+<em class="property">classmethod </em><code class="descname">from_config_status</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.configenvironment.BuildConfig.from_config_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an instance from a config.status file.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.backend.configenvironment.ConfigEnvironment">
+<em class="property">class </em><code class="descclassname">mozbuild.backend.configenvironment.</code><code class="descname">ConfigEnvironment</code><span class="sig-paren">(</span><em>topsrcdir</em>, <em>topobjdir</em>, <em>defines=None</em>, <em>non_global_defines=None</em>, <em>substs=None</em>, <em>source=None</em>, <em>mozconfig=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.configenvironment.ConfigEnvironment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Perform actions associated with a configured but bare objdir.</p>
+<p>The purpose of this class is to preprocess files from the source directory
+and output results in the object directory.</p>
+<p>There are two types of files: config files and config headers,
+each treated through a different member function.</p>
+<dl class="docutils">
+<dt>Creating a ConfigEnvironment requires a few arguments:</dt>
+<dd><ul class="first last simple">
+<li>topsrcdir and topobjdir are, respectively, the top source and
+the top object directory.</li>
+<li>defines is a dict filled from AC_DEFINE and AC_DEFINE_UNQUOTED in
+autoconf.</li>
+<li>non_global_defines are a list of names appearing in defines above
+that are not meant to be exported in ACDEFINES (see below)</li>
+<li>substs is a dict filled from AC_SUBST in autoconf.</li>
+</ul>
+</dd>
+</dl>
+<p>ConfigEnvironment automatically defines one additional substs variable
+from all the defines not appearing in non_global_defines:</p>
+<blockquote>
+<div><ul class="simple">
+<li>ACDEFINES contains the defines in the form -DNAME=VALUE, for use on
+preprocessor command lines. The order in which defines were given
+when creating the ConfigEnvironment is preserved.</li>
+</ul>
+</div></blockquote>
+<dl class="docutils">
+<dt>and two other additional subst variables from all the other substs:</dt>
+<dd><ul class="first last simple">
+<li>ALLSUBSTS contains the substs in the form NAME = VALUE, in sorted
+order, for use in autoconf.mk. It includes ACDEFINES
+Only substs with a VALUE are included, such that the resulting file
+doesn’t change when new empty substs are added.
+This results in less invalidation of build dependencies in the case
+of autoconf.mk..</li>
+<li>ALLEMPTYSUBSTS contains the substs with an empty value, in the form
+NAME =.</li>
+</ul>
+</dd>
+</dl>
+<p>ConfigEnvironment expects a “top_srcdir” subst to be set with the top
+source directory, in msys format on windows. It is used to derive a
+“srcdir” subst when treating config files. It can either be an absolute
+path or a path relative to the topobjdir.</p>
+<dl class="attribute">
+<dt id="mozbuild.backend.configenvironment.ConfigEnvironment.acdefines">
+<code class="descname">acdefines</code><a class="headerlink" href="#mozbuild.backend.configenvironment.ConfigEnvironment.acdefines" title="Permalink to this definition">¶</a></dt>
+<dd><p>A specialized version of the memoize decorator that works for
+class instance properties.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="mozbuild.backend.configenvironment.ConfigEnvironment.from_config_status">
+<em class="property">static </em><code class="descname">from_config_status</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.configenvironment.ConfigEnvironment.from_config_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.backend.configenvironment.ConfigEnvironment.is_artifact_build">
+<code class="descname">is_artifact_build</code><a class="headerlink" href="#mozbuild.backend.configenvironment.ConfigEnvironment.is_artifact_build" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.backend.configenvironment.PartialConfigDict">
+<em class="property">class </em><code class="descclassname">mozbuild.backend.configenvironment.</code><code class="descname">PartialConfigDict</code><span class="sig-paren">(</span><em>config_statusd</em>, <em>typ</em>, <em>environ_override=False</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.configenvironment.PartialConfigDict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Facilitates mapping the config.statusd defines &amp; substs with dict-like access.</p>
+<p>This allows a buildconfig client to use buildconfig.defines[‘FOO’] (and
+similar for substs), where the value of FOO is delay-loaded until it is
+needed.</p>
+<dl class="method">
+<dt id="mozbuild.backend.configenvironment.PartialConfigDict.get">
+<code class="descname">get</code><span class="sig-paren">(</span><em>key</em>, <em>default=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.configenvironment.PartialConfigDict.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.configenvironment.PartialConfigDict.iteritems">
+<code class="descname">iteritems</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.configenvironment.PartialConfigDict.iteritems" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.backend.configenvironment.PartialConfigEnvironment">
+<em class="property">class </em><code class="descclassname">mozbuild.backend.configenvironment.</code><code class="descname">PartialConfigEnvironment</code><span class="sig-paren">(</span><em>topobjdir</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.configenvironment.PartialConfigEnvironment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Allows access to individual config.status items via config.statusd/* files.</p>
+<p>This class is similar to the full ConfigEnvironment, which uses
+config.status, except this allows access and tracks dependencies to
+individual configure values. It is intended to be used during the build
+process to handle things like GENERATED_FILES, CONFIGURE_DEFINE_FILES, and
+anything else that may need to access specific substs or defines.</p>
+<p>Creating a PartialConfigEnvironment requires only the topobjdir, which is
+needed to distinguish between the top-level environment and the js/src
+environment.</p>
+<p>The PartialConfigEnvironment automatically defines one additional subst variable
+from all the defines not appearing in non_global_defines:</p>
+<blockquote>
+<div><ul class="simple">
+<li>ACDEFINES contains the defines in the form -DNAME=VALUE, for use on
+preprocessor command lines. The order in which defines were given
+when creating the ConfigEnvironment is preserved.</li>
+</ul>
+</div></blockquote>
+<dl class="docutils">
+<dt>and one additional define from all the defines as a dictionary:</dt>
+<dd><ul class="first simple">
+<li>ALLDEFINES contains all of the global defines as a dictionary. This is</li>
+</ul>
+<p class="last">intended to be used instead of the defines structure from config.status so
+that scripts can depend directly on its value.</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="mozbuild.backend.configenvironment.PartialConfigEnvironment.get_dependencies">
+<code class="descname">get_dependencies</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.configenvironment.PartialConfigEnvironment.get_dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.configenvironment.PartialConfigEnvironment.write_vars">
+<code class="descname">write_vars</code><span class="sig-paren">(</span><em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.configenvironment.PartialConfigEnvironment.write_vars" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.backend.cpp_eclipse">
+<span id="mozbuild-backend-cpp-eclipse-module"></span><h2>mozbuild.backend.cpp_eclipse module<a class="headerlink" href="#module-mozbuild.backend.cpp_eclipse" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozbuild.backend.cpp_eclipse.CppEclipseBackend">
+<em class="property">class </em><code class="descclassname">mozbuild.backend.cpp_eclipse.</code><code class="descname">CppEclipseBackend</code><span class="sig-paren">(</span><em>environment</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.cpp_eclipse.CppEclipseBackend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.backend.common.CommonBackend" title="mozbuild.backend.common.CommonBackend"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.backend.common.CommonBackend</span></code></a></p>
+<p>Backend that generates Cpp Eclipse project files.</p>
+<dl class="method">
+<dt id="mozbuild.backend.cpp_eclipse.CppEclipseBackend.consume_finished">
+<code class="descname">consume_finished</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.cpp_eclipse.CppEclipseBackend.consume_finished" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.cpp_eclipse.CppEclipseBackend.consume_object">
+<code class="descname">consume_object</code><span class="sig-paren">(</span><em>obj</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.cpp_eclipse.CppEclipseBackend.consume_object" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="mozbuild.backend.cpp_eclipse.CppEclipseBackend.get_workspace_path">
+<em class="property">static </em><code class="descname">get_workspace_path</code><span class="sig-paren">(</span><em>topsrcdir</em>, <em>topobjdir</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.cpp_eclipse.CppEclipseBackend.get_workspace_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.cpp_eclipse.CppEclipseBackend.summary">
+<code class="descname">summary</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.cpp_eclipse.CppEclipseBackend.summary" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.backend.fastermake">
+<span id="mozbuild-backend-fastermake-module"></span><h2>mozbuild.backend.fastermake module<a class="headerlink" href="#module-mozbuild.backend.fastermake" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozbuild.backend.fastermake.FasterMakeBackend">
+<em class="property">class </em><code class="descclassname">mozbuild.backend.fastermake.</code><code class="descname">FasterMakeBackend</code><span class="sig-paren">(</span><em>environment</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.fastermake.FasterMakeBackend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.backend.common.CommonBackend" title="mozbuild.backend.common.CommonBackend"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.backend.common.CommonBackend</span></code></a>, <a class="reference internal" href="#mozbuild.backend.base.PartialBackend" title="mozbuild.backend.base.PartialBackend"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.backend.base.PartialBackend</span></code></a></p>
+<dl class="method">
+<dt id="mozbuild.backend.fastermake.FasterMakeBackend.consume_finished">
+<code class="descname">consume_finished</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.fastermake.FasterMakeBackend.consume_finished" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.fastermake.FasterMakeBackend.consume_object">
+<code class="descname">consume_object</code><span class="sig-paren">(</span><em>obj</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.fastermake.FasterMakeBackend.consume_object" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.backend.mach_commands">
+<span id="mozbuild-backend-mach-commands-module"></span><h2>mozbuild.backend.mach_commands module<a class="headerlink" href="#module-mozbuild.backend.mach_commands" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozbuild.backend.mach_commands.MachCommands">
+<em class="property">class </em><code class="descclassname">mozbuild.backend.mach_commands.</code><code class="descname">MachCommands</code><span class="sig-paren">(</span><em>context</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.mach_commands.MachCommands" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="mozbuild.html#mozbuild.base.MachCommandBase" title="mozbuild.base.MachCommandBase"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.base.MachCommandBase</span></code></a></p>
+<dl class="method">
+<dt id="mozbuild.backend.mach_commands.MachCommands.eclipse">
+<code class="descname">eclipse</code><span class="sig-paren">(</span><em>ide</em>, <em>args</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.mach_commands.MachCommands.eclipse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.mach_commands.MachCommands.get_eclipse_workspace_path">
+<code class="descname">get_eclipse_workspace_path</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.mach_commands.MachCommands.get_eclipse_workspace_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.mach_commands.MachCommands.get_visualstudio_workspace_path">
+<code class="descname">get_visualstudio_workspace_path</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.mach_commands.MachCommands.get_visualstudio_workspace_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.backend.recursivemake">
+<span id="mozbuild-backend-recursivemake-module"></span><h2>mozbuild.backend.recursivemake module<a class="headerlink" href="#module-mozbuild.backend.recursivemake" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozbuild.backend.recursivemake.BackendMakeFile">
+<em class="property">class </em><code class="descclassname">mozbuild.backend.recursivemake.</code><code class="descname">BackendMakeFile</code><span class="sig-paren">(</span><em>srcdir</em>, <em>objdir</em>, <em>environment</em>, <em>topsrcdir</em>, <em>topobjdir</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.recursivemake.BackendMakeFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Represents a generated backend.mk file.</p>
+<p>This is both a wrapper around a file handle as well as a container that
+holds accumulated state.</p>
+<p>It’s worth taking a moment to explain the make dependencies. The
+generated backend.mk as well as the Makefile.in (if it exists) are in the
+GLOBAL_DEPS list. This means that if one of them changes, all targets
+in that Makefile are invalidated. backend.mk also depends on all of its
+input files.</p>
+<p>It’s worth considering the effect of file mtimes on build behavior.</p>
+<p>Since we perform an “all or none” traversal of moz.build files (the whole
+tree is scanned as opposed to individual files), if we were to blindly
+write backend.mk files, the net effect of updating a single mozbuild file
+in the tree is all backend.mk files have new mtimes. This would in turn
+invalidate all make targets across the whole tree! This would effectively
+undermine incremental builds as any mozbuild change would cause the entire
+tree to rebuild!</p>
+<p>The solution is to not update the mtimes of backend.mk files unless they
+actually change. We use FileAvoidWrite to accomplish this.</p>
+<dl class="method">
+<dt id="mozbuild.backend.recursivemake.BackendMakeFile.add_statement">
+<code class="descname">add_statement</code><span class="sig-paren">(</span><em>stmt</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.recursivemake.BackendMakeFile.add_statement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.recursivemake.BackendMakeFile.close">
+<code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.recursivemake.BackendMakeFile.close" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.backend.recursivemake.BackendMakeFile.diff">
+<code class="descname">diff</code><a class="headerlink" href="#mozbuild.backend.recursivemake.BackendMakeFile.diff" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.recursivemake.BackendMakeFile.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>buf</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.recursivemake.BackendMakeFile.write" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.recursivemake.BackendMakeFile.write_once">
+<code class="descname">write_once</code><span class="sig-paren">(</span><em>buf</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.recursivemake.BackendMakeFile.write_once" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.backend.recursivemake.RecursiveMakeBackend">
+<em class="property">class </em><code class="descclassname">mozbuild.backend.recursivemake.</code><code class="descname">RecursiveMakeBackend</code><span class="sig-paren">(</span><em>environment</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.recursivemake.RecursiveMakeBackend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.backend.common.CommonBackend" title="mozbuild.backend.common.CommonBackend"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.backend.common.CommonBackend</span></code></a></p>
+<p>Backend that integrates with the existing recursive make build system.</p>
+<p>This backend facilitates the transition from Makefile.in to moz.build
+files.</p>
+<p>This backend performs Makefile.in -&gt; Makefile conversion. It also writes
+out .mk files containing content derived from moz.build files. Both are
+consumed by the recursive make builder.</p>
+<p>This backend may eventually evolve to write out non-recursive make files.
+However, as long as there are Makefile.in files in the tree, we are tied to
+recursive make and thus will need this backend.</p>
+<dl class="class">
+<dt id="mozbuild.backend.recursivemake.RecursiveMakeBackend.Substitution">
+<em class="property">class </em><code class="descname">Substitution</code><a class="headerlink" href="#mozbuild.backend.recursivemake.RecursiveMakeBackend.Substitution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>BaseConfigSubstitution-like class for use with _create_makefile.</p>
+<dl class="attribute">
+<dt id="mozbuild.backend.recursivemake.RecursiveMakeBackend.Substitution.config">
+<code class="descname">config</code><a class="headerlink" href="#mozbuild.backend.recursivemake.RecursiveMakeBackend.Substitution.config" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.backend.recursivemake.RecursiveMakeBackend.Substitution.input_path">
+<code class="descname">input_path</code><a class="headerlink" href="#mozbuild.backend.recursivemake.RecursiveMakeBackend.Substitution.input_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.backend.recursivemake.RecursiveMakeBackend.Substitution.output_path">
+<code class="descname">output_path</code><a class="headerlink" href="#mozbuild.backend.recursivemake.RecursiveMakeBackend.Substitution.output_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.backend.recursivemake.RecursiveMakeBackend.Substitution.topobjdir">
+<code class="descname">topobjdir</code><a class="headerlink" href="#mozbuild.backend.recursivemake.RecursiveMakeBackend.Substitution.topobjdir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.backend.recursivemake.RecursiveMakeBackend.Substitution.topsrcdir">
+<code class="descname">topsrcdir</code><a class="headerlink" href="#mozbuild.backend.recursivemake.RecursiveMakeBackend.Substitution.topsrcdir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.recursivemake.RecursiveMakeBackend.consume_finished">
+<code class="descname">consume_finished</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.recursivemake.RecursiveMakeBackend.consume_finished" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.recursivemake.RecursiveMakeBackend.consume_object">
+<code class="descname">consume_object</code><span class="sig-paren">(</span><em>obj</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.recursivemake.RecursiveMakeBackend.consume_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write out build files necessary to build with recursive make.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.recursivemake.RecursiveMakeBackend.summary">
+<code class="descname">summary</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.recursivemake.RecursiveMakeBackend.summary" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.backend.recursivemake.RecursiveMakeTraversal">
+<em class="property">class </em><code class="descclassname">mozbuild.backend.recursivemake.</code><code class="descname">RecursiveMakeTraversal</code><a class="headerlink" href="#mozbuild.backend.recursivemake.RecursiveMakeTraversal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Helper class to keep track of how the “traditional” recursive make backend
+recurses subdirectories. This is useful until all adhoc rules are removed
+from Makefiles.</p>
+<dl class="docutils">
+<dt>Each directory may have one or more types of subdirectories:</dt>
+<dd><ul class="first last simple">
+<li>(normal) dirs</li>
+<li>tests</li>
+</ul>
+</dd>
+</dl>
+<dl class="class">
+<dt id="mozbuild.backend.recursivemake.RecursiveMakeTraversal.SubDirectories">
+<em class="property">class </em><code class="descname">SubDirectories</code><a class="headerlink" href="#mozbuild.backend.recursivemake.RecursiveMakeTraversal.SubDirectories" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">mozbuild.backend.recursivemake.SubDirectories</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.backend.recursivemake.RecursiveMakeTraversal.SubDirectoriesTuple">
+<code class="descname">SubDirectoriesTuple</code><a class="headerlink" href="#mozbuild.backend.recursivemake.RecursiveMakeTraversal.SubDirectoriesTuple" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#mozbuild.backend.recursivemake.RecursiveMakeTraversal.SubDirectories" title="mozbuild.backend.recursivemake.RecursiveMakeTraversal.SubDirectories"><code class="xref py py-class docutils literal"><span class="pre">SubDirectories</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.backend.recursivemake.RecursiveMakeTraversal.SubDirectoryCategories">
+<code class="descname">SubDirectoryCategories</code><em class="property"> = [u'dirs', u'tests']</em><a class="headerlink" href="#mozbuild.backend.recursivemake.RecursiveMakeTraversal.SubDirectoryCategories" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.recursivemake.RecursiveMakeTraversal.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>dir</em>, <em>dirs=[]</em>, <em>tests=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.recursivemake.RecursiveMakeTraversal.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a directory to traversal, registering its subdirectories,
+sorted by categories. If the directory was already added to
+traversal, adds the new subdirectories to the already known lists.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.recursivemake.RecursiveMakeTraversal.call_filter">
+<code class="descname">call_filter</code><span class="sig-paren">(</span><em>current</em>, <em>filter</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.recursivemake.RecursiveMakeTraversal.call_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper function to call a filter from compute_dependencies and
+traverse.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.recursivemake.RecursiveMakeTraversal.compute_dependencies">
+<code class="descname">compute_dependencies</code><span class="sig-paren">(</span><em>filter=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.recursivemake.RecursiveMakeTraversal.compute_dependencies" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute make dependencies corresponding to the registered directory
+traversal.</p>
+<dl class="docutils">
+<dt>filter is a function with the following signature:</dt>
+<dd>def filter(current, subdirs)</dd>
+</dl>
+<p>where current is the directory being traversed, and subdirs the
+SubDirectories instance corresponding to it.
+The filter function returns a tuple (filtered_current, filtered_parallel,
+filtered_dirs) where filtered_current is either current or None if
+the current directory is to be skipped, and filtered_parallel and
+filtered_dirs are lists of parallel directories and sequential
+directories, which can be rearranged from whatever is given in the
+SubDirectories members.</p>
+<p>The default filter corresponds to a default recursive traversal.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="mozbuild.backend.recursivemake.RecursiveMakeTraversal.default_filter">
+<em class="property">static </em><code class="descname">default_filter</code><span class="sig-paren">(</span><em>current</em>, <em>subdirs</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.recursivemake.RecursiveMakeTraversal.default_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default filter for use with compute_dependencies and traverse.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.recursivemake.RecursiveMakeTraversal.get_subdirs">
+<code class="descname">get_subdirs</code><span class="sig-paren">(</span><em>dir</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.recursivemake.RecursiveMakeTraversal.get_subdirs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns all direct subdirectories under the given directory.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.recursivemake.RecursiveMakeTraversal.traverse">
+<code class="descname">traverse</code><span class="sig-paren">(</span><em>start</em>, <em>filter=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.recursivemake.RecursiveMakeTraversal.traverse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterate over the filtered subdirectories, following the traditional
+make traversal order.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.backend.recursivemake.make_quote">
+<code class="descclassname">mozbuild.backend.recursivemake.</code><code class="descname">make_quote</code><span class="sig-paren">(</span><em>s</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.recursivemake.make_quote" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.backend.test_manifest">
+<span id="mozbuild-backend-test-manifest-module"></span><h2>mozbuild.backend.test_manifest module<a class="headerlink" href="#module-mozbuild.backend.test_manifest" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozbuild.backend.test_manifest.TestManifestBackend">
+<em class="property">class </em><code class="descclassname">mozbuild.backend.test_manifest.</code><code class="descname">TestManifestBackend</code><span class="sig-paren">(</span><em>environment</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.test_manifest.TestManifestBackend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.backend.base.PartialBackend" title="mozbuild.backend.base.PartialBackend"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.backend.base.PartialBackend</span></code></a></p>
+<p>Partial backend that generates test metadata files.</p>
+<dl class="method">
+<dt id="mozbuild.backend.test_manifest.TestManifestBackend.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>t</em>, <em>flavor</em>, <em>topsrcdir</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.test_manifest.TestManifestBackend.add" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.test_manifest.TestManifestBackend.add_defaults">
+<code class="descname">add_defaults</code><span class="sig-paren">(</span><em>manifest</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.test_manifest.TestManifestBackend.add_defaults" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.test_manifest.TestManifestBackend.add_installs">
+<code class="descname">add_installs</code><span class="sig-paren">(</span><em>obj</em>, <em>topsrcdir</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.test_manifest.TestManifestBackend.add_installs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.test_manifest.TestManifestBackend.consume_finished">
+<code class="descname">consume_finished</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.test_manifest.TestManifestBackend.consume_finished" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.test_manifest.TestManifestBackend.consume_object">
+<code class="descname">consume_object</code><span class="sig-paren">(</span><em>obj</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.test_manifest.TestManifestBackend.consume_object" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.backend.tup">
+<span id="mozbuild-backend-tup-module"></span><h2>mozbuild.backend.tup module<a class="headerlink" href="#module-mozbuild.backend.tup" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozbuild.backend.tup.BackendTupfile">
+<em class="property">class </em><code class="descclassname">mozbuild.backend.tup.</code><code class="descname">BackendTupfile</code><span class="sig-paren">(</span><em>srcdir</em>, <em>objdir</em>, <em>environment</em>, <em>topsrcdir</em>, <em>topobjdir</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.tup.BackendTupfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Represents a generated Tupfile.</p>
+<dl class="method">
+<dt id="mozbuild.backend.tup.BackendTupfile.close">
+<code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.tup.BackendTupfile.close" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.backend.tup.BackendTupfile.diff">
+<code class="descname">diff</code><a class="headerlink" href="#mozbuild.backend.tup.BackendTupfile.diff" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.tup.BackendTupfile.export_shell">
+<code class="descname">export_shell</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.tup.BackendTupfile.export_shell" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.tup.BackendTupfile.gen_sources_rules">
+<code class="descname">gen_sources_rules</code><span class="sig-paren">(</span><em>extra_inputs</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.tup.BackendTupfile.gen_sources_rules" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.tup.BackendTupfile.include_rules">
+<code class="descname">include_rules</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.tup.BackendTupfile.include_rules" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.tup.BackendTupfile.rule">
+<code class="descname">rule</code><span class="sig-paren">(</span><em>cmd</em>, <em>inputs=None</em>, <em>outputs=None</em>, <em>display=None</em>, <em>extra_inputs=None</em>, <em>extra_outputs=None</em>, <em>check_unchanged=False</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.tup.BackendTupfile.rule" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.tup.BackendTupfile.symlink_rule">
+<code class="descname">symlink_rule</code><span class="sig-paren">(</span><em>source</em>, <em>output=None</em>, <em>output_group=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.tup.BackendTupfile.symlink_rule" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.tup.BackendTupfile.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>buf</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.tup.BackendTupfile.write" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.backend.tup.TupBackend">
+<em class="property">class </em><code class="descclassname">mozbuild.backend.tup.</code><code class="descname">TupBackend</code><span class="sig-paren">(</span><em>environment</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.tup.TupBackend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">abc.TupOnly+RecursiveMakeBackend</span></code></p>
+<dl class="method">
+<dt id="mozbuild.backend.tup.TupBackend.build">
+<code class="descname">build</code><span class="sig-paren">(</span><em>config</em>, <em>output</em>, <em>jobs</em>, <em>verbose</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.tup.TupBackend.build" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.backend.tup.TupOnly">
+<em class="property">class </em><code class="descclassname">mozbuild.backend.tup.</code><code class="descname">TupOnly</code><span class="sig-paren">(</span><em>environment</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.tup.TupOnly" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.backend.common.CommonBackend" title="mozbuild.backend.common.CommonBackend"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.backend.common.CommonBackend</span></code></a>, <a class="reference internal" href="#mozbuild.backend.base.PartialBackend" title="mozbuild.backend.base.PartialBackend"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.backend.base.PartialBackend</span></code></a></p>
+<p>Backend that generates Tupfiles for the tup build system.</p>
+<dl class="method">
+<dt id="mozbuild.backend.tup.TupOnly.consume_finished">
+<code class="descname">consume_finished</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.tup.TupOnly.consume_finished" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.tup.TupOnly.consume_object">
+<code class="descname">consume_object</code><span class="sig-paren">(</span><em>obj</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.tup.TupOnly.consume_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write out build files necessary to build with tup.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.backend.visualstudio">
+<span id="mozbuild-backend-visualstudio-module"></span><h2>mozbuild.backend.visualstudio module<a class="headerlink" href="#module-mozbuild.backend.visualstudio" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozbuild.backend.visualstudio.VisualStudioBackend">
+<em class="property">class </em><code class="descclassname">mozbuild.backend.visualstudio.</code><code class="descname">VisualStudioBackend</code><span class="sig-paren">(</span><em>environment</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.visualstudio.VisualStudioBackend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.backend.common.CommonBackend" title="mozbuild.backend.common.CommonBackend"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.backend.common.CommonBackend</span></code></a></p>
+<p>Generate Visual Studio project files.</p>
+<p>This backend is used to produce Visual Studio projects and a solution
+to foster developing Firefox with Visual Studio.</p>
+<p>This backend is currently considered experimental. There are many things
+not optimal about how it works.</p>
+<dl class="method">
+<dt id="mozbuild.backend.visualstudio.VisualStudioBackend.consume_finished">
+<code class="descname">consume_finished</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.visualstudio.VisualStudioBackend.consume_finished" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.visualstudio.VisualStudioBackend.consume_object">
+<code class="descname">consume_object</code><span class="sig-paren">(</span><em>obj</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.visualstudio.VisualStudioBackend.consume_object" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.backend.visualstudio.VisualStudioBackend.summary">
+<code class="descname">summary</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.visualstudio.VisualStudioBackend.summary" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="mozbuild.backend.visualstudio.VisualStudioBackend.write_vs_project">
+<em class="property">static </em><code class="descname">write_vs_project</code><span class="sig-paren">(</span><em>fh</em>, <em>version</em>, <em>project_id</em>, <em>name</em>, <em>includes=[]</em>, <em>forced_includes=[]</em>, <em>defines=[]</em>, <em>build_command=None</em>, <em>clean_command=None</em>, <em>debugger=None</em>, <em>headers=[]</em>, <em>sources=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.visualstudio.VisualStudioBackend.write_vs_project" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.backend.visualstudio.get_id">
+<code class="descclassname">mozbuild.backend.visualstudio.</code><code class="descname">get_id</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.visualstudio.get_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.backend.visualstudio.visual_studio_product_to_platform_toolset_version">
+<code class="descclassname">mozbuild.backend.visualstudio.</code><code class="descname">visual_studio_product_to_platform_toolset_version</code><span class="sig-paren">(</span><em>version</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.visualstudio.visual_studio_product_to_platform_toolset_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mozbuild.backend.visualstudio.visual_studio_product_to_solution_version">
+<code class="descclassname">mozbuild.backend.visualstudio.</code><code class="descname">visual_studio_product_to_solution_version</code><span class="sig-paren">(</span><em>version</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.visualstudio.visual_studio_product_to_solution_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.backend">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-mozbuild.backend" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mozbuild.backend.get_backend_class">
+<code class="descclassname">mozbuild.backend.</code><code class="descname">get_backend_class</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.backend.get_backend_class" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="mozbuild.codecoverage.html" class="btn btn-neutral float-right" title="mozbuild.codecoverage package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="mozbuild.action.html" class="btn btn-neutral" title="mozbuild.action package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

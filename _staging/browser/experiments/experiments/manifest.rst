@@ -1,0 +1,1 @@
+/Users/andrewswan/src/mozilla-unified/browser/experiments/docs/manifest.rst

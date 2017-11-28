@@ -1,0 +1,1 @@
+/Users/andrewswan/src/mozilla-unified/toolkit/crashreporter/docs/index.rst

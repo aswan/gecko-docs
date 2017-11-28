@@ -1,0 +1,387 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Optimization &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../../index.html"/>
+        <link rel="up" title="TaskCluster Task-Graph Generation" href="index.html"/>
+        <link rel="next" title="Docker Images" href="docker-images.html"/>
+        <link rel="prev" title="Transforms" href="transforms.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mach/index.html">mach</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">TaskCluster Task-Graph Generation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mach.html">Mach commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loading.html">Loading Tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transforms.html">Transforms</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Optimization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#optimization-strategies">Optimization Strategies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#optimizing-target-tasks">Optimizing Target Tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#optimization-process">Optimization Process</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#removing-tasks">Removing Tasks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#replacing-tasks">Replacing Tasks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#subgraph-generation">Subgraph Generation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="docker-images.html">Docker Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cron.html">Periodic Taskgraphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="try.html">Try</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions.html">Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-tos.html">How Tos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html">Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">TaskCluster Task-Graph Generation</a> &raquo;</li>
+        
+      <li>Optimization</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/taskcluster/taskcluster/optimization.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="optimization">
+<h1>Optimization<a class="headerlink" href="#optimization" title="Permalink to this headline">¶</a></h1>
+<p>The objective of optimization to remove as many tasks from the graph as
+possible, as efficiently as possible, thereby delivering useful results as
+quickly as possible. For example, ideally if only a test script is modified in
+a push, then the resulting graph contains only the corresponding test suite
+task.</p>
+<p>A task is said to be “optimized” when it is either replaced with an equivalent,
+already-existing task, or dropped from the graph entirely.</p>
+<div class="section" id="optimization-strategies">
+<h2>Optimization Strategies<a class="headerlink" href="#optimization-strategies" title="Permalink to this headline">¶</a></h2>
+<p>Each task has a single named optimization strategy, and can provide an argument
+to that strategy. Each strategy is defined as an <code class="docutils literal"><span class="pre">OptimizationStrategy</span></code>
+instance in <code class="docutils literal"><span class="pre">taskcluster/taskgraph/optimization.py</span></code>.</p>
+<p>Each task has a <code class="docutils literal"><span class="pre">task.optimization</span></code> property describing the optimization
+strategy that applies, specified as a dictionary mapping strategy to argument. For
+example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">task</span><span class="o">.</span><span class="n">optimization</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;skip-unless-changed&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;js/**&#39;</span><span class="p">,</span> <span class="s1">&#39;tests/**&#39;</span><span class="p">]}</span>
+</pre></div>
+</div>
+<p>Strategy implementations are shared across all tasks, so they may cache
+commonly-used information as instance variables.</p>
+</div>
+<div class="section" id="optimizing-target-tasks">
+<h2>Optimizing Target Tasks<a class="headerlink" href="#optimizing-target-tasks" title="Permalink to this headline">¶</a></h2>
+<p>In some cases, such as try pushes, tasks in the target task set have been
+explicitly requested and are thus excluded from optimization. In other cases,
+the target task set is almost the entire task graph, so targetted tasks are
+considered for optimization. This behavior is controlled with the
+<code class="docutils literal"><span class="pre">optimize_target_tasks</span></code> parameter.</p>
+</div>
+<div class="section" id="optimization-process">
+<h2>Optimization Process<a class="headerlink" href="#optimization-process" title="Permalink to this headline">¶</a></h2>
+<p>Optimization proceeds in three phases: removing tasks, replacing tasks,
+and finally generating a subgraph containing only the remaining tasks.</p>
+<p>Assume the following task graph as context for these examples:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>TC1 &lt;--\     ,- UP1
+      , B1 &lt;--- T1a
+I1 &lt;-|       `- T1b
+      ` B2 &lt;--- T2a
+TC2 &lt;--/     |- T2b
+             `- UP2
+</pre></div>
+</div>
+<div class="section" id="removing-tasks">
+<h3>Removing Tasks<a class="headerlink" href="#removing-tasks" title="Permalink to this headline">¶</a></h3>
+<p>This phase begins with tasks on which nothing depends and follows the
+dependency graph backward from there – right to left in the diagram above. If
+a task is not removed, then nothing it depends on will be removed either.
+Thus if T1a and T1b are both removed, B1 may be removed as well. But if T2b is
+not removed, then B2 may not be removed either.</p>
+<p>For each task with no remaining dependencies, the decision whether to remove is
+made by calling the optimization strategy’s <code class="docutils literal"><span class="pre">should_remove_task</span></code> method. If
+this method returns True, the task is removed.</p>
+<p>The optimization process takes a <code class="docutils literal"><span class="pre">do_not_optimize</span></code> argument containing a list
+of tasks that cannot be removed under any circumstances. This is used to
+“force” running specific tasks.</p>
+</div>
+<div class="section" id="replacing-tasks">
+<h3>Replacing Tasks<a class="headerlink" href="#replacing-tasks" title="Permalink to this headline">¶</a></h3>
+<p>This phase begins with tasks having no dependencies and follows the reversed
+dependency graph from there – left to right in the diagram above. If a task is
+not replaced, then anything depending on that task cannot be replaced.
+Replacement is generally done on the basis of some hash of the inputs to the
+task. In the diagram above, if both TC1 and I1 are replaced with existing
+tasks, then B1 is a candidate for replacement. But if TC2 has no replacement,
+then replacement of B2 will not be considered.</p>
+<p>It is possible to replace a task with nothing.  This is similar to optimzing
+away, but is useful for utility tasks like UP1. If such a task is considered
+for replacement, then all of its dependencies (here, B1) have already been
+replaced and there is no utility in running the task and no need for a
+replacement task.  It is an error for a task on which others depend to be
+replaced with nothing.</p>
+<p>The <code class="docutils literal"><span class="pre">do_not_optimize</span></code> set applies to task replacement, as does an additional
+<code class="docutils literal"><span class="pre">existing_tasks</span></code> dictionary which allows the caller to supply as set of
+known, pre-existing tasks. This is used for action tasks, for example, where it
+contains the entire task-graph generated by the original decision task.</p>
+</div>
+<div class="section" id="subgraph-generation">
+<h3>Subgraph Generation<a class="headerlink" href="#subgraph-generation" title="Permalink to this headline">¶</a></h3>
+<p>The first two phases annotate each task in the existing taskgraph with their
+fate: removed, replaced, or retained. The tasks that are replaced also have a
+replacement taskId.</p>
+<p>The last phase constructs a subgraph containing the retained tasks, and
+simultaneously rewrites all dependencies to refer to taskIds instead of labels.
+To do so, it assigns a taskId to each retained task and uses the replacement
+taskId for all replaced tasks.</p>
+<p>The result is an optimized taskgraph with tasks named by taskId instead of
+label. At this phase, the edges in the task graph diverge from the
+<code class="docutils literal"><span class="pre">task.dependencies</span></code> attributes, as the latter may contain dependencies
+outside of the taskgraph (for replacement tasks).</p>
+<p>As a side-effect, this phase also expands all <code class="docutils literal"><span class="pre">{&quot;task-reference&quot;:</span> <span class="pre">&quot;..&quot;}</span></code>
+objects within the task definitions.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="docker-images.html" class="btn btn-neutral float-right" title="Docker Images" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="transforms.html" class="btn btn-neutral" title="Transforms" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+Other API Implementation Topics
+===============================
+
+XXX housekeeping (onStartup, onUpdate, onUninstall)
+
+Utilities for implementing APIs
+-------------------------------
+XXX tab stuff
+
+XXX settings/preferences
+
+XXX what else

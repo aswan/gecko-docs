@@ -1,0 +1,180 @@
+API Implementation Details
+==========================
+This section explains in detail how to implement specific features in
+a WebExtension API:
+
+.. contents::
+
+API Schemas
+-----------
+Anything that a WebExtension API exposes to extensions via Javascript
+is described by the API's schema.  The format of API schemas uses some
+of the same syntax as `JSON Schema <http://json-schema.org/>`_.
+JSON Schema provides a way to specify constraints on JSON documents and
+the same method is used by WebExtensions to specify constraints on,
+for example, parameters passed to an API function.  But the syntax for
+describing functions, namespaces, etc. is all ad hoc.  This section
+describes that syntax.
+
+An individual API schema consists of structured descriptions of
+items in one or more *namespaces* using a structure like this:
+
+.. code-block:: js
+
+   [
+     {
+       "namespace": "namespace1",
+       // declarations for namespace 1...
+     },
+     {
+       "namespace": "namespace2",
+       // delcarations for namespace 2...
+     },
+     // other namespaces...
+   ]
+
+Most of the namespaces correspond to objects available to extensions
+Javascript code under the ``browser`` global.  For example, entries in the
+namespace ``example`` are accessible to extension Javascript code as
+properties on ``browser.example``.
+The namespace ``"manifest"`` is handled specially, it describes the
+structure of WebExtension manifests (i.e., ``manifest.json`` files).
+Manifest schemas are explained in detail below.
+
+Declarations within a namespace look like:
+
+.. code-block:: js
+
+   {
+     "namespace": "namespace1",
+     "types": [
+       { /* type definition */ },
+       ...
+     ],
+     "functions": [
+       { /* function definition */ },
+       ...
+     ],
+     "events": [
+       { /* event definition */ },
+       ...
+     ],
+     "properties": {
+       "NAME": { /* property definition */ },
+       ...
+     }
+   }
+
+The four types of objects that can be defined inside a namespace are:
+- **types**: A type is a re-usable schema fragment.  A common use of types
+  is to define in one place an object with a particular set of typed fields
+  that is used in multiple places in an API.
+
+- **properties**: A property is a fixed Javascript value available to
+  extensions via Javascript.  Note that the format for defining
+  properties in a schema is different from the format for types, functions,
+  and events.  The next subsection describes creating properties in detail.
+
+- **functions** and **events**:
+  These entries create functions and events respectively, which are
+  usable from Javascript by extensions.  Details on how to implement
+  them are later in this section.
+
+XXX talk about permissions
+
+Implementing a property
+-----------------------
+Making static properties available to extensions via Javascript is done
+entirely from the schema, using a fragment like this one:
+
+.. code-block:: json
+
+   [
+     "namespace": "myapi",
+     "properties": {
+       "SOME_PROPERTY": {
+        "value": 24,
+        "description": "Description of my property here."
+       }
+     }
+   ]
+
+If a WebExtension API with this fragment in its schema is loaded for
+a particular extension context, that extension will be able to access
+``browser.myapi.SOME_PROPERTY`` and read the fixed value 24.
+The contents of ``value`` can be any JSON serializable object.
+
+
+Describing constrained values
+-----------------------------
+Definitions of individual items have a common format:
+
+.. code-block:: js
+
+   {
+     "type": "SOME TYPE",
+     "description": "A description of the item",
+     /* type-specific parameters... */
+   }
+
+The important property here is ``type``, which specifies what this item
+is (e.g., a primitive data type like ``"integer"`` or ``"string"`` or
+something more complex like ``"function"`` etc).
+The ``description`` property is optional and serves as documentation
+for anybody reading or editing the schema.
+
+The following values of the ``type`` property specify their corresponding
+primitive Jascript types: ``boolean``, ``integer``, ``number``, ``string``,
+``array``, ``object``.
+Items with any of these types can take one of two forms.
+If the item does not contain a ``value`` property, the item defines
+constraints on values that are acceptable in some context (for example,
+values for a particular manifest key or as a parameter to an API function).
+If the item does contain a ``value`` property, it simply specifies a
+fixed value, this is just used for 
+
+
+
+Implementing a function
+-----------------------
+All function callable from extensions' Javascript are declared in the API
+schema.
+XXX name, type, descripion, deprecated, parameters, async, returns,
+
+.. code-block:: json
+
+   [
+     "namespace": "myapi",
+     "functions": [
+       {
+         "name": "dosomething",
+         "type": "function",
+         "description": "Does something.",
+         "async": true,
+         "parameters": [
+           {
+             "name": "param1",
+             "type": "integer"
+           },
+           {
+             "name": "param2",
+             "type": "...",
+           }
+         ]
+       }
+     ]
+   }
+
+XXX function in child process
+
+Implementing an event
+---------------------
+XXX explain
+
+Implementing a manifest key
+---------------------------
+XXX explain
+
+XXX other schema stuff (deprecated)
+
+XXX housekeeping (onStartup, onUpdate, onUninstall)

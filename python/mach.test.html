@@ -1,0 +1,615 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mach.test package &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../index.html"/>
+        <link rel="up" title="mach package" href="mach.html"/>
+        <link rel="next" title="mach.test.providers package" href="mach.test.providers.html"/>
+        <link rel="prev" title="mach.mixin package" href="mach.mixin.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="mach.html">mach package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="mach.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="mach.commands.html">mach.commands package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mach.mixin.html">mach.mixin package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">mach.test package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mach.test.common">mach.test.common module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mach.test.test_conditions">mach.test.test_conditions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mach.test.test_config">mach.test.test_config module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mach.test.test_dispatcher">mach.test.test_dispatcher module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mach.test.test_entry_point">mach.test.test_entry_point module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mach.test.test_error_output">mach.test.test_error_output module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mach.test.test_logger">mach.test.test_logger module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mach.test">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mach.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mach.html#module-mach.base">mach.base module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mach.html#module-mach.config">mach.config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mach.html#module-mach.decorators">mach.decorators module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mach.html#module-mach.dispatcher">mach.dispatcher module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mach.html#module-mach.logging">mach.logging module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mach.html#module-mach.main">mach.main module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mach.html#module-mach.registrar">mach.registrar module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mach.html#module-mach.terminal">mach.terminal module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mach.html#module-mach">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="mach.html">mach package</a> &raquo;</li>
+        
+      <li>mach.test package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/python/mach.test.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mach-test-package">
+<h1>mach.test package<a class="headerlink" href="#mach-test-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mach.test.providers.html">mach.test.providers package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mach.test.providers.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mach.test.providers.html#module-mach.test.providers.basic">mach.test.providers.basic module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mach.test.providers.html#module-mach.test.providers.conditions">mach.test.providers.conditions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mach.test.providers.html#mach-test-providers-conditions-invalid-module">mach.test.providers.conditions_invalid module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mach.test.providers.html#module-mach.test.providers.throw">mach.test.providers.throw module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mach.test.providers.html#module-mach.test.providers.throw2">mach.test.providers.throw2 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mach.test.providers.html#module-mach.test.providers">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-mach.test.common">
+<span id="mach-test-common-module"></span><h2>mach.test.common module<a class="headerlink" href="#module-mach.test.common" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mach.test.common.TestBase">
+<em class="property">class </em><code class="descclassname">mach.test.common.</code><code class="descname">TestBase</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mach.test.common.TestBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="mach.test.common.TestBase.get_mach">
+<code class="descname">get_mach</code><span class="sig-paren">(</span><em>provider_file=None</em>, <em>entry_point=None</em>, <em>context_handler=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mach.test.common.TestBase.get_mach" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mach.test.common.TestBase.provider_dir">
+<code class="descname">provider_dir</code><em class="property"> = u'/Users/andrewswan/src/mozilla-unified/python/mach/mach/test/providers'</em><a class="headerlink" href="#mach.test.common.TestBase.provider_dir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mach.test.test_conditions">
+<span id="mach-test-test-conditions-module"></span><h2>mach.test.test_conditions module<a class="headerlink" href="#module-mach.test.test_conditions" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mach.test.test_conditions.TestConditions">
+<em class="property">class </em><code class="descclassname">mach.test.test_conditions.</code><code class="descname">TestConditions</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mach.test.test_conditions.TestConditions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mach.test.common.TestBase" title="mach.test.common.TestBase"><code class="xref py py-class docutils literal"><span class="pre">mach.test.common.TestBase</span></code></a></p>
+<p>Tests for conditionally filtering commands.</p>
+<dl class="method">
+<dt id="mach.test.test_conditions.TestConditions.test_conditions_pass">
+<code class="descname">test_conditions_pass</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mach.test.test_conditions.TestConditions.test_conditions_pass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test that a command which passes its conditions is runnable.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mach.test.test_conditions.TestConditions.test_help_message">
+<code class="descname">test_help_message</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mach.test.test_conditions.TestConditions.test_help_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test that commands that are not runnable do not show up in help.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mach.test.test_conditions.TestConditions.test_invalid_context_message">
+<code class="descname">test_invalid_context_message</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mach.test.test_conditions.TestConditions.test_invalid_context_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test that commands which do not pass all their conditions
+print the proper failure message.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mach.test.test_conditions.TestConditions.test_invalid_type">
+<code class="descname">test_invalid_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mach.test.test_conditions.TestConditions.test_invalid_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test that a condition which is not callable raises an exception.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mach.test.test_config">
+<span id="mach-test-test-config-module"></span><h2>mach.test.test_config module<a class="headerlink" href="#module-mach.test.test_config" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mach.test.test_config.Provider1">
+<em class="property">class </em><code class="descclassname">mach.test.test_config.</code><code class="descname">Provider1</code><a class="headerlink" href="#mach.test.test_config.Provider1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="mach.test.test_config.Provider1.config_settings">
+<code class="descname">config_settings</code><em class="property"> = [(u'foo.bar', &lt;class 'mach.config.StringType'&gt;, u'desc'), (u'foo.baz', &lt;class 'mach.config.PathType'&gt;, u'desc')]</em><a class="headerlink" href="#mach.test.test_config.Provider1.config_settings" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mach.test.test_config.Provider2">
+<em class="property">class </em><code class="descclassname">mach.test.test_config.</code><code class="descname">Provider2</code><a class="headerlink" href="#mach.test.test_config.Provider2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="mach.test.test_config.Provider2.config_settings">
+<code class="descname">config_settings</code><em class="property"> = [(u'a.string', &lt;class 'mach.config.StringType'&gt;, u'desc'), (u'a.boolean', &lt;class 'mach.config.BooleanType'&gt;, u'desc'), (u'a.pos_int', &lt;class 'mach.config.PositiveIntegerType'&gt;, u'desc'), (u'a.int', &lt;class 'mach.config.IntegerType'&gt;, u'desc'), (u'a.path', &lt;class 'mach.config.PathType'&gt;, u'desc')]</em><a class="headerlink" href="#mach.test.test_config.Provider2.config_settings" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mach.test.test_config.Provider3">
+<em class="property">class </em><code class="descclassname">mach.test.test_config.</code><code class="descname">Provider3</code><a class="headerlink" href="#mach.test.test_config.Provider3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="classmethod">
+<dt id="mach.test.test_config.Provider3.config_settings">
+<em class="property">classmethod </em><code class="descname">config_settings</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mach.test.test_config.Provider3.config_settings" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mach.test.test_config.Provider4">
+<em class="property">class </em><code class="descclassname">mach.test.test_config.</code><code class="descname">Provider4</code><a class="headerlink" href="#mach.test.test_config.Provider4" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="mach.test.test_config.Provider4.config_settings">
+<code class="descname">config_settings</code><em class="property"> = [(u'foo.abc', &lt;class 'mach.config.StringType'&gt;, u'desc', u'a', {u'choices': set([u'a', u'c', u'b'])}), (u'foo.xyz', &lt;class 'mach.config.StringType'&gt;, u'desc', u'w', {u'choices': set([u'y', u'x', u'z'])})]</em><a class="headerlink" href="#mach.test.test_config.Provider4.config_settings" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mach.test.test_config.Provider5">
+<em class="property">class </em><code class="descclassname">mach.test.test_config.</code><code class="descname">Provider5</code><a class="headerlink" href="#mach.test.test_config.Provider5" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="mach.test.test_config.Provider5.config_settings">
+<code class="descname">config_settings</code><em class="property"> = [(u'foo.*', u'string', u'desc'), (u'foo.bar', u'string', u'desc')]</em><a class="headerlink" href="#mach.test.test_config.Provider5.config_settings" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mach.test.test_config.ProviderDuplicate">
+<em class="property">class </em><code class="descclassname">mach.test.test_config.</code><code class="descname">ProviderDuplicate</code><a class="headerlink" href="#mach.test.test_config.ProviderDuplicate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="mach.test.test_config.ProviderDuplicate.config_settings">
+<code class="descname">config_settings</code><em class="property"> = [(u'dupesect.foo', &lt;class 'mach.config.StringType'&gt;, u'desc'), (u'dupesect.foo', &lt;class 'mach.config.StringType'&gt;, u'desc')]</em><a class="headerlink" href="#mach.test.test_config.ProviderDuplicate.config_settings" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mach.test.test_config.TestConfigSettings">
+<em class="property">class </em><code class="descclassname">mach.test.test_config.</code><code class="descname">TestConfigSettings</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mach.test.test_config.TestConfigSettings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="mach.test.test_config.TestConfigSettings.retrieval_type_helper">
+<code class="descname">retrieval_type_helper</code><span class="sig-paren">(</span><em>provider</em><span class="sig-paren">)</span><a class="headerlink" href="#mach.test.test_config.TestConfigSettings.retrieval_type_helper" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mach.test.test_config.TestConfigSettings.test_assignment_validation">
+<code class="descname">test_assignment_validation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mach.test.test_config.TestConfigSettings.test_assignment_validation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mach.test.test_config.TestConfigSettings.test_choices_validation">
+<code class="descname">test_choices_validation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mach.test.test_config.TestConfigSettings.test_choices_validation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mach.test.test_config.TestConfigSettings.test_duplicate_option">
+<code class="descname">test_duplicate_option</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mach.test.test_config.TestConfigSettings.test_duplicate_option" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mach.test.test_config.TestConfigSettings.test_empty">
+<code class="descname">test_empty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mach.test.test_config.TestConfigSettings.test_empty" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mach.test.test_config.TestConfigSettings.test_file_reading_missing">
+<code class="descname">test_file_reading_missing</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mach.test.test_config.TestConfigSettings.test_file_reading_missing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Missing files should silently be ignored.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mach.test.test_config.TestConfigSettings.test_file_reading_multiple">
+<code class="descname">test_file_reading_multiple</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mach.test.test_config.TestConfigSettings.test_file_reading_multiple" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loading multiple files has proper overwrite behavior.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mach.test.test_config.TestConfigSettings.test_file_reading_single">
+<code class="descname">test_file_reading_single</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mach.test.test_config.TestConfigSettings.test_file_reading_single" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mach.test.test_config.TestConfigSettings.test_file_writing">
+<code class="descname">test_file_writing</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mach.test.test_config.TestConfigSettings.test_file_writing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mach.test.test_config.TestConfigSettings.test_retrieval_type">
+<code class="descname">test_retrieval_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mach.test.test_config.TestConfigSettings.test_retrieval_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mach.test.test_config.TestConfigSettings.test_simple">
+<code class="descname">test_simple</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mach.test.test_config.TestConfigSettings.test_simple" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mach.test.test_config.TestConfigSettings.test_wildcard_options">
+<code class="descname">test_wildcard_options</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mach.test.test_config.TestConfigSettings.test_wildcard_options" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mach.test.test_dispatcher">
+<span id="mach-test-test-dispatcher-module"></span><h2>mach.test.test_dispatcher module<a class="headerlink" href="#module-mach.test.test_dispatcher" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mach.test.test_dispatcher.TestDispatcher">
+<em class="property">class </em><code class="descclassname">mach.test.test_dispatcher.</code><code class="descname">TestDispatcher</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mach.test.test_dispatcher.TestDispatcher" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mach.test.common.TestBase" title="mach.test.common.TestBase"><code class="xref py py-class docutils literal"><span class="pre">mach.test.common.TestBase</span></code></a></p>
+<p>Tests dispatch related code</p>
+<dl class="method">
+<dt id="mach.test.test_dispatcher.TestDispatcher.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>config=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mach.test.test_dispatcher.TestDispatcher.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mach.test.test_dispatcher.TestDispatcher.test_command_aliases">
+<code class="descname">test_command_aliases</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mach.test.test_dispatcher.TestDispatcher.test_command_aliases" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mach.test.test_entry_point">
+<span id="mach-test-test-entry-point-module"></span><h2>mach.test.test_entry_point module<a class="headerlink" href="#module-mach.test.test_entry_point" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mach.test.test_entry_point.Entry">
+<em class="property">class </em><code class="descclassname">mach.test.test_entry_point.</code><code class="descname">Entry</code><span class="sig-paren">(</span><em>providers</em><span class="sig-paren">)</span><a class="headerlink" href="#mach.test.test_entry_point.Entry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stub replacement for pkg_resources.EntryPoint</p>
+<dl class="method">
+<dt id="mach.test.test_entry_point.Entry.load">
+<code class="descname">load</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mach.test.test_entry_point.Entry.load" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mach.test.test_entry_point.TestEntryPoints">
+<em class="property">class </em><code class="descclassname">mach.test.test_entry_point.</code><code class="descname">TestEntryPoints</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mach.test.test_entry_point.TestEntryPoints" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mach.test.common.TestBase" title="mach.test.common.TestBase"><code class="xref py py-class docutils literal"><span class="pre">mach.test.common.TestBase</span></code></a></p>
+<p>Test integrating with setuptools entry points</p>
+<dl class="attribute">
+<dt id="mach.test.test_entry_point.TestEntryPoints.provider_dir">
+<code class="descname">provider_dir</code><em class="property"> = u'/Users/andrewswan/src/mozilla-unified/python/mach/mach/test/providers'</em><a class="headerlink" href="#mach.test.test_entry_point.TestEntryPoints.provider_dir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mach.test.test_entry_point.TestEntryPoints.test_load_entry_point_from_directory">
+<code class="descname">test_load_entry_point_from_directory</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#mach.test.test_entry_point.TestEntryPoints.test_load_entry_point_from_directory" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mach.test.test_entry_point.TestEntryPoints.test_load_entry_point_from_file">
+<code class="descname">test_load_entry_point_from_file</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#mach.test.test_entry_point.TestEntryPoints.test_load_entry_point_from_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mach.test.test_error_output">
+<span id="mach-test-test-error-output-module"></span><h2>mach.test.test_error_output module<a class="headerlink" href="#module-mach.test.test_error_output" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mach.test.test_error_output.TestErrorOutput">
+<em class="property">class </em><code class="descclassname">mach.test.test_error_output.</code><code class="descname">TestErrorOutput</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mach.test.test_error_output.TestErrorOutput" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mach.test.common.TestBase" title="mach.test.common.TestBase"><code class="xref py py-class docutils literal"><span class="pre">mach.test.common.TestBase</span></code></a></p>
+<dl class="method">
+<dt id="mach.test.test_error_output.TestErrorOutput.test_command_error">
+<code class="descname">test_command_error</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mach.test.test_error_output.TestErrorOutput.test_command_error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mach.test.test_error_output.TestErrorOutput.test_invoked_error">
+<code class="descname">test_invoked_error</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mach.test.test_error_output.TestErrorOutput.test_invoked_error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mach.test.test_logger">
+<span id="mach-test-test-logger-module"></span><h2>mach.test.test_logger module<a class="headerlink" href="#module-mach.test.test_logger" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mach.test.test_logger.DummyLogger">
+<em class="property">class </em><code class="descclassname">mach.test.test_logger.</code><code class="descname">DummyLogger</code><span class="sig-paren">(</span><em>cb</em><span class="sig-paren">)</span><a class="headerlink" href="#mach.test.test_logger.DummyLogger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">logging.Logger</span></code></p>
+<dl class="method">
+<dt id="mach.test.test_logger.DummyLogger.handle">
+<code class="descname">handle</code><span class="sig-paren">(</span><em>record</em><span class="sig-paren">)</span><a class="headerlink" href="#mach.test.test_logger.DummyLogger.handle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mach.test.test_logger.TestStructuredHumanFormatter">
+<em class="property">class </em><code class="descclassname">mach.test.test_logger.</code><code class="descname">TestStructuredHumanFormatter</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#mach.test.test_logger.TestStructuredHumanFormatter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="mach.test.test_logger.TestStructuredHumanFormatter.test_non_ascii_logging">
+<code class="descname">test_non_ascii_logging</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mach.test.test_logger.TestStructuredHumanFormatter.test_non_ascii_logging" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mach.test">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-mach.test" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="mach.test.providers.html" class="btn btn-neutral float-right" title="mach.test.providers package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="mach.mixin.html" class="btn btn-neutral" title="mach.mixin package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

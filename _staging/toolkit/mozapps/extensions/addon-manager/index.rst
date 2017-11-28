@@ -1,0 +1,1 @@
+/Users/andrewswan/src/mozilla-unified/toolkit/mozapps/extensions/docs/index.rst

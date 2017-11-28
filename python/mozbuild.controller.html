@@ -1,0 +1,759 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mozbuild.controller package &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../index.html"/>
+        <link rel="up" title="mozbuild package" href="mozbuild.html"/>
+        <link rel="next" title="mozbuild.frontend package" href="mozbuild.frontend.html"/>
+        <link rel="prev" title="mozbuild.configure package" href="mozbuild.configure.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="mach.html">mach package</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="mozbuild.html">mozbuild package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="mozbuild.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.action.html">mozbuild.action package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.backend.html">mozbuild.backend package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.codecoverage.html">mozbuild.codecoverage package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.compilation.html">mozbuild.compilation package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.configure.html">mozbuild.configure package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">mozbuild.controller package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.controller.building">mozbuild.controller.building module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.controller.clobber">mozbuild.controller.clobber module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozbuild.controller">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.frontend.html">mozbuild.frontend package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.repackaging.html">mozbuild.repackaging package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild.test.html">mozbuild.test package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.android_version_code">mozbuild.android_version_code module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.artifacts">mozbuild.artifacts module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.base">mozbuild.base module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.chunkify">mozbuild.chunkify module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.config_status">mozbuild.config_status module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.doctor">mozbuild.doctor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.dotproperties">mozbuild.dotproperties module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#mozbuild-faster-daemon-module">mozbuild.faster_daemon module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.generated_sources">mozbuild.generated_sources module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.html_build_viewer">mozbuild.html_build_viewer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.jar">mozbuild.jar module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.mach_commands">mozbuild.mach_commands module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.makeutil">mozbuild.makeutil module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.milestone">mozbuild.milestone module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.mozconfig">mozbuild.mozconfig module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.mozinfo">mozbuild.mozinfo module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.preprocessor">mozbuild.preprocessor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.pythonutil">mozbuild.pythonutil module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.schedules">mozbuild.schedules module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.shellutil">mozbuild.shellutil module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.sphinx">mozbuild.sphinx module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.testing">mozbuild.testing module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.util">mozbuild.util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.vendor_aom">mozbuild.vendor_aom module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.vendor_rust">mozbuild.vendor_rust module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild.virtualenv">mozbuild.virtualenv module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozbuild.html#module-mozbuild">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="mozbuild.html">mozbuild package</a> &raquo;</li>
+        
+      <li>mozbuild.controller package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/python/mozbuild.controller.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mozbuild-controller-package">
+<h1>mozbuild.controller package<a class="headerlink" href="#mozbuild-controller-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-mozbuild.controller.building">
+<span id="mozbuild-controller-building-module"></span><h2>mozbuild.controller.building module<a class="headerlink" href="#module-mozbuild.controller.building" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozbuild.controller.building.BuildDriver">
+<em class="property">class </em><code class="descclassname">mozbuild.controller.building.</code><code class="descname">BuildDriver</code><span class="sig-paren">(</span><em>topsrcdir</em>, <em>settings</em>, <em>log_manager</em>, <em>topobjdir=None</em>, <em>mozconfig=&lt;object object&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.building.BuildDriver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="mozbuild.html#mozbuild.base.MozbuildObject" title="mozbuild.base.MozbuildObject"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.base.MozbuildObject</span></code></a></p>
+<p>Provides a high-level API for build actions.</p>
+<dl class="method">
+<dt id="mozbuild.controller.building.BuildDriver.build">
+<code class="descname">build</code><span class="sig-paren">(</span><em>what=None</em>, <em>disable_extra_make_dependencies=None</em>, <em>jobs=0</em>, <em>directory=None</em>, <em>verbose=False</em>, <em>keep_going=False</em>, <em>mach_context=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.building.BuildDriver.build" title="Permalink to this definition">¶</a></dt>
+<dd><p>Invoke the build backend.</p>
+<p><code class="docutils literal"><span class="pre">what</span></code> defines the thing to build. If not defined, the default
+target is used.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.controller.building.BuildDriver.configure">
+<code class="descname">configure</code><span class="sig-paren">(</span><em>options=None</em>, <em>buildstatus_messages=False</em>, <em>line_handler=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.building.BuildDriver.configure" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.controller.building.BuildDriver.install_tests">
+<code class="descname">install_tests</code><span class="sig-paren">(</span><em>test_objs</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.building.BuildDriver.install_tests" title="Permalink to this definition">¶</a></dt>
+<dd><p>Install test files.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.controller.building.BuildMonitor">
+<em class="property">class </em><code class="descclassname">mozbuild.controller.building.</code><code class="descname">BuildMonitor</code><span class="sig-paren">(</span><em>topsrcdir</em>, <em>settings</em>, <em>log_manager</em>, <em>topobjdir=None</em>, <em>mozconfig=&lt;object object&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.building.BuildMonitor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="mozbuild.html#mozbuild.base.MozbuildObject" title="mozbuild.base.MozbuildObject"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.base.MozbuildObject</span></code></a></p>
+<p>Monitors the output of the build.</p>
+<dl class="method">
+<dt id="mozbuild.controller.building.BuildMonitor.ccache_stats">
+<code class="descname">ccache_stats</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.building.BuildMonitor.ccache_stats" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.controller.building.BuildMonitor.finish">
+<code class="descname">finish</code><span class="sig-paren">(</span><em>record_usage=True</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.building.BuildMonitor.finish" title="Permalink to this definition">¶</a></dt>
+<dd><p>Record the end of the build.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.controller.building.BuildMonitor.get_resource_usage">
+<code class="descname">get_resource_usage</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.building.BuildMonitor.get_resource_usage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Produce a data structure containing the low-level resource usage information.</p>
+<p>This data structure can e.g. be serialized into JSON and saved for
+subsequent analysis.</p>
+<p>If no resource usage is available, None is returned.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.controller.building.BuildMonitor.have_excessive_swapping">
+<code class="descname">have_excessive_swapping</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.building.BuildMonitor.have_excessive_swapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine whether there was excessive swapping during the build.</p>
+<p>Returns a tuple of (excessive, swap_in, swap_out). All values are None
+if no swap information is available.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.controller.building.BuildMonitor.have_high_finder_usage">
+<code class="descname">have_high_finder_usage</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.building.BuildMonitor.have_high_finder_usage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine whether there was high Finder CPU usage during the build.</p>
+<p>Returns True if there was high Finder CPU usage, False if there wasn’t,
+or None if there is nothing to report.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.controller.building.BuildMonitor.have_resource_usage">
+<code class="descname">have_resource_usage</code><a class="headerlink" href="#mozbuild.controller.building.BuildMonitor.have_resource_usage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether resource usage is available.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.controller.building.BuildMonitor.init">
+<code class="descname">init</code><span class="sig-paren">(</span><em>warnings_path</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.building.BuildMonitor.init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new monitor.</p>
+<p>warnings_path is a path of a warnings database to use.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.controller.building.BuildMonitor.log_resource_usage">
+<code class="descname">log_resource_usage</code><span class="sig-paren">(</span><em>usage</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.building.BuildMonitor.log_resource_usage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Summarize the resource usage of this build in a log message.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.controller.building.BuildMonitor.on_line">
+<code class="descname">on_line</code><span class="sig-paren">(</span><em>line</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.building.BuildMonitor.on_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Consume a line of output from the build system.</p>
+<p>This will parse the line for state and determine whether more action is
+needed.</p>
+<p>Returns a BuildOutputResult instance.</p>
+<p>In this named tuple, warning will be an object describing a new parsed
+warning. Otherwise it will be None.</p>
+<p>state_changed indicates whether the build system changed state with
+this line. If the build system changed state, the caller may want to
+query this instance for the current state in order to update UI, etc.</p>
+<p>for_display is a boolean indicating whether the line is relevant to the
+user. This is typically used to filter whether the line should be
+presented to the user.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.controller.building.BuildMonitor.start">
+<code class="descname">start</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.building.BuildMonitor.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Record the start of the build.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.controller.building.BuildMonitor.start_resource_recording">
+<code class="descname">start_resource_recording</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.building.BuildMonitor.start_resource_recording" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.controller.building.BuildMonitor.stop_resource_recording">
+<code class="descname">stop_resource_recording</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.building.BuildMonitor.stop_resource_recording" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.controller.building.BuildOutputManager">
+<em class="property">class </em><code class="descclassname">mozbuild.controller.building.</code><code class="descname">BuildOutputManager</code><span class="sig-paren">(</span><em>log_manager</em>, <em>monitor</em>, <em>footer</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.building.BuildOutputManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.controller.building.OutputManager" title="mozbuild.controller.building.OutputManager"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.controller.building.OutputManager</span></code></a></p>
+<p>Handles writing build output to a terminal, to logs, etc.</p>
+<dl class="method">
+<dt id="mozbuild.controller.building.BuildOutputManager.on_line">
+<code class="descname">on_line</code><span class="sig-paren">(</span><em>line</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.building.BuildOutputManager.on_line" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.controller.building.BuildOutputResult">
+<em class="property">class </em><code class="descclassname">mozbuild.controller.building.</code><code class="descname">BuildOutputResult</code><span class="sig-paren">(</span><em>warning</em>, <em>state_changed</em>, <em>for_display</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.building.BuildOutputResult" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tuple</span></code></p>
+<dl class="attribute">
+<dt id="mozbuild.controller.building.BuildOutputResult.for_display">
+<code class="descname">for_display</code><a class="headerlink" href="#mozbuild.controller.building.BuildOutputResult.for_display" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.controller.building.BuildOutputResult.state_changed">
+<code class="descname">state_changed</code><a class="headerlink" href="#mozbuild.controller.building.BuildOutputResult.state_changed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.controller.building.BuildOutputResult.warning">
+<code class="descname">warning</code><a class="headerlink" href="#mozbuild.controller.building.BuildOutputResult.warning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.controller.building.BuildProgressFooter">
+<em class="property">class </em><code class="descclassname">mozbuild.controller.building.</code><code class="descname">BuildProgressFooter</code><span class="sig-paren">(</span><em>terminal</em>, <em>monitor</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.building.BuildProgressFooter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.controller.building.Footer" title="mozbuild.controller.building.Footer"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.controller.building.Footer</span></code></a></p>
+<p>Handles display of a build progress indicator in a terminal.</p>
+<p>When mach builds inside a blessings-supported terminal, it will render
+progress information collected from a BuildMonitor. This class converts the
+state of BuildMonitor into terminal output.</p>
+<dl class="method">
+<dt id="mozbuild.controller.building.BuildProgressFooter.draw">
+<code class="descname">draw</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.building.BuildProgressFooter.draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws this footer in the terminal.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.controller.building.CCacheStats">
+<em class="property">class </em><code class="descclassname">mozbuild.controller.building.</code><code class="descname">CCacheStats</code><span class="sig-paren">(</span><em>output=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.building.CCacheStats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Holds statistics from ccache.</p>
+<p>Instances can be subtracted from each other to obtain differences.
+print() or str() the object to show a <code class="docutils literal"><span class="pre">ccache</span> <span class="pre">-s</span></code> like output
+of the captured stats.</p>
+<dl class="attribute">
+<dt id="mozbuild.controller.building.CCacheStats.ABSOLUTE_KEYS">
+<code class="descname">ABSOLUTE_KEYS</code><em class="property"> = set([u'cache_size', u'cache_files', u'cache_max_size'])</em><a class="headerlink" href="#mozbuild.controller.building.CCacheStats.ABSOLUTE_KEYS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.controller.building.CCacheStats.DIRECTORY_DESCRIPTION">
+<code class="descname">DIRECTORY_DESCRIPTION</code><em class="property"> = u'cache directory'</em><a class="headerlink" href="#mozbuild.controller.building.CCacheStats.DIRECTORY_DESCRIPTION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.controller.building.CCacheStats.FORMAT_KEYS">
+<code class="descname">FORMAT_KEYS</code><em class="property"> = set([u'cache_size', u'cache_max_size'])</em><a class="headerlink" href="#mozbuild.controller.building.CCacheStats.FORMAT_KEYS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.controller.building.CCacheStats.GiB">
+<code class="descname">GiB</code><em class="property"> = 1073741824</em><a class="headerlink" href="#mozbuild.controller.building.CCacheStats.GiB" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.controller.building.CCacheStats.KiB">
+<code class="descname">KiB</code><em class="property"> = 1024</em><a class="headerlink" href="#mozbuild.controller.building.CCacheStats.KiB" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.controller.building.CCacheStats.MiB">
+<code class="descname">MiB</code><em class="property"> = 1048576</em><a class="headerlink" href="#mozbuild.controller.building.CCacheStats.MiB" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.controller.building.CCacheStats.PRIMARY_CONFIG_DESCRIPTION">
+<code class="descname">PRIMARY_CONFIG_DESCRIPTION</code><em class="property"> = u'primary config'</em><a class="headerlink" href="#mozbuild.controller.building.CCacheStats.PRIMARY_CONFIG_DESCRIPTION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.controller.building.CCacheStats.SECONDARY_CONFIG_DESCRIPTION">
+<code class="descname">SECONDARY_CONFIG_DESCRIPTION</code><em class="property"> = u'secondary config      (readonly)'</em><a class="headerlink" href="#mozbuild.controller.building.CCacheStats.SECONDARY_CONFIG_DESCRIPTION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mozbuild.controller.building.CCacheStats.STATS_KEYS">
+<code class="descname">STATS_KEYS</code><em class="property"> = [(u'cache_hit_direct', u'cache hit (direct)'), (u'cache_hit_preprocessed', u'cache hit (preprocessed)'), (u'cache_hit_rate', u'cache hit rate'), (u'cache_miss', u'cache miss'), (u'link', u'called for link'), (u'preprocessing', u'called for preprocessing'), (u'multiple', u'multiple source files'), (u'stdout', u'compiler produced stdout'), (u'no_output', u'compiler produced no output'), (u'empty_output', u'compiler produced empty output'), (u'failed', u'compile failed'), (u'error', u'ccache internal error'), (u'preprocessor_error', u'preprocessor error'), (u'cant_use_pch', u&quot;can't use precompiled header&quot;), (u'compiler_missing', u&quot;couldn't find the compiler&quot;), (u'cache_file_missing', u'cache file missing'), (u'bad_args', u'bad compiler arguments'), (u'unsupported_lang', u'unsupported source language'), (u'compiler_check_failed', u'compiler check failed'), (u'autoconf', u'autoconf compile/link'), (u'unsupported_code_directive', u'unsupported code directive'), (u'unsupported_compiler_option', u'unsupported compiler option'), (u'out_stdout', u'output to stdout'), (u'out_device', u'output to a non-regular file'), (u'no_input', u'no input file'), (u'bad_extra_file', u'error hashing extra file'), (u'num_cleanups', u'cleanups performed'), (u'cache_files', u'files in cache'), (u'cache_size', u'cache size'), (u'cache_max_size', u'max cache size')]</em><a class="headerlink" href="#mozbuild.controller.building.CCacheStats.STATS_KEYS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.controller.building.CCacheStats.hit_rate_message">
+<code class="descname">hit_rate_message</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.building.CCacheStats.hit_rate_message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.controller.building.CCacheStats.hit_rates">
+<code class="descname">hit_rates</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.building.CCacheStats.hit_rates" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.controller.building.Footer">
+<em class="property">class </em><code class="descclassname">mozbuild.controller.building.</code><code class="descname">Footer</code><span class="sig-paren">(</span><em>terminal</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.building.Footer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Handles display of a footer in a terminal.</p>
+<p>This class implements the functionality common to all mach commands
+that render a footer.</p>
+<dl class="method">
+<dt id="mozbuild.controller.building.Footer.clear">
+<code class="descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.building.Footer.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes the footer from the current terminal.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.controller.building.Footer.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>parts</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.building.Footer.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write some output in the footer, accounting for terminal width.</p>
+<p>parts is a list of 2-tuples of (encoding_function, input).
+None means no encoding.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.controller.building.OutputManager">
+<em class="property">class </em><code class="descclassname">mozbuild.controller.building.</code><code class="descname">OutputManager</code><span class="sig-paren">(</span><em>log_manager</em>, <em>footer</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.building.OutputManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="mach.mixin.html#mach.mixin.logging.LoggingMixin" title="mach.mixin.logging.LoggingMixin"><code class="xref py py-class docutils literal"><span class="pre">mach.mixin.logging.LoggingMixin</span></code></a></p>
+<p>Handles writing job output to a terminal or log.</p>
+<dl class="method">
+<dt id="mozbuild.controller.building.OutputManager.refresh">
+<code class="descname">refresh</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.building.OutputManager.refresh" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.controller.building.OutputManager.write_line">
+<code class="descname">write_line</code><span class="sig-paren">(</span><em>line</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.building.OutputManager.write_line" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.controller.building.StaticAnalysisFooter">
+<em class="property">class </em><code class="descclassname">mozbuild.controller.building.</code><code class="descname">StaticAnalysisFooter</code><span class="sig-paren">(</span><em>terminal</em>, <em>monitor</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.building.StaticAnalysisFooter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.controller.building.Footer" title="mozbuild.controller.building.Footer"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.controller.building.Footer</span></code></a></p>
+<p>Handles display of a static analysis progress indicator in a terminal.</p>
+<dl class="method">
+<dt id="mozbuild.controller.building.StaticAnalysisFooter.draw">
+<code class="descname">draw</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.building.StaticAnalysisFooter.draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws this footer in the terminal.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.controller.building.StaticAnalysisOutputManager">
+<em class="property">class </em><code class="descclassname">mozbuild.controller.building.</code><code class="descname">StaticAnalysisOutputManager</code><span class="sig-paren">(</span><em>log_manager</em>, <em>monitor</em>, <em>footer</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.building.StaticAnalysisOutputManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mozbuild.controller.building.OutputManager" title="mozbuild.controller.building.OutputManager"><code class="xref py py-class docutils literal"><span class="pre">mozbuild.controller.building.OutputManager</span></code></a></p>
+<p>Handles writing static analysis output to a terminal.</p>
+<dl class="method">
+<dt id="mozbuild.controller.building.StaticAnalysisOutputManager.on_line">
+<code class="descname">on_line</code><span class="sig-paren">(</span><em>line</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.building.StaticAnalysisOutputManager.on_line" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.controller.building.TerminalLoggingHandler">
+<em class="property">class </em><code class="descclassname">mozbuild.controller.building.</code><code class="descname">TerminalLoggingHandler</code><a class="headerlink" href="#mozbuild.controller.building.TerminalLoggingHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">logging.Handler</span></code></p>
+<p>Custom logging handler that works with terminal window dressing.</p>
+<p>This class should probably live elsewhere, like the mach core. Consider
+this a proving ground for its usefulness.</p>
+<dl class="method">
+<dt id="mozbuild.controller.building.TerminalLoggingHandler.emit">
+<code class="descname">emit</code><span class="sig-paren">(</span><em>record</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.building.TerminalLoggingHandler.emit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.controller.building.TerminalLoggingHandler.flush">
+<code class="descname">flush</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.building.TerminalLoggingHandler.flush" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozbuild.controller.building.TierStatus">
+<em class="property">class </em><code class="descclassname">mozbuild.controller.building.</code><code class="descname">TierStatus</code><span class="sig-paren">(</span><em>resources</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.building.TierStatus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Represents the state and progress of tier traversal.</p>
+<p>The build system is organized into linear phases called tiers. Each tier
+executes in the order it was defined, 1 at a time.</p>
+<dl class="method">
+<dt id="mozbuild.controller.building.TierStatus.add_resource_fields_to_dict">
+<code class="descname">add_resource_fields_to_dict</code><span class="sig-paren">(</span><em>d</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.building.TierStatus.add_resource_fields_to_dict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.controller.building.TierStatus.add_resources_to_dict">
+<code class="descname">add_resources_to_dict</code><span class="sig-paren">(</span><em>entry</em>, <em>start=None</em>, <em>end=None</em>, <em>phase=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.building.TierStatus.add_resources_to_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper function to append resource information to a dict.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.controller.building.TierStatus.begin_tier">
+<code class="descname">begin_tier</code><span class="sig-paren">(</span><em>tier</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.building.TierStatus.begin_tier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Record that execution of a tier has begun.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.controller.building.TierStatus.finish_tier">
+<code class="descname">finish_tier</code><span class="sig-paren">(</span><em>tier</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.building.TierStatus.finish_tier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Record that execution of a tier has finished.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.controller.building.TierStatus.set_tiers">
+<code class="descname">set_tiers</code><span class="sig-paren">(</span><em>tiers</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.building.TierStatus.set_tiers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Record the set of known tiers.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.controller.building.TierStatus.tiered_resource_usage">
+<code class="descname">tiered_resource_usage</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.building.TierStatus.tiered_resource_usage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Obtains an object containing resource usage for tiers.</p>
+<p>The returned object is suitable for serialization.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.controller.clobber">
+<span id="mozbuild-controller-clobber-module"></span><h2>mozbuild.controller.clobber module<a class="headerlink" href="#module-mozbuild.controller.clobber" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mozbuild.controller.clobber.Clobberer">
+<em class="property">class </em><code class="descclassname">mozbuild.controller.clobber.</code><code class="descname">Clobberer</code><span class="sig-paren">(</span><em>topsrcdir</em>, <em>topobjdir</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.clobber.Clobberer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="mozbuild.controller.clobber.Clobberer.clobber_cause">
+<code class="descname">clobber_cause</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.clobber.Clobberer.clobber_cause" title="Permalink to this definition">¶</a></dt>
+<dd><p>Obtain the cause why a clobber is required.</p>
+<p>This reads the cause from the CLOBBER file.</p>
+<p>This returns a list of lines describing why the clobber was required.
+Each line is stripped of leading and trailing whitespace.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.controller.clobber.Clobberer.clobber_needed">
+<code class="descname">clobber_needed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.clobber.Clobberer.clobber_needed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a bool indicating whether a tree clobber is required.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.controller.clobber.Clobberer.ensure_objdir_state">
+<code class="descname">ensure_objdir_state</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.clobber.Clobberer.ensure_objdir_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ensure the CLOBBER file in the objdir exists.</p>
+<p>This is called as part of the build to ensure the clobber information
+is configured properly for the objdir.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.controller.clobber.Clobberer.have_winrm">
+<code class="descname">have_winrm</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.clobber.Clobberer.have_winrm" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.controller.clobber.Clobberer.maybe_do_clobber">
+<code class="descname">maybe_do_clobber</code><span class="sig-paren">(</span><em>cwd</em>, <em>allow_auto=False</em>, <em>fh=&lt;open file '&lt;stderr&gt;'</em>, <em>mode 'w'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.clobber.Clobberer.maybe_do_clobber" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform a clobber if it is required. Maybe.</p>
+<p>This is the API the build system invokes to determine if a clobber
+is needed and to automatically perform that clobber if we can.</p>
+<p>This returns a tuple of (bool, bool, str). The elements are:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Whether a clobber was/is required.</li>
+<li>Whether a clobber was performed.</li>
+<li>The reason why the clobber failed or could not be performed. This
+will be None if no clobber is required or if we clobbered without
+error.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozbuild.controller.clobber.Clobberer.remove_objdir">
+<code class="descname">remove_objdir</code><span class="sig-paren">(</span><em>full=True</em><span class="sig-paren">)</span><a class="headerlink" href="#mozbuild.controller.clobber.Clobberer.remove_objdir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the object directory.</p>
+<p><code class="docutils literal"><span class="pre">full</span></code> controls whether to fully delete the objdir. If False,
+some directories (e.g. Visual Studio Project Files) will not be
+deleted.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mozbuild.controller">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-mozbuild.controller" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="mozbuild.frontend.html" class="btn btn-neutral float-right" title="mozbuild.frontend package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="mozbuild.configure.html" class="btn btn-neutral" title="mozbuild.configure package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+WebExtensions Javascript Component Reference
+============================================
+This page contains reference documentation for the individual classes
+used to implement WebExtensions APIs.  This documentation is generated
+from jsdoc comments in the source code.
+
+ExtensionAPI class
+------------------
+.. js:autoclass:: ExtensionAPI
+   :members:
+
+Extension class
+---------------
+.. js:autoclass:: Extension
+   :members:
+
+BaseContext class
+-----------------
+*XXX fill me in*

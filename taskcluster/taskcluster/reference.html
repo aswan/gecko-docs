@@ -1,0 +1,388 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Reference &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../../index.html"/>
+        <link rel="up" title="TaskCluster Task-Graph Generation" href="index.html"/>
+        <link rel="next" title="Task Kinds" href="kinds.html"/>
+        <link rel="prev" title="How Tos" href="how-tos.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mach/index.html">mach</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">TaskCluster Task-Graph Generation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mach.html">Mach commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loading.html">Loading Tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transforms.html">Transforms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optimization.html">Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker-images.html">Docker Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cron.html">Periodic Taskgraphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="try.html">Try</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions.html">Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-tos.html">How Tos</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="kinds.html">Task Kinds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parameters.html">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="attributes.html">Task Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="caches.html">Caches</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">TaskCluster Task-Graph Generation</a> &raquo;</li>
+        
+      <li>Reference</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/taskcluster/taskcluster/reference.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="reference">
+<h1>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h1>
+<p>These sections contain some reference documentation for various aspects of
+taskgraph generation.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="kinds.html">Task Kinds</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="kinds.html#build">build</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kinds.html#build-signing">build-signing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kinds.html#artifact-build">artifact-build</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kinds.html#hazard">hazard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kinds.html#l10n">l10n</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kinds.html#nightly-l10n">nightly-l10n</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kinds.html#nightly-l10n-signing">nightly-l10n-signing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kinds.html#source-test">source-test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kinds.html#upload-symbols">upload-symbols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kinds.html#upload-generated-sources">upload-generated-sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kinds.html#valgrind">valgrind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kinds.html#static-analysis">static-analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kinds.html#toolchain">toolchain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kinds.html#spidermonkey">spidermonkey</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kinds.html#test">test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kinds.html#docker-image">docker-image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kinds.html#balrog">balrog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kinds.html#balrog-l10n">balrog-l10n</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kinds.html#beetmover">beetmover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kinds.html#beetmover-l10n">beetmover-l10n</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kinds.html#beetmover-repackage">beetmover-repackage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kinds.html#beetmover-cdns">beetmover-cdns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kinds.html#checksums-signing">checksums-signing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kinds.html#beetmover-checksums">beetmover-checksums</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kinds.html#push-apk-breakpoint">push-apk-breakpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kinds.html#push-apk">push-apk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kinds.html#release-notify-publish">release-notify-publish</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kinds.html#release-notify-promote">release-notify-promote</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kinds.html#release-bouncer-sub">release-bouncer-sub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kinds.html#release-mark-as-shipped">release-mark-as-shipped</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kinds.html#release-bouncer-aliases">release-bouncer-aliases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kinds.html#release-uptake-monitoring">release-uptake-monitoring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kinds.html#release-version-bump">release-version-bump</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kinds.html#repackage">repackage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kinds.html#repackage-l10n">repackage-l10n</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kinds.html#repackage-signing">repackage-signing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kinds.html#repo-update">repo-update</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kinds.html#partials">partials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kinds.html#partials-signing">partials-signing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="parameters.html">Parameters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="parameters.html#push-information">Push Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parameters.html#tree-information">Tree Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parameters.html#try-configuration">Try Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parameters.html#target-set">Target Set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parameters.html#optimization">Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parameters.html#release-promotion">Release Promotion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parameters.html#comm-push-information">Comm Push Information</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="attributes.html">Task Attributes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="attributes.html#kind">kind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attributes.html#run-on-projects">run_on_projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attributes.html#task-duplicates">task_duplicates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attributes.html#build-platform">build_platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attributes.html#build-type">build_type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attributes.html#test-platform">test_platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attributes.html#unittest-suite">unittest_suite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attributes.html#unittest-flavor">unittest_flavor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attributes.html#unittest-try-name">unittest_try_name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attributes.html#talos-try-name">talos_try_name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attributes.html#job-try-name">job_try_name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attributes.html#test-chunk">test_chunk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attributes.html#e10s">e10s</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attributes.html#image-name">image_name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attributes.html#nightly">nightly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attributes.html#all-locales">all_locales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attributes.html#all-locales-with-changesets">all_locales_with_changesets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attributes.html#l10n-chunk">l10n_chunk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attributes.html#chunk-locales">chunk_locales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attributes.html#locale">locale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attributes.html#signed">signed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attributes.html#repackage-type">repackage_type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attributes.html#toolchain-artifact">toolchain-artifact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attributes.html#toolchain-alias">toolchain-alias</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attributes.html#always-target">always_target</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attributes.html#shipping-product">shipping_product</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attributes.html#shipping-phase">shipping_phase</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="caches.html">Caches</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="caches.html#caches-and-run-task">Caches and <code class="docutils literal"><span class="pre">run-task</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="caches.html#common-caches">Common Caches</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="caches.html#version-control-caches">Version Control Caches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="caches.html#workspace-caches">Workspace Caches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="caches.html#other">Other</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="kinds.html" class="btn btn-neutral float-right" title="Task Kinds" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="how-tos.html" class="btn btn-neutral" title="How Tos" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

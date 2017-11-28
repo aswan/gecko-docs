@@ -1,0 +1,488 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Serving up content to be consumed by the browser &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../index.html"/>
+        <link rel="up" title="mozbase" href="index.html"/>
+        <link rel="next" title="Logging and reporting" href="loggingreporting.html"/>
+        <link rel="prev" title="mozdebug — Configure and launch compatible debuggers." href="mozdebug.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">mozbase</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="manifestparser.html">Managing lists of tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gettinginfo.html">Getting information on the system under test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setuprunning.html">Set up and running</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Serving up content to be consumed by the browser</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-mozhttpd"><code class="docutils literal"><span class="pre">mozhttpd</span></code> — Simple webserver</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#interface">Interface</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="loggingreporting.html">Logging and reporting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python/mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">mozbase</a> &raquo;</li>
+        
+      <li>Serving up content to be consumed by the browser</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/mozbase/mozhttpd.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="serving-up-content-to-be-consumed-by-the-browser">
+<h1>Serving up content to be consumed by the browser<a class="headerlink" href="#serving-up-content-to-be-consumed-by-the-browser" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The mozhttpd module is considered obsolete. For new code,
+please use <a class="reference external" href="https://pypi.python.org/pypi/wptserve">wptserve</a> which can do everything mozhttpd does
+and more.</p>
+</div>
+<div class="section" id="module-mozhttpd">
+<span id="mozhttpd-simple-webserver"></span><h2><a class="reference internal" href="#module-mozhttpd" title="mozhttpd"><code class="xref py py-mod docutils literal"><span class="pre">mozhttpd</span></code></a> — Simple webserver<a class="headerlink" href="#module-mozhttpd" title="Permalink to this headline">¶</a></h2>
+<p>Mozhttpd is a simple http webserver written in python, designed expressly
+for use in automated testing scenarios. It is designed to both serve static
+content and provide simple web services.</p>
+<p>The server is based on python standard library modules such as
+SimpleHttpServer, urlparse, etc. The ThreadingMixIn is used to
+serve each request on a discrete thread.</p>
+<p>Some existing uses of mozhttpd include <a class="reference external" href="https://github.com/mozilla/peptest/">Peptest</a>, <a class="reference external" href="https://github.com/mozilla/eideticker/">Eideticker</a>, and <a class="reference external" href="http://hg.mozilla.org/build/">Talos</a>.</p>
+<p>The following simple example creates a basic HTTP server which serves
+content from the current directory, defines a single API endpoint
+<cite>/api/resource/&lt;resourceid&gt;</cite> and then serves requests indefinitely:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mozhttpd</span>
+
+<span class="nd">@mozhttpd</span><span class="o">.</span><span class="n">handlers</span><span class="o">.</span><span class="n">json_response</span>
+<span class="k">def</span> <span class="nf">resource_get</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">objid</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="p">{</span> <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="n">objid</span><span class="p">,</span>
+                   <span class="s1">&#39;query&#39;</span><span class="p">:</span> <span class="n">request</span><span class="o">.</span><span class="n">query</span> <span class="p">})</span>
+
+
+<span class="n">httpd</span> <span class="o">=</span> <span class="n">mozhttpd</span><span class="o">.</span><span class="n">MozHttpd</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="mi">8080</span><span class="p">,</span> <span class="n">docroot</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span>
+                          <span class="n">urlhandlers</span> <span class="o">=</span> <span class="p">[</span> <span class="p">{</span> <span class="s1">&#39;method&#39;</span><span class="p">:</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span>
+                                            <span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="s1">&#39;/api/resources/([^/]+)/?&#39;</span><span class="p">,</span>
+                                            <span class="s1">&#39;function&#39;</span><span class="p">:</span> <span class="n">resource_get</span> <span class="p">}</span> <span class="p">])</span>
+<span class="nb">print</span> <span class="s2">&quot;Serving &#39;</span><span class="si">%s</span><span class="s2">&#39; at </span><span class="si">%s</span><span class="s2">:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">httpd</span><span class="o">.</span><span class="n">docroot</span><span class="p">,</span> <span class="n">httpd</span><span class="o">.</span><span class="n">host</span><span class="p">,</span> <span class="n">httpd</span><span class="o">.</span><span class="n">port</span><span class="p">)</span>
+<span class="n">httpd</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="class">
+<dt id="mozhttpd.MozHttpd">
+<em class="property">class </em><code class="descclassname">mozhttpd.</code><code class="descname">MozHttpd</code><span class="sig-paren">(</span><em>host='127.0.0.1'</em>, <em>port=0</em>, <em>docroot=None</em>, <em>urlhandlers=None</em>, <em>path_mappings=None</em>, <em>proxy_host_dirs=False</em>, <em>log_requests=False</em><span class="sig-paren">)</span><a class="headerlink" href="#mozhttpd.MozHttpd" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>host</strong> – Host from which to serve (default 127.0.0.1)</li>
+<li><strong>port</strong> – Port from which to serve (default 8888)</li>
+<li><strong>docroot</strong> – Server root (default os.getcwd())</li>
+<li><strong>urlhandlers</strong> – Handlers to specify behavior against method and path match (default None)</li>
+<li><strong>path_mappings</strong> – A dict mapping URL prefixes to additional on-disk paths.</li>
+<li><strong>proxy_host_dirs</strong> – Toggle proxy behavior (default False)</li>
+<li><strong>log_requests</strong> – Toggle logging behavior (default False)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Very basic HTTP server class. Takes a docroot (path on the filesystem)
+and a set of urlhandler dictionaries of the form:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s1">&#39;method&#39;</span><span class="p">:</span> <span class="n">HTTP</span> <span class="n">method</span> <span class="p">(</span><span class="n">string</span><span class="p">):</span> <span class="n">GET</span><span class="p">,</span> <span class="n">POST</span><span class="p">,</span> <span class="ow">or</span> <span class="n">DEL</span><span class="p">,</span>
+  <span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="n">PATH_INFO</span> <span class="p">(</span><span class="n">regular</span> <span class="n">expression</span> <span class="n">string</span><span class="p">),</span>
+  <span class="s1">&#39;function&#39;</span><span class="p">:</span> <span class="n">function</span> <span class="n">of</span> <span class="n">form</span> <span class="n">fn</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">,</span> <span class="n">arg3</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">request</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>and serves HTTP. For each request, MozHttpd will either return a file
+off the docroot, or dispatch to a handler function (if both path and
+method match).</p>
+<p>Note that one of docroot or urlhandlers may be None (in which case no
+local files or handlers, respectively, will be used). If both docroot or
+urlhandlers are None then MozHttpd will default to serving just the local
+directory.</p>
+<p>MozHttpd also handles proxy requests (i.e. with a full URI on the request
+line).  By default files are served from docroot according to the request
+URI’s path component, but if proxy_host_dirs is True, files are served
+from &lt;self.docroot&gt;/&lt;host&gt;/.</p>
+<p>For example, the request “GET <a class="reference external" href="http://foo.bar/dir/file.html">http://foo.bar/dir/file.html</a>” would
+(assuming no handlers match) serve &lt;docroot&gt;/dir/file.html if
+proxy_host_dirs is False, or &lt;docroot&gt;/foo.bar/dir/file.html if it is
+True.</p>
+<dl class="method">
+<dt id="mozhttpd.MozHttpd.get_url">
+<code class="descname">get_url</code><span class="sig-paren">(</span><em>path='/'</em><span class="sig-paren">)</span><a class="headerlink" href="#mozhttpd.MozHttpd.get_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a URL that can be used for accessing the server (e.g. <a class="reference external" href="http://192.168.1.3:4321/">http://192.168.1.3:4321/</a>)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> – Path to append to URL (e.g. if path were /foobar.html you would get a URL like
+<a class="reference external" href="http://192.168.1.3:4321/foobar.html">http://192.168.1.3:4321/foobar.html</a>). Default is <cite>/</cite>.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozhttpd.MozHttpd.start">
+<code class="descname">start</code><span class="sig-paren">(</span><em>block=False</em><span class="sig-paren">)</span><a class="headerlink" href="#mozhttpd.MozHttpd.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Starts the server.</p>
+<p>If <cite>block</cite> is True, the call will not return. If <cite>block</cite> is False, the
+server will be started on a separate thread that can be terminated by
+a call to stop().</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mozhttpd.MozHttpd.stop">
+<code class="descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mozhttpd.MozHttpd.stop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stops the server.</p>
+<p>If the server is not running, this method has no effect.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mozhttpd.Request">
+<em class="property">class </em><code class="descclassname">mozhttpd.</code><code class="descname">Request</code><span class="sig-paren">(</span><em>uri</em>, <em>headers</em>, <em>rfile=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mozhttpd.Request" title="Permalink to this definition">¶</a></dt>
+<dd><p>Details of a request.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozhttpd.json_response">
+<code class="descclassname">mozhttpd.</code><code class="descname">json_response</code><span class="sig-paren">(</span><em>func</em><span class="sig-paren">)</span><a class="headerlink" href="#mozhttpd.json_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Translates results of ‘func’ into a JSON response.</p>
+</dd></dl>
+
+<div class="section" id="interface">
+<h3>Interface<a class="headerlink" href="#interface" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt>
+<em class="property">class </em><code class="descclassname">mozhttpd.</code><code class="descname">MozHttpd</code><span class="sig-paren">(</span><em>host='127.0.0.1'</em>, <em>port=0</em>, <em>docroot=None</em>, <em>urlhandlers=None</em>, <em>path_mappings=None</em>, <em>proxy_host_dirs=False</em>, <em>log_requests=False</em><span class="sig-paren">)</span></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>host</strong> – Host from which to serve (default 127.0.0.1)</li>
+<li><strong>port</strong> – Port from which to serve (default 8888)</li>
+<li><strong>docroot</strong> – Server root (default os.getcwd())</li>
+<li><strong>urlhandlers</strong> – Handlers to specify behavior against method and path match (default None)</li>
+<li><strong>path_mappings</strong> – A dict mapping URL prefixes to additional on-disk paths.</li>
+<li><strong>proxy_host_dirs</strong> – Toggle proxy behavior (default False)</li>
+<li><strong>log_requests</strong> – Toggle logging behavior (default False)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Very basic HTTP server class. Takes a docroot (path on the filesystem)
+and a set of urlhandler dictionaries of the form:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s1">&#39;method&#39;</span><span class="p">:</span> <span class="n">HTTP</span> <span class="n">method</span> <span class="p">(</span><span class="n">string</span><span class="p">):</span> <span class="n">GET</span><span class="p">,</span> <span class="n">POST</span><span class="p">,</span> <span class="ow">or</span> <span class="n">DEL</span><span class="p">,</span>
+  <span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="n">PATH_INFO</span> <span class="p">(</span><span class="n">regular</span> <span class="n">expression</span> <span class="n">string</span><span class="p">),</span>
+  <span class="s1">&#39;function&#39;</span><span class="p">:</span> <span class="n">function</span> <span class="n">of</span> <span class="n">form</span> <span class="n">fn</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">,</span> <span class="n">arg3</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">request</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>and serves HTTP. For each request, MozHttpd will either return a file
+off the docroot, or dispatch to a handler function (if both path and
+method match).</p>
+<p>Note that one of docroot or urlhandlers may be None (in which case no
+local files or handlers, respectively, will be used). If both docroot or
+urlhandlers are None then MozHttpd will default to serving just the local
+directory.</p>
+<p>MozHttpd also handles proxy requests (i.e. with a full URI on the request
+line).  By default files are served from docroot according to the request
+URI’s path component, but if proxy_host_dirs is True, files are served
+from &lt;self.docroot&gt;/&lt;host&gt;/.</p>
+<p>For example, the request “GET <a class="reference external" href="http://foo.bar/dir/file.html">http://foo.bar/dir/file.html</a>” would
+(assuming no handlers match) serve &lt;docroot&gt;/dir/file.html if
+proxy_host_dirs is False, or &lt;docroot&gt;/foo.bar/dir/file.html if it is
+True.</p>
+<dl class="method">
+<dt>
+<code class="descname">get_url</code><span class="sig-paren">(</span><em>path='/'</em><span class="sig-paren">)</span></dt>
+<dd><p>Returns a URL that can be used for accessing the server (e.g. <a class="reference external" href="http://192.168.1.3:4321/">http://192.168.1.3:4321/</a>)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> – Path to append to URL (e.g. if path were /foobar.html you would get a URL like
+<a class="reference external" href="http://192.168.1.3:4321/foobar.html">http://192.168.1.3:4321/foobar.html</a>). Default is <cite>/</cite>.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">start</code><span class="sig-paren">(</span><em>block=False</em><span class="sig-paren">)</span></dt>
+<dd><p>Starts the server.</p>
+<p>If <cite>block</cite> is True, the call will not return. If <cite>block</cite> is False, the
+server will be started on a separate thread that can be terminated by
+a call to stop().</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Stops the server.</p>
+<p>If the server is not running, this method has no effect.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="loggingreporting.html" class="btn btn-neutral float-right" title="Logging and reporting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="mozdebug.html" class="btn btn-neutral" title="mozdebug — Configure and launch compatible debuggers." accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

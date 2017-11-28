@@ -1,0 +1,580 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Task Kinds &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../../index.html"/>
+        <link rel="up" title="Reference" href="reference.html"/>
+        <link rel="next" title="Parameters" href="parameters.html"/>
+        <link rel="prev" title="Reference" href="reference.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mach/index.html">mach</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">TaskCluster Task-Graph Generation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mach.html">Mach commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loading.html">Loading Tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transforms.html">Transforms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optimization.html">Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker-images.html">Docker Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cron.html">Periodic Taskgraphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="try.html">Try</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions.html">Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-tos.html">How Tos</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="reference.html">Reference</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Task Kinds</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#build">build</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#build-signing">build-signing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#artifact-build">artifact-build</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hazard">hazard</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#l10n">l10n</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nightly-l10n">nightly-l10n</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nightly-l10n-signing">nightly-l10n-signing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#source-test">source-test</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#upload-symbols">upload-symbols</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#upload-generated-sources">upload-generated-sources</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#valgrind">valgrind</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#static-analysis">static-analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#toolchain">toolchain</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#spidermonkey">spidermonkey</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test">test</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker-image">docker-image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#balrog">balrog</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#balrog-l10n">balrog-l10n</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#beetmover">beetmover</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#beetmover-l10n">beetmover-l10n</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#beetmover-repackage">beetmover-repackage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#beetmover-cdns">beetmover-cdns</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#checksums-signing">checksums-signing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#beetmover-checksums">beetmover-checksums</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#push-apk-breakpoint">push-apk-breakpoint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#push-apk">push-apk</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#release-notify-publish">release-notify-publish</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#release-notify-promote">release-notify-promote</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#release-bouncer-sub">release-bouncer-sub</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#release-mark-as-shipped">release-mark-as-shipped</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#release-bouncer-aliases">release-bouncer-aliases</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#release-uptake-monitoring">release-uptake-monitoring</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#release-version-bump">release-version-bump</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#repackage">repackage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#repackage-l10n">repackage-l10n</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#repackage-signing">repackage-signing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#repo-update">repo-update</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#partials">partials</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#partials-signing">partials-signing</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="parameters.html">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="attributes.html">Task Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="caches.html">Caches</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">TaskCluster Task-Graph Generation</a> &raquo;</li>
+        
+          <li><a href="reference.html">Reference</a> &raquo;</li>
+        
+      <li>Task Kinds</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/taskcluster/taskcluster/kinds.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="task-kinds">
+<h1>Task Kinds<a class="headerlink" href="#task-kinds" title="Permalink to this headline">¶</a></h1>
+<p>This section lists and documents the available task kinds.</p>
+<div class="section" id="build">
+<h2>build<a class="headerlink" href="#build" title="Permalink to this headline">¶</a></h2>
+<p>Builds are tasks that produce an installer or other output that can be run by
+users or automated tests.  This is more restrictive than most definitions of
+“build” in a Mozilla context: it does not include tasks that run build-like
+actions for static analysis or to produce instrumented artifacts.</p>
+</div>
+<div class="section" id="build-signing">
+<h2>build-signing<a class="headerlink" href="#build-signing" title="Permalink to this headline">¶</a></h2>
+<p>Many builds must be signed. The build-signing task takes the unsigned <cite>build</cite>
+kind artifacts and passes them through signingscriptworker to a signing server
+and returns signed results.</p>
+</div>
+<div class="section" id="artifact-build">
+<h2>artifact-build<a class="headerlink" href="#artifact-build" title="Permalink to this headline">¶</a></h2>
+<p>This kind performs an artifact build: one based on precompiled binaries
+discovered via the TaskCluster index.  This task verifies that such builds
+continue to work correctly.</p>
+</div>
+<div class="section" id="hazard">
+<h2>hazard<a class="headerlink" href="#hazard" title="Permalink to this headline">¶</a></h2>
+<p>Hazard builds are similar to “regular’ builds, but use a compiler extension to
+extract a bunch of data from the build and then analyze that data looking for
+hazardous behaviors.</p>
+</div>
+<div class="section" id="l10n">
+<h2>l10n<a class="headerlink" href="#l10n" title="Permalink to this headline">¶</a></h2>
+<p>The l10n kind takes the last published nightly build, and generates localized builds
+from it. You can read more about how to trigger these on the <a class="reference external" href="https://wiki.mozilla.org/ReleaseEngineering/TryServer#Desktop_l10n_jobs_.28on_Taskcluster.29">wiki</a>.</p>
+</div>
+<div class="section" id="nightly-l10n">
+<h2>nightly-l10n<a class="headerlink" href="#nightly-l10n" title="Permalink to this headline">¶</a></h2>
+<p>The nightly l10n kind repacks a specific nightly build (from the same source code)
+in order to provide localized versions of the same source.</p>
+</div>
+<div class="section" id="nightly-l10n-signing">
+<h2>nightly-l10n-signing<a class="headerlink" href="#nightly-l10n-signing" title="Permalink to this headline">¶</a></h2>
+<p>The nightly l10n signing kind takes artifacts from the nightly-l10n kind and
+passes them to signing servers to have their contents signed appropriately, based
+on an appropriate signing format. One signing job is created for each nightly-l10n
+job (usually chunked).</p>
+</div>
+<div class="section" id="source-test">
+<h2>source-test<a class="headerlink" href="#source-test" title="Permalink to this headline">¶</a></h2>
+<p>Source-tests are tasks that run directly from the Gecko source. This can include linting,
+unit tests, source-code analysis, or measurement work. While source-test tasks run from
+a source checkout, it is still possible for them to depend on a build artifact, though
+often they do not.</p>
+</div>
+<div class="section" id="upload-symbols">
+<h2>upload-symbols<a class="headerlink" href="#upload-symbols" title="Permalink to this headline">¶</a></h2>
+<p>Upload-symbols tasks run after builds and upload the symbols files generated by
+build tasks to Socorro for later use in crash analysis.</p>
+</div>
+<div class="section" id="upload-generated-sources">
+<h2>upload-generated-sources<a class="headerlink" href="#upload-generated-sources" title="Permalink to this headline">¶</a></h2>
+<p>Upload-generated-sources tasks run after builds and upload source files that were generated as part of the build process to an s3 bucket for later use in links from crash reports or when debugging shipped builds.</p>
+</div>
+<div class="section" id="valgrind">
+<h2>valgrind<a class="headerlink" href="#valgrind" title="Permalink to this headline">¶</a></h2>
+<p>Valgrind tasks produce builds instrumented by valgrind.</p>
+</div>
+<div class="section" id="static-analysis">
+<h2>static-analysis<a class="headerlink" href="#static-analysis" title="Permalink to this headline">¶</a></h2>
+<p>Static analysis builds use the compiler to perform some detailed analysis of
+the source code while building.  The useful output from these tasks are their
+build logs, and while they produce a binary, they do not upload it as an
+artifact.</p>
+</div>
+<div class="section" id="toolchain">
+<h2>toolchain<a class="headerlink" href="#toolchain" title="Permalink to this headline">¶</a></h2>
+<p>Toolchain builds create the compiler toolchains used to build Firefox.  These
+will eventually be dependencies of the builds themselves, but for the moment
+are run manually via try pushes and the results uploaded to tooltool.</p>
+</div>
+<div class="section" id="spidermonkey">
+<h2>spidermonkey<a class="headerlink" href="#spidermonkey" title="Permalink to this headline">¶</a></h2>
+<p>Spidermonkey tasks check out the full gecko source tree, then compile only the
+spidermonkey portion.  Each task runs specific tests after the build.</p>
+</div>
+<div class="section" id="test">
+<h2>test<a class="headerlink" href="#test" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal"><span class="pre">desktop-test</span></code> kind defines tests for builds.  Its <code class="docutils literal"><span class="pre">tests.yml</span></code> defines
+the full suite of desktop tests and their particulars, leaving it to the
+transforms to determine how those particulars apply to the various platforms.</p>
+<p>The process of generating tests goes like this, based on a set of YAML files
+named in <code class="docutils literal"><span class="pre">kind.yml</span></code>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>For each build task, determine the related test platforms based on the build
+platform.  For example, a Windows 2010 build might be tested on Windows 7
+and Windows 10.  Each test platform specifies “test sets” indicating which
+tests to run.  This is configured in the file named
+<code class="docutils literal"><span class="pre">test-platforms.yml</span></code>.</li>
+<li>Each test set is expanded to a list of tests to run.  This is configured in
+the file named by <code class="docutils literal"><span class="pre">test-sets.yml</span></code>. A platform may specify several test
+sets, in which case the union of those sets is used.</li>
+<li>Each named test is looked up in the file named by <code class="docutils literal"><span class="pre">tests.yml</span></code> to find a
+test description.  This test description indicates what the test does, how
+it is reported to treeherder, and how to perform the test, all in a
+platform-independent fashion.</li>
+<li>Each test description is converted into one or more tasks.  This is
+performed by a sequence of transforms defined in the <code class="docutils literal"><span class="pre">transforms</span></code> key in
+<code class="docutils literal"><span class="pre">kind.yml</span></code>.  See <a class="reference internal" href="transforms.html"><span class="doc">Transforms</span></a>: for more information on these
+transforms.</li>
+<li>The resulting tasks become a part of the task graph.</li>
+</ul>
+</div></blockquote>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">This process generates <em>all</em> test jobs, regardless of tree or try syntax.
+It is up to a later stages of the task-graph generation (the target set and
+optimization) to select the tests that will actually be performed.</p>
+</div>
+</div>
+<div class="section" id="docker-image">
+<h2>docker-image<a class="headerlink" href="#docker-image" title="Permalink to this headline">¶</a></h2>
+<p>Tasks of the <code class="docutils literal"><span class="pre">docker-image</span></code> kind build the Docker images in which other
+Docker tasks run.</p>
+<p>The tasks to generate each docker image have predictable labels:
+<code class="docutils literal"><span class="pre">build-docker-image-&lt;name&gt;</span></code>.</p>
+<p>Docker images are built from subdirectories of <code class="docutils literal"><span class="pre">taskcluster/docker</span></code>, using
+<code class="docutils literal"><span class="pre">docker</span> <span class="pre">build</span></code>.  There is currently no capability for one Docker image to
+depend on another in-tree docker image, without uploading the latter to a
+Docker repository</p>
+<p>The task definition used to create the image-building tasks is given in
+<code class="docutils literal"><span class="pre">image.yml</span></code> in the kind directory, and is interpreted as a <span class="xref std std-doc">YAML
+Template</span>.</p>
+</div>
+<div class="section" id="balrog">
+<h2>balrog<a class="headerlink" href="#balrog" title="Permalink to this headline">¶</a></h2>
+<p>Balrog is the Mozilla Update Server. Jobs of this kind are submitting information
+which assists in telling Firefox that an update is available for the related job.</p>
+</div>
+<div class="section" id="balrog-l10n">
+<h2>balrog-l10n<a class="headerlink" href="#balrog-l10n" title="Permalink to this headline">¶</a></h2>
+<p>Balrog is the Mozilla Update Server. Jobs of this kind are submitting information
+which assists in telling Firefox that an update is available for the localized
+job involved.</p>
+</div>
+<div class="section" id="beetmover">
+<h2>beetmover<a class="headerlink" href="#beetmover" title="Permalink to this headline">¶</a></h2>
+<p>Beetmover, takes specific artifacts, “Beets”, and pushes them to a location outside
+of Taskcluster’s task artifacts, (archive.mozilla.org as one place) and in the
+process determines the final location and a “pretty” name (versioned product name)</p>
+</div>
+<div class="section" id="beetmover-l10n">
+<h2>beetmover-l10n<a class="headerlink" href="#beetmover-l10n" title="Permalink to this headline">¶</a></h2>
+<p>Beetmover L10n, takes specific artifacts, “Beets”, and pushes them to a location outside
+of Taskcluster’s task artifacts, (archive.mozilla.org as one place) and in the
+process determines the final location and a “pretty” name (versioned product name)
+This separate kind uses logic specific to localized artifacts, such as including
+the language in the final artifact names.</p>
+</div>
+<div class="section" id="beetmover-repackage">
+<h2>beetmover-repackage<a class="headerlink" href="#beetmover-repackage" title="Permalink to this headline">¶</a></h2>
+<p>Beetmover-repackage is beetmover but for tasks that need an intermediate step
+between signing and packaging, such as OSX. For more details see the definitions
+of the Beetmover kind above and the repackage kind below.</p>
+</div>
+<div class="section" id="beetmover-cdns">
+<h2>beetmover-cdns<a class="headerlink" href="#beetmover-cdns" title="Permalink to this headline">¶</a></h2>
+<p>Beetmover-cdns publishes promoted releases to CDNs. This is part of release promotion.</p>
+</div>
+<div class="section" id="checksums-signing">
+<h2>checksums-signing<a class="headerlink" href="#checksums-signing" title="Permalink to this headline">¶</a></h2>
+<p>Checksums-signing take as input the checksums file generated by beetmover tasks
+and sign it via the signing scriptworkers. Returns the same file signed and
+additional detached signature.</p>
+</div>
+<div class="section" id="beetmover-checksums">
+<h2>beetmover-checksums<a class="headerlink" href="#beetmover-checksums" title="Permalink to this headline">¶</a></h2>
+<p>Beetmover, takes specific artifact checksums and pushes it to a location outside
+of Taskcluster’s task artifacts (archive.mozilla.org as one place) and in the
+process determines the final location and “pretty” names it (version product name)</p>
+</div>
+<div class="section" id="push-apk-breakpoint">
+<h2>push-apk-breakpoint<a class="headerlink" href="#push-apk-breakpoint" title="Permalink to this headline">¶</a></h2>
+<p>Decides whether or not APKs should be published onto Google Play Store. Jobs of this
+kind depend on all the signed multi-locales (aka “multi”) APKs for a given release,
+in order to make the decision.</p>
+</div>
+<div class="section" id="push-apk">
+<h2>push-apk<a class="headerlink" href="#push-apk" title="Permalink to this headline">¶</a></h2>
+<p>PushApk publishes Android packages onto Google Play Store. Jobs of this kind take
+all the signed multi-locales (aka “multi”) APKs for a given release and upload them
+all at once. They also depend on the breakpoint.</p>
+</div>
+<div class="section" id="release-notify-publish">
+<h2>release-notify-publish<a class="headerlink" href="#release-notify-publish" title="Permalink to this headline">¶</a></h2>
+<p>Notify when publishing a release.</p>
+</div>
+<div class="section" id="release-notify-promote">
+<h2>release-notify-promote<a class="headerlink" href="#release-notify-promote" title="Permalink to this headline">¶</a></h2>
+<p>Notify when promoting a release.</p>
+</div>
+<div class="section" id="release-bouncer-sub">
+<h2>release-bouncer-sub<a class="headerlink" href="#release-bouncer-sub" title="Permalink to this headline">¶</a></h2>
+<p>Submits bouncer updates for releases.</p>
+</div>
+<div class="section" id="release-mark-as-shipped">
+<h2>release-mark-as-shipped<a class="headerlink" href="#release-mark-as-shipped" title="Permalink to this headline">¶</a></h2>
+<p>Marks releases as shipped in Ship-It.</p>
+</div>
+<div class="section" id="release-bouncer-aliases">
+<h2>release-bouncer-aliases<a class="headerlink" href="#release-bouncer-aliases" title="Permalink to this headline">¶</a></h2>
+<p>Update Bouncers (download.mozilla.org) “latest” aliases.</p>
+</div>
+<div class="section" id="release-uptake-monitoring">
+<h2>release-uptake-monitoring<a class="headerlink" href="#release-uptake-monitoring" title="Permalink to this headline">¶</a></h2>
+<p>Run uptake monitoring for releases.</p>
+</div>
+<div class="section" id="release-version-bump">
+<h2>release-version-bump<a class="headerlink" href="#release-version-bump" title="Permalink to this headline">¶</a></h2>
+<p>Bumps to the next version.</p>
+</div>
+<div class="section" id="repackage">
+<h2>repackage<a class="headerlink" href="#repackage" title="Permalink to this headline">¶</a></h2>
+<p>Repackage tasks take a signed output and package them up into something suitable
+for shipping to our users. For example, on OSX we return a tarball as the signed output
+and this task would package that up as an Apple Disk Image (.dmg)</p>
+</div>
+<div class="section" id="repackage-l10n">
+<h2>repackage-l10n<a class="headerlink" href="#repackage-l10n" title="Permalink to this headline">¶</a></h2>
+<p>Repackage-L10n is a <code class="docutils literal"><span class="pre">`Repackage`</span></code> task split up to be suitable for use after l10n repacks.</p>
+</div>
+<div class="section" id="repackage-signing">
+<h2>repackage-signing<a class="headerlink" href="#repackage-signing" title="Permalink to this headline">¶</a></h2>
+<p>Repackage-signing take the repackaged installers (windows) and update packaging (with
+the signed internal bits) and signs them.</p>
+</div>
+<div class="section" id="repo-update">
+<h2>repo-update<a class="headerlink" href="#repo-update" title="Permalink to this headline">¶</a></h2>
+<p>Repo-Update tasks are tasks that perform some action on the project repo itself,
+in order to update its state in some way.</p>
+</div>
+<div class="section" id="partials">
+<h2>partials<a class="headerlink" href="#partials" title="Permalink to this headline">¶</a></h2>
+<p>Partials takes the complete.mar files produced in previous tasks and generates partial
+updates between previous nightly releases and the new one. Requires a release_history
+in the parameters. See <code class="docutils literal"><span class="pre">mach</span> <span class="pre">release-history</span></code> if doing this manually.</p>
+</div>
+<div class="section" id="partials-signing">
+<h2>partials-signing<a class="headerlink" href="#partials-signing" title="Permalink to this headline">¶</a></h2>
+<p>Partials-signing takes the partial updates produced in Partials and signs them.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="parameters.html" class="btn btn-neutral float-right" title="Parameters" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="reference.html" class="btn btn-neutral" title="Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,410 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mozinstall — Install and uninstall Gecko-based applications &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../index.html"/>
+        <link rel="up" title="Set up and running" href="setuprunning.html"/>
+        <link rel="next" title="mozprofile — Create and modify Mozilla application profiles" href="mozprofile.html"/>
+        <link rel="prev" title="mozfile — File utilities for use in Mozilla testing" href="mozfile.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">mozbase</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="manifestparser.html">Managing lists of tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gettinginfo.html">Getting information on the system under test</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="setuprunning.html">Set up and running</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="mozfile.html"><code class="docutils literal"><span class="pre">mozfile</span></code> — File utilities for use in Mozilla testing</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="docutils literal"><span class="pre">mozinstall</span></code> — Install and uninstall Gecko-based applications</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#simple-example">Simple example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-mozinstall">API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mozprofile.html"><code class="docutils literal"><span class="pre">mozprofile</span></code> — Create and modify Mozilla application profiles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozprocess.html"><code class="docutils literal"><span class="pre">mozprocess</span></code> — Launch and manage processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozrunner.html"><code class="docutils literal"><span class="pre">mozrunner</span></code> — Manage remote and local gecko processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozcrash.html"><code class="docutils literal"><span class="pre">mozcrash</span></code> — Print stack traces from minidumps left behind by crashed processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozdebug.html"><code class="docutils literal"><span class="pre">mozdebug</span></code> — Configure and launch compatible debuggers.</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mozhttpd.html">Serving up content to be consumed by the browser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loggingreporting.html">Logging and reporting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python/mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">mozbase</a> &raquo;</li>
+        
+          <li><a href="setuprunning.html">Set up and running</a> &raquo;</li>
+        
+      <li><code class="docutils literal"><span class="pre">mozinstall</span></code> — Install and uninstall Gecko-based applications</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/mozbase/mozinstall.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mozinstall-install-and-uninstall-gecko-based-applications">
+<h1><a class="reference internal" href="#module-mozinstall" title="mozinstall"><code class="xref py py-mod docutils literal"><span class="pre">mozinstall</span></code></a> — Install and uninstall Gecko-based applications<a class="headerlink" href="#mozinstall-install-and-uninstall-gecko-based-applications" title="Permalink to this headline">¶</a></h1>
+<p>mozinstall is a small python module with several convenience methods
+useful for installing and uninstalling a gecko-based application
+(e.g. Firefox) on the desktop.</p>
+<div class="section" id="simple-example">
+<h2>Simple example<a class="headerlink" href="#simple-example" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mozinstall</span>
+<span class="kn">import</span> <span class="nn">tempfile</span>
+
+<span class="n">tempdir</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">mkdtemp</span><span class="p">()</span>
+<span class="n">firefox_dmg</span> <span class="o">=</span> <span class="s1">&#39;firefox-38.0a1.en-US.mac.dmg&#39;</span>
+<span class="n">install_folder</span> <span class="o">=</span> <span class="n">mozinstall</span><span class="o">.</span><span class="n">install</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="n">firefox_dmg</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="n">tempdir</span><span class="p">)</span>
+<span class="n">binary</span> <span class="o">=</span> <span class="n">mozinstall</span><span class="o">.</span><span class="n">get_binary</span><span class="p">(</span><span class="n">install_folder</span><span class="p">,</span> <span class="s1">&#39;Firefox&#39;</span><span class="p">)</span>
+<span class="c1"># from here you can execute the binary directly</span>
+<span class="c1"># ...</span>
+<span class="n">mozinstall</span><span class="o">.</span><span class="n">uninstall</span><span class="p">(</span><span class="n">install_folder</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="module-mozinstall">
+<span id="api-documentation"></span><h2>API Documentation<a class="headerlink" href="#module-mozinstall" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mozinstall.is_installer">
+<code class="descclassname">mozinstall.</code><code class="descname">is_installer</code><span class="sig-paren">(</span><em>src</em><span class="sig-paren">)</span><a class="headerlink" href="#mozinstall.is_installer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests if the given file is a valid installer package.</p>
+<p>Supported types:
+Linux:   tar.gz, tar.bz2
+Mac:     dmg
+Windows: zip, exe</p>
+<p>On Windows pefile will be used to determine if the executable is the
+right type, if it is installed on the system.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>src</strong> – Path to the install file.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozinstall.install">
+<code class="descclassname">mozinstall.</code><code class="descname">install</code><span class="sig-paren">(</span><em>src</em>, <em>dest</em><span class="sig-paren">)</span><a class="headerlink" href="#mozinstall.install" title="Permalink to this definition">¶</a></dt>
+<dd><p>Install a zip, exe, tar.gz, tar.bz2 or dmg file, and return the path of
+the installation folder.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>src</strong> – Path to the install file</li>
+<li><strong>dest</strong> – Path to install to (to ensure we do not overwrite any existent
+files the folder should not exist yet)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozinstall.get_binary">
+<code class="descclassname">mozinstall.</code><code class="descname">get_binary</code><span class="sig-paren">(</span><em>path</em>, <em>app_name</em><span class="sig-paren">)</span><a class="headerlink" href="#mozinstall.get_binary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the binary in the specified path, and return its path. If binary is
+not found throw an InvalidBinary exception.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>path</strong> – Path within to search for the binary</li>
+<li><strong>app_name</strong> – Application binary without file extension to look for</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="mozinstall.uninstall">
+<code class="descclassname">mozinstall.</code><code class="descname">uninstall</code><span class="sig-paren">(</span><em>install_folder</em><span class="sig-paren">)</span><a class="headerlink" href="#mozinstall.uninstall" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uninstalls the application in the specified path. If it has been
+installed via an installer on Windows, use the uninstaller first.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>install_folder</strong> – Path of the installation folder</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="exception">
+<dt id="mozinstall.InstallError">
+<em class="property">exception </em><code class="descclassname">mozinstall.</code><code class="descname">InstallError</code><a class="headerlink" href="#mozinstall.InstallError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Thrown when installation fails. Includes traceback if available.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="mozinstall.InvalidBinary">
+<em class="property">exception </em><code class="descclassname">mozinstall.</code><code class="descname">InvalidBinary</code><a class="headerlink" href="#mozinstall.InvalidBinary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Thrown when the binary cannot be found after the installation.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="mozinstall.InvalidSource">
+<em class="property">exception </em><code class="descclassname">mozinstall.</code><code class="descname">InvalidSource</code><a class="headerlink" href="#mozinstall.InvalidSource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Thrown when the specified source is not a recognized file type.</p>
+<p>Supported types:
+Linux:   tar.gz, tar.bz2
+Mac:     dmg
+Windows: zip, exe</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="mozprofile.html" class="btn btn-neutral float-right" title="mozprofile — Create and modify Mozilla application profiles" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="mozfile.html" class="btn btn-neutral" title="mozfile — File utilities for use in Mozilla testing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

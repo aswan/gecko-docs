@@ -1,0 +1,1941 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>taskgraph.test package &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../index.html"/>
+        <link rel="up" title="taskgraph package" href="taskgraph.html"/>
+        <link rel="next" title="taskgraph.transforms package" href="taskgraph.transforms.html"/>
+        <link rel="prev" title="taskgraph.loader package" href="taskgraph.loader.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="taskgraph.html">taskgraph package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="taskgraph.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="taskgraph.actions.html">taskgraph.actions package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="taskgraph.cron.html">taskgraph.cron package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="taskgraph.loader.html">taskgraph.loader package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">taskgraph.test package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.test.test_create">taskgraph.test.test_create module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.test.test_cron_util">taskgraph.test.test_cron_util module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.test.test_decision">taskgraph.test.test_decision module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.test.test_files_changed">taskgraph.test.test_files_changed module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.test.test_generator">taskgraph.test.test_generator module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.test.test_graph">taskgraph.test.test_graph module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.test.test_morph">taskgraph.test.test_morph module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.test.test_optimize">taskgraph.test.test_optimize module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.test.test_parameters">taskgraph.test.test_parameters module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.test.test_target_tasks">taskgraph.test.test_target_tasks module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.test.test_taskgraph">taskgraph.test.test_taskgraph module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.test.test_transforms_base">taskgraph.test.test_transforms_base module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.test.test_try_option_syntax">taskgraph.test.test_try_option_syntax module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.test.test_util_attributes">taskgraph.test.test_util_attributes module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.test.test_util_docker">taskgraph.test.test_util_docker module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.test.test_util_parameterization">taskgraph.test.test_util_parameterization module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.test.test_util_python_path">taskgraph.test.test_util_python_path module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.test.test_util_schema">taskgraph.test.test_util_schema module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.test.test_util_templates">taskgraph.test.test_util_templates module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.test.test_util_time">taskgraph.test.test_util_time module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.test.test_util_treeherder">taskgraph.test.test_util_treeherder module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.test.test_util_yaml">taskgraph.test.test_util_yaml module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-taskgraph.test">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="taskgraph.transforms.html">taskgraph.transforms package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="taskgraph.util.html">taskgraph.util package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.config">taskgraph.config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.create">taskgraph.create module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.decision">taskgraph.decision module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.docker">taskgraph.docker module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.files_changed">taskgraph.files_changed module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.filter_tasks">taskgraph.filter_tasks module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.generator">taskgraph.generator module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.graph">taskgraph.graph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.morph">taskgraph.morph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.optimize">taskgraph.optimize module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.parameters">taskgraph.parameters module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.target_tasks">taskgraph.target_tasks module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.task">taskgraph.task module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.taskgraph">taskgraph.taskgraph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph.try_option_syntax">taskgraph.try_option_syntax module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taskgraph.html#module-taskgraph">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="taskgraph.html">taskgraph package</a> &raquo;</li>
+        
+      <li>taskgraph.test package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/python/taskgraph.test.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="taskgraph-test-package">
+<h1>taskgraph.test package<a class="headerlink" href="#taskgraph-test-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-taskgraph.test.test_create">
+<span id="taskgraph-test-test-create-module"></span><h2>taskgraph.test.test_create module<a class="headerlink" href="#module-taskgraph.test.test_create" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="taskgraph.test.test_create.TestCreate">
+<em class="property">class </em><code class="descclassname">taskgraph.test.test_create.</code><code class="descname">TestCreate</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_create.TestCreate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="taskgraph.test.test_create.TestCreate.fake_create_task">
+<code class="descname">fake_create_task</code><span class="sig-paren">(</span><em>session</em>, <em>task_id</em>, <em>label</em>, <em>task_def</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_create.TestCreate.fake_create_task" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_create.TestCreate.setUp">
+<code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_create.TestCreate.setUp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_create.TestCreate.tearDown">
+<code class="descname">tearDown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_create.TestCreate.tearDown" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_create.TestCreate.test_create_task_without_dependencies">
+<code class="descname">test_create_task_without_dependencies</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_create.TestCreate.test_create_task_without_dependencies" title="Permalink to this definition">¶</a></dt>
+<dd><p>a task with no dependencies depends on the decision task</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_create.TestCreate.test_create_tasks">
+<code class="descname">test_create_tasks</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_create.TestCreate.test_create_tasks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_create.TestCreate.test_create_tasks_fails_if_create_fails">
+<code class="descname">test_create_tasks_fails_if_create_fails</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_create.TestCreate.test_create_tasks_fails_if_create_fails" title="Permalink to this definition">¶</a></dt>
+<dd><p>creat_tasks fails if a single create_task call fails</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.test.test_cron_util">
+<span id="taskgraph-test-test-cron-util-module"></span><h2>taskgraph.test.test_cron_util module<a class="headerlink" href="#module-taskgraph.test.test_cron_util" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="taskgraph.test.test_cron_util.TestMatchUtc">
+<em class="property">class </em><code class="descclassname">taskgraph.test.test_cron_util.</code><code class="descname">TestMatchUtc</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_cron_util.TestMatchUtc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="taskgraph.test.test_cron_util.TestMatchUtc.test_hour_minute">
+<code class="descname">test_hour_minute</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_cron_util.TestMatchUtc.test_hour_minute" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_cron_util.TestMatchUtc.test_hour_only">
+<code class="descname">test_hour_only</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_cron_util.TestMatchUtc.test_hour_only" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_cron_util.TestMatchUtc.test_invalid_minute">
+<code class="descname">test_invalid_minute</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_cron_util.TestMatchUtc.test_invalid_minute" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_cron_util.TestMatchUtc.test_minute_only">
+<code class="descname">test_minute_only</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_cron_util.TestMatchUtc.test_minute_only" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_cron_util.TestMatchUtc.test_zeroes">
+<code class="descname">test_zeroes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_cron_util.TestMatchUtc.test_zeroes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.test.test_decision">
+<span id="taskgraph-test-test-decision-module"></span><h2>taskgraph.test.test_decision module<a class="headerlink" href="#module-taskgraph.test.test_decision" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="taskgraph.test.test_decision.TestDecision">
+<em class="property">class </em><code class="descclassname">taskgraph.test.test_decision.</code><code class="descname">TestDecision</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_decision.TestDecision" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="taskgraph.test.test_decision.TestDecision.test_write_artifact_json">
+<code class="descname">test_write_artifact_json</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_decision.TestDecision.test_write_artifact_json" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_decision.TestDecision.test_write_artifact_yml">
+<code class="descname">test_write_artifact_yml</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_decision.TestDecision.test_write_artifact_yml" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="taskgraph.test.test_decision.TestGetDecisionParameters">
+<em class="property">class </em><code class="descclassname">taskgraph.test.test_decision.</code><code class="descname">TestGetDecisionParameters</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_decision.TestGetDecisionParameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="taskgraph.test.test_decision.TestGetDecisionParameters.setUp">
+<code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_decision.TestGetDecisionParameters.setUp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_decision.TestGetDecisionParameters.test_no_email_owner">
+<code class="descname">test_no_email_owner</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_decision.TestGetDecisionParameters.test_no_email_owner" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_decision.TestGetDecisionParameters.test_simple_options">
+<code class="descname">test_simple_options</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_decision.TestGetDecisionParameters.test_simple_options" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_decision.TestGetDecisionParameters.test_try_options">
+<code class="descname">test_try_options</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_decision.TestGetDecisionParameters.test_try_options" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_decision.TestGetDecisionParameters.test_try_task_config">
+<code class="descname">test_try_task_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_decision.TestGetDecisionParameters.test_try_task_config" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="taskgraph.test.test_decision.TestGetDecisionParameters.ttc_file">
+<code class="descname">ttc_file</code><em class="property"> = u'/Users/andrewswan/src/mozilla-unified/try_task_config.json'</em><a class="headerlink" href="#taskgraph.test.test_decision.TestGetDecisionParameters.ttc_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.test.test_files_changed">
+<span id="taskgraph-test-test-files-changed-module"></span><h2>taskgraph.test.test_files_changed module<a class="headerlink" href="#module-taskgraph.test.test_files_changed" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="taskgraph.test.test_files_changed.FakeResponse">
+<em class="property">class </em><code class="descclassname">taskgraph.test.test_files_changed.</code><code class="descname">FakeResponse</code><a class="headerlink" href="#taskgraph.test.test_files_changed.FakeResponse" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="taskgraph.test.test_files_changed.FakeResponse.json">
+<code class="descname">json</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_files_changed.FakeResponse.json" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="taskgraph.test.test_files_changed.TestCheck">
+<em class="property">class </em><code class="descclassname">taskgraph.test.test_files_changed.</code><code class="descname">TestCheck</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_files_changed.TestCheck" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="taskgraph.test.test_files_changed.TestCheck.setUp">
+<code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_files_changed.TestCheck.setUp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_files_changed.TestCheck.test_check_match">
+<code class="descname">test_check_match</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_files_changed.TestCheck.test_check_match" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_files_changed.TestCheck.test_check_no_match">
+<code class="descname">test_check_no_match</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_files_changed.TestCheck.test_check_no_match" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_files_changed.TestCheck.test_check_no_params">
+<code class="descname">test_check_no_params</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_files_changed.TestCheck.test_check_no_params" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="taskgraph.test.test_files_changed.TestGetChangedFiles">
+<em class="property">class </em><code class="descclassname">taskgraph.test.test_files_changed.</code><code class="descname">TestGetChangedFiles</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_files_changed.TestGetChangedFiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="taskgraph.test.test_files_changed.TestGetChangedFiles.setUp">
+<code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_files_changed.TestGetChangedFiles.setUp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_files_changed.TestGetChangedFiles.tearDown">
+<code class="descname">tearDown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_files_changed.TestGetChangedFiles.tearDown" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_files_changed.TestGetChangedFiles.test_get_changed_files">
+<code class="descname">test_get_changed_files</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_files_changed.TestGetChangedFiles.test_get_changed_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get_changed_files correctly gets the list of changed files in a push.
+This tests against the production hg.mozilla.org so that it will detect
+any changes in the format of the returned data.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.test.test_generator">
+<span id="taskgraph-test-test-generator-module"></span><h2>taskgraph.test.test_generator module<a class="headerlink" href="#module-taskgraph.test.test_generator" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="taskgraph.test.test_generator.FakeKind">
+<em class="property">class </em><code class="descclassname">taskgraph.test.test_generator.</code><code class="descname">FakeKind</code><span class="sig-paren">(</span><em>name</em>, <em>path</em>, <em>config</em>, <em>graph_config</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_generator.FakeKind" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="taskgraph.html#taskgraph.generator.Kind" title="taskgraph.generator.Kind"><code class="xref py py-class docutils literal"><span class="pre">taskgraph.generator.Kind</span></code></a></p>
+<dl class="method">
+<dt id="taskgraph.test.test_generator.FakeKind.load_tasks">
+<code class="descname">load_tasks</code><span class="sig-paren">(</span><em>parameters</em>, <em>loaded_tasks</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_generator.FakeKind.load_tasks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="taskgraph.test.test_generator.FakeOptimization">
+<em class="property">class </em><code class="descclassname">taskgraph.test.test_generator.</code><code class="descname">FakeOptimization</code><span class="sig-paren">(</span><em>mode</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_generator.FakeOptimization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="taskgraph.html#taskgraph.optimize.OptimizationStrategy" title="taskgraph.optimize.OptimizationStrategy"><code class="xref py py-class docutils literal"><span class="pre">taskgraph.optimize.OptimizationStrategy</span></code></a></p>
+<dl class="method">
+<dt id="taskgraph.test.test_generator.FakeOptimization.should_remove_task">
+<code class="descname">should_remove_task</code><span class="sig-paren">(</span><em>task</em>, <em>params</em>, <em>arg</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_generator.FakeOptimization.should_remove_task" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="taskgraph.test.test_generator.FakeParameters">
+<em class="property">class </em><code class="descclassname">taskgraph.test.test_generator.</code><code class="descname">FakeParameters</code><a class="headerlink" href="#taskgraph.test.test_generator.FakeParameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">dict</span></code></p>
+<dl class="attribute">
+<dt id="taskgraph.test.test_generator.FakeParameters.strict">
+<code class="descname">strict</code><em class="property"> = True</em><a class="headerlink" href="#taskgraph.test.test_generator.FakeParameters.strict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="taskgraph.test.test_generator.TestGenerator">
+<em class="property">class </em><code class="descclassname">taskgraph.test.test_generator.</code><code class="descname">TestGenerator</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_generator.TestGenerator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="taskgraph.test.test_generator.TestGenerator.maketgg">
+<code class="descname">maketgg</code><span class="sig-paren">(</span><em>target_tasks=None, kinds=[(u'_fake', [])], params=None</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_generator.TestGenerator.maketgg" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_generator.TestGenerator.patch">
+<code class="descname">patch</code><span class="sig-paren">(</span><em>monkeypatch</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_generator.TestGenerator.patch" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_generator.TestGenerator.test_always_target_tasks">
+<code class="descname">test_always_target_tasks</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_generator.TestGenerator.test_always_target_tasks" title="Permalink to this definition">¶</a></dt>
+<dd><p>The target_task_graph includes tasks with ‘always_target’</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_generator.TestGenerator.test_full_task_graph">
+<code class="descname">test_full_task_graph</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_generator.TestGenerator.test_full_task_graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>The full_task_graph property has all tasks, and links</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_generator.TestGenerator.test_full_task_set">
+<code class="descname">test_full_task_set</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_generator.TestGenerator.test_full_task_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>The full_task_set property has all tasks</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_generator.TestGenerator.test_kind_ordering">
+<code class="descname">test_kind_ordering</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_generator.TestGenerator.test_kind_ordering" title="Permalink to this definition">¶</a></dt>
+<dd><p>When task kinds depend on each other, they are loaded in postorder</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_generator.TestGenerator.test_optimized_task_graph">
+<code class="descname">test_optimized_task_graph</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_generator.TestGenerator.test_optimized_task_graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>The optimized task graph contains task ids</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_generator.TestGenerator.test_target_task_graph">
+<code class="descname">test_target_task_graph</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_generator.TestGenerator.test_target_task_graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>The target_task_graph property has the targeted tasks and deps</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_generator.TestGenerator.test_target_task_set">
+<code class="descname">test_target_task_set</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_generator.TestGenerator.test_target_task_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>The target_task_set property has the targeted tasks</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="taskgraph.test.test_generator.WithFakeKind">
+<em class="property">class </em><code class="descclassname">taskgraph.test.test_generator.</code><code class="descname">WithFakeKind</code><span class="sig-paren">(</span><em>root_dir</em>, <em>parameters</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_generator.WithFakeKind" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="taskgraph.html#taskgraph.generator.TaskGraphGenerator" title="taskgraph.generator.TaskGraphGenerator"><code class="xref py py-class docutils literal"><span class="pre">taskgraph.generator.TaskGraphGenerator</span></code></a></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.test.test_generator.fake_load_graph_config">
+<code class="descclassname">taskgraph.test.test_generator.</code><code class="descname">fake_load_graph_config</code><span class="sig-paren">(</span><em>root_dir</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_generator.fake_load_graph_config" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.test.test_generator.fake_loader">
+<code class="descclassname">taskgraph.test.test_generator.</code><code class="descname">fake_loader</code><span class="sig-paren">(</span><em>kind</em>, <em>path</em>, <em>config</em>, <em>parameters</em>, <em>loaded_tasks</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_generator.fake_loader" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.test.test_graph">
+<span id="taskgraph-test-test-graph-module"></span><h2>taskgraph.test.test_graph module<a class="headerlink" href="#module-taskgraph.test.test_graph" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="taskgraph.test.test_graph.TestGraph">
+<em class="property">class </em><code class="descclassname">taskgraph.test.test_graph.</code><code class="descname">TestGraph</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_graph.TestGraph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="taskgraph.test.test_graph.TestGraph.assert_postorder">
+<code class="descname">assert_postorder</code><span class="sig-paren">(</span><em>seq</em>, <em>all_nodes</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_graph.TestGraph.assert_postorder" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_graph.TestGraph.assert_preorder">
+<code class="descname">assert_preorder</code><span class="sig-paren">(</span><em>seq</em>, <em>all_nodes</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_graph.TestGraph.assert_preorder" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="taskgraph.test.test_graph.TestGraph.diamonds">
+<code class="descname">diamonds</code><em class="property"> = &lt;Graph nodes=set([u'A', u'C', u'B', u'E', u'D', u'G', u'F', u'I', u'H', u'J']) edges=set([(u'G', u'I', u'L'), (u'E', u'G', u'L'), (u'F', u'I', u'L'), (u'A', u'D', u'L'), (u'D', u'G', u'L'), (u'C', u'H', u'L'), (u'D', u'F', u'L'), (u'B', u'E', u'L'), (u'B', u'D', u'L'), (u'A', u'F', u'L'), (u'H', u'J', u'L'), (u'E', u'H', u'L'), (u'G', u'J', u'L'), (u'C', u'E', u'L')])&gt;</em><a class="headerlink" href="#taskgraph.test.test_graph.TestGraph.diamonds" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="taskgraph.test.test_graph.TestGraph.disjoint">
+<code class="descname">disjoint</code><em class="property"> = &lt;Graph nodes=set([u'\u03b1', u'\u03b2', u'\u03b3', u'1', u'3', u'2', u'4']) edges=set([(u'4', u'3', u'green'), (u'2', u'1', u'red'), (u'3', u'1', u'red'), (u'3', u'2', u'green'), (u'\u03b2', u'\u03b3', u'\u03ba\u03cc\u03ba\u03ba\u03b9\u03bd\u03bf'), (u'\u03b1', u'\u03b2', u'\u03c0\u03c1\u03ac\u03c3\u03b9\u03bd\u03bf'), (u'\u03b1', u'\u03b3', u'\u03bc\u03c0\u03bb\u03b5')])&gt;</em><a class="headerlink" href="#taskgraph.test.test_graph.TestGraph.disjoint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="taskgraph.test.test_graph.TestGraph.linear">
+<code class="descname">linear</code><em class="property"> = &lt;Graph nodes=set([u'1', u'3', u'2', u'4']) edges=set([(u'2', u'3', u'L'), (u'1', u'2', u'L'), (u'3', u'4', u'L')])&gt;</em><a class="headerlink" href="#taskgraph.test.test_graph.TestGraph.linear" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="taskgraph.test.test_graph.TestGraph.multi_edges">
+<code class="descname">multi_edges</code><em class="property"> = &lt;Graph nodes=set([u'1', u'3', u'2', u'4']) edges=set([(u'4', u'3', u'green'), (u'2', u'1', u'red'), (u'3', u'1', u'red'), (u'3', u'2', u'green'), (u'2', u'1', u'blue'), (u'3', u'2', u'blue')])&gt;</em><a class="headerlink" href="#taskgraph.test.test_graph.TestGraph.multi_edges" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_graph.TestGraph.test_links_dict">
+<code class="descname">test_links_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_graph.TestGraph.test_links_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>link dict for a graph with multiple edges is correct</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_graph.TestGraph.test_named_links_dict">
+<code class="descname">test_named_links_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_graph.TestGraph.test_named_links_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>named link dict for a graph with multiple edges is correct</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_graph.TestGraph.test_reverse_links_dict">
+<code class="descname">test_reverse_links_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_graph.TestGraph.test_reverse_links_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>reverse link dict for a graph with multiple edges is correct</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_graph.TestGraph.test_transitive_closure_disjoint">
+<code class="descname">test_transitive_closure_disjoint</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_graph.TestGraph.test_transitive_closure_disjoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>transitive closure of a disjoint set is a subset</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_graph.TestGraph.test_transitive_closure_disjoint_edges">
+<code class="descname">test_transitive_closure_disjoint_edges</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_graph.TestGraph.test_transitive_closure_disjoint_edges" title="Permalink to this definition">¶</a></dt>
+<dd><p>transitive closure of a disjoint graph keeps those edges</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_graph.TestGraph.test_transitive_closure_empty">
+<code class="descname">test_transitive_closure_empty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_graph.TestGraph.test_transitive_closure_empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>transitive closure of an empty set is an empty graph</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_graph.TestGraph.test_transitive_closure_linear">
+<code class="descname">test_transitive_closure_linear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_graph.TestGraph.test_transitive_closure_linear" title="Permalink to this definition">¶</a></dt>
+<dd><p>transitive closure of a linear graph includes all nodes in the line</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_graph.TestGraph.test_transitive_closure_multi_edges">
+<code class="descname">test_transitive_closure_multi_edges</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_graph.TestGraph.test_transitive_closure_multi_edges" title="Permalink to this definition">¶</a></dt>
+<dd><p>transitive closure of a tree with multiple edges between nodes keeps those edges</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_graph.TestGraph.test_transitive_closure_trees">
+<code class="descname">test_transitive_closure_trees</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_graph.TestGraph.test_transitive_closure_trees" title="Permalink to this definition">¶</a></dt>
+<dd><p>transitive closure of a tree, at two non-root nodes, is the two subtrees</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_graph.TestGraph.test_visit_postorder_diamonds">
+<code class="descname">test_visit_postorder_diamonds</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_graph.TestGraph.test_visit_postorder_diamonds" title="Permalink to this definition">¶</a></dt>
+<dd><p>postorder visit of a graph full of diamonds satisfies invariant</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_graph.TestGraph.test_visit_postorder_disjoint">
+<code class="descname">test_visit_postorder_disjoint</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_graph.TestGraph.test_visit_postorder_disjoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>postorder visit of a disjoint graph satisfies invariant</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_graph.TestGraph.test_visit_postorder_empty">
+<code class="descname">test_visit_postorder_empty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_graph.TestGraph.test_visit_postorder_empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>postorder visit of an empty graph is empty</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_graph.TestGraph.test_visit_postorder_multi_edges">
+<code class="descname">test_visit_postorder_multi_edges</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_graph.TestGraph.test_visit_postorder_multi_edges" title="Permalink to this definition">¶</a></dt>
+<dd><p>postorder visit of a graph with duplicate edges satisfies invariant</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_graph.TestGraph.test_visit_postorder_tree">
+<code class="descname">test_visit_postorder_tree</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_graph.TestGraph.test_visit_postorder_tree" title="Permalink to this definition">¶</a></dt>
+<dd><p>postorder visit of a tree satisfies invariant</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_graph.TestGraph.test_visit_preorder_diamonds">
+<code class="descname">test_visit_preorder_diamonds</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_graph.TestGraph.test_visit_preorder_diamonds" title="Permalink to this definition">¶</a></dt>
+<dd><p>preorder visit of a graph full of diamonds satisfies invariant</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_graph.TestGraph.test_visit_preorder_disjoint">
+<code class="descname">test_visit_preorder_disjoint</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_graph.TestGraph.test_visit_preorder_disjoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>preorder visit of a disjoint graph satisfies invariant</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_graph.TestGraph.test_visit_preorder_multi_edges">
+<code class="descname">test_visit_preorder_multi_edges</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_graph.TestGraph.test_visit_preorder_multi_edges" title="Permalink to this definition">¶</a></dt>
+<dd><p>preorder visit of a graph with duplicate edges satisfies invariant</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_graph.TestGraph.test_visit_preorder_tree">
+<code class="descname">test_visit_preorder_tree</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_graph.TestGraph.test_visit_preorder_tree" title="Permalink to this definition">¶</a></dt>
+<dd><p>preorder visit of a tree satisfies invariant</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="taskgraph.test.test_graph.TestGraph.tree">
+<code class="descname">tree</code><em class="property"> = &lt;Graph nodes=set([u'a', u'c', u'b', u'e', u'd', u'g', u'f']) edges=set([(u'b', u'd', u'K'), (u'c', u'f', u'N'), (u'b', u'e', u'K'), (u'a', u'b', u'L'), (u'c', u'g', u'N'), (u'a', u'c', u'L')])&gt;</em><a class="headerlink" href="#taskgraph.test.test_graph.TestGraph.tree" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.test.test_morph">
+<span id="taskgraph-test-test-morph-module"></span><h2>taskgraph.test.test_morph module<a class="headerlink" href="#module-taskgraph.test.test_morph" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="taskgraph.test.test_morph.MorphTestCase">
+<em class="property">class </em><code class="descclassname">taskgraph.test.test_morph.</code><code class="descname">MorphTestCase</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_morph.MorphTestCase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="taskgraph.test.test_morph.MorphTestCase.make_taskgraph">
+<code class="descname">make_taskgraph</code><span class="sig-paren">(</span><em>tasks</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_morph.MorphTestCase.make_taskgraph" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="taskgraph.test.test_morph.TestApplyJSONeTemplates">
+<em class="property">class </em><code class="descclassname">taskgraph.test.test_morph.</code><code class="descname">TestApplyJSONeTemplates</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_morph.TestApplyJSONeTemplates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#taskgraph.test.test_morph.MorphTestCase" title="taskgraph.test.test_morph.MorphTestCase"><code class="xref py py-class docutils literal"><span class="pre">taskgraph.test.test_morph.MorphTestCase</span></code></a></p>
+<dl class="attribute">
+<dt id="taskgraph.test.test_morph.TestApplyJSONeTemplates.tasks">
+<code class="descname">tasks</code><em class="property"> = [{u'attributes': {}, u'kind': u'build', u'task': {u'tags': {u'kind': u'build'}, u'payload': {u'env': {u'FOO': u'BAR'}}, u'extra': {u'treeherder': {u'symbol': u'B', u'group': u'tc'}}}, u'label': u'a'}, {u'attributes': {}, u'kind': u'test', u'task': {u'tags': {u'kind': u'test'}, u'payload': {u'env': {u'FOO': u'BAR'}}, u'extra': {u'treeherder': {u'symbol': u't', u'group': u'tc'}}}, u'label': u'b'}]</em><a class="headerlink" href="#taskgraph.test.test_morph.TestApplyJSONeTemplates.tasks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_morph.TestApplyJSONeTemplates.test_template_artifact">
+<code class="descname">test_template_artifact</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_morph.TestApplyJSONeTemplates.test_template_artifact" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_morph.TestApplyJSONeTemplates.test_template_env">
+<code class="descname">test_template_env</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_morph.TestApplyJSONeTemplates.test_template_env" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_morph.TestApplyJSONeTemplates.test_template_rebuild">
+<code class="descname">test_template_rebuild</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_morph.TestApplyJSONeTemplates.test_template_rebuild" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="taskgraph.test.test_morph.TestIndexTask">
+<em class="property">class </em><code class="descclassname">taskgraph.test.test_morph.</code><code class="descname">TestIndexTask</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_morph.TestIndexTask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#taskgraph.test.test_morph.MorphTestCase" title="taskgraph.test.test_morph.MorphTestCase"><code class="xref py py-class docutils literal"><span class="pre">taskgraph.test.test_morph.MorphTestCase</span></code></a></p>
+<dl class="method">
+<dt id="taskgraph.test.test_morph.TestIndexTask.test_make_index_tasks">
+<code class="descname">test_make_index_tasks</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_morph.TestIndexTask.test_make_index_tasks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.test.test_optimize">
+<span id="taskgraph-test-test-optimize-module"></span><h2>taskgraph.test.test_optimize module<a class="headerlink" href="#module-taskgraph.test.test_optimize" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="taskgraph.test.test_optimize.Remove">
+<em class="property">class </em><code class="descclassname">taskgraph.test.test_optimize.</code><code class="descname">Remove</code><a class="headerlink" href="#taskgraph.test.test_optimize.Remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="taskgraph.html#taskgraph.optimize.OptimizationStrategy" title="taskgraph.optimize.OptimizationStrategy"><code class="xref py py-class docutils literal"><span class="pre">taskgraph.optimize.OptimizationStrategy</span></code></a></p>
+<dl class="method">
+<dt id="taskgraph.test.test_optimize.Remove.should_remove_task">
+<code class="descname">should_remove_task</code><span class="sig-paren">(</span><em>task</em>, <em>params</em>, <em>arg</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_optimize.Remove.should_remove_task" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="taskgraph.test.test_optimize.Replace">
+<em class="property">class </em><code class="descclassname">taskgraph.test.test_optimize.</code><code class="descname">Replace</code><a class="headerlink" href="#taskgraph.test.test_optimize.Replace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="taskgraph.html#taskgraph.optimize.OptimizationStrategy" title="taskgraph.optimize.OptimizationStrategy"><code class="xref py py-class docutils literal"><span class="pre">taskgraph.optimize.OptimizationStrategy</span></code></a></p>
+<dl class="method">
+<dt id="taskgraph.test.test_optimize.Replace.should_replace_task">
+<code class="descname">should_replace_task</code><span class="sig-paren">(</span><em>task</em>, <em>params</em>, <em>taskid</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_optimize.Replace.should_replace_task" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="taskgraph.test.test_optimize.TestOptimize">
+<em class="property">class </em><code class="descclassname">taskgraph.test.test_optimize.</code><code class="descname">TestOptimize</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_optimize.TestOptimize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="taskgraph.test.test_optimize.TestOptimize.assert_remove_tasks">
+<code class="descname">assert_remove_tasks</code><span class="sig-paren">(</span><em>graph</em>, <em>exp_removed</em>, <em>do_not_optimize=set([])</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_optimize.TestOptimize.assert_remove_tasks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_optimize.TestOptimize.assert_replace_tasks">
+<code class="descname">assert_replace_tasks</code><span class="sig-paren">(</span><em>graph</em>, <em>exp_replaced</em>, <em>exp_removed=set([])</em>, <em>exp_label_to_taskid={}</em>, <em>do_not_optimize=None</em>, <em>label_to_taskid=None</em>, <em>removed_tasks=None</em>, <em>existing_tasks=None</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_optimize.TestOptimize.assert_replace_tasks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_optimize.TestOptimize.assert_subgraph">
+<code class="descname">assert_subgraph</code><span class="sig-paren">(</span><em>graph</em>, <em>removed_tasks</em>, <em>replaced_tasks</em>, <em>label_to_taskid</em>, <em>exp_subgraph</em>, <em>exp_label_to_taskid</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_optimize.TestOptimize.assert_subgraph" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_optimize.TestOptimize.make_graph">
+<code class="descname">make_graph</code><span class="sig-paren">(</span><em>*tasks_and_edges</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_optimize.TestOptimize.make_graph" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_optimize.TestOptimize.make_opt_graph">
+<code class="descname">make_opt_graph</code><span class="sig-paren">(</span><em>*tasks_and_edges</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_optimize.TestOptimize.make_opt_graph" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_optimize.TestOptimize.make_task">
+<code class="descname">make_task</code><span class="sig-paren">(</span><em>label</em>, <em>optimization=None</em>, <em>task_def=None</em>, <em>optimized=None</em>, <em>task_id=None</em>, <em>dependencies=None</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_optimize.TestOptimize.make_task" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_optimize.TestOptimize.make_triangle">
+<code class="descname">make_triangle</code><span class="sig-paren">(</span><em>**opts</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_optimize.TestOptimize.make_triangle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a “triangle” graph like this:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>t1 &lt;——– t3</dt>
+<dd><a href="#id1"><span class="problematic" id="id2">`</span></a>—- t2 –’</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="taskgraph.test.test_optimize.TestOptimize.strategies">
+<code class="descname">strategies</code><em class="property"> = {u'never': &lt;taskgraph.optimize.OptimizationStrategy object&gt;, u'remove': &lt;taskgraph.test.test_optimize.Remove object&gt;, u'replace': &lt;taskgraph.test.test_optimize.Replace object&gt;}</em><a class="headerlink" href="#taskgraph.test.test_optimize.TestOptimize.strategies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_optimize.TestOptimize.test_get_subgraph_no_change">
+<code class="descname">test_get_subgraph_no_change</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_optimize.TestOptimize.test_get_subgraph_no_change" title="Permalink to this definition">¶</a></dt>
+<dd><p>get_subgraph returns a similarly-shaped subgraph when nothing is removed</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_optimize.TestOptimize.test_get_subgraph_removed">
+<code class="descname">test_get_subgraph_removed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_optimize.TestOptimize.test_get_subgraph_removed" title="Permalink to this definition">¶</a></dt>
+<dd><p>get_subgraph returns a smaller subgraph when tasks are removed</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_optimize.TestOptimize.test_get_subgraph_removed_dep">
+<code class="descname">test_get_subgraph_removed_dep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_optimize.TestOptimize.test_get_subgraph_removed_dep" title="Permalink to this definition">¶</a></dt>
+<dd><p>get_subgraph raises an Exception when a task depends on a removed task</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_optimize.TestOptimize.test_get_subgraph_replaced">
+<code class="descname">test_get_subgraph_replaced</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_optimize.TestOptimize.test_get_subgraph_replaced" title="Permalink to this definition">¶</a></dt>
+<dd><p>get_subgraph returns a smaller subgraph when tasks are replaced</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_optimize.TestOptimize.test_remove_tasks_all">
+<code class="descname">test_remove_tasks_all</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_optimize.TestOptimize.test_remove_tasks_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>A graph full of optimization=remove has removes everything</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_optimize.TestOptimize.test_remove_tasks_blocked">
+<code class="descname">test_remove_tasks_blocked</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_optimize.TestOptimize.test_remove_tasks_blocked" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removable tasks that are depended on by non-removable tasks are not removed</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_optimize.TestOptimize.test_remove_tasks_do_not_optimize">
+<code class="descname">test_remove_tasks_do_not_optimize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_optimize.TestOptimize.test_remove_tasks_do_not_optimize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removable tasks that are marked do_not_optimize are not removed</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_optimize.TestOptimize.test_remove_tasks_never">
+<code class="descname">test_remove_tasks_never</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_optimize.TestOptimize.test_remove_tasks_never" title="Permalink to this definition">¶</a></dt>
+<dd><p>A graph full of optimization=never has nothing removed</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_optimize.TestOptimize.test_replace_tasks_all">
+<code class="descname">test_replace_tasks_all</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_optimize.TestOptimize.test_replace_tasks_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>All replacable tasks are replaced when strategy is ‘replace’</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_optimize.TestOptimize.test_replace_tasks_blocked">
+<code class="descname">test_replace_tasks_blocked</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_optimize.TestOptimize.test_replace_tasks_blocked" title="Permalink to this definition">¶</a></dt>
+<dd><p>A task cannot be replaced if it depends on one that was not replaced</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_optimize.TestOptimize.test_replace_tasks_do_not_optimize">
+<code class="descname">test_replace_tasks_do_not_optimize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_optimize.TestOptimize.test_replace_tasks_do_not_optimize" title="Permalink to this definition">¶</a></dt>
+<dd><p>A task cannot be replaced if it depends on one that was not replaced</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_optimize.TestOptimize.test_replace_tasks_never">
+<code class="descname">test_replace_tasks_never</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_optimize.TestOptimize.test_replace_tasks_never" title="Permalink to this definition">¶</a></dt>
+<dd><p>No tasks are replaced when strategy is ‘never’</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_optimize.TestOptimize.test_replace_tasks_removed">
+<code class="descname">test_replace_tasks_removed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_optimize.TestOptimize.test_replace_tasks_removed" title="Permalink to this definition">¶</a></dt>
+<dd><p>A task can be replaced with nothing</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.test.test_parameters">
+<span id="taskgraph-test-test-parameters-module"></span><h2>taskgraph.test.test_parameters module<a class="headerlink" href="#module-taskgraph.test.test_parameters" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="taskgraph.test.test_parameters.TestCommParameters">
+<em class="property">class </em><code class="descclassname">taskgraph.test.test_parameters.</code><code class="descname">TestCommParameters</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_parameters.TestCommParameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="taskgraph.test.test_parameters.TestCommParameters.test_Parameters_check">
+<code class="descname">test_Parameters_check</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_parameters.TestCommParameters.test_Parameters_check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specifying all of the gecko and comm parameters doesn’t result in an error.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_parameters.TestCommParameters.test_Parameters_check_extra">
+<code class="descname">test_Parameters_check_extra</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_parameters.TestCommParameters.test_Parameters_check_extra" title="Permalink to this definition">¶</a></dt>
+<dd><p>If parameters other than the global and comm parameters are specified,
+an error is reported.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_parameters.TestCommParameters.test_Parameters_check_missing">
+<code class="descname">test_Parameters_check_missing</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_parameters.TestCommParameters.test_Parameters_check_missing" title="Permalink to this definition">¶</a></dt>
+<dd><p>If any of the comm parameters are specified, all of them must be specified.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="taskgraph.test.test_parameters.TestCommParameters.vals">
+<code class="descname">vals</code><em class="property"> = {u'release_history': u'release_history', u'try_options': u'try_options', u'owner': u'owner', u'include_nightly': u'include_nightly', u'filters': u'filters', u'pushlog_id': u'pushlog_id', u'message': u'message', u'try_mode': u'try_mode', u'existing_tasks': u'existing_tasks', u'head_ref': u'head_ref', u'build_date': u'build_date', u'build_number': u'build_number', u'head_rev': u'head_rev', u'comm_head_ref': u'comm_head_ref', u'comm_base_repository': u'comm_base_repository', u'base_repository': u'base_repository', u'comm_head_rev': u'comm_head_rev', u'comm_head_repository': u'comm_head_repository', u'do_not_optimize': u'do_not_optimize', u'next_version': u'next_version', u'moz_build_date': u'moz_build_date', u'head_repository': u'head_repository', u'level': u'level', u'optimize_target_tasks': u'optimize_target_tasks', u'target_tasks_method': u'target_tasks_method', u'project': u'project', u'try_task_config': u'try_task_config', u'pushdate': u'pushdate'}</em><a class="headerlink" href="#taskgraph.test.test_parameters.TestCommParameters.vals" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="taskgraph.test.test_parameters.TestParameters">
+<em class="property">class </em><code class="descclassname">taskgraph.test.test_parameters.</code><code class="descname">TestParameters</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_parameters.TestParameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="taskgraph.test.test_parameters.TestParameters.test_Parameters_check">
+<code class="descname">test_Parameters_check</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_parameters.TestParameters.test_Parameters_check" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_parameters.TestParameters.test_Parameters_check_extra">
+<code class="descname">test_Parameters_check_extra</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_parameters.TestParameters.test_Parameters_check_extra" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_parameters.TestParameters.test_Parameters_check_missing">
+<code class="descname">test_Parameters_check_missing</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_parameters.TestParameters.test_Parameters_check_missing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_parameters.TestParameters.test_Parameters_get">
+<code class="descname">test_Parameters_get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_parameters.TestParameters.test_Parameters_get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_parameters.TestParameters.test_Parameters_immutable">
+<code class="descname">test_Parameters_immutable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_parameters.TestParameters.test_Parameters_immutable" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_parameters.TestParameters.test_Parameters_invalid_KeyError">
+<code class="descname">test_Parameters_invalid_KeyError</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_parameters.TestParameters.test_Parameters_invalid_KeyError" title="Permalink to this definition">¶</a></dt>
+<dd><p>even if the value is present, if it’s not a valid property, raise KeyError</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_parameters.TestParameters.test_Parameters_missing_KeyError">
+<code class="descname">test_Parameters_missing_KeyError</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_parameters.TestParameters.test_Parameters_missing_KeyError" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_parameters.TestParameters.test_load_parameters_file_json">
+<code class="descname">test_load_parameters_file_json</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_parameters.TestParameters.test_load_parameters_file_json" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_parameters.TestParameters.test_load_parameters_file_yaml">
+<code class="descname">test_load_parameters_file_yaml</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_parameters.TestParameters.test_load_parameters_file_yaml" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="taskgraph.test.test_parameters.TestParameters.vals">
+<code class="descname">vals</code><em class="property"> = {u'release_history': u'release_history', u'try_options': u'try_options', u'owner': u'owner', u'include_nightly': u'include_nightly', u'filters': u'filters', u'pushlog_id': u'pushlog_id', u'message': u'message', u'try_mode': u'try_mode', u'existing_tasks': u'existing_tasks', u'head_ref': u'head_ref', u'build_date': u'build_date', u'build_number': u'build_number', u'head_rev': u'head_rev', u'base_repository': u'base_repository', u'do_not_optimize': u'do_not_optimize', u'next_version': u'next_version', u'moz_build_date': u'moz_build_date', u'head_repository': u'head_repository', u'level': u'level', u'optimize_target_tasks': u'optimize_target_tasks', u'target_tasks_method': u'target_tasks_method', u'project': u'project', u'try_task_config': u'try_task_config', u'pushdate': u'pushdate'}</em><a class="headerlink" href="#taskgraph.test.test_parameters.TestParameters.vals" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.test.test_target_tasks">
+<span id="taskgraph-test-test-target-tasks-module"></span><h2>taskgraph.test.test_target_tasks module<a class="headerlink" href="#module-taskgraph.test.test_target_tasks" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="taskgraph.test.test_target_tasks.FakeTryOptionSyntax">
+<em class="property">class </em><code class="descclassname">taskgraph.test.test_target_tasks.</code><code class="descname">FakeTryOptionSyntax</code><span class="sig-paren">(</span><em>message</em>, <em>task_graph</em>, <em>graph_config</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_target_tasks.FakeTryOptionSyntax" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="taskgraph.test.test_target_tasks.FakeTryOptionSyntax.task_matches">
+<code class="descname">task_matches</code><span class="sig-paren">(</span><em>task</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_target_tasks.FakeTryOptionSyntax.task_matches" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="taskgraph.test.test_target_tasks.TestTargetTasks">
+<em class="property">class </em><code class="descclassname">taskgraph.test.test_target_tasks.</code><code class="descname">TestTargetTasks</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_target_tasks.TestTargetTasks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="taskgraph.test.test_target_tasks.TestTargetTasks.default_matches">
+<code class="descname">default_matches</code><span class="sig-paren">(</span><em>run_on_projects</em>, <em>project</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_target_tasks.TestTargetTasks.default_matches" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_target_tasks.TestTargetTasks.fake_TryOptionSyntax">
+<code class="descname">fake_TryOptionSyntax</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwds</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_target_tasks.TestTargetTasks.fake_TryOptionSyntax" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_target_tasks.TestTargetTasks.make_task_graph">
+<code class="descname">make_task_graph</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_target_tasks.TestTargetTasks.make_task_graph" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_target_tasks.TestTargetTasks.test_default_all">
+<code class="descname">test_default_all</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_target_tasks.TestTargetTasks.test_default_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>run_on_projects=[all] includes release, integration, and other projects</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_target_tasks.TestTargetTasks.test_default_integration">
+<code class="descname">test_default_integration</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_target_tasks.TestTargetTasks.test_default_integration" title="Permalink to this definition">¶</a></dt>
+<dd><p>run_on_projects=[integration] includes integration projects</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_target_tasks.TestTargetTasks.test_default_nothing">
+<code class="descname">test_default_nothing</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_target_tasks.TestTargetTasks.test_default_nothing" title="Permalink to this definition">¶</a></dt>
+<dd><p>run_on_projects=[] includes nothing</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_target_tasks.TestTargetTasks.test_default_release">
+<code class="descname">test_default_release</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_target_tasks.TestTargetTasks.test_default_release" title="Permalink to this definition">¶</a></dt>
+<dd><p>run_on_projects=[release] includes release projects</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_target_tasks.TestTargetTasks.test_empty_try">
+<code class="descname">test_empty_try</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_target_tasks.TestTargetTasks.test_empty_try" title="Permalink to this definition">¶</a></dt>
+<dd><p>try_mode = None runs nothing</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_target_tasks.TestTargetTasks.test_try_option_syntax">
+<code class="descname">test_try_option_syntax</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_target_tasks.TestTargetTasks.test_try_option_syntax" title="Permalink to this definition">¶</a></dt>
+<dd><p>try_mode = try_option_syntax uses TryOptionSyntax</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_target_tasks.TestTargetTasks.test_try_task_config">
+<code class="descname">test_try_task_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_target_tasks.TestTargetTasks.test_try_task_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>try_mode = try_task_config uses the try config</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.test.test_taskgraph">
+<span id="taskgraph-test-test-taskgraph-module"></span><h2>taskgraph.test.test_taskgraph module<a class="headerlink" href="#module-taskgraph.test.test_taskgraph" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="taskgraph.test.test_taskgraph.TestTaskGraph">
+<em class="property">class </em><code class="descclassname">taskgraph.test.test_taskgraph.</code><code class="descname">TestTaskGraph</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_taskgraph.TestTaskGraph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="attribute">
+<dt id="taskgraph.test.test_taskgraph.TestTaskGraph.maxDiff">
+<code class="descname">maxDiff</code><em class="property"> = None</em><a class="headerlink" href="#taskgraph.test.test_taskgraph.TestTaskGraph.maxDiff" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_taskgraph.TestTaskGraph.test_round_trip">
+<code class="descname">test_round_trip</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_taskgraph.TestTaskGraph.test_round_trip" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_taskgraph.TestTaskGraph.test_taskgraph_to_json">
+<code class="descname">test_taskgraph_to_json</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_taskgraph.TestTaskGraph.test_taskgraph_to_json" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.test.test_transforms_base">
+<span id="taskgraph-test-test-transforms-base-module"></span><h2>taskgraph.test.test_transforms_base module<a class="headerlink" href="#module-taskgraph.test.test_transforms_base" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="taskgraph.test.test_transforms_base.TestTransformSequence">
+<em class="property">class </em><code class="descclassname">taskgraph.test.test_transforms_base.</code><code class="descname">TestTransformSequence</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_transforms_base.TestTransformSequence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="taskgraph.test.test_transforms_base.TestTransformSequence.test_sequence">
+<code class="descname">test_sequence</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_transforms_base.TestTransformSequence.test_sequence" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.test.test_transforms_base.trans1">
+<code class="descclassname">taskgraph.test.test_transforms_base.</code><code class="descname">trans1</code><span class="sig-paren">(</span><em>config</em>, <em>tests</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_transforms_base.trans1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.test.test_transforms_base.trans2">
+<code class="descclassname">taskgraph.test.test_transforms_base.</code><code class="descname">trans2</code><span class="sig-paren">(</span><em>config</em>, <em>tests</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_transforms_base.trans2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.test.test_try_option_syntax">
+<span id="taskgraph-test-test-try-option-syntax-module"></span><h2>taskgraph.test.test_try_option_syntax module<a class="headerlink" href="#module-taskgraph.test.test_try_option_syntax" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="taskgraph.test.test_try_option_syntax.TestTryOptionSyntax">
+<em class="property">class </em><code class="descclassname">taskgraph.test.test_try_option_syntax.</code><code class="descname">TestTryOptionSyntax</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_try_option_syntax.TestTryOptionSyntax" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_all_email">
+<code class="descname">test_all_email</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_all_email" title="Permalink to this definition">¶</a></dt>
+<dd><p>–all-emails sets notifications</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_apostrophe_in_message">
+<code class="descname">test_apostrophe_in_message</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_apostrophe_in_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>apostrophe does not break parsing</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_b_d">
+<code class="descname">test_b_d</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_b_d" title="Permalink to this definition">¶</a></dt>
+<dd><p>-b d should produce build_types=[‘debug’]</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_b_do">
+<code class="descname">test_b_do</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_b_do" title="Permalink to this definition">¶</a></dt>
+<dd><p>-b do should produce both build_types</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_b_dx">
+<code class="descname">test_b_dx</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_b_dx" title="Permalink to this definition">¶</a></dt>
+<dd><p>-b dx should produce build_types=[‘debug’], silently ignoring the x</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_b_o">
+<code class="descname">test_b_o</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_b_o" title="Permalink to this definition">¶</a></dt>
+<dd><p>-b o should produce build_types=[‘opt’]</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_build_o">
+<code class="descname">test_build_o</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_build_o" title="Permalink to this definition">¶</a></dt>
+<dd><p>–build o should produce build_types=[‘opt’]</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_fail_email">
+<code class="descname">test_fail_email</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_fail_email" title="Permalink to this definition">¶</a></dt>
+<dd><p>–failure-emails sets notifications</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_interactive">
+<code class="descname">test_interactive</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_interactive" title="Permalink to this definition">¶</a></dt>
+<dd><p>–interactive sets interactive</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_j_all">
+<code class="descname">test_j_all</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_j_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>-j all sets jobs=None</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_j_job">
+<code class="descname">test_j_job</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_j_job" title="Permalink to this definition">¶</a></dt>
+<dd><p>-j somejob sets jobs=[‘somejob’]</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_j_jobs">
+<code class="descname">test_j_jobs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_j_jobs" title="Permalink to this definition">¶</a></dt>
+<dd><p>-j job1,job2 sets jobs=[‘job1’, ‘job2’]</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_j_twice">
+<code class="descname">test_j_twice</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_j_twice" title="Permalink to this definition">¶</a></dt>
+<dd><p>-j job1 -j job2 sets jobs=job1, job2</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_no_email">
+<code class="descname">test_no_email</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_no_email" title="Permalink to this definition">¶</a></dt>
+<dd><p>no email settings don’t set notifications</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_no_retry">
+<code class="descname">test_no_retry</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_no_retry" title="Permalink to this definition">¶</a></dt>
+<dd><p>–no-retry sets no_retry to true</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_p_all">
+<code class="descname">test_p_all</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_p_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>-p all sets platforms=None</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_p_expands_ridealongs">
+<code class="descname">test_p_expands_ridealongs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_p_expands_ridealongs" title="Permalink to this definition">¶</a></dt>
+<dd><p>-p linux,linux64 includes the RIDEALONG_BUILDS</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_p_linux">
+<code class="descname">test_p_linux</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_p_linux" title="Permalink to this definition">¶</a></dt>
+<dd><p>-p linux sets platforms=[‘linux’, ‘linux-ridealong’]</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_p_linux_win32">
+<code class="descname">test_p_linux_win32</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_p_linux_win32" title="Permalink to this definition">¶</a></dt>
+<dd><p>-p linux,win32 sets platforms=[‘linux’, ‘linux-ridealong’, ‘win32’]</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_profile">
+<code class="descname">test_profile</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_profile" title="Permalink to this definition">¶</a></dt>
+<dd><p>–geckoProfile sets profile to true</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_setenv">
+<code class="descname">test_setenv</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_setenv" title="Permalink to this definition">¶</a></dt>
+<dd><p>–setenv VAR=value adds a environment variables setting to env</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_t_all">
+<code class="descname">test_t_all</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_t_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>-t all sets talos=[..whole list..]</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_t_none">
+<code class="descname">test_t_none</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_t_none" title="Permalink to this definition">¶</a></dt>
+<dd><p>-t none sets talos=[]</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_t_single">
+<code class="descname">test_t_single</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_t_single" title="Permalink to this definition">¶</a></dt>
+<dd><p>-t mochitest-webgl sets talos=[mochitest-webgl]</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_tag">
+<code class="descname">test_tag</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_tag" title="Permalink to this definition">¶</a></dt>
+<dd><p>–tag TAG sets tag to TAG value</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_talos_trigger_tests">
+<code class="descname">test_talos_trigger_tests</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_talos_trigger_tests" title="Permalink to this definition">¶</a></dt>
+<dd><p>–rebuild-talos 10 sets talos_trigger_tests</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_trigger_tests">
+<code class="descname">test_trigger_tests</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_trigger_tests" title="Permalink to this definition">¶</a></dt>
+<dd><p>–rebuild 10 sets trigger_tests</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_u_alias">
+<code class="descname">test_u_alias</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_u_alias" title="Permalink to this definition">¶</a></dt>
+<dd><p>-u mochitest-gl sets unittests=[mochitest-webgl]</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_u_all">
+<code class="descname">test_u_all</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_u_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>-u all sets unittests=[..whole list..]</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_u_chunks">
+<code class="descname">test_u_chunks</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_u_chunks" title="Permalink to this definition">¶</a></dt>
+<dd><p>-u gtest-3,gtest-4 selects the third and fourth chunk of gtest</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_u_chunks_platforms">
+<code class="descname">test_u_chunks_platforms</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_u_chunks_platforms" title="Permalink to this definition">¶</a></dt>
+<dd><p>-u gtest-1[linux,win32] selects the linux and win32 platforms for chunk 1 of gtest</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_u_commas">
+<code class="descname">test_u_commas</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_u_commas" title="Permalink to this definition">¶</a></dt>
+<dd><p>-u mochitest-webgl,gtest sets unittests=both</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_u_multi_alias">
+<code class="descname">test_u_multi_alias</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_u_multi_alias" title="Permalink to this definition">¶</a></dt>
+<dd><p>-u e10s sets unittests=[all e10s unittests]</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_u_none">
+<code class="descname">test_u_none</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_u_none" title="Permalink to this definition">¶</a></dt>
+<dd><p>-u none sets unittests=[]</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_u_platform">
+<code class="descname">test_u_platform</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_u_platform" title="Permalink to this definition">¶</a></dt>
+<dd><p>-u gtest[linux] selects the linux platform for gtest</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_u_platforms">
+<code class="descname">test_u_platforms</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_u_platforms" title="Permalink to this definition">¶</a></dt>
+<dd><p>-u gtest[linux,win32] selects the linux and win32 platforms for gtest</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_u_platforms_negated">
+<code class="descname">test_u_platforms_negated</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_u_platforms_negated" title="Permalink to this definition">¶</a></dt>
+<dd><p>-u gtest[-linux] selects all platforms but linux for gtest</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_u_platforms_negated_pretty">
+<code class="descname">test_u_platforms_negated_pretty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_u_platforms_negated_pretty" title="Permalink to this definition">¶</a></dt>
+<dd><p>-u gtest[Ubuntu,-x64] selects just linux for gtest</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_u_platforms_pretty">
+<code class="descname">test_u_platforms_pretty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_u_platforms_pretty" title="Permalink to this definition">¶</a></dt>
+<dd><p>-u gtest[Ubuntu] selects the linux, linux64, linux64-asan, linux64-stylo-disabled,
+and linux64-stylo-sequential platforms for gtest</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_u_single">
+<code class="descname">test_u_single</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_u_single" title="Permalink to this definition">¶</a></dt>
+<dd><p>-u mochitest-webgl sets unittests=[mochitest-webgl]</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_unknown_args">
+<code class="descname">test_unknown_args</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_try_option_syntax.TestTryOptionSyntax.test_unknown_args" title="Permalink to this definition">¶</a></dt>
+<dd><p>unknown arguments are ignored</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.test.test_try_option_syntax.talos_task">
+<code class="descclassname">taskgraph.test.test_try_option_syntax.</code><code class="descname">talos_task</code><span class="sig-paren">(</span><em>n</em>, <em>tp</em>, <em>bt=u'opt'</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_try_option_syntax.talos_task" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.test.test_try_option_syntax.unittest_task">
+<code class="descclassname">taskgraph.test.test_try_option_syntax.</code><code class="descname">unittest_task</code><span class="sig-paren">(</span><em>n</em>, <em>tp</em>, <em>bt=u'opt'</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_try_option_syntax.unittest_task" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.test.test_util_attributes">
+<span id="taskgraph-test-test-util-attributes-module"></span><h2>taskgraph.test.test_util_attributes module<a class="headerlink" href="#module-taskgraph.test.test_util_attributes" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="taskgraph.test.test_util_attributes.Attrmatch">
+<em class="property">class </em><code class="descclassname">taskgraph.test.test_util_attributes.</code><code class="descname">Attrmatch</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_attributes.Attrmatch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="taskgraph.test.test_util_attributes.Attrmatch.test_all_matches_required">
+<code class="descname">test_all_matches_required</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_attributes.Attrmatch.test_all_matches_required" title="Permalink to this definition">¶</a></dt>
+<dd><p>If only one attribute does not match, the result is False</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_attributes.Attrmatch.test_callable_attribute">
+<code class="descname">test_callable_attribute</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_attributes.Attrmatch.test_callable_attribute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Callable attributes are called and any False causes the match to fail</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_attributes.Attrmatch.test_literal_attribute">
+<code class="descname">test_literal_attribute</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_attributes.Attrmatch.test_literal_attribute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Literal attributes must match exactly</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_attributes.Attrmatch.test_missing_attribute">
+<code class="descname">test_missing_attribute</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_attributes.Attrmatch.test_missing_attribute" title="Permalink to this definition">¶</a></dt>
+<dd><p>If a filtering attribute is not present, no match</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_attributes.Attrmatch.test_set_attribute">
+<code class="descname">test_set_attribute</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_attributes.Attrmatch.test_set_attribute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set attributes require set membership</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_attributes.Attrmatch.test_trivial_match">
+<code class="descname">test_trivial_match</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_attributes.Attrmatch.test_trivial_match" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given no conditions, anything matches</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="taskgraph.test.test_util_attributes.MatchRunOnProjects">
+<em class="property">class </em><code class="descclassname">taskgraph.test.test_util_attributes.</code><code class="descname">MatchRunOnProjects</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_attributes.MatchRunOnProjects" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="taskgraph.test.test_util_attributes.MatchRunOnProjects.test_all">
+<code class="descname">test_all</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_attributes.MatchRunOnProjects.test_all" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_attributes.MatchRunOnProjects.test_combo">
+<code class="descname">test_combo</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_attributes.MatchRunOnProjects.test_combo" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_attributes.MatchRunOnProjects.test_empty">
+<code class="descname">test_empty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_attributes.MatchRunOnProjects.test_empty" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_attributes.MatchRunOnProjects.test_integration">
+<code class="descname">test_integration</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_attributes.MatchRunOnProjects.test_integration" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_attributes.MatchRunOnProjects.test_release">
+<code class="descname">test_release</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_attributes.MatchRunOnProjects.test_release" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.test.test_util_docker">
+<span id="taskgraph-test-test-util-docker-module"></span><h2>taskgraph.test.test_util_docker module<a class="headerlink" href="#module-taskgraph.test.test_util_docker" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="taskgraph.test.test_util_docker.TestDocker">
+<em class="property">class </em><code class="descclassname">taskgraph.test.test_util_docker.</code><code class="descname">TestDocker</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_docker.TestDocker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="taskgraph.test.test_util_docker.TestDocker.test_create_context_absolute_path">
+<code class="descname">test_create_context_absolute_path</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_docker.TestDocker.test_create_context_absolute_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_docker.TestDocker.test_create_context_extra_directory">
+<code class="descname">test_create_context_extra_directory</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_docker.TestDocker.test_create_context_extra_directory" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_docker.TestDocker.test_create_context_missing_extra">
+<code class="descname">test_create_context_missing_extra</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_docker.TestDocker.test_create_context_missing_extra" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_docker.TestDocker.test_create_context_outside_topsrcdir">
+<code class="descname">test_create_context_outside_topsrcdir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_docker.TestDocker.test_create_context_outside_topsrcdir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_docker.TestDocker.test_create_context_tar_basic">
+<code class="descname">test_create_context_tar_basic</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_docker.TestDocker.test_create_context_tar_basic" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_docker.TestDocker.test_create_context_topsrcdir_files">
+<code class="descname">test_create_context_topsrcdir_files</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_docker.TestDocker.test_create_context_topsrcdir_files" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_docker.TestDocker.test_docker_image_default_registry">
+<code class="descname">test_docker_image_default_registry</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_docker.TestDocker.test_docker_image_default_registry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_docker.TestDocker.test_docker_image_default_registry_by_tag">
+<code class="descname">test_docker_image_default_registry_by_tag</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_docker.TestDocker.test_docker_image_default_registry_by_tag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_docker.TestDocker.test_docker_image_explicit_registry">
+<code class="descname">test_docker_image_explicit_registry</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_docker.TestDocker.test_docker_image_explicit_registry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_docker.TestDocker.test_docker_image_explicit_registry_by_tag">
+<code class="descname">test_docker_image_explicit_registry_by_tag</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_docker.TestDocker.test_docker_image_explicit_registry_by_tag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_docker.TestDocker.test_generate_context_hash">
+<code class="descname">test_generate_context_hash</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_docker.TestDocker.test_generate_context_hash" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.test.test_util_parameterization">
+<span id="taskgraph-test-test-util-parameterization-module"></span><h2>taskgraph.test.test_util_parameterization module<a class="headerlink" href="#module-taskgraph.test.test_util_parameterization" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="taskgraph.test.test_util_parameterization.TestTaskRefs">
+<em class="property">class </em><code class="descclassname">taskgraph.test.test_util_parameterization.</code><code class="descname">TestTaskRefs</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_parameterization.TestTaskRefs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="taskgraph.test.test_util_parameterization.TestTaskRefs.do">
+<code class="descname">do</code><span class="sig-paren">(</span><em>input</em>, <em>output</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_parameterization.TestTaskRefs.do" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_parameterization.TestTaskRefs.test_embedded">
+<code class="descname">test_embedded</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_parameterization.TestTaskRefs.test_embedded" title="Permalink to this definition">¶</a></dt>
+<dd><p>resolve_task_references resolves ebmedded references</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_parameterization.TestTaskRefs.test_escaping">
+<code class="descname">test_escaping</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_parameterization.TestTaskRefs.test_escaping" title="Permalink to this definition">¶</a></dt>
+<dd><p>resolve_task_references resolves escapes in task references</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_parameterization.TestTaskRefs.test_in_dict">
+<code class="descname">test_in_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_parameterization.TestTaskRefs.test_in_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>resolve_task_references resolves task references in a dict</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_parameterization.TestTaskRefs.test_in_list">
+<code class="descname">test_in_list</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_parameterization.TestTaskRefs.test_in_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>resolve_task_references resolves task references in a list</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_parameterization.TestTaskRefs.test_invalid">
+<code class="descname">test_invalid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_parameterization.TestTaskRefs.test_invalid" title="Permalink to this definition">¶</a></dt>
+<dd><p>resolve_task_references raises a KeyError on reference to an invalid task</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_parameterization.TestTaskRefs.test_multikey">
+<code class="descname">test_multikey</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_parameterization.TestTaskRefs.test_multikey" title="Permalink to this definition">¶</a></dt>
+<dd><p>resolve_task_references is ignored when there is another key in the dict</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_parameterization.TestTaskRefs.test_multiple">
+<code class="descname">test_multiple</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_parameterization.TestTaskRefs.test_multiple" title="Permalink to this definition">¶</a></dt>
+<dd><p>resolve_task_references resolves multiple references in the same string</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_parameterization.TestTaskRefs.test_no_change">
+<code class="descname">test_no_change</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_parameterization.TestTaskRefs.test_no_change" title="Permalink to this definition">¶</a></dt>
+<dd><p>resolve_task_references does nothing when there are no task references</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="taskgraph.test.test_util_parameterization.TestTimestamps">
+<em class="property">class </em><code class="descclassname">taskgraph.test.test_util_parameterization.</code><code class="descname">TestTimestamps</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_parameterization.TestTimestamps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="taskgraph.test.test_util_parameterization.TestTimestamps.test_appears_with_other_keys">
+<code class="descname">test_appears_with_other_keys</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_parameterization.TestTimestamps.test_appears_with_other_keys" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_parameterization.TestTimestamps.test_buried_replacement">
+<code class="descname">test_buried_replacement</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_parameterization.TestTimestamps.test_buried_replacement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_parameterization.TestTimestamps.test_no_change">
+<code class="descname">test_no_change</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_parameterization.TestTimestamps.test_no_change" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.test.test_util_python_path">
+<span id="taskgraph-test-test-util-python-path-module"></span><h2>taskgraph.test.test_util_python_path module<a class="headerlink" href="#module-taskgraph.test.test_util_python_path" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="taskgraph.test.test_util_python_path.TestObject">
+<em class="property">class </em><code class="descclassname">taskgraph.test.test_util_python_path.</code><code class="descname">TestObject</code><a class="headerlink" href="#taskgraph.test.test_util_python_path.TestObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="taskgraph.test.test_util_python_path.TestObject.testClassProperty">
+<code class="descname">testClassProperty</code><em class="property"> = &lt;object object&gt;</em><a class="headerlink" href="#taskgraph.test.test_util_python_path.TestObject.testClassProperty" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="taskgraph.test.test_util_python_path.TestPythonPath">
+<em class="property">class </em><code class="descclassname">taskgraph.test.test_util_python_path.</code><code class="descname">TestPythonPath</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_python_path.TestPythonPath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="taskgraph.test.test_util_python_path.TestPythonPath.test_find_object_exists">
+<code class="descname">test_find_object_exists</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_python_path.TestPythonPath.test_find_object_exists" title="Permalink to this definition">¶</a></dt>
+<dd><p>find_object finds an existing object</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_python_path.TestPythonPath.test_find_object_no_such_module">
+<code class="descname">test_find_object_no_such_module</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_python_path.TestPythonPath.test_find_object_no_such_module" title="Permalink to this definition">¶</a></dt>
+<dd><p>find_object raises ImportError for a nonexistent module</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_python_path.TestPythonPath.test_find_object_no_such_object">
+<code class="descname">test_find_object_no_such_object</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_python_path.TestPythonPath.test_find_object_no_such_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>find_object raises AttributeError for a nonexistent object</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.test.test_util_schema">
+<span id="taskgraph-test-test-util-schema-module"></span><h2>taskgraph.test.test_util_schema module<a class="headerlink" href="#module-taskgraph.test.test_util_schema" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="taskgraph.test.test_util_schema.TestResolveKeyedBy">
+<em class="property">class </em><code class="descclassname">taskgraph.test.test_util_schema.</code><code class="descname">TestResolveKeyedBy</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_schema.TestResolveKeyedBy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="taskgraph.test.test_util_schema.TestResolveKeyedBy.test_match_default">
+<code class="descname">test_match_default</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_schema.TestResolveKeyedBy.test_match_default" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_schema.TestResolveKeyedBy.test_match_extra_value">
+<code class="descname">test_match_extra_value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_schema.TestResolveKeyedBy.test_match_extra_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_schema.TestResolveKeyedBy.test_match_nested_exact">
+<code class="descname">test_match_nested_exact</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_schema.TestResolveKeyedBy.test_match_nested_exact" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_schema.TestResolveKeyedBy.test_match_partial_regexp">
+<code class="descname">test_match_partial_regexp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_schema.TestResolveKeyedBy.test_match_partial_regexp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_schema.TestResolveKeyedBy.test_match_regexp">
+<code class="descname">test_match_regexp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_schema.TestResolveKeyedBy.test_match_regexp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_schema.TestResolveKeyedBy.test_multiple_matches">
+<code class="descname">test_multiple_matches</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_schema.TestResolveKeyedBy.test_multiple_matches" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_schema.TestResolveKeyedBy.test_nested">
+<code class="descname">test_nested</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_schema.TestResolveKeyedBy.test_nested" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_schema.TestResolveKeyedBy.test_no_by">
+<code class="descname">test_no_by</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_schema.TestResolveKeyedBy.test_no_by" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_schema.TestResolveKeyedBy.test_no_by_dotted">
+<code class="descname">test_no_by_dotted</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_schema.TestResolveKeyedBy.test_no_by_dotted" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_schema.TestResolveKeyedBy.test_no_by_empty_dict">
+<code class="descname">test_no_by_empty_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_schema.TestResolveKeyedBy.test_no_by_empty_dict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_schema.TestResolveKeyedBy.test_no_by_not_by">
+<code class="descname">test_no_by_not_by</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_schema.TestResolveKeyedBy.test_no_by_not_by" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_schema.TestResolveKeyedBy.test_no_by_not_dict">
+<code class="descname">test_no_by_not_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_schema.TestResolveKeyedBy.test_no_by_not_dict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_schema.TestResolveKeyedBy.test_no_by_not_only_by">
+<code class="descname">test_no_by_not_only_by</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_schema.TestResolveKeyedBy.test_no_by_not_only_by" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_schema.TestResolveKeyedBy.test_no_match">
+<code class="descname">test_no_match</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_schema.TestResolveKeyedBy.test_no_match" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="taskgraph.test.test_util_schema.TestValidateSchema">
+<em class="property">class </em><code class="descclassname">taskgraph.test.test_util_schema.</code><code class="descname">TestValidateSchema</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_schema.TestValidateSchema" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="taskgraph.test.test_util_schema.TestValidateSchema.test_invalid">
+<code class="descname">test_invalid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_schema.TestValidateSchema.test_invalid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_schema.TestValidateSchema.test_valid">
+<code class="descname">test_valid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_schema.TestValidateSchema.test_valid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.test.test_util_templates">
+<span id="taskgraph-test-test-util-templates-module"></span><h2>taskgraph.test.test_util_templates module<a class="headerlink" href="#module-taskgraph.test.test_util_templates" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="taskgraph.test.test_util_templates.MergeTest">
+<em class="property">class </em><code class="descclassname">taskgraph.test.test_util_templates.</code><code class="descname">MergeTest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_templates.MergeTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="taskgraph.test.test_util_templates.MergeTest.test_merge">
+<code class="descname">test_merge</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_templates.MergeTest.test_merge" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_templates.MergeTest.test_merge_diff_types">
+<code class="descname">test_merge_diff_types</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_templates.MergeTest.test_merge_diff_types" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_templates.MergeTest.test_merge_to_dicts">
+<code class="descname">test_merge_to_dicts</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_templates.MergeTest.test_merge_to_dicts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_templates.MergeTest.test_merge_to_lists">
+<code class="descname">test_merge_to_lists</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_templates.MergeTest.test_merge_to_lists" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.test.test_util_time">
+<span id="taskgraph-test-test-util-time-module"></span><h2>taskgraph.test.test_util_time module<a class="headerlink" href="#module-taskgraph.test.test_util_time" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="taskgraph.test.test_util_time.FromNowTest">
+<em class="property">class </em><code class="descclassname">taskgraph.test.test_util_time.</code><code class="descname">FromNowTest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_time.FromNowTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="taskgraph.test.test_util_time.FromNowTest.test_invalid_str">
+<code class="descname">test_invalid_str</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_time.FromNowTest.test_invalid_str" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_time.FromNowTest.test_json_from_now">
+<code class="descname">test_json_from_now</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_time.FromNowTest.test_json_from_now" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_time.FromNowTest.test_json_from_now_utc_now">
+<code class="descname">test_json_from_now_utc_now</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_time.FromNowTest.test_json_from_now_utc_now" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_time.FromNowTest.test_missing_unit">
+<code class="descname">test_missing_unit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_time.FromNowTest.test_missing_unit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_time.FromNowTest.test_missing_unknown_unit">
+<code class="descname">test_missing_unknown_unit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_time.FromNowTest.test_missing_unknown_unit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_time.FromNowTest.test_value_of">
+<code class="descname">test_value_of</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_time.FromNowTest.test_value_of" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.test.test_util_treeherder">
+<span id="taskgraph-test-test-util-treeherder-module"></span><h2>taskgraph.test.test_util_treeherder module<a class="headerlink" href="#module-taskgraph.test.test_util_treeherder" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="taskgraph.test.test_util_treeherder.TestSymbols">
+<em class="property">class </em><code class="descclassname">taskgraph.test.test_util_treeherder.</code><code class="descname">TestSymbols</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_treeherder.TestSymbols" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="taskgraph.test.test_util_treeherder.TestSymbols.test_join_no_group">
+<code class="descname">test_join_no_group</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_treeherder.TestSymbols.test_join_no_group" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_treeherder.TestSymbols.test_join_with_group">
+<code class="descname">test_join_with_group</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_treeherder.TestSymbols.test_join_with_group" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_treeherder.TestSymbols.test_split_no_group">
+<code class="descname">test_split_no_group</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_treeherder.TestSymbols.test_split_no_group" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="taskgraph.test.test_util_treeherder.TestSymbols.test_split_with_group">
+<code class="descname">test_split_with_group</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_treeherder.TestSymbols.test_split_with_group" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.test.test_util_yaml">
+<span id="taskgraph-test-test-util-yaml-module"></span><h2>taskgraph.test.test_util_yaml module<a class="headerlink" href="#module-taskgraph.test.test_util_yaml" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="taskgraph.test.test_util_yaml.TestYaml">
+<em class="property">class </em><code class="descclassname">taskgraph.test.test_util_yaml.</code><code class="descname">TestYaml</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_yaml.TestYaml" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="taskgraph.test.test_util_yaml.TestYaml.test_load">
+<code class="descname">test_load</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.test.test_util_yaml.TestYaml.test_load" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-taskgraph.test">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-taskgraph.test" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="taskgraph.transforms.html" class="btn btn-neutral float-right" title="taskgraph.transforms package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="taskgraph.loader.html" class="btn btn-neutral" title="taskgraph.loader package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

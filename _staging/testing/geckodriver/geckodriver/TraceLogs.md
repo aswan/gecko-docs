@@ -1,0 +1,1 @@
+/Users/andrewswan/src/mozilla-unified/testing/geckodriver/doc/TraceLogs.md

@@ -1,0 +1,370 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Shipping Default Domains &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Firefox for Android" href="index.html"/>
+        <link rel="next" title="Shutting down Firefox for Android" href="shutdown.html"/>
+        <link rel="prev" title="MMA Mobile Marketing Automation" href="mma.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Firefox for Android</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="localeswitching.html">Runtime locale switching in Fennec</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uitelemetry.html">UI Telemetry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="activitystreamtelemetry.html">Activity Stream UI Telemetry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="downloadcontenttelemetry.html">Downloadable content (DLC) UI Telemetry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adjust.html">Install tracking with the Adjust SDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mma.html">MMA Mobile Marketing Automation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Shipping Default Domains</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#domain-auto-completion">Domain Auto-completion</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sanitizing-methods">Sanitizing Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#suggested-sites">Suggested Sites</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Sanitizing Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#guidelines-for-adult-content">Guidelines for Adult Content</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#updating-lists">Updating Lists</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="shutdown.html">Shutting down Firefox for Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="push.html">The architecture of the Fennec Webpush implementation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Firefox for Android</a> &raquo;</li>
+        
+      <li>Shipping Default Domains</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/mobile/android/fennec/defaultdomains.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="shipping-default-domains">
+<h1>Shipping Default Domains<a class="headerlink" href="#shipping-default-domains" title="Permalink to this headline">¶</a></h1>
+<p>Firefox for Mobile (Android and iOS) ships sets of default content in order to improve the
+first-run experience. There are two primary places where default sets of domains are used: URLBar
+domain auto-completion, and Top Sites suggested thumbnails.</p>
+<p>The source of these domains is typically the Alexa top sites lists, global and by-country. Before
+shipping the sets of domains, the lists are sanitized.</p>
+<div class="section" id="domain-auto-completion">
+<h2>Domain Auto-completion<a class="headerlink" href="#domain-auto-completion" title="Permalink to this headline">¶</a></h2>
+<p>As you type in the URLBar, Firefox will scan your history and auto-complete previously visited
+domains that match what you have entered. This can make navigating to web sites faster because it
+can avoid significant amounts of typing. During your first few uses, Firefox does not have any
+history and you are forced to type full URLs. Shipping a set of top domains provides a fallback.</p>
+<p>The top domains list can be localized, but Firefox will fallback to using en-US as the default for all
+locales that do not provide a specific set. The list can have several hundred domains, but due to
+size concerns, is usually capped to five hundred or less.</p>
+<div class="section" id="sanitizing-methods">
+<h3>Sanitizing Methods<a class="headerlink" href="#sanitizing-methods" title="Permalink to this headline">¶</a></h3>
+<p>After getting a source list, e.g. Alexa top global sites, we apply some simple guidelines to the
+list of domains:</p>
+<ul class="simple">
+<li>Remove any sites in the Alexa adult site list.</li>
+<li>Remove any locale-specific domain duplicates. We assume primary URLs (.com) will redirect to the
+correct locale (.co.jp) at run-time.</li>
+<li>Remove any explicit adult content* domains.</li>
+<li>Remove any sites that use explicit or adult advertising*.</li>
+<li>Remove any URL shorteners and redirecters.</li>
+<li>Remove any content/CDN domains. Some sites use separate domains to store images and other static content.</li>
+<li>Remove any sites primarily used for advertising or management of advertising.</li>
+<li>Remove any sites that fail to load in mobile browsers.</li>
+<li>Remove any time/date specific sites that may have appeared on the list due to seasonal spikes.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="suggested-sites">
+<h2>Suggested Sites<a class="headerlink" href="#suggested-sites" title="Permalink to this headline">¶</a></h2>
+<p>Suggested sites are default thumbnails, displayed on the Top Sites home panel. A suggested site
+consists of a title, thumbnail image, background color and URL. Multiple images are usually
+required to handle the variety of device DPIs.</p>
+<p>Suggested sites can be localized, but Firefox will fallback to using en-US as the default for all
+locales that do not provide a specific set. The list is usually small, with perhaps fewer than ten
+sites.</p>
+<div class="section" id="id1">
+<h3>Sanitizing Methods<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>After getting a source list, e.g. Alexa top global sites, we apply some simple guidelines to the
+list of domains:</p>
+<ul class="simple">
+<li>Remove pure search engines. We handle search engines differently and don’t consider them to be
+suggested sites.</li>
+<li>Remove any locale-specific domain duplicates. We assume primary URLs (.com) will redirect to the
+correct locale (.co.jp) at run-time.</li>
+<li>Remove any explicit adult content domains.</li>
+<li>Remove any sites that use explicit or adult advertising.</li>
+<li>Remove any URL shorteners and redirecters.</li>
+<li>Remove any content/CDN domains. Some sites use separate domains to store images and other static
+content.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="guidelines-for-adult-content">
+<h2>Guidelines for Adult Content<a class="headerlink" href="#guidelines-for-adult-content" title="Permalink to this headline">¶</a></h2>
+<p>Generally the Adult category includes sites whose dominant theme is either:</p>
+<ul class="simple">
+<li>To appeal to the prurient interest in sex without any serious literary, artistic, political, or
+scientific value</li>
+<li>The depiction or description of nudity, including sexual or excretory activities or organs in a
+lascivious way</li>
+<li>The depiction or description of sexually explicit conduct in a lascivious way (e.g. for
+entertainment purposes)</li>
+</ul>
+<p>For a more complete definition and guidelines of adult content, use the full DMOZ guidelines at
+<a class="reference external" href="http://www.dmoz.org/docs/en/guidelines/adult/general.html">http://www.dmoz.org/docs/en/guidelines/adult/general.html</a>.</p>
+</div>
+<div class="section" id="updating-lists">
+<h2>Updating Lists<a class="headerlink" href="#updating-lists" title="Permalink to this headline">¶</a></h2>
+<p>After approximately every two releases, Product (with Legal) will review current lists and
+sanitizing methods, and update the lists accordingly.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="shutdown.html" class="btn btn-neutral float-right" title="Shutting down Firefox for Android" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="mma.html" class="btn btn-neutral" title="MMA Mobile Marketing Automation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

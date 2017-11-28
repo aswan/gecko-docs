@@ -1,0 +1,581 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Defining Binaries for the Build System &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../../index.html"/>
+        <link rel="up" title="Build System" href="index.html"/>
+        <link rel="next" title="Creating Toolchain Archives" href="toolchains.html"/>
+        <link rel="prev" title="JAR Manifests" href="jar-manifests.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Build System</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#important-concepts">Important Concepts</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="build-overview.html">Build System Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="supported-configurations.html">Supported Configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozconfigs.html">Mozconfig Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild-files.html">moz.build Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozbuild-symbols.html">mozbuild Sandbox Symbols</a></li>
+<li class="toctree-l3"><a class="reference internal" href="files-metadata.html">Files Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pgo.html">Profile Guided Optimization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slow.html">Why the Build System is Slow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="environment-variables.html">Environment Variables Impacting the Build System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="build-targets.html">Build Targets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python.html">Python and the Build System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="test_manifests.html">Test Manifests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozinfo.html">mozinfo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="preprocessor.html">Text Preprocessor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="jar-manifests.html">JAR Manifests</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Defining Binaries for the Build System</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#source-files">Source files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#static-libraries">Static Libraries</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#intermediate-static-libraries">Intermediate (Static) Libraries</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#shared-libraries">Shared Libraries</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#executables">Executables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#linking-with-system-libraries">Linking with system libraries</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#libraries-from-third-party-build-system">Libraries from third party build system</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#building-both-static-and-shared-libraries">Building both static and shared libraries</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#miscellaneous">Miscellaneous</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gecko-related-binaries">Gecko-related binaries</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="toolchains.html">Creating Toolchain Archives</a></li>
+<li class="toctree-l3"><a class="reference internal" href="locales.html">Localization (l10n)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rust.html">Including Rust Code in Firefox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sparse.html">Sparse Checkouts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#integrated-development-environment-ide">integrated development environment (IDE)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#mozbuild">mozbuild</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Build System</a> &raquo;</li>
+        
+      <li>Defining Binaries for the Build System</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/build/buildsystem/defining-binaries.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="defining-binaries-for-the-build-system">
+<span id="defining-binaries"></span><h1>Defining Binaries for the Build System<a class="headerlink" href="#defining-binaries-for-the-build-system" title="Permalink to this headline">¶</a></h1>
+<p>One part of what the build system does is compile C/C++ and link the resulting
+objects to produce executables and/or libraries. This document describes the
+basics of defining what is going to be built and how. All the following
+describes constructs to use in moz.build files.</p>
+<div class="section" id="source-files">
+<h2>Source files<a class="headerlink" href="#source-files" title="Permalink to this headline">¶</a></h2>
+<p>Source files to be used in a given directory are registered in the <code class="docutils literal"><span class="pre">SOURCES</span></code>
+and <code class="docutils literal"><span class="pre">UNIFIED_SOURCES</span></code> variables. <code class="docutils literal"><span class="pre">UNIFIED_SOURCES</span></code> have a special behavior
+in that they are aggregated by batches of 16, requiring, for example, that there
+are no conflicting variables in those source files.</p>
+<p><code class="docutils literal"><span class="pre">SOURCES</span></code> and <code class="docutils literal"><span class="pre">UNIFIED_SOURCES</span></code> are lists which must be appended to, and
+each append requires the given list to be alphanumerically ordered.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">UNIFIED_SOURCES</span> <span class="o">+=</span> <span class="p">[</span>
+    <span class="s1">&#39;FirstSource.cpp&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;SecondSource.cpp&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ThirdSource.cpp&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="n">SOURCES</span> <span class="o">+=</span> <span class="p">[</span>
+    <span class="s1">&#39;OtherSource.cpp&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">SOURCES</span></code> and <code class="docutils literal"><span class="pre">UNIFIED_SOURCES</span></code> can contain a mix of different file types,
+for C, C++, and Objective C.</p>
+</div>
+<div class="section" id="static-libraries">
+<h2>Static Libraries<a class="headerlink" href="#static-libraries" title="Permalink to this headline">¶</a></h2>
+<p>To build a static library, other than defining the source files (see above), one
+just needs to define a library name with the <code class="docutils literal"><span class="pre">Library</span></code> template.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Library</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The library file name will be <code class="docutils literal"><span class="pre">libfoo.a</span></code> on UNIX systems and <code class="docutils literal"><span class="pre">foo.lib</span></code> on
+Windows.</p>
+<p>If the static library needs to aggregate other static libraries, a list of
+<code class="docutils literal"><span class="pre">Library</span></code> names can be added to the <code class="docutils literal"><span class="pre">USE_LIBS</span></code> variable. Like <code class="docutils literal"><span class="pre">SOURCES</span></code>, it
+requires the appended list to be alphanumerically ordered.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">USE_LIBS</span> <span class="o">+=</span> <span class="p">[</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="s1">&#39;baz&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>If there are multiple directories containing the same <code class="docutils literal"><span class="pre">Library</span></code> name, it is
+possible to disambiguate by prefixing with the path to the wanted one (relative
+or absolute):</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">USE_LIBS</span> <span class="o">+=</span> <span class="p">[</span>
+    <span class="s1">&#39;/path/from/topsrcdir/to/bar&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;../relative/baz&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Note that the leaf name in those paths is the <code class="docutils literal"><span class="pre">Library</span></code> name, not an actual
+file name.</p>
+<p>Note that currently, the build system may not create an actual library for
+static libraries. It is an implementation detail that shouldn’t need to be
+worried about.</p>
+<p>As a special rule, <code class="docutils literal"><span class="pre">USE_LIBS</span></code> is allowed to contain references to shared
+libraries. In such cases, programs and shared libraries linking this static
+library will inherit those shared library dependencies.</p>
+</div>
+<div class="section" id="intermediate-static-libraries">
+<h2>Intermediate (Static) Libraries<a class="headerlink" href="#intermediate-static-libraries" title="Permalink to this headline">¶</a></h2>
+<p>In many cases in the tree, static libraries are built with the only purpose
+of being linked into another, bigger one (like libxul). Instead of adding all
+required libraries to <code class="docutils literal"><span class="pre">USE_LIBS</span></code> for the bigger one, it is possible to tell
+the build system that the library built in the current directory is meant to
+be linked to that bigger library, with the <code class="docutils literal"><span class="pre">FINAL_LIBRARY</span></code> variable.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">FINAL_LIBRARY</span> <span class="o">=</span> <span class="s1">&#39;xul&#39;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">FINAL_LIBRARY</span></code> value must match a unique <code class="docutils literal"><span class="pre">Library</span></code> name somewhere
+in the tree.</p>
+<p>As a special rule, those intermediate libraries don’t need a <code class="docutils literal"><span class="pre">Library</span></code> name
+for themselves.</p>
+</div>
+<div class="section" id="shared-libraries">
+<h2>Shared Libraries<a class="headerlink" href="#shared-libraries" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes, we want shared libraries, a.k.a. dynamic libraries. Such libraries
+are defined similarly to static libraries, using the <code class="docutils literal"><span class="pre">SharedLibrary</span></code> template
+instead of <code class="docutils literal"><span class="pre">Library</span></code>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">SharedLibrary</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>When this template is used, no static library is built. See further below to
+build both types of libraries.</p>
+<p>With a <code class="docutils literal"><span class="pre">SharedLibrary</span></code> name of <code class="docutils literal"><span class="pre">foo</span></code>, the library file name will be
+<code class="docutils literal"><span class="pre">libfoo.dylib</span></code> on OSX, <code class="docutils literal"><span class="pre">libfoo.so</span></code> on ELF systems (Linux, etc.), and
+<code class="docutils literal"><span class="pre">foo.dll</span></code> on Windows. On Windows, there is also an import library named
+<code class="docutils literal"><span class="pre">foo.lib</span></code>, used on the linker command line. <code class="docutils literal"><span class="pre">libfoo.dylib</span></code> and
+<code class="docutils literal"><span class="pre">libfoo.so</span></code> are considered the import library name for, resp. OSX and ELF
+systems.</p>
+<p>On OSX, one may want to create a special kind of dynamic library: frameworks.
+This is done with the <code class="docutils literal"><span class="pre">Framework</span></code> template.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Framework</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>With a <code class="docutils literal"><span class="pre">Framework</span></code> name of <code class="docutils literal"><span class="pre">foo</span></code>, the framework file name will be <code class="docutils literal"><span class="pre">foo</span></code>.
+This template however affects the behavior on all platforms, so it needs to
+be set only on OSX.</p>
+</div>
+<div class="section" id="executables">
+<h2>Executables<a class="headerlink" href="#executables" title="Permalink to this headline">¶</a></h2>
+<p>Executables, a.k.a. programs, are, in the simplest form, defined with the
+<code class="docutils literal"><span class="pre">Program</span></code> template.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Program</span><span class="p">(</span><span class="s1">&#39;foobar&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>On UNIX systems, the executable file name will be <code class="docutils literal"><span class="pre">foobar</span></code>, while on Windows,
+it will be <code class="docutils literal"><span class="pre">foobar.exe</span></code>.</p>
+<p>Like static and shared libraries, the build system can be instructed to link
+libraries to the executable with <code class="docutils literal"><span class="pre">USE_LIBS</span></code>, listing various <code class="docutils literal"><span class="pre">Library</span></code>
+names.</p>
+<p>In some cases, we want to create an executable per source file in the current
+directory, in which case we can use the <code class="docutils literal"><span class="pre">SimplePrograms</span></code> template</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">SimplePrograms</span><span class="p">([</span>
+    <span class="s1">&#39;FirstProgram&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;SecondProgram&#39;</span><span class="p">,</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+<p>Contrary to <code class="docutils literal"><span class="pre">Program</span></code>, which requires corresponding <code class="docutils literal"><span class="pre">SOURCES</span></code>, when using
+<code class="docutils literal"><span class="pre">SimplePrograms</span></code>, the corresponding <code class="docutils literal"><span class="pre">SOURCES</span></code> are implied. If the
+corresponding <code class="docutils literal"><span class="pre">sources</span></code> have an extension different from <code class="docutils literal"><span class="pre">.cpp</span></code>, it is
+possible to specify the proper extension:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">SimplePrograms</span><span class="p">([</span>
+    <span class="s1">&#39;ThirdProgram&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;FourthProgram&#39;</span><span class="p">,</span>
+<span class="p">],</span> <span class="n">ext</span><span class="o">=</span><span class="s1">&#39;.c&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Please note this construct was added for compatibility with what already lives
+in the mozilla tree ; it is recommended not to add new simple programs with
+sources with a different extension than <code class="docutils literal"><span class="pre">.cpp</span></code>.</p>
+<p>Similar to <code class="docutils literal"><span class="pre">SimplePrograms</span></code>, is the <code class="docutils literal"><span class="pre">CppUnitTests</span></code> template, which defines,
+with the same rules, C++ unit tests programs. Like <code class="docutils literal"><span class="pre">SimplePrograms</span></code>, it takes
+an <code class="docutils literal"><span class="pre">ext</span></code> argument to specify the extension for the corresponding <code class="docutils literal"><span class="pre">SOURCES</span></code>,
+if it’s different from <code class="docutils literal"><span class="pre">.cpp</span></code>.</p>
+</div>
+<div class="section" id="linking-with-system-libraries">
+<h2>Linking with system libraries<a class="headerlink" href="#linking-with-system-libraries" title="Permalink to this headline">¶</a></h2>
+<p>Programs and libraries usually need to link with system libraries, such as a
+widget toolkit, etc. Those required dependencies can be given with the
+<code class="docutils literal"><span class="pre">OS_LIBS</span></code> variable.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">OS_LIBS</span> <span class="o">+=</span> <span class="p">[</span>
+    <span class="s1">&#39;foo&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;bar&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>This expands to <code class="docutils literal"><span class="pre">foo.lib</span> <span class="pre">bar.lib</span></code> when building with MSVC, and
+<code class="docutils literal"><span class="pre">-lfoo</span> <span class="pre">-lbar</span></code> otherwise.</p>
+<p>For convenience with <code class="docutils literal"><span class="pre">pkg-config</span></code>, <code class="docutils literal"><span class="pre">OS_LIBS</span></code> can also take linker flags
+such as <code class="docutils literal"><span class="pre">-L/some/path</span></code> and <code class="docutils literal"><span class="pre">-llib</span></code>, such that it is possible to directly
+assign <code class="docutils literal"><span class="pre">LIBS</span></code> variables from <code class="docutils literal"><span class="pre">CONFIG</span></code>, such as:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">OS_LIBS</span> <span class="o">+=</span> <span class="n">CONFIG</span><span class="p">[</span><span class="s1">&#39;MOZ_PANGO_LIBS&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>(assuming <code class="docutils literal"><span class="pre">CONFIG['MOZ_PANGO_LIBS']</span></code> is a list, not a string)</p>
+<p>Like <code class="docutils literal"><span class="pre">USE_LIBS</span></code>, this variable applies to static and shared libraries, as
+well as programs.</p>
+</div>
+<div class="section" id="libraries-from-third-party-build-system">
+<h2>Libraries from third party build system<a class="headerlink" href="#libraries-from-third-party-build-system" title="Permalink to this headline">¶</a></h2>
+<p>Some libraries in the tree are not built by the moz.build-governed build
+system, and there is no <code class="docutils literal"><span class="pre">Library</span></code> corresponding to them.</p>
+<p>However, <code class="docutils literal"><span class="pre">USE_LIBS</span></code> allows to reference such libraries by giving a full
+path (like when disambiguating identical <code class="docutils literal"><span class="pre">Library</span></code> names). The same naming
+rules apply as other uses of <code class="docutils literal"><span class="pre">USE_LIBS</span></code>, so only the library name without
+prefix and suffix shall be given.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">USE_LIBS</span> <span class="o">+=</span> <span class="p">[</span>
+    <span class="s1">&#39;/path/from/topsrcdir/to/third-party/bar&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;../relative/third-party/baz&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Note that <code class="docutils literal"><span class="pre">/path/from/topsrcdir/to/third-party</span></code> and
+<code class="docutils literal"><span class="pre">../relative/third-party/baz</span></code> must lead under a subconfigured directory (a
+directory with an AC_OUTPUT_SUBDIRS in configure.in), or <code class="docutils literal"><span class="pre">security/nss</span></code>.</p>
+</div>
+<div class="section" id="building-both-static-and-shared-libraries">
+<h2>Building both static and shared libraries<a class="headerlink" href="#building-both-static-and-shared-libraries" title="Permalink to this headline">¶</a></h2>
+<p>When both types of libraries are required, one needs to set both
+<code class="docutils literal"><span class="pre">FORCE_SHARED_LIB</span></code> and <code class="docutils literal"><span class="pre">FORCE_STATIC_LIB</span></code> boolean variables.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">FORCE_SHARED_LIB</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">FORCE_STATIC_LIB</span> <span class="o">=</span> <span class="bp">True</span>
+</pre></div>
+</div>
+<p>But because static libraries and Windows import libraries have the same file
+names, either the static or the shared library name needs to be different
+than the name given to the <code class="docutils literal"><span class="pre">Library</span></code> template.</p>
+<p>The <code class="docutils literal"><span class="pre">STATIC_LIBRARY_NAME</span></code> and <code class="docutils literal"><span class="pre">SHARED_LIBRARY_NAME</span></code> variables can be used
+to change either the static or the shared library name.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Library</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span>
+<span class="n">STATIC_LIBRARY_NAME</span> <span class="o">=</span> <span class="s1">&#39;foo_s&#39;</span>
+</pre></div>
+</div>
+<p>With the above, on Windows, <code class="docutils literal"><span class="pre">foo_s.lib</span></code> will be the static library,
+<code class="docutils literal"><span class="pre">foo.dll</span></code> the shared library, and <code class="docutils literal"><span class="pre">foo.lib</span></code> the import library.</p>
+<p>In some cases, for convenience, it is possible to set both
+<code class="docutils literal"><span class="pre">STATIC_LIBRARY_NAME</span></code> and <code class="docutils literal"><span class="pre">SHARED_LIBRARY_NAME</span></code>. For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Library</span><span class="p">(</span><span class="s1">&#39;mylib&#39;</span><span class="p">)</span>
+<span class="n">STATIC_LIBRARY_NAME</span> <span class="o">=</span> <span class="s1">&#39;mylib_s&#39;</span>
+<span class="n">SHARED_LIBRARY_NAME</span> <span class="o">=</span> <span class="n">CONFIG</span><span class="p">[</span><span class="s1">&#39;SHARED_NAME&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>This allows to use <code class="docutils literal"><span class="pre">mylib</span></code> in the <code class="docutils literal"><span class="pre">USE_LIBS</span></code> of another library or
+executable.</p>
+<p>When refering to a <code class="docutils literal"><span class="pre">Library</span></code> name building both types of libraries in
+<code class="docutils literal"><span class="pre">USE_LIBS</span></code>, the shared library is chosen to be linked. But sometimes,
+it is wanted to link the static version, in which case the <code class="docutils literal"><span class="pre">Library</span></code> name
+needs to be prefixed with <code class="docutils literal"><span class="pre">static:</span></code> in <code class="docutils literal"><span class="pre">USE_LIBS</span></code></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">/</span><span class="n">moz</span><span class="o">.</span><span class="n">build</span><span class="p">:</span>
+   <span class="n">Library</span><span class="p">(</span><span class="s1">&#39;mylib&#39;</span><span class="p">)</span>
+   <span class="n">FORCE_SHARED_LIB</span> <span class="o">=</span> <span class="kc">True</span>
+   <span class="n">FORCE_STATIC_LIB</span> <span class="o">=</span> <span class="kc">True</span>
+   <span class="n">STATIC_LIBRARY_NAME</span> <span class="o">=</span> <span class="s1">&#39;mylib_s&#39;</span>
+<span class="n">b</span><span class="o">/</span><span class="n">moz</span><span class="o">.</span><span class="n">build</span><span class="p">:</span>
+   <span class="n">Program</span><span class="p">(</span><span class="s1">&#39;myprog&#39;</span><span class="p">)</span>
+   <span class="n">USE_LIBS</span> <span class="o">+=</span> <span class="p">[</span>
+       <span class="s1">&#39;static:mylib&#39;</span><span class="p">,</span>
+   <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="miscellaneous">
+<h2>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal"><span class="pre">SONAME</span></code> variable declares a “shared object name” for the library. It
+defaults to the <code class="docutils literal"><span class="pre">Library</span></code> name or the <code class="docutils literal"><span class="pre">SHARED_LIBRARY_NAME</span></code> if set. When
+linking to a library with a <code class="docutils literal"><span class="pre">SONAME</span></code>, the resulting library or program will
+have a dependency on the library with the name corresponding to the <code class="docutils literal"><span class="pre">SONAME</span></code>
+instead of the <code class="docutils literal"><span class="pre">Library</span></code> name. This only impacts ELF systems.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">/</span><span class="n">moz</span><span class="o">.</span><span class="n">build</span><span class="p">:</span>
+   <span class="n">Library</span><span class="p">(</span><span class="s1">&#39;mylib&#39;</span><span class="p">)</span>
+<span class="n">b</span><span class="o">/</span><span class="n">moz</span><span class="o">.</span><span class="n">build</span><span class="p">:</span>
+   <span class="n">Library</span><span class="p">(</span><span class="s1">&#39;otherlib&#39;</span><span class="p">)</span>
+   <span class="n">SONAME</span> <span class="o">=</span> <span class="s1">&#39;foo&#39;</span>
+<span class="n">c</span><span class="o">/</span><span class="n">moz</span><span class="o">.</span><span class="n">build</span><span class="p">:</span>
+   <span class="n">Program</span><span class="p">(</span><span class="s1">&#39;myprog&#39;</span><span class="p">)</span>
+   <span class="n">USE_LIBS</span> <span class="o">+=</span> <span class="p">[</span>
+       <span class="s1">&#39;mylib&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;otherlib&#39;</span><span class="p">,</span>
+   <span class="p">]</span>
+</pre></div>
+</div>
+<p>On e.g. Linux, the above <code class="docutils literal"><span class="pre">myprog</span></code> will have DT_NEEDED markers for
+<code class="docutils literal"><span class="pre">libmylib.so</span></code> and <code class="docutils literal"><span class="pre">libfoo.so</span></code> instead of <code class="docutils literal"><span class="pre">libmylib.so</span></code> and
+<code class="docutils literal"><span class="pre">libotherlib.so</span></code> if there weren’t a <code class="docutils literal"><span class="pre">SONAME</span></code>. This means the runtime
+requirement for <code class="docutils literal"><span class="pre">myprog</span></code> is <code class="docutils literal"><span class="pre">libfoo.so</span></code> instead of <code class="docutils literal"><span class="pre">libotherlib.so</span></code>.</p>
+</div>
+<div class="section" id="gecko-related-binaries">
+<h2>Gecko-related binaries<a class="headerlink" href="#gecko-related-binaries" title="Permalink to this headline">¶</a></h2>
+<p>Some programs or libraries are totally independent of Gecko, and can use the
+above mentioned templates. Others are Gecko-related in some way, and may
+need XPCOM linkage, mozglue. These things are tedious. A set of additional
+templates exists to ease defining such programs and libraries. They are
+essentially the same as the above mentioned templates, prefixed with “Gecko”:</p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal"><span class="pre">GeckoProgram</span></code></li>
+<li><code class="docutils literal"><span class="pre">GeckoSimplePrograms</span></code></li>
+<li><code class="docutils literal"><span class="pre">GeckoCppUnitTests</span></code></li>
+<li><code class="docutils literal"><span class="pre">GeckoSharedLibrary</span></code></li>
+<li><code class="docutils literal"><span class="pre">GeckoFramework</span></code></li>
+</ul>
+</div></blockquote>
+<p>All the Gecko-prefixed templates take the same arguments as their
+non-Gecko-prefixed counterparts, and can take a few more arguments
+for non-standard cases. See the definition of <code class="docutils literal"><span class="pre">GeckoBinary</span></code> in
+build/gecko_templates.mozbuild for more details, but most usecases
+should not require these additional arguments.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="toolchains.html" class="btn btn-neutral float-right" title="Creating Toolchain Archives" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="jar-manifests.html" class="btn btn-neutral" title="JAR Manifests" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

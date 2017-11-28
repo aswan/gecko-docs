@@ -1,0 +1,381 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Directory Links Architecture and Data Formats &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../../index.html"/>
+        <link rel="up" title="Firefox" href="index.html"/>
+        <link rel="next" title="UITelemetry data format" href="UITelemetry.html"/>
+        <link rel="prev" title="Firefox" href="index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Firefox</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Directory Links Architecture and Data Formats</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#preferences">Preferences</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#browser-newtabpage-directory-source"><code class="docutils literal"><span class="pre">browser.newtabpage.directory.source</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#data-flow">Data Flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#source-json-format">Source JSON Format</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#example">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#link-object">Link Object</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="UITelemetry.html">UITelemetry data format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="BrowserUsageTelemetry.html">Browser Usage Telemetry</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Firefox</a> &raquo;</li>
+        
+      <li>Directory Links Architecture and Data Formats</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/browser/browser/DirectoryLinksProvider.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="directory-links-architecture-and-data-formats">
+<h1>Directory Links Architecture and Data Formats<a class="headerlink" href="#directory-links-architecture-and-data-formats" title="Permalink to this headline">¶</a></h1>
+<p>Directory links are enhancements to the new tab experience that combine content
+Firefox already knows about from user browsing with external content. There is 1
+kind of links:</p>
+<ul class="simple">
+<li>directory links fill in additional tiles on the new tab page if there would
+have been empty tiles because the user has a clean profile or cleared history</li>
+</ul>
+<p>To power the above features, DirectoryLinksProvider module downloads, at most
+once per 24 hours, the directory source links as JSON with enough data for
+Firefox to determine what should be shown or not.</p>
+<p>For the directory source endpoint, the default preference values point
+to Mozilla key-pinned servers with encryption. No cookies are set by the servers
+and Firefox enforces this by making anonymous requests.</p>
+<ul class="simple">
+<li>default directory source endpoint:
+<a class="reference external" href="https://tiles.services.mozilla.com/v3/links/fetch">https://tiles.services.mozilla.com/v3/links/fetch</a>/%LOCALE%/%CHANNEL%</li>
+</ul>
+<div class="section" id="preferences">
+<h2>Preferences<a class="headerlink" href="#preferences" title="Permalink to this headline">¶</a></h2>
+<p>There is one main preference that controls downloading links.</p>
+<div class="section" id="browser-newtabpage-directory-source">
+<h3><code class="docutils literal"><span class="pre">browser.newtabpage.directory.source</span></code><a class="headerlink" href="#browser-newtabpage-directory-source" title="Permalink to this headline">¶</a></h3>
+<p>This endpoint tells Firefox where to download directory source file as a GET
+request. It should return JSON of the appropriate format containing the relevant
+links data. The value can be a data URI, e.g., an empty JSON object effectively
+turns off remote downloading: <code class="docutils literal"><span class="pre">data:text/plain,{}</span></code></p>
+<p>The preference value will have %LOCALE% and %CHANNEL% replaced by the
+appropriate values for the build of Firefox, e.g.,</p>
+<ul class="simple">
+<li>directory source endpoint:
+<a class="reference external" href="https://tiles.services.mozilla.com/v3/links/fetch/en-US/release">https://tiles.services.mozilla.com/v3/links/fetch/en-US/release</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="data-flow">
+<h2>Data Flow<a class="headerlink" href="#data-flow" title="Permalink to this headline">¶</a></h2>
+<p>When Firefox starts, it checks for a cached directory source file. If one
+exists, it checks for its timestamp to determine if a new file should be
+downloaded.</p>
+<p>If a directory source file needs to be downloaded, a GET request is made then
+cached and unpacked the JSON into the different types of links. Various checks
+filter out invalid links, e.g., those with http-hosted images or those that
+don’t fit the allowed suggestions.</p>
+<p>When a new tab page is built, DirectoryLinksProvider module provides additional
+link data that is combined with history link data to determine which links can
+be displayed or not.</p>
+<p>As the new tab page is rendered, any images for tiles are downloaded if not
+already cached. The default servers hosting the images are Mozilla CDN that
+don’t use cookies: <a class="reference external" href="https://tiles.cdn.mozilla.net/">https://tiles.cdn.mozilla.net/</a> and Firefox enforces that the
+images come from mozilla.net or data URIs when using the default directory
+source.</p>
+</div>
+<div class="section" id="source-json-format">
+<h2>Source JSON Format<a class="headerlink" href="#source-json-format" title="Permalink to this headline">¶</a></h2>
+<p>Firefox expects links data in a JSON object with a top level “directory” key
+providing an array of tile objects.</p>
+<div class="section" id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<p>Below is an example directory source file:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;directory&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;bgColor&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;directoryId&quot;</span><span class="p">:</span> <span class="mi">498</span><span class="p">,</span>
+            <span class="s2">&quot;enhancedImageURI&quot;</span><span class="p">:</span> <span class="s2">&quot;https://tiles.cdn.mozilla.net/images/d11ba0b3095bb19d8092cd29be9cbb9e197671ea.28088.png&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;imageURI&quot;</span><span class="p">:</span> <span class="s2">&quot;https://tiles.cdn.mozilla.net/images/1332a68badf11e3f7f69bf7364e79c0a7e2753bc.5316.png&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Mozilla Community&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;affiliate&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;http://contribute.mozilla.org/&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="link-object">
+<h3>Link Object<a class="headerlink" href="#link-object" title="Permalink to this headline">¶</a></h3>
+<p>Each link object has various values that Firefox uses to display a tile:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">url</span></code> - string url for the page to be loaded when the tile is clicked. Only
+https and http URLs are allowed.</li>
+<li><code class="docutils literal"><span class="pre">title</span></code> - string that appears below the tile.</li>
+<li><code class="docutils literal"><span class="pre">type</span></code> - string relationship of the link to Mozilla. Expected values:
+affiliate.</li>
+<li><code class="docutils literal"><span class="pre">imageURI</span></code> - string url for the tile image to show. Only https and data URIs
+are allowed.</li>
+<li><code class="docutils literal"><span class="pre">enhancedImageURI</span></code> - string url for the image to be shown before the user
+hovers. Only https and data URIs are allowed.</li>
+<li><code class="docutils literal"><span class="pre">bgColor</span></code> - string css color for additional fill background color.</li>
+<li><code class="docutils literal"><span class="pre">directoryId</span></code> - id of the tile to be used during ping reporting</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="UITelemetry.html" class="btn btn-neutral float-right" title="UITelemetry data format" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Firefox" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

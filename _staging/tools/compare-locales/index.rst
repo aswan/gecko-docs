@@ -1,0 +1,1 @@
+/Users/andrewswan/src/mozilla-unified/tools/compare-locales/docs/index.rst

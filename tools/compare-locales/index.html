@@ -1,0 +1,448 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Localization &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../../index.html"/>
+        <link rel="next" title="Glossary" href="glossary.html"/>
+        <link rel="prev" title="System Add-ons Overview" href="../../toolkit/mozapps/extensions/addon-manager/SystemAddons.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mobile/android/fennec/index.html">Firefox for Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mobile/android/fennec/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Localization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exposing-strings">Exposing strings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#file-formats">File formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exceptions">Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#l10n-merge">l10n-merge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#checks">Checks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#android">Android</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#localizations">Localizations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Localization</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/tools/compare-locales/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="localization">
+<h1>Localization<a class="headerlink" href="#localization" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+</div>
+<p>The documentation here is targeted at developers, writing localizable code
+for Firefox and Firefox for Android, as well as Thunderbird and SeaMonkey.</p>
+<p>If you haven’t dealt with localization in gecko code before, it’s a good
+idea to check the <a class="reference internal" href="glossary.html"><span class="doc">Glossary</span></a> for what localization is, and which terms
+we use for what.</p>
+<div class="section" id="exposing-strings">
+<h2>Exposing strings<a class="headerlink" href="#exposing-strings" title="Permalink to this headline">¶</a></h2>
+<p>Localizers only handle a few file formats in well-known locations in the
+source tree.</p>
+<p>The locations are specified by TOML files. They’re part of the bigger
+localization ecosystem at Mozilla, and <a class="reference external" href="http://moz-l10n-config.readthedocs.io/en/latest/fileformat.html">the documentation about the
+file format</a>
+explains how to set them up, and what the entries mean. In short, you find</p>
+<div class="highlight-toml"><div class="highlight"><pre><span></span>[[paths]]
+    reference = browser/locales/en-US/**
+    l10n = {l}browser/**
+</pre></div>
+</div>
+<p>to add a directory for all localizations. Changes to these files are best
+submitted for review by :Pike or :flod.</p>
+<p>These configuration files are the future, and right now, we still have
+support for the previous way to configuring l10n, which is described below.</p>
+<p>The locations are commonly in directories like</p>
+<blockquote>
+<div><code class="file docutils literal"><span class="pre">browser/</span></code><code class="docutils literal"><span class="pre">locales/en-US/</span></code><code class="file docutils literal"><span class="pre">subdir/file.ext</span></code></div></blockquote>
+<p>The first thing to note is that only files beneath <code class="file docutils literal"><span class="pre">locales/en-US</span></code> are
+exposed to localizers. The second thing to note is that only a few directories
+are exposed. Which directories are exposed is defined in files called
+<code class="docutils literal"><span class="pre">l10n.ini</span></code>, which are at a
+<a class="reference external" href="https://dxr.mozilla.org/mozilla-central/search?q=path%3Al10n.ini&amp;redirect=true">few places</a>
+in the source code.</p>
+<p>An example looks like this</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[general]</span>
+<span class="na">depth</span> <span class="o">=</span> <span class="s">../..</span>
+
+<span class="k">[compare]</span>
+<span class="na">dirs</span> <span class="o">=</span> <span class="s">browser</span>
+<span class="s">    browser/branding/official</span>
+
+<span class="k">[includes]</span>
+<span class="na">toolkit</span> <span class="o">=</span> <span class="s">toolkit/locales/l10n.ini</span>
+</pre></div>
+</div>
+<p>This tells the l10n infrastructure three things: Resolve the paths against the
+directory two levels up, include files in <code class="file docutils literal"><span class="pre">browser/locales/en-US</span></code> and
+<code class="file docutils literal"><span class="pre">browser/branding/official/locales/en-US</span></code>, and load more data from
+<code class="file docutils literal"><span class="pre">toolkit/locales/l10n.ini</span></code>.</p>
+<p>For projects like Thunderbird and SeaMonkey in <code class="docutils literal"><span class="pre">comm-central</span></code>, additional
+data needs to be provided when including an <code class="docutils literal"><span class="pre">l10n.ini</span></code> from a different
+repository:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[include_toolkit]</span>
+<span class="na">type</span> <span class="o">=</span> <span class="s">hg</span>
+<span class="na">mozilla</span> <span class="o">=</span> <span class="s">mozilla-central</span>
+<span class="na">repo</span> <span class="o">=</span> <span class="s">https://hg.mozilla.org/</span>
+<span class="na">l10n.ini</span> <span class="o">=</span> <span class="s">toolkit/locales/l10n.ini</span>
+</pre></div>
+</div>
+<p>This tells the l10n pieces where to find the repository, and where inside
+that repository the <code class="docutils literal"><span class="pre">l10n.ini</span></code> file is. This is needed because for local
+builds, <code class="file docutils literal"><span class="pre">mail/locales/l10n.ini</span></code> references
+<code class="file docutils literal"><span class="pre">mozilla/toolkit/locales/l10n.ini</span></code>, which is where the comm-central
+build setup expects toolkit to be.</p>
+<p>Now that the directories exposed to l10n are known, we can talk about the
+supported file formats.</p>
+</div>
+<div class="section" id="file-formats">
+<h2>File formats<a class="headerlink" href="#file-formats" title="Permalink to this headline">¶</a></h2>
+<p>This is just a quick overview, please check the
+<a class="reference external" href="https://developer.mozilla.org/docs/Mozilla/Tech/XUL/Tutorial/Localization">XUL Tutorial</a>
+for an in-depth tour.</p>
+<p>The following file formats are known to the l10n tool chains:</p>
+<dl class="docutils">
+<dt>DTD</dt>
+<dd>Used in XUL and XHTML. Also for Android native strings.</dd>
+<dt>Properties</dt>
+<dd>Used from JavaScript and C++. When used from js, also comes with
+<a class="reference external" href="https://developer.mozilla.org/docs/Mozilla/Localization/Localization_and_Plurals">plural support</a>.</dd>
+<dt>ini</dt>
+<dd>Used by the crashreporter and updater, avoid if possible.</dd>
+<dt>foo.defines</dt>
+<dd>Used during builds, for example to create <code class="file docutils literal"><span class="pre">install.rdf</span></code> for
+language packs.</dd>
+</dl>
+<p>Adding new formats involves changing various different tools, and is strongly
+discouraged.</p>
+</div>
+<div class="section" id="exceptions">
+<h2>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h2>
+<p>Generally, anything that exists in <code class="docutils literal"><span class="pre">en-US</span></code> needs a one-to-one mapping in
+all localizations. There are a few cases where that’s not wanted, notably
+around search settings and spell-checking dictionaries.</p>
+<p>To enable tools to adjust to those exceptions, there’s a python-coded
+<code class="xref py py-mod docutils literal"><span class="pre">filter.py</span></code>, implementing <code class="xref py py-func docutils literal"><span class="pre">test()</span></code>, with the following
+signature</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">entity</span> <span class="o">=</span> <span class="bp">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">does_not_matter</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;ignore&quot;</span>
+    <span class="k">if</span> <span class="n">show_but_do_not_merge</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;report&quot;</span>
+    <span class="c1"># default behavior, localizer or build need to do something</span>
+    <span class="k">return</span> <span class="s2">&quot;error&quot;</span>
+</pre></div>
+</div>
+<p>For any missing file, this function is called with <code class="docutils literal"><span class="pre">mod</span></code> being
+the <em>module</em>, and <code class="docutils literal"><span class="pre">path</span></code> being the relative path inside
+<code class="file docutils literal"><span class="pre">locales/en-US</span></code>. The module is the top-level dir as referenced in
+<code class="file docutils literal"><span class="pre">l10n.ini</span></code>.</p>
+<p>For missing strings, the <code class="xref py py-data docutils literal"><span class="pre">entity</span></code> parameter is the key of the string
+in the en-US file.</p>
+</div>
+<div class="section" id="l10n-merge">
+<h2>l10n-merge<a class="headerlink" href="#l10n-merge" title="Permalink to this headline">¶</a></h2>
+<p>Gecko doesn’t support fallback from a localization to <code class="docutils literal"><span class="pre">en-US</span></code> at runtime.
+Thus, the build needs to ensure that the localization as it’s built into
+the package has all required strings, and that the strings don’t contain
+errors. To ensure that, we’re <em>merging</em> the localization and <code class="docutils literal"><span class="pre">en-US</span></code>
+at build time, nick-named <a class="reference internal" href="glossary.html#term-l10n-merge"><span class="xref std std-term">l10n-merge</span></a>.</p>
+<p>The process can be manually triggered via</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$&gt; ./mach build merge-de
+</pre></div>
+</div>
+<p>It creates another directory in the object dir, <code class="file docutils literal"><span class="pre">merge-dir/ab-CD</span></code>, in
+which the modified files are stored. The actual repackaging process looks for
+the localized files in the merge dir first, then the localized file, and then
+in <code class="docutils literal"><span class="pre">en-US</span></code>. Thus, for the <code class="docutils literal"><span class="pre">de</span></code> localization of
+<code class="file docutils literal"><span class="pre">browser/locales/en-US/chrome/browser/browser.dtd</span></code>, it checks</p>
+<ol class="arabic simple">
+<li><code class="file docutils literal"><span class="pre">$objdir/browser/locales/merge-de/browser/chrome/browser/browser.dtd</span></code></li>
+<li><code class="file docutils literal"><span class="pre">$(LOCALE_BASEDIR)/de/browser/chrome/browser/browser.dtd</span></code></li>
+<li><code class="file docutils literal"><span class="pre">browser/locales/en-US/chrome/browser/browser.dtd</span></code></li>
+</ol>
+<p>and will include the first of those files it finds.</p>
+<p>l10n-merge modifies a file if it supports the particular file type, and there
+are missing strings which are not filtered out, or if an existing string
+shows an error. See the Checks section below for details.</p>
+</div>
+<div class="section" id="checks">
+<h2>Checks<a class="headerlink" href="#checks" title="Permalink to this headline">¶</a></h2>
+<p>As part of the build and other localization tool chains, we run a variety
+of source-based checks. Think of them as linters.</p>
+<p>The suite of checks is usually determined by file type, i.e., there’s a
+suite of checks for DTD files and one for properties files, etc. An exception
+are Android-specific checks.</p>
+<div class="section" id="android">
+<h3>Android<a class="headerlink" href="#android" title="Permalink to this headline">¶</a></h3>
+<p>For Android, we need to localize <code class="file docutils literal"><span class="pre">strings.xml</span></code>. We’re doing so via DTD
+files, which is mostly OK. But the strings inside the XML file have to
+satisfy additional constraints about quotes etc, that are not part of XML.
+There’s probably some historic background on why things are the way they are.</p>
+<p>The Android-specific checks are enabled for DTD files that are in
+<code class="file docutils literal"><span class="pre">mobile/android/base/locales/en-US/</span></code>.</p>
+</div>
+</div>
+<div class="section" id="localizations">
+<h2>Localizations<a class="headerlink" href="#localizations" title="Permalink to this headline">¶</a></h2>
+<p>Now that we talked in-depth about how to expose content to localizers,
+where are the localizations?</p>
+<p>We host a mercurial repository per locale and per branch. All of our
+localizations can be found on <a class="reference external" href="https://hg.mozilla.org/l10n-central/">https://hg.mozilla.org/l10n-central/</a>.</p>
+<p>You can search inside our localized files on
+<a class="reference external" href="https://transvision.mozfr.org/">Transvision</a> and
+<a class="reference external" href="https://dxr.mozilla.org/l10n-central/source/">https://dxr.mozilla.org/l10n-central/source/</a>.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="glossary.html" class="btn btn-neutral float-right" title="Glossary" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../../toolkit/mozapps/extensions/addon-manager/SystemAddons.html" class="btn btn-neutral" title="System Add-ons Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

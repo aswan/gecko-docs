@@ -1,0 +1,1 @@
+/Users/andrewswan/src/mozilla-unified/build/docs/files-metadata.rst

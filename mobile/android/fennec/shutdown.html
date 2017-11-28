@@ -1,0 +1,345 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Shutting down Firefox for Android &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Firefox for Android" href="index.html"/>
+        <link rel="next" title="The architecture of the Fennec Webpush implementation" href="push.html"/>
+        <link rel="prev" title="Shipping Default Domains" href="defaultdomains.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Mozilla Source Tree Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                59.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../browser/base/sslerrorreport/index.html">SSL Error Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../browser/browser/index.html">Firefox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../browser/experiments/experiments/index.html">Telemetry Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../build/buildsystem/index.html">Build System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dom/bindings/webidl/index.html">WebIDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gfx/gfx/index.html">Graphics</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Firefox for Android</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="localeswitching.html">Runtime locale switching in Fennec</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uitelemetry.html">UI Telemetry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="activitystreamtelemetry.html">Activity Stream UI Telemetry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="downloadcontenttelemetry.html">Downloadable content (DLC) UI Telemetry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adjust.html">Install tracking with the Adjust SDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mma.html">MMA Mobile Marketing Automation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="defaultdomains.html">Shipping Default Domains</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Shutting down Firefox for Android</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#background">Background</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#technical-details">Technical details</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="push.html">The architecture of the Fennec Webpush implementation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mozbase/index.html">mozbase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mozbase/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mach/index.html">mach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../testing/geckodriver/geckodriver/index.html">geckodriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../testing/marionette/marionette/index.html">Marionette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/extensions/webextensions/index.html">WebExtensions API Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/payments/docs/index.html">WebPayments UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/telemetry/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/url-classifier/url-classifier/index.html">URL Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/crashreporter/crashreporter/index.html">Crash Reporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/modules/subprocess/toolkit_modules/subprocess/index.html">Supbrocess Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/modules/toolkit_modules/index.html">Toolkit modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolkit/mozapps/extensions/addon-manager/index.html">Add-on Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/compare-locales/index.html">Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/lint/index.html">Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/lint/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mach.html">mach package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozbuild.html">mozbuild package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozlint.html">mozlint package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozpack.html">mozpack package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozversioncontrol.html">mozversioncontrol package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/mozwebidlcodegen.html">mozwebidlcodegen package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/taskgraph.html">taskgraph package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Mozilla Source Tree Docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Firefox for Android</a> &raquo;</li>
+        
+      <li>Shutting down Firefox for Android</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/mobile/android/fennec/shutdown.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="shutting-down-firefox-for-android">
+<h1>Shutting down Firefox for Android<a class="headerlink" href="#shutting-down-firefox-for-android" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="background">
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
+<p>Normally, apps on Android don’t need to provide any support for explicit quitting, instead they are
+just sent into the background where they eventually get killed by the OS’s low-memory killer.</p>
+<p>Nevertheless, Firefox on Android allows explicit quitting to support the use case of users wanting
+to clear part or all of their private data after finishing a browsing session. When this option to
+“Clear private data on exit” is activated from the settings, a “Quit” button is provided in the menu.</p>
+<p>Because Firefox on Android uses a native UI (written in Java), which also holds some of the user’s
+browsing data, this creates some additional complications when compared to quitting on desktop.</p>
+</div>
+<div class="section" id="technical-details">
+<h2>Technical details<a class="headerlink" href="#technical-details" title="Permalink to this headline">¶</a></h2>
+<p>When the “Quit” button is used, the UI sends a <code class="docutils literal"><span class="pre">Browser:Quit</span></code> notification to Gecko’s <code class="docutils literal"><span class="pre">BrowserApp</span></code>,
+which initiates the normal Gecko shutdown procedure. At the same time however, the native UI needs to
+shutdown as well, so as to</p>
+<ol class="arabic simple">
+<li>provide an immediate visual feedback to the user that Firefox is indeed quitting</li>
+<li>avoid a state where the UI is still running “normally” while the rendering engine is already
+shutting down, which could lead to loosing incoming external tabs if they were to arrive within
+that period.</li>
+</ol>
+<p>Therefore, shutdown of the native UI was originally started simultaneously with notifying Gecko.
+Because the clearing of private data during shutdown is handled by Gecko’s <code class="docutils literal"><span class="pre">Sanitizer</span></code>, while some
+private data, e.g. the browsing history, is held in a database by the native UI, this means that
+Gecko needs to message the native UI during shutdown if the user wants the browsing history to be
+cleared on quitting.
+Shutting down the UI simultaneously with Gecko therefore introduced a race condition where the data
+clearing could fail because the native UI thread responsible for receiving Gecko’s sanitization
+messages had already exited by the time Gecko’s <code class="docutils literal"><span class="pre">Sanitizer</span></code> was attempting to e.g. clear the
+user’s browsing history (for further reading, compare <a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=1266594">bug 1266594</a>).</p>
+<p>To fix this issue, the native UI (in <code class="docutils literal"><span class="pre">GeckoApp</span></code>) now waits for the <code class="docutils literal"><span class="pre">Sanitizer</span></code> to run and
+message all necessary sanitization handlers and only starts its shutdown after receiving a
+<code class="docutils literal"><span class="pre">Sanitize:Finished</span></code> message with a <code class="docutils literal"><span class="pre">shutdown:</span> <span class="pre">true</span></code> parameter set. While this introduces a
+certain delay in closing the UI, it is still faster than having to wait for Gecko to exit completely
+before starting to close the UI.</p>
+<p>Currently, quitting Firefox therefore proceeds roughly as follows:</p>
+<ol class="arabic simple">
+<li>The user presses the “Quit” button in the main menu, which sends a <code class="docutils literal"><span class="pre">Browser:Quit</span></code> notification
+to <code class="docutils literal"><span class="pre">BrowserApp</span></code>. This notification also contains additional parameters indicating which types
+of private user data - if any - to clear during shutdown.</li>
+<li><code class="docutils literal"><span class="pre">BrowserApp.quit</span></code> runs, which initiates Gecko shutdown by sending out a
+<code class="docutils literal"><span class="pre">quit-application-requested</span></code> notification.</li>
+<li>If nobody cancelled shutdown in response to the <code class="docutils literal"><span class="pre">quit-application-requested</span></code> notification,
+quitting proceeds and the <code class="docutils literal"><span class="pre">SessionStore</span></code> enters shutdown mode (<code class="docutils literal"><span class="pre">STATE_QUITTING</span></code>), which
+basically means that no new (asynchronous) writes are started to prevent any interference with
+the final flushing of data.</li>
+<li><code class="docutils literal"><span class="pre">BrowserApp</span></code> calls the <code class="docutils literal"><span class="pre">Sanitizer</span></code> to clear up any private user data that might need cleaning.
+After the <code class="docutils literal"><span class="pre">Sanitizer</span></code> has invoked all required sanitization handlers (including any on the
+native Java UI side, e.g. for the browsing history) and finished running, it sends a
+<code class="docutils literal"><span class="pre">Sanitize:Finished</span></code> message back to the native UI.</li>
+<li>On receiving the <code class="docutils literal"><span class="pre">Sanitize:Finished</span></code> message, <code class="docutils literal"><span class="pre">GeckoApp</span></code> starts the shutdown of the native UI
+as well by calling <code class="docutils literal"><span class="pre">doShutdown()</span></code>.</li>
+<li>After sending the <code class="docutils literal"><span class="pre">Sanitize:Finished</span></code> message, Gecko’s <code class="docutils literal"><span class="pre">Sanitizer</span></code> runs the callback provided
+by <code class="docutils literal"><span class="pre">BrowserApp.quit</span></code>, which is <code class="docutils literal"><span class="pre">appStartup.quit(Ci.nsIAppStartup.eForceQuit)</span></code>, thereby
+starting the actual and final shutting down of Gecko.</li>
+<li>On receiving the final <code class="docutils literal"><span class="pre">quit-application</span></code> notification, the <code class="docutils literal"><span class="pre">SessionStore</span></code> synchronously
+writes its current state to disk.</li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="push.html" class="btn btn-neutral float-right" title="The architecture of the Fennec Webpush implementation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="defaultdomains.html" class="btn btn-neutral" title="Shipping Default Domains" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'59.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

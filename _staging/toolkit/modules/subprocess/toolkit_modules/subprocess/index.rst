@@ -1,1 +1,0 @@
-/Users/andrewswan/src/mozilla-unified/toolkit/modules/subprocess/docs/index.rst

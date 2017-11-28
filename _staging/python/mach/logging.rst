@@ -1,1 +1,0 @@
-/Users/andrewswan/src/mozilla-unified/python/mach/docs/logging.rst

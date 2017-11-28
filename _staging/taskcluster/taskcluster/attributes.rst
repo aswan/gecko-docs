@@ -1,1 +1,0 @@
-/Users/andrewswan/src/mozilla-unified/taskcluster/docs/attributes.rst

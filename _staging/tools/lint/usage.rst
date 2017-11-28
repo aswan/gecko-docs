@@ -1,1 +1,0 @@
-/Users/andrewswan/src/mozilla-unified/tools/lint/docs/usage.rst

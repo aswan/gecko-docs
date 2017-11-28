@@ -1,1 +1,0 @@
-/Users/andrewswan/src/mozilla-unified/build/docs/build-targets.rst

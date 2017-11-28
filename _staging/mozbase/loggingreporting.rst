@@ -1,1 +1,0 @@
-/Users/andrewswan/src/mozilla-unified/testing/mozbase/docs/loggingreporting.rst

@@ -1,1 +1,0 @@
-/Users/andrewswan/src/mozilla-unified/dom/bindings/docs/index.rst

@@ -1,1 +1,0 @@
-/Users/andrewswan/src/mozilla-unified/gfx/docs/index.rst

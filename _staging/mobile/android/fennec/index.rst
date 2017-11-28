@@ -1,1 +1,0 @@
-/Users/andrewswan/src/mozilla-unified/mobile/android/docs/index.rst

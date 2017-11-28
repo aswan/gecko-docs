@@ -1,1 +1,0 @@
-/Users/andrewswan/src/mozilla-unified/testing/mozbase/docs/_static/structured_example.py

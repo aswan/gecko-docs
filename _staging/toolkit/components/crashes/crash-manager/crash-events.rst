@@ -1,1 +1,0 @@
-/Users/andrewswan/src/mozilla-unified/toolkit/components/crashes/docs/crash-events.rst

@@ -1,1 +1,0 @@
-/Users/andrewswan/src/mozilla-unified/browser/docs/UITelemetry.rst

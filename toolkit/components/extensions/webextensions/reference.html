@@ -113,11 +113,13 @@
 <li class="toctree-l2"><a class="reference internal" href="schema.html">API Schemas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="functions.html">Implementing a function</a></li>
 <li class="toctree-l2"><a class="reference internal" href="events.html">Implementing an event</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manifest.html">Implementing a manifest key</a></li>
 <li class="toctree-l2"><a class="reference internal" href="other.html">Other API Implementation Topics</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">WebExtensions Javascript Component Reference</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#extensionapi-class">ExtensionAPI class</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#extension-class">Extension class</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#basecontext-class">BaseContext class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#eventmanager-class">EventManager class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">BaseContext class</a></li>
 </ul>
 </li>
 </ul>
@@ -225,13 +227,22 @@ from jsdoc comments in the source code.</p>
 <dl class="class">
 <dt id="Extension">
 <em class="property">class </em><code class="descname">Extension</code><span class="sig-paren">(</span><em>addonData</em>, <em>startupReason</em><span class="sig-paren">)</span><a class="headerlink" href="#Extension" title="Permalink to this definition">¶</a></dt>
-<dd><p>We create one instance of this class per extension. <a href="#id1"><span class="problematic" id="id2">|addonData|</span></a>
+<dd><p>We create one instance of this class per extension. <a href="#id2"><span class="problematic" id="id3">|addonData|</span></a>
 comes directly from bootstrap.js when initializing.</p>
 </dd></dl>
 
 </div>
-<div class="section" id="basecontext-class">
-<h2>BaseContext class<a class="headerlink" href="#basecontext-class" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="eventmanager-class">
+<h2>EventManager class<a class="headerlink" href="#eventmanager-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="EventManager">
+<em class="property">class </em><code class="descname">EventManager</code><span class="sig-paren">(</span><em>context</em>, <em>name</em>, <em>register</em><span class="sig-paren">)</span><a class="headerlink" href="#EventManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>XXX jsdoc-ify documentation comments</p>
+</dd></dl>
+
+</div>
+<div class="section" id="id1">
+<h2>BaseContext class<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p><em>XXX fill me in</em></p>
 </div>
 </div>

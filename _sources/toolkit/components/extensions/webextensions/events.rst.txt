@@ -28,17 +28,61 @@ The definition for a simple event looks like this:
      }
    ]
 
-XXX parameters declares parameters passed to the listener
+This fragment defines an event that is used from an extension with
+code such as:
 
-Implementing an event in the main process
------------------------------------------
-XXX explain that everything gets proxied to the child process automatically
+.. code-block:: js
 
-XXX explain EventManager, show sample code
+   browser.myapi.onSomething.addListener((param1) => {
+     console.log(`Something happend: ${param1}`);
+   });
+
+Note that the schema syntax looks similar to that for a function,
+but for an event, the ``parameters`` property specifies the arguments
+that will be passed to a listener.
+
+Implementing an event
+---------------------
+Just like with functions, defining an event in the schema causes
+wrappers to be automatically created and exposed to an extensions'
+appropriate Javascript contexts.
+An event appears to an extension as an object with three standard
+function properties: ``addListener()``, ``removeListener()``,
+and ``hasListener()``.
+Also like functions, if an API defines an event but does not implement
+it in a child process, the wrapper in the child process effectively
+proxies these calls to the implementation in the main process.
+
+A helper class called
+`EventManager <reference.html#eventmanager-class>`_ makes implementing
+events relatively simple.  Full reference documentation is available
+from the link above but a simple event implementation looks like:
+
+.. code-block:: js
+
+   class myapi extends ExtensionAPI {
+     getAPI(context) {
+       return {
+         myapi: {
+           onSomething: new EventManager(context, "myapi.onSomething", fire => {
+             const observer = () => {
+               fire.async(42);
+             };
+             Services.obs.addObserver(observer, "some-event");
+             return () => {
+               Services.obs.removeObserver(observer, "some-event");
+             };
+           }).api()
+         }
+       }
+     }
+   }
+
+*XXX what more to say about this*
 
 Implementing an event in the child process
 ------------------------------------------
-XXX not much to say here?
+*XXX similar to functions, also context.childManager.getParentEvent()*
 
 Handling extra arguments to addListener()
 -----------------------------------------

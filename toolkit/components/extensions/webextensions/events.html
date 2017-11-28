@@ -37,7 +37,7 @@
         <link rel="search" title="Search" href="../../../../search.html"/>
     <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../../../../index.html"/>
         <link rel="up" title="WebExtensions API Development" href="index.html"/>
-        <link rel="next" title="Other API Implementation Topics" href="other.html"/>
+        <link rel="next" title="Implementing a manifest key" href="manifest.html"/>
         <link rel="prev" title="Implementing a function" href="functions.html"/> 
 
   
@@ -114,12 +114,13 @@
 <li class="toctree-l2"><a class="reference internal" href="functions.html">Implementing a function</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Implementing an event</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#declaring-an-event-in-the-api-schema">Declaring an event in the API schema</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#implementing-an-event-in-the-main-process">Implementing an event in the main process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Implementing an event</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#implementing-an-event-in-the-child-process">Implementing an event in the child process</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#handling-extra-arguments-to-addlistener">Handling extra arguments to addListener()</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#handling-listener-return-values">Handling listener return values</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="manifest.html">Implementing a manifest key</a></li>
 <li class="toctree-l2"><a class="reference internal" href="other.html">Other API Implementation Topics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference.html">WebExtensions Javascript Component Reference</a></li>
 </ul>
@@ -235,16 +236,56 @@ an implementation in Javascript inside an instance of ExtensionAPI.</p>
 ]
 </pre></div>
 </div>
-<p>XXX parameters declares parameters passed to the listener</p>
+<p>This fragment defines an event that is used from an extension with
+code such as:</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">browser</span><span class="p">.</span><span class="nx">myapi</span><span class="p">.</span><span class="nx">onSomething</span><span class="p">.</span><span class="nx">addListener</span><span class="p">((</span><span class="nx">param1</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Something happend: </span><span class="si">${</span><span class="nx">param1</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
 </div>
-<div class="section" id="implementing-an-event-in-the-main-process">
-<h2>Implementing an event in the main process<a class="headerlink" href="#implementing-an-event-in-the-main-process" title="Permalink to this headline">¶</a></h2>
-<p>XXX explain that everything gets proxied to the child process automatically</p>
-<p>XXX explain EventManager, show sample code</p>
+<p>Note that the schema syntax looks similar to that for a function,
+but for an event, the <code class="docutils literal"><span class="pre">parameters</span></code> property specifies the arguments
+that will be passed to a listener.</p>
+</div>
+<div class="section" id="id1">
+<h2>Implementing an event<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Just like with functions, defining an event in the schema causes
+wrappers to be automatically created and exposed to an extensions’
+appropriate Javascript contexts.
+An event appears to an extension as an object with three standard
+function properties: <code class="docutils literal"><span class="pre">addListener()</span></code>, <code class="docutils literal"><span class="pre">removeListener()</span></code>,
+and <code class="docutils literal"><span class="pre">hasListener()</span></code>.
+Also like functions, if an API defines an event but does not implement
+it in a child process, the wrapper in the child process effectively
+proxies these calls to the implementation in the main process.</p>
+<p>A helper class called
+<a class="reference external" href="reference.html#eventmanager-class">EventManager</a> makes implementing
+events relatively simple.  Full reference documentation is available
+from the link above but a simple event implementation looks like:</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">myapi</span> <span class="kr">extends</span> <span class="nx">ExtensionAPI</span> <span class="p">{</span>
+  <span class="nx">getAPI</span><span class="p">(</span><span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="nx">myapi</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">onSomething</span><span class="o">:</span> <span class="k">new</span> <span class="nx">EventManager</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span> <span class="s2">&quot;myapi.onSomething&quot;</span><span class="p">,</span> <span class="nx">fire</span> <span class="p">=&gt;</span> <span class="p">{</span>
+          <span class="kr">const</span> <span class="nx">observer</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+            <span class="nx">fire</span><span class="p">.</span><span class="nx">async</span><span class="p">(</span><span class="mi">42</span><span class="p">);</span>
+          <span class="p">};</span>
+          <span class="nx">Services</span><span class="p">.</span><span class="nx">obs</span><span class="p">.</span><span class="nx">addObserver</span><span class="p">(</span><span class="nx">observer</span><span class="p">,</span> <span class="s2">&quot;some-event&quot;</span><span class="p">);</span>
+          <span class="k">return</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+            <span class="nx">Services</span><span class="p">.</span><span class="nx">obs</span><span class="p">.</span><span class="nx">removeObserver</span><span class="p">(</span><span class="nx">observer</span><span class="p">,</span> <span class="s2">&quot;some-event&quot;</span><span class="p">);</span>
+          <span class="p">};</span>
+        <span class="p">}).</span><span class="nx">api</span><span class="p">()</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><em>XXX what more to say about this</em></p>
 </div>
 <div class="section" id="implementing-an-event-in-the-child-process">
 <h2>Implementing an event in the child process<a class="headerlink" href="#implementing-an-event-in-the-child-process" title="Permalink to this headline">¶</a></h2>
-<p>XXX not much to say here?</p>
+<p><em>XXX similar to functions, also context.childManager.getParentEvent()</em></p>
 </div>
 <div class="section" id="handling-extra-arguments-to-addlistener">
 <h2>Handling extra arguments to addListener()<a class="headerlink" href="#handling-extra-arguments-to-addlistener" title="Permalink to this headline">¶</a></h2>
@@ -266,7 +307,7 @@ an implementation in Javascript inside an instance of ExtensionAPI.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="other.html" class="btn btn-neutral float-right" title="Other API Implementation Topics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="manifest.html" class="btn btn-neutral float-right" title="Implementing a manifest key" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="functions.html" class="btn btn-neutral" title="Implementing a function" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

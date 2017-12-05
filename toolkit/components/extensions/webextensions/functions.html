@@ -118,7 +118,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="events.html">Implementing an event</a></li>
-<li class="toctree-l2"><a class="reference internal" href="manifest.html">Implementing a manifest key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manifest.html">Implementing a manifest property</a></li>
 <li class="toctree-l2"><a class="reference internal" href="other.html">Other API Implementation Topics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference.html">WebExtensions Javascript Component Reference</a></li>
 </ul>
@@ -215,31 +215,31 @@ actually implements the function.</p>
 <div class="section" id="declaring-a-function-in-the-api-schema">
 <h2>Declaring a function in the API schema<a class="headerlink" href="#declaring-a-function-in-the-api-schema" title="Permalink to this headline">¶</a></h2>
 <p>An API schema definition for a simple function looks like this:</p>
-<div class="highlight-json"><div class="highlight"><pre><span></span>[
-  {
-    &quot;namespace&quot;: &quot;myapi&quot;,
-    &quot;functions&quot;: [
-      {
-        &quot;name&quot;: &quot;add&quot;,
-        &quot;type&quot;: &quot;function&quot;,
-        &quot;description&quot;: &quot;Adds two numbers together.&quot;,
-        &quot;async&quot;: true,
-        &quot;parameters&quot;: [
-          {
-            &quot;name&quot;: &quot;x&quot;,
-            &quot;type&quot;: &quot;number&quot;,
-            &quot;description&quot;: &quot;The first number to add.&quot;
-          },
-          {
-            &quot;name&quot;: &quot;y&quot;,
-            &quot;type&quot;: &quot;number&quot;,,
-            &quot;description&quot;: &quot;The second number to add.&quot;
-          }
-        ]
-      }
-    ]
-  }
-]
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;namespace&quot;</span><span class="p">:</span> <span class="s2">&quot;myapi&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;functions&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;add&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;function&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Adds two numbers together.&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;async&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;number&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;The first number to add.&quot;</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;number&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;The second number to add.&quot;</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">]</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal"><span class="pre">type</span></code> and <code class="docutils literal"><span class="pre">description</span></code> properties were described above.

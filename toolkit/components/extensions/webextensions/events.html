@@ -37,7 +37,7 @@
         <link rel="search" title="Search" href="../../../../search.html"/>
     <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../../../../index.html"/>
         <link rel="up" title="WebExtensions API Development" href="index.html"/>
-        <link rel="next" title="Implementing a manifest key" href="manifest.html"/>
+        <link rel="next" title="Implementing a manifest property" href="manifest.html"/>
         <link rel="prev" title="Implementing a function" href="functions.html"/> 
 
   
@@ -115,12 +115,12 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Implementing an event</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#declaring-an-event-in-the-api-schema">Declaring an event in the API schema</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id1">Implementing an event</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#implementing-an-event-in-the-child-process">Implementing an event in the child process</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#handling-extra-arguments-to-addlistener">Handling extra arguments to addListener()</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#handling-listener-return-values">Handling listener return values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#implementing-an-event-in-the-child-process">Implementing an event in the child process</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="manifest.html">Implementing a manifest key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manifest.html">Implementing a manifest property</a></li>
 <li class="toctree-l2"><a class="reference internal" href="other.html">Other API Implementation Topics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference.html">WebExtensions Javascript Component Reference</a></li>
 </ul>
@@ -216,24 +216,24 @@ an implementation in Javascript inside an instance of ExtensionAPI.</p>
 <div class="section" id="declaring-an-event-in-the-api-schema">
 <h2>Declaring an event in the API schema<a class="headerlink" href="#declaring-an-event-in-the-api-schema" title="Permalink to this headline">¶</a></h2>
 <p>The definition for a simple event looks like this:</p>
-<div class="highlight-json"><div class="highlight"><pre><span></span>[
-  {
-    &quot;namespace&quot;: &quot;myapi&quot;,
-    &quot;events&quot;: [
-      {
-        &quot;name&quot;: &quot;onSomething&quot;,
-        &quot;description&quot;: &quot;Description of the event&quot;,
-        &quot;parameters&quot;: [
-          {
-            &quot;name&quot;: &quot;param1&quot;,
-            &quot;description&quot;: Description of the first callback parameter&quot;,
-            &quot;type&quot;: &quot;number&quot;
-          }
-        ]
-      }
-    ]
-  }
-]
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;namespace&quot;</span><span class="p">:</span> <span class="s2">&quot;myapi&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;events&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;onSomething&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Description of the event&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;param1&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Description of the first callback parameter&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;number&quot;</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">]</span>
 </pre></div>
 </div>
 <p>This fragment defines an event that is used from an extension with
@@ -260,19 +260,18 @@ it in a child process, the wrapper in the child process effectively
 proxies these calls to the implementation in the main process.</p>
 <p>A helper class called
 <a class="reference external" href="reference.html#eventmanager-class">EventManager</a> makes implementing
-events relatively simple.  Full reference documentation is available
-from the link above but a simple event implementation looks like:</p>
+events relatively simple.  A simple event implementation looks like:</p>
 <div class="highlight-js"><div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">myapi</span> <span class="kr">extends</span> <span class="nx">ExtensionAPI</span> <span class="p">{</span>
   <span class="nx">getAPI</span><span class="p">(</span><span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">{</span>
       <span class="nx">myapi</span><span class="o">:</span> <span class="p">{</span>
         <span class="nx">onSomething</span><span class="o">:</span> <span class="k">new</span> <span class="nx">EventManager</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span> <span class="s2">&quot;myapi.onSomething&quot;</span><span class="p">,</span> <span class="nx">fire</span> <span class="p">=&gt;</span> <span class="p">{</span>
-          <span class="kr">const</span> <span class="nx">observer</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-            <span class="nx">fire</span><span class="p">.</span><span class="nx">async</span><span class="p">(</span><span class="mi">42</span><span class="p">);</span>
+          <span class="kr">const</span> <span class="nx">callback</span> <span class="o">=</span> <span class="nx">value</span> <span class="p">=&gt;</span> <span class="p">{</span>
+            <span class="nx">fire</span><span class="p">.</span><span class="nx">async</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
           <span class="p">};</span>
-          <span class="nx">Services</span><span class="p">.</span><span class="nx">obs</span><span class="p">.</span><span class="nx">addObserver</span><span class="p">(</span><span class="nx">observer</span><span class="p">,</span> <span class="s2">&quot;some-event&quot;</span><span class="p">);</span>
+          <span class="nx">RegisterSomeInternalCallback</span><span class="p">(</span><span class="nx">callback</span><span class="p">);</span>
           <span class="k">return</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-            <span class="nx">Services</span><span class="p">.</span><span class="nx">obs</span><span class="p">.</span><span class="nx">removeObserver</span><span class="p">(</span><span class="nx">observer</span><span class="p">,</span> <span class="s2">&quot;some-event&quot;</span><span class="p">);</span>
+            <span class="nx">UnregisterInternalCallback</span><span class="p">(</span><span class="nx">callback</span><span class="p">);</span>
           <span class="p">};</span>
         <span class="p">}).</span><span class="nx">api</span><span class="p">()</span>
       <span class="p">}</span>
@@ -281,19 +280,169 @@ from the link above but a simple event implementation looks like:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p><em>XXX what more to say about this</em></p>
-</div>
-<div class="section" id="implementing-an-event-in-the-child-process">
-<h2>Implementing an event in the child process<a class="headerlink" href="#implementing-an-event-in-the-child-process" title="Permalink to this headline">¶</a></h2>
-<p><em>XXX similar to functions, also context.childManager.getParentEvent()</em></p>
+<p>The <code class="docutils literal"><span class="pre">EventManager</span></code> class is usually just used directly as in this example.
+The first argument to the constructor is an <code class="docutils literal"><span class="pre">ExtensionContext</span></code> instance,
+typically just the object passed to the API’s <code class="docutils literal"><span class="pre">getAPI()</span></code> function.
+The second argument is a name, it is used only for debugging.
+The third argument is the important piece, it is a function that is called
+the first time a listener is added for this event.
+This function is passed an object (<code class="docutils literal"><span class="pre">fire</span></code> in the example) that is used to
+invoke the extension’s listener whenever the event occurs.  The <code class="docutils literal"><span class="pre">fire</span></code>
+object has several different methods for invoking listeners, but for
+events implemented in the main process, the only valid method is
+<code class="docutils literal"><span class="pre">async()</span></code> which executes the listener asynchronously.</p>
+<p>The event setup function (the function passed to the <code class="docutils literal"><span class="pre">EventManager</span></code>
+constructor) must return a cleanup function,
+which will be called when the listener is removed either explicitly
+by the extension by calling <code class="docutils literal"><span class="pre">removeListener()</span></code> or implicitly when
+the extension Javascript context from which the listener was added is destroyed.</p>
+<p>In this example, <code class="docutils literal"><span class="pre">RegisterSomeInternalCallback()</span></code> and
+<code class="docutils literal"><span class="pre">UnregisterInternalCallback()</span></code> represent methods for listening for
+some internal browser event from chrome privileged code.  This is
+typically something like adding an observer using <code class="docutils literal"><span class="pre">Services.obs</span></code> or
+attaching a listener to an <code class="docutils literal"><span class="pre">EventEmitter</span></code>.</p>
+<p>After constructing an instance of <code class="docutils literal"><span class="pre">EventManager</span></code>, its <code class="docutils literal"><span class="pre">api()</span></code> method
+returns an object with with <code class="docutils literal"><span class="pre">addListener()</span></code>, <code class="docutils literal"><span class="pre">removeListener()</span></code>, and
+<code class="docutils literal"><span class="pre">hasListener()</span></code> methods.  This is the standard extension event interface,
+this object is suitable for returning from the extension’s
+<code class="docutils literal"><span class="pre">getAPI()</span></code> method as in the example above.</p>
 </div>
 <div class="section" id="handling-extra-arguments-to-addlistener">
 <h2>Handling extra arguments to addListener()<a class="headerlink" href="#handling-extra-arguments-to-addlistener" title="Permalink to this headline">¶</a></h2>
-<p>XXX explain, show some sample code</p>
+<p>The standard <code class="docutils literal"><span class="pre">addListener()</span></code> method for events may accept optional
+addition parameters to allows extra information to be passed when registering
+an event listener.  One common application of this parameter is for filtering,
+so that extensions that only care about a small subset of the instances of
+some event can avoid the overhead of receiving the ones they don’t care about.</p>
+<p>Extra parameters to <code class="docutils literal"><span class="pre">addListener()</span></code> are defined in the schema with the
+the <code class="docutils literal"><span class="pre">extraParameters</span></code> property.  For example:</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;namespace&quot;</span><span class="p">:</span> <span class="s2">&quot;myapi&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;events&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;onSomething&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Description of the event&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;param1&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Description of the first callback parameter&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;number&quot;</span>
+          <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;extraParameters&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;minValue&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Only call the listener for values of param1 at least as large as this value.&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;number&quot;</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Extra parameters defined in this way are passed to the event setup
+function (the last parameter to the <code class="docutils literal"><span class="pre">EventManager</span></code> constructor.
+For example, extending our example above:</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">myapi</span> <span class="kr">extends</span> <span class="nx">ExtensionAPI</span> <span class="p">{</span>
+  <span class="nx">getAPI</span><span class="p">(</span><span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="nx">myapi</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">onSomething</span><span class="o">:</span> <span class="k">new</span> <span class="nx">EventManager</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span> <span class="s2">&quot;myapi.onSomething&quot;</span><span class="p">,</span> <span class="p">(</span><span class="nx">fire</span><span class="p">,</span> <span class="nx">minValue</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+          <span class="kr">const</span> <span class="nx">callback</span> <span class="o">=</span> <span class="nx">value</span> <span class="p">=&gt;</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="o">&gt;=</span> <span class="nx">minValue</span><span class="p">)</span>
+              <span class="nx">fire</span><span class="p">.</span><span class="nx">async</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+            <span class="p">}</span>
+          <span class="p">};</span>
+          <span class="nx">RegisterSomeInternalCallback</span><span class="p">(</span><span class="nx">callback</span><span class="p">);</span>
+          <span class="k">return</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+            <span class="nx">UnregisterInternalCallback</span><span class="p">(</span><span class="nx">callback</span><span class="p">);</span>
+          <span class="p">};</span>
+        <span class="p">}).</span><span class="nx">api</span><span class="p">()</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="handling-listener-return-values">
 <h2>Handling listener return values<a class="headerlink" href="#handling-listener-return-values" title="Permalink to this headline">¶</a></h2>
-<p>XXX explain, show some sample code</p>
+<p>Some event APIs allow extensions to affect event handling in some way
+by returning values from event listeners that are processed by the API.
+This can be defined in the schema with the <code class="docutils literal"><span class="pre">returns</span></code> property:</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;namespace&quot;</span><span class="p">:</span> <span class="s2">&quot;myapi&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;events&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;onSomething&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Description of the event&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;param1&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Description of the first callback parameter&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;number&quot;</span>
+          <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;returns&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;boolean&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Description of how the listener return value is processed.&quot;</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>And the implementation of the event uses the return value from <code class="docutils literal"><span class="pre">fire.async()</span></code>
+which is a Promise that resolves to the listener’s return value:</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">myapi</span> <span class="kr">extends</span> <span class="nx">ExtensionAPI</span> <span class="p">{</span>
+  <span class="nx">getAPI</span><span class="p">(</span><span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="nx">myapi</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">onSomething</span><span class="o">:</span> <span class="k">new</span> <span class="nx">EventManager</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span> <span class="s2">&quot;myapi.onSomething&quot;</span><span class="p">,</span> <span class="nx">fire</span> <span class="p">=&gt;</span> <span class="p">{</span>
+          <span class="kr">const</span> <span class="nx">callback</span> <span class="o">=</span> <span class="nx">async</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+            <span class="kd">let</span> <span class="nx">rv</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">fire</span><span class="p">.</span><span class="nx">async</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">rv</span> <span class="o">==</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+              <span class="cm">/* do something... */</span>
+            <span class="p">}</span>
+          <span class="p">};</span>
+          <span class="nx">RegisterSomeInternalCallback</span><span class="p">(</span><span class="nx">callback</span><span class="p">);</span>
+          <span class="k">return</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+            <span class="nx">UnregisterInternalCallback</span><span class="p">(</span><span class="nx">callback</span><span class="p">);</span>
+          <span class="p">};</span>
+        <span class="p">}).</span><span class="nx">api</span><span class="p">()</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Note that the schema <code class="docutils literal"><span class="pre">returns</span></code> definition is optional and serves only
+for documentation.  That is, <code class="docutils literal"><span class="pre">fire.async()</span></code> always returns a Promise
+that resolves to the listener return value, the implementation of an
+event can just ignore this Promise if it doesn’t care about the return value.</p>
+</div>
+<div class="section" id="implementing-an-event-in-the-child-process">
+<h2>Implementing an event in the child process<a class="headerlink" href="#implementing-an-event-in-the-child-process" title="Permalink to this headline">¶</a></h2>
+<p>The reasons for implementing events in the child process are similar to
+the reasons for implementing functions in the child process:</p>
+<ul class="simple">
+<li>Listeners for the event return a value that the API implementation must
+act on synchronously.</li>
+<li>Either <code class="docutils literal"><span class="pre">addListener()</span></code> or the listener function has one or more
+parameters of a type that cannot be sent between processes.</li>
+<li>The implementation of the event interacts with code that is only
+accessible from a child process.</li>
+<li>The event can be implemented substantially more efficiently in a
+child process.</li>
+</ul>
+<p><em>XXX explain that overall similar to functions</em></p>
+<p><em>XXX analogue of callParentAsyncFunction() is getParentEvent()</em></p>
+<p><em>XXX fire.sync(), fire.raw()</em></p>
 </div>
 </div>
 
@@ -307,7 +456,7 @@ from the link above but a simple event implementation looks like:</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="manifest.html" class="btn btn-neutral float-right" title="Implementing a manifest key" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="manifest.html" class="btn btn-neutral float-right" title="Implementing a manifest property" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="functions.html" class="btn btn-neutral" title="Implementing a function" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

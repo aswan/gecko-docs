@@ -878,6 +878,11 @@ complexities of worker implementations, scopes, and treeherder annotations.</p>
 <dd></dd></dl>
 
 <dl class="function">
+<dt id="taskgraph.transforms.task.add_nightly_l10n_index_routes">
+<code class="descclassname">taskgraph.transforms.task.</code><code class="descname">add_nightly_l10n_index_routes</code><span class="sig-paren">(</span><em>config</em>, <em>task</em>, <em>force_locale=None</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.task.add_nightly_l10n_index_routes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
 <dt id="taskgraph.transforms.task.add_nightly_multi_index_routes">
 <code class="descclassname">taskgraph.transforms.task.</code><code class="descname">add_nightly_multi_index_routes</code><span class="sig-paren">(</span><em>config</em>, <em>task</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.task.add_nightly_multi_index_routes" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -970,6 +975,13 @@ that and make sure certain cache names are exclusive to run-task.</p>
 <p>IF YOU ARE TEMPTED TO MAKE EXCLUSIONS TO THIS POLICY, YOU ARE LIKELY
 CONTRIBUTING TECHNICAL DEBT AND WILL HAVE TO SOLVE MANY OF THE PROBLEMS
 THAT RUN-TASK ALREADY SOLVES. THINK LONG AND HARD BEFORE DOING THAT.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="taskgraph.transforms.task.check_task_identifiers">
+<code class="descclassname">taskgraph.transforms.task.</code><code class="descname">check_task_identifiers</code><span class="sig-paren">(</span><em>config</em>, <em>tasks</em><span class="sig-paren">)</span><a class="headerlink" href="#taskgraph.transforms.task.check_task_identifiers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ensures that all tasks have well defined identifiers:
+^[<a href="#id1"><span class="problematic" id="id2">a-zA-Z0-9_</span></a>-]{1,22}$</p>
 </dd></dl>
 
 <dl class="function">

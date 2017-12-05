@@ -105,18 +105,21 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../taskcluster/taskcluster/index.html">TaskCluster Task-Graph Generation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../geckodriver/geckodriver/index.html">geckodriver</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Marionette</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#for-users">For users</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="Intro.html">Introduction to Marionette</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Protocol.html">Protocol</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#for-marionette-developers">For marionette developers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#for-developers">For developers</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="NewContributors.html">New contributors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Debugging.html">Debugging</a></li>
 <li class="toctree-l3"><a class="reference internal" href="PythonTests.html">Mn Python tests</a></li>
 <li class="toctree-l3"><a class="reference internal" href="SeleniumAtoms.html">Selenium Atoms</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#bugs">Bugs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#communication">Communication</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../toolkit/components/crashes/crash-manager/index.html">Crash Manager</a></li>
@@ -205,14 +208,18 @@
             
   <div class="section" id="marionette">
 <h1>Marionette<a class="headerlink" href="#marionette" title="Permalink to this headline">¶</a></h1>
+<p>Marionette is the remote protocol that lets OOP programs communicate
+with, instrument, and control Gecko.</p>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>Marionette is an automation driver for Mozilla’s Gecko engine.
 It can remotely control either the UI or the internal JavaScript of
-a Gecko platform, such as Firefox.  It can control both the chrome
-(i.e. menus and functions) or the content (the webpage loaded inside
-the browsing context), giving a high level of control and ability
-to replicate user actions. In addition to performing actions on the
-browser, Marionette can also read the properties and attributes of
-the DOM.</p>
+Gecko-based browsers, such as Firefox and Fennec.  It can control
+both the chrome and the content document, giving a high level of
+control and ability to replicate user interaction.  In addition
+to performing actions on the browser, Marionette can also ready
+properties and attributes of the DOM.</p>
+</div>
 <div class="section" id="for-users">
 <h2>For users<a class="headerlink" href="#for-users" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
@@ -223,14 +230,14 @@ the DOM.</p>
 </div>
 <p>See also:</p>
 <ul class="simple">
-<li>Documentation for <a class="reference external" href="http://marionette-client.readthedocs.io">Marionette Python Client</a>,
-which is used in-tree to write many kinds of Marionette-based tests.</li>
-<li>Documentation for <a class="reference external" href="http://firefox-puppeteer.readthedocs.io">Firefox Puppeteer</a>, which is
-used to in-tree to write Firefox UI tests.</li>
+<li>Documentation for <a class="reference external" href="http://marionette-client.readthedocs.io">Marionette Python client</a>., which is used
+in-tree to write many kinds of Marionette-based tests.</li>
+<li>Documentation for <a class="reference external" href="http://firefox-puppeteer.readthedocs.io">Firefox Puppeteer</a>, which is used to in-tree
+to write Firefox UI tests.</li>
 </ul>
 </div>
-<div class="section" id="for-marionette-developers">
-<h2>For marionette developers<a class="headerlink" href="#for-marionette-developers" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="for-developers">
+<h2>For developers<a class="headerlink" href="#for-developers" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="NewContributors.html">New contributors</a></li>
@@ -239,6 +246,18 @@ used to in-tree to write Firefox UI tests.</li>
 <li class="toctree-l1"><a class="reference internal" href="SeleniumAtoms.html">Selenium Atoms</a></li>
 </ul>
 </div>
+</div>
+<div class="section" id="bugs">
+<h2>Bugs<a class="headerlink" href="#bugs" title="Permalink to this headline">¶</a></h2>
+<p>Bugs are tracked in the <cite>Testing :: Marionette</cite> component.</p>
+</div>
+<div class="section" id="communication">
+<h2>Communication<a class="headerlink" href="#communication" title="Permalink to this headline">¶</a></h2>
+<p>The mailing list for discussion is <a class="reference external" href="mailto:tools-marionette&#37;&#52;&#48;lists&#46;mozilla&#46;org">tools-marionette<span>&#64;</span>lists<span>&#46;</span>mozilla<span>&#46;</span>org</a>
+(<a class="reference external" href="https://lists.mozilla.org/listinfo/tools-marionette">subscribe</a>, <a class="reference external" href="https://groups.google.com/group/mozilla.tools.marionette">archive</a>).  If you prefer real-time chat, there
+is often someone in the #ateam IRC channel on irc.mozilla.org.
+Don’t ask if you can ask a question, just ask, and please wait
+for an answer as we might not be in your timezone.</p>
 </div>
 </div>
 

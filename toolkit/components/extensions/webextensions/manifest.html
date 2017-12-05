@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Implementing a manifest key &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  <title>Implementing a manifest property &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
   
 
   
@@ -113,7 +113,7 @@
 <li class="toctree-l2"><a class="reference internal" href="schema.html">API Schemas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="functions.html">Implementing a function</a></li>
 <li class="toctree-l2"><a class="reference internal" href="events.html">Implementing an event</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Implementing a manifest key</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Implementing a manifest property</a></li>
 <li class="toctree-l2"><a class="reference internal" href="other.html">Other API Implementation Topics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference.html">WebExtensions Javascript Component Reference</a></li>
 </ul>
@@ -183,7 +183,7 @@
         
           <li><a href="index.html">WebExtensions API Development</a> &raquo;</li>
         
-      <li>Implementing a manifest key</li>
+      <li>Implementing a manifest property</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -202,9 +202,67 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="implementing-a-manifest-key">
-<h1>Implementing a manifest key<a class="headerlink" href="#implementing-a-manifest-key" title="Permalink to this headline">¶</a></h1>
-<p>XXX explain</p>
+  <div class="section" id="implementing-a-manifest-property">
+<h1>Implementing a manifest property<a class="headerlink" href="#implementing-a-manifest-property" title="Permalink to this headline">¶</a></h1>
+<p>Like functions and events, implementing a new manifest key requires
+writing a definition in the schema and extending the API’s instance
+of <code class="docutils literal"><span class="pre">ExtensionAPI</span></code>.</p>
+<p>The contents of a WebExtension’s <code class="docutils literal"><span class="pre">manifest.json</span></code> are validated using
+a type called <code class="docutils literal"><span class="pre">WebExtensionManifest</span></code> defined in the namespace
+<code class="docutils literal"><span class="pre">manifest</span></code>.
+The first step when adding a new property is to extend the schema so
+that manifests containing the new property pass validation.
+This is done with the <code class="docutils literal"><span class="pre">&quot;$extend&quot;</span></code> property as follows:</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span>[
+  &quot;namespace&quot;: &quot;manifest&quot;,
+  &quot;types&quot;: [
+    {
+      &quot;$extend&quot;: &quot;WebExtensionManifest&quot;,
+      &quot;properties&quot;: {
+        &quot;my_api_property&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;optional&quot;: true,
+          ...
+        }
+      }
+    }
+  ]
+]
+</pre></div>
+</div>
+<p>The next step is to inform the WebExtensions framework that this API
+should be instantiated and notified when extensions that use the new
+manifest key are loaded.
+For built-in APIs, this is done with the <code class="docutils literal"><span class="pre">manifest</span></code> property
+in the extension manifest (e.g., <code class="docutils literal"><span class="pre">ext-toolkit.json</span></code>).
+Note that this property is an array so an extension can implement
+multiple properties:</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span>&quot;myapi&quot;: {
+  &quot;schema&quot;: &quot;...&quot;,
+  &quot;url&quot;: &quot;...&quot;,
+  &quot;manifest&quot;: [&quot;my_api_property&quot;]
+}
+</pre></div>
+</div>
+<p>The final step is to write code to handle the new manifest entry.
+The WebExtensions framework processes an extension’s manifest when the
+extension starts up, this happens for existing extensions when a new
+browser session starts up and it can happen in the middle of a session
+when an extension is first installed or enabled.
+The JSON fragment above causes the WebExtensions framework to load the
+API implementation when it encounters a specific manifest key while
+starting an extension, and then call its <code class="docutils literal"><span class="pre">onManifestEntry()</span></code> method
+with the name of the property as an argument.
+The value of the property is not passed, but the full manifest is
+available through <code class="docutils literal"><span class="pre">this.extension.manifest</span></code>:</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">myapi</span> <span class="kr">extends</span> <span class="nx">ExtensionAPI</span> <span class="p">{</span>
+  <span class="nx">onManifestEntry</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">extension</span><span class="p">.</span><span class="nx">manifest</span><span class="p">.</span><span class="nx">my_api_property</span><span class="p">;</span>
+    <span class="cm">/* do something with value... */</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 
 

@@ -304,7 +304,7 @@ Note that when you need to record for a small set of known keys, using separate 
 </div>
 <div class="section" id="declaring-a-histogram">
 <h2>Declaring a Histogram<a class="headerlink" href="#declaring-a-histogram" title="Permalink to this headline">¶</a></h2>
-<p>Histograms should be declared in the <a class="reference external" href="https://dxr.mozilla.org/mozilla-central/source/toolkit/components/telemetry/Histograms.json">Histograms.json</a> file. These declarations are checked for correctness at <a class="reference external" href="https://dxr.mozilla.org/mozilla-central/source/toolkit/components/telemetry/gen-histogram-data.py">compile time</a> and used to generate C++ code.</p>
+<p>Histograms should be declared in the <a class="reference external" href="https://dxr.mozilla.org/mozilla-central/source/toolkit/components/telemetry/Histograms.json">Histograms.json</a> file. These declarations are checked for correctness at <a class="reference external" href="https://dxr.mozilla.org/mozilla-central/source/toolkit/components/telemetry/gen_histogram_data.py">compile time</a> and used to generate C++ code.</p>
 <p>The following is a sample histogram declaration from <code class="docutils literal"><span class="pre">Histograms.json</span></code> for a histogram named <code class="docutils literal"><span class="pre">MEMORY_RESIDENT</span></code> which tracks the amount of resident memory used by a process:</p>
 <div class="highlight-json"><div class="highlight"><pre><span></span>&quot;MEMORY_RESIDENT&quot;: {
   &quot;record_in_processes&quot;: [&quot;main&quot;, &quot;content&quot;],

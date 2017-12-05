@@ -52,6 +52,7 @@ that is accessible from Javascript:
   Other environments include content scripts, devtools pages, and proxy scripts.
   These environments have limited sets of API features available.
   (*describe the reason for limited apis in content script*)
+
 .. |getURL| replace:: ``browser.runtime.getURL()``
 .. _getURL: https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/getURL
 

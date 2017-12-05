@@ -395,14 +395,14 @@ Races can happen because scalar changes are sent from each child process to the 
 conforms to the specification, the processor scripts generate two C++ headers files, included
 by the Telemetry C++ core.</p>
 <div class="section" id="gen-scalar-data-py">
-<h3>gen-scalar-data.py<a class="headerlink" href="#gen-scalar-data-py" title="Permalink to this headline">¶</a></h3>
+<h3>gen_scalar_data.py<a class="headerlink" href="#gen-scalar-data-py" title="Permalink to this headline">¶</a></h3>
 <p>This script is called by the build system to generate the <code class="docutils literal"><span class="pre">TelemetryScalarData.h</span></code> C++ header
 file out of the scalar definitions.
 This header file contains an array holding the scalar names and version strings, in addition
 to an array of <code class="docutils literal"><span class="pre">ScalarInfo</span></code> structures representing all the scalars.</p>
 </div>
 <div class="section" id="gen-scalar-enum-py">
-<h3>gen-scalar-enum.py<a class="headerlink" href="#gen-scalar-enum-py" title="Permalink to this headline">¶</a></h3>
+<h3>gen_scalar_enum.py<a class="headerlink" href="#gen-scalar-enum-py" title="Permalink to this headline">¶</a></h3>
 <p>This script is called by the build system to generate the <code class="docutils literal"><span class="pre">TelemetryScalarEnums.h</span></code> C++ header
 file out of the scalar definitions.
 This header file contains an enum class with all the scalar identifiers used to access them

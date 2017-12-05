@@ -27,7 +27,7 @@ An API schema definition for a simple function looks like this:
              },
              {
                "name": "y",
-               "type": "number",,
+               "type": "number",
                "description": "The second number to add."
              }
            ]

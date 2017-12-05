@@ -279,6 +279,8 @@ reftests where the id has the form [test_url, ref_type, ref_url]).
 Test ids are assumed to be unique within a given testsuite. In cases
 where the test list is not known upfront an empty dict or list may
 be passed (dict).</dd>
+<dt><code class="docutils literal"><span class="pre">name</span></code></dt>
+<dd>An optional string to identify the suite by.</dd>
 <dt><code class="docutils literal"><span class="pre">run_info</span></code></dt>
 <dd>An optional dictionary describing the properties of the
 build and test environment. This contains the information provided
@@ -351,6 +353,10 @@ themselves rather than to provide input to other tools.</p>
 <dd>Text of the log message.</dd>
 </dl>
 </dd>
+<dt><code class="docutils literal"><span class="pre">shutdown</span></code></dt>
+<dd>This is a special action that can only be logged once per logger state.
+It is sent when calling <code class="xref py py-meth docutils literal"><span class="pre">StructuredLogger.shutdown()</span></code> or implicitly
+when exiting the context manager.</dd>
 </dl>
 </div>
 <div class="section" id="testsuite-protocol">
@@ -429,6 +435,12 @@ name. Will return None if not yet set</p>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="exception">
+<dt id="mozlog.structuredlog.LoggerShutdownError">
+<em class="property">exception </em><code class="descclassname">mozlog.structuredlog.</code><code class="descname">LoggerShutdownError</code><a class="headerlink" href="#mozlog.structuredlog.LoggerShutdownError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raised when attempting to log after logger.shutdown() has been called.</p>
 </dd></dl>
 
 <dl class="class">
@@ -559,6 +571,16 @@ the process.</li>
 </dd></dl>
 
 <dl class="method">
+<dt id="mozlog.structuredlog.StructuredLogger.shutdown">
+<code class="descname">shutdown</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#mozlog.structuredlog.StructuredLogger.shutdown" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shutdown the logger.</p>
+<p>This logs a ‘shutdown’ action after which any further attempts to use
+the logger will raise a <a class="reference internal" href="#mozlog.structuredlog.LoggerShutdownError" title="mozlog.structuredlog.LoggerShutdownError"><code class="xref py py-exc docutils literal"><span class="pre">LoggerShutdownError</span></code></a>.</p>
+<p>This is also called implicitly from the destructor or
+when exiting the context manager.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="mozlog.structuredlog.StructuredLogger.suite_end">
 <code class="descname">suite_end</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#mozlog.structuredlog.StructuredLogger.suite_end" title="Permalink to this definition">¶</a></dt>
 <dd><p>Log a suite_end message</p>
@@ -574,6 +596,7 @@ the process.</li>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>tests</strong> (<em>dict</em>) – Test identifiers that will be run in the suite, keyed by group name.</li>
+<li><strong>name</strong> (<em>str</em>) – Optional name to identify the suite.</li>
 <li><strong>run_info</strong> (<em>dict</em>) – Optional information typically provided by mozinfo.</li>
 <li><strong>version_info</strong> (<em>dict</em>) – Optional target application version information provided
 by mozversion.</li>
@@ -1114,6 +1137,17 @@ to the formatters in the absence of command line overrides.</li>
 <span class="n">logger</span><span class="o">.</span><span class="n">test_status</span><span class="p">(</span><span class="s2">&quot;test-id-1&quot;</span><span class="p">,</span> <span class="s2">&quot;subtest-1&quot;</span><span class="p">,</span> <span class="s2">&quot;PASS&quot;</span><span class="p">)</span>
 <span class="n">logger</span><span class="o">.</span><span class="n">test_end</span><span class="p">(</span><span class="s2">&quot;test-id-1&quot;</span><span class="p">,</span> <span class="s2">&quot;OK&quot;</span><span class="p">)</span>
 <span class="n">logger</span><span class="o">.</span><span class="n">suite_end</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Log with a context manager:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mozlog.structuredlog</span> <span class="k">import</span> <span class="n">StructuredLogger</span>
+<span class="kn">from</span> <span class="nn">mozlog.handlers</span> <span class="k">import</span> <span class="n">StreamHandler</span>
+<span class="kn">from</span> <span class="nn">mozlog.formatters</span> <span class="k">import</span> <span class="n">JSONFormatter</span>
+
+<span class="k">with</span> <span class="n">StructuredLogger</span><span class="p">(</span><span class="s2">&quot;my-test-suite&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">logger</span><span class="p">:</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">add_handler</span><span class="p">(</span><span class="n">StreamHandler</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span>
+                                     <span class="n">JSONFormatter</span><span class="p">()))</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;This is an info message&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Populate an <code class="docutils literal"><span class="pre">argparse.ArgumentParser</span></code> with logging options, and

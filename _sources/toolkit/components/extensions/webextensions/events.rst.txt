@@ -251,9 +251,47 @@ the reasons for implementing functions in the child process:
 - The event can be implemented substantially more efficiently in a
   child process.
 
-*XXX explain that overall similar to functions*
+The process for implementing an event in the child process is the same
+as for functions -- simply implement the event in an ExtensionAPI subclass
+that is loaded in a child process.  And just as a function in a child
+process can call a function in the main process with
+`callParentAsyncFunction()`, events in a child process may subscribe to
+events implemented in the main process with a similar `getParentEvent()`.
+For example, the automatically generated event proxy in a child process
+could be written explicitly as:
 
-*XXX analogue of callParentAsyncFunction() is getParentEvent()*
+.. code-block:: js
 
-*XXX fire.sync(), fire.raw()*
+   class myapi extends ExtensionAPI {
+     getAPI(context) {
+       return {
+         myapi: {
+           onSomething: new EventManager(context, "myapi.onSomething", fire => {
+             const listener = (value) => {
+               fire.async(value);
+             };
+
+             let parentEvent = context.childManager.getParentEvent("myapi.onSomething");
+             parent.addListener(listener);
+             return () => {
+               parent.removeListener(listener);
+             };
+           }).api()
+         }
+       }
+     }
+   }
+
+Events implemented in a child process have some additional methods available
+to dispatch listeners:
+
+- ``fire.sync()`` This runs the listener synchronously and returns the
+  value returned by the listener
+
+- ``fire.raw()`` This runs the listener synchronously without cloning
+  the listener arguments into the extension's Javascript compartment.
+  This is used as a performance optimization, it should not be used
+  unless you have a detailed understanding of Javascript compartments
+  and cross-compartment wrappers.
+
 

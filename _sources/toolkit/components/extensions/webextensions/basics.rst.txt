@@ -128,8 +128,8 @@ This is specified by the ``manifest`` property, which lists any manifest keys
 that should cause the API to be loaded.
 
 Finally, APIs can be loaded based on other events in the WebExtension
-lifecycle.  These are listed in the ``events`` property.
-(*explain more here *)
+lifecycle.  These are listed in the ``events`` property and described in
+more detail in :ref:`lifecycle`.
 
 WebExtensions Experiments
 -------------------------

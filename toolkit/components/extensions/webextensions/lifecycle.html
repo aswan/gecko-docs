@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Utilities for implementing APIs &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
+  <title>Managing the Extension Lifecycle &mdash; Mozilla Source Tree Docs 59.0a1 documentation</title>
   
 
   
@@ -37,8 +37,8 @@
         <link rel="search" title="Search" href="../../../../search.html"/>
     <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../../../../index.html"/>
         <link rel="up" title="WebExtensions API Development" href="index.html"/>
-        <link rel="next" title="WebExtensions Javascript Component Reference" href="reference.html"/>
-        <link rel="prev" title="Managing the Extension Lifecycle" href="lifecycle.html"/> 
+        <link rel="next" title="Utilities for implementing APIs" href="other.html"/>
+        <link rel="prev" title="Implementing a manifest property" href="manifest.html"/> 
 
   
   <script src="../../../../_static/js/modernizr.min.js"></script>
@@ -114,14 +114,12 @@
 <li class="toctree-l2"><a class="reference internal" href="functions.html">Implementing a function</a></li>
 <li class="toctree-l2"><a class="reference internal" href="events.html">Implementing an event</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manifest.html">Implementing a manifest property</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lifecycle.html">Managing the Extension Lifecycle</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Utilities for implementing APIs</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#windowmanager">WindowManager</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#tabmanager">TabManager</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#extensionsettingsstore">ExtensionSettingsStore</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#extensionpreferencesmanager">ExtensionPreferencesManager</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Managing the Extension Lifecycle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#extension-shutdown">Extension Shutdown</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#extension-uninstall">Extension Uninstall</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="other.html">Utilities for implementing APIs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference.html">WebExtensions Javascript Component Reference</a></li>
 </ul>
 </li>
@@ -190,13 +188,13 @@
         
           <li><a href="index.html">WebExtensions API Development</a> &raquo;</li>
         
-      <li>Utilities for implementing APIs</li>
+      <li>Managing the Extension Lifecycle</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../../../_sources/toolkit/components/extensions/webextensions/other.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../../../_sources/toolkit/components/extensions/webextensions/lifecycle.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -209,29 +207,48 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="utilities-for-implementing-apis">
-<h1>Utilities for implementing APIs<a class="headerlink" href="#utilities-for-implementing-apis" title="Permalink to this headline">¶</a></h1>
-<p>This page covers some utility classes that are useful for
-implementing WebExtension APIs:</p>
-<div class="section" id="windowmanager">
-<h2>WindowManager<a class="headerlink" href="#windowmanager" title="Permalink to this headline">¶</a></h2>
-<p>This class manages the mapping between the opaque window identifiers used
-in the <a class="reference external" href="https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/windows">browser.windows</a> API.
-See the reference docs <a class="reference external" href="reference.html#windowmanager-class">here</a>.</p>
+  <div class="section" id="managing-the-extension-lifecycle">
+<span id="lifecycle"></span><h1>Managing the Extension Lifecycle<a class="headerlink" href="#managing-the-extension-lifecycle" title="Permalink to this headline">¶</a></h1>
+<p>The techniques described in previous pages allow a WebExtension API to
+be loaded and instantiated only when an extension that uses the API is
+activated.
+But there are a few other events in the extension lifecycle that an API
+may need to respond to.</p>
+<div class="section" id="extension-shutdown">
+<h2>Extension Shutdown<a class="headerlink" href="#extension-shutdown" title="Permalink to this headline">¶</a></h2>
+<p>APIs that allocate any resources (e.g., adding elements to the browser’s
+user interface, setting up internal event listeners, etc.) must free
+these resources when the extension for which they are allocated is
+shut down.  An API does this by using the <code class="docutils literal"><span class="pre">callOnClose()</span></code>
+method on an <a class="reference external" href="reference.html#extension-class">Extension</a> object.</p>
 </div>
-<div class="section" id="tabmanager">
-<h2>TabManager<a class="headerlink" href="#tabmanager" title="Permalink to this headline">¶</a></h2>
-<p>This class manages the mapping between the opaque tab identifiers used
-in the <a class="reference external" href="https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/tabs">browser.tabs</a> API.
-See the reference docs <a class="reference external" href="reference.html#tabmanager-class">here</a>.</p>
+<div class="section" id="extension-uninstall">
+<h2>Extension Uninstall<a class="headerlink" href="#extension-uninstall" title="Permalink to this headline">¶</a></h2>
+<p>In addition to resources allocated within an individual browser session,
+some APIs make durable changes such as setting preferences or storing
+data in the user’s profile.
+These changes are typically not reverted when an extension is shut down,
+but when the extension is completely uninstalled (or stops using the API).
+To handle this, extensions can be notified when an extension is uninstalled
+or updated.  Extension updates are a subtle case – consider an API that
+makes some durable change based on the presence of a manifest property.
+If an extension uses the manifest key in one version and then is updated
+to a new version that no longer uses the manifest key,
+the <code class="docutils literal"><span class="pre">onManifestEntry()</span></code> method for the API is no longer called,
+but an API can examine the new manifest after an update to detect that
+the key has been removed.</p>
+<p>To be notified of update and uninstall events, an extension lists these
+events in the API manifest:</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span>&quot;myapi&quot;: {
+  &quot;schema&quot;: &quot;...&quot;,
+  &quot;url&quot;: &quot;...&quot;,
+  &quot;events&quot;: [&quot;update&quot;, &quot;uninstall&quot;]
+}
+</pre></div>
 </div>
-<div class="section" id="extensionsettingsstore">
-<h2>ExtensionSettingsStore<a class="headerlink" href="#extensionsettingsstore" title="Permalink to this headline">¶</a></h2>
-<p><em>XXX describe</em></p>
-</div>
-<div class="section" id="extensionpreferencesmanager">
-<h2>ExtensionPreferencesManager<a class="headerlink" href="#extensionpreferencesmanager" title="Permalink to this headline">¶</a></h2>
-<p><em>XXX describe</em></p>
+<p>If these properties are present, the <code class="docutils literal"><span class="pre">onUpdate()</span></code> and <code class="docutils literal"><span class="pre">onUninstall()</span></code>
+methods will be called for the relevant <code class="docutils literal"><span class="pre">ExtensionAPI</span></code> instances when
+an extension that uses the API is updated or uninstalled.</p>
 </div>
 </div>
 
@@ -245,10 +262,10 @@ See the reference docs <a class="reference external" href="reference.html#tabman
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="reference.html" class="btn btn-neutral float-right" title="WebExtensions Javascript Component Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="other.html" class="btn btn-neutral float-right" title="Utilities for implementing APIs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="lifecycle.html" class="btn btn-neutral" title="Managing the Extension Lifecycle" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="manifest.html" class="btn btn-neutral" title="Implementing a manifest property" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

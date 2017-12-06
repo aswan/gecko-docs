@@ -43,8 +43,8 @@ callable from an extension as ``browser.myapi.dosomething()``.
 The ``parameters`` and ``returns`` properties describe the parameters
 the function takes and the value it returns, respectively.
 Parameters are specified as an array of Javascript types, where each
-parameter is a constrained Javascript value as described at
-*XXX citation needed*.
+parameter is a constrained Javascript value as described
+in the previous section.
 
 Each parameter may also contain additional properties ``optional``
 and ``default``.  If ``optional`` is present it must be a boolean
@@ -59,7 +59,8 @@ leads to difficult to use functions and API designers are encouraged to
 use object-valued parameters with optional named properties instead,
 or if optional parameters must be used, to use them sparingly and put
 them at the end of the parameter list.
-*XXX should we describe allowAmbiguousArguments?*
+
+.. XXX should we describe allowAmbiguousArguments?
 
 The boolean-valued ``async`` property specifies whether a function
 is asynchronous.

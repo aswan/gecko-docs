@@ -119,7 +119,8 @@
 <li class="toctree-l2"><a class="reference internal" href="functions.html">Implementing a function</a></li>
 <li class="toctree-l2"><a class="reference internal" href="events.html">Implementing an event</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manifest.html">Implementing a manifest property</a></li>
-<li class="toctree-l2"><a class="reference internal" href="other.html">Other API Implementation Topics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lifecycle.html">Managing the Extension Lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="other.html">Utilities for implementing APIs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference.html">WebExtensions Javascript Component Reference</a></li>
 </ul>
 </li>
@@ -255,8 +256,7 @@ Perhaps the most familiar envrionment is extension pages, including
 the background page, popups, and content pages accessed via <a class="reference external" href="https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/getURL"><code class="docutils literal"><span class="pre">browser.runtime.getURL()</span></code></a>.
 Most Javascript features are available in extension pages.
 Other environments include content scripts, devtools pages, and proxy scripts.
-These environments have limited sets of API features available.
-(<em>describe the reason for limited apis in content script</em>)</li>
+These environments have limited sets of API features available.</li>
 </ul>
 <ul class="simple">
 <li><strong>Permissions</strong>:
@@ -322,15 +322,14 @@ a WebExtension API:</p>
 leak any resources.  In particular, any action from an extension that
 causes a resource to be allocated within the browser should be
 automatically cleaned up when the extension is disabled or uninstalled.
-(<em>links to callOnClose(), onUninstall() etc</em>)</li>
+This is described in more detail in the section on <a class="reference internal" href="lifecycle.html#lifecycle"><span class="std std-ref">Managing the Extension Lifecycle</span></a>.</li>
 <li><strong>Performance</strong>: A new WebExtension API should not add any new overhead
 to the browser when the API is not used.  That is, the implementation
 of the API should not be loaded at all unless it is actively used by
 an extension.  In addition, initialization should be delayed when
 possible – extensions ared started relatively early in the browser
 startup process so any unnecessary work done during extension startup
-contributes directly to sluggish browser startup.
-(<em>specific links here?</em>)</li>
+contributes directly to sluggish browser startup.</li>
 </ul>
 </div>
 </div>

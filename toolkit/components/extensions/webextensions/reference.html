@@ -38,7 +38,7 @@
     <link rel="top" title="Mozilla Source Tree Docs 59.0a1 documentation" href="../../../../index.html"/>
         <link rel="up" title="WebExtensions API Development" href="index.html"/>
         <link rel="next" title="WebPayments UI" href="../../payments/docs/index.html"/>
-        <link rel="prev" title="Other API Implementation Topics" href="other.html"/> 
+        <link rel="prev" title="Utilities for implementing APIs" href="other.html"/> 
 
   
   <script src="../../../../_static/js/modernizr.min.js"></script>
@@ -114,12 +114,15 @@
 <li class="toctree-l2"><a class="reference internal" href="functions.html">Implementing a function</a></li>
 <li class="toctree-l2"><a class="reference internal" href="events.html">Implementing an event</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manifest.html">Implementing a manifest property</a></li>
-<li class="toctree-l2"><a class="reference internal" href="other.html">Other API Implementation Topics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lifecycle.html">Managing the Extension Lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="other.html">Utilities for implementing APIs</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">WebExtensions Javascript Component Reference</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#extensionapi-class">ExtensionAPI class</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#extension-class">Extension class</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#eventmanager-class">EventManager class</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">BaseContext class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#basecontext-class">BaseContext class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#windowmanager-class">WindowManager class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tabmanager-class">TabManager class</a></li>
 </ul>
 </li>
 </ul>
@@ -227,8 +230,62 @@ from jsdoc comments in the source code.</p>
 <dl class="class">
 <dt id="Extension">
 <em class="property">class </em><code class="descname">Extension</code><span class="sig-paren">(</span><em>addonData</em>, <em>startupReason</em><span class="sig-paren">)</span><a class="headerlink" href="#Extension" title="Permalink to this definition">¶</a></dt>
-<dd><p>We create one instance of this class per extension. <a href="#id2"><span class="problematic" id="id3">|addonData|</span></a>
+<dd><p>We create one instance of this class per extension. <a href="#id1"><span class="problematic" id="id2">|addonData|</span></a>
 comes directly from bootstrap.js when initializing.</p>
+<dl class="function">
+<dt id="Extension.callOnClose">
+<code class="descclassname">Extension.</code><code class="descname">callOnClose</code><span class="sig-paren">(</span><em>obj</em><span class="sig-paren">)</span><a class="headerlink" href="#Extension.callOnClose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call the close() method on the given object when this extension
+is shut down.  This can happen during browser shutdown, or when
+an extension is manually disabled or uninstalled.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>obj.close</strong> (<em>function</em>) – The function to call when this extension is shut down.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Extension.getURL">
+<code class="descclassname">Extension.</code><code class="descname">getURL</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#Extension.getURL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the moz-extension: URL for the given path within this
+extension.</p>
+<p>Must not be called unless either the <cite>id</cite> or <cite>uuid</cite> property has
+already been set.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>path</strong> (<em>string</em>) – The path portion of the URL.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>string</strong> –</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Extension.manifestError">
+<code class="descclassname">Extension.</code><code class="descname">manifestError</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#Extension.manifestError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Report an error about the extension’s manifest file.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Extension.manifestWarning">
+<code class="descclassname">Extension.</code><code class="descname">manifestWarning</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#Extension.manifestWarning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Report a warning about the extension’s manifest file.</p>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -241,9 +298,480 @@ comes directly from bootstrap.js when initializing.</p>
 </dd></dl>
 
 </div>
-<div class="section" id="id1">
-<h2>BaseContext class<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p><em>XXX fill me in</em></p>
+<div class="section" id="basecontext-class">
+<h2>BaseContext class<a class="headerlink" href="#basecontext-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="BaseContext">
+<em class="property">class </em><code class="descname">BaseContext</code><span class="sig-paren">(</span><em>envType</em>, <em>extension</em><span class="sig-paren">)</span><a class="headerlink" href="#BaseContext" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class contains the information we have about an individual
+extension.  It is never instantiated directly, instead subclasses
+for each type of process extend this class and add members that are
+relevant for that process.</p>
+<dl class="function">
+<dt id="BaseContext.close">
+<code class="descclassname">BaseContext.</code><code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#BaseContext.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>A simple proxy for unload(), for use with callOnClose().</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="BaseContext.jsonStringify">
+<code class="descclassname">BaseContext.</code><code class="descname">jsonStringify</code><span class="sig-paren">(</span><em>args</em><span class="sig-paren">)</span><a class="headerlink" href="#BaseContext.jsonStringify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Safely call JSON.stringify() on an object that comes from an
+extension.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>args</strong> (<em>array.&lt;any&gt;</em>) – Arguments for JSON.stringify()</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>string</strong> – The stringified representation of obj</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="BaseContext.normalizeError">
+<code class="descclassname">BaseContext.</code><code class="descname">normalizeError</code><span class="sig-paren">(</span><em>error</em><span class="sig-paren">)</span><a class="headerlink" href="#BaseContext.normalizeError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalizes the given error object for use by the target scope. If
+the target is an error object which belongs to that scope, it is
+returned as-is. If it is an ordinary object with a <cite>message</cite>
+property, it is converted into an error belonging to the target
+scope. If it is an Error object which does <em>not</em> belong to the
+clone scope, it is reported, and converted to an unexpected
+exception error.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>error</strong> (<em>Error|object</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>Error</strong> –</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="BaseContext.sendMessage">
+<code class="descclassname">BaseContext.</code><code class="descname">sendMessage</code><span class="sig-paren">(</span><em>target</em>, <em>messageName</em>, <em>data</em>, <em>options</em><span class="sig-paren">)</span><a class="headerlink" href="#BaseContext.sendMessage" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper around MessageChannel.sendMessage which adds the extension ID
+to the recipient object, and ensures replies are not processed after the
+context has been unloaded.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>target</strong> (<em>nsIMessageManager</em>) – </li>
+<li><strong>messageName</strong> (<em>string</em>) – </li>
+<li><strong>data</strong> (<em>object</em>) – </li>
+<li><strong>options</strong> (<em>object</em>) – </li>
+<li><strong>options.sender</strong> (<em>object</em>) – </li>
+<li><strong>options.recipient</strong> (<em>object</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>Promise</strong> –</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="BaseContext.withLastError">
+<code class="descclassname">BaseContext.</code><code class="descname">withLastError</code><span class="sig-paren">(</span><em>error</em>, <em>callback</em><span class="sig-paren">)</span><a class="headerlink" href="#BaseContext.withLastError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the value of <cite>.lastError</cite> to <cite>error</cite>, calls the given
+callback, and reports an error if the value has not been checked
+when the callback returns.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>error</strong> (<em>object</em>) – An object with a <cite>message</cite> property. May optionally be an <cite>Error</cite> object belonging to the target scope.</li>
+<li><strong>callback</strong> (<em>function</em>) – The callback to call.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>*</strong> – The return value of callback.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="BaseContext.wrapPromise">
+<code class="descclassname">BaseContext.</code><code class="descname">wrapPromise</code><span class="sig-paren">(</span><em>promise</em>, <em>callback</em><span class="sig-paren">)</span><a class="headerlink" href="#BaseContext.wrapPromise" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wraps the given promise so it can be safely returned to extension
+code in this context.</p>
+<p>If <cite>callback</cite> is provided, however, it is used as a completion
+function for the promise, and no promise is returned. In this case,
+the callback is called when the promise resolves or rejects. In the
+latter case, <cite>lastError</cite> is set to the rejection value, and the
+callback function must check <cite>browser.runtime.lastError</cite> or
+<cite>extension.runtime.lastError</cite> in order to prevent it being reported
+to the console.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>promise</strong> (<em>Promise</em>) – The promise with which to wrap the callback. May resolve to a <cite>SpreadArgs</cite> instance, in which case each element will be used as a separate argument.  Unless the promise object belongs to the cloneScope global, its resolution value is cloned into cloneScope prior to calling the <cite>callback</cite> function or resolving the wrapped promise.</li>
+<li><strong>callback</strong> (<em>function</em>) – The callback function to wrap</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>Promise|undefined</strong> – If callback is null, a promise object belonging to the target scope. Otherwise, undefined.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="windowmanager-class">
+<h2>WindowManager class<a class="headerlink" href="#windowmanager-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="WindowManagerBase">
+<em class="property">class </em><code class="descname">WindowManagerBase</code><span class="sig-paren">(</span><em>extension</em><span class="sig-paren">)</span><a class="headerlink" href="#WindowManagerBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manages native browser windows and their wrappers for a particular extension.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>extension</strong> (<a class="reference internal" href="#Extension" title="Extension"><em>Extension</em></a>) – The extension for which to manage windows.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="WindowManagerBase.convert">
+<code class="descclassname">WindowManagerBase.</code><code class="descname">convert</code><span class="sig-paren">(</span><em>window</em>, <em>args</em><span class="sig-paren">)</span><a class="headerlink" href="#WindowManagerBase.convert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts the given browser window to a JSON-compatible object, in the
+format requried to be returned by WebExtension APIs, which may be safely
+passed to extension code.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>window</strong> (<em>DOMWindow</em>) – The browser window to convert.</li>
+<li><strong>args</strong> (<em>*</em>) – Additional arguments to be passed to <a class="reference external" href="mailto:{&#37;&#52;&#48;link">{<span>&#64;</span>link</a> WindowBase#convert}.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>Object</strong> –</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="WindowManagerBase.get">
+<code class="descclassname">WindowManagerBase.</code><code class="descname">get</code><span class="sig-paren">(</span><em>windowId</em>, <em>context</em><span class="sig-paren">)</span><a class="headerlink" href="#WindowManagerBase.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a WindowBase wrapper for the browser window with the given ID.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>id</strong> (<em>integer</em>) – The ID of the browser window for which to return a wrapper.</li>
+<li><strong>context</strong> (<a class="reference internal" href="#BaseContext" title="BaseContext"><em>BaseContext</em></a>) – The extension context for which the matching is being performed. Used to determine the current window for relevant properties.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first last"><strong>ExtensionError</strong> – If no window exists with the given ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="WindowManagerBase.getAll">
+<code class="descclassname">WindowManagerBase.</code><code class="descname">getAll</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#WindowManagerBase.getAll" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an iterator of WindowBase wrappers for each currently existing
+browser window.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>Iterator.&lt;WindowBase&gt;</strong> –</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="WindowManagerBase.getWrapper">
+<code class="descclassname">WindowManagerBase.</code><code class="descname">getWrapper</code><span class="sig-paren">(</span><em>window</em><span class="sig-paren">)</span><a class="headerlink" href="#WindowManagerBase.getWrapper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns this extension’s WindowBase wrapper for the given browser window.
+This method will always return the same wrapper object for any given
+browser window.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>window</strong> (<em>DOMWindow</em>) – The browser window for which to return a wrapper.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>WindowBase</strong> – The wrapper for this tab.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="WindowManagerBase.query">
+<code class="descclassname">WindowManagerBase.</code><code class="descname">query</code><span class="sig-paren">(</span><em>queryInfo</em>, <em>context</em><span class="sig-paren">)</span><a class="headerlink" href="#WindowManagerBase.query" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an iterator of WindowBase objects which match the given query info.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>queryInfo</strong> (<em>Object|null</em>) – An object containing properties on which to filter. May contain any properties which are recognized by <a class="reference external" href="mailto:{&#37;&#52;&#48;link">{<span>&#64;</span>link</a> WindowBase#matches}. Unknown properties will be ignored.</li>
+<li><strong>context</strong> (<em>BaseContext|null</em>) – The extension context for which the matching is being performed. Used to determine the current window for relevant properties.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>Iterator.&lt;WindowBase&gt;</strong> –</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="WindowManagerBase.wrapWindow">
+<code class="descclassname">WindowManagerBase.</code><code class="descname">wrapWindow</code><span class="sig-paren">(</span><em>window</em><span class="sig-paren">)</span><a class="headerlink" href="#WindowManagerBase.wrapWindow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a new WindowBase instance wrapping the given browser window.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>window</strong> (<em>DOMWindow</em>) – The browser window for which to return a wrapper.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>WindowBase</strong> –</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="tabmanager-class">
+<h2>TabManager class<a class="headerlink" href="#tabmanager-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="TabManagerBase">
+<em class="property">class </em><code class="descname">TabManagerBase</code><span class="sig-paren">(</span><em>extension</em><span class="sig-paren">)</span><a class="headerlink" href="#TabManagerBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manages native tabs, their wrappers, and their dynamic permissions for a
+particular extension.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>extension</strong> (<a class="reference internal" href="#Extension" title="Extension"><em>Extension</em></a>) – The extension for which to manage tabs.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="TabManagerBase.addActiveTabPermission">
+<code class="descclassname">TabManagerBase.</code><code class="descname">addActiveTabPermission</code><span class="sig-paren">(</span><em>nativeTab</em><span class="sig-paren">)</span><a class="headerlink" href="#TabManagerBase.addActiveTabPermission" title="Permalink to this definition">¶</a></dt>
+<dd><p>If the extension has requested activeTab permission, grant it those
+permissions for the current inner window in the given native tab.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>nativeTab</strong> (<em>NativeTab</em>) – The native tab for which to grant permissions.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="TabManagerBase.convert">
+<code class="descclassname">TabManagerBase.</code><code class="descname">convert</code><span class="sig-paren">(</span><em>nativeTab</em>, <em>fallbackTab</em><span class="sig-paren">)</span><a class="headerlink" href="#TabManagerBase.convert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts the given native tab to a JSON-compatible object, in the format
+requried to be returned by WebExtension APIs, which may be safely passed to
+extension code.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>nativeTab</strong> (<em>NativeTab</em>) – The native tab to convert.</li>
+<li><strong>fallbackTab</strong> (<em>NativeTab</em>) – A tab to retrieve geometry data from if the lazy geometry data for this tab hasn’t been initialized yet.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>Object</strong> –</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="TabManagerBase.get">
+<code class="descclassname">TabManagerBase.</code><code class="descname">get</code><span class="sig-paren">(</span><em>tabId</em><span class="sig-paren">)</span><a class="headerlink" href="#TabManagerBase.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a TabBase wrapper for the tab with the given ID.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>id</strong> (<em>integer</em>) – The ID of the tab for which to return a wrapper.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><strong>ExtensionError</strong> – If no tab exists with the given ID.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>TabBase</strong> –</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="TabManagerBase.getWrapper">
+<code class="descclassname">TabManagerBase.</code><code class="descname">getWrapper</code><span class="sig-paren">(</span><em>nativeTab</em><span class="sig-paren">)</span><a class="headerlink" href="#TabManagerBase.getWrapper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns this extension’s TabBase wrapper for the given native tab. This
+method will always return the same wrapper object for any given native tab.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>nativeTab</strong> (<em>NativeTab</em>) – The tab for which to return a wrapper.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>TabBase</strong> – The wrapper for this tab.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="TabManagerBase.hasActiveTabPermission">
+<code class="descclassname">TabManagerBase.</code><code class="descname">hasActiveTabPermission</code><span class="sig-paren">(</span><em>nativeTab</em><span class="sig-paren">)</span><a class="headerlink" href="#TabManagerBase.hasActiveTabPermission" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns true if the extension has requested activeTab permission, and has
+been granted permissions for the current inner window if this tab.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>nativeTab</strong> (<em>NativeTab</em>) – The native tab for which to check permissions.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>boolean</strong> – True if the extension has activeTab permissions for this tab.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="TabManagerBase.hasTabPermission">
+<code class="descclassname">TabManagerBase.</code><code class="descname">hasTabPermission</code><span class="sig-paren">(</span><em>nativeTab</em><span class="sig-paren">)</span><a class="headerlink" href="#TabManagerBase.hasTabPermission" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns true if the extension has permissions to access restricted
+properties of the given native tab. In practice, this means that it has
+either requested the “tabs” permission or has activeTab permissions for the
+given tab.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>nativeTab</strong> (<em>NativeTab</em>) – The native tab for which to check permissions.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>boolean</strong> – True if the extension has permissions for this tab.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="TabManagerBase.query">
+<code class="descclassname">TabManagerBase.</code><code class="descname">query</code><span class="sig-paren">(</span><em>queryInfo</em>, <em>context</em><span class="sig-paren">)</span><a class="headerlink" href="#TabManagerBase.query" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an iterator of TabBase objects which match the given query info.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>queryInfo</strong> (<em>Object|null</em>) – An object containing properties on which to filter. May contain any properties which are recognized by <a class="reference external" href="mailto:{&#37;&#52;&#48;link">{<span>&#64;</span>link</a> TabBase#matches} or <a class="reference external" href="mailto:{&#37;&#52;&#48;link">{<span>&#64;</span>link</a> WindowBase#matches}. Unknown properties will be ignored.</li>
+<li><strong>context</strong> (<em>BaseContext|null</em>) – The extension context for which the matching is being performed. Used to determine the current window for relevant properties.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>Iterator.&lt;TabBase&gt;</strong> –</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="TabManagerBase.revokeActiveTabPermission">
+<code class="descclassname">TabManagerBase.</code><code class="descname">revokeActiveTabPermission</code><span class="sig-paren">(</span><em>nativeTab</em><span class="sig-paren">)</span><a class="headerlink" href="#TabManagerBase.revokeActiveTabPermission" title="Permalink to this definition">¶</a></dt>
+<dd><p>Revoke the extension’s activeTab permissions for the current inner window
+of the given native tab.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>nativeTab</strong> (<em>NativeTab</em>) – The native tab for which to revoke permissions.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 </div>
 
@@ -260,7 +788,7 @@ comes directly from bootstrap.js when initializing.</p>
         <a href="../../payments/docs/index.html" class="btn btn-neutral float-right" title="WebPayments UI" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="other.html" class="btn btn-neutral" title="Other API Implementation Topics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="other.html" class="btn btn-neutral" title="Utilities for implementing APIs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

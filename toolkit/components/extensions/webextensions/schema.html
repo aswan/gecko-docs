@@ -119,7 +119,8 @@
 <li class="toctree-l2"><a class="reference internal" href="functions.html">Implementing a function</a></li>
 <li class="toctree-l2"><a class="reference internal" href="events.html">Implementing an event</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manifest.html">Implementing a manifest property</a></li>
-<li class="toctree-l2"><a class="reference internal" href="other.html">Other API Implementation Topics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lifecycle.html">Managing the Extension Lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="other.html">Utilities for implementing APIs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference.html">WebExtensions Javascript Component Reference</a></li>
 </ul>
 </li>
@@ -305,13 +306,23 @@ The contents of <code class="docutils literal"><span class="pre">value</span></c
 </pre></div>
 </div>
 <p>Type-specific parameters will be described in subsequent sections,
-but there are some properties that can appear in many different types of
-items in an API schema:</p>
+but there are some optional properties that can appear in many
+different types of items in an API schema:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">description</span></code>: This optional string-valued property serves as documentation
+<li><code class="docutils literal"><span class="pre">description</span></code>: This string-valued property serves as documentation
 for anybody reading or editing the schema.</li>
-<li><code class="docutils literal"><span class="pre">permissions</span></code>: <em>XXX explain permissions</em></li>
-<li><code class="docutils literal"><span class="pre">deprecated</span></code>: <em>XXX explain deprecated</em></li>
+<li><code class="docutils literal"><span class="pre">permissions</span></code>: This property is an array of strings.
+If present, the item in which this property appears is only made
+available to extensions that have all the permissions listed in the array.</li>
+<li><code class="docutils literal"><span class="pre">unsupported</span></code>: This property must be a boolean.
+If it is true, the item in which it appears is ignored.
+By using this property, a schema can define how a particular API
+is intended to work, before it is implemented.</li>
+<li><code class="docutils literal"><span class="pre">deprecated</span></code>: This property must be a boolean.  If it is true,
+any uses of the item in which it appears will cause a warning to
+be logged to the browser console, to indicate to extension authors
+that they are using a feature that is deprecated or otherwise
+not fully supported.</li>
 </ul>
 </div>
 <div class="section" id="describing-constrained-values">
@@ -324,7 +335,9 @@ These items are defined using <a class="reference external" href="http://json-sc
 Specifically, these items are specified by using one of the following
 values for the <code class="docutils literal"><span class="pre">type</span></code> property: <code class="docutils literal"><span class="pre">boolean</span></code>, <code class="docutils literal"><span class="pre">integer</span></code>, <code class="docutils literal"><span class="pre">number</span></code>,
 <code class="docutils literal"><span class="pre">string</span></code>, <code class="docutils literal"><span class="pre">array</span></code>, <code class="docutils literal"><span class="pre">object</span></code>, or <code class="docutils literal"><span class="pre">any</span></code>.
-<em>XXX please let there be a good external link for the rest of this.</em></p>
+Refer to the documentation and examples at the
+<a class="reference external" href="http://json-schema.org/">JSON Schema site</a> for details on how these
+items are defined in a schema.</p>
 </div>
 </div>
 

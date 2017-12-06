@@ -19,7 +19,17 @@ EventManager class
 .. js:autoclass:: EventManager
    :members:
 
-.. _basecontext-class:
 BaseContext class
 -----------------
-*XXX fill me in*
+.. js:autoclass:: BaseContext
+   :members:
+
+WindowManager class
+-------------------
+.. js:autoclass:: WindowManagerBase
+   :members:
+
+TabManager class
+----------------
+.. js:autoclass:: TabManagerBase
+   :members:

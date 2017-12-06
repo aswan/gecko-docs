@@ -33,7 +33,7 @@ The next step is to inform the WebExtensions framework that this API
 should be instantiated and notified when extensions that use the new
 manifest key are loaded.
 For built-in APIs, this is done with the ``manifest`` property
-in the extension manifest (e.g., ``ext-toolkit.json``).
+in the API manifest (e.g., ``ext-toolkit.json``).
 Note that this property is an array so an extension can implement
 multiple properties:
 

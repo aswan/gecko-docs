@@ -51,7 +51,6 @@ that is accessible from Javascript:
   Most Javascript features are available in extension pages.
   Other environments include content scripts, devtools pages, and proxy scripts.
   These environments have limited sets of API features available.
-  (*describe the reason for limited apis in content script*)
 
 .. |getURL| replace:: ``browser.runtime.getURL()``
 .. _getURL: https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/getURL
@@ -119,7 +118,8 @@ a WebExtension API:
   leak any resources.  In particular, any action from an extension that
   causes a resource to be allocated within the browser should be
   automatically cleaned up when the extension is disabled or uninstalled.
-  (*links to callOnClose(), onUninstall() etc*)
+  This is described in more detail in the section on :ref:`lifecycle`.
+
 - **Performance**: A new WebExtension API should not add any new overhead
   to the browser when the API is not used.  That is, the implementation
   of the API should not be loaded at all unless it is actively used by
@@ -127,4 +127,4 @@ a WebExtension API:
   possible -- extensions ared started relatively early in the browser
   startup process so any unnecessary work done during extension startup
   contributes directly to sluggish browser startup.
-  (*specific links here?*)
+

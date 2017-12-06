@@ -108,15 +108,26 @@ Most definitions of individual items in a schema have a common format:
    }
 
 Type-specific parameters will be described in subsequent sections,
-but there are some properties that can appear in many different types of
-items in an API schema:
+but there are some optional properties that can appear in many
+different types of items in an API schema:
 
-- ``description``: This optional string-valued property serves as documentation
+- ``description``: This string-valued property serves as documentation
   for anybody reading or editing the schema.
 
-- ``permissions``: *XXX explain permissions*
+- ``permissions``: This property is an array of strings.
+  If present, the item in which this property appears is only made
+  available to extensions that have all the permissions listed in the array.
 
-- ``deprecated``: *XXX explain deprecated*
+- ``unsupported``: This property must be a boolean.
+  If it is true, the item in which it appears is ignored.
+  By using this property, a schema can define how a particular API
+  is intended to work, before it is implemented.
+
+- ``deprecated``: This property must be a boolean.  If it is true,
+  any uses of the item in which it appears will cause a warning to
+  be logged to the browser console, to indicate to extension authors
+  that they are using a feature that is deprecated or otherwise
+  not fully supported.
 
 
 Describing constrained values
@@ -129,4 +140,6 @@ These items are defined using `JSON Schema <http://json-schema.org/>`_.
 Specifically, these items are specified by using one of the following
 values for the ``type`` property: ``boolean``, ``integer``, ``number``,
 ``string``, ``array``, ``object``, or ``any``.
-*XXX please let there be a good external link for the rest of this.*
+Refer to the documentation and examples at the
+`JSON Schema site <http://json-schema.org/>`_ for details on how these
+items are defined in a schema.

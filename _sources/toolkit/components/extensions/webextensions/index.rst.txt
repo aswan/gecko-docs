@@ -25,6 +25,7 @@ in particular.
    functions
    events
    manifest
+   lifecycle
    other
    reference
     

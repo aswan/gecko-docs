@@ -119,7 +119,8 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="events.html">Implementing an event</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manifest.html">Implementing a manifest property</a></li>
-<li class="toctree-l2"><a class="reference internal" href="other.html">Other API Implementation Topics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lifecycle.html">Managing the Extension Lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="other.html">Utilities for implementing APIs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference.html">WebExtensions Javascript Component Reference</a></li>
 </ul>
 </li>
@@ -249,8 +250,8 @@ callable from an extension as <code class="docutils literal"><span class="pre">b
 The <code class="docutils literal"><span class="pre">parameters</span></code> and <code class="docutils literal"><span class="pre">returns</span></code> properties describe the parameters
 the function takes and the value it returns, respectively.
 Parameters are specified as an array of Javascript types, where each
-parameter is a constrained Javascript value as described at
-<em>XXX citation needed</em>.</p>
+parameter is a constrained Javascript value as described
+in the previous section.</p>
 <p>Each parameter may also contain additional properties <code class="docutils literal"><span class="pre">optional</span></code>
 and <code class="docutils literal"><span class="pre">default</span></code>.  If <code class="docutils literal"><span class="pre">optional</span></code> is present it must be a boolean
 (and parameters are not optional by default so this property is typically
@@ -263,8 +264,7 @@ Although it is legal to create optional parameters at any position
 leads to difficult to use functions and API designers are encouraged to
 use object-valued parameters with optional named properties instead,
 or if optional parameters must be used, to use them sparingly and put
-them at the end of the parameter list.
-<em>XXX should we describe allowAmbiguousArguments?</em></p>
+them at the end of the parameter list.</p>
 <p>The boolean-valued <code class="docutils literal"><span class="pre">async</span></code> property specifies whether a function
 is asynchronous.
 For asynchronous functions,

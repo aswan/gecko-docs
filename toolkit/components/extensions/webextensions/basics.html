@@ -121,7 +121,8 @@
 <li class="toctree-l2"><a class="reference internal" href="functions.html">Implementing a function</a></li>
 <li class="toctree-l2"><a class="reference internal" href="events.html">Implementing an event</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manifest.html">Implementing a manifest property</a></li>
-<li class="toctree-l2"><a class="reference internal" href="other.html">Other API Implementation Topics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lifecycle.html">Managing the Extension Lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="other.html">Utilities for implementing APIs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference.html">WebExtensions Javascript Component Reference</a></li>
 </ul>
 </li>
@@ -328,8 +329,8 @@ when an extension that includes the relevant manifest key is activated.
 This is specified by the <code class="docutils literal"><span class="pre">manifest</span></code> property, which lists any manifest keys
 that should cause the API to be loaded.</p>
 <p>Finally, APIs can be loaded based on other events in the WebExtension
-lifecycle.  These are listed in the <code class="docutils literal"><span class="pre">events</span></code> property.
-(<a href="#id1"><span class="problematic" id="id2">*</span></a>explain more here <a href="#id3"><span class="problematic" id="id4">*</span></a>)</p>
+lifecycle.  These are listed in the <code class="docutils literal"><span class="pre">events</span></code> property and described in
+more detail in <a class="reference internal" href="lifecycle.html#lifecycle"><span class="std std-ref">Managing the Extension Lifecycle</span></a>.</p>
 </div>
 <div class="section" id="webextensions-experiments">
 <h2>WebExtensions Experiments<a class="headerlink" href="#webextensions-experiments" title="Permalink to this headline">¶</a></h2>

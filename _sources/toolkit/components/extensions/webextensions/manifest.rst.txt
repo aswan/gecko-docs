@@ -49,7 +49,8 @@ The final step is to write code to handle the new manifest entry.
 The WebExtensions framework processes an extension's manifest when the
 extension starts up, this happens for existing extensions when a new
 browser session starts up and it can happen in the middle of a session
-when an extension is first installed or enabled.
+when an extension is first installed or enabled, or when the extension
+is updated.
 The JSON fragment above causes the WebExtensions framework to load the
 API implementation when it encounters a specific manifest key while
 starting an extension, and then call its ``onManifestEntry()`` method

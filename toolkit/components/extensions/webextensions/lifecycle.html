@@ -116,7 +116,7 @@
 <li class="toctree-l2"><a class="reference internal" href="manifest.html">Implementing a manifest property</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Managing the Extension Lifecycle</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#extension-shutdown">Extension Shutdown</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#extension-uninstall">Extension Uninstall</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#extension-uninstall-and-update">Extension Uninstall and Update</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="other.html">Utilities for implementing APIs</a></li>
@@ -222,8 +222,8 @@ these resources when the extension for which they are allocated is
 shut down.  An API does this by using the <code class="docutils literal"><span class="pre">callOnClose()</span></code>
 method on an <a class="reference external" href="reference.html#extension-class">Extension</a> object.</p>
 </div>
-<div class="section" id="extension-uninstall">
-<h2>Extension Uninstall<a class="headerlink" href="#extension-uninstall" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="extension-uninstall-and-update">
+<h2>Extension Uninstall and Update<a class="headerlink" href="#extension-uninstall-and-update" title="Permalink to this headline">¶</a></h2>
 <p>In addition to resources allocated within an individual browser session,
 some APIs make durable changes such as setting preferences or storing
 data in the user’s profile.

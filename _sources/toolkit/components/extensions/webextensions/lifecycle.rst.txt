@@ -16,8 +16,8 @@ these resources when the extension for which they are allocated is
 shut down.  An API does this by using the ``callOnClose()``
 method on an `Extension <reference.html#extension-class>`_ object. 
 
-Extension Uninstall
--------------------
+Extension Uninstall and Update
+------------------------------
 In addition to resources allocated within an individual browser session,
 some APIs make durable changes such as setting preferences or storing
 data in the user's profile.

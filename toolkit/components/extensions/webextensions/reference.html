@@ -221,7 +221,9 @@ from jsdoc comments in the source code.</p>
 <dl class="class">
 <dt id="ExtensionAPI">
 <em class="property">class </em><code class="descname">ExtensionAPI</code><span class="sig-paren">(</span><em>extension</em><span class="sig-paren">)</span><a class="headerlink" href="#ExtensionAPI" title="Permalink to this definition">¶</a></dt>
-<dd><p>document me</p>
+<dd><p>Base class for WebExtension APIs.  Each API creates a new class
+that inherits from this class, the derived class is instantiated
+once for each extension that uses the API.</p>
 </dd></dl>
 
 </div>
@@ -243,7 +245,7 @@ an extension is manually disabled or uninstalled.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
-<li><strong>obj.close</strong> (<em>function</em>) – The function to call when this extension is shut down.</li>
+<li><strong>obj</strong> (<em>object</em>) – An object on which to call the close() method when this extension is shut down.</li>
 </ul>
 </td>
 </tr>
@@ -278,12 +280,34 @@ already been set.</p>
 <dt id="Extension.manifestError">
 <code class="descclassname">Extension.</code><code class="descname">manifestError</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#Extension.manifestError" title="Permalink to this definition">¶</a></dt>
 <dd><p>Report an error about the extension’s manifest file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>message</strong> (<em>string</em>) – The error message</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
 <dt id="Extension.manifestWarning">
 <code class="descclassname">Extension.</code><code class="descname">manifestWarning</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#Extension.manifestWarning" title="Permalink to this definition">¶</a></dt>
 <dd><p>Report a warning about the extension’s manifest file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>message</strong> (<em>string</em>) – The warning message</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>
@@ -295,6 +319,19 @@ already been set.</p>
 <dt id="EventManager">
 <em class="property">class </em><code class="descname">EventManager</code><span class="sig-paren">(</span><em>context</em>, <em>name</em>, <em>register</em><span class="sig-paren">)</span><a class="headerlink" href="#EventManager" title="Permalink to this definition">¶</a></dt>
 <dd><p>This is a generic class for managing event listeners.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>context</strong> (<a class="reference internal" href="#BaseContext" title="BaseContext"><em>BaseContext</em></a>) – An object representing the extension instance using this event.</li>
+<li><strong>name</strong> (<em>string</em>) – A name used only for debugging.</li>
+<li><strong>register</strong> (<em>functon</em>) – A function called whenever a new listener is added.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>

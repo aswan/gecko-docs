@@ -246,9 +246,8 @@ actually implements the function.</p>
 <p>The <code class="docutils literal"><span class="pre">type</span></code> and <code class="docutils literal"><span class="pre">description</span></code> properties were described above.
 The <code class="docutils literal"><span class="pre">name</span></code> property is the name of the function as it appears in
 the given namespace.  That is, the fragment above creates a function
-callable from an extension as <code class="docutils literal"><span class="pre">browser.myapi.dosomething()</span></code>.
-The <code class="docutils literal"><span class="pre">parameters</span></code> and <code class="docutils literal"><span class="pre">returns</span></code> properties describe the parameters
-the function takes and the value it returns, respectively.
+callable from an extension as <code class="docutils literal"><span class="pre">browser.myapi.add()</span></code>.
+The <code class="docutils literal"><span class="pre">parameters</span></code> property describes the parameters the function takes.
 Parameters are specified as an array of Javascript types, where each
 parameter is a constrained Javascript value as described
 in the previous section.</p>
@@ -259,6 +258,8 @@ only added when it has the value <code class="docutils literal"><span class="pre
 The <code class="docutils literal"><span class="pre">default</span></code> property is only meaningful for optional parameters,
 it specifies the value that should be used for an optional parameter
 if the function is called without that parameter.
+An optional parameter without an explicit <code class="docutils literal"><span class="pre">default</span></code> property will
+receive a default value of <code class="docutils literal"><span class="pre">null</span></code>.
 Although it is legal to create optional parameters at any position
 (i.e., optional parameters can come before required parameters), doing so
 leads to difficult to use functions and API designers are encouraged to

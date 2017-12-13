@@ -39,9 +39,8 @@ An API schema definition for a simple function looks like this:
 The ``type`` and ``description`` properties were described above.
 The ``name`` property is the name of the function as it appears in
 the given namespace.  That is, the fragment above creates a function
-callable from an extension as ``browser.myapi.dosomething()``.
-The ``parameters`` and ``returns`` properties describe the parameters
-the function takes and the value it returns, respectively.
+callable from an extension as ``browser.myapi.add()``.
+The ``parameters`` property describes the parameters the function takes.
 Parameters are specified as an array of Javascript types, where each
 parameter is a constrained Javascript value as described
 in the previous section.
@@ -53,6 +52,8 @@ only added when it has the value ``true``).
 The ``default`` property is only meaningful for optional parameters,
 it specifies the value that should be used for an optional parameter
 if the function is called without that parameter.
+An optional parameter without an explicit ``default`` property will
+receive a default value of ``null``.
 Although it is legal to create optional parameters at any position
 (i.e., optional parameters can come before required parameters), doing so
 leads to difficult to use functions and API designers are encouraged to

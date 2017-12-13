@@ -95,7 +95,7 @@ API implementations are:
 
 Within the appropriate extensions directory, the convention is that the
 API schema is in a file called ``schemas/name.json`` (where *name* is
-the name of the extension, typically the same as its namespace if it has
+the name of the API, typically the same as its namespace if it has
 Javascript visible features).  The code for the ExtensionAPI class is put
 in a file called ``ext-name.js``.  If the API has code that runs in a
 child process, that is conventionally put in a file called ``ext-c-name.js``.
@@ -112,9 +112,13 @@ be loaded if an extension references either ``browser.myapi`` or
 A reference to a property beneath ``browser`` only causes the API to be
 loaded if it occurs within a scope listed in the ``scopes`` property.
 Valid ``scopes`` are:
+
 - ``"addon_parent"``, ``"addon_child``: Extension pages
+
 - ``"content_parent"``, ``"content_child``: Content scripts
+
 - ``"devtools_parent"``, ``"devtools_child"``: Devtools pages
+
 The distinction between the ``_parent`` and ``_child`` scopes will be
 explained in the following section.
 

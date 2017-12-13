@@ -2,7 +2,7 @@ Background
 ==========
 
 WebExtensions run in a sandboxed environment much like regular web content.
-But the purpose of extensions is to enhance the browser in a way that
+The purpose of extensions is to enhance the browser in a way that
 regular content cannot -- WebExtensions APIs bridge this gap by exposing
 browser features to extensions in a way preserves safety, reliability,
 and performance.
@@ -15,7 +15,7 @@ or `ChromeOnly WebIDL features <https://developer.mozilla.org/en-US/docs/Mozilla
 The rest of this documentation covers how API implementations interact
 with the implementation of WebExtensions.
 To expose some browser feature to WebExtensions, the first step is
-of course to design the API.  Some high-level principles for API design
+to design the API.  Some high-level principles for API design
 are documented elsewhere (*add links here*).
 
 Javascript APIs

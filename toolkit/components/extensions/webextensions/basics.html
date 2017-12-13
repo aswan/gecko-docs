@@ -301,7 +301,7 @@ on Firefox for Android.</li>
 </ul>
 <p>Within the appropriate extensions directory, the convention is that the
 API schema is in a file called <code class="docutils literal"><span class="pre">schemas/name.json</span></code> (where <em>name</em> is
-the name of the extension, typically the same as its namespace if it has
+the name of the API, typically the same as its namespace if it has
 Javascript visible features).  The code for the ExtensionAPI class is put
 in a file called <code class="docutils literal"><span class="pre">ext-name.js</span></code>.  If the API has code that runs in a
 child process, that is conventionally put in a file called <code class="docutils literal"><span class="pre">ext-c-name.js</span></code>.</p>
@@ -315,11 +315,13 @@ be loaded if an extension references either <code class="docutils literal"><span
 <code class="docutils literal"><span class="pre">browser.anothernamespace.subproperty</span></code>.</p>
 <p>A reference to a property beneath <code class="docutils literal"><span class="pre">browser</span></code> only causes the API to be
 loaded if it occurs within a scope listed in the <code class="docutils literal"><span class="pre">scopes</span></code> property.
-Valid <code class="docutils literal"><span class="pre">scopes</span></code> are:
-- <code class="docutils literal"><span class="pre">&quot;addon_parent&quot;</span></code>, <code class="docutils literal"><span class="pre">&quot;addon_child</span></code>: Extension pages
-- <code class="docutils literal"><span class="pre">&quot;content_parent&quot;</span></code>, <code class="docutils literal"><span class="pre">&quot;content_child</span></code>: Content scripts
-- <code class="docutils literal"><span class="pre">&quot;devtools_parent&quot;</span></code>, <code class="docutils literal"><span class="pre">&quot;devtools_child&quot;</span></code>: Devtools pages
-The distinction between the <code class="docutils literal"><span class="pre">_parent</span></code> and <code class="docutils literal"><span class="pre">_child</span></code> scopes will be
+Valid <code class="docutils literal"><span class="pre">scopes</span></code> are:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">&quot;addon_parent&quot;</span></code>, <code class="docutils literal"><span class="pre">&quot;addon_child</span></code>: Extension pages</li>
+<li><code class="docutils literal"><span class="pre">&quot;content_parent&quot;</span></code>, <code class="docutils literal"><span class="pre">&quot;content_child</span></code>: Content scripts</li>
+<li><code class="docutils literal"><span class="pre">&quot;devtools_parent&quot;</span></code>, <code class="docutils literal"><span class="pre">&quot;devtools_child&quot;</span></code>: Devtools pages</li>
+</ul>
+<p>The distinction between the <code class="docutils literal"><span class="pre">_parent</span></code> and <code class="docutils literal"><span class="pre">_child</span></code> scopes will be
 explained in the following section.</p>
 <p>A reference to a property only causes the API to be loaded if the
 extension referencing the property also has all the permissions listed

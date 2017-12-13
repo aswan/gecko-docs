@@ -44,6 +44,10 @@ Declarations within a namespace look like:
        { /* type definition */ },
        ...
      ],
+     "properties": {
+       "NAME": { /* property definition */ },
+       ...
+     },
      "functions": [
        { /* function definition */ },
        ...
@@ -51,11 +55,7 @@ Declarations within a namespace look like:
      "events": [
        { /* event definition */ },
        ...
-     ],
-     "properties": {
-       "NAME": { /* property definition */ },
-       ...
-     }
+     ]
    }
 
 The four types of objects that can be defined inside a namespace are:

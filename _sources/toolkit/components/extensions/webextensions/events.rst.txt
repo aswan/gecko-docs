@@ -33,7 +33,7 @@ code such as:
 
 .. code-block:: js
 
-   browser.myapi.onSomething.addListener((param1) => {
+   browser.myapi.onSomething.addListener(param1 => {
      console.log(`Something happend: ${param1}`);
    });
 
@@ -110,7 +110,7 @@ this object is suitable for returning from the extension's
 Handling extra arguments to addListener()
 -----------------------------------------
 The standard ``addListener()`` method for events may accept optional
-addition parameters to allows extra information to be passed when registering
+addition parameters to allow extra information to be passed when registering
 an event listener.  One common application of this parameter is for filtering,
 so that extensions that only care about a small subset of the instances of
 some event can avoid the overhead of receiving the ones they don't care about.

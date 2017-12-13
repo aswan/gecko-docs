@@ -239,7 +239,7 @@ an implementation in Javascript inside an instance of ExtensionAPI.</p>
 </div>
 <p>This fragment defines an event that is used from an extension with
 code such as:</p>
-<div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">browser</span><span class="p">.</span><span class="nx">myapi</span><span class="p">.</span><span class="nx">onSomething</span><span class="p">.</span><span class="nx">addListener</span><span class="p">((</span><span class="nx">param1</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">browser</span><span class="p">.</span><span class="nx">myapi</span><span class="p">.</span><span class="nx">onSomething</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="nx">param1</span> <span class="p">=&gt;</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Something happend: </span><span class="si">${</span><span class="nx">param1</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
 <span class="p">});</span>
 </pre></div>
@@ -311,7 +311,7 @@ this object is suitable for returning from the extension’s
 <div class="section" id="handling-extra-arguments-to-addlistener">
 <h2>Handling extra arguments to addListener()<a class="headerlink" href="#handling-extra-arguments-to-addlistener" title="Permalink to this headline">¶</a></h2>
 <p>The standard <code class="docutils literal"><span class="pre">addListener()</span></code> method for events may accept optional
-addition parameters to allows extra information to be passed when registering
+addition parameters to allow extra information to be passed when registering
 an event listener.  One common application of this parameter is for filtering,
 so that extensions that only care about a small subset of the instances of
 some event can avoid the overhead of receiving the ones they don’t care about.</p>

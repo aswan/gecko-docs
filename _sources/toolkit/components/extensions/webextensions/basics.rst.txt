@@ -111,6 +111,10 @@ be loaded if an extension references either ``browser.myapi`` or
 
 A reference to a property beneath ``browser`` only causes the API to be
 loaded if it occurs within a scope listed in the ``scopes`` property.
+A scope corresponds to the combination of a Javascript environment
+(e.g., extension pages, content scripts, etc) and the process in which the
+API code should run (which is either the main/parent process, or a
+content/child process).
 Valid ``scopes`` are:
 
 - ``"addon_parent"``, ``"addon_child``: Extension pages
@@ -120,7 +124,7 @@ Valid ``scopes`` are:
 - ``"devtools_parent"``, ``"devtools_child"``: Devtools pages
 
 The distinction between the ``_parent`` and ``_child`` scopes will be
-explained in the following section.
+explained in further detail in following sections.
 
 A reference to a property only causes the API to be loaded if the
 extension referencing the property also has all the permissions listed

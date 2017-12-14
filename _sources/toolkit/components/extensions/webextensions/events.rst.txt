@@ -195,7 +195,7 @@ This can be defined in the schema with the ``returns`` property:
              }
            ],
            "returns": {
-             "type": "boolean",
+             "type": "string",
              "description": "Description of how the listener return value is processed."
            }
          }
@@ -215,9 +215,7 @@ which is a Promise that resolves to the listener's return value:
            onSomething: new EventManager(context, "myapi.onSomething", fire => {
              const callback = async (value) => {
                let rv = await fire.async(value);
-               if (rv == true) {
-                 /* do something... */
-               }
+               log(`The onSomething listener returned the string ${rv}`);
              };
              RegisterSomeInternalCallback(callback);
              return () => {

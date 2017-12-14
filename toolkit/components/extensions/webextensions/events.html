@@ -389,7 +389,7 @@ This can be defined in the schema with the <code class="docutils literal"><span 
           <span class="p">}</span>
         <span class="p">],</span>
         <span class="nt">&quot;returns&quot;</span><span class="p">:</span> <span class="p">{</span>
-          <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;boolean&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
           <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Description of how the listener return value is processed.&quot;</span>
         <span class="p">}</span>
       <span class="p">}</span>
@@ -407,9 +407,7 @@ which is a Promise that resolves to the listener’s return value:</p>
         <span class="nx">onSomething</span><span class="o">:</span> <span class="k">new</span> <span class="nx">EventManager</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span> <span class="s2">&quot;myapi.onSomething&quot;</span><span class="p">,</span> <span class="nx">fire</span> <span class="p">=&gt;</span> <span class="p">{</span>
           <span class="kr">const</span> <span class="nx">callback</span> <span class="o">=</span> <span class="nx">async</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
             <span class="kd">let</span> <span class="nx">rv</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">fire</span><span class="p">.</span><span class="nx">async</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">rv</span> <span class="o">==</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
-              <span class="cm">/* do something... */</span>
-            <span class="p">}</span>
+            <span class="nx">log</span><span class="p">(</span><span class="sb">`The onSomething listener returned the string </span><span class="si">${</span><span class="nx">rv</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
           <span class="p">};</span>
           <span class="nx">RegisterSomeInternalCallback</span><span class="p">(</span><span class="nx">callback</span><span class="p">);</span>
           <span class="k">return</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>

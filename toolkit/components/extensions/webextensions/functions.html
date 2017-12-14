@@ -350,7 +350,6 @@ which can be useful while developing a new API.</p>
 <p>Most functions are implemented in the main process, but there are
 occassionally reasons to implement a function in a child process, such as:</p>
 <ul class="simple">
-<li>The function must return a value synchronously.</li>
 <li>The function has one or more parameters of a type that cannot be automatically
 sent to the main process using the structured clone algorithm.</li>
 <li>The function implementation interacts with some part of the browser

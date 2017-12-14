@@ -247,16 +247,16 @@ uses a namespace called <code class="docutils literal"><span class="pre">tabs</s
 properties appear on the object <code class="docutils literal"><span class="pre">browser.tabs</span></code>.
 For a new API that provides features via Javascript, the usual practice
 is to create a new namespace with a concise but descriptive name.</li>
-<li><strong>Scopes</strong>:
+<li><strong>Environments</strong>:
 There are several different types of Javascript environments in which
-extension code can execute; when creating a new Javascript feature
-the designer must choose which environments will have the feature
-available.
-Perhaps the most familiar envrionment is extension pages, including
-the background page, popups, and content pages accessed via <a class="reference external" href="https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/getURL"><code class="docutils literal"><span class="pre">browser.runtime.getURL()</span></code></a>.
-Most Javascript features are available in extension pages.
-Other environments include content scripts, devtools pages, and proxy scripts.
-These environments have limited sets of API features available.</li>
+extension code can execute: extension pages, content scripts, proxy
+scripts, and devtools pages.
+Extension pages include the background page, popups, and content pages
+accessed via <a class="reference external" href="https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/getURL"><code class="docutils literal"><span class="pre">browser.runtime.getURL()</span></code></a>.
+When creating a new Javascript feature the designer must choose
+in which of these environments the feature will be available.
+Most Javascript features are available in extension pages,
+other environments have limited sets of API features available.</li>
 </ul>
 <ul class="simple">
 <li><strong>Permissions</strong>:
@@ -270,13 +270,13 @@ described in (<em>citation needed</em>).</li>
 <li><strong>Functions</strong>:
 A function callable from Javascript is perhaps the most commonly
 used feature in WebExtension APIs.
-API functions are generally asynchronous, returning a
+New API functions are asynchronous, returning a
 <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>.  Even functions that do not return a result
-generally use Promises so that errors can be indicated asynchronously
+use Promises so that errors can be indicated asynchronously
 via a rejected Promise as opposed to a synchronously thrown Error.
 This is due to the fact that extensions run in a child process and
 many API functions require communication with the main process.
-If an API function that needs to communicate in this way returns a
+If an API function that needs to communicate in this way returned a
 synchronous result, then all Javascript execution in the child
 process would need to be paused until a response from the main process
 was received.  Even if a function could be implemented synchronously
